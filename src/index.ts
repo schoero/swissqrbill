@@ -51,7 +51,7 @@ interface SwissQRBillOptions {
   size: SwissQRBillSize
 }
 
-type SwissQRBillSize = "A4" | "A5";
+type SwissQRBillSize = "A4" | "A6/5";
 type SwissQRBillLanguages = "DE" | "EN" | "IT" | "FR";
 
 
@@ -162,7 +162,7 @@ export default class SwissQRBill {
     this.document.addPage({
       margin: 0,
       layout: this.size === "A4" ? "portrait" : "landscape",
-      size: this.size
+      size: this.size === "A4" ? this.size : [this._mmToPoints(105), this._mmToPoints(210)]
     });
   }
 
@@ -287,12 +287,12 @@ export default class SwissQRBill {
 
     this.document.fontSize(8);
     this.document.font("Helvetica");
-    this.document.text(this._data.currency, this._mmToPoints(5), this._mmToPoints(263), {
+    this.document.text(this._data.currency, this._mmToPoints(5), this._mmToPoints(71), {
       width: this._mmToPoints(15)
     });
 
     if(this._data.amount !== undefined){
-      this.document.text(this._formatAmount(this._data.amount), this._mmToPoints(20), this._mmToPoints(263), {
+      this.document.text(this._formatAmount(this._data.amount), this._mmToPoints(20), this._mmToPoints(71), {
         width: this._mmToPoints(37)
       });
     } else {
@@ -684,4 +684,4 @@ export default class SwissQRBill {
 
 }
 
-const bill = new SwissQRBill(sampleObject, "bill.pdf", { size: "A4", language: "DE" });
+const bill = new SwissQRBill(sampleObject, "bill.pdf", { size: "A6/5", language: "DE" });
