@@ -10,21 +10,12 @@ import svgpath from "svgpath";
 
 const sampleObject: SwissQRBillData = {
   currency: "CHF",
-  amount: 729.75,
-  reference: "C21 00000 00003 13947 14300 09017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
-    country: "CH"
-  },
-  debitor: {
-    name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
-    zip: 2501,
-    city: "Biel",
     country: "CH"
   }
 };
@@ -224,19 +215,18 @@ export default class SwissQRBill {
       width: this._mmToPoints(52)
     });
 
-    this.document.fontSize(9);
     this.document.moveDown();
-
-    this.document.fontSize(6);
-    this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].reference, {
-      width: this._mmToPoints(52)
-    });
 
 
     //-- Reference
 
     if(this._data.reference !== undefined){
+
+      this.document.fontSize(6);
+      this.document.font("Helvetica-Bold");
+      this.document.text(SwissQRBill.translations[this._language].reference, {
+        width: this._mmToPoints(52)
+      });
 
       this.document.fontSize(8);
       this.document.font("Helvetica");
@@ -267,7 +257,21 @@ export default class SwissQRBill {
       });
 
     } else {
-      // Todo draw rectangle
+
+      this.document.fontSize(9);
+      this.document.moveDown();
+
+      this.document.fontSize(6);
+      this.document.font("Helvetica-Bold");
+      this.document.text(SwissQRBill.translations[this._language].payableByName, {
+        width: this._mmToPoints(52)
+      });
+
+
+      //-- Draw rectangle
+
+      this._drawRectangle(5, 38, 52, 20);
+
     }
 
 
@@ -292,7 +296,7 @@ export default class SwissQRBill {
         width: this._mmToPoints(37)
       });
     } else {
-      // Todo draw rectangle
+      this._drawRectangle(30, 68, 30, 10);
     }
 
     this.document.fontSize(6);
@@ -338,6 +342,10 @@ export default class SwissQRBill {
       this.document.text(this._formatAmount(this._data.amount), this._mmToPoints(87), this._mmToPoints(this._paddingTop + 71), {
         width: this._mmToPoints(36)
       });
+    } else {
+
+      this._drawRectangle(80, 71, 40, 15);
+
     }
 
 
@@ -352,7 +360,7 @@ export default class SwissQRBill {
 
       this.document.fontSize(7);
       this.document.font("Helvetica");
-      this.document.text("UV;UltraPay005;12345:", this._mmToPoints(81), this._mmToPoints(this._paddingTop + 90), {
+      this.document.text(this._data.av1, this._mmToPoints(81), this._mmToPoints(this._paddingTop + 90), {
         width: this._mmToPoints(37)
       });
     }
@@ -366,7 +374,7 @@ export default class SwissQRBill {
 
       this.document.fontSize(7);
       this.document.font("Helvetica");
-      this.document.text("XY;XYService;54321", this._mmToPoints(81), this._mmToPoints(this._paddingTop + 93), {
+      this.document.text(this._data.av2, this._mmToPoints(81), this._mmToPoints(this._paddingTop + 93), {
         width: this._mmToPoints(37)
       });
     }
@@ -385,19 +393,23 @@ export default class SwissQRBill {
 
     this.document.moveDown();
 
-    this.document.fontSize(8);
-    this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].reference, {
-      width: this._mmToPoints(87)
-    });
+    if(this._data.reference !== undefined){
 
-    this.document.fontSize(10);
-    this.document.font("Helvetica");
-    this.document.text("21 00000 00003 13947 14300 09017", {
-      width: this._mmToPoints(87)
-    });
+      this.document.fontSize(8);
+      this.document.font("Helvetica-Bold");
+      this.document.text(SwissQRBill.translations[this._language].reference, {
+        width: this._mmToPoints(87)
+      });
 
-    this.document.moveDown();
+      this.document.fontSize(10);
+      this.document.font("Helvetica");
+      this.document.text(this._data.reference, {
+        width: this._mmToPoints(87)
+      });
+
+      this.document.moveDown();
+
+    }
 
 
     //-- Additional information
@@ -420,20 +432,29 @@ export default class SwissQRBill {
 
     }
 
-    this.document.fontSize(8);
-    this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].payableBy, {
-      width: this._mmToPoints(87)
-    });
-
     if(this._data.debitor !== undefined){
+
+      this.document.fontSize(8);
+      this.document.font("Helvetica-Bold");
+      this.document.text(SwissQRBill.translations[this._language].payableBy, {
+        width: this._mmToPoints(87)
+      });
+
       this.document.fontSize(10);
       this.document.font("Helvetica");
       this.document.text(this._formatAddress(this._data.debitor), {
         width: this._mmToPoints(87)
       });
     } else {
-      // Todo draw rectangle
+
+      this.document.fontSize(8);
+      this.document.font("Helvetica-Bold");
+      this.document.text(SwissQRBill.translations[this._language].payableByName, {
+        width: this._mmToPoints(87)
+      });
+
+      this._drawRectangle(118, 34, 65, 25);
+
     }
   }
 
@@ -635,6 +656,29 @@ export default class SwissQRBill {
     }
 
     return formatedAmountWithoutDecimals + "." + amountArray[1];
+
+  }
+
+
+  private _drawRectangle(x: number, y: number, width: number, height: number): void {
+
+    const length = 3;
+
+    this.document.moveTo(this._mmToPoints(x + length), this._mmToPoints(this._paddingTop + y))
+      .lineTo(this._mmToPoints(x), this._mmToPoints(this._paddingTop + y))
+      .lineTo(this._mmToPoints(x), this._mmToPoints(this._paddingTop + y + length))
+      .moveTo(this._mmToPoints(x), this._mmToPoints(this._paddingTop + y + height - length))
+      .lineTo(this._mmToPoints(x), this._mmToPoints(this._paddingTop + y + height))
+      .lineTo(this._mmToPoints(x + length), this._mmToPoints(this._paddingTop + y + height))
+      .moveTo(this._mmToPoints(x + width - length), this._mmToPoints(this._paddingTop + y + height))
+      .lineTo(this._mmToPoints(x + width), this._mmToPoints(this._paddingTop + y + height))
+      .lineTo(this._mmToPoints(x + width), this._mmToPoints(this._paddingTop + y + height - length))
+      .moveTo(this._mmToPoints(x + width), this._mmToPoints(this._paddingTop + y + length))
+      .lineTo(this._mmToPoints(x + width), this._mmToPoints(this._paddingTop + y))
+      .lineTo(this._mmToPoints(x + width - length), this._mmToPoints(this._paddingTop + y))
+      .lineWidth(.75)
+      .strokeColor("black")
+      .stroke();
 
   }
 
