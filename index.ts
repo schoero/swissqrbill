@@ -1,4 +1,4 @@
-import QRCode from "qrcode";
+import QRCode from "qrcode-svg";
 import fs from "fs";
 import PDFDocument from "pdfkit";
 import { parse } from "svg-parser";
@@ -172,6 +172,15 @@ export default class SwissQRBill {
 
   private _generateQRCode(data: string){
 
+
+    const svg = new QRCode(data).svg();
+
+    const svgObject = parse(svg);
+    console.log(svgObject);
+
+    fs.writeFileSync("out.json", JSON.stringify(svgObject));
+    return;
+    /*
     QRCode.toString(data, { type: "svg", width: this._mmToPoints(46), errorCorrectionLevel: "medium" }, (error, qrcodeString) => {
 
       let svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
@@ -191,7 +200,7 @@ export default class SwissQRBill {
         .stroke();
       //fs.writeFileSync("out.svg", this._insertLogo(svgPath));
     });
-
+*/
   }
 
 

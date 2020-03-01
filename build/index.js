@@ -3,11 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var qrcode_1 = __importDefault(require("qrcode"));
+var qrcode_svg_1 = __importDefault(require("qrcode-svg"));
 var fs_1 = __importDefault(require("fs"));
 var pdfkit_1 = __importDefault(require("pdfkit"));
 var svg_parser_1 = require("svg-parser");
-var svgpath_1 = __importDefault(require("svgpath"));
 //https://www.paymentstandards.ch/dam/downloads/style-guide-de.pdf
 //https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-de.pdf
 var swissCross = "\n  <polygon points=\"18.3,0.7 1.6,0.7 0.7,0.7 0.7,1.6 0.7,18.3 0.7,19.1 1.6,19.1 18.3,19.1 19.1,19.1 19.1,18.3 19.1,1.6 19.1,0.7 \"/>\n  <rect x=\"8.3\" y=\"4\" fill=\"#FFFFFF\" width=\"3.3\" height=\"11\"/>\n  <rect x=\"4.4\" y=\"7.9\" fill=\"#FFFFFF\" width=\"11\" height=\"3.3\"/>\n  <polygon fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"1.4357\" stroke-miterlimit=\"10\" points=\"0.7,1.6 0.7,18.3 0.7,19.1 1.6,19.1 18.3,19.1 19.1,19.1 19.1,18.3 19.1,1.6 19.1,0.7 18.3,0.7 \n    1.6,0.7 0.7,0.7 \"/>\n";
@@ -94,21 +93,32 @@ var SwissQRBill = /** @class */ (function () {
         return Math.round(mm * 2.83465);
     };
     SwissQRBill.prototype._generateQRCode = function (data) {
-        var _this = this;
-        qrcode_1.default.toString(data, { type: "svg", width: this._mmToPoints(46), errorCorrectionLevel: "medium" }, function (error, qrcodeString) {
-            var svgPath = _this._getSVGPathFromQRCodeString(qrcodeString);
-            if (svgPath === undefined) {
-                console.error("Could not convert svg image to path");
-                return;
-            }
-            svgPath = svgpath_1.default(svgPath)
-                .scale(1.2)
-                .toString();
-            _this.document.path(svgPath)
-                .undash()
-                .stroke();
-            //fs.writeFileSync("out.svg", this._insertLogo(svgPath));
+        var svg = new qrcode_svg_1.default(data).svg();
+        var svgObject = svg_parser_1.parse(svg);
+        console.log(svgObject);
+        fs_1.default.writeFileSync("out.json", JSON.stringify(svgObject));
+        return;
+        /*
+        QRCode.toString(data, { type: "svg", width: this._mmToPoints(46), errorCorrectionLevel: "medium" }, (error, qrcodeString) => {
+    
+          let svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
+    
+          if(svgPath === undefined){
+            console.error("Could not convert svg image to path");
+            return;
+          }
+    
+    
+          svgPath = svgpath(svgPath)
+            .scale(1.2)
+            .toString();
+    
+          this.document.path(svgPath)
+            .undash()
+            .stroke();
+          //fs.writeFileSync("out.svg", this._insertLogo(svgPath));
         });
+    */
     };
     SwissQRBill.prototype._getSVGPathFromQRCodeString = function (qrcodeString) {
         var svgObject = svg_parser_1.parse(qrcodeString);
