@@ -1,0 +1,43 @@
+{
+  "name": "swissqrbill",
+  "version": "0.1.0",
+  "description": "Node implementation for the swiss QR bill",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rogerrrrrrrs/SwissQRBill.git"
+  },
+  "keywords": [
+    "swiss",
+    "qr",
+    "bill",
+    "rechnung"
+  ],
+  "author": "Roger Schönbächler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rogerrrrrrrs/SwissQRBill/issues"
+  },
+  "homepage": "https://github.com/Rogerrrrrrrs/SwissQRBill#readme",
+  "devDependencies": {
+    "@types/node": "^13.7.7",
+    "@types/pdfkit": "^0.10.5",
+    "@types/qrcode": "^1.3.4",
+    "@types/qrcode-svg": "^1.1.0",
+    "@types/svg-parser": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "pdfkit": "^0.11.0",
+    "qrcode-svg": "^1.1.0",
+    "svg-parser": "^2.0.4",
+    "svgpath": "^2.2.3"
+  }
+}
