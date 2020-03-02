@@ -20,7 +20,7 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false });
+const bill = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false, size: "A4" });
 
 bill.document.fontSize(11);
 bill.document.font("Helvetica-Bold");
