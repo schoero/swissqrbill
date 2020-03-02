@@ -3,6 +3,7 @@ import fs from "fs";
 import PDFDocument from "pdfkit";
 import { parse } from "svg-parser";
 import svgpath from "svgpath";
+import IBAN from "iban";
 
 
 export namespace SwissQRBill {
@@ -53,6 +54,7 @@ export namespace SwissQRBill {
     private _language: languages = "DE";
     private _paddingTop: number = 0;
     private _autoGenerate: boolean = true;
+    private _referenceType: "QRR" | "SCOR" | "NON";
 
     static translations = {
 
@@ -104,14 +106,14 @@ export namespace SwissQRBill {
       FR: {
         paymentPart: "Section paiement",
         account: "Compte / Payable à",
-        reference: "Référence",
+        reference: "Référence",
         additionalInformation: "Informations additionnelles",
-        furtherInformation: "Informations supplémentaires",
+        furtherInformation: "Informations supplémentaires",
         currency: "Monnaie",
         amount: "Montant",
-        receipt: "Récépissé",
-        acceptancePoint: "Point de dépôt",
-        separate: "A détacher avant le versement",
+        receipt: "Récépissé",
+        acceptancePoint: "Point de dépôt",
+        separate: "A détacher avant le versement",
         payableBy: "Payable par",
         payableByName: "Payable par (nom/adresse)",
         inFavourOf: "En faveur de"
@@ -131,7 +133,42 @@ export namespace SwissQRBill {
 
     constructor(data: data, outputPath: string, options?: options){
 
+      this._cleanData(data);
+
       this._data = data;
+
+
+      //-- Validate data
+
+      if(IBAN.isValid(this._data.creditor.account) === false){
+        throw new Error(`The provided IBAN number '${this._data.creditor.account}' is not valid.`);
+      }
+
+      if(this._data.creditor.account.substr(0, 2) !== "CH" && this._data.creditor.account.substr(0, 2) !== "LI"){
+        throw new Error("Only CH and LI IBAN numbers are allowed");
+      }
+
+      if(this._isQRIBAN(this._data.creditor.account)){
+
+        this._referenceType = "QRR";
+
+        if(this._data.reference === undefined){
+          throw new Error("QR-IBAN numbers must have a reference");
+        }
+
+      } else {
+
+        if(this._data.reference === undefined){
+          this._referenceType = "NON";
+        } else {
+          this._referenceType = "SCOR";
+        }
+
+      }
+
+      if(this._data.creditor.name.length > 70){
+        throw new Error("Creditor name can be a maximum of 70 characters");
+      }
 
       if(options !== undefined){
         if(options.language !== undefined){
@@ -165,6 +202,7 @@ export namespace SwissQRBill {
       }
 
     }
+
 
     /**
      * Adds a new page to the PDF.
@@ -210,6 +248,7 @@ export namespace SwissQRBill {
 
     }
 
+
     /**
      * Draws the cutting lines to the the PDF.
      *
@@ -218,9 +257,24 @@ export namespace SwissQRBill {
 
     private _drawOutlines(): void {
 
-      this.document.moveTo(0, this.mmToPoints(this._paddingTop))
-        .lineTo(this.mmToPoints(210), this.mmToPoints(this._paddingTop))
-        .moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
+
+      //-- Horizontal line
+
+      if(this._size === "A4"){
+
+        this.document.moveTo(0, this.mmToPoints(this._paddingTop))
+          .lineTo(this.mmToPoints(210), this.mmToPoints(this._paddingTop))
+          .lineWidth(.75)
+          .dash(1, { size: 1 })
+          .strokeColor("black")
+          .stroke();
+
+      }
+
+
+      //-- Vertical line
+
+      this.document.moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
         .lineTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop + 105))
         .lineWidth(.75)
         .dash(1, { size: 1 })
@@ -296,7 +350,7 @@ export namespace SwissQRBill {
 
       this.document.fontSize(8);
       this.document.font("Helvetica");
-      this.document.text(`${this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
+      this.document.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
         width: this.mmToPoints(52)
       });
 
@@ -315,7 +369,7 @@ export namespace SwissQRBill {
 
         this.document.fontSize(8);
         this.document.font("Helvetica");
-        this.document.text(this._data.reference, {
+        this.document.text(this._formatReference(this._data.reference), {
           width: this.mmToPoints(52)
         });
 
@@ -355,7 +409,9 @@ export namespace SwissQRBill {
 
         //-- Draw rectangle
 
-        this._drawRectangle(5, 38, 52, 20);
+        const posY = this._data.reference === undefined ? 38 : 43;
+
+        this._drawRectangle(5, posY, 52, 20);
 
       }
 
@@ -426,17 +482,17 @@ export namespace SwissQRBill {
 
       this.document.fontSize(10);
       this.document.font("Helvetica");
-      this.document.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 71), {
+      this.document.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 72), {
         width: this.mmToPoints(15)
       });
 
       if(this._data.amount !== undefined){
-        this.document.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 71), {
+        this.document.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 72), {
           width: this.mmToPoints(36)
         });
       } else {
 
-        this._drawRectangle(80, 71, 40, 15);
+        this._drawRectangle(80, 72, 40, 15);
 
       }
 
@@ -479,7 +535,7 @@ export namespace SwissQRBill {
 
       this.document.fontSize(10);
       this.document.font("Helvetica");
-      this.document.text(`${this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
+      this.document.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
         width: this.mmToPoints(87)
       });
 
@@ -495,7 +551,7 @@ export namespace SwissQRBill {
 
         this.document.fontSize(10);
         this.document.font("Helvetica");
-        this.document.text(this._data.reference, {
+        this.document.text(this._formatReference(this._data.reference), {
           width: this.mmToPoints(87)
         });
 
@@ -537,6 +593,7 @@ export namespace SwissQRBill {
         this.document.text(this._formatAddress(this._data.debitor), {
           width: this.mmToPoints(87)
         });
+
       } else {
 
         this.document.fontSize(8);
@@ -545,7 +602,9 @@ export namespace SwissQRBill {
           width: this.mmToPoints(87)
         });
 
-        this._drawRectangle(118, 34, 65, 25);
+        const posY = this._data.reference === undefined ? 34 : 45;
+
+        this._drawRectangle(118, posY, 65, 25);
 
       }
     }
@@ -562,77 +621,177 @@ export namespace SwissQRBill {
 
       let qrString = "";
 
-      qrString += "SPC\n";                                                                        // Swiss Payments Code
-      qrString += "0200\n";                                                                       // Version
-      qrString += "1\n";                                                                          // Coding Type UTF-8
-      qrString += this._data.creditor.account + "\n";                                             // IBAN
+      qrString += "SPC\n";                                                                            // Swiss Payments Code
+      qrString += "0200\n";                                                                           // Version
+      qrString += "1\n";                                                                              // Coding Type UTF-8
+      qrString += this._formatIBAN(this._data.creditor.account)??this._data.creditor.account + "\n";  // IBAN
 
       if(this._data.creditor.houseNumber !== undefined){
-        qrString += "S\n";                                                                        // Adress Type
-        qrString += this._data.creditor.name + "\n";                                              // Name
-        qrString += this._data.creditor.address + "\n";                                           // Address
-        qrString += this._data.creditor.houseNumber + "\n";                                       // House number
-        qrString += this._data.creditor.zip + "\n";                                               // Zip code
-        qrString += this._data.creditor.city + "\n";                                              // City
+
+        qrString += "S\n";                                                                            // Adress Type
+
+        if(this._data.creditor.name.length > 70){
+          throw new Error("Creditor name must be a maximum of 70 characters");
+        }
+        qrString += this._data.creditor.name + "\n";                                                  // Name
+
+        if(this._data.creditor.address.length > 70){
+          throw new Error("Creditor address must be a maximum of 70 characters");
+        }
+        qrString += this._data.creditor.address + "\n";                                               // Address
+
+        if(this._data.creditor.address.length > 16){
+          throw new Error("Creditor house number can be a maximum of 16 characters");
+        }
+        qrString += this._data.creditor.houseNumber + "\n";                                           // House number
+
+        if(this._data.creditor.address.length > 16){
+          throw new Error("Creditor zip must be a maximum of 16 characters");
+        }
+        qrString += this._data.creditor.zip + "\n";                                                   // Zip code
+
+        if(this._data.creditor.address.length > 35){
+          throw new Error("Creditor city must be a maximum of 35 characters");
+        }
+        qrString += this._data.creditor.city + "\n";                                                  // City
+
       } else {
-        qrString += "K\n";                                                                        // Adress Type
-        qrString += this._data.creditor.name + "\n";                                              // Name
-        qrString += this._data.creditor.address + "\n";                                           // Address
-        qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";              // Zip code + city
+
+        qrString += "K\n";                                                                            // Adress Type
+
+        if(this._data.creditor.name.length > 70){
+          throw new Error("Creditor name must be a maximum of 70 characters");
+        }
+        qrString += this._data.creditor.name + "\n";                                                  // Name
+
+        if(this._data.creditor.address.length > 70){
+          throw new Error("Creditor address must be a maximum of 70 characters");
+        }
+        qrString += this._data.creditor.address + "\n";                                               // Address
+
+        if((this._data.creditor.zip + " " + this._data.creditor.city).length > 70){
+          throw new Error("Creditor zip plus city must be a maximum of 70 characters");
+        }
+        qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";                  // Zip code + city
+
       }
 
-      qrString += this._data.creditor.country + "\n";                                             // Country
+      if(this._data.creditor.country.length !== 2){
+        throw new Error("Creditor country must be 2 characters");
+      }
+      qrString += this._data.creditor.country + "\n";                                                 // Country
 
 
       //-- 7 x empty
 
-      qrString += "\n";                                                                           // 1
-      qrString += "\n";                                                                           // 2
-      qrString += "\n";                                                                           // 3
-      qrString += "\n";                                                                           // 4
-      qrString += "\n";                                                                           // 5
-      qrString += "\n";                                                                           // 6
-      qrString += "\n";                                                                           // 7
+      qrString += "\n";                                                                               // 1
+      qrString += "\n";                                                                               // 2
+      qrString += "\n";                                                                               // 3
+      qrString += "\n";                                                                               // 4
+      qrString += "\n";                                                                               // 5
+      qrString += "\n";                                                                               // 6
+      qrString += "\n";                                                                               // 7
 
-      qrString += (this._data.amount ?? "") + "\n";                                               // Amount
-      qrString += this._data.currency + "\n";                                                     // Currency
+      if(this._data.amount !== undefined){
+        if(this._data.amount.toString().length > 12){
+          throw new Error("Creditor country must be 2 characters");
+        }
+      }
+      qrString += (this._data.amount ?? "") + "\n";                                                   // Amount
+      qrString += this._data.currency + "\n";                                                         // Currency
 
       if(this._data.debitor !== undefined){
         if(this._data.debitor.houseNumber !== undefined){
-          qrString += "S\n";                                                                      // Adress Type
-          qrString += this._data.debitor.name + "\n";                                             // Name
-          qrString += this._data.debitor.address + "\n";                                          // Address
-          qrString += this._data.debitor.houseNumber + "\n";                                      // House number
-          qrString += this._data.debitor.zip + "\n";                                              // Zip code
-          qrString += this._data.debitor.city + "\n";                                             // City
+
+          qrString += "S\n";                                                                            // Adress Type
+
+          if(this._data.debitor.name.length > 70){
+            throw new Error("Debitor name must be a maximum of 70 characters");
+          }
+          qrString += this._data.debitor.name + "\n";                                                  // Name
+
+          if(this._data.debitor.address.length > 70){
+            throw new Error("Debitor address must be a maximum of 70 characters");
+          }
+          qrString += this._data.debitor.address + "\n";                                               // Address
+
+          if(this._data.debitor.address.length > 16){
+            throw new Error("Debitor house number can be a maximum of 16 characters");
+          }
+          qrString += this._data.debitor.houseNumber + "\n";                                           // House number
+
+          if(this._data.debitor.address.length > 16){
+            throw new Error("Debitor zip must be a maximum of 16 characters");
+          }
+          qrString += this._data.debitor.zip + "\n";                                                   // Zip code
+
+          if(this._data.debitor.address.length > 35){
+            throw new Error("Debitor city must be a maximum of 35 characters");
+          }
+          qrString += this._data.debitor.city + "\n";                                                  // City
+
         } else {
-          qrString += "K\n";                                                                      // Adress Type
-          qrString += this._data.debitor.name + "\n";                                             // Name
-          qrString += this._data.debitor.address + "\n";                                          // Address
-          qrString += this._data.debitor.zip + " " + this._data.creditor.city + "\n";             // Zip code + city
+
+          qrString += "K\n";                                                                            // Adress Type
+
+          if(this._data.debitor.name.length > 70){
+            throw new Error("Debitor name must be a maximum of 70 characters");
+          }
+          qrString += this._data.debitor.name + "\n";                                                  // Name
+
+          if(this._data.debitor.address.length > 70){
+            throw new Error("Debitor address must be a maximum of 70 characters");
+          }
+          qrString += this._data.debitor.address + "\n";                                               // Address
+
+          if((this._data.debitor.zip + " " + this._data.debitor.city).length > 70){
+            throw new Error("Debitor zip plus city must be a maximum of 70 characters");
+          }
+          qrString += this._data.debitor.zip + " " + this._data.debitor.city + "\n";                  // Zip code + city
+
         }
-        qrString += this._data.debitor.country + "\n";                                            // Country
+        qrString += this._data.debitor.country + "\n";                                                // Country
       }
 
-      qrString += "QRR" + "\n";                                                                   // Referencetype Todo: calculate
-      qrString += this._data.reference + "\n";                                                    // Reference
+      qrString += this._referenceType + "\n";                                                         // Referencetype
+
+      if(this._data.reference !== undefined){
+        if(this._data.reference.replace(/ /g, "").length > 27){
+          throw new Error("Reference must be a maximum of 27 characters");
+        }
+        qrString += this._data.reference + "\n";                                                      // Reference
+      } else {
+        qrString += "" + "\n";                                                                        // Reference
+      }
 
       if(this._data.message !== undefined){
-        qrString += this._data.message + "\n";                                                    // Unstructured message
+        if(this._data.message.length > 140){
+          throw new Error("Message must be a maximum of 140 characters");
+        }
+        qrString += this._data.message + "\n";                                                        // Unstructured message
       }
 
-      qrString += "EPD" + "\n";                                                                   // End Payment Data
+      qrString += "EPD" + "\n";                                                                       // End Payment Data
 
       if(this._data.additionalInformation !== undefined){
-        qrString += this._data.additionalInformation + "\n";                                      // Bill infromation
+        if(this._data.additionalInformation.length > 140){
+          throw new Error("AdditionalInfromation must be a maximum of 27 characters");
+        }
+        qrString += this._data.additionalInformation + "\n";                                          // Bill infromation
       }
 
-      if(this._data.additionalInformation !== undefined){
-        qrString += this._data.av1 + "\n";                                                        // AV1
+      if(this._data.av1 !== undefined){
+        if(this._data.av1.length > 100){
+          throw new Error("AV1 must be a maximum of 27 characters");
+        }
+        qrString += this._data.av1 + "\n";                                                            // AV1
       }
 
-      if(this._data.additionalInformation !== undefined){
-        qrString += this._data.av2 + "\n";                                                        // AV2
+      if(this._data.av2 !== undefined){
+        if(this._data.av2.length > 100){
+          throw new Error("AV2 must be a maximum of 27 characters");
+        }
+        qrString += this._data.av2 + "\n";                                                            // AV2
       }
 
       const qrcodeString = new QRCode({
@@ -646,8 +805,7 @@ export namespace SwissQRBill {
       let svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
 
       if(svgPath === undefined){
-        console.error("Could not convert svg image to path");
-        return;
+        throw new Error("Could not convert svg image to path");
       }
 
       this.document.moveTo(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
@@ -767,6 +925,51 @@ export namespace SwissQRBill {
 
 
     /**
+     * Removes line breaks from user provided data.
+     *
+     * @private
+     * @param {SwissQRBill.data} data object containing the billing data
+     * @returns {SwissQRBill.data}
+     * @memberof PDF
+     */
+
+    private _cleanData(data: SwissQRBill.data): void {
+
+      const _cleanObject = (object: object): void => {
+
+        const keys = Object.keys(object);
+
+        for(let k = 0; k < keys.length; k++){
+          if(typeof object[keys[k]] === "string"){
+            object[keys[k]] = this._removeLinebreaks(object[keys[k]]);
+          } else {
+            if(typeof object[keys[k]] === "object"){
+              _cleanObject(object[keys[k]]);
+            }
+          }
+        }
+      };
+
+      _cleanObject(data);
+
+    }
+
+
+    /**
+     * Removes \n and \r from the passed string
+     *
+     * @private
+     * @param {string} data string to be escaped
+     * @returns {string} string without \n and \r
+     * @memberof PDF
+     */
+
+    private _removeLinebreaks(data: string): string {
+      return data.replace(/\n/g, "").replace(/\r/g, "");
+    }
+
+
+    /**
      * Formats the amount with spaces and decimals.
      *
      * @private
@@ -791,6 +994,73 @@ export namespace SwissQRBill {
       }
 
       return formatedAmountWithoutDecimals + "." + amountArray[1];
+
+    }
+
+
+    private _formatReference(reference: string): string {
+
+      reference = this._removeLinebreaks(reference);
+
+      let referenceArray: RegExpMatchArray = [];
+
+      if(this._referenceType === "QRR"){
+        const match = reference.replace(/ /g, "").split("").reverse().join("").match(/.{1,5}/g);
+        if(match !== null){
+          referenceArray = match.reverse();
+        }
+      } else if(this._referenceType === "SCOR"){
+        const match = reference.replace(/ /g, "").match(/.{1,4}/g);
+        if(match !== null){
+          referenceArray = match;
+        }
+      } else {
+        return reference;
+      }
+
+      return referenceArray.join(" ");
+
+    }
+
+
+    /**
+     * Formats the IBAN number according to the defintions
+     *
+     * @private
+     * @param {string} iban string containing the IBAN number
+     * @returns {(string | undefined)} string containing the formatted IBAN number if successfull, undefined otherwise
+     * @memberof PDF
+     */
+
+    private _formatIBAN(iban: string): string | undefined {
+
+      iban = this._removeLinebreaks(iban);
+
+      const ibanArray = iban.replace(/ /g, "").match(/.{1,4}/g);
+
+      if(ibanArray === null){
+        return undefined;
+      }
+
+      return ibanArray.join(" ");
+
+    }
+
+
+    /**
+     * Checks if the provided IBAN is a QR-IBAN or a normal IBAN
+     *
+     * @private
+     * @param {string} iban string containing the IBAN to be checked
+     * @returns {boolean} boolean Whether the IBAN is a QR-IBAN or not
+     * @memberof PDF
+     */
+
+    private _isQRIBAN(iban: string): boolean {
+
+      const QRIID = iban.substr(4, 5);
+
+      return (+QRIID >= 30000 && +QRIID <= 31999);
 
     }
 

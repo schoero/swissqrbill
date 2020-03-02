@@ -8,16 +8,9 @@ const data = {
     address: "Rue du Lac 1268",
     zip: 2501,
     city: "Biel",
-    account: "CH4431999123000889012",
-    country: "CH"
-  },
-  debitor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
-    address: "Grosse Marktgasse 28",
-    zip: 9400,
-    city: "Rorschach",
+    account: "CH5800791123000889012",
     country: "CH"
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/no-amount.pdf");
+const bill = new SwissQRBill.PDF(data, "./output/no-debitor-no-amount.pdf");

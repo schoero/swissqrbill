@@ -1,6 +1,6 @@
-import { SwissQRBill } from "../lib/index";
+const SwissQRBill = require("../");
 
-const sampleObject: SwissQRBill.data = {
+const data = {
   currency: "CHF",
   amount: 1199.95,
   reference: "21 00000 00003 13947 14300 09017",
@@ -9,7 +9,7 @@ const sampleObject: SwissQRBill.data = {
     address: "Rue du Lac 1268",
     zip: 2501,
     city: "Biel",
-    account: "CH4431999123000889012",
+    account: "CH5800791123000889012",
     country: "CH"
   },
   debitor: {
@@ -21,4 +21,4 @@ const sampleObject: SwissQRBill.data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(sampleObject, "./output/ts.pdf");
+const bill = new SwissQRBill.PDF(data, "./output/normal-iban.pdf");
