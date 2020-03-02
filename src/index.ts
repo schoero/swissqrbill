@@ -618,7 +618,7 @@ export namespace SwissQRBill {
       qrString += this._data.reference + "\n";                                                    // Reference
 
       if(this._data.message !== undefined){
-        qrString += this._data.reference + "\n";                                                  // Unstructured message
+        qrString += this._data.message + "\n";                                                    // Unstructured message
       }
 
       qrString += "EPD" + "\n";                                                                   // End Payment Data
