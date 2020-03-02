@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Node implementation for the swiss QR bill",
   "main": "./index.js",
   "types": "./lib/index.d.ts",
