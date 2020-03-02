@@ -1,6 +1,8 @@
 #!/bin/sh
 echo "a4"
  node a4
+echo "av1av2"
+ node av1av2
 echo "english"
  node english
 echo "euro"
