@@ -3,6 +3,7 @@ import { SwissQRBill } from "../lib/index";
 const sampleObject: SwissQRBill.data = {
   currency: "CHF",
   amount: 1199.95,
+  reference: "21 00000 00003 13947 14300 09017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
