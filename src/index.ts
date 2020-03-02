@@ -670,7 +670,7 @@ export namespace SwissQRBill {
 
       this.document.path(background)
         .fillColor("black")
-        .lineWidth(1)
+        .lineWidth(1.4357)
         .strokeColor("white")
         .fillAndStroke();
 
