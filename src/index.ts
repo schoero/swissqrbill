@@ -54,6 +54,7 @@ export namespace SwissQRBill {
     private _language: languages = "DE";
     private _paddingTop: number = 0;
     private _autoGenerate: boolean = true;
+    private _referenceType: "QRR" | "SCOR" | "NON";
 
     static translations = {
 
@@ -136,14 +137,37 @@ export namespace SwissQRBill {
 
       this._data = data;
 
+
+      //-- Validate data
+
       if(IBAN.isValid(this._data.creditor.account) === false){
         throw new Error(`The provided IBAN number '${this._data.creditor.account}' is not valid.`);
       }
 
+      if(this._data.creditor.account.substr(0, 2) !== "CH" && this._data.creditor.account.substr(0, 2) !== "LI"){
+        throw new Error("Only CH and LI IBAN numbers are allowed");
+      }
+
       if(this._isQRIBAN(this._data.creditor.account)){
+
+        this._referenceType = "QRR";
+
         if(this._data.reference === undefined){
           throw new Error("QR-IBAN numbers must have a reference");
         }
+
+      } else {
+
+        if(this._data.reference === undefined){
+          this._referenceType = "NON";
+        } else {
+          this._referenceType = "SCOR";
+      }
+
+      }
+
+      if(this._data.creditor.name.length > 70){
+        throw new Error("Creditor name can be a maximum of 70 characters");
       }
 
       if(options !== undefined){
@@ -345,7 +369,7 @@ export namespace SwissQRBill {
 
         this.document.fontSize(8);
         this.document.font("Helvetica");
-        this.document.text(this._data.reference, {
+        this.document.text(this._formatReference(this._data.reference), {
           width: this.mmToPoints(52)
         });
 
@@ -527,7 +551,7 @@ export namespace SwissQRBill {
 
         this.document.fontSize(10);
         this.document.font("Helvetica");
-        this.document.text(this._data.reference, {
+        this.document.text(this._formatReference(this._data.reference), {
           width: this.mmToPoints(87)
         });
 
@@ -872,6 +896,31 @@ export namespace SwissQRBill {
       }
 
       return formatedAmountWithoutDecimals + "." + amountArray[1];
+
+    }
+
+
+    private _formatReference(reference: string): string {
+
+      reference = this._removeLinebreaks(reference);
+
+      let referenceArray: RegExpMatchArray = [];
+
+      if(this._referenceType === "QRR"){
+        const match = reference.replace(/ /g, "").split("").reverse().join("").match(/.{1,5}/g);
+        if(match !== null){
+          referenceArray = match.reverse();
+        }
+      } else if(this._referenceType === "SCOR"){
+        const match = reference.replace(/ /g, "").match(/.{1,4}/g);
+        if(match !== null){
+          referenceArray = match;
+        }
+      } else {
+        return reference;
+      }
+
+      return referenceArray.join(" ");
 
     }
 
