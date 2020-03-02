@@ -51,16 +51,12 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "qrbill.pdf", { size: "A6/5" });
+const bill = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 This will generate the following PDF file
 
-<object data="https://github.com/Rogerrrrrrrs/SwissQRBill/assets/qrbill.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/Rogerrrrrrrs/SwissQRBill/assets/qrbill.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/assets/qrbill.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 ## API
 
