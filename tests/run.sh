@@ -1,23 +1,23 @@
 #!/bin/sh
 echo "a4"
-sudo node a4
+ node a4
 echo "english"
-sudo node english
+ node english
 echo "euro"
-sudo node euro
+ node euro
 echo "french"
-sudo node french
+ node french
 echo "italian"
-sudo node italian
+ node italian
 echo "multipage"
-sudo node multipage
+ node multipage
 echo "no-amount"
-sudo node no-amount
+ node no-amount
 echo "no-debitor"
-sudo node no-debitor
+ node no-debitor
 echo "separate"
-sudo node separate
+ node separate
 echo "ts"
 tsc ts.ts
-sudo node ts
-sudo rm ts.js
+ node ts
+ rm ts.js
