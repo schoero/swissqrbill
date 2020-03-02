@@ -1,6 +1,6 @@
 #!/bin/sh
-echo "a6"
-sudo node a6
+echo "a4"
+sudo node a4
 echo "english"
 sudo node english
 echo "euro"

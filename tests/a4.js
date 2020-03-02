@@ -20,4 +20,4 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/a6.pdf", { size: "A6/5" });
+const bill = new SwissQRBill.PDF(data, "./output/a4.pdf", { size: "A4" });
