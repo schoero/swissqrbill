@@ -131,6 +131,8 @@ export namespace SwissQRBill {
 
     constructor(data: data, outputPath: string, options?: options){
 
+      this._cleanData(data);
+
       this._data = data;
 
       if(options !== undefined){
@@ -775,11 +777,43 @@ export namespace SwissQRBill {
 
     private _formatAddress(data: debitor | creditor): string {
       if(data.houseNumber !== undefined) {
-        return `${this._removeLinebreaks(data.name)}\n${this._removeLinebreaks(data.address)} ${this._removeLinebreaks(data.houseNumber)}\n${data.zip} ${this._removeLinebreaks(data.city)}`;
+        return `${data.name}\n${data.address} ${data.houseNumber}\n${data.zip} ${data.city}`;
       } else {
-        return `${this._removeLinebreaks(data.name)}\n${this._removeLinebreaks(data.address)}\n${data.zip} ${this._removeLinebreaks(data.city)}`;
+        return `${data.name}\n${data.address}\n${data.zip} ${data.city}`;
       }
     }
+
+
+    /**
+     * Removes line breaks from user provided data.
+     *
+     * @private
+     * @param {SwissQRBill.data} data object containing the billing data
+     * @returns {SwissQRBill.data}
+     * @memberof PDF
+     */
+
+    private _cleanData(data: SwissQRBill.data): void {
+
+      const _cleanObject = (object: object): void => {
+
+        const keys = Object.keys(object);
+
+        for(let k = 0; k < keys.length; k++){
+          if(typeof object[keys[k]] === "string"){
+            object[keys[k]] = this._removeLinebreaks(object[keys[k]]);
+      } else {
+            if(typeof object[keys[k]] === "object"){
+              _cleanObject(object[keys[k]]);
+            }
+          }
+      }
+      };
+
+      _cleanObject(data);
+
+    }
+
 
 
     /**
