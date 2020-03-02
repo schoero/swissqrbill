@@ -168,6 +168,7 @@ export namespace SwissQRBill {
 
     }
 
+
     /**
      * Adds a new page to the PDF.
      *
@@ -580,77 +581,77 @@ export namespace SwissQRBill {
 
       let qrString = "";
 
-      qrString += "SPC\n";                                                                        // Swiss Payments Code
-      qrString += "0200\n";                                                                       // Version
-      qrString += "1\n";                                                                          // Coding Type UTF-8
-      qrString += this._data.creditor.account + "\n";                                             // IBAN
+      qrString += "SPC\n";                                                                            // Swiss Payments Code
+      qrString += "0200\n";                                                                           // Version
+      qrString += "1\n";                                                                              // Coding Type UTF-8
+      qrString += this._formatIBAN(this._data.creditor.account)??this._data.creditor.account + "\n";  // IBAN
 
       if(this._data.creditor.houseNumber !== undefined){
-        qrString += "S\n";                                                                        // Adress Type
-        qrString += this._data.creditor.name + "\n";                                              // Name
-        qrString += this._data.creditor.address + "\n";                                           // Address
-        qrString += this._data.creditor.houseNumber + "\n";                                       // House number
-        qrString += this._data.creditor.zip + "\n";                                               // Zip code
-        qrString += this._data.creditor.city + "\n";                                              // City
+        qrString += "S\n";                                                                              // Adress Type
+        qrString += this._data.creditor.name + "\n";                                                  // Name
+        qrString += this._data.creditor.address + "\n";                                               // Address
+        qrString += this._data.creditor.houseNumber + "\n";                                           // House number
+        qrString += this._data.creditor.zip + "\n";                                                   // Zip code
+        qrString += this._data.creditor.city + "\n";                                                  // City
       } else {
-        qrString += "K\n";                                                                        // Adress Type
-        qrString += this._data.creditor.name + "\n";                                              // Name
-        qrString += this._data.creditor.address + "\n";                                           // Address
-        qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";              // Zip code + city
+        qrString += "K\n";                                                                            // Adress Type
+        qrString += this._data.creditor.name + "\n";                                                  // Name
+        qrString += this._data.creditor.address + "\n";                                               // Address
+        qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";                  // Zip code + city
       }
 
-      qrString += this._data.creditor.country + "\n";                                             // Country
+      qrString += this._data.creditor.country + "\n";                                                 // Country
 
 
       //-- 7 x empty
 
-      qrString += "\n";                                                                           // 1
-      qrString += "\n";                                                                           // 2
-      qrString += "\n";                                                                           // 3
-      qrString += "\n";                                                                           // 4
-      qrString += "\n";                                                                           // 5
-      qrString += "\n";                                                                           // 6
-      qrString += "\n";                                                                           // 7
+      qrString += "\n";                                                                               // 1
+      qrString += "\n";                                                                               // 2
+      qrString += "\n";                                                                               // 3
+      qrString += "\n";                                                                               // 4
+      qrString += "\n";                                                                               // 5
+      qrString += "\n";                                                                               // 6
+      qrString += "\n";                                                                               // 7
 
-      qrString += (this._data.amount ?? "") + "\n";                                               // Amount
-      qrString += this._data.currency + "\n";                                                     // Currency
+      qrString += (this._data.amount ?? "") + "\n";                                                   // Amount
+      qrString += this._data.currency + "\n";                                                         // Currency
 
       if(this._data.debitor !== undefined){
         if(this._data.debitor.houseNumber !== undefined){
-          qrString += "S\n";                                                                      // Adress Type
-          qrString += this._data.debitor.name + "\n";                                             // Name
-          qrString += this._data.debitor.address + "\n";                                          // Address
-          qrString += this._data.debitor.houseNumber + "\n";                                      // House number
-          qrString += this._data.debitor.zip + "\n";                                              // Zip code
-          qrString += this._data.debitor.city + "\n";                                             // City
+          qrString += "S\n";                                                                          // Adress Type
+          qrString += this._data.debitor.name + "\n";                                                 // Name
+          qrString += this._data.debitor.address + "\n";                                              // Address
+          qrString += this._data.debitor.houseNumber + "\n";                                          // House number
+          qrString += this._data.debitor.zip + "\n";                                                  // Zip code
+          qrString += this._data.debitor.city + "\n";                                                 // City
         } else {
-          qrString += "K\n";                                                                      // Adress Type
-          qrString += this._data.debitor.name + "\n";                                             // Name
-          qrString += this._data.debitor.address + "\n";                                          // Address
-          qrString += this._data.debitor.zip + " " + this._data.creditor.city + "\n";             // Zip code + city
+          qrString += "K\n";                                                                          // Adress Type
+          qrString += this._data.debitor.name + "\n";                                                 // Name
+          qrString += this._data.debitor.address + "\n";                                              // Address
+          qrString += this._data.debitor.zip + " " + this._data.creditor.city + "\n";                 // Zip code + city
         }
-        qrString += this._data.debitor.country + "\n";                                            // Country
+        qrString += this._data.debitor.country + "\n";                                                // Country
       }
 
-      qrString += "QRR" + "\n";                                                                   // Referencetype Todo: calculate
-      qrString += this._data.reference + "\n";                                                    // Reference
+      qrString += "QRR" + "\n";                                                                       // Referencetype Todo: calculate
+      qrString += this._data.reference + "\n";                                                        // Reference
 
       if(this._data.message !== undefined){
-        qrString += this._data.message + "\n";                                                    // Unstructured message
+        qrString += this._data.message + "\n";                                                        // Unstructured message
       }
 
-      qrString += "EPD" + "\n";                                                                   // End Payment Data
+      qrString += "EPD" + "\n";                                                                       // End Payment Data
 
       if(this._data.additionalInformation !== undefined){
-        qrString += this._data.additionalInformation + "\n";                                      // Bill infromation
-      }
-
-      if(this._data.additionalInformation !== undefined){
-        qrString += this._data.av1 + "\n";                                                        // AV1
+        qrString += this._data.additionalInformation + "\n";                                          // Bill infromation
       }
 
       if(this._data.additionalInformation !== undefined){
-        qrString += this._data.av2 + "\n";                                                        // AV2
+        qrString += this._data.av1 + "\n";                                                            // AV1
+      }
+
+      if(this._data.additionalInformation !== undefined){
+        qrString += this._data.av2 + "\n";                                                            // AV2
       }
 
       const qrcodeString = new QRCode({
@@ -802,12 +803,12 @@ export namespace SwissQRBill {
         for(let k = 0; k < keys.length; k++){
           if(typeof object[keys[k]] === "string"){
             object[keys[k]] = this._removeLinebreaks(object[keys[k]]);
-      } else {
+          } else {
             if(typeof object[keys[k]] === "object"){
               _cleanObject(object[keys[k]]);
             }
           }
-      }
+        }
       };
 
       _cleanObject(data);
@@ -855,6 +856,21 @@ export namespace SwissQRBill {
       }
 
       return formatedAmountWithoutDecimals + "." + amountArray[1];
+
+    }
+
+
+    private _formatIBAN(iban: string): string | undefined {
+
+      iban = this._removeLinebreaks(iban);
+
+      const ibanArray = iban.replace(/ /g, "").match(/.{1,4}/g);
+
+      if(ibanArray === null){
+        return undefined;
+      }
+
+      return ibanArray.join(" ");
 
     }
 
