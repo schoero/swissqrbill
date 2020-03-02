@@ -759,10 +759,24 @@ export namespace SwissQRBill {
 
     private _formatAddress(data: debitor | creditor): string {
       if(data.houseNumber !== undefined) {
-        return `${data.name}\n${data.address} ${data.houseNumber}\n${data.zip} ${data.city}`;
+        return `${this._removeLinebreaks(data.name)}\n${this._removeLinebreaks(data.address)} ${this._removeLinebreaks(data.houseNumber)}\n${data.zip} ${this._removeLinebreaks(data.city)}`;
       } else {
-        return `${data.name}\n${data.address}\n${data.zip} ${data.city}`;
+        return `${this._removeLinebreaks(data.name)}\n${this._removeLinebreaks(data.address)}\n${data.zip} ${this._removeLinebreaks(data.city)}`;
       }
+    }
+
+
+    /**
+     * Removes \n and \r from the passed string
+     *
+     * @private
+     * @param {string} data string to be escaped
+     * @returns {string} string without \n and \r
+     * @memberof PDF
+     */
+
+    private _removeLinebreaks(data: string): string {
+      return data.replace(/\n/g, "").replace(/\r/g, "");
     }
 
 
