@@ -15,6 +15,14 @@ echo "no-amount"
  node no-amount
 echo "no-debitor"
  node no-debitor
+echo "no-debitor-no-amount"
+ node no-debitor-no-amount
+echo "no-debitor-no-amount-no-reference"
+ node no-debitor-no-amount-no-reference
+echo "no-debitor-no-reference"
+ node no-debitor-no-reference
+echo "normal-iban"
+ node normal-iban
 echo "separate"
  node separate
 echo "ts"
