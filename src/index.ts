@@ -468,7 +468,7 @@ export namespace SwissQRBill {
         });
       } else {
 
-        this._drawRectangle(80, 71, 40, 15);
+        this._drawRectangle(80, 72, 40, 15);
 
       }
 
