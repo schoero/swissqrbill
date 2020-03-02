@@ -683,8 +683,7 @@ export namespace SwissQRBill {
       let svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
 
       if(svgPath === undefined){
-        console.error("Could not convert svg image to path");
-        return;
+        throw new Error("Could not convert svg image to path");
       }
 
       this.document.moveTo(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
