@@ -5,6 +5,7 @@
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
+    "noImplicitAny": false,
     "esModuleInterop": true
   },
   "include": ["src"],
