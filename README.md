@@ -56,9 +56,9 @@ const bill = new SwissQRBill.PDF(data, "qrbill.pdf", { size: "A6/5" });
 
 This will generate the following PDF file
 
-<object data="https://github.com/Rogerrrrrrrs/SwissQRBill/assets/qrbill.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/Rogerrrrrrrs/SwissQRBill/assets/qrbill.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/assets/qrbill.pdf">Download PDF</a>.</p>
+<object data="https://render.githubusercontent.com/view/pdf?commit=1494ef94e0e54aab211a60be53313b2a344510ae&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f526f676572727272727272732f5377697373515242696c6c2f313439346566393465306535346161623231316136306265353333313362326133343435313061652f6173736574732f717262696c6c2e706466&nwo=Rogerrrrrrrs%2FSwissQRBill&path=assets%2Fqrbill.pdf&repository_id=244027101&repository_type=Repository#b6bad695-ede0-401b-aac4-c45e9ed8d073" type="application/pdf" width="700px" height="700px">
+    <embed src="https://render.githubusercontent.com/view/pdf?commit=1494ef94e0e54aab211a60be53313b2a344510ae&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f526f676572727272727272732f5377697373515242696c6c2f313439346566393465306535346161623231316136306265353333313362326133343435313061652f6173736574732f717262696c6c2e706466&nwo=Rogerrrrrrrs%2FSwissQRBill&path=assets%2Fqrbill.pdf&repository_id=244027101&repository_type=Repository#b6bad695-ede0-401b-aac4-c45e9ed8d073">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf">Download PDF</a>.</p>
     </embed>
 </object>
 
