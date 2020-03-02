@@ -79,8 +79,8 @@ This will generate the following PDF file
   Available options: 
    - language - string: Either `"DE" | "EN" | "IT" | "FR"`. Default `"DE"`.
    - size - string: Either `"A4" | "A6/5"`. Default `"A6/5"`.
-   - scissors - boolean: Wether you want to show the scissor icons or the text `Separate before paying in`. Default `true`.
-   - autoGenerate - boolean: Wether you want to atomatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit. Default `true`.
+   - scissors - boolean: Whether you want to show the scissor icons or the text `Separate before paying in`. Default `true`.
+   - autoGenerate - boolean: Whether you want to atomatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit. Default `true`.
 
 #### addPage()
 Adds a new page to the PDF.
