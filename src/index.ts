@@ -51,7 +51,7 @@ export namespace SwissQRBill {
     private _data: data;
     private _scissors: boolean = true;
     private _language: languages = "DE";
-    private _paddingTop: number = 192;
+    private _paddingTop: number = 0;
     private _autoGenerate: boolean = true;
 
     static translations = {
