@@ -65,7 +65,7 @@ This will generate the following PDF file
 
 ### Methods
 - Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbill.pdfdata-outputpath-options)
+  - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbillpdfdata-outputpath-options)
 - Methods
   - [addPage()](#addpage)
   - [end()](#end)
