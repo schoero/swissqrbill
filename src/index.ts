@@ -315,7 +315,7 @@ export namespace SwissQRBill {
 
       this.document.fontSize(8);
       this.document.font("Helvetica");
-      this.document.text(`${this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
+      this.document.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
         width: this.mmToPoints(52)
       });
 
@@ -498,7 +498,7 @@ export namespace SwissQRBill {
 
       this.document.fontSize(10);
       this.document.font("Helvetica");
-      this.document.text(`${this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
+      this.document.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
         width: this.mmToPoints(87)
       });
 
