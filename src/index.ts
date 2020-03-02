@@ -385,7 +385,9 @@ export namespace SwissQRBill {
 
         //-- Draw rectangle
 
-        this._drawRectangle(5, 38, 52, 20);
+        const posY = this._data.reference === undefined ? 38 : 43;
+
+        this._drawRectangle(5, posY, 52, 20);
 
       }
 
@@ -576,7 +578,9 @@ export namespace SwissQRBill {
           width: this.mmToPoints(87)
         });
 
-        this._drawRectangle(118, 34, 65, 25);
+        const posY = this._data.reference === undefined ? 34 : 45;
+
+        this._drawRectangle(118, posY, 65, 25);
 
       }
     }
