@@ -1,7 +1,7 @@
 # SwissQRBill
 ![MIT License](https://img.shields.io/github/license/Rogerrrrrrrs/SwissQRBill?color=brightgreen)
 
-With SwissQRBill you can easily generate the new QR Code payment slips which will be introduced on 30 June 2020 using Node.js.
+With SwissQRBill you can easily generate the new QR Code payment slips which will be introduced on 30 June 2020 in switzerland.
 
 ## Contents
 
@@ -103,7 +103,7 @@ Note: This function is automatically called when the option autoGenerate is set 
 
 
 ## PDFKit
-This module uses [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files. You are able to generate a comlete bill using PDFKit methods and then add the QR Bill to the bottom using `addQRBill()` when the option `autoGenerate` is set to `false`;
+This module uses [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files. You are able to generate a comlete bill using PDFKit methods and then add the QR Bill to the bottom using `addQRBill()` when the option `autoGenerate` is set to `false`.
 
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
