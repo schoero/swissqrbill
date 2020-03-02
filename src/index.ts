@@ -210,6 +210,7 @@ export namespace SwissQRBill {
 
     }
 
+
     /**
      * Draws the cutting lines to the the PDF.
      *
@@ -218,9 +219,24 @@ export namespace SwissQRBill {
 
     private _drawOutlines(): void {
 
-      this.document.moveTo(0, this.mmToPoints(this._paddingTop))
-        .lineTo(this.mmToPoints(210), this.mmToPoints(this._paddingTop))
-        .moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
+
+      //-- Horizontal line
+
+      if(this._size === "A4"){
+
+        this.document.moveTo(0, this.mmToPoints(this._paddingTop))
+          .lineTo(this.mmToPoints(210), this.mmToPoints(this._paddingTop))
+          .lineWidth(.75)
+          .dash(1, { size: 1 })
+          .strokeColor("black")
+          .stroke();
+
+      }
+
+
+      //-- Vertical line
+
+      this.document.moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
         .lineTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop + 105))
         .lineWidth(.75)
         .dash(1, { size: 1 })
