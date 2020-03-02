@@ -2,7 +2,8 @@
   "name": "swissqrbill",
   "version": "0.1.0",
   "description": "Node implementation for the swiss QR bill",
-  "main": "./lib/index.js",
+  "main": "./index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./lib/index.js"
