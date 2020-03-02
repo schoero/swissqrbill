@@ -823,5 +823,3 @@ export namespace SwissQRBill {
 
   }
 }
-
-new SwissQRBill.PDF({});
