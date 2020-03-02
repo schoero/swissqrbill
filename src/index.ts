@@ -3,6 +3,7 @@ import fs from "fs";
 import PDFDocument from "pdfkit";
 import { parse } from "svg-parser";
 import svgpath from "svgpath";
+import IBAN from "iban";
 
 
 export namespace SwissQRBill {
@@ -134,6 +135,16 @@ export namespace SwissQRBill {
       this._cleanData(data);
 
       this._data = data;
+
+      if(IBAN.isValid(this._data.creditor.account) === false){
+        throw new Error(`The provided IBAN number '${this._data.creditor.account}' is not valid.`);
+      }
+
+      if(this._isQRIBAN(this._data.creditor.account)){
+        if(this._data.reference === undefined){
+          throw new Error("QR-IBAN numbers must have a reference");
+        }
+      }
 
       if(options !== undefined){
         if(options.language !== undefined){
@@ -556,6 +567,7 @@ export namespace SwissQRBill {
         this.document.text(this._formatAddress(this._data.debitor), {
           width: this.mmToPoints(87)
         });
+
       } else {
 
         this.document.fontSize(8);
@@ -578,6 +590,8 @@ export namespace SwissQRBill {
      */
 
     private _generateQRCode(): void {
+
+      const referenceType = (this._isQRIBAN(this._data.creditor.account) ? "QRR" : (this._data.reference !== undefined ? "SCOR": "NON"));
 
       let qrString = "";
 
@@ -633,7 +647,7 @@ export namespace SwissQRBill {
         qrString += this._data.debitor.country + "\n";                                                // Country
       }
 
-      qrString += "QRR" + "\n";                                                                       // Referencetype Todo: calculate
+      qrString += referenceType + "\n";                                                               // Referencetype
       qrString += this._data.reference + "\n";                                                        // Reference
 
       if(this._data.message !== undefined){
@@ -816,7 +830,6 @@ export namespace SwissQRBill {
     }
 
 
-
     /**
      * Removes \n and \r from the passed string
      *
@@ -860,6 +873,15 @@ export namespace SwissQRBill {
     }
 
 
+    /**
+     * Formats the IBAN number according to the defintions
+     *
+     * @private
+     * @param {string} iban string containing the IBAN number
+     * @returns {(string | undefined)} string containing the formatted IBAN number if successfull, undefined otherwise
+     * @memberof PDF
+     */
+
     private _formatIBAN(iban: string): string | undefined {
 
       iban = this._removeLinebreaks(iban);
@@ -871,6 +893,24 @@ export namespace SwissQRBill {
       }
 
       return ibanArray.join(" ");
+
+    }
+
+
+    /**
+     * Checks if the provided IBAN is a QR-IBAN or a normal IBAN
+     *
+     * @private
+     * @param {string} iban string containing the IBAN to be checked
+     * @returns {boolean} boolean Whether the IBAN is a QR-IBAN or not
+     * @memberof PDF
+     */
+
+    private _isQRIBAN(iban: string): boolean {
+
+      const QRIID = iban.substr(4, 5);
+
+      return (+QRIID >= 30000 && +QRIID <= 31999);
 
     }
 
