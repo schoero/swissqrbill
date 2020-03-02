@@ -47,7 +47,7 @@ export namespace SwissQRBill {
 
     public document: PDFKit.PDFDocument;
 
-    private _size: size = "A4";
+    private _size: size = "A6/5";
     private _data: data;
     private _scissors: boolean = true;
     private _language: languages = "DE";
@@ -119,6 +119,16 @@ export namespace SwissQRBill {
     }
 
 
+    /**
+    * Creates a new PDF.
+    *
+    * @param {data} data object containing all relevant billing data.
+    * @param {string} outputPath string output path for the generated PDF file.
+    * @param {options} [options] object containing settings, optional.
+    * @memberof PDF
+    * @returns an instance of SwissQRBill.PDF
+    */
+
     constructor(data: data, outputPath: string, options?: options){
 
       this._data = data;
@@ -148,7 +158,7 @@ export namespace SwissQRBill {
 
       if(this._autoGenerate === true){
 
-        this.addQRBill(data);
+        this.addQRBill();
 
         this.document.end();
 
@@ -156,8 +166,13 @@ export namespace SwissQRBill {
 
     }
 
+    /**
+     * Adds a new page to the PDF.
+     *
+     * @memberof PDF
+     */
 
-    public addPage() {
+    public addPage(): void {
       this.document.addPage({
         margin: 0,
         layout: this._size === "A4" ? "portrait" : "landscape",
@@ -166,12 +181,26 @@ export namespace SwissQRBill {
     }
 
 
-    public end(){
+    /**
+     * Finalizes the PDF document, after this command you are no longer able to edit the PDF.
+     * This function is automatically called when the option autoGenerate is set to true.
+     *
+     * @memberof PDF
+     */
+
+    public end(): void {
       this.document.end();
     }
 
 
-    public addQRBill(data: data): void {
+    /**
+     * Adds the QR Bill to the bottom of the current page.
+     * This function is automatically called when the option autoGenerate is set to true.
+     *
+     * @memberof PDF
+     */
+
+    public addQRBill(): void {
 
       this._drawOutlines();
 
@@ -181,6 +210,11 @@ export namespace SwissQRBill {
 
     }
 
+    /**
+     * Draws the cutting lines to the the PDF.
+     *
+     * @memberof PDF
+     */
 
     private _drawOutlines(): void {
 
@@ -234,6 +268,13 @@ export namespace SwissQRBill {
 
     }
 
+
+    /**
+     * Draws the receipt section of the bill to the the PDF.
+     *
+     * @private
+     * @memberof PDF
+     */
 
     private _drawReceipt(): void {
 
@@ -352,6 +393,13 @@ export namespace SwissQRBill {
 
     }
 
+
+    /**
+     *  Draws the payment part to the the PDF.
+     *
+     * @private
+     * @memberof PDF
+     */
 
     private _drawPaymentPart(): void {
 
@@ -503,7 +551,14 @@ export namespace SwissQRBill {
     }
 
 
-    private _generateQRCode(){
+    /**
+     * Generates the QR Code containing the billing data.
+     *
+     * @private
+     * @memberof PDF
+     */
+
+    private _generateQRCode(): void {
 
       let qrString = "";
 
@@ -569,7 +624,7 @@ export namespace SwissQRBill {
       qrString += "EPD" + "\n";                                                                   // End Payment Data
 
       if(this._data.additionalInformation !== undefined){
-        qrString += this._data.additionalInformation + "\n";                                                // Bill infromation
+        qrString += this._data.additionalInformation + "\n";                                      // Bill infromation
       }
 
       if(this._data.additionalInformation !== undefined){
@@ -634,6 +689,15 @@ export namespace SwissQRBill {
     }
 
 
+    /**
+     * Extracts the path data from the generated QR Code.
+     *
+     * @private
+     * @param {string} qrcodeString string containing the generated QR Code.
+     * @returns {(string | undefined)} returns a string containing only the path data of the generated QR Code if successfull, undefined otherwise.
+     * @memberof PDF
+     */
+
     private _getSVGPathFromQRCodeString(qrcodeString: string): string | undefined {
 
       const svgObject = parse(qrcodeString);
@@ -671,10 +735,27 @@ export namespace SwissQRBill {
     }
 
 
+    /**
+     * Converts milimeters to points which are used in the PDF file.
+     *
+     * @param {number} mm number containg the millimeters you want to convert to points.
+     * @returns {number} number containing the converted millimeters in points.
+     * @memberof PDF
+     */
+
     public mmToPoints(mm: number): number {
       return Math.round(mm * 2.83465);
     }
 
+
+    /**
+     * Formats the address into a string with new lines that can be written to the PDF file.
+     *
+     * @private
+     * @param {(debitor | creditor)} data creditor or debitor object containing the address.
+     * @returns {string} string containing the formatted address.
+     * @memberof PDF
+     */
 
     private _formatAddress(data: debitor | creditor): string {
       if(data.houseNumber !== undefined) {
@@ -684,6 +765,15 @@ export namespace SwissQRBill {
       }
     }
 
+
+    /**
+     * Formats the amount with spaces and decimals.
+     *
+     * @private
+     * @param {number} amount number to be formatted.
+     * @returns {string} string containing the formatted amount.
+     * @memberof PDF
+     */
 
     private _formatAmount(amount: number): string {
 
@@ -704,6 +794,17 @@ export namespace SwissQRBill {
 
     }
 
+
+    /**
+     * Draws a rectangle which is used when data is to be filled in by hand.
+     *
+     * @private
+     * @param {number} x number in millimeters of the x position where the rectangle starts.
+     * @param {number} y number in millimeters of the y position where the rectangle starts.
+     * @param {number} width number in millimeters of the width of the rectangle.
+     * @param {number} height number in millimeters of the height of the rectangle.
+     * @memberof PDF
+     */
 
     private _drawRectangle(x: number, y: number, width: number, height: number): void {
 
@@ -730,3 +831,5 @@ export namespace SwissQRBill {
 
   }
 }
+
+new SwissQRBill.PDF({});
