@@ -426,12 +426,12 @@ export namespace SwissQRBill {
 
       this.document.fontSize(10);
       this.document.font("Helvetica");
-      this.document.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 71), {
+      this.document.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 72), {
         width: this.mmToPoints(15)
       });
 
       if(this._data.amount !== undefined){
-        this.document.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 71), {
+        this.document.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 72), {
           width: this.mmToPoints(36)
         });
       } else {
