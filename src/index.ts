@@ -760,7 +760,12 @@ export namespace SwissQRBill {
           qrString += "\n";                                                                            // Empty field city
 
         }
+
+        if((this._data.debitor.country).length !== 2){
+          throw new Error("Debitor country must be 2 characters");
+        }
         qrString += this._data.debitor.country + "\n";                                                 // Country
+
       } else {
         qrString += "\n";                                                                              // Empty field type
         qrString += "\n";                                                                              // Empty field name
