@@ -34,7 +34,7 @@ const SwissQRBill = require("swissqrbill");
 const data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "21 00000 00003 13947 14300 09017",
+  reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
@@ -113,7 +113,7 @@ const SwissQRBill = require("swissqrbill");
 const data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "21 00000 00003 13947 14300 09017",
+  reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",

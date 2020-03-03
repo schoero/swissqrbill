@@ -1,9 +1,9 @@
 const SwissQRBill = require("../");
 
-const sampleObject = {
+const data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "21 00000 00003 13947 14300 09017",
+  reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
@@ -21,4 +21,4 @@ const sampleObject = {
   }
 };
 
-const bill = new SwissQRBill.PDF(sampleObject, "./output/qr-iban.pdf");
+const bill = new SwissQRBill.PDF(data, "./output/qr-iban.pdf");

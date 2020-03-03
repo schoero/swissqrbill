@@ -31,8 +31,10 @@ echo "no-debitor-no-amount-no-reference"
  node no-debitor-no-amount-no-reference
 echo "no-debitor-no-reference"
  node no-debitor-no-reference
-echo "normal-iban"
- node normal-iban
+echo "normal-iban-creditor-reference"
+ node normal-iban-creditor-reference
+echo "normal-iban-no-reference"
+ node normal-iban-no-reference
 echo "qr-iban"
  node qr-iban
 echo "separate"

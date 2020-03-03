@@ -3,7 +3,7 @@ const SwissQRBill = require("../");
 const data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "21 00000 00003 13947 14300 09017",
+  reference: "210000000003139471430009017",
   av1: "eBillUV;UltraPay005;12345",
   av2: "eBillXY;XYService;54321",
   creditor: {

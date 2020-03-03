@@ -1,7 +1,7 @@
 const SwissQRBill = require("../");
 
 const data = {
-  currency: "EUR",
+  currency: "CHF",
   amount: 1199.95,
   creditor: {
     name: "Robert Schneider AG",
