@@ -838,7 +838,8 @@ export namespace SwissQRBill {
         join: true,
         width: this.mmToPoints(46),
         height: this.mmToPoints(46),
-        padding: 0
+        padding: 0,
+        ecl: "M"
       }).svg();
 
       let svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
