@@ -61,7 +61,7 @@ const data = {
 const bill = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
+This will generate the above PDF.
 
 
 ## API
@@ -85,7 +85,7 @@ const bill = new SwissQRBill.PDF(data, "qrbill.pdf");
  - options - object containing settings, optional.
 
 
-  Returns a new instance of SwissQRBill.PDF.
+  Returns a new instance of SwissQRBill.PDF
 
   Available options: 
    - language - string: Either `"DE" | "EN" | "IT" | "FR"`. Default `"DE"`.
