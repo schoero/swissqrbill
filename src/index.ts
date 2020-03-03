@@ -140,6 +140,9 @@ export namespace SwissQRBill {
 
       //-- Validate IBAN
 
+      if(this._data.creditor.account === undefined){
+        throw new Error("You must provide an IBAN or QR-IBAN number.");
+      }
       if(this._data.creditor.account.replace(/ /g, "").length !== 21){
         throw new Error(`The provided IBAN number '${this._data.creditor.account}' is either too long or too short.`);
       }
@@ -149,7 +152,7 @@ export namespace SwissQRBill {
       }
 
       if(this._data.creditor.account.substr(0, 2) !== "CH" && this._data.creditor.account.substr(0, 2) !== "LI"){
-        throw new Error("Only CH and LI IBAN numbers are allowed");
+        throw new Error("Only CH and LI IBAN numbers are allowed.");
       }
 
 
@@ -633,217 +636,331 @@ export namespace SwissQRBill {
 
       let qrString = "";
 
-      qrString += "SPC\n";                                                                            // Swiss Payments Code
-      qrString += "0200\n";                                                                           // Version
-      qrString += "1\n";                                                                              // Coding Type UTF-8
-      qrString += this._data.creditor.account.replace(/ /g, "")+ "\n" ?? "\n";                        // IBAN
+      //-- Swiss Payments Code
+
+      qrString += "SPC\n";
+
+
+      //-- Version
+
+      qrString += "0200\n";
+
+
+      //-- Coding Type UTF-8
+
+      qrString += "1\n";
+
+
+      //-- IBAN
+
+      qrString += this._data.creditor.account.replace(/ /g, "")+ "\n" ?? "\n";
+
 
       if(this._data.creditor.houseNumber !== undefined){
 
-        qrString += "S\n";                                                                            // Adress Type
 
-        if(this._data.creditor.name.length > 70){
-          throw new Error("Creditor name must be a maximum of 70 characters");
-        }
-        qrString += this._data.creditor.name + "\n";                                                  // Name
+        //-- Adress Type
 
-        if(this._data.creditor.address.length > 70){
-          throw new Error("Creditor address must be a maximum of 70 characters");
-        }
-        qrString += this._data.creditor.address + "\n";                                               // Address
+        qrString += "S\n";
+
+
+        //-- Name
+
+        if(this._data.creditor.name === undefined){ throw new Error("Creditor name cannot be undefined."); }
+        if(this._data.creditor.name.length > 70){ throw new Error("Creditor name must be a maximum of 70 characters."); }
+        qrString += this._data.creditor.name + "\n";
+
+
+        //-- Address
+
+        if(this._data.creditor.address === undefined){ throw new Error("Creditor address cannot be undefined."); }
+        if(this._data.creditor.address.length > 70){ throw new Error("Creditor address must be a maximum of 70 characters."); }
+        qrString += this._data.creditor.address + "\n";
+
+
+        //-- House number
 
         if(this._data.creditor.houseNumber.length > 16){
-          throw new Error("Creditor house number can be a maximum of 16 characters");
+          throw new Error("Creditor house number can be a maximum of 16 characters.");
         }
-        qrString += this._data.creditor.houseNumber + "\n";                                           // House number
+        qrString += this._data.creditor.houseNumber + "\n";
 
-        if(this._data.creditor.zip.toString().length > 16){
-          throw new Error("Creditor zip must be a maximum of 16 characters");
-        }
-        qrString += this._data.creditor.zip + "\n";                                                   // Zip code
 
-        if(this._data.creditor.city.length > 35){
-          throw new Error("Creditor city must be a maximum of 35 characters");
-        }
-        qrString += this._data.creditor.city + "\n";                                                  // City
+        //-- Zip
+
+        if(this._data.creditor.zip === undefined){ throw new Error("Creditor zip cannot be undefined."); }
+        if(this._data.creditor.zip.toString().length > 16){ throw new Error("Creditor zip must be a maximum of 16 characters."); }
+        qrString += this._data.creditor.zip + "\n";
+
+        if(this._data.creditor.city === undefined){ throw new Error("Creditor city cannot be undefined."); }
+        if(this._data.creditor.city.length > 35){ throw new Error("Creditor city must be a maximum of 35 characters."); }
+        qrString += this._data.creditor.city + "\n";
 
       } else {
 
-        qrString += "K\n";                                                                            // Adress Type
 
-        if(this._data.creditor.name.length > 70){
-          throw new Error("Creditor name must be a maximum of 70 characters");
-        }
-        qrString += this._data.creditor.name + "\n";                                                  // Name
+        //-- Adress Type
 
-        if(this._data.creditor.address.length > 70){
-          throw new Error("Creditor address must be a maximum of 70 characters");
-        }
-        qrString += this._data.creditor.address + "\n";                                               // Address
+        qrString += "K\n";
 
-        if((this._data.creditor.zip + " " + this._data.creditor.city).length > 70){
-          throw new Error("Creditor zip plus city must be a maximum of 70 characters");
-        }
-        qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";                  // Zip code + city
 
-        qrString += "\n";                                                                             // Empty field zip
-        qrString += "\n";                                                                             // Empty field city
+        //-- Name
+
+        if(this._data.creditor.name === undefined){ throw new Error("Creditor name cannot be undefined."); }
+        if(this._data.creditor.name.length > 70){ throw new Error("Creditor name must be a maximum of 70 characters."); }
+        qrString += this._data.creditor.name + "\n";
+
+
+        //-- Address
+
+        if(this._data.creditor.address === undefined){ throw new Error("Creditor address cannot be undefined."); }
+        if(this._data.creditor.address.length > 70){ throw new Error("Creditor address must be a maximum of 70 characters."); }
+        qrString += this._data.creditor.address + "\n";
+
+
+        //-- Zip + city
+
+
+        if(this._data.creditor.zip === undefined || this._data.creditor.city === undefined){ throw new Error("Creditor zip and city cannot be undefined."); }
+        if((this._data.creditor.zip + " " + this._data.creditor.city).length > 70){ throw new Error("Creditor zip plus city must be a maximum of 70 characters."); }
+        qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";
+
+
+        //-- Empty zip field
+
+        qrString += "\n";
+
+
+        //-- Empty city field
+
+        qrString += "\n";
 
       }
 
-      if(this._data.creditor.country.length !== 2){
-        throw new Error("Creditor country must be 2 characters");
-      }
-      qrString += this._data.creditor.country + "\n";                                                 // Country
+      if(this._data.creditor.country === undefined){ throw new Error("Creditor country cannot be undefined."); }
+      if(this._data.creditor.country.length !== 2){ throw new Error("Creditor country must be 2 characters."); }
+      qrString += this._data.creditor.country + "\n";
 
 
       //-- 7 x empty
 
-      qrString += "\n";                                                                               // 1
-      qrString += "\n";                                                                               // 2
-      qrString += "\n";                                                                               // 3
-      qrString += "\n";                                                                               // 4
-      qrString += "\n";                                                                               // 5
-      qrString += "\n";                                                                               // 6
-      qrString += "\n";                                                                               // 7
+      qrString += "\n"; // 1
+      qrString += "\n"; // 2
+      qrString += "\n"; // 3
+      qrString += "\n"; // 4
+      qrString += "\n"; // 5
+      qrString += "\n"; // 6
+      qrString += "\n"; // 7
+
+
+      //-- Amount
 
       if(this._data.amount !== undefined){
         if(this._data.amount.toString().length > 12){
-          throw new Error("Creditor country must be 2 characters");
+          throw new Error("Creditor country must be 2 characters.");
         }
       }
-      qrString += (this._data.amount ?? "") + "\n";                                                    // Amount
-      qrString += this._data.currency + "\n";                                                          // Currency
+      qrString += (this._data.amount ?? "") + "\n";
+
+
+      //-- Currency
+
+      if(this._data.currency === undefined){ throw new Error("Currency cannot be undefined."); }
+      qrString += this._data.currency + "\n";
+
+
+      //-- Debitor
 
       if(this._data.debitor !== undefined){
         if(this._data.debitor.houseNumber !== undefined){
 
-          qrString += "S\n";                                                                           // Adress Type
 
-          if(this._data.debitor.name.length > 70){
-            throw new Error("Debitor name must be a maximum of 70 characters");
-          }
-          qrString += this._data.debitor.name + "\n";                                                  // Name
+          //-- Address type
 
+          qrString += "S\n";
+
+
+          //-- Name
+
+          if(this._data.debitor.name === undefined){ throw new Error("Debitor name cannot be undefined if the debitor object is available."); }
+          if(this._data.debitor.name.length > 70){ throw new Error("Debitor name must be a maximum of 70 characters."); }
+          qrString += this._data.debitor.name + "\n";
+
+
+          //-- Address
+
+          if(this._data.debitor.address === undefined){ throw new Error("Debitor address cannot be undefined if the debitor object is available."); }
           if(this._data.debitor.address.length > 70){
-            throw new Error("Debitor address must be a maximum of 70 characters");
+            throw new Error("Debitor address must be a maximum of 70 characters.");
           }
-          qrString += this._data.debitor.address + "\n";                                               // Address
+          qrString += this._data.debitor.address + "\n";
+
+
+          //-- House number
 
           if(this._data.debitor.houseNumber.length > 16){
-            throw new Error("Debitor house number can be a maximum of 16 characters");
+            throw new Error("Debitor house number can be a maximum of 16 characters.");
           }
-          qrString += this._data.debitor.houseNumber + "\n";                                           // House number
+          qrString += this._data.debitor.houseNumber + "\n";
 
+
+          //-- Zip
+
+          if(this._data.debitor.zip === undefined){ throw new Error("Debitor zip cannot be undefined if the debitor object is available."); }
           if(this._data.debitor.zip.toString().length > 16){
-            throw new Error("Debitor zip must be a maximum of 16 characters");
+            throw new Error("Debitor zip must be a maximum of 16 characters.");
           }
-          qrString += this._data.debitor.zip + "\n";                                                   // Zip code
+          qrString += this._data.debitor.zip + "\n";
 
-          if(this._data.debitor.city.length > 35){
-            throw new Error("Debitor city must be a maximum of 35 characters");
-          }
-          qrString += this._data.debitor.city + "\n";                                                  // City
+
+          //-- City
+
+          if(this._data.debitor.city === undefined){ throw new Error("Debitor city cannot be undefined if the debitor object is available."); }
+          if(this._data.debitor.city.length > 35){ throw new Error("Debitor city must be a maximum of 35 characters."); }
+          qrString += this._data.debitor.city + "\n";
 
         } else {
 
-          qrString += "K\n";                                                                           // Adress Type
 
-          if(this._data.debitor.name.length > 70){
-            throw new Error("Debitor name must be a maximum of 70 characters");
-          }
-          qrString += this._data.debitor.name + "\n";                                                  // Name
+          //-- Address type
 
-          if(this._data.debitor.address.length > 70){
-            throw new Error("Debitor address must be a maximum of 70 characters");
-          }
-          qrString += this._data.debitor.address + "\n";                                               // Address
+          qrString += "K\n";
 
-          if((this._data.debitor.zip + " " + this._data.debitor.city).length > 70){
-            throw new Error("Debitor zip plus city must be a maximum of 70 characters");
-          }
-          qrString += this._data.debitor.zip + " " + this._data.debitor.city + "\n";                   // Zip code + city
 
-          qrString += "\n";                                                                            // Empty field zip
-          qrString += "\n";                                                                            // Empty field city
+          //-- Name
+
+          if(this._data.debitor.name === undefined){ throw new Error("Debitor name cannot be undefined if the debitor object is available."); }
+          if(this._data.debitor.name.length > 70){ throw new Error("Debitor name must be a maximum of 70 characters."); }
+          qrString += this._data.debitor.name + "\n";
+
+
+          //-- Address
+
+          if(this._data.debitor.address === undefined){ throw new Error("Debitor address cannot be undefined if the debitor object is available."); }
+          if(this._data.debitor.address.length > 70){ throw new Error("Debitor address must be a maximum of 70 characters."); }
+          qrString += this._data.debitor.address + "\n";
+
+
+          //-- Zip + city
+
+          if(this._data.debitor.zip === undefined || this._data.debitor.city === undefined){ throw new Error("Debitor zip and city cannot be undefined if the debitor object is available."); }
+          if((this._data.debitor.zip + " " + this._data.debitor.city).length > 70){ throw new Error("Debitor zip plus city must be a maximum of 70 characters."); }
+          qrString += this._data.debitor.zip + " " + this._data.debitor.city + "\n";
+
+
+          //-- Empty field zip
+
+          qrString += "\n";
+
+
+          //-- Empty field city
+
+          qrString += "\n";
 
         }
 
-        if((this._data.debitor.country).length !== 2){
-          throw new Error("Debitor country must be 2 characters");
-        }
-        qrString += this._data.debitor.country + "\n";                                                 // Country
+        if(this._data.debitor.country === undefined){ throw new Error("Debitor country cannot be undefined if the debitor object is available."); }
+        if((this._data.debitor.country).length !== 2){ throw new Error("Debitor country must be 2 characters."); }
+        qrString += this._data.debitor.country + "\n";
 
       } else {
-        qrString += "\n";                                                                              // Empty field type
-        qrString += "\n";                                                                              // Empty field name
-        qrString += "\n";                                                                              // Empty field address
-        qrString += "\n";                                                                              // Empty field housenumber
-        qrString += "\n";                                                                              // Empty field zip
-        qrString += "\n";                                                                              // Empty field city
-        qrString += "\n";                                                                              // Empty field country
+
+
+        //-- Empty field type
+
+        qrString += "\n";
+
+
+        //-- Empty field name
+
+        qrString += "\n";
+
+
+        //-- Empty field address
+
+        qrString += "\n";
+
+
+        //-- Empty field house number
+
+        qrString += "\n";
+
+
+        //-- Empty field zip
+
+        qrString += "\n";
+
+
+        //-- Empty field city
+
+        qrString += "\n";
+
+
+        //-- Empty field country
+
+        qrString += "\n";
+
       }
 
-      qrString += this._referenceType + "\n";                                                          // Referencetype
+
+      //-- Reference type
+
+      qrString += this._referenceType + "\n";
+
+
+      //-- Reference
 
       if(this._data.reference !== undefined){
-        if(this._referenceType === "QRR"){
-          if(this._data.reference.replace(/ /g, "").length > 27){
-            throw new Error("Reference must be a maximum of 27 characters for QRR type references");
-          }
-        }
-        if(this._referenceType === "SCOR"){
-          if(this._data.reference.replace(/ /g, "").length > 25){
-            throw new Error("Reference must be a maximum of 25 characters for SCOR type references");
-          }
-        }
-        qrString += this._data.reference.replace(/ /g, "") + "\n";                                     // Reference
+        qrString += this._data.reference.replace(/ /g, "") + "\n";
       } else {
-        qrString += "\n";                                                                              // Empty field Reference
+        qrString += "\n";
       }
+
+
+      //-- Unstructured message
 
       if(this._data.message !== undefined){
-        if(this._data.message.length > 140){
-          throw new Error("Message must be a maximum of 140 characters");
-        }
-        qrString += this._data.message + "\n";                                                         // Unstructured message
+        if(this._data.message.length > 140){ throw new Error("Message must be a maximum of 140 characters."); }
+        qrString += this._data.message + "\n";
       } else {
-        qrString += "\n";                                                                              // Empty field message
+        qrString += "\n";
       }
 
-      qrString += "EPD" + "\n";                                                                        // End Payment Data
+      //-- End Payment Data
+
+      qrString += "EPD" + "\n";
+
+
+      //-- Additional information
 
       if(this._data.additionalInformation !== undefined){
-        if(this._data.additionalInformation.length > 140){
-          throw new Error("AdditionalInfromation must be a maximum of 140 characters");
-        }
-        qrString += this._data.additionalInformation + "\n";                                           // Bill infromation
+        if(this._data.additionalInformation.length > 140){ throw new Error("AdditionalInfromation must be a maximum of 140 characters."); }
+        qrString += this._data.additionalInformation + "\n";
       } else {
-        qrString += "\n";                                                                              // Empty field Bill inforamtion
+        qrString += "\n";
       }
 
-      if(this._data.av1 !== undefined){
-        if(this._data.av1.length > 100){
-          throw new Error("AV1 must be a maximum of 100 characters");
-        }
 
+      //-- AV1
+
+      if(this._data.av1 !== undefined){
+
+        if(this._data.av1.length > 100){ throw new Error("AV1 must be a maximum of 100 characters."); }
         if(this._data.av1.substr(0, 5) !== "eBill"){
           throw new Error("AV1 must begin with eBill");
         }
+        qrString += this._data.av1 + "\n";
 
-        qrString += this._data.av1 + "\n";                                                             // AV1
       }
 
       if(this._data.av2 !== undefined){
-        if(this._data.av2.length > 100){
-          throw new Error("AV2 must be a maximum of 100 characters");
-        }
 
+        if(this._data.av2.length > 100){ throw new Error("AV2 must be a maximum of 100 characters."); }
         if(this._data.av2.substr(0, 5) !== "eBill"){
           throw new Error("AV2 must begin with eBill");
         }
+        qrString += this._data.av2;
 
-        qrString += this._data.av2;                                                                    // AV2
       }
 
       const qrcodeString = new QRCode({
