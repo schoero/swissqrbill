@@ -6,7 +6,8 @@ const data = {
   reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
+    address: "Rue du Lac",
+    houseNumber: 1268,
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
@@ -14,11 +15,13 @@ const data = {
   },
   debitor: {
     name: "Pia-Maria Rutschmann-Schnyder",
-    address: "Grosse Marktgasse 28",
+    address: "Grosse Marktgasse",
+    houseNumber: 28,
     zip: 9400,
     city: "Rorschach",
     country: "CH"
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/italian.pdf", { language: "IT" });
+
+const bill = new SwissQRBill.PDF(data, "./output/a6-5-housenumber.pdf");

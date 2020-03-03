@@ -1,9 +1,9 @@
 import { SwissQRBill } from "../lib/index";
 
-const sampleObject: SwissQRBill.data = {
+const data: SwissQRBill.data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "21 00000 00003 13947 14300 09017",
+  reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
@@ -21,4 +21,4 @@ const sampleObject: SwissQRBill.data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(sampleObject, "./output/ts.pdf");
+const bill = new SwissQRBill.PDF(data, "./output/ts.pdf");
