@@ -173,19 +173,13 @@ export namespace SwissQRBill {
         if(this._data.reference === undefined){
           this._referenceType = "NON";
         } else {
-
           if(this._isQRReference(this._data.reference)){
             throw new Error("Creditor Reference requires the use of a conventional IBAN.");
           } else {
             this._referenceType = "SCOR";
           }
-
         }
 
-      }
-
-      if(this._data.creditor.name.length > 70){
-        throw new Error("Creditor name can be a maximum of 70 characters");
       }
 
       if(options !== undefined){
