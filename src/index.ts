@@ -1171,16 +1171,17 @@ export namespace SwissQRBill {
     private _formatReference(reference: string): string {
 
       reference = this._removeLinebreaks(reference);
+      reference = reference.replace(/ /g, "");
 
       let referenceArray: RegExpMatchArray = [];
 
       if(this._referenceType === "QRR"){
-        const match = reference.replace(/ /g, "").split("").reverse().join("").match(/.{1,5}/g);
+        const match = reference.split("").reverse().join("").match(/.{1,5}/g);
         if(match !== null){
           referenceArray = match.reverse();
         }
       } else if(this._referenceType === "SCOR"){
-        const match = reference.replace(/ /g, "").match(/.{1,4}/g);
+        const match = reference.match(/.{1,4}/g);
         if(match !== null){
           referenceArray = match;
         }
@@ -1205,6 +1206,7 @@ export namespace SwissQRBill {
     private _formatIBAN(iban: string): string | undefined {
 
       iban = this._removeLinebreaks(iban);
+      iban = iban.replace(/ /g, "");
 
       const ibanArray = iban.replace(/ /g, "").match(/.{1,4}/g);
 
@@ -1246,7 +1248,10 @@ export namespace SwissQRBill {
 
     private _isQRReference(reference: string): boolean {
 
-      if(reference.replace(/ /g, "").length === 27){
+      reference = this._removeLinebreaks(reference);
+      reference = reference.replace(/ /g, "");
+
+      if(reference.length === 27){
         if(!isNaN(+reference)){
           return true;
         }
