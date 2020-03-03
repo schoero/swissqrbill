@@ -140,6 +140,10 @@ export namespace SwissQRBill {
 
       //-- Validate data
 
+      if(this._data.creditor.account.replace(/ /g, "").length !== 21){
+        throw new Error(`The provided IBAN number '${this._data.creditor.account}' is either too long or too short.`);
+      }
+
       if(IBAN.isValid(this._data.creditor.account) === false){
         throw new Error(`The provided IBAN number '${this._data.creditor.account}' is not valid.`);
       }
@@ -624,7 +628,7 @@ export namespace SwissQRBill {
       qrString += "SPC\n";                                                                            // Swiss Payments Code
       qrString += "0200\n";                                                                           // Version
       qrString += "1\n";                                                                              // Coding Type UTF-8
-      qrString += this._formatIBAN(this._data.creditor.account)??this._data.creditor.account + "\n";  // IBAN
+      qrString += this._data.creditor.account.replace(/ /g, "")+ "\n" ?? "\n";                        // IBAN
 
       if(this._data.creditor.houseNumber !== undefined){
 
@@ -640,17 +644,17 @@ export namespace SwissQRBill {
         }
         qrString += this._data.creditor.address + "\n";                                               // Address
 
-        if(this._data.creditor.address.length > 16){
+        if(this._data.creditor.houseNumber.length > 16){
           throw new Error("Creditor house number can be a maximum of 16 characters");
         }
         qrString += this._data.creditor.houseNumber + "\n";                                           // House number
 
-        if(this._data.creditor.address.length > 16){
+        if(this._data.creditor.zip.toString().length > 16){
           throw new Error("Creditor zip must be a maximum of 16 characters");
         }
         qrString += this._data.creditor.zip + "\n";                                                   // Zip code
 
-        if(this._data.creditor.address.length > 35){
+        if(this._data.creditor.city.length > 35){
           throw new Error("Creditor city must be a maximum of 35 characters");
         }
         qrString += this._data.creditor.city + "\n";                                                  // City
@@ -673,6 +677,9 @@ export namespace SwissQRBill {
           throw new Error("Creditor zip plus city must be a maximum of 70 characters");
         }
         qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";                  // Zip code + city
+
+        qrString += "\n";                                                                             // Empty field zip
+        qrString += "\n";                                                                             // Empty field city
 
       }
 
@@ -715,17 +722,17 @@ export namespace SwissQRBill {
           }
           qrString += this._data.debitor.address + "\n";                                               // Address
 
-          if(this._data.debitor.address.length > 16){
+          if(this._data.debitor.houseNumber.length > 16){
             throw new Error("Debitor house number can be a maximum of 16 characters");
           }
           qrString += this._data.debitor.houseNumber + "\n";                                           // House number
 
-          if(this._data.debitor.address.length > 16){
+          if(this._data.debitor.zip.toString().length > 16){
             throw new Error("Debitor zip must be a maximum of 16 characters");
           }
           qrString += this._data.debitor.zip + "\n";                                                   // Zip code
 
-          if(this._data.debitor.address.length > 35){
+          if(this._data.debitor.city.length > 35){
             throw new Error("Debitor city must be a maximum of 35 characters");
           }
           qrString += this._data.debitor.city + "\n";                                                  // City
@@ -749,19 +756,37 @@ export namespace SwissQRBill {
           }
           qrString += this._data.debitor.zip + " " + this._data.debitor.city + "\n";                   // Zip code + city
 
+          qrString += "\n";                                                                            // Empty field zip
+          qrString += "\n";                                                                            // Empty field city
+
         }
         qrString += this._data.debitor.country + "\n";                                                 // Country
+      } else {
+        qrString += "\n";                                                                              // Empty field type
+        qrString += "\n";                                                                              // Empty field name
+        qrString += "\n";                                                                              // Empty field address
+        qrString += "\n";                                                                              // Empty field housenumber
+        qrString += "\n";                                                                              // Empty field zip
+        qrString += "\n";                                                                              // Empty field city
+        qrString += "\n";                                                                              // Empty field country
       }
 
       qrString += this._referenceType + "\n";                                                          // Referencetype
 
       if(this._data.reference !== undefined){
-        if(this._data.reference.replace(/ /g, "").length > 27){
-          throw new Error("Reference must be a maximum of 27 characters");
+        if(this._referenceType === "QRR"){
+          if(this._data.reference.replace(/ /g, "").length > 27){
+            throw new Error("Reference must be a maximum of 27 characters for QRR type references");
+          }
         }
-        qrString += this._data.reference + "\n";                                                       // Reference
+        if(this._referenceType === "SCOR"){
+          if(this._data.reference.replace(/ /g, "").length > 25){
+            throw new Error("Reference must be a maximum of 25 characters for SCOR type references");
+          }
+        }
+        qrString += this._data.reference.replace(/ /g, "") + "\n";                                     // Reference
       } else {
-        qrString += "" + "\n";                                                                         // Reference
+        qrString += "\n";                                                                              // Empty field Reference
       }
 
       if(this._data.message !== undefined){
@@ -769,6 +794,8 @@ export namespace SwissQRBill {
           throw new Error("Message must be a maximum of 140 characters");
         }
         qrString += this._data.message + "\n";                                                         // Unstructured message
+      } else {
+        qrString += "\n";                                                                              // Empty field message
       }
 
       qrString += "EPD" + "\n";                                                                        // End Payment Data
@@ -778,12 +805,19 @@ export namespace SwissQRBill {
           throw new Error("AdditionalInfromation must be a maximum of 140 characters");
         }
         qrString += this._data.additionalInformation + "\n";                                           // Bill infromation
+      } else {
+        qrString += "\n";                                                                              // Empty field Bill inforamtion
       }
 
       if(this._data.av1 !== undefined){
         if(this._data.av1.length > 100){
           throw new Error("AV1 must be a maximum of 100 characters");
         }
+
+        if(this._data.av1.substr(0, 5) !== "eBill"){
+          throw new Error("AV1 must begin with eBill");
+        }
+
         qrString += this._data.av1 + "\n";                                                             // AV1
       }
 
@@ -791,7 +825,12 @@ export namespace SwissQRBill {
         if(this._data.av2.length > 100){
           throw new Error("AV2 must be a maximum of 100 characters");
         }
-        qrString += this._data.av2 + "\n";                                                             // AV2
+
+        if(this._data.av2.substr(0, 5) !== "eBill"){
+          throw new Error("AV2 must begin with eBill");
+        }
+
+        qrString += this._data.av2;                                                                    // AV2
       }
 
       const qrcodeString = new QRCode({
