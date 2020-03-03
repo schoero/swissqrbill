@@ -138,7 +138,7 @@ export namespace SwissQRBill {
       this._data = data;
 
 
-      //-- Validate data
+      //-- Validate IBAN
 
       if(this._data.creditor.account.replace(/ /g, "").length !== 21){
         throw new Error(`The provided IBAN number '${this._data.creditor.account}' is either too long or too short.`);
@@ -152,20 +152,34 @@ export namespace SwissQRBill {
         throw new Error("Only CH and LI IBAN numbers are allowed");
       }
 
+
+      //-- Validate reference
+
       if(this._isQRIBAN(this._data.creditor.account)){
 
-        this._referenceType = "QRR";
-
         if(this._data.reference === undefined){
-          throw new Error("QR-IBAN numbers must have a reference");
+          throw new Error("If there is no reference, a conventional IBAN must be used.");
         }
+
+        if(this._isQRReference(this._data.reference)){
+          this._referenceType = "QRR";
+        } else {
+          throw new Error("QR reference requires the use of a QR-IBAN (and vice versa).");
+        }
+
 
       } else {
 
         if(this._data.reference === undefined){
           this._referenceType = "NON";
         } else {
-          this._referenceType = "SCOR";
+
+          if(this._isQRReference(this._data.reference)){
+            throw new Error("Creditor Reference requires the use of a conventional IBAN.");
+          } else {
+            this._referenceType = "SCOR";
+          }
+
         }
 
       }
@@ -1106,6 +1120,32 @@ export namespace SwissQRBill {
       const QRIID = iban.substr(4, 5);
 
       return (+QRIID >= 30000 && +QRIID <= 31999);
+
+    }
+
+
+    /**
+     * Checks if the provided reference matches a QR reference
+     *
+     * @private
+     * @param {string} reference string containing the reference number
+     * @returns {boolean} boolean if the reference is a QR reference
+     * @memberof PDF
+     */
+
+    private _isQRReference(reference: string): boolean {
+
+      if(reference.replace(/ /g, "").length === 27){
+        if(!isNaN(+reference)){
+          return true;
+        }
+      }
+
+      if(reference.replace(/ /g, "").length <= 25){
+        return false;
+      }
+
+      throw new Error("Reference is not valid.");
 
     }
 
