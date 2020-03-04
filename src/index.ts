@@ -1,9 +1,9 @@
-import QRCode from "qrcode-svg";
-import fs from "fs";
-import PDFDocument from "pdfkit";
 import { parse } from "svg-parser";
+import PDFDocument from "pdfkit";
+import QRCode from "qrcode-svg";
 import svgpath from "svgpath";
 import IBAN from "iban";
+import fs from "fs";
 
 
 export namespace SwissQRBill {
@@ -256,9 +256,7 @@ export namespace SwissQRBill {
     public addQRBill(): void {
 
       this._drawOutlines();
-
       this._drawReceipt();
-
       this._drawPaymentPart();
 
     }
@@ -506,9 +504,7 @@ export namespace SwissQRBill {
           width: this.mmToPoints(36)
         });
       } else {
-
         this._drawRectangle(80, 72, 40, 15);
-
       }
 
 
@@ -719,7 +715,6 @@ export namespace SwissQRBill {
 
 
         //-- Zip + city
-
 
         if(this._data.creditor.zip === undefined || this._data.creditor.city === undefined){ throw new Error("Creditor zip and city cannot be undefined."); }
         if((this._data.creditor.zip + " " + this._data.creditor.city).length > 70){ throw new Error("Creditor zip plus city must be a maximum of 70 characters."); }
@@ -1098,8 +1093,8 @@ export namespace SwissQRBill {
      * Removes line breaks from user provided data.
      *
      * @private
-     * @param {SwissQRBill.data} data object containing the billing data
-     * @returns {SwissQRBill.data}
+     * @param {SwissQRBill.data} data object containing the billing data.
+     * @returns {SwissQRBill.data} object containing the cleaned data.
      * @memberof PDF
      */
 
@@ -1126,11 +1121,11 @@ export namespace SwissQRBill {
 
 
     /**
-     * Removes \n and \r from the passed string
+     * Removes \n and \r from the passed string.
      *
      * @private
-     * @param {string} data string to be escaped
-     * @returns {string} string without \n and \r
+     * @param {string} data string to be escaped.
+     * @returns {string} string without \n and \r.
      * @memberof PDF
      */
 
@@ -1168,9 +1163,16 @@ export namespace SwissQRBill {
     }
 
 
+    /**
+     * Formats the reference layout according to the specifications.
+     *
+     * @private
+     * @param {string} reference string containing the reference to be formated.
+     * @returns {string} string containing the formatted reference.
+     * @memberof PDF
+     */
     private _formatReference(reference: string): string {
 
-      reference = this._removeLinebreaks(reference);
       reference = reference.replace(/ /g, "");
 
       let referenceArray: RegExpMatchArray = [];
@@ -1195,17 +1197,16 @@ export namespace SwissQRBill {
 
 
     /**
-     * Formats the IBAN number according to the defintions
+     * Formats the IBAN number according to the defintions.
      *
      * @private
-     * @param {string} iban string containing the IBAN number
-     * @returns {(string | undefined)} string containing the formatted IBAN number if successfull, undefined otherwise
+     * @param {string} iban string containing the IBAN number.
+     * @returns {(string | undefined)} string containing the formatted IBAN number if successfull, undefined otherwise.
      * @memberof PDF
      */
 
     private _formatIBAN(iban: string): string | undefined {
 
-      iban = this._removeLinebreaks(iban);
       iban = iban.replace(/ /g, "");
 
       const ibanArray = iban.replace(/ /g, "").match(/.{1,4}/g);
@@ -1220,11 +1221,11 @@ export namespace SwissQRBill {
 
 
     /**
-     * Checks if the provided IBAN is a QR-IBAN or a normal IBAN
+     * Checks if the provided IBAN is a QR-IBAN or a normal IBAN.
      *
      * @private
-     * @param {string} iban string containing the IBAN to be checked
-     * @returns {boolean} boolean Whether the IBAN is a QR-IBAN or not
+     * @param {string} iban string containing the IBAN to be checked.
+     * @returns {boolean} boolean Whether the IBAN is a QR-IBAN or not.
      * @memberof PDF
      */
 
@@ -1238,11 +1239,11 @@ export namespace SwissQRBill {
 
 
     /**
-     * Checks if the provided reference matches a QR reference
+     * Checks if the provided reference matches a QR reference.
      *
      * @private
-     * @param {string} reference string containing the reference number
-     * @returns {boolean} boolean if the reference is a QR reference
+     * @param {string} reference string containing the reference number.
+     * @returns {boolean} boolean if the reference is a QR reference.
      * @memberof PDF
      */
 
