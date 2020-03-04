@@ -1,4 +1,4 @@
-const SwissQRBill = require("../");
+const SwissQRBill = require("swissqrbill");
 
 const data = {
   currency: "CHF",
