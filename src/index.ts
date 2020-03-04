@@ -26,7 +26,7 @@ export namespace SwissQRBill {
     zip: number,
     city: string,
     country: string
-    houseNumber?: string
+    houseNumber?: string | number
   }
 
   export interface creditor extends debitor {
@@ -663,6 +663,7 @@ export namespace SwissQRBill {
         //-- Name
 
         if(this._data.creditor.name === undefined){ throw new Error("Creditor name cannot be undefined."); }
+        if(typeof this._data.creditor.name !== "string"){ throw new Error("Creditor name must be a string."); }
         if(this._data.creditor.name.length > 70){ throw new Error("Creditor name must be a maximum of 70 characters."); }
         qrString += this._data.creditor.name + "\n";
 
@@ -670,25 +671,28 @@ export namespace SwissQRBill {
         //-- Address
 
         if(this._data.creditor.address === undefined){ throw new Error("Creditor address cannot be undefined."); }
+        if(typeof this._data.creditor.address !== "string"){ throw new Error("Creditor address must be a string."); }
         if(this._data.creditor.address.length > 70){ throw new Error("Creditor address must be a maximum of 70 characters."); }
         qrString += this._data.creditor.address + "\n";
 
 
         //-- House number
 
-        if(this._data.creditor.houseNumber.length > 16){
-          throw new Error("Creditor house number can be a maximum of 16 characters.");
-        }
+
+        if(typeof this._data.creditor.houseNumber !== "string" && typeof this._data.creditor.houseNumber !== "number"){ throw new Error("Debitor house number must be either a string or a number."); }
+        if(this._data.creditor.houseNumber.toString().length > 16){ throw new Error("Creditor house number can be a maximum of 16 characters.");}
         qrString += this._data.creditor.houseNumber + "\n";
 
 
         //-- Zip
 
         if(this._data.creditor.zip === undefined){ throw new Error("Creditor zip cannot be undefined."); }
+        if(typeof this._data.creditor.zip !== "number"){ throw new Error("Creditor zip must be a number."); }
         if(this._data.creditor.zip.toString().length > 16){ throw new Error("Creditor zip must be a maximum of 16 characters."); }
         qrString += this._data.creditor.zip + "\n";
 
         if(this._data.creditor.city === undefined){ throw new Error("Creditor city cannot be undefined."); }
+        if(typeof this._data.creditor.city !== "string"){ throw new Error("Creditor city must be a string."); }
         if(this._data.creditor.city.length > 35){ throw new Error("Creditor city must be a maximum of 35 characters."); }
         qrString += this._data.creditor.city + "\n";
 
@@ -703,6 +707,7 @@ export namespace SwissQRBill {
         //-- Name
 
         if(this._data.creditor.name === undefined){ throw new Error("Creditor name cannot be undefined."); }
+        if(typeof this._data.creditor.name !== "string"){ throw new Error("Creditor name must be a string."); }
         if(this._data.creditor.name.length > 70){ throw new Error("Creditor name must be a maximum of 70 characters."); }
         qrString += this._data.creditor.name + "\n";
 
@@ -710,13 +715,17 @@ export namespace SwissQRBill {
         //-- Address
 
         if(this._data.creditor.address === undefined){ throw new Error("Creditor address cannot be undefined."); }
+        if(typeof this._data.creditor.address !== "string"){ throw new Error("Creditor address must be a string."); }
         if(this._data.creditor.address.length > 70){ throw new Error("Creditor address must be a maximum of 70 characters."); }
         qrString += this._data.creditor.address + "\n";
 
 
         //-- Zip + city
 
-        if(this._data.creditor.zip === undefined || this._data.creditor.city === undefined){ throw new Error("Creditor zip and city cannot be undefined."); }
+        if(this._data.creditor.zip === undefined){ throw new Error("Creditor zip cannot be undefined."); }
+        if(this._data.creditor.city === undefined){ throw new Error("Creditor city cannot be undefined."); }
+        if(typeof this._data.creditor.zip !== "number"){ throw new Error("Creditor zip must be a number."); }
+        if(typeof this._data.creditor.city !== "string"){ throw new Error("Creditor city must be a string."); }
         if((this._data.creditor.zip + " " + this._data.creditor.city).length > 70){ throw new Error("Creditor zip plus city must be a maximum of 70 characters."); }
         qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";
 
@@ -733,6 +742,7 @@ export namespace SwissQRBill {
       }
 
       if(this._data.creditor.country === undefined){ throw new Error("Creditor country cannot be undefined."); }
+      if(typeof this._data.creditor.country !== "string"){ throw new Error("Creditor country must be a string."); }
       if(this._data.creditor.country.length !== 2){ throw new Error("Creditor country must be 2 characters."); }
       qrString += this._data.creditor.country + "\n";
 
@@ -751,16 +761,20 @@ export namespace SwissQRBill {
       //-- Amount
 
       if(this._data.amount !== undefined){
-        if(this._data.amount.toString().length > 12){
-          throw new Error("Creditor country must be 2 characters.");
-        }
+        if(typeof this._data.amount !== "number"){ throw new Error("Amount must be a number."); }
+        if(this._data.amount.toString().length > 12){ throw new Error("Amount must be a maximum of 12 digits."); }
+        qrString += this._data.amount + "\n";
+      } else {
+        qrString += "\n";
       }
-      qrString += (this._data.amount ?? "") + "\n";
 
 
       //-- Currency
 
       if(this._data.currency === undefined){ throw new Error("Currency cannot be undefined."); }
+      if(typeof this._data.currency !== "string"){ throw new Error("Currency must be a string."); }
+      if(this._data.currency.length !== 3){ throw new Error("Currency must be a length of 3 characters."); }
+      if(this._data.currency !== "CHF" && this._data.currency !== "EUR"){ throw new Error("Currency must be either 'CHF' or 'EUR'"); }
       qrString += this._data.currency + "\n";
 
 
@@ -778,6 +792,7 @@ export namespace SwissQRBill {
           //-- Name
 
           if(this._data.debitor.name === undefined){ throw new Error("Debitor name cannot be undefined if the debitor object is available."); }
+          if(typeof this._data.debitor.name !== "string"){ throw new Error("Debitor name must be a string."); }
           if(this._data.debitor.name.length > 70){ throw new Error("Debitor name must be a maximum of 70 characters."); }
           qrString += this._data.debitor.name + "\n";
 
@@ -785,32 +800,30 @@ export namespace SwissQRBill {
           //-- Address
 
           if(this._data.debitor.address === undefined){ throw new Error("Debitor address cannot be undefined if the debitor object is available."); }
-          if(this._data.debitor.address.length > 70){
-            throw new Error("Debitor address must be a maximum of 70 characters.");
-          }
+          if(typeof this._data.debitor.address !== "string"){ throw new Error("Debitor address must be a string."); }
+          if(this._data.debitor.address.length > 70){ throw new Error("Debitor address must be a maximum of 70 characters.");}
           qrString += this._data.debitor.address + "\n";
 
 
           //-- House number
 
-          if(this._data.debitor.houseNumber.length > 16){
-            throw new Error("Debitor house number can be a maximum of 16 characters.");
-          }
+          if(typeof this._data.debitor.houseNumber !== "string" && typeof this._data.debitor.houseNumber !== "number"){ throw new Error("Debitor house number must be either a string or a number."); }
+          if(this._data.debitor.houseNumber.toString().length > 16){ throw new Error("Debitor house number can be a maximum of 16 characters."); }
           qrString += this._data.debitor.houseNumber + "\n";
 
 
           //-- Zip
 
           if(this._data.debitor.zip === undefined){ throw new Error("Debitor zip cannot be undefined if the debitor object is available."); }
-          if(this._data.debitor.zip.toString().length > 16){
-            throw new Error("Debitor zip must be a maximum of 16 characters.");
-          }
+          if(typeof this._data.debitor.zip !== "number"){ throw new Error("Debitor zip must be a number."); }
+          if(this._data.debitor.zip.toString().length > 16){ throw new Error("Debitor zip must be a maximum of 16 characters."); }
           qrString += this._data.debitor.zip + "\n";
 
 
           //-- City
 
           if(this._data.debitor.city === undefined){ throw new Error("Debitor city cannot be undefined if the debitor object is available."); }
+          if(typeof this._data.debitor.city !== "string"){ throw new Error("Debitor city must be a string."); }
           if(this._data.debitor.city.length > 35){ throw new Error("Debitor city must be a maximum of 35 characters."); }
           qrString += this._data.debitor.city + "\n";
 
@@ -825,6 +838,7 @@ export namespace SwissQRBill {
           //-- Name
 
           if(this._data.debitor.name === undefined){ throw new Error("Debitor name cannot be undefined if the debitor object is available."); }
+          if(typeof this._data.debitor.name !== "string"){ throw new Error("Debitor name must be a string."); }
           if(this._data.debitor.name.length > 70){ throw new Error("Debitor name must be a maximum of 70 characters."); }
           qrString += this._data.debitor.name + "\n";
 
@@ -832,13 +846,17 @@ export namespace SwissQRBill {
           //-- Address
 
           if(this._data.debitor.address === undefined){ throw new Error("Debitor address cannot be undefined if the debitor object is available."); }
+          if(typeof this._data.debitor.address !== "string"){ throw new Error("Debitor address must be a string."); }
           if(this._data.debitor.address.length > 70){ throw new Error("Debitor address must be a maximum of 70 characters."); }
           qrString += this._data.debitor.address + "\n";
 
 
           //-- Zip + city
 
-          if(this._data.debitor.zip === undefined || this._data.debitor.city === undefined){ throw new Error("Debitor zip and city cannot be undefined if the debitor object is available."); }
+          if(this._data.debitor.zip === undefined){ throw new Error("Debitor zip cannot be undefined if the debitor object is available."); }
+          if(this._data.debitor.city === undefined){ throw new Error("Debitor city cannot be undefined if the debitor object is available."); }
+          if(typeof this._data.debitor.zip !== "number"){ throw new Error("Debitor zip must be a number."); }
+          if(typeof this._data.debitor.city !== "string"){ throw new Error("Debitor city must be a string."); }
           if((this._data.debitor.zip + " " + this._data.debitor.city).length > 70){ throw new Error("Debitor zip plus city must be a maximum of 70 characters."); }
           qrString += this._data.debitor.zip + " " + this._data.debitor.city + "\n";
 
@@ -855,6 +873,7 @@ export namespace SwissQRBill {
         }
 
         if(this._data.debitor.country === undefined){ throw new Error("Debitor country cannot be undefined if the debitor object is available."); }
+        if(typeof this._data.debitor.country !== "string"){ throw new Error("Debitor country must be a string."); }
         if((this._data.debitor.country).length !== 2){ throw new Error("Debitor country must be 2 characters."); }
         qrString += this._data.debitor.country + "\n";
 
@@ -906,6 +925,8 @@ export namespace SwissQRBill {
       //-- Reference
 
       if(this._data.reference !== undefined){
+        if(typeof this._data.reference !== "string"){ throw new Error("Reference name must be a string."); }
+        if(this._data.reference.replace(/ /g, "").length > 27){ throw new Error("Reference name must be a maximum of 27 characters."); }
         qrString += this._data.reference.replace(/ /g, "") + "\n";
       } else {
         qrString += "\n";
@@ -916,6 +937,7 @@ export namespace SwissQRBill {
 
       if(this._data.message !== undefined){
         if(this._data.message.length > 140){ throw new Error("Message must be a maximum of 140 characters."); }
+        if(typeof this._data.message !== "string"){ throw new Error("Message must be a string."); }
         qrString += this._data.message + "\n";
       } else {
         qrString += "\n";
@@ -930,6 +952,7 @@ export namespace SwissQRBill {
 
       if(this._data.additionalInformation !== undefined){
         if(this._data.additionalInformation.length > 140){ throw new Error("AdditionalInfromation must be a maximum of 140 characters."); }
+        if(typeof this._data.additionalInformation !== "string"){ throw new Error("AdditionalInformation must be a string."); }
         qrString += this._data.additionalInformation + "\n";
       } else {
         qrString += "\n";
@@ -941,6 +964,7 @@ export namespace SwissQRBill {
       if(this._data.av1 !== undefined){
 
         if(this._data.av1.length > 100){ throw new Error("AV1 must be a maximum of 100 characters."); }
+        if(typeof this._data.av1 !== "string"){ throw new Error("AV1 must be a string."); }
         if(this._data.av1.substr(0, 5) !== "eBill"){
           throw new Error("AV1 must begin with eBill");
         }
@@ -951,6 +975,7 @@ export namespace SwissQRBill {
       if(this._data.av2 !== undefined){
 
         if(this._data.av2.length > 100){ throw new Error("AV2 must be a maximum of 100 characters."); }
+        if(typeof this._data.av2 !== "string"){ throw new Error("AV2 must be a string."); }
         if(this._data.av2.substr(0, 5) !== "eBill"){
           throw new Error("AV2 must begin with eBill");
         }
@@ -1249,7 +1274,6 @@ export namespace SwissQRBill {
 
     private _isQRReference(reference: string): boolean {
 
-      reference = this._removeLinebreaks(reference);
       reference = reference.replace(/ /g, "");
 
       if(reference.length === 27){
