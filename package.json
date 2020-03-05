@@ -9,7 +9,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "cd tests && sh run.sh",
+    "test": "tsc && cd tests && sh run.sh",
     "build": "tsc"
   },
   "repository": {
