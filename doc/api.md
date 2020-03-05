@@ -14,7 +14,7 @@
 
 ---
 
-#### SwissQRBill.PDF(data, outputPath[, options])
+### SwissQRBill.PDF(data, outputPath[, options])
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
@@ -24,7 +24,7 @@
 Returns a new instance of SwissQRBill.PDF
 
 
-##### data
+#### data
 
   The data object is constructed in the following way:
 
@@ -58,7 +58,7 @@ Returns a new instance of SwissQRBill.PDF
     - **country** - `string` *mandatory*, 2 characters.
 
 
-##### options
+#### options
 
   Available options: 
 
@@ -70,18 +70,18 @@ Returns a new instance of SwissQRBill.PDF
      > Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
 
-#### addPage()
+### addPage()
 Adds a new page to the PDF.
 
-#### end()
+### end()
 Finalizes the PDF document, after this command you are no longer able to edit the PDF.
 > Note: This function is automatically called when the option autoGenerate is set to true.
 
-#### addQRBill()
+### addQRBill()
 Adds the QR Bill to the bottom of the current page.
 > Note: This function is automatically called when the option autoGenerate is set to true.
 
-#### mmToPoints(mm)
+### mmToPoints(mm)
  - mm - `number` containg the millimeters you want to convert to points.
 
  Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.
