@@ -20,10 +20,11 @@
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
 
-  > Returns a new instance of SwissQRBill.PDF
+
+Returns a new instance of SwissQRBill.PDF
 
 
-###### data
+##### data
 
   The data object is constructed in the following way:
 
@@ -57,7 +58,7 @@
     - **country** - `string` *mandatory*, 2 characters.
 
 
-###### options
+##### options
 
   Available options: 
 
@@ -84,4 +85,5 @@ Adds the QR Bill to the bottom of the current page.
  - mm - `number` containg the millimeters you want to convert to points.
 
  Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.
- > Returns a `number` containing the converted millimeters in points.
+ 
+ Returns a `number` containing the converted millimeters in points.
