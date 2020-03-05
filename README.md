@@ -15,7 +15,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips which wil
 
  * [Features](#features)
  * [Installation](#installation)
- * [Quick start](#quickstart)
+ * [Quick start](#quick-start)
  * [API](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
 
 
@@ -37,7 +37,7 @@ npm i swissqrbill --save
 
 ## Quick start
 
-It is fairly simple to create a QR Bill. All we have to do is to create a new SwissQRBill.PDF and pass our data as the first parameter and our output path as a second parameter. A reference for the data parameter can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#data).
+It is fairly simple to create a QR Bill. All we have to do is to create a new `SwissQRBill.PDF` instance and pass our data as the first parameter and our output path as a second parameter. A reference for the data parameter can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#data).
 
 
 ```js
