@@ -16,9 +16,9 @@
 
 #### SwissQRBill.PDF(data, outputPath[, options])
 
- - [**data**](#data) - object containing all relevant billing data, *mandatory*.
+ - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
- - [**options**](#options) - object containing settings, *optional*.
+ - [**options**](#options) - `object` containing settings, *optional*.
 
   > Returns a new instance of SwissQRBill.PDF
 
@@ -63,9 +63,9 @@
 
    - **language** - `string "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
    - **size** - `string "A4" | "A6/5"`. *default* `"A6/5"`.
-   - **scissors** - boolean: *default* `true`.
+   - **scissors** - `boolean`: *default* `true`.
      > Whether you want to show the scissor icons or the text `Separate before paying in`.
-   - **autoGenerate** - boolean: *default* `true`.
+   - **autoGenerate** - `boolean`: *default* `true`.
      > Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
 
