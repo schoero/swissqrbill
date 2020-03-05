@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "test": "tsc && cd tests && sh run.sh",
+    "test-windows": "tsc && cd tests && call run-windows.bat",
     "build": "tsc"
   },
   "repository": {
