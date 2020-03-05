@@ -33,12 +33,14 @@ Returns a new instance of SwissQRBill.PDF
   - **reference** - `string` *optional*, max 27 characters.
     > QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
       Creditor Reference (ISO 11649): Maximum 25 characters.
-  - **message** - `string` *optional*
+  - **message** - `string` *optional*, max. 140 characters.
     > message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference.
-  - **additionalInformation** - `string` *optional*
+  - **additionalInformation** - `string` *optional*, max. 140 characters.
     > Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment.
-  - **av1** - `string` *optional*
-  - **av2** - `string` *optional*
+  - **av1** - `string` *optional*, max. 100 characters.
+    > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
+  - **av2** - `string` *optional*, max. 100 characters.
+    > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
   - **creditor** *mandatory*
     - **name** - `string` *mandatory*, max. 70 characters.
       > First name (*optional*, sending is recommended, if available) + last name or company name.
