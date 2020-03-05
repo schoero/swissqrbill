@@ -35,7 +35,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips which wil
 npm i swissqrbill --save
 ```
 
-
 ## Usage
 
 ```js
@@ -62,7 +61,7 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "qrbill.pdf");
+const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 This will generate the above PDF.
@@ -70,57 +69,7 @@ This will generate the above PDF.
 
 ## API
 
-
-### Methods
-
-- Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbillpdfdata-outputpath-options)
-- Methods
-  - [addPage()](#addpage)
-  - [end()](#end)
-  - [addQRBill()](#addqrbill)
-  - [mmToPoints(mm)](#mmtopointsmm)
-
-
-#### SwissQRBill.PDF(data, outputPath[, options])
-
- - data - object containing all relevant billing data.
- - outputPath - string output path for the generated PDF file.
- - options - object containing settings, optional.
-
-
-  Returns a new instance of SwissQRBill.PDF
-
-  Available options: 
-   - language - string: Either `"DE" | "EN" | "IT" | "FR"`. Default `"DE"`.
-   - size - string: Either `"A4" | "A6/5"`. Default `"A6/5"`.
-   - scissors - boolean: Whether you want to show the scissor icons or the text `Separate before paying in`. Default `true`.
-   - autoGenerate - boolean: Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit. Default `true`.
-
-
-#### addPage()
-
-Adds a new page to the PDF.
-
-
-#### end()
-
-Finalizes the PDF document, after this command you are no longer able to edit the PDF.
-Note: This function is automatically called when the option autoGenerate is set to true.
-
-
-#### addQRBill()
-
-Adds the QR Bill to the bottom of the current page.
-Note: This function is automatically called when the option autoGenerate is set to true.
-
-
-#### mmToPoints(mm)
-
- - mm - number containg the millimeters you want to convert to points.
- Converts milimeters to points which are used in the PDF file.
- Returns a number containing the converted millimeters in points.
-
+An API documentation can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
 
 ## PDFKit
 
@@ -154,7 +103,7 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false });
+const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false });
 
 bill.document.fontSize(11);
 bill.document.font("Helvetica-Bold");
