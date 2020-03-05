@@ -20,4 +20,4 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/normal-iban-no-reference.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/normal-iban-no-reference.pdf");

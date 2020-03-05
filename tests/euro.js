@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/euro.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/euro.pdf");

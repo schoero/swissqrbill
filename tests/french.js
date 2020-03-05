@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/french.pdf", { language: "FR" });
+const pdf = new SwissQRBill.PDF(data, "./output/french.pdf", { language: "FR" });
