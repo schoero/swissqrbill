@@ -15,8 +15,8 @@ With SwissQRBill you can easily generate the new QR Code payment slips which wil
 
  * [Features](#features)
  * [Installation](#installation)
- * [Usage](#Usage)
- * [API](#API)
+ * [Quick start](#quickstart)
+ * [API](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
 
 
 ## Features
@@ -35,7 +35,10 @@ With SwissQRBill you can easily generate the new QR Code payment slips which wil
 npm i swissqrbill --save
 ```
 
-## Usage
+## Quick start
+
+It is fairly simple to create a QR Bill. All we have to do is to create a new SwissQRBill.PDF and pass our data as the first parameter and our output path as a second parameter. A reference for the data parameter can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#data).
+
 
 ```js
 const SwissQRBill = require("swissqrbill");
@@ -64,16 +67,12 @@ const data = {
 const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
-This will generate the above PDF.
-
-
-## API
-
-An API documentation can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
+This will generate the above PDF. We can pass an optional third parameter containing options such as language or size etc.
+A complete documentation for all methods and parameters can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
 
 ## PDFKit
 
-This module uses [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files. You are able to generate a complete bill using PDFKit methods and then add the QR Bill to the bottom using `addQRBill()` when the option `autoGenerate` is set to `false`.
+SwissQRBill internally uses [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files. You are able to generate a complete bill using PDFKit methods and then add the QR Bill to the bottom using `addQRBill()` when the option `autoGenerate` is set to `false`.
 
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
