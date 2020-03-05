@@ -4,6 +4,7 @@
 ![Downloads](https://img.shields.io/npm/dw/swissqrbill)
 ![Issues](https://img.shields.io/github/issues-raw/rogerrrrrrrs/swissqrbill)
 ![Version](https://img.shields.io/npm/v/swissqrbill?color=brightgreen)
+![CI](https://github.com/Rogerrrrrrrs/SwissQRBill/workflows/CI/badge.svg?branch=development)
 
 With SwissQRBill you can easily generate the new QR Code payment slips which will be introduced on 30 June 2020 in switzerland.
 
