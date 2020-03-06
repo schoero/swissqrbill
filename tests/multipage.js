@@ -23,28 +23,28 @@ const data = {
 
 const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false, size: "A4" });
 
-bill.document.fontSize(11);
-bill.document.font("Helvetica-Bold");
+pdf.document.fontSize(11);
+pdf.document.font("Helvetica-Bold");
 
-bill.document.text("PAGE 1", bill.mmToPoints(5), bill.mmToPoints(20), {
-  width: bill.mmToPoints(210),
+pdf.document.text("PAGE 1", pdf.mmToPoints(5), pdf.mmToPoints(20), {
+  width: pdf.mmToPoints(210),
   align: "center",
 });
 
-bill.addPage();
+pdf.addPage();
 
-bill.document.text("PAGE 2", bill.mmToPoints(5), bill.mmToPoints(20), {
-  width: bill.mmToPoints(210),
+pdf.document.text("PAGE 2", pdf.mmToPoints(5), pdf.mmToPoints(20), {
+  width: pdf.mmToPoints(210),
   align: "center",
 });
 
-bill.addPage();
+pdf.addPage();
 
-bill.document.text("PAGE 3", bill.mmToPoints(5), bill.mmToPoints(20), {
-  width: bill.mmToPoints(210),
+pdf.document.text("PAGE 3", pdf.mmToPoints(5), pdf.mmToPoints(20), {
+  width: pdf.mmToPoints(210),
   align: "center",
 });
 
-bill.addQRBill();
+pdf.addQRBill();
 
-bill.end();
+pdf.end();
