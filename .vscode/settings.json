@@ -1,4 +1,7 @@
 {
+  "workbench.colorCustomizations": {
+    "editorWhitespace.foreground": "#FFFFFF10"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }
