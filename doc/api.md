@@ -1,6 +1,6 @@
-## API documentation
+# API documentation
 
-### Methods
+## Contents
 
 - Constructor
   - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbillpdfdata-outputpath-options)
@@ -12,7 +12,12 @@
 - Properties
   - [document](#document)
 
----
+<br/>
+<br/>
+
+## Constructor
+
+<br/>
 
 ### SwissQRBill.PDF(data, outputPath[, options])
 
@@ -20,9 +25,7 @@
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
 
-
-Returns a new instance of SwissQRBill.PDF
-
+<br/>
 
 #### data
 
@@ -46,7 +49,7 @@ Returns a new instance of SwissQRBill.PDF
       > First name (*optional*, sending is recommended, if available) + last name or company name.
     - **account** - `string` *mandatory*, 21 characters.
     - **address** - `string` *mandatory*, max 70 characters.
-    - **housenumber** - `string` *optional*, max 16 characters.
+    - **housenumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
@@ -54,11 +57,12 @@ Returns a new instance of SwissQRBill.PDF
     - **name** - `string` *mandatory*, max. 70 characters.
       > First name (*optional*, sending is recommended, if available) + last name or company name.
     - **address** - `string` *mandatory*, max 70 characters.
-    - **housenumber** - `string` *optional*, max 16 characters.
+    - **housenumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
 
+<br/>
 
 #### options
 
@@ -71,6 +75,44 @@ Returns a new instance of SwissQRBill.PDF
    - **autoGenerate** - `boolean`: *default* `true`.
      > Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
+<br/>
+
+
+```js
+const SwissQRBill = require("swissqrbill");
+
+const data = {
+  currency: "CHF",
+  amount: 1199.95,
+  reference: "210000000003139471430009017",
+  creditor: {
+    name: "Robert Schneider AG",
+    address: "Rue du Lac",
+    houseNumber: "1268",
+    zip: 2501,
+    city: "Biel",
+    account: "CH4431999123000889012",
+    country: "CH"
+  },
+  debitor: {
+    name: "Pia-Maria Rutschmann-Schnyder",
+    address: "Grosse Marktgasse",
+    houseNumber: 28,
+    zip: 9400,
+    city: "Rorschach",
+    country: "CH"
+  }
+};
+
+const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
+```
+
+<br/>
+<br/>
+
+## Methods
+
+<br/>
 
 ### addPage()
 Adds a new page to the PDF.
@@ -84,8 +126,17 @@ Adds the QR Bill to the bottom of the current page.
 > Note: This function is automatically called when the option autoGenerate is set to true.
 
 ### mmToPoints(mm)
- - mm - `number` containg the millimeters you want to convert to points.
-
- Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.
- 
+ - mm - `number` containg the millimeters you want to convert to points.  
+ Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.  
  Returns a `number` containing the converted millimeters in points.
+
+<br/>
+<br/>
+
+## Properties
+
+<br/>
+
+### document
+
+ Returns the PDFKit document.
