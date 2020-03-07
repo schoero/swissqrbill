@@ -6,52 +6,51 @@ import IBAN from "iban";
 import fs from "fs";
 
 
-export namespace SwissQRBill {
-  export interface data {
-    currency: "CHF" | "EUR",
-    creditor: creditor,
-    debitor?: debitor
-    amount?: number,
-    reference?: string,
-    message?: string,
-    additionalInformation?: string,
-    av1?: string,
-    av2?: string
-  }
-
-  export interface debitor {
-    name: string,
-    address: string,
-    zip: number,
-    city: string,
-    country: string
-    houseNumber?: string | number
-  }
-
-  export interface creditor extends debitor {
-    account: string,
-  }
-
-  export interface options {
-    language?: languages,
-    size?: size,
-    scissors?: boolean,
-    autoGenerate?: boolean
-  }
-
-  export type size = "A4" | "A6/5";
-  export type languages = "DE" | "EN" | "IT" | "FR";
-
+export interface data {
+  currency: currency,
+  creditor: creditor,
+  debitor?: debitor
+  amount?: number,
+  reference?: string,
+  message?: string,
+  additionalInformation?: string,
+  av1?: string,
+  av2?: string
 }
 
-export class SwissQRBill {
+export interface debitor {
+  name: string,
+  address: string,
+  zip: number,
+  city: string,
+  country: string
+  houseNumber?: string | number
+}
+
+export interface creditor extends debitor {
+  account: string,
+}
+
+export interface options {
+  language?: languages,
+  size?: size,
+  scissors?: boolean,
+  autoGenerate?: boolean
+}
+
+export type currency = "CHF" | "EUR";
+export type size = "A4" | "A6/5";
+export type languages = "DE" | "EN" | "IT" | "FR";
+
+
+export class PDF {
 
   public document: PDFKit.PDFDocument;
 
-  private _size: SwissQRBill.size = "A6/5";
-  private _data: SwissQRBill.data;
+  private _size: size = "A6/5";
+  private _data: data;
   private _scissors: boolean = true;
-  private _language: SwissQRBill.languages = "DE";
+  private _language: languages = "DE";
   private _paddingTop: number = 0;
   private _autoGenerate: boolean = true;
   private _referenceType: "QRR" | "SCOR" | "NON" = "NON";
@@ -127,11 +126,11 @@ export class SwissQRBill {
   * @param {data} data object containing all relevant billing data.
   * @param {string} outputPath string output path for the generated PDF file.
   * @param {options} [options] object containing settings, optional.
-  * @memberof SwissQRBill
+  * @memberof PDF
   * @returns an instance of SwissQRBill.PDF
   */
 
-  constructor(data: SwissQRBill.data, outputPath: string, options?: SwissQRBill.options){
+  constructor(data: data, outputPath: string, options?: options){
 
     if(data === undefined || typeof data !== "object"){
       throw new Error("You must provide an object as billing data.");
@@ -205,7 +204,7 @@ export class SwissQRBill {
   /**
    * Adds a new page to the PDF.
    *
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   public addPage(): void {
@@ -221,7 +220,7 @@ export class SwissQRBill {
    * Finalizes the PDF document, after this command you are no longer able to edit the PDF.
    * This function is automatically called when the option autoGenerate is set to true.
    *
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   public end(): void {
@@ -233,7 +232,7 @@ export class SwissQRBill {
    * Adds the QR Bill to the bottom of the current page.
    * This function is automatically called when the option autoGenerate is set to true.
    *
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   public addQRBill(): void {
@@ -248,7 +247,7 @@ export class SwissQRBill {
   /**
    * Draws the cutting lines to the the PDF.
    *
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _drawOutlines(): void {
@@ -308,7 +307,7 @@ export class SwissQRBill {
 
         this.document.fontSize(11);
         this.document.font("Helvetica");
-        this.document.text(SwissQRBill.translations[this._language].separate, this.mmToPoints(0), this.mmToPoints(this._paddingTop) - 12, {
+        this.document.text(PDF.translations[this._language].separate, this.mmToPoints(0), this.mmToPoints(this._paddingTop) - 12, {
           width: this.mmToPoints(210),
           align: "center",
         });
@@ -323,21 +322,21 @@ export class SwissQRBill {
    * Draws the receipt section of the bill to the the PDF.
    *
    * @private
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _drawReceipt(): void {
 
     this.document.fontSize(11);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].receipt, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 5), {
+    this.document.text(PDF.translations[this._language].receipt, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 5), {
       width: this.mmToPoints(52),
       align: "left",
     });
 
     this.document.fontSize(6);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].account, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 12), {
+    this.document.text(PDF.translations[this._language].account, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 12), {
       width: this.mmToPoints(52)
     });
 
@@ -359,7 +358,7 @@ export class SwissQRBill {
 
       this.document.fontSize(6);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].reference, {
+      this.document.text(PDF.translations[this._language].reference, {
         width: this.mmToPoints(52)
       });
 
@@ -381,7 +380,7 @@ export class SwissQRBill {
 
       this.document.fontSize(6);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].payableBy, {
+      this.document.text(PDF.translations[this._language].payableBy, {
         width: this.mmToPoints(52)
       });
 
@@ -398,7 +397,7 @@ export class SwissQRBill {
 
       this.document.fontSize(6);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].payableByName, {
+      this.document.text(PDF.translations[this._language].payableByName, {
         width: this.mmToPoints(52)
       });
 
@@ -414,11 +413,11 @@ export class SwissQRBill {
 
     this.document.fontSize(6);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 68), {
+    this.document.text(PDF.translations[this._language].currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(15)
     });
 
-    this.document.text(SwissQRBill.translations[this._language].amount, this.mmToPoints(20), this.mmToPoints(this._paddingTop + 68), {
+    this.document.text(PDF.translations[this._language].amount, this.mmToPoints(20), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(37)
     });
 
@@ -438,7 +437,7 @@ export class SwissQRBill {
 
     this.document.fontSize(6);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].acceptancePoint, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 82), {
+    this.document.text(PDF.translations[this._language].acceptancePoint, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 82), {
       width: this.mmToPoints(52),
       align: "right",
     });
@@ -450,14 +449,14 @@ export class SwissQRBill {
    *  Draws the payment part to the the PDF.
    *
    * @private
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _drawPaymentPart(): void {
 
     this.document.fontSize(11);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].paymentPart, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 5), {
+    this.document.text(PDF.translations[this._language].paymentPart, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 5), {
       width: this.mmToPoints(51),
       align: "left",
     });
@@ -468,11 +467,11 @@ export class SwissQRBill {
 
     this.document.fontSize(8);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 68), {
+    this.document.text(PDF.translations[this._language].currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(15)
     });
 
-    this.document.text(SwissQRBill.translations[this._language].amount, this.mmToPoints(87), this.mmToPoints(this._paddingTop + 68), {
+    this.document.text(PDF.translations[this._language].amount, this.mmToPoints(87), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(36)
     });
 
@@ -523,7 +522,7 @@ export class SwissQRBill {
 
     this.document.fontSize(8);
     this.document.font("Helvetica-Bold");
-    this.document.text(SwissQRBill.translations[this._language].account, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 5), {
+    this.document.text(PDF.translations[this._language].account, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 5), {
       width: this.mmToPoints(87)
     });
 
@@ -539,7 +538,7 @@ export class SwissQRBill {
 
       this.document.fontSize(8);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].reference, {
+      this.document.text(PDF.translations[this._language].reference, {
         width: this.mmToPoints(87)
       });
 
@@ -560,7 +559,7 @@ export class SwissQRBill {
 
       this.document.fontSize(8);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].additionalInformation, {
+      this.document.text(PDF.translations[this._language].additionalInformation, {
         width: this.mmToPoints(87)
       });
 
@@ -578,7 +577,7 @@ export class SwissQRBill {
 
       this.document.fontSize(8);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].payableBy, {
+      this.document.text(PDF.translations[this._language].payableBy, {
         width: this.mmToPoints(87)
       });
 
@@ -592,7 +591,7 @@ export class SwissQRBill {
 
       this.document.fontSize(8);
       this.document.font("Helvetica-Bold");
-      this.document.text(SwissQRBill.translations[this._language].payableByName, {
+      this.document.text(PDF.translations[this._language].payableByName, {
         width: this.mmToPoints(87)
       });
 
@@ -608,7 +607,7 @@ export class SwissQRBill {
    * Validates the billing data
    *
    * @private
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _validateData(){
@@ -829,7 +828,7 @@ export class SwissQRBill {
    * Generates the QR Code containing the billing data.
    *
    * @private
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _generateQRCode(): void {
@@ -1115,7 +1114,7 @@ export class SwissQRBill {
    * @private
    * @param {string} qrcodeString string containing the generated QR Code.
    * @returns {(string | undefined)} returns a string containing only the path data of the generated QR Code if successfull, undefined otherwise.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _getSVGPathFromQRCodeString(qrcodeString: string): string | undefined {
@@ -1160,7 +1159,7 @@ export class SwissQRBill {
    *
    * @param {number} mm number containg the millimeters you want to convert to points.
    * @returns {number} number containing the converted millimeters in points.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   public mmToPoints(mm: number): number {
@@ -1174,10 +1173,10 @@ export class SwissQRBill {
    * @private
    * @param {(debitor | creditor)} data creditor or debitor object containing the address.
    * @returns {string} string containing the formatted address.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
-  private _formatAddress(data: SwissQRBill.debitor | SwissQRBill.creditor): string {
+  private _formatAddress(data: debitor | creditor): string {
     if(data.houseNumber !== undefined) {
       return `${data.name}\n${data.address} ${data.houseNumber}\n${data.zip} ${data.city}`;
     } else {
@@ -1190,8 +1189,8 @@ export class SwissQRBill {
    * Removes line breaks from user provided data.
    *
    * @private
-   * @returns {SwissQRBill.data} object containing the cleaned data.
-   * @memberof SwissQRBill
+   * @returns {data} object containing the cleaned data.
+   * @memberof PDF
    */
 
   private _cleanData(): void {
@@ -1222,7 +1221,7 @@ export class SwissQRBill {
    * @private
    * @param {string} data string to be escaped.
    * @returns {string} string without \n and \r.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _removeLinebreaks(data: string): string {
@@ -1236,7 +1235,7 @@ export class SwissQRBill {
    * @private
    * @param {number} amount number to be formatted.
    * @returns {string} string containing the formatted amount.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _formatAmount(amount: number): string {
@@ -1265,8 +1264,9 @@ export class SwissQRBill {
    * @private
    * @param {string} reference string containing the reference to be formated.
    * @returns {string} string containing the formatted reference.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
+
   private _formatReference(reference: string): string {
 
     reference = reference.replace(/ /g, "");
@@ -1298,7 +1298,7 @@ export class SwissQRBill {
    * @private
    * @param {string} iban string containing the IBAN number.
    * @returns {(string | undefined)} string containing the formatted IBAN number if successfull, undefined otherwise.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _formatIBAN(iban: string): string | undefined {
@@ -1322,7 +1322,7 @@ export class SwissQRBill {
    * @private
    * @param {string} iban string containing the IBAN to be checked.
    * @returns {boolean} boolean Whether the IBAN is a QR-IBAN or not.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _isQRIBAN(iban: string): boolean {
@@ -1340,7 +1340,7 @@ export class SwissQRBill {
    * @private
    * @param {string} reference string containing the reference number.
    * @returns {boolean} boolean if the reference is a QR reference.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _isQRReference(reference: string): boolean {
@@ -1370,7 +1370,7 @@ export class SwissQRBill {
    * @param {number} y number in millimeters of the y position where the rectangle starts.
    * @param {number} width number in millimeters of the width of the rectangle.
    * @param {number} height number in millimeters of the height of the rectangle.
-   * @memberof SwissQRBill
+   * @memberof PDF
    */
 
   private _drawRectangle(x: number, y: number, width: number, height: number): void {
