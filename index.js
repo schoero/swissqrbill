@@ -1,3 +1,1 @@
-SwissQRBill = require("./lib");
-
-module.exports = SwissQRBill.SwissQRBill;
+module.exports = require("./lib").SwissQRBill;
