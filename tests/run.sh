@@ -1,5 +1,5 @@
 #!/bin/sh
-mkdir output -p
+mkdir -p output
 echo "ts"
   tsc ts.ts
   node ts
