@@ -2,7 +2,7 @@
   "name": "swissqrbill",
   "version": "1.0.6",
   "description": "Swiss QR Bill generation in node.js ",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "lib/**/*",
