@@ -48,7 +48,6 @@
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",
     "qrcode-svg": "^1.1.0",
-    "svg-parser": "^2.0.4",
-    "svgpath": "^2.2.3"
+    "svg-parser": "^2.0.4"
   }
 }
