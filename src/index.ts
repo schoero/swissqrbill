@@ -42,9 +42,7 @@ export type size = "A4" | "A6/5";
 export type languages = "DE" | "EN" | "IT" | "FR";
 
 
-export class PDF {
-
-  public document: PDFKit.PDFDocument;
+export class PDF extends PDFDocument {
 
   private _size: size = "A6/5";
   private _data: data;
@@ -131,6 +129,10 @@ export class PDF {
 
   constructor(data: data, outputPath: string, options?: options){
 
+    super({ autoFirstPage: false });
+
+    super.pipe(fs.createWriteStream(outputPath));
+
     if(data === undefined || typeof data !== "object"){
       throw new Error("You must provide an object as billing data.");
     }
@@ -184,10 +186,7 @@ export class PDF {
       }
     }
 
-    this.document = new PDFDocument({ autoFirstPage: false });
-    this.document.pipe(fs.createWriteStream(outputPath));
-
-    this.document.info.Author = "SwissQRBill";
+    this.info.Author = "SwissQRBill";
 
     this.addPage();
 
@@ -195,7 +194,7 @@ export class PDF {
 
       this.addQRBill();
 
-      this.document.end();
+      this.end();
 
     }
 
@@ -203,17 +202,25 @@ export class PDF {
 
 
   /**
-   * Adds a new page to the PDF.
+   * Adds a new page
    *
+   * @param {PDFKit.PDFDocumentOptions} [options]
+   * @returns {PDFKit.PDFDocument}
    * @memberof PDF
    */
 
-  public addPage(): void {
-    this.document.addPage({
-      margin: 0,
-      layout: this._size === "A4" ? "portrait" : "landscape",
-      size: this._size === "A4" ? this._size : [this.mmToPoints(105), this.mmToPoints(210)]
-    });
+  public addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
+
+    if(options === undefined){
+      options = {
+        margin: 0,
+        layout: this._size === "A4" ? "portrait" : "landscape",
+        size: this._size === "A4" ? this._size : [this.mmToPoints(105), this.mmToPoints(210)]
+      };
+    }
+
+    return super.addPage(options);
+
   }
 
 
@@ -225,7 +232,7 @@ export class PDF {
    */
 
   public end(): void {
-    this.document.end();
+    this.end();
   }
 
 
@@ -258,7 +265,7 @@ export class PDF {
 
     if(this._size === "A4"){
 
-      this.document.moveTo(0, this.mmToPoints(this._paddingTop))
+      this.moveTo(0, this.mmToPoints(this._paddingTop))
         .lineTo(this.mmToPoints(210), this.mmToPoints(this._paddingTop))
         .lineWidth(.75)
         .dash(1, { size: 1 })
@@ -270,7 +277,7 @@ export class PDF {
 
     //-- Vertical line
 
-    this.document.moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
+    this.moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
       .lineTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop + 105))
       .lineWidth(.75)
       .dash(1, { size: 1 })
@@ -284,29 +291,29 @@ export class PDF {
 
       if(this._size === "A4"){
 
-        this.document.translate(this.mmToPoints(105), this.mmToPoints(this._paddingTop));
-        this.document.path(scissorsTop)
+        this.translate(this.mmToPoints(105), this.mmToPoints(this._paddingTop));
+        this.path(scissorsTop)
           .fillColor("black")
           .fill();
-        this.document.translate(- this.mmToPoints(105), - this.mmToPoints(this._paddingTop));
+        this.translate(- this.mmToPoints(105), - this.mmToPoints(this._paddingTop));
 
       }
 
 
-      this.document.translate(this.mmToPoints(62), this.mmToPoints(this._paddingTop) + 30);
-      this.document.path(scissorsCenter)
+      this.translate(this.mmToPoints(62), this.mmToPoints(this._paddingTop) + 30);
+      this.path(scissorsCenter)
         .fillColor("black")
         .fill();
-      this.document.translate(0, 0);
-      this.document.translate( - this.mmToPoints(62), - (this.mmToPoints(this._paddingTop) + 30));
+      this.translate(0, 0);
+      this.translate( - this.mmToPoints(62), - (this.mmToPoints(this._paddingTop) + 30));
 
     } else {
 
       if(this._size === "A4"){
 
-        this.document.fontSize(11);
-        this.document.font("Helvetica");
-        this.document.text(PDF.translations[this._language].separate, this.mmToPoints(0), this.mmToPoints(this._paddingTop) - 12, {
+        this.fontSize(11);
+        this.font("Helvetica");
+        this.text(PDF.translations[this._language].separate, this.mmToPoints(0), this.mmToPoints(this._paddingTop) - 12, {
           width: this.mmToPoints(210),
           align: "center",
         });
@@ -326,44 +333,44 @@ export class PDF {
 
   private _drawReceipt(): void {
 
-    this.document.fontSize(11);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].receipt, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 5), {
+    this.fontSize(11);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].receipt, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 5), {
       width: this.mmToPoints(52),
       align: "left",
     });
 
-    this.document.fontSize(6);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].account, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 12), {
+    this.fontSize(6);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].account, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 12), {
       width: this.mmToPoints(52)
     });
 
 
     //-- Creditor
 
-    this.document.fontSize(8);
-    this.document.font("Helvetica");
-    this.document.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
+    this.fontSize(8);
+    this.font("Helvetica");
+    this.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
       width: this.mmToPoints(52)
     });
 
-    this.document.moveDown();
+    this.moveDown();
 
 
     //-- Reference
 
     if(this._data.reference !== undefined){
 
-      this.document.fontSize(6);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].reference, {
+      this.fontSize(6);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].reference, {
         width: this.mmToPoints(52)
       });
 
-      this.document.fontSize(8);
-      this.document.font("Helvetica");
-      this.document.text(this._formatReference(this._data.reference), {
+      this.fontSize(8);
+      this.font("Helvetica");
+      this.text(this._formatReference(this._data.reference), {
         width: this.mmToPoints(52)
       });
 
@@ -374,29 +381,29 @@ export class PDF {
 
     if(this._data.debitor !== undefined){
 
-      this.document.fontSize(9);
-      this.document.moveDown();
+      this.fontSize(9);
+      this.moveDown();
 
-      this.document.fontSize(6);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].payableBy, {
+      this.fontSize(6);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].payableBy, {
         width: this.mmToPoints(52)
       });
 
-      this.document.fontSize(8);
-      this.document.font("Helvetica");
-      this.document.text(this._formatAddress(this._data.debitor), {
+      this.fontSize(8);
+      this.font("Helvetica");
+      this.text(this._formatAddress(this._data.debitor), {
         width: this.mmToPoints(52)
       });
 
     } else {
 
-      this.document.fontSize(9);
-      this.document.moveDown();
+      this.fontSize(9);
+      this.moveDown();
 
-      this.document.fontSize(6);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].payableByName, {
+      this.fontSize(6);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].payableByName, {
         width: this.mmToPoints(52)
       });
 
@@ -410,33 +417,33 @@ export class PDF {
     }
 
 
-    this.document.fontSize(6);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 68), {
+    this.fontSize(6);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(15)
     });
 
-    this.document.text(PDF.translations[this._language].amount, this.mmToPoints(20), this.mmToPoints(this._paddingTop + 68), {
+    this.text(PDF.translations[this._language].amount, this.mmToPoints(20), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(37)
     });
 
-    this.document.fontSize(8);
-    this.document.font("Helvetica");
-    this.document.text(this._data.currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 71), {
+    this.fontSize(8);
+    this.font("Helvetica");
+    this.text(this._data.currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 71), {
       width: this.mmToPoints(15)
     });
 
     if(this._data.amount !== undefined){
-      this.document.text(this._formatAmount(this._data.amount), this.mmToPoints(20), this.mmToPoints(this._paddingTop + 71), {
+      this.text(this._formatAmount(this._data.amount), this.mmToPoints(20), this.mmToPoints(this._paddingTop + 71), {
         width: this.mmToPoints(37)
       });
     } else {
       this._drawRectangle(30, 68, 30, 10);
     }
 
-    this.document.fontSize(6);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].acceptancePoint, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 82), {
+    this.fontSize(6);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].acceptancePoint, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 82), {
       width: this.mmToPoints(52),
       align: "right",
     });
@@ -453,35 +460,35 @@ export class PDF {
 
   private _drawPaymentPart(): void {
 
-    this.document.fontSize(11);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].paymentPart, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 5), {
+    this.fontSize(11);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].paymentPart, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 5), {
       width: this.mmToPoints(51),
       align: "left",
     });
 
     this._generateQRCode();
 
-    this.document.fillColor("black");
+    this.fillColor("black");
 
-    this.document.fontSize(8);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 68), {
+    this.fontSize(8);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(15)
     });
 
-    this.document.text(PDF.translations[this._language].amount, this.mmToPoints(87), this.mmToPoints(this._paddingTop + 68), {
+    this.text(PDF.translations[this._language].amount, this.mmToPoints(87), this.mmToPoints(this._paddingTop + 68), {
       width: this.mmToPoints(36)
     });
 
-    this.document.fontSize(10);
-    this.document.font("Helvetica");
-    this.document.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 72), {
+    this.fontSize(10);
+    this.font("Helvetica");
+    this.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 72), {
       width: this.mmToPoints(15)
     });
 
     if(this._data.amount !== undefined){
-      this.document.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 72), {
+      this.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 72), {
         width: this.mmToPoints(36)
       });
     } else {
@@ -492,62 +499,62 @@ export class PDF {
     //-- AV1 and AV2
 
     if(this._data.av1 !== undefined){
-      this.document.fontSize(7);
-      this.document.font("Helvetica-Bold");
-      this.document.text("Name AV1:", this.mmToPoints(67), this.mmToPoints(this._paddingTop + 90), {
+      this.fontSize(7);
+      this.font("Helvetica-Bold");
+      this.text("Name AV1:", this.mmToPoints(67), this.mmToPoints(this._paddingTop + 90), {
         width: this.mmToPoints(15)
       });
 
-      this.document.fontSize(7);
-      this.document.font("Helvetica");
-      this.document.text((this._data.av1.length > 87 ? this._data.av1.substr(0, 87) + "..." : this._data.av1), this.mmToPoints(81), this.mmToPoints(this._paddingTop + 90), {
+      this.fontSize(7);
+      this.font("Helvetica");
+      this.text((this._data.av1.length > 87 ? this._data.av1.substr(0, 87) + "..." : this._data.av1), this.mmToPoints(81), this.mmToPoints(this._paddingTop + 90), {
         width: this.mmToPoints(37)
       });
     }
 
     if(this._data.av2 !== undefined){
-      this.document.fontSize(7);
-      this.document.font("Helvetica-Bold");
-      this.document.text("Name AV2:", this.mmToPoints(67), this.mmToPoints(this._paddingTop + 93), {
+      this.fontSize(7);
+      this.font("Helvetica-Bold");
+      this.text("Name AV2:", this.mmToPoints(67), this.mmToPoints(this._paddingTop + 93), {
         width: this.mmToPoints(15)
       });
 
-      this.document.fontSize(7);
-      this.document.font("Helvetica");
-      this.document.text((this._data.av2.length > 87 ? this._data.av2.substr(0, 87) + "..." : this._data.av2), this.mmToPoints(81), this.mmToPoints(this._paddingTop + 93), {
+      this.fontSize(7);
+      this.font("Helvetica");
+      this.text((this._data.av2.length > 87 ? this._data.av2.substr(0, 87) + "..." : this._data.av2), this.mmToPoints(81), this.mmToPoints(this._paddingTop + 93), {
         width: this.mmToPoints(37)
       });
     }
 
-    this.document.fontSize(8);
-    this.document.font("Helvetica-Bold");
-    this.document.text(PDF.translations[this._language].account, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 5), {
+    this.fontSize(8);
+    this.font("Helvetica-Bold");
+    this.text(PDF.translations[this._language].account, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 5), {
       width: this.mmToPoints(87)
     });
 
-    this.document.fontSize(10);
-    this.document.font("Helvetica");
-    this.document.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
+    this.fontSize(10);
+    this.font("Helvetica");
+    this.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
       width: this.mmToPoints(87)
     });
 
-    this.document.moveDown();
+    this.moveDown();
 
     if(this._data.reference !== undefined){
 
-      this.document.fontSize(8);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].reference, {
+      this.fontSize(8);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].reference, {
         width: this.mmToPoints(87)
       });
 
-      this.document.fontSize(10);
-      this.document.font("Helvetica");
-      this.document.text(this._formatReference(this._data.reference), {
+      this.fontSize(10);
+      this.font("Helvetica");
+      this.text(this._formatReference(this._data.reference), {
         width: this.mmToPoints(87)
       });
 
-      this.document.moveDown();
+      this.moveDown();
 
     }
 
@@ -556,41 +563,41 @@ export class PDF {
 
     if(this._data.additionalInformation !== undefined){
 
-      this.document.fontSize(8);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].additionalInformation, {
+      this.fontSize(8);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].additionalInformation, {
         width: this.mmToPoints(87)
       });
 
-      this.document.fontSize(10);
-      this.document.font("Helvetica");
-      this.document.text(this._data.additionalInformation, {
+      this.fontSize(10);
+      this.font("Helvetica");
+      this.text(this._data.additionalInformation, {
         width: this.mmToPoints(87)
       });
 
-      this.document.moveDown();
+      this.moveDown();
 
     }
 
     if(this._data.debitor !== undefined){
 
-      this.document.fontSize(8);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].payableBy, {
+      this.fontSize(8);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].payableBy, {
         width: this.mmToPoints(87)
       });
 
-      this.document.fontSize(10);
-      this.document.font("Helvetica");
-      this.document.text(this._formatAddress(this._data.debitor), {
+      this.fontSize(10);
+      this.font("Helvetica");
+      this.text(this._formatAddress(this._data.debitor), {
         width: this.mmToPoints(87)
       });
 
     } else {
 
-      this.document.fontSize(8);
-      this.document.font("Helvetica-Bold");
-      this.document.text(PDF.translations[this._language].payableByName, {
+      this.fontSize(8);
+      this.font("Helvetica-Bold");
+      this.text(PDF.translations[this._language].payableByName, {
         width: this.mmToPoints(87)
       });
 
@@ -1068,7 +1075,7 @@ export class PDF {
       throw new Error("Could not convert svg image to path");
     }
 
-    this.document.moveTo(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
+    this.moveTo(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
 
 
     //-- Black rectangle
@@ -1077,26 +1084,26 @@ export class PDF {
     const cross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
 
 
-    this.document.translate(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
-    this.document.path(svgPath)
+    this.translate(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
+    this.path(svgPath)
       .undash()
       .fillColor("black")
       .fill();
-    this.document.translate( - this.mmToPoints(67),  - this.mmToPoints(this._paddingTop + 17));
+    this.translate( - this.mmToPoints(67),  - this.mmToPoints(this._paddingTop + 17));
 
-    this.document.translate(this.mmToPoints(86), this.mmToPoints(this._paddingTop + 36));
-    this.document.path(background)
+    this.translate(this.mmToPoints(86), this.mmToPoints(this._paddingTop + 36));
+    this.path(background)
       .fillColor("black")
       .lineWidth(1.4357)
       .strokeColor("white")
       .fillAndStroke();
-    this.document.translate( - this.mmToPoints(86),  -this.mmToPoints(this._paddingTop + 36));
+    this.translate( - this.mmToPoints(86),  -this.mmToPoints(this._paddingTop + 36));
 
-    this.document.translate(this.mmToPoints(86), this.mmToPoints(this._paddingTop + 36));
-    this.document.path(cross)
+    this.translate(this.mmToPoints(86), this.mmToPoints(this._paddingTop + 36));
+    this.path(cross)
       .fillColor("white")
       .fill();
-    this.document.translate( - this.mmToPoints(86), - this.mmToPoints(this._paddingTop + 36));
+    this.translate( - this.mmToPoints(86), - this.mmToPoints(this._paddingTop + 36));
 
   }
 
@@ -1370,7 +1377,7 @@ export class PDF {
 
     const length = 3;
 
-    this.document.moveTo(this.mmToPoints(x + length), this.mmToPoints(this._paddingTop + y))
+    this.moveTo(this.mmToPoints(x + length), this.mmToPoints(this._paddingTop + y))
       .lineTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y))
       .lineTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y + length))
       .moveTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y + height - length))
