@@ -1,4 +1,4 @@
-import * as SwissQRBill from "../";
+import SwissQRBill from "../";
 
 const data: SwissQRBill.data = {
   currency: "CHF",
