@@ -1150,19 +1150,6 @@ module SwissQRBill {
 
 
     /**
-     * Converts milimeters to points which are used in the PDF file.
-     *
-     * @param {number} mm number containg the millimeters you want to convert to points.
-     * @returns {number} number containing the converted millimeters in points.
-     * @memberof PDF
-     */
-
-    public mmToPoints(mm: number): number {
-      return Math.round(mm * 2.83465);
-    }
-
-
-    /**
      * Formats the address into a string with new lines that can be written to the PDF file.
      *
      * @private

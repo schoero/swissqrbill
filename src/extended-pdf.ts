@@ -1,5 +1,5 @@
 import PDFDocument from "pdfkit";
-
+import svgpath from "svgpath";
 
 module ExtendedPDF {
 
@@ -168,14 +168,28 @@ module ExtendedPDF {
 
     public addPath(path: string, x: number, y: number): PDFKit.PDFDocument {
 
-      this.translate(x, y)
-        .path(path)
-        .translate( - x, - y);
+      path = svgpath(path)
+        .translate(x, y)
+        .toString();
+
+      this.path(path);
 
       return this;
 
     }
 
+
+    /**
+     * Converts milimeters to points which are used in the PDF file.
+     *
+     * @param {number} mm number containg the millimeters you want to convert to points.
+     * @returns {number} number containing the converted millimeters in points.
+     * @memberof PDF
+     */
+
+    public mmToPoints(mm: number): number {
+      return Math.round(mm * 2.83465);
+    }
 
 
   }
