@@ -1,9 +1,5 @@
 #!/bin/sh
 mkdir -p output
-echo "ts"
-  tsc ts.ts
-  node ts
- rm ts.js
 echo "a4"
   node a4
 echo "a6-5"
