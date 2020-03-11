@@ -73,9 +73,9 @@ module ExtendedPDF {
 
         //-- Insert new page
 
-        if(rowY >= this.page.height - rowHeight){
+        if(rowY + rowHeight >= this.page.height - this.page.margins.bottom){
           this.addPage();
-          rowY = rowHeight;
+          rowY = this.page.margins.top;
         }
 
 
