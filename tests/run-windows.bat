@@ -1,8 +1,4 @@
 if not exist output mkdir output
-echo "ts"
-  call tsc ts.ts
-  call node ts
-  call del ts.js
 echo "a4"
   call node a4
 echo "a6-5"
