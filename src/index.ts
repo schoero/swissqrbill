@@ -215,13 +215,11 @@ module SwissQRBill {
 
       if(options === undefined){
         options = {
-          margin: 0,
+          margin: this.mmToPoints(5),
           layout: this.size === "A4" ? "portrait" : "landscape",
           size: this.size === "A4" ? this.size : [this.mmToPoints(105), this.mmToPoints(210)]
         };
-
       }
-
 
       return super.addPage(options);
 
