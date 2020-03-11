@@ -40,12 +40,6 @@ module ExtendedPDF {
 
       super(options);
 
-      if(options!== undefined){
-        if(options.size !== undefined){
-          this.page.maxY;
-        }
-      }
-
     }
 
 
