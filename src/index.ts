@@ -249,6 +249,15 @@ module SwissQRBill {
 
     public addQRBill(): void {
 
+      if(this.page.height - this.y < this.mmToPoints(105)){
+        this.addPage({
+          layout: "landscape",
+          margin: 0,
+          size: [this.mmToPoints(105), this.mmToPoints(210)]
+        });
+        this._paddingTop = 0;
+      }
+
       this._drawOutlines();
       this._drawReceipt();
       this._drawPaymentPart();
