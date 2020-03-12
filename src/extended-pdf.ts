@@ -5,11 +5,11 @@ module ExtendedPDF {
 
   export interface PDFTable {
     rows: Array<PDFRow>,
-    lineWidth?: number,
     width?: number,
-    padding?: number,
     x?: number,
     y?: number,
+    padding?: number,
+    lineWidth?: number,
     font?: string,
     fontSize?: number
   }
@@ -28,7 +28,6 @@ module ExtendedPDF {
     width?: number,
     fillColor?: string,
     strokeColor?: string,
-    color?: string,
     font?: string,
     fontSize?: number,
     textOptions?: PDFKit.Mixins.TextOptions
