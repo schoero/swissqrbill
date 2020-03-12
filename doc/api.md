@@ -9,15 +9,10 @@
   - [end()](#end)
   - [addQRBill()](#addqrbill)
   - [mmToPoints(mm)](#mmtopointsmm)
-- Properties
-  - [document](#document)
 
-<br/>
 <br/>
 
 ## Constructor
-
-<br/>
 
 ### SwissQRBill.PDF(data, outputPath[, options])
 
@@ -25,7 +20,6 @@
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
 
-<br/>
 
 #### data
 
@@ -46,7 +40,7 @@
     > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
   - **creditor** *mandatory*
     - **name** - `string` *mandatory*, max. 70 characters.
-      > First name (*optional*, sending is recommended, if available) + last name or company name.
+      > First name + last name or company name.
     - **account** - `string` *mandatory*, 21 characters.
     - **address** - `string` *mandatory*, max 70 characters.
     - **housenumber** - `string | number` *optional*, max 16 characters.
@@ -55,14 +49,13 @@
     - **country** - `string` *mandatory*, 2 characters.
   - **debitor** *optional*
     - **name** - `string` *mandatory*, max. 70 characters.
-      > First name (*optional*, sending is recommended, if available) + last name or company name.
+      > First name + last name or company name.
     - **address** - `string` *mandatory*, max 70 characters.
     - **housenumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
 
-<br/>
 
 #### options
 
@@ -108,11 +101,8 @@ const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 <br/>
-<br/>
 
 ## Methods
-
-<br/>
 
 ### addPage()
 Adds a new page to the PDF.
@@ -122,7 +112,7 @@ Finalizes the PDF document, after this command you are no longer able to edit th
 > Note: This function is automatically called when the option autoGenerate is set to true.
 
 ### addQRBill()
-Adds the QR Bill to the bottom of the current page.
+Adds the QR Bill to the bottom of the current page if there is enough space, otherwise it will be added as a standalone A6/5 page.
 > Note: This function is automatically called when the option autoGenerate is set to true.
 
 ### mmToPoints(mm)
@@ -130,13 +120,33 @@ Adds the QR Bill to the bottom of the current page.
  Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.  
  Returns a `number` containing the converted millimeters in points.
 
-<br/>
-<br/>
+### addTable(table)
+ - table - `object` containing the table information.
 
-## Properties
+ Inserts a table 
 
-<br/>
+ #### table
 
-### document
+  The table object is constructed in the following way:
 
- Returns the PDFKit document.
+  - **width** `number` width of whole table *optional*<br/>
+  - **x** `number` horizontal start position of the table *optional*<br/>
+  - **y** `number` vertical start position of the table *optional*<br/>
+  - **padding** `number` cell padding of the table cells *optional*<br/>
+  - **lineWidth** `number` width of the border lines *optional*<br/>
+  - **font** `string` font of the text inside the table *optional*<br/>
+  - **fontSize** `number` font size of the text inside the table *optional*<br/>
+  - **rows** `array` of rows *mandatory*
+    - **fillColor** `string` background color of the row *optional*<br/>
+    - **strokeColor** `string` border color of the row *optional*<br/>
+    - **height** `height` height of the row *optional*<br/>
+    - **font** `string` font of the text inside the row *optional*<br/>
+    - **fontSize** `number` font size of the text inside the row *optional*<br/>
+    - **columns** `array` of columns *mandatory*<br/>
+      - **text** `string | number | boolean` cell text *mandatory*<br/>
+      - **width** `number` width of the cell *optional*<br/>
+      - **fillColor** `string` background color of the cell *optional*<br/>
+      - **strokeColor** `string` border color of the cell *optional*<br/>
+      - **font** `string` font of the text inside the cell *optional*<br/>
+      - **fontSize** `number` font size of the text inside the cell *optional*<br/>
+      - **textOptions** `object` same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling) *optional*<br/>
