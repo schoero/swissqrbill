@@ -227,18 +227,6 @@ module SwissQRBill {
 
 
     /**
-     * Finalizes the PDF document, after this command you are no longer able to edit the PDF.
-     * This function is automatically called when the option autoGenerate is set to true.
-     *
-     * @memberof PDF
-     */
-
-    public end(): void {
-      super.end();
-    }
-
-
-    /**
      * Adds the QR Bill to the bottom of the current page.
      * This function is automatically called when the option autoGenerate is set to true.
      *
