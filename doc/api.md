@@ -72,8 +72,6 @@
 
 
 ```js
-const SwissQRBill = require("swissqrbill");
-
 const data = {
   currency: "CHF",
   amount: 1199.95,
@@ -96,8 +94,6 @@ const data = {
     country: "CH"
   }
 };
-
-const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 <br/>
@@ -150,3 +146,32 @@ Adds the QR Bill to the bottom of the current page if there is enough space, oth
       - **font** `string` font of the text inside the cell *optional*<br/>
       - **fontSize** `number` font size of the text inside the cell *optional*<br/>
       - **textOptions** `object` same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling) *optional*<br/>
+
+```js
+const table = {
+  rows: [
+    {
+      fillColor: "#ECF0F1",
+      columns: [
+        {
+          text: "Row 1 cell 1",
+        }, {
+          text: "Row 1 cell 2",
+        }, {
+          text: "Row 1 cell 3"
+        }
+      ]
+    }, {
+      columns: [
+        {
+          text: "Row 2 cell 1",
+        }, {
+          text: "Row 2 cell 2",
+        }, {
+          text: "Row 2 cell 3"
+        }
+      ]
+    }
+  ]
+};
+```
