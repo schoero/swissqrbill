@@ -123,7 +123,7 @@ const date = new Date();
 
 pdf.fontSize(11);
 pdf.font("Helvetica");
-pdf.text("Musterstadt " + date.getDate() + "." + date.getMonth() + "." + date.getFullYear(), {
+pdf.text("Musterstadt " + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear(), {
   width: pdf.mmToPoints(170),
   align: "right"
 });
