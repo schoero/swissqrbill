@@ -5,8 +5,7 @@
 - Constructor
   - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbillpdfdata-outputpath-options)
 - Methods
-  - [addPage()](#addpage)
-  - [end()](#end)
+  - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
   - [mmToPoints(mm)](#mmtopointsmm)
 
