@@ -100,12 +100,11 @@ const data = {
 
 ## Methods
 
-### addPage()
+### addPage(options)
 Adds a new page to the PDF.
+This method is basically the same as the original [PDFKit `addPage()` method](https://pdfkit.org/docs/getting_started.html#adding_pages).  
+However the default values are changed to use the default page size provided in the constructor options.
 
-### end()
-Finalizes the PDF document, after this command you are no longer able to edit the PDF.
-> Note: This function is automatically called when the option autoGenerate is set to true.
 
 ### addQRBill()
 Adds the QR Bill to the bottom of the current page if there is enough space, otherwise it will be added as a standalone A6/5 page.
