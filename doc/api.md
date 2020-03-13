@@ -118,7 +118,7 @@ Adds the QR Bill to the bottom of the current page if there is enough space, oth
 ### addTable(table)
  - table - `object` containing the table information.
 
- Inserts a table 
+ Inserts a table to the document
 
  #### table
 

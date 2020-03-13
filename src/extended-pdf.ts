@@ -42,6 +42,12 @@ module ExtendedPDF {
     }
 
 
+    /**
+     * Inserts a table to the document
+     *
+     * @param table table object containing the table data
+     */
+
     public addTable(table: PDFTable): PDFKit.PDFDocument {
 
       if(table.rows === undefined){
