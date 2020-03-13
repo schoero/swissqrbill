@@ -4,7 +4,8 @@
 # [v1.1.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.0.6...v1.1.0) - ??.03.2020
   * Fixed some validation checks
   * Improved error messages
-  * Removed svgpath dependency
+  * Added new method to generate tables
+  * Improved documentation
 
 # [v1.0.6](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.0.5...v1.0.6) - 04.03.2020
   * Fixed QR Code fields
