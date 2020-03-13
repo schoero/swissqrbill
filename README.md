@@ -11,12 +11,14 @@ With SwissQRBill you can easily generate the new QR Code payment slips which wil
 [<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 
-## Contents
+## Links
 
  * [Features](#features)
  * [Installation](#installation)
  * [Quick start](#quick-start)
- * [API](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
+ * [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
+ * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
+ * [How to guide to create a complete bill](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
 
 
 ## Features
@@ -37,7 +39,7 @@ npm i swissqrbill --save
 
 ## Quick start
 
-It is fairly simple to create a QR Bill. All we have to do is to create a new `SwissQRBill.PDF` instance and pass our data as the first parameter and our output path as a second parameter. A reference for the data parameter can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#data).
+It is fairly easy to create a simple QR bill. All we have to do is to create a new `SwissQRBill.PDF` instance and pass our data as the first parameter and our output path as a second parameter.
 
 
 ```js
@@ -72,63 +74,9 @@ A complete documentation for all methods and parameters can be found in the [API
 
 <br/>
 
-## PDFKit
+## Further informations
 
-SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
-
+SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#methods).
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
-The following example adds 3 Pages and then the QR Bill at the bottom of the third page.
-
-```js
-const SwissQRBill = require("swissqrbill");
-
-const data = {
-  currency: "CHF",
-  amount: 1199.95,
-  reference: "210000000003139471430009017",
-  creditor: {
-    name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
-    zip: 2501,
-    city: "Biel",
-    account: "CH4431999123000889012",
-    country: "CH"
-  },
-  debitor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
-    address: "Grosse Marktgasse 28",
-    zip: 9400,
-    city: "Rorschach",
-    country: "CH"
-  }
-};
-
-const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false });
-
-bill.document.fontSize(11);
-bill.document.font("Helvetica-Bold");
-
-bill.document.text("PAGE 1", bill.mmToPoints(5), bill.mmToPoints(20), {
-  width: bill.mmToPoints(210),
-  align: "center",
-});
-
-bill.addPage();
-
-bill.document.text("PAGE 2", bill.mmToPoints(5), bill.mmToPoints(20), {
-  width: bill.mmToPoints(210),
-  align: "center",
-});
-
-bill.addPage();
-
-bill.document.text("PAGE 3", bill.mmToPoints(5), bill.mmToPoints(20), {
-  width: bill.mmToPoints(210),
-  align: "center",
-});
-
-bill.addQRBill();
-
-bill.end();
-```
+A simple how to guide to generate a complete bill can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md).
