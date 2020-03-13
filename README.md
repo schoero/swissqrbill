@@ -68,11 +68,13 @@ const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 This will generate the above PDF. We can pass an optional third parameter containing options such as language or size etc.
-A complete documentation for all methods and parameters can be found [here](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
+A complete documentation for all methods and parameters can be found in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
+
+<br/>
 
 ## PDFKit
 
-SwissQRBill internally uses [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files. You are able to generate a complete bill using PDFKit methods and then add the QR Bill to the bottom using `addQRBill()` when the option `autoGenerate` is set to `false`.
+SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
 
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
