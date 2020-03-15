@@ -9,7 +9,7 @@
 
 With SwissQRBill you can easily generate the new QR Code payment slips that will be introduced in Switzerland on June 30, 2020.
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
+[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 
 ## Links
@@ -17,9 +17,9 @@ With SwissQRBill you can easily generate the new QR Code payment slips that will
  * [Features](#features)
  * [Installation](#installation)
  * [Quick start](#quick-start)
- * [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md)
+ * [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md)
  * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
- * [How to guide to create a complete bill](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+ * [How to guide to create a complete bill](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
 
 
 ## Features
@@ -70,7 +70,7 @@ const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 This will create the above PDF file. We can pass an optional third parameter that contains options like language or size etc.
-Complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
+Complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
 
