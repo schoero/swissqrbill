@@ -23,24 +23,24 @@ const data = {
 
 const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false, size: "A4" });
 
-pdf.document.fontSize(11);
-pdf.document.font("Helvetica-Bold");
+pdf.fontSize(11);
+pdf.font("Helvetica-Bold");
 
-pdf.document.text("PAGE 1", pdf.mmToPoints(5), pdf.mmToPoints(20), {
+pdf.text("PAGE 1", pdf.mmToPoints(5), pdf.mmToPoints(20), {
   width: pdf.mmToPoints(210),
   align: "center",
 });
 
 pdf.addPage();
 
-pdf.document.text("PAGE 2", pdf.mmToPoints(5), pdf.mmToPoints(20), {
+pdf.text("PAGE 2", pdf.mmToPoints(5), pdf.mmToPoints(20), {
   width: pdf.mmToPoints(210),
   align: "center",
 });
 
 pdf.addPage();
 
-pdf.document.text("PAGE 3", pdf.mmToPoints(5), pdf.mmToPoints(20), {
+pdf.text("PAGE 3", pdf.mmToPoints(5), pdf.mmToPoints(20), {
   width: pdf.mmToPoints(210),
   align: "center",
 });
