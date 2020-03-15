@@ -278,4 +278,4 @@ The complete code can be found in [examples/how-to-create-a-complete-bill.js](ht
 
 When you run the code above, SwissQRBill should generate a PDF file name complete-qr-bill.pdf that looks like this:
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.pdf)
+[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)
