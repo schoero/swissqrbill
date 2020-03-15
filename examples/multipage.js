@@ -1,4 +1,4 @@
-const SwissQRBill = require("../");
+const SwissQRBill = require("swissqrpdf");
 
 const data = {
   currency: "CHF",
@@ -21,7 +21,7 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false, size: "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: false });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");

@@ -24,4 +24,4 @@ const data = {
 };
 
 
-const bill = new SwissQRBill.PDF(data, "./output/a6-5-housenumber.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/a6-5-housenumber.pdf");

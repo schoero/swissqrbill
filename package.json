@@ -2,14 +2,15 @@
   "name": "swissqrbill",
   "version": "1.0.6",
   "description": "Swiss QR Bill generation in node.js ",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "lib/**/*",
     "index.js"
   ],
   "scripts": {
-    "test": "cd tests && sh run.sh",
+    "test": "tsc && cd tests && sh run.sh",
+    "test-windows": "tsc && cd tests && call run-windows.bat",
     "build": "tsc"
   },
   "repository": {
@@ -19,10 +20,11 @@
   "keywords": [
     "swiss",
     "switzerland",
+    "schweiz",
     "qr",
     "bill",
-    "rechnung",
-    "invoice"
+    "invoice",
+    "rechnung"
   ],
   "author": "Roger Schönbächler",
   "license": "MIT",

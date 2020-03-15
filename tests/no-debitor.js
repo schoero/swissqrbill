@@ -14,4 +14,4 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/no-debitor.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/no-debitor.pdf");

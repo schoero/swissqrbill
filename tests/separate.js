@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const bill = new SwissQRBill.PDF(data, "./output/separate.pdf", { "scissors" : false, size: "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/separate.pdf", { "scissors" : false, size: "A4" });
