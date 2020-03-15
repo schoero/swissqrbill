@@ -2,7 +2,7 @@
 
 ### Introduction
 
-In this how to guide you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with various methods.
+In this munual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
 
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
 The methods used from SwissQRBill are documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
@@ -10,7 +10,7 @@ The methods used from SwissQRBill are documented in the [API documentation](http
 
 ### Setup
 
-If you haven't already done so, please install the library using
+If you haven't already done so, please install the library using:
 
 ```
 npm i swissqrbill --save

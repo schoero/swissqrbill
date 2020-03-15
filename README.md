@@ -6,7 +6,7 @@
 ![Version](https://img.shields.io/npm/v/swissqrbill?color=brightgreen)
 ![CI](https://github.com/Rogerrrrrrrs/SwissQRBill/workflows/CI/badge.svg?branch=development)
 
-With SwissQRBill you can easily generate the new QR Code payment slips which will be introduced on 30 June 2020 in switzerland.
+With SwissQRBill you can easily generate the new QR Code payment slips that will be introduced in Switzerland on June 30, 2020.
 
 [<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
 
@@ -39,8 +39,7 @@ npm i swissqrbill --save
 
 ## Quick start
 
-It is fairly easy to create a simple QR bill. All we have to do is to create a new `SwissQRBill.PDF` instance and pass our data as the first parameter and our output path as a second parameter.
-
+It's quite easy to create a simple QR bill. All we have to do is create a new 'SwissQRBill.PDF' instance and pass our data as first parameter and our output path as second parameter.
 
 ```js
 const SwissQRBill = require("swissqrbill");
@@ -69,8 +68,8 @@ const data = {
 const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
-This will generate the above PDF. We can pass an optional third parameter containing options such as language or size etc.
-A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
+This will create the above PDF file. We can pass an optional third parameter that contains options like language or size etc.
+Complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
 
 <br/>
 
