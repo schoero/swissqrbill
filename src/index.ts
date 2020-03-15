@@ -50,7 +50,7 @@ module SwissQRBill {
     private _data: data;
     private _scissors: boolean = true;
     private _language: languages = "DE";
-    private _paddingTop: number = 0;
+    private _marginTop: number = 0;
     private _autoGenerate: boolean = true;
     private _referenceType: "QRR" | "SCOR" | "NON" = "NON";
 
@@ -177,7 +177,6 @@ module SwissQRBill {
           this._language = options.language;
         }
         if(options.size !== undefined){
-          this._paddingTop = options.size === "A4" ? 192 : 0;
           this.size = options.size;
         }
         if(options.scissors !== undefined){
@@ -235,14 +234,15 @@ module SwissQRBill {
 
     public addQRBill(): void {
 
-      if(this.page.height - this.y < this.mmToPoints(105)){
+      if(this.page.height - this.y < this.mmToPoints(105) && this.y !== this.page.margins.top){
         this.addPage({
           layout: "landscape",
           margin: 0,
           size: [this.mmToPoints(105), this.mmToPoints(210)]
         });
-        this._paddingTop = 0;
       }
+
+      this._marginTop = this.page.height - this.mmToPoints(105);
 
       this._drawOutlines();
       this._drawReceipt();
@@ -264,8 +264,8 @@ module SwissQRBill {
 
       if(this.page.height > this.mmToPoints(105)){
 
-        this.moveTo(0, this.mmToPoints(this._paddingTop))
-          .lineTo(this.mmToPoints(210), this.mmToPoints(this._paddingTop))
+        this.moveTo(0, this._marginTop)
+          .lineTo(this.mmToPoints(210), this._marginTop)
           .lineWidth(.75)
           .strokeOpacity(1)
           .dash(1, { size: 1 })
@@ -277,8 +277,8 @@ module SwissQRBill {
 
       //-- Vertical line
 
-      this.moveTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop))
-        .lineTo(this.mmToPoints(62), this.mmToPoints(this._paddingTop + 105))
+      this.moveTo(this.mmToPoints(62), this._marginTop)
+        .lineTo(this.mmToPoints(62), this._marginTop + this.mmToPoints(105))
         .lineWidth(.75)
         .strokeOpacity(1)
         .dash(1, { size: 1 })
@@ -292,13 +292,13 @@ module SwissQRBill {
 
         if(this.page.height > this.mmToPoints(105)){
 
-          this.addPath(scissorsTop, this.mmToPoints(105), this.mmToPoints(this._paddingTop))
+          this.addPath(scissorsTop, this.mmToPoints(105), this._marginTop)
             .fillColor("black")
             .fill();
 
         }
 
-        this.addPath(scissorsCenter, this.mmToPoints(62), this.mmToPoints(this._paddingTop) + 30)
+        this.addPath(scissorsCenter, this.mmToPoints(62), this._marginTop + 30)
           .fillColor("black")
           .fill();
         this.translate(0, 0);
@@ -309,7 +309,7 @@ module SwissQRBill {
 
           this.fontSize(11);
           this.font("Helvetica");
-          this.text(PDF.translations[this._language].separate, this.mmToPoints(0), this.mmToPoints(this._paddingTop) - 12, {
+          this.text(PDF.translations[this._language].separate, this.mmToPoints(0), this._marginTop - 12, {
             width: this.mmToPoints(210),
             align: "center",
           });
@@ -331,14 +331,14 @@ module SwissQRBill {
 
       this.fontSize(11);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].receipt, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 5), {
+      this.text(PDF.translations[this._language].receipt, this.mmToPoints(5), this._marginTop + this.mmToPoints(5), {
         width: this.mmToPoints(52),
         align: "left",
       });
 
       this.fontSize(6);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].account, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 12), {
+      this.text(PDF.translations[this._language].account, this.mmToPoints(5), this._marginTop + this.mmToPoints(12), {
         width: this.mmToPoints(52)
       });
 
@@ -415,22 +415,22 @@ module SwissQRBill {
 
       this.fontSize(6);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 68), {
+      this.text(PDF.translations[this._language].currency, this.mmToPoints(5), this._marginTop + this.mmToPoints(68), {
         width: this.mmToPoints(15)
       });
 
-      this.text(PDF.translations[this._language].amount, this.mmToPoints(20), this.mmToPoints(this._paddingTop + 68), {
+      this.text(PDF.translations[this._language].amount, this.mmToPoints(20), this._marginTop + this.mmToPoints(68), {
         width: this.mmToPoints(37)
       });
 
       this.fontSize(8);
       this.font("Helvetica");
-      this.text(this._data.currency, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 71), {
+      this.text(this._data.currency, this.mmToPoints(5), this._marginTop + this.mmToPoints(71), {
         width: this.mmToPoints(15)
       });
 
       if(this._data.amount !== undefined){
-        this.text(this._formatAmount(this._data.amount), this.mmToPoints(20), this.mmToPoints(this._paddingTop + 71), {
+        this.text(this._formatAmount(this._data.amount), this.mmToPoints(20), this._marginTop + this.mmToPoints(71), {
           width: this.mmToPoints(37)
         });
       } else {
@@ -439,7 +439,7 @@ module SwissQRBill {
 
       this.fontSize(6);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].acceptancePoint, this.mmToPoints(5), this.mmToPoints(this._paddingTop + 82), {
+      this.text(PDF.translations[this._language].acceptancePoint, this.mmToPoints(5), this._marginTop + this.mmToPoints(82), {
         width: this.mmToPoints(52),
         align: "right",
       });
@@ -458,7 +458,7 @@ module SwissQRBill {
 
       this.fontSize(11);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].paymentPart, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 5), {
+      this.text(PDF.translations[this._language].paymentPart, this.mmToPoints(67), this._marginTop + this.mmToPoints(5), {
         width: this.mmToPoints(51),
         align: "left",
       });
@@ -469,22 +469,22 @@ module SwissQRBill {
 
       this.fontSize(8);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 68), {
+      this.text(PDF.translations[this._language].currency, this.mmToPoints(67), this._marginTop + this.mmToPoints(68), {
         width: this.mmToPoints(15)
       });
 
-      this.text(PDF.translations[this._language].amount, this.mmToPoints(87), this.mmToPoints(this._paddingTop + 68), {
+      this.text(PDF.translations[this._language].amount, this.mmToPoints(87), this._marginTop + this.mmToPoints(68), {
         width: this.mmToPoints(36)
       });
 
       this.fontSize(10);
       this.font("Helvetica");
-      this.text(this._data.currency, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 72), {
+      this.text(this._data.currency, this.mmToPoints(67), this._marginTop + this.mmToPoints(72), {
         width: this.mmToPoints(15)
       });
 
       if(this._data.amount !== undefined){
-        this.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this.mmToPoints(this._paddingTop + 72), {
+        this.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this._marginTop + this.mmToPoints(72), {
           width: this.mmToPoints(36)
         });
       } else {
@@ -497,13 +497,13 @@ module SwissQRBill {
       if(this._data.av1 !== undefined){
         this.fontSize(7);
         this.font("Helvetica-Bold");
-        this.text("Name AV1:", this.mmToPoints(67), this.mmToPoints(this._paddingTop + 90), {
+        this.text("Name AV1:", this.mmToPoints(67), this._marginTop + this.mmToPoints(90), {
           width: this.mmToPoints(15)
         });
 
         this.fontSize(7);
         this.font("Helvetica");
-        this.text((this._data.av1.length > 87 ? this._data.av1.substr(0, 87) + "..." : this._data.av1), this.mmToPoints(81), this.mmToPoints(this._paddingTop + 90), {
+        this.text((this._data.av1.length > 87 ? this._data.av1.substr(0, 87) + "..." : this._data.av1), this.mmToPoints(81), this._marginTop + this.mmToPoints(90), {
           width: this.mmToPoints(37)
         });
       }
@@ -511,26 +511,26 @@ module SwissQRBill {
       if(this._data.av2 !== undefined){
         this.fontSize(7);
         this.font("Helvetica-Bold");
-        this.text("Name AV2:", this.mmToPoints(67), this.mmToPoints(this._paddingTop + 93), {
+        this.text("Name AV2:", this.mmToPoints(67), this._marginTop + this.mmToPoints(93), {
           width: this.mmToPoints(15)
         });
 
         this.fontSize(7);
         this.font("Helvetica");
-        this.text((this._data.av2.length > 87 ? this._data.av2.substr(0, 87) + "..." : this._data.av2), this.mmToPoints(81), this.mmToPoints(this._paddingTop + 93), {
+        this.text((this._data.av2.length > 87 ? this._data.av2.substr(0, 87) + "..." : this._data.av2), this.mmToPoints(81), this._marginTop + this.mmToPoints(93), {
           width: this.mmToPoints(37)
         });
       }
 
       this.fontSize(8);
       this.font("Helvetica-Bold");
-      this.text(PDF.translations[this._language].account, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 5), {
+      this.text(PDF.translations[this._language].account, this.mmToPoints(118), this._marginTop + this.mmToPoints(5), {
         width: this.mmToPoints(87)
       });
 
       this.fontSize(10);
       this.font("Helvetica");
-      this.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this.mmToPoints(this._paddingTop + 9.5), {
+      this.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this._marginTop + this.mmToPoints(9.5), {
         width: this.mmToPoints(87)
       });
 
@@ -1071,7 +1071,7 @@ module SwissQRBill {
         throw new Error("Could not convert svg image to path");
       }
 
-      this.moveTo(this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17));
+      this.moveTo(this.mmToPoints(67), this._marginTop + this.mmToPoints(17));
 
 
       //-- Black rectangle
@@ -1080,18 +1080,18 @@ module SwissQRBill {
       const cross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
 
 
-      this.addPath(svgPath, this.mmToPoints(67), this.mmToPoints(this._paddingTop + 17))
+      this.addPath(svgPath, this.mmToPoints(67), this._marginTop + this.mmToPoints(17))
         .undash()
         .fillColor("black")
         .fill();
 
-      this.addPath(background, this.mmToPoints(86), this.mmToPoints(this._paddingTop + 36))
+      this.addPath(background, this.mmToPoints(86), this._marginTop + this.mmToPoints(36))
         .fillColor("black")
         .lineWidth(1.4357)
         .strokeColor("white")
         .fillAndStroke();
 
-      this.addPath(cross, this.mmToPoints(86), this.mmToPoints(this._paddingTop + 36))
+      this.addPath(cross, this.mmToPoints(86), this._marginTop + this.mmToPoints(36))
         .fillColor("white")
         .fill();
 
@@ -1354,18 +1354,18 @@ module SwissQRBill {
 
       const length = 3;
 
-      this.moveTo(this.mmToPoints(x + length), this.mmToPoints(this._paddingTop + y))
-        .lineTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y))
-        .lineTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y + length))
-        .moveTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y + height - length))
-        .lineTo(this.mmToPoints(x), this.mmToPoints(this._paddingTop + y + height))
-        .lineTo(this.mmToPoints(x + length), this.mmToPoints(this._paddingTop + y + height))
-        .moveTo(this.mmToPoints(x + width - length), this.mmToPoints(this._paddingTop + y + height))
-        .lineTo(this.mmToPoints(x + width), this.mmToPoints(this._paddingTop + y + height))
-        .lineTo(this.mmToPoints(x + width), this.mmToPoints(this._paddingTop + y + height - length))
-        .moveTo(this.mmToPoints(x + width), this.mmToPoints(this._paddingTop + y + length))
-        .lineTo(this.mmToPoints(x + width), this.mmToPoints(this._paddingTop + y))
-        .lineTo(this.mmToPoints(x + width - length), this.mmToPoints(this._paddingTop + y))
+      this.moveTo(this.mmToPoints(x + length), this._marginTop + this.mmToPoints(y))
+        .lineTo(this.mmToPoints(x), this._marginTop + this.mmToPoints(y))
+        .lineTo(this.mmToPoints(x), this._marginTop + this.mmToPoints(y + length))
+        .moveTo(this.mmToPoints(x), this._marginTop + this.mmToPoints(y + height - length))
+        .lineTo(this.mmToPoints(x), this._marginTop + this.mmToPoints(y + height))
+        .lineTo(this.mmToPoints(x + length), this._marginTop + this.mmToPoints(y + height))
+        .moveTo(this.mmToPoints(x + width - length), this._marginTop + this.mmToPoints(y + height))
+        .lineTo(this.mmToPoints(x + width), this._marginTop + this.mmToPoints(y + height))
+        .lineTo(this.mmToPoints(x + width), this._marginTop + this.mmToPoints(y + height - length))
+        .moveTo(this.mmToPoints(x + width), this._marginTop + this.mmToPoints(y + length))
+        .lineTo(this.mmToPoints(x + width), this._marginTop + this.mmToPoints(y))
+        .lineTo(this.mmToPoints(x + width - length), this._marginTop + this.mmToPoints(y))
         .lineWidth(.75)
         .undash()
         .strokeColor("black")
