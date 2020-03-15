@@ -80,4 +80,4 @@ The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_
 
 A simple how to guide to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
