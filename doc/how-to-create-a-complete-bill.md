@@ -5,7 +5,7 @@
 In this munual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
 
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
-The methods used from SwissQRBill are documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md).
+The methods used from SwissQRBill are documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
 
 
 ### Setup
@@ -278,4 +278,4 @@ The complete code can be found in [examples/how-to-create-a-complete-bill.js](ht
 
 When you run the code above, SwissQRBill should generate a PDF file name complete-qr-bill.pdf that looks like this:
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/development/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)
