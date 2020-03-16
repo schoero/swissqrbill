@@ -85,9 +85,11 @@ pdf.addPath(logoText, pdf.mmToPoints(20), pdf.mmToPoints(14))
 
 ```
 
+We use the `mmToPoints()` method to place the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors.
+
 ### Adding the addresses
 
-Next, we add the address of our business and the customer address to the PDF.
+Next, we add the address of our business and the customer address to the PDF. You can use `\n` to create a new line.
 
 ```js
 pdf.fontSize(12);
