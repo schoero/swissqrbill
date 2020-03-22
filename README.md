@@ -70,7 +70,7 @@ const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
 This will create the above PDF file. We can pass an optional third parameter that contains options like language or size etc.
-Complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
+A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
 
