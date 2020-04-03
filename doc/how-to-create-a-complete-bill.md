@@ -54,7 +54,7 @@ Once we have our data ready we can create a new instance of `SwissQRBill` and st
 
 ```js
 
-const pdf = new SwissQRBill.PDF(data as SwissQRBill.data, "complete-qr-bill.pdf", { autoGenerate: false, size: "A4" });
+const pdf = new SwissQRBill.PDF(data, "complete-qr-bill.pdf", { autoGenerate: false, size: "A4" });
 ```
 
 Please note that we have set `autoGenerate` to `false` and `size` to `A4`.
