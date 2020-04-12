@@ -40,7 +40,7 @@ npm i swissqrbill --save
 
 ## Quick start
 
-It's quite easy to create a simple QR bill. All you have to do is create a new `SwissQRBill.PDF` instance and pass our data as first parameter and our output path as second parameter.
+It's quite easy to create a simple QR bill. All you have to do is create a new `SwissQRBill.PDF` instance and pass your billing data object as the first parameter and your output path as the second parameter.
 
 ```js
 const SwissQRBill = require("swissqrbill");
@@ -69,7 +69,7 @@ const data = {
 const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
-This will create the above PDF file. We can pass an optional third parameter that contains options like language or size etc.
+This will create the above PDF file. You can pass an optional third parameter that contains options like language or size etc.
 A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
