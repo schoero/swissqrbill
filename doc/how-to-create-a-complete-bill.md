@@ -2,7 +2,7 @@
 
 ### Introduction
 
-In this munual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
+In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
 
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
 The methods used from SwissQRBill are documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
@@ -54,7 +54,7 @@ Once we have our data ready we can create a new instance of `SwissQRBill` and st
 
 ```js
 
-const pdf = new SwissQRBill.PDF(data as SwissQRBill.data, "complete-qr-bill.pdf", { autoGenerate: false, size: "A4" });
+const pdf = new SwissQRBill.PDF(data, "complete-qr-bill.pdf", { autoGenerate: false, size: "A4" });
 ```
 
 Please note that we have set `autoGenerate` to `false` and `size` to `A4`.
@@ -85,9 +85,11 @@ pdf.addPath(logoText, pdf.mmToPoints(20), pdf.mmToPoints(14))
 
 ```
 
+We use the `mmToPoints()` method to place the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors.
+
 ### Adding the addresses
 
-Next, we add the address of our business and the customer address to the PDF.
+Next, we add the address of our business and the customer address to the PDF. You can use `\n` to create a new line.
 
 ```js
 pdf.fontSize(12);

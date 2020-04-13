@@ -1,11 +1,23 @@
 # SwissQRBill
 
-![MIT License](https://img.shields.io/npm/l/swissqrbill?color=brightgreen)
-![Dependencies](https://img.shields.io/david/rogerrrrrrrs/swissqrbill)
-![Downloads](https://img.shields.io/npm/dw/swissqrbill)
-![Issues](https://img.shields.io/github/issues-raw/rogerrrrrrrs/swissqrbill)
-![Version](https://img.shields.io/npm/v/swissqrbill?color=brightgreen)
-![CI](https://github.com/Rogerrrrrrrs/SwissQRBill/workflows/CI/badge.svg?branch=development)
+<a href="https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/LICENSE">
+  <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen">
+</a>
+<a href="https://www.npmjs.com/package/swissqrbill">
+  <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen">
+</a>
+<a href="https://github.com/Rogerrrrrrrs/SwissQRBill/issues">
+  <img alt="Issues" src="https://img.shields.io/github/issues-raw/rogerrrrrrrs/swissqrbill">
+</a>
+<a href="https://www.npmjs.com/package/swissqrbill">
+  <img alt="Dependencies" src="https://img.shields.io/david/rogerrrrrrrs/swissqrbill">
+</a>
+<a href="https://www.npmjs.com/package/swissqrbill">
+  <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill">
+</a>
+<a href="https://github.com/Rogerrrrrrrs/SwissQRBill/actions?query=workflow%3ACI">
+  <img alt="CI" src="https://github.com/Rogerrrrrrrs/SwissQRBill/workflows/CI/badge.svg?branch=development">
+</a>
 
 With SwissQRBill you can easily generate the new QR Code payment slips that will be introduced in Switzerland on June 30, 2020.
 
@@ -40,7 +52,7 @@ npm i swissqrbill --save
 
 ## Quick start
 
-It's quite easy to create a simple QR bill. All you have to do is create a new `SwissQRBill.PDF` instance and pass our data as first parameter and our output path as second parameter.
+It's quite easy to create a simple QR bill. All you have to do is create a new `SwissQRBill.PDF` instance and pass your billing data object as the first parameter and your output path as the second parameter.
 
 ```js
 const SwissQRBill = require("swissqrbill");
@@ -69,8 +81,8 @@ const data = {
 const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
 ```
 
-This will create the above PDF file. We can pass an optional third parameter that contains options like language or size etc.
-Complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
+This will create the above PDF file. You can pass an optional third parameter that contains options like language or size etc.
+A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
 
