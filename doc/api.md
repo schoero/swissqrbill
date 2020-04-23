@@ -100,7 +100,7 @@ const data = {
 ## Methods
 
 ### addPage(options)
- - options - `object` containing [PDFKit pdf document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)  
+ - options - `object` containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)  
 Adds a new page to the PDF.
 This method is basically the same as the original [PDFKit `addPage()` method](https://pdfkit.org/docs/getting_started.html#adding_pages).  
 However the default values are changed to use the default page size provided in the constructor options.
