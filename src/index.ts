@@ -133,7 +133,11 @@ module SwissQRBill {
 
       super({ autoFirstPage: false });
 
-      super.pipe(fs.createWriteStream(outputPath));
+      const stream = fs.createWriteStream(outputPath);
+
+      super.pipe(stream);
+
+      stream.on("finish", ev => super.emit("finish", ev));
 
       if(data === undefined || typeof data !== "object"){
         throw new Error("You must provide an object as billing data.");
