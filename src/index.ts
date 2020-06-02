@@ -125,11 +125,15 @@ module SwissQRBill {
     * @param {data} data object containing all relevant billing data.
     * @param {string} outputPath string output path for the generated PDF file.
     * @param {options} [options] object containing settings, optional.
+    * @param {callback} [function] function that gets called right after the pdf has been created.
     * @memberof PDF
     * @returns an instance of SwissQRBill.PDF
     */
 
-    constructor(data: data, outputPath: string, options?: options){
+    constructor(data: data, outputPath: string, options?: options)
+    constructor(data: data, outputPath: string, options?: options, callback?: Function)
+    constructor(data: data, outputPath: string, callback?: Function)
+    constructor(data: data, outputPath: string, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
 
       super({ autoFirstPage: false });
 
@@ -137,7 +141,29 @@ module SwissQRBill {
 
       super.pipe(stream);
 
-      stream.on("finish", ev => super.emit("finish", ev));
+      let callback: Function | undefined = undefined;
+      let options: options | undefined = undefined;
+
+      if(typeof optionsOrCallback === "object"){
+
+        options = optionsOrCallback;
+
+        if(typeof callbackOrUndefined === "function"){
+          callback = callbackOrUndefined;
+        }
+
+      } else if(typeof optionsOrCallback === "function"){
+        callback = optionsOrCallback;
+      }
+
+      if(callback !== undefined){
+        stream.on("finish", ev => {
+          if(typeof callback === "function"){
+            callback(this);
+          }
+          super.emit("finish", ev);
+        });
+      }
 
       if(data === undefined || typeof data !== "object"){
         throw new Error("You must provide an object as billing data.");
@@ -690,7 +716,7 @@ module SwissQRBill {
 
       if(this._data.creditor.houseNumber !== undefined){
         if(typeof this._data.creditor.houseNumber !== "string" && typeof this._data.creditor.houseNumber !== "number"){ throw new Error("Debitor houseNumber must be either a string or a number."); }
-        if(this._data.creditor.houseNumber.toString().length > 16){ throw new Error("Creditor houseNumber can be a maximum of 16 characters.");}
+        if(this._data.creditor.houseNumber.toString().length > 16){ throw new Error("Creditor houseNumber can be a maximum of 16 characters."); }
       }
 
 
@@ -747,7 +773,7 @@ module SwissQRBill {
 
         if(this._data.debitor.address === undefined){ throw new Error("Debitor address cannot be undefined if the debitor object is available."); }
         if(typeof this._data.debitor.address !== "string"){ throw new Error("Debitor address must be a string."); }
-        if(this._data.debitor.address.length > 70){ throw new Error("Debitor address must be a maximum of 70 characters.");}
+        if(this._data.debitor.address.length > 70){ throw new Error("Debitor address must be a maximum of 70 characters."); }
 
 
         //-- Debitor houseNumber

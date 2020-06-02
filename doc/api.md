@@ -3,7 +3,7 @@
 ## Contents
 
 - Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbillpdfdata-outputpath-options)
+  - [SwissQRBill.PDF(data, outputPath[, options], callback)](#swissqrbillpdfdata-outputpath-options-callback)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
@@ -13,12 +13,14 @@
 
 ## Constructor
 
-### SwissQRBill.PDF(data, outputPath[, options])
+### SwissQRBill.PDF(data, outputPath[, options], callback)
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
+ - **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
+> Note: The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
 
 #### data
 

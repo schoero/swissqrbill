@@ -78,10 +78,12 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "qrbill.pdf");
+const pdf = new SwissQRBill.PDF(data, "qrbill.pdf", () => {
+  console.log("PDF has been successfully created.");
+});
 ```
 
-This will create the above PDF file. You can pass an optional third parameter that contains options like language or size etc.
+This will create the above PDF file. You can pass an optional third parameter containing options such as language or size etc. as well as a callback function that is called right after the file has been written.
 A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
