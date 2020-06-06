@@ -1,6 +1,10 @@
 
 # Change Log
 
+# [v1.2.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.1.0...v1.2.0) - 06.06.2020
+  * Added optional callback function that gets executed once the pdf file has completed writing.
+  * Emit finish event once the pdf file has completed writing.
+
 # [v1.1.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.0.6...v1.1.0) - 15.03.2020
   * Fixed some validation checks
   * Improved error messages
