@@ -276,6 +276,8 @@ Once our document is finished, we have to call the `end()` method to finalize th
 pdf.end();
 ```
 
+We also have to wait until the file has been finished writing before we are able to interact with the generated pdf file. We can do this either by passing a callback function as the last parameter to `new SwissQRBill()` or by listening for the `finish` event on the SwissQRBill instance. You can find examples using callbacks and events in [examples/callback.js](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/examples/callback.js) and [examples/event.js](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/examples/event.js)
+
 The complete code can be found in [examples/how-to-create-a-complete-bill.js](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/examples/how-to-create-a-complete-bill.js).
 
 When you run the code above, SwissQRBill should generate a PDF file name complete-qr-bill.pdf that looks like this:
