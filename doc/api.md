@@ -9,7 +9,7 @@
   - [addQRBill()](#addqrbill)
   - [mmToPoints(mm)](#mmtopointsmm)
 - Events
-  - [finish]
+  - [finish](#finish)
 
 <br/>
 
