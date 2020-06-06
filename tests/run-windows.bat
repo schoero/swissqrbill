@@ -35,3 +35,9 @@ echo "qr-iban"
   call node qr-iban
 echo "separate"
   call node separate
+echo "callback"
+  call node callback
+echo "callback-with-options"
+  call node callback-with-options
+echo "event"
+  call node event
