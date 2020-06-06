@@ -3,22 +3,26 @@
 ## Contents
 
 - Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options])](#swissqrbillpdfdata-outputpath-options)
+  - [SwissQRBill.PDF(data, outputPath[, options], callback)](#swissqrbillpdfdata-outputpath-options-callback)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
   - [mmToPoints(mm)](#mmtopointsmm)
+- Events
+  - [finish](#event-finish)
 
 <br/>
 
 ## Constructor
 
-### SwissQRBill.PDF(data, outputPath[, options])
+### SwissQRBill.PDF(data, outputPath[, options], callback)
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
  - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
+ - **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
+> Note: The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
 
 #### data
 
@@ -100,6 +104,7 @@ const data = {
 ## Methods
 
 ### addPage(options)
+ - options - `object` containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)  
 Adds a new page to the PDF.
 This method is basically the same as the original [PDFKit `addPage()` method](https://pdfkit.org/docs/getting_started.html#adding_pages).  
 However the default values are changed to use the default page size provided in the constructor options.
@@ -173,3 +178,11 @@ const table = {
   ]
 };
 ```
+
+<br/>
+
+## Events
+
+### Event: "finish"
+The finish event is emitted when the file has finished writing. 
+You have to wait until the file has finished writing before you are able to interact with the genereated file.
