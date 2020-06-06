@@ -156,14 +156,12 @@ module SwissQRBill {
         callback = optionsOrCallback;
       }
 
-      if(callback !== undefined){
-        stream.on("finish", ev => {
-          if(typeof callback === "function"){
-            callback(this);
-          }
-          super.emit("finish", ev);
-        });
-      }
+      stream.on("finish", ev => {
+        if(typeof callback === "function"){
+          callback(this);
+        }
+        super.emit("finish", ev);
+      });
 
       if(data === undefined || typeof data !== "object"){
         throw new Error("You must provide an object as billing data.");
