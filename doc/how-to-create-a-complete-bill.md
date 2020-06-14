@@ -37,7 +37,7 @@ const data = {
     account: "CH4431999123000889012",
     country: "CH"
   },
-  debitor: {
+  debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse 28",
     zip: 9400,
@@ -102,7 +102,7 @@ pdf.text(data.creditor.name + "\n" + data.creditor.address + "\n" + data.credito
 
 pdf.fontSize(12);
 pdf.font("Helvetica");
-pdf.text(data.debitor.name + "\n" + data.debitor.address + "\n" + data.debitor.zip + " " + data.debitor.city, pdf.mmToPoints(130), pdf.mmToPoints(60), {
+pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip + " " + data.debtor.city, pdf.mmToPoints(130), pdf.mmToPoints(60), {
   width: pdf.mmToPoints(70),
   height: pdf.mmToPoints(50),
   align: "left"

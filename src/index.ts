@@ -10,7 +10,8 @@ module SwissQRBill {
   export interface data {
     currency: currency,
     creditor: creditor,
-    debitor?: debitor
+    debtor?: debtor,
+    debitor?: debtor,
     amount?: number,
     reference?: string,
     message?: string,
@@ -19,7 +20,7 @@ module SwissQRBill {
     av2?: string
   }
 
-  export interface debitor {
+  export interface debtor {
     name: string,
     address: string,
     zip: number,
@@ -28,7 +29,7 @@ module SwissQRBill {
     houseNumber?: string | number
   }
 
-  export interface creditor extends debitor {
+  export interface creditor extends debtor {
     account: string,
   }
 
@@ -172,6 +173,10 @@ module SwissQRBill {
       }
 
       this._data = data;
+
+      if(this._data.debtor === undefined && this._data.debitor !== undefined){
+        this._data.debtor = this._data.debitor;
+      }
 
       this._cleanData();
       this._validateData();
@@ -401,9 +406,9 @@ module SwissQRBill {
       }
 
 
-      //-- Debitor
+      //-- Debtor
 
-      if(this._data.debitor !== undefined){
+      if(this._data.debtor !== undefined){
 
         this.fontSize(9);
         this.moveDown();
@@ -416,7 +421,7 @@ module SwissQRBill {
 
         this.fontSize(8);
         this.font("Helvetica");
-        this.text(this._formatAddress(this._data.debitor), {
+        this.text(this._formatAddress(this._data.debtor), {
           width: this.mmToPoints(52)
         });
 
@@ -603,7 +608,7 @@ module SwissQRBill {
 
       }
 
-      if(this._data.debitor !== undefined){
+      if(this._data.debtor !== undefined){
 
         this.fontSize(8);
         this.font("Helvetica-Bold");
@@ -613,7 +618,7 @@ module SwissQRBill {
 
         this.fontSize(10);
         this.font("Helvetica");
-        this.text(this._formatAddress(this._data.debitor), {
+        this.text(this._formatAddress(this._data.debtor), {
           width: this.mmToPoints(87)
         });
 
@@ -713,7 +718,7 @@ module SwissQRBill {
       //-- Creditor houseNumber
 
       if(this._data.creditor.houseNumber !== undefined){
-        if(typeof this._data.creditor.houseNumber !== "string" && typeof this._data.creditor.houseNumber !== "number"){ throw new Error("Debitor houseNumber must be either a string or a number."); }
+        if(typeof this._data.creditor.houseNumber !== "string" && typeof this._data.creditor.houseNumber !== "number"){ throw new Error("Debtor houseNumber must be either a string or a number."); }
         if(this._data.creditor.houseNumber.toString().length > 16){ throw new Error("Creditor houseNumber can be a maximum of 16 characters."); }
       }
 
@@ -755,52 +760,52 @@ module SwissQRBill {
       if(this._data.currency !== "CHF" && this._data.currency !== "EUR"){ throw new Error("Currency must be either 'CHF' or 'EUR'"); }
 
 
-      //-- Debitor
+      //-- Debtor
 
-      if(this._data.debitor !== undefined){
-
-
-        //-- Debitor name
-
-        if(this._data.debitor.name === undefined){ throw new Error("Debitor name cannot be undefined if the debitor object is available."); }
-        if(typeof this._data.debitor.name !== "string"){ throw new Error("Debitor name must be a string."); }
-        if(this._data.debitor.name.length > 70){ throw new Error("Debitor name must be a maximum of 70 characters."); }
+      if(this._data.debtor !== undefined){
 
 
-        //-- Debitor address
+        //-- Debtor name
 
-        if(this._data.debitor.address === undefined){ throw new Error("Debitor address cannot be undefined if the debitor object is available."); }
-        if(typeof this._data.debitor.address !== "string"){ throw new Error("Debitor address must be a string."); }
-        if(this._data.debitor.address.length > 70){ throw new Error("Debitor address must be a maximum of 70 characters."); }
+        if(this._data.debtor.name === undefined){ throw new Error("Debtor name cannot be undefined if the debtor object is available."); }
+        if(typeof this._data.debtor.name !== "string"){ throw new Error("Debtor name must be a string."); }
+        if(this._data.debtor.name.length > 70){ throw new Error("Debtor name must be a maximum of 70 characters."); }
 
 
-        //-- Debitor houseNumber
+        //-- Debtor address
 
-        if(this._data.debitor.houseNumber !== undefined){
-          if(typeof this._data.debitor.houseNumber !== "string" && typeof this._data.debitor.houseNumber !== "number"){ throw new Error("Debitor house number must be either a string or a number."); }
-          if(this._data.debitor.houseNumber.toString().length > 16){ throw new Error("Debitor house number can be a maximum of 16 characters."); }
+        if(this._data.debtor.address === undefined){ throw new Error("Debtor address cannot be undefined if the debtor object is available."); }
+        if(typeof this._data.debtor.address !== "string"){ throw new Error("Debtor address must be a string."); }
+        if(this._data.debtor.address.length > 70){ throw new Error("Debtor address must be a maximum of 70 characters."); }
+
+
+        //-- Debtor houseNumber
+
+        if(this._data.debtor.houseNumber !== undefined){
+          if(typeof this._data.debtor.houseNumber !== "string" && typeof this._data.debtor.houseNumber !== "number"){ throw new Error("Debtor house number must be either a string or a number."); }
+          if(this._data.debtor.houseNumber.toString().length > 16){ throw new Error("Debtor house number can be a maximum of 16 characters."); }
         }
 
 
-        //-- Debitor zip
+        //-- Debtor zip
 
-        if(this._data.debitor.zip === undefined){ throw new Error("Debitor zip cannot be undefined if the debitor object is available."); }
-        if(typeof this._data.debitor.zip !== "number"){ throw new Error("Debitor zip must be a number."); }
-        if(this._data.debitor.zip.toString().length > 16){ throw new Error("Debitor zip must be a maximum of 16 characters."); }
-
-
-        //-- Debitor city
-
-        if(this._data.debitor.city === undefined){ throw new Error("Debitor city cannot be undefined if the debitor object is available."); }
-        if(typeof this._data.debitor.city !== "string"){ throw new Error("Debitor city must be a string."); }
-        if(this._data.debitor.city.length > 35){ throw new Error("Debitor city must be a maximum of 35 characters."); }
+        if(this._data.debtor.zip === undefined){ throw new Error("Debtor zip cannot be undefined if the debtor object is available."); }
+        if(typeof this._data.debtor.zip !== "number"){ throw new Error("Debtor zip must be a number."); }
+        if(this._data.debtor.zip.toString().length > 16){ throw new Error("Debtor zip must be a maximum of 16 characters."); }
 
 
-        //-- Debitor country
+        //-- Debtor city
 
-        if(this._data.debitor.country === undefined){ throw new Error("Debitor country cannot be undefined if the debitor object is available."); }
-        if(typeof this._data.debitor.country !== "string"){ throw new Error("Debitor country must be a string."); }
-        if((this._data.debitor.country).length !== 2){ throw new Error("Debitor country must be 2 characters."); }
+        if(this._data.debtor.city === undefined){ throw new Error("Debtor city cannot be undefined if the debtor object is available."); }
+        if(typeof this._data.debtor.city !== "string"){ throw new Error("Debtor city must be a string."); }
+        if(this._data.debtor.city.length > 35){ throw new Error("Debtor city must be a maximum of 35 characters."); }
+
+
+        //-- Debtor country
+
+        if(this._data.debtor.country === undefined){ throw new Error("Debtor country cannot be undefined if the debtor object is available."); }
+        if(typeof this._data.debtor.country !== "string"){ throw new Error("Debtor country must be a string."); }
+        if((this._data.debtor.country).length !== 2){ throw new Error("Debtor country must be 2 characters."); }
 
       }
 
@@ -959,28 +964,28 @@ module SwissQRBill {
       qrString += this._data.currency + "\n";
 
 
-      //-- Debitor
+      //-- Debtor
 
-      if(this._data.debitor !== undefined){
-        if(this._data.debitor.houseNumber !== undefined){
+      if(this._data.debtor !== undefined){
+        if(this._data.debtor.houseNumber !== undefined){
 
           // Address type
           qrString += "S\n";
 
           // Name
-          qrString += this._data.debitor.name + "\n";
+          qrString += this._data.debtor.name + "\n";
 
           // Address
-          qrString += this._data.debitor.address + "\n";
+          qrString += this._data.debtor.address + "\n";
 
           // House number
-          qrString += this._data.debitor.houseNumber + "\n";
+          qrString += this._data.debtor.houseNumber + "\n";
 
           // Zip
-          qrString += this._data.debitor.zip + "\n";
+          qrString += this._data.debtor.zip + "\n";
 
           // City
-          qrString += this._data.debitor.city + "\n";
+          qrString += this._data.debtor.city + "\n";
 
         } else {
 
@@ -988,14 +993,14 @@ module SwissQRBill {
           qrString += "K\n";
 
           // Name
-          qrString += this._data.debitor.name + "\n";
+          qrString += this._data.debtor.name + "\n";
 
           // Address
-          qrString += this._data.debitor.address + "\n";
+          qrString += this._data.debtor.address + "\n";
 
           // Zip + city
-          if((this._data.debitor.zip + " " + this._data.debitor.city).length > 70){ throw new Error("Debitor zip plus city must be a maximum of 70 characters."); }
-          qrString += this._data.debitor.zip + " " + this._data.debitor.city + "\n";
+          if((this._data.debtor.zip + " " + this._data.debtor.city).length > 70){ throw new Error("Debtor zip plus city must be a maximum of 70 characters."); }
+          qrString += this._data.debtor.zip + " " + this._data.debtor.city + "\n";
 
           // Empty field zip
           qrString += "\n";
@@ -1006,7 +1011,7 @@ module SwissQRBill {
         }
 
         // Country
-        qrString += this._data.debitor.country + "\n";
+        qrString += this._data.debtor.country + "\n";
 
       } else {
 
@@ -1176,12 +1181,12 @@ module SwissQRBill {
      * Formats the address into a string with new lines that can be written to the PDF file.
      *
      * @private
-     * @param {(debitor | creditor)} data creditor or debitor object containing the address.
+     * @param {(debtor | creditor)} data creditor or debtor object containing the address.
      * @returns {string} string containing the formatted address.
      * @memberof PDF
      */
 
-    private _formatAddress(data: debitor | creditor): string {
+    private _formatAddress(data: debtor | creditor): string {
       if(data.houseNumber !== undefined) {
         return `${data.name}\n${data.address} ${data.houseNumber}\n${data.zip} ${data.city}`;
       } else {

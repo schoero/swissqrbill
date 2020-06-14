@@ -19,14 +19,14 @@ echo "multipage"
   call node multipage
 echo "no-amount"
   call node no-amount
-echo "no-debitor"
-  call node no-debitor
-echo "no-debitor-no-amount"
-  call node no-debitor-no-amount
-echo "no-debitor-no-amount-no-reference"
-  call node no-debitor-no-amount-no-reference
-echo "no-debitor-no-reference"
-  call node no-debitor-no-reference
+echo "no-debtor"
+  call node no-debtor
+echo "no-debtor-no-amount"
+  call node no-debtor-no-amount
+echo "no-debtor-no-amount-no-reference"
+  call node no-debtor-no-amount-no-reference
+echo "no-debtor-no-reference"
+  call node no-debtor-no-reference
 echo "normal-iban-creditor-reference"
   call node normal-iban-creditor-reference
 echo "normal-iban-no-reference"

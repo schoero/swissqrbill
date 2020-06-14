@@ -50,7 +50,7 @@
     - **zip** - `number` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
-  - **debitor** *optional*
+  - **debtor** *optional*
     - **name** - `string` *mandatory*, max. 70 characters.
       > First name + last name or company name.
     - **address** - `string` *mandatory*, max 70 characters.
@@ -88,7 +88,7 @@ const data = {
     account: "CH4431999123000889012",
     country: "CH"
   },
-  debitor: {
+  debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse",
     houseNumber: 28,
