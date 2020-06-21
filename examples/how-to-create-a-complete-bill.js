@@ -130,7 +130,7 @@ const table = {
     }, {
       columns: [
         {
-          text: "1",
+          text: "2",
           width: pdf.mmToPoints(20)
         }, {
           text: "8 Std.",
