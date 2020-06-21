@@ -40,6 +40,8 @@ module SwissQRBill {
     autoGenerate?: boolean
   }
 
+  export import PDFTable = ExtendedPDF.PDFTable;
+
   export type currency = "CHF" | "EUR";
   export type size = "A4" | "A6/5";
   export type languages = "DE" | "EN" | "IT" | "FR";
