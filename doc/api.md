@@ -8,6 +8,7 @@
   - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
   - [mmToPoints(mm)](#mmtopointsmm)
+  - [addTable(table)](#addtabletable)
 - Events
   - [finish](#event-finish)
 
