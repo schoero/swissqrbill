@@ -12,7 +12,7 @@ const data = {
     account: "CH5800791123000889012",
     country: "CH"
   },
-  debitor: {
+  debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse 28",
     zip: 9400,
