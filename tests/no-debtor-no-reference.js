@@ -3,7 +3,6 @@ const SwissQRBill = require("../");
 const data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "RF18539007547034",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
@@ -14,4 +13,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/no-debitor.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/no-debtor-no-reference.pdf");
