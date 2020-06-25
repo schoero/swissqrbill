@@ -140,7 +140,7 @@ module SwissQRBill {
     constructor(data: data, outputPath: string, callback?: Function)
     constructor(data: data, outputPath: string, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
 
-      super({ autoFirstPage: false });
+      super({ autoFirstPage: false, bufferPages: true });
 
       const stream = fs.createWriteStream(outputPath);
 
@@ -262,6 +262,20 @@ module SwissQRBill {
 
       return super.addPage(options);
 
+    }
+
+
+
+    /**
+     * Finalizes the document
+     *
+     * @returns
+     * @memberof PDF
+     */
+
+    public end(): void {
+      this.emit("beforeEnd", this);
+      return super.end();
     }
 
 

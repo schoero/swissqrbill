@@ -11,6 +11,8 @@
   - [addTable(table)](#addtabletable)
 - Events
   - [finish](#event-finish)
+  - [pageAdded](#event-pageadded)
+  - [beforeEnd](#event-beforeEnd)
 
 <br/>
 
@@ -187,3 +189,11 @@ const table = {
 ### Event: "finish"
 The finish event is emitted when the file has finished writing. 
 You have to wait until the file has finished writing before you are able to interact with the genereated file.
+
+### Event: "pageAdded"
+The pageAdded event is emitted every time a page is added.
+This can be useful to add a header or footer to the pages as described [here](https://pdfkit.org/docs/getting_started.html#adding_pages).
+
+### Event: "beforeEnd"
+The beforeEnd event is emitted right before the file gets finalized.
+This could be used to add page numbers to the pages as described [here](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages).
