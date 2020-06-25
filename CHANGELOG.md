@@ -7,8 +7,8 @@
     - Table row height is now automatically calculated if not otherwise defined.
     - Added padding option to rows and cells.
   * Events
-   - Added new beforeEnd event that could be used to add page numbers.
-   - Added new pageAdded event that could be used to add a header to the pages.
+    - Added new beforeEnd event that could be used to add page numbers.
+    - Added new pageAdded event that could be used to add a header to the pages.
   * Renamed `debitor` option to `debtor`.
   * Improved documentation.
   * TypeScript declaration improvements.
