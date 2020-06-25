@@ -41,6 +41,8 @@ module SwissQRBill {
   }
 
   export import PDFTable = ExtendedPDF.PDFTable;
+  export import PDFRow = ExtendedPDF.PDFRow;
+  export import PDFColumn = ExtendedPDF.PDFColumn;
 
   export type currency = "CHF" | "EUR";
   export type size = "A4" | "A6/5";
@@ -160,10 +162,13 @@ module SwissQRBill {
       }
 
       stream.on("finish", ev => {
+
         if(typeof callback === "function"){
           callback(this);
         }
-        super.emit("finish", ev);
+
+        this.emit("finish", ev);
+
       });
 
       if(data === undefined || typeof data !== "object"){
@@ -222,7 +227,7 @@ module SwissQRBill {
         }
       }
 
-      this.info.Author = "SwissQRBill";
+      this.info.Producer = this.info.Creator = this.info.Author = "SwissQRBill";
 
       this.addPage();
 
