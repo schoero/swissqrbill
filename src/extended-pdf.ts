@@ -8,7 +8,7 @@ module ExtendedPDF {
     width?: number,
     x?: number,
     y?: number,
-    padding?: number,
+    padding?: number | [number, number, number, number],
     lineWidth?: number,
     font?: string,
     fontSize?: number
@@ -19,13 +19,16 @@ module ExtendedPDF {
     fillColor?: string,
     strokeColor?: string,
     height?: number,
+    padding?: number | [number, number, number, number],
     font?: string,
-    fontSize?: number
+    fontSize?: number,
+    header?: boolean
   }
 
   export interface PDFColumn {
     text: string | number | boolean,
     width?: number,
+    padding?: number | [number, number, number, number],
     fillColor?: string,
     strokeColor?: string,
     font?: string,
@@ -59,29 +62,26 @@ module ExtendedPDF {
       const tableWidth = table.width !== undefined ? table.width : this.page.width - tableX - this.page.margins.right;
       const amountOfRows = table.rows.length;
       const lineWidth = table.lineWidth !== undefined ? table.lineWidth : 0.3;
-      const padding = table.padding !== undefined ? table.padding : 5;
+      const defaultPadding = 5;
+      const basePadding = table.padding !== undefined ? table.padding : defaultPadding;
       const baseFontSize = table.fontSize !== undefined ? table.fontSize: 11;
       const baseFont = table.font !== undefined ? table.font: "Helvetica";
 
       let rowY = tableY;
-      table.rows.forEach((row, rowIndex) => {
+      rowLoop: for(let rowIndex = 0; rowIndex < table.rows.length; rowIndex ++){
+
+        const row = table.rows[rowIndex];
 
         const amountOfColumns = row.columns.length;
         const columnWidth = tableWidth / amountOfColumns;
-        const rowHeight = row.height !== undefined ? row.height : 20;
         const rowNumber = rowIndex + 1;
+
+        let rowHeight = row.height !== undefined ? row.height : 20;
+        let padding = row.padding !== undefined ? row.padding : basePadding;
         let fillColor = row.fillColor !== undefined ? row.fillColor : "";
         let strokeColor = row.strokeColor !== undefined ? row.strokeColor : "";
         let fontSize = row.fontSize !== undefined ? row.fontSize : baseFontSize;
         let font = row.font !== undefined ? row.font : baseFont;
-
-
-        //-- Insert new page
-
-        if(rowY + rowHeight >= this.page.height - this.page.margins.bottom){
-          this.addPage();
-          rowY = this.page.margins.top;
-        }
 
 
         //-- Move to start position
@@ -93,8 +93,9 @@ module ExtendedPDF {
         //-- Draw columns
 
         let columnX = tableX;
-        row.columns.forEach((column, columnIndex) => {
+        for(let columnIndex = 0; columnIndex < row.columns.length; columnIndex++){
 
+          const column = row.columns[columnIndex];
           const columnNumber = columnIndex + 1;
           let remainingColumns = row.columns.length;
 
@@ -113,6 +114,7 @@ module ExtendedPDF {
           //-- Set properties
 
           const columnWidth = column.width !== undefined ? column.width : (tableWidth - widthUsed) / (remainingColumns);
+          padding = column.padding !== undefined ? column.padding : padding;
           fillColor = column.fillColor !== undefined ? column.fillColor : fillColor;
           strokeColor = column.strokeColor !== undefined ? column.strokeColor : strokeColor;
           fontSize = column.fontSize !== undefined ? fontSize = column.fontSize : fontSize;
@@ -125,12 +127,70 @@ module ExtendedPDF {
 
           const textOptions: PDFKit.Mixins.TextOptions = {
             width: columnWidth,
-            height: rowHeight,
-            baseline: "middle"
+            lineBreak: true,
+            baseline: "top"
           };
 
           if(column.textOptions !== undefined){
             Object.assign(textOptions, column.textOptions);
+          }
+
+
+          this.moveTo(columnX + columnWidth, rowY);
+
+          this.font(font);
+          this.fontSize(fontSize);
+
+
+          //-- Set padding
+
+          let paddings = {
+            top: defaultPadding,
+            right: defaultPadding,
+            bottom: defaultPadding,
+            left: defaultPadding
+          };
+
+          if(typeof padding === "object" && padding.length === 4){
+            paddings = { top: padding[0], right: padding[1], bottom: padding[2], left: padding[3] };
+          } else if(typeof padding === "number"){
+            paddings = {
+              top: padding,
+              right: padding,
+              bottom: padding,
+              left: padding
+            };
+          }
+
+          const columnHeight = this.heightOfString(column.text + "", textOptions) + paddings.top + paddings.bottom;
+
+          if(columnHeight > rowHeight){
+            rowHeight = columnHeight;
+          }
+
+          textOptions.height = rowHeight;
+
+
+          //-- Check for page overflow
+
+          if(rowY + rowHeight >= this.page.height - this.page.margins.bottom){
+
+
+            //-- Insert new page
+
+            this.addPage();
+            rowY = this.y;
+
+
+            //-- Insert header
+
+            for(const headerRow of table.rows){
+              if(headerRow.header === true){
+                table.rows.splice(rowIndex, 0, headerRow, headerRow);
+                continue rowLoop;
+              }
+            }
+
           }
 
 
@@ -143,22 +203,19 @@ module ExtendedPDF {
             .strokeColor(strokeColor)
             .fillAndStroke();
 
-          this.moveTo(columnX + columnWidth, rowY);
 
-          this.font(font);
-          this.fontSize(fontSize);
           this.fillColor("black")
-            .fillOpacity(1)
-            .text(column.text + "", columnX + padding, rowY + (padding / 2) + (rowHeight / 2), textOptions);
+            .fillOpacity(1);
 
+          this.text(column.text + "", columnX + paddings.left, rowY + paddings.top, textOptions);
 
           columnX = columnX + columnWidth;
 
-        });
+        }
 
         rowY = rowY + rowHeight;
 
-      });
+      }
 
       return this;
 
@@ -189,7 +246,6 @@ module ExtendedPDF {
     public mmToPoints(mm: number): number {
       return Math.round(mm * 2.83465);
     }
-
 
   }
 

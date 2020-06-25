@@ -139,6 +139,7 @@ Adds the QR Bill to the bottom of the current page if there is enough space, oth
   - **font** `string` font of the text inside the table *optional*<br/>
   - **fontSize** `number` font size of the text inside the table *optional*<br/>
   - **rows** `array` of rows *mandatory*
+    - **header** `boolean` A header row gets inserted automatically on new pages. Only one header row is allowed. *optional*<br/>
     - **fillColor** `string` background color of the row *optional*<br/>
     - **strokeColor** `string` border color of the row *optional*<br/>
     - **height** `height` height of the row *optional*<br/>
