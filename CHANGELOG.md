@@ -5,11 +5,11 @@
   * Tables
     - Added new header property on table rows to automatically insert a header row on new pages.
     - Table row height is now automatically calculated if not otherwise defined.
-    - Added padding option to rows and cells.
+    - Added padding property to rows and cells.
   * Events
     - Added new beforeEnd event that could be used to add page numbers.
     - Added new pageAdded event that could be used to add a header to the pages.
-  * Renamed `debitor` option to `debtor`.
+  * Renamed `debitor` property to `debtor`.
   * Improved documentation.
   * TypeScript declaration improvements.
   * Fixed typos in examples.
