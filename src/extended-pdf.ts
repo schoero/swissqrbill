@@ -8,7 +8,7 @@ module ExtendedPDF {
     width?: number,
     x?: number,
     y?: number,
-    padding?: number | [number, number, number, number],
+    padding?: number | [number, number?, number?, number?],
     lineWidth?: number,
     font?: string,
     fontSize?: number
@@ -19,7 +19,7 @@ module ExtendedPDF {
     fillColor?: string,
     strokeColor?: string,
     height?: number,
-    padding?: number | [number, number, number, number],
+    padding?: number | [number, number?, number?, number?],
     font?: string,
     fontSize?: number,
     header?: boolean
@@ -28,7 +28,7 @@ module ExtendedPDF {
   export interface PDFColumn {
     text: string | number | boolean,
     width?: number,
-    padding?: number | [number, number, number, number],
+    padding?: number | [number, number?, number?, number?],
     fillColor?: string,
     strokeColor?: string,
     font?: string,
@@ -135,7 +135,6 @@ module ExtendedPDF {
             Object.assign(textOptions, column.textOptions);
           }
 
-
           this.moveTo(columnX + columnWidth, rowY);
 
           this.font(font);
@@ -151,8 +150,11 @@ module ExtendedPDF {
             left: defaultPadding
           };
 
-          if(typeof padding === "object" && padding.length === 4){
-            paddings = { top: padding[0], right: padding[1], bottom: padding[2], left: padding[3] };
+          if(typeof padding === "object"){
+            if(padding[0] !== undefined){ paddings.top = padding[0]; }
+            if(padding[1] !== undefined){ paddings.right = padding[1]; }
+            if(padding[2] !== undefined){ paddings.bottom = padding[2]; }
+            if(padding[3] !== undefined){ paddings.left = padding[3]; }
           } else if(typeof padding === "number"){
             paddings = {
               top: padding,
