@@ -1,22 +1,21 @@
 # SwissQRBill
-
 <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/LICENSE">
-  <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen">
+  <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen&style=flat-square">
 </a>
 <a href="https://www.npmjs.com/package/swissqrbill">
-  <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen">
+  <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen&style=flat-square">
 </a>
 <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/issues">
-  <img alt="Issues" src="https://img.shields.io/github/issues-raw/rogerrrrrrrs/swissqrbill">
+  <img alt="Issues" src="https://img.shields.io/github/issues-raw/rogerrrrrrrs/swissqrbill?style=flat-square">
 </a>
 <a href="https://www.npmjs.com/package/swissqrbill">
-  <img alt="Dependencies" src="https://img.shields.io/david/rogerrrrrrrs/swissqrbill">
+  <img alt="Dependencies" src="https://img.shields.io/david/rogerrrrrrrs/swissqrbill?style=flat-square">
 </a>
 <a href="https://www.npmjs.com/package/swissqrbill">
-  <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill">
+  <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
 </a>
 <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/actions?query=workflow%3ACI">
-  <img alt="CI" src="https://github.com/Rogerrrrrrrs/SwissQRBill/workflows/CI/badge.svg?branch=development">
+  <img alt="CI" src="https://img.shields.io/github/workflow/status/Rogerrrrrrrs/SwissQRBill/CI?style=flat-square">
 </a>
 
 With SwissQRBill you can easily generate the new QR Code payment slips that will be introduced in Switzerland on June 30, 2020.
