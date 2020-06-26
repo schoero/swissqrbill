@@ -134,7 +134,7 @@ Adds the QR Bill to the bottom of the current page if there is enough space, oth
   - **width** `number` width of whole table *optional*<br/>
   - **x** `number` horizontal start position of the table *optional*<br/>
   - **y** `number` vertical start position of the table *optional*<br/>
-  - **padding** `number` cell padding of the table cells *optional*<br/>
+  - **padding** `number | [top: number, right: number, bottom: number, left: number]` cell padding of the table cells *optional*<br/>
   - **lineWidth** `number` width of the border lines *optional*<br/>
   - **font** `string` font of the text inside the table *optional*<br/>
   - **fontSize** `number` font size of the text inside the table *optional*<br/>
@@ -142,6 +142,7 @@ Adds the QR Bill to the bottom of the current page if there is enough space, oth
     - **header** `boolean` A header row gets inserted automatically on new pages. Only one header row is allowed. *optional*<br/>
     - **fillColor** `string` background color of the row *optional*<br/>
     - **strokeColor** `string` border color of the row *optional*<br/>
+    - **padding** `number | [top: number, right: number, bottom: number, left: number]` cell padding of the table cells inside the row *optional*<br/>
     - **height** `height` height of the row *optional*<br/>
     - **font** `string` font of the text inside the row *optional*<br/>
     - **fontSize** `number` font size of the text inside the row *optional*<br/>
@@ -150,6 +151,7 @@ Adds the QR Bill to the bottom of the current page if there is enough space, oth
       - **width** `number` width of the cell *optional*<br/>
       - **fillColor** `string` background color of the cell *optional*<br/>
       - **strokeColor** `string` border color of the cell *optional*<br/>
+      - **padding** `number | [top: number, right: number, bottom: number, left: number]` cell padding of the table cell *optional*<br/>
       - **font** `string` font of the text inside the cell *optional*<br/>
       - **fontSize** `number` font size of the text inside the cell *optional*<br/>
       - **textOptions** `object` same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling) *optional*<br/>
