@@ -769,7 +769,7 @@ module SwissQRBill {
 
       if(this._data.amount !== undefined){
         if(typeof this._data.amount !== "number"){ throw new Error("Amount must be a number."); }
-        if(this._data.amount.toString().length > 12){ throw new Error("Amount must be a maximum of 12 digits."); }
+        if(this._data.amount.toFixed(2).toString().length > 12){ throw new Error("Amount must be a maximum of 12 digits."); }
       }
 
 
@@ -974,7 +974,7 @@ module SwissQRBill {
       //-- Amount
 
       if(this._data.amount !== undefined){
-        qrString += this._data.amount + "\n";
+        qrString += this._data.amount.toFixed(2) + "\n";
       } else {
         qrString += "\n";
       }
