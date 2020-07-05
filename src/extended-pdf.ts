@@ -1,4 +1,4 @@
-import * as PDFKit from "pdfkit";
+import PDFDocument from "pdfkit";
 import svgpath from "svgpath";
 
 module ExtendedPDF {
@@ -36,7 +36,7 @@ module ExtendedPDF {
     textOptions?: PDFKit.Mixins.TextOptions
   }
 
-  export class PDF extends PDFKit.default {
+  export class PDF extends PDFDocument {
 
     constructor(options?: PDFKit.PDFDocumentOptions){
 
