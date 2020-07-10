@@ -5,8 +5,7 @@
   "main": "./lib/node",
   "browser": "./lib/browser",
   "files": [
-    "lib/**/*",
-    "index.js"
+    "./lib/*"
   ],
   "scripts": {
     "test": "tsc && cd tests && sh run.sh",
@@ -47,6 +46,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "@types/blob-stream": "^0.1.30",
     "blob-stream": "^0.1.3",
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",
