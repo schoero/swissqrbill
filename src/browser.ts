@@ -51,7 +51,7 @@ module SwissQRBill {
         // or get a blob URL for display in the browser
         const url = stream.toBlobURL("application/pdf");
 
-        console.log("url:" , url);
+        console.log("url:" , url, blob);
 
         if(typeof callback === "function"){
           callback(this);

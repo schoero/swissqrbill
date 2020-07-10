@@ -1,4 +1,3 @@
-/// <reference types="pdfkit" />
 import ExtendedPDF from "./extended-pdf";
 export interface data {
     currency: currency;

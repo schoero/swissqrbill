@@ -1,4 +1,5 @@
-import PDFDocument from "pdfkit";
+/// <reference path="../pdfkit.d.ts" />
+import PDFDocument from "pdfkit/js/pdfkit.standalone";
 declare module ExtendedPDF {
     interface PDFTable {
         rows: Array<PDFRow>;
