@@ -1,9 +1,5 @@
-import { parse } from "svg-parser";
-import QRCode from "qrcode-svg";
-import IBAN from "iban";
-import blobStream from "blob-stream";
 import * as SwissQRBill_ from "./swissqrbill";
-
+import BlobStream_ from "blob-stream";
 
 module SwissQRBill {
 
@@ -18,12 +14,14 @@ module SwissQRBill {
   export import size = SwissQRBill_.size;
   export import languages = SwissQRBill_.languages;
 
+  export import BlobStream = BlobStream_;
+
   export class PDF extends SwissQRBill_.PDF {
 
-    constructor(data: data, outputPath: string, options?: options)
-    constructor(data: data, outputPath: string, options?: options, callback?: Function)
-    constructor(data: data, outputPath: string, callback?: Function)
-    constructor(data: data, outputPath: string, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
+    constructor(data: data, writeableStream: BlobStream.IBlobStream, options?: options)
+    constructor(data: data, writeableStream: BlobStream.IBlobStream, options?: options, callback?: Function)
+    constructor(data: data, writeableStream: BlobStream.IBlobStream, callback?: Function)
+    constructor(data: data, writeableStream: BlobStream.IBlobStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
 
       let callback: Function | undefined = undefined;
       let options: options | undefined = undefined;
@@ -42,16 +40,9 @@ module SwissQRBill {
 
       super(data, options);
 
-      const stream = super.pipe(blobStream());
+      const stream = super.pipe(writeableStream);
 
       stream.on("finish", ev => {
-
-        const blob = stream.toBlob("application/pdf");
-
-        // or get a blob URL for display in the browser
-        const url = stream.toBlobURL("application/pdf");
-
-        console.log("url:" , url, blob);
 
         if(typeof callback === "function"){
           callback(this);
@@ -66,4 +57,4 @@ module SwissQRBill {
   }
 }
 
-export = SwissQRBill;
+export default SwissQRBill;

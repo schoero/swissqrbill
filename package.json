@@ -10,7 +10,7 @@
   "scripts": {
     "test": "tsc && cd tests && sh run.sh",
     "test-windows": "tsc && cd tests && call run-windows.bat",
-    "build": "tsc && webpack --mode development"
+    "build": "sudo tsc && webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "@types/svg-parser": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "@types/blob-stream": "^0.1.30",
     "eslint": "^6.8.0",
     "ts-loader": "^8.0.0",
     "typescript": "^3.9.6",
@@ -46,7 +47,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@types/blob-stream": "^0.1.30",
     "blob-stream": "^0.1.3",
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",

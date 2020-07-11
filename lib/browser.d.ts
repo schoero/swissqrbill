@@ -1,4 +1,5 @@
 import * as SwissQRBill_ from "./swissqrbill";
+import BlobStream_ from "blob-stream";
 declare module SwissQRBill {
     export import data = SwissQRBill_.data;
     export import debtor = SwissQRBill_.debtor;
@@ -10,10 +11,11 @@ declare module SwissQRBill {
     export import currency = SwissQRBill_.currency;
     export import size = SwissQRBill_.size;
     export import languages = SwissQRBill_.languages;
+    export import BlobStream = BlobStream_;
     class PDF extends SwissQRBill_.PDF {
-        constructor(data: data, outputPath: string, options?: options);
-        constructor(data: data, outputPath: string, options?: options, callback?: Function);
-        constructor(data: data, outputPath: string, callback?: Function);
+        constructor(data: data, writeableStream: BlobStream.IBlobStream, options?: options);
+        constructor(data: data, writeableStream: BlobStream.IBlobStream, options?: options, callback?: Function);
+        constructor(data: data, writeableStream: BlobStream.IBlobStream, callback?: Function);
     }
 }
-export = SwissQRBill;
+export default SwissQRBill;

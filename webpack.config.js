@@ -16,5 +16,6 @@ module.exports = {
   output: {
     filename: "browser.js",
     path: __dirname + "/lib",
+    libraryTarget: "umd"
   },
 };

@@ -1,3 +1,5 @@
+/// <reference types="node" />
+import fs from "fs";
 import * as SwissQRBill_ from "./swissqrbill";
 declare module SwissQRBill {
     export import data = SwissQRBill_.data;
@@ -12,8 +14,11 @@ declare module SwissQRBill {
     export import languages = SwissQRBill_.languages;
     class PDF extends SwissQRBill_.PDF {
         constructor(data: data, outputPath: string, options?: options);
+        constructor(data: data, writeableStream: fs.WriteStream, options?: options);
         constructor(data: data, outputPath: string, options?: options, callback?: Function);
+        constructor(data: data, writeableStream: fs.WriteStream, options?: options, callback?: Function);
         constructor(data: data, outputPath: string, callback?: Function);
+        constructor(data: data, writeableStream: fs.WriteStream, callback?: Function);
     }
 }
 export = SwissQRBill;
