@@ -1,5 +1,5 @@
 import * as SwissQRBill_ from "./swissqrbill";
-import BlobStream_ from "blob-stream";
+import BlobStream from "blob-stream";
 
 module SwissQRBill {
 
@@ -14,7 +14,7 @@ module SwissQRBill {
   export import size = SwissQRBill_.size;
   export import languages = SwissQRBill_.languages;
 
-  export import BlobStream = BlobStream_;
+  export import blobStream = BlobStream;
 
   export class PDF extends SwissQRBill_.PDF {
 
