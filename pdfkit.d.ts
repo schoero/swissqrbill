@@ -68,32 +68,32 @@ declare namespace PDFKit.Mixins {
     type ColorValue = string | PDFGradient | [number, number, number] | [number, number, number, number];
 
     // The winding / filling rule accepted by PDFKit:
-    type RuleValue = 'even-odd' | 'evenodd' | 'non-zero' | 'nonzero';
+    type RuleValue = "even-odd" | "evenodd" | "non-zero" | "nonzero";
 
     // Text option opentype features as listed at https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
     type OpenTypeFeatures =
-        | 'aalt' | 'abvf' | 'abvm' | 'abvs' | 'afrc' | 'akhn' | 'blwf' | 'blwm' | 'blws' | 'calt' | 'case'
-        | 'cfar' | 'cjct' | 'clig' | 'cpct' | 'cpsp' | 'cswh' | 'curs' | 'cv01' | 'cv02' | 'cv03' | 'cv04'
-        | 'cv05' | 'cv06' | 'cv07' | 'cv08' | 'cv09' | 'cv10' | 'cv11' | 'cv12' | 'cv13' | 'cv14' | 'cv15'
-        | 'cv16' | 'cv17' | 'cv18' | 'cv19' | 'cv20' | 'cv21' | 'cv22' | 'cv23' | 'cv24' | 'cv25' | 'cv26'
-        | 'cv27' | 'cv28' | 'cv29' | 'cv30' | 'cv31' | 'cv32' | 'cv33' | 'cv34' | 'cv35' | 'cv36' | 'cv37'
-        | 'cv38' | 'cv39' | 'cv40' | 'cv41' | 'cv42' | 'cv43' | 'cv44' | 'cv45' | 'cv46' | 'cv47' | 'cv48'
-        | 'cv49' | 'cv50' | 'cv51' | 'cv52' | 'cv53' | 'cv54' | 'cv55' | 'cv56' | 'cv57' | 'cv58' | 'cv59'
-        | 'cv60' | 'cv61' | 'cv62' | 'cv63' | 'cv64' | 'cv65' | 'cv66' | 'cv67' | 'cv68' | 'cv69' | 'cv70'
-        | 'cv71' | 'cv72' | 'cv73' | 'cv74' | 'cv75' | 'cv76' | 'cv77' | 'cv78' | 'cv79' | 'cv80' | 'cv81'
-        | 'cv82' | 'cv83' | 'cv84' | 'cv85' | 'cv86' | 'cv87' | 'cv88' | 'cv89' | 'cv90' | 'cv91' | 'cv92'
-        | 'cv93' | 'cv94' | 'cv95' | 'cv96' | 'cv97' | 'cv98' | 'cv99' | 'c2pc' | 'c2sc' | 'dist' | 'ccmp'
-        | 'dlig' | 'dnom' | 'dtls' | 'expt' | 'falt' | 'fin2' | 'fin3' | 'fina' | 'flac' | 'frac' | 'fwid'
-        | 'half' | 'haln' | 'halt' | 'hist' | 'hkna' | 'hlig' | 'hngl' | 'hojo' | 'hwid' | 'init' | 'isol'
-        | 'ital' | 'jalt' | 'jp78' | 'jp83' | 'jp90' | 'jp04' | 'kern' | 'lfbd' | 'liga' | 'ljmo' | 'lnum'
-        | 'locl' | 'ltra' | 'ltrm' | 'mark' | 'med2' | 'medi' | 'mgrk' | 'mkmk' | 'mset' | 'nalt' | 'nlck'
-        | 'nukt' | 'numr' | 'onum' | 'opbd' | 'ordn' | 'ornm' | 'palt' | 'pcap' | 'pkna' | 'pnum' | 'pref'
-        | 'pres' | 'pstf' | 'psts' | 'pwid' | 'qwid' | 'rand' | 'rclt' | 'rkrf' | 'rlig' | 'rphf' | 'rtbd'
-        | 'rtla' | 'rtlm' | 'ruby' | 'rvrn' | 'salt' | 'sinf' | 'size' | 'smcp' | 'smpl' | 'ss01' | 'ss02'
-        | 'ss03' | 'ss04' | 'ss05' | 'ss06' | 'ss07' | 'ss08' | 'ss09' | 'ss10' | 'ss11' | 'ss12' | 'ss13'
-        | 'ss14' | 'ss15' | 'ss16' | 'ss17' | 'ss18' | 'ss19' | 'ss20' | 'ssty' | 'stch' | 'subs' | 'sups'
-        | 'swsh' | 'titl' | 'tjmo' | 'tnam' | 'tnum' | 'trad' | 'twid' | 'unic' | 'valt' | 'vatu' | 'vert'
-        | 'vhal' | 'vjmo' | 'vkna' | 'vkrn' | 'vpal' | 'vrt2' | 'vrtr' | 'zero';
+        | "aalt" | "abvf" | "abvm" | "abvs" | "afrc" | "akhn" | "blwf" | "blwm" | "blws" | "calt" | "case"
+        | "cfar" | "cjct" | "clig" | "cpct" | "cpsp" | "cswh" | "curs" | "cv01" | "cv02" | "cv03" | "cv04"
+        | "cv05" | "cv06" | "cv07" | "cv08" | "cv09" | "cv10" | "cv11" | "cv12" | "cv13" | "cv14" | "cv15"
+        | "cv16" | "cv17" | "cv18" | "cv19" | "cv20" | "cv21" | "cv22" | "cv23" | "cv24" | "cv25" | "cv26"
+        | "cv27" | "cv28" | "cv29" | "cv30" | "cv31" | "cv32" | "cv33" | "cv34" | "cv35" | "cv36" | "cv37"
+        | "cv38" | "cv39" | "cv40" | "cv41" | "cv42" | "cv43" | "cv44" | "cv45" | "cv46" | "cv47" | "cv48"
+        | "cv49" | "cv50" | "cv51" | "cv52" | "cv53" | "cv54" | "cv55" | "cv56" | "cv57" | "cv58" | "cv59"
+        | "cv60" | "cv61" | "cv62" | "cv63" | "cv64" | "cv65" | "cv66" | "cv67" | "cv68" | "cv69" | "cv70"
+        | "cv71" | "cv72" | "cv73" | "cv74" | "cv75" | "cv76" | "cv77" | "cv78" | "cv79" | "cv80" | "cv81"
+        | "cv82" | "cv83" | "cv84" | "cv85" | "cv86" | "cv87" | "cv88" | "cv89" | "cv90" | "cv91" | "cv92"
+        | "cv93" | "cv94" | "cv95" | "cv96" | "cv97" | "cv98" | "cv99" | "c2pc" | "c2sc" | "dist" | "ccmp"
+        | "dlig" | "dnom" | "dtls" | "expt" | "falt" | "fin2" | "fin3" | "fina" | "flac" | "frac" | "fwid"
+        | "half" | "haln" | "halt" | "hist" | "hkna" | "hlig" | "hngl" | "hojo" | "hwid" | "init" | "isol"
+        | "ital" | "jalt" | "jp78" | "jp83" | "jp90" | "jp04" | "kern" | "lfbd" | "liga" | "ljmo" | "lnum"
+        | "locl" | "ltra" | "ltrm" | "mark" | "med2" | "medi" | "mgrk" | "mkmk" | "mset" | "nalt" | "nlck"
+        | "nukt" | "numr" | "onum" | "opbd" | "ordn" | "ornm" | "palt" | "pcap" | "pkna" | "pnum" | "pref"
+        | "pres" | "pstf" | "psts" | "pwid" | "qwid" | "rand" | "rclt" | "rkrf" | "rlig" | "rphf" | "rtbd"
+        | "rtla" | "rtlm" | "ruby" | "rvrn" | "salt" | "sinf" | "size" | "smcp" | "smpl" | "ss01" | "ss02"
+        | "ss03" | "ss04" | "ss05" | "ss06" | "ss07" | "ss08" | "ss09" | "ss10" | "ss11" | "ss12" | "ss13"
+        | "ss14" | "ss15" | "ss16" | "ss17" | "ss18" | "ss19" | "ss20" | "ssty" | "stch" | "subs" | "sups"
+        | "swsh" | "titl" | "tjmo" | "tnam" | "tnum" | "trad" | "twid" | "unic" | "valt" | "vatu" | "vert"
+        | "vhal" | "vjmo" | "vkna" | "vkrn" | "vpal" | "vrt2" | "vrtr" | "zero";
 
     interface PDFColor {
         fillColor(color: ColorValue, opacity?: number): this;
@@ -123,8 +123,8 @@ declare namespace PDFKit.Mixins {
         /** Two elements array specifying dimensions(w,h)  */
         fit?: [number, number];
         cover?: [number, number];
-        align?: 'center' | 'right';
-        valign?: 'center' | 'bottom';
+        align?: "center" | "right";
+        valign?: "center" | "bottom";
         link?: AnnotationOption;
         goTo?: AnnotationOption;
         destination?: string;
@@ -177,9 +177,9 @@ declare namespace PDFKit.Mixins {
         oblique?: boolean | number;
         /** the alignment of the text (center, justify, left, right) */
         //TODO check this
-        align?: 'center' | 'justify' | 'left' | 'right' | string;
+        align?: "center" | "justify" | "left" | "right" | string;
         /** the vertical alignment of the text with respect to its insertion point */
-        baseline?: number | 'svg-middle' | 'middle' | 'svg-central' | 'bottom' | 'ideographic' | 'alphabetic' | 'mathematical' | 'hanging' | 'top';
+        baseline?: number | "svg-middle" | "middle" | "svg-central" | "bottom" | "ideographic" | "alphabetic" | "mathematical" | "hanging" | "top";
         /** an array of OpenType feature tags to apply. If not provided, a set of defaults is used. */
         features?: OpenTypeFeatures[];
     }
@@ -264,7 +264,7 @@ declare namespace PDFKit {
     }
 }
 
-declare module 'pdfkit/js/data' {
+declare module "pdfkit/js/data" {
     var PDFKitData: PDFKit.PDFData;
     export = PDFKitData;
 }
@@ -287,7 +287,7 @@ declare namespace PDFKit {
         fillingForms?: boolean;
         contentAccessibility?: boolean;
         documentAssembly?: boolean;
-        printing?: 'lowResolution' | 'highResolution';
+        printing?: "lowResolution" | "highResolution";
     }
 
     interface PDFDocumentOptions {
@@ -296,12 +296,12 @@ declare namespace PDFKit {
         userPassword?: string;
         ownerPassword?: string;
         permissions?: DocumentPermissions;
-        pdfVersion?: '1.3' | '1.4' | '1.5' | '1.6' | '1.7' | '1.7ext3';
+        pdfVersion?: "1.3" | "1.4" | "1.5" | "1.6" | "1.7" | "1.7ext3";
         autoFirstPage?: boolean;
         size?: number[] | string;
         margin?: number;
         margins?: { top: number; left: number; bottom: number; right: number };
-        layout?: 'portrait' | 'landscape';
+        layout?: "portrait" | "landscape";
 
         bufferPages?: boolean;
     }
@@ -359,17 +359,17 @@ declare namespace PDFKit {
     }
 }
 
-declare module 'pdfkit' {
+declare module "pdfkit" {
     var doc: PDFKit.PDFDocument;
     export = doc;
 }
 
-declare module 'pdfkit/js/pdfkit.standalone' {
+declare module "pdfkit/js/pdfkit.standalone" {
     var doc: PDFKit.PDFDocument;
     export = doc;
 }
 
-declare module 'pdfkit/js/gradient' {
+declare module "pdfkit/js/gradient" {
     var gradient: {
         PDFGradient: PDFKit.PDFGradient;
         PDFLinearGradient: PDFKit.PDFLinearGradient;
@@ -409,7 +409,7 @@ declare namespace PDFKit {
     }
 }
 
-declare module 'pdfkit/js/page' {
+declare module "pdfkit/js/page" {
     var PDFKitPage: PDFKit.PDFPage;
 
     export = PDFKitPage;
@@ -436,38 +436,38 @@ declare namespace PDFKit {
     }
 }
 
-declare module 'pdfkit/js/reference' {
+declare module "pdfkit/js/reference" {
     var PDFKitReference: PDFKit.PDFKitReference;
 
     export = PDFKitReference;
 }
 
-declare module 'pdfkit/js/mixins/annotations' {
+declare module "pdfkit/js/mixins/annotations" {
     var PDFKitAnnotation: PDFKit.Mixins.PDFAnnotation;
     export = PDFKitAnnotation;
 }
 
-declare module 'pdfkit/js/mixins/color' {
+declare module "pdfkit/js/mixins/color" {
     var PDFKitColor: PDFKit.Mixins.PDFColor;
     export = PDFKitColor;
 }
 
-declare module 'pdfkit/js/mixins/fonts' {
+declare module "pdfkit/js/mixins/fonts" {
     var PDFKitFont: PDFKit.Mixins.PDFFont;
     export = PDFKitFont;
 }
 
-declare module 'pdfkit/js/mixins/images' {
+declare module "pdfkit/js/mixins/images" {
     var PDFKitImage: PDFKit.Mixins.PDFImage;
     export = PDFKitImage;
 }
 
-declare module 'pdfkit/js/mixins/text' {
+declare module "pdfkit/js/mixins/text" {
     var PDFKitText: PDFKit.Mixins.PDFText;
     export = PDFKitText;
 }
 
-declare module 'pdfkit/js/mixins/vector' {
+declare module "pdfkit/js/mixins/vector" {
     var PDFKitVector: PDFKit.Mixins.PDFVector;
     export = PDFKitVector;
 }

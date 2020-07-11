@@ -5,7 +5,8 @@
   "main": "./lib/node",
   "browser": "./lib/browser",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "pdfkit.d.ts"
   ],
   "scripts": {
     "test": "tsc && cd tests && sh run.sh",
