@@ -196,7 +196,7 @@ const table = {
 
 ### blobStream()
  Creates a new writeableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
- Returns a [BlobStream](#BlobStream) instance.
+ Returns a [BlobStream](#BlobStream-1) instance.
 > **Warning:** This method does only exist when executed inside a browser
 
 <br/>
