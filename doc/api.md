@@ -17,8 +17,8 @@
   - [beforeEnd](#event-beforeEnd)
 
 - BlobStream
-  - [toBlob(type)](#toBlobtype)
-  - [toBlobURL(type)](#toBlobURL)
+  - [toBlob(type)](#toblobtype)
+  - [toBlobURL(type)](#tobloburltype)
 
 <br/>
 
