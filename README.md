@@ -17,7 +17,9 @@
 <a href="https://github.com/Rogerrrrrrrs/SwissQRBill/actions?query=workflow%3ACI">
   <img alt="CI" src="https://img.shields.io/github/workflow/status/Rogerrrrrrrs/SwissQRBill/CI?style=flat-square">
 </a>
+
 <br/>
+
 With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should gradually replace the current payment slips. In addition to the payment section, you can generate a complete invoice with SwissQRBill by inserting your own content above the payment section.
 <br/>
 [<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
