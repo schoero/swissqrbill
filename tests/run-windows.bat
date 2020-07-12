@@ -41,3 +41,5 @@ echo "callback-with-options"
   call node callback-with-options
 echo "event"
   call node event
+echo "stream"
+  call node stream

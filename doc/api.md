@@ -4,28 +4,37 @@
 
 - Constructor
   - [SwissQRBill.PDF(data, outputPath[, options], callback)](#swissqrbillpdfdata-outputpath-options-callback)
+  - [SwissQRBill.PDF(data, writeableStream[, options], callback)](#swissqrbillpdfdata-writeablestream-options-callback)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
   - [mmToPoints(mm)](#mmtopointsmm)
   - [addTable(table)](#addtabletable)
+  - [blobStream()](#blobStream)
 - Events
   - [finish](#event-finish)
   - [pageAdded](#event-pageadded)
   - [beforeEnd](#event-beforeEnd)
+
+- BlobStream
+  - [toBlob(type)](#toblobtype)
+  - [toBlobURL(type)](#tobloburltype)
 
 <br/>
 
 ## Constructor
 
 ### SwissQRBill.PDF(data, outputPath[, options], callback)
+### SwissQRBill.PDF(data, writeableStream[, options], callback)
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
- - **outputPath** - `string` output path for the generated PDF file, *mandatory*.
+ - **outputPath | writeableStream** - `string` output path for the generated PDF file or `writeableStream` a writeableStream to stream data into. *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
  - **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
-> Note: The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
+> **Note:** The outputPath option is only available in Node.js.
+
+> **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
 
 #### data
 
@@ -115,7 +124,7 @@ However the default values are changed to use the default page size provided in 
 
 ### addQRBill()
 Adds the QR Bill to the bottom of the current page if there is enough space, otherwise it will be added as a standalone A6/5 page.
-> Note: This function is automatically called when the option autoGenerate is set to true.
+> **Note:** This function is automatically called when the option autoGenerate is set to true.
 
 ### mmToPoints(mm)
  - mm - `number` containg the millimeters you want to convert to points.  
@@ -185,6 +194,11 @@ const table = {
 };
 ```
 
+### blobStream()
+ Creates a new writeableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
+ Returns a [BlobStream](#BlobStream-1) instance.
+> **Warning:** This method does only exist when executed inside a browser
+
 <br/>
 
 ## Events
@@ -200,3 +214,20 @@ This can be useful to add a header or footer to the pages as described [here](ht
 ### Event: "beforeEnd"
 The beforeEnd event is emitted right before the file gets finalized.
 This could be used to add page numbers to the pages as described [here](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages).
+
+
+<br/>
+
+## BlobStream
+
+### toBlob(type)
+ - type - `string` [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml) of the streamed data, for example `"application/pdf"`.
+
+ Returns a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+> **Warning:** This method does only exist when executed inside a browser
+
+### toBlobURL(type)
+ - type - `string` [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml) of the streamed data, for example `"application/pdf"`.
+
+ Returns an url with the [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+> **Warning:** This method does only exist when executed inside a browser

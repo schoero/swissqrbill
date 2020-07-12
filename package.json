@@ -1,17 +1,17 @@
 {
   "name": "swissqrbill",
   "version": "1.3.1",
-  "description": "Swiss QR Bill generation in node.js ",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "description": "Swiss QR Bill generation in Node.js and browsers ",
+  "main": "./lib/node",
+  "browser": "./lib/browser",
   "files": [
     "lib/**/*",
-    "index.js"
+    "pdfkit.d.ts"
   ],
   "scripts": {
     "test": "tsc && cd tests && sh run.sh",
     "test-windows": "tsc && cd tests && call run-windows.bat",
-    "build": "tsc"
+    "build": "sudo tsc && webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -35,16 +35,20 @@
   "devDependencies": {
     "@types/iban": "0.0.30",
     "@types/node": "^14.0.0",
-    "@types/pdfkit": "^0.10.5",
     "@types/qrcode": "^1.3.4",
     "@types/qrcode-svg": "^1.1.0",
     "@types/svg-parser": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "@types/blob-stream": "^0.1.30",
     "eslint": "^6.8.0",
-    "typescript": "^3.8.3"
+    "ts-loader": "^8.0.0",
+    "typescript": "^3.9.6",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "blob-stream": "^0.1.3",
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",
     "qrcode-svg": "^1.1.0",

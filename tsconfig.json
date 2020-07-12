@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES6",
+    "lib": ["ES6", "DOM"],
     "module": "commonjs",
     "sourceMap": true,
     "declaration": true,
@@ -10,5 +11,5 @@
     "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./src/browser.ts"]
 }

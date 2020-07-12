@@ -18,7 +18,7 @@
   <img alt="CI" src="https://img.shields.io/github/workflow/status/Rogerrrrrrrs/SwissQRBill/CI?style=flat-square">
 </a>
 
-With SwissQRBill you can easily generate the new QR Code payment slips, which were introduced in Switzerland on June 30, 2020.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should gradually replace the current payment slips. In addition to the payment section, you can generate a complete invoice with SwissQRBill by inserting your own content above the payment section.
 
 [<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
 
@@ -28,6 +28,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips, which we
  * [Features](#features)
  * [Installation](#installation)
  * [Quick start](#quick-start)
+ * [Browser usage](#browser-usage)
  * [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md)
  * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
  * [How to guide to create a complete bill](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
@@ -35,9 +36,9 @@ With SwissQRBill you can easily generate the new QR Code payment slips, which we
 
 ## Features
  - Generates PDF with scalable vector graphics
+ - Works in browser and node
  - Supports german, english, italian and french invoices
  - Supports A4 invoices as well as A6/5 (QR Bill only)
- - Supports empty fields as defined in the [specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
  - Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit)
  - Easy to use
  - Free and open source
@@ -84,6 +85,28 @@ const pdf = new SwissQRBill.PDF(data, "qrbill.pdf", () => {
 
 This will create the above PDF file. You can pass an optional third parameter containing options such as language or size etc. as well as a callback function that gets called right after the file has finished writing.
 A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
+
+<br/>
+
+## Browser usage
+
+To use SwissQRBill inside browsers, you have to pass a writeableStream in the second parameter, instead of the output path. To create a writeableStream in the browser you can use the built in `SwissQRBill.BlobStream()` method.
+
+```js
+const stream = SwissQRBill.BlobStream();
+
+const pdf = new SwissQRBill.PDF(data, stream);
+
+pdf.on("finish", () => {
+  const iframe = document.getElementById("iframe") as HTMLIFrameElement;
+  if(iframe){
+    iframe.src = stream.toBlobURL("application/pdf");
+  }
+  console.log("PDF has been successfully created.");
+});
+```
+
+You can see a fully working example over at https://github.com/Rogerrrrrrrs/SwissQRBill-browser-example.
 
 <br/>
 

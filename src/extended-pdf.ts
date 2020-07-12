@@ -1,4 +1,5 @@
-import PDFDocument from "pdfkit";
+/// <reference path="../pdfkit.d.ts" />
+import PDFDocument from "pdfkit/js/pdfkit.standalone";
 import svgpath from "svgpath";
 
 module ExtendedPDF {
