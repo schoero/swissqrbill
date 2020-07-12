@@ -1,6 +1,11 @@
 
 # Change Log
 
+# [v2.0.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.3.1...v2.0.0) - 12.07.2020
+  * Added browser support
+    - Added new blobStream method
+  * Added possibility to stream the pdf into a buffer
+
 # [v1.3.1](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.3.0...v1.3.1) - 27.06.2020
   * Fixed invalid QR Code field when the second decimal place in amount is a zero
 
