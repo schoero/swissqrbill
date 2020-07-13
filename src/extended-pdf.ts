@@ -53,7 +53,7 @@ module ExtendedPDF {
       }
 
       const tableX = table.x !== undefined ? table.x : this.x;
-      const tableY = table.x !== undefined ? table.x : this.y;
+      const tableY = table.y !== undefined ? table.y : this.y;
       const tableWidth = table.width !== undefined ? table.width : this.page.width - tableX - this.page.margins.right;
       const amountOfRows = table.rows.length;
       const lineWidth = table.lineWidth !== undefined ? table.lineWidth : 0.3;
