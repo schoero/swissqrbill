@@ -187,14 +187,6 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  /**
-   * Adds a new page
-   *
-   * @param {PDFKit.PDFDocumentOptions} [options]
-   * @returns {PDFKit.PDFDocument}
-   * @memberof PDF
-   */
-
   public addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
 
     if(options === undefined){
@@ -210,26 +202,11 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-
-  /**
-   * Finalizes the document
-   *
-   * @returns
-   * @memberof PDF
-   */
-
   public end(): void {
     this.emit("beforeEnd", this);
     return super.end();
   }
 
-
-  /**
-   * Adds the QR Bill to the bottom of the current page.
-   * This function is automatically called when the option autoGenerate is set to true.
-   *
-   * @memberof PDF
-   */
 
   public addQRBill(): void {
 
@@ -249,12 +226,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   * Draws the cutting lines to the the PDF.
-   *
-   * @memberof PDF
-   */
 
   private _drawOutlines(): void {
 
@@ -318,13 +289,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   * Draws the receipt section of the bill to the the PDF.
-   *
-   * @private
-   * @memberof PDF
-   */
 
   private _drawReceipt(): void {
 
@@ -445,13 +409,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   *  Draws the payment part to the the PDF.
-   *
-   * @private
-   * @memberof PDF
-   */
 
   private _drawPaymentPart(): void {
 
@@ -603,14 +560,7 @@ export class PDF extends ExtendedPDF.PDF {
     }
   }
 
-
-  /**
-   * Validates the billing data
-   *
-   * @private
-   * @memberof PDF
-   */
-
+  
   private _validateData(){
 
 
@@ -824,13 +774,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   * Generates the QR Code containing the billing data.
-   *
-   * @private
-   * @memberof PDF
-   */
 
   private _generateQRCode(): void {
 
@@ -1097,15 +1040,6 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  /**
-   * Extracts the path data from the generated QR Code.
-   *
-   * @private
-   * @param {string} qrcodeString string containing the generated QR Code.
-   * @returns {(string | undefined)} returns a string containing only the path data of the generated QR Code if successfull, undefined otherwise.
-   * @memberof PDF
-   */
-
   private _getSVGPathFromQRCodeString(qrcodeString: string): string | undefined {
 
     const svgObject = parse(qrcodeString);
@@ -1143,15 +1077,6 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  /**
-   * Formats the address into a string with new lines that can be written to the PDF file.
-   *
-   * @private
-   * @param {(debtor | creditor)} data creditor or debtor object containing the address.
-   * @returns {string} string containing the formatted address.
-   * @memberof PDF
-   */
-
   private _formatAddress(data: debtor | creditor): string {
     if(data.houseNumber !== undefined) {
       return `${data.name}\n${data.address} ${data.houseNumber}\n${data.zip} ${data.city}`;
@@ -1160,14 +1085,6 @@ export class PDF extends ExtendedPDF.PDF {
     }
   }
 
-
-  /**
-   * Removes line breaks from user provided data.
-   *
-   * @private
-   * @returns {data} object containing the cleaned data.
-   * @memberof PDF
-   */
 
   private _cleanData(): void {
 
@@ -1191,28 +1108,10 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  /**
-   * Removes \n and \r from the passed string.
-   *
-   * @private
-   * @param {string} data string to be escaped.
-   * @returns {string} string without \n and \r.
-   * @memberof PDF
-   */
-
   private _removeLinebreaks(data: string): string {
     return data.replace(/\n/g, "").replace(/\r/g, "");
   }
 
-
-  /**
-   * Formats the amount with spaces and decimals.
-   *
-   * @private
-   * @param {number} amount number to be formatted.
-   * @returns {string} string containing the formatted amount.
-   * @memberof PDF
-   */
 
   private _formatAmount(amount: number): string {
 
@@ -1233,15 +1132,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   * Formats the reference layout according to the specifications.
-   *
-   * @private
-   * @param {string} reference string containing the reference to be formated.
-   * @returns {string} string containing the formatted reference.
-   * @memberof PDF
-   */
 
   private _formatReference(reference: string): string {
 
@@ -1268,15 +1158,6 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  /**
-   * Formats the IBAN number according to the defintions.
-   *
-   * @private
-   * @param {string} iban string containing the IBAN number.
-   * @returns {(string | undefined)} string containing the formatted IBAN number if successfull, undefined otherwise.
-   * @memberof PDF
-   */
-
   private _formatIBAN(iban: string): string | undefined {
 
     iban = iban.replace(/ /g, "");
@@ -1292,15 +1173,6 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  /**
-   * Checks if the provided IBAN is a QR-IBAN or a normal IBAN.
-   *
-   * @private
-   * @param {string} iban string containing the IBAN to be checked.
-   * @returns {boolean} boolean Whether the IBAN is a QR-IBAN or not.
-   * @memberof PDF
-   */
-
   private _isQRIBAN(iban: string): boolean {
 
     const QRIID = iban.substr(4, 5);
@@ -1309,15 +1181,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   * Checks if the provided reference matches a QR reference.
-   *
-   * @private
-   * @param {string} reference string containing the reference number.
-   * @returns {boolean} boolean if the reference is a QR reference.
-   * @memberof PDF
-   */
 
   private _isQRReference(reference: string): boolean {
 
@@ -1337,17 +1200,6 @@ export class PDF extends ExtendedPDF.PDF {
 
   }
 
-
-  /**
-   * Draws a rectangle which is used when data is to be filled in by hand.
-   *
-   * @private
-   * @param {number} x number in millimeters of the x position where the rectangle starts.
-   * @param {number} y number in millimeters of the y position where the rectangle starts.
-   * @param {number} width number in millimeters of the width of the rectangle.
-   * @param {number} height number in millimeters of the height of the rectangle.
-   * @memberof PDF
-   */
 
   private _drawRectangle(x: number, y: number, width: number, height: number): void {
 

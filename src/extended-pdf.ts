@@ -46,12 +46,6 @@ module ExtendedPDF {
     }
 
 
-    /**
-     * Inserts a table to the document
-     *
-     * @param table table object containing the table data
-     */
-
     public addTable(table: PDFTable): PDFKit.PDFDocument {
 
       if(table.rows === undefined){
@@ -237,14 +231,6 @@ module ExtendedPDF {
 
     }
 
-
-    /**
-     * Converts milimeters to points which are used in the PDF file.
-     *
-     * @param {number} mm number containg the millimeters you want to convert to points.
-     * @returns {number} number containing the converted millimeters in points.
-     * @memberof PDF
-     */
 
     public mmToPoints(mm: number): number {
       return Math.round(mm * 2.83465);
