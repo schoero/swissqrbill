@@ -1,7 +1,7 @@
 
 # Change Log
 
-# [v2.0.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v2.0.0...v2.0.1) - 22.07.2020
+# [v2.0.1](https://github.com/rogerrrrrrrs/swissqrbill/compare/v2.0.0...v2.0.1) - 22.07.2020
   * Small bug fixes and code cleanup
 
 # [v2.0.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.3.1...v2.0.0) - 12.07.2020
