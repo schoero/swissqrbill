@@ -55,6 +55,7 @@ module SwissQRBill {
     }
 
   }
+
 }
 
 export default SwissQRBill;

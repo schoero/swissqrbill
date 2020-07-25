@@ -375,7 +375,6 @@ export class PDF extends ExtendedPDF.PDF {
 
     }
 
-
     this.fontSize(6);
     this.font("Helvetica-Bold");
     this.text(PDF.translations[this._language].currency, this.mmToPoints(5), this._marginTop + this.mmToPoints(68), {
@@ -771,7 +770,6 @@ export class PDF extends ExtendedPDF.PDF {
       }
     }
 
-
   }
 
 
@@ -971,6 +969,7 @@ export class PDF extends ExtendedPDF.PDF {
       qrString += "\n";
     }
 
+
     //-- End Payment Data
 
     qrString += "EPD" + "\n";
@@ -1049,6 +1048,7 @@ export class PDF extends ExtendedPDF.PDF {
     }
 
     firstChildLoop: for(const firstChild of svgObject.children){
+
       if(firstChild.type !== "element"){
         continue firstChildLoop;
       }
@@ -1072,6 +1072,7 @@ export class PDF extends ExtendedPDF.PDF {
         }
         return secondChild.properties.d;
       }
+
     }
 
   }
@@ -1174,11 +1175,8 @@ export class PDF extends ExtendedPDF.PDF {
 
 
   private _isQRIBAN(iban: string): boolean {
-
     const QRIID = iban.substr(4, 5);
-
     return (+QRIID >= 30000 && +QRIID <= 31999);
-
   }
 
 

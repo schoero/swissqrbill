@@ -65,6 +65,7 @@ module SwissQRBill {
     }
 
   }
+
 }
 
 export = SwissQRBill;
