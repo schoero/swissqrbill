@@ -1,16 +1,20 @@
 
 # Change Log
 
+# [v2.0.2](https://github.com/rogerrrrrrrs/swissqrbill/compare/v2.0.1...v2.0.2) - 19.08.2020
+  * Fixed an issue that caused reference to render incorrectly.
+  * Fixed "Compte / Payable à" to display correctly in french QR bills.
+
 # [v2.0.1](https://github.com/rogerrrrrrrs/swissqrbill/compare/v2.0.0...v2.0.1) - 22.07.2020
-  * Small bug fixes and code cleanup
+  * Small bug fixes and code cleanup.
 
 # [v2.0.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.3.1...v2.0.0) - 12.07.2020
-  * Added browser support
-    - Added new blobStream method
-  * Added possibility to stream the pdf into a buffer
+  * Added browser support.
+    - Added new blobStream method.
+  * Added possibility to stream the pdf into a buffer.
 
 # [v1.3.1](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.3.0...v1.3.1) - 27.06.2020
-  * Fixed invalid QR Code field when the second decimal place in amount is a zero
+  * Fixed invalid QR Code field when the second decimal place in amount is a zero.
 
 # [v1.3.0](https://github.com/rogerrrrrrrs/swissqrbill/compare/v1.2.0...v1.3.0) - 25.06.2020
   * Tables
