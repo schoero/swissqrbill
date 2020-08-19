@@ -1142,8 +1142,8 @@ export class PDF extends ExtendedPDF.PDF {
 
     if(this._referenceType === "QRR"){
       const match = reference.substring(2).match(/.{1,5}/g)
-      if(match) {
-        referenceArray = reference.substring(0, 2).split().concat(match);
+      if (match !== null) {
+        referenceArray = [reference.substring(0, 2)].concat(match);
       }
     } else if(this._referenceType === "SCOR"){
       const match = reference.match(/.{1,4}/g);
