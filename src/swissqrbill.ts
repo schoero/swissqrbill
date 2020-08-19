@@ -104,7 +104,7 @@ export class PDF extends ExtendedPDF.PDF {
     },
     FR: {
       paymentPart: "Section paiement",
-      account: "Compte / Payable à",
+      account: "Compte / Payable à",
       reference: "Référence",
       additionalInformation: "Informations additionnelles",
       furtherInformation: "Informations supplémentaires",
@@ -1141,9 +1141,9 @@ export class PDF extends ExtendedPDF.PDF {
     let referenceArray: RegExpMatchArray = [];
 
     if(this._referenceType === "QRR"){
-      const match = reference.split("").reverse().join("").match(/.{1,5}/g);
-      if(match !== null){
-        referenceArray = match.reverse();
+      const match = reference.substring(2).match(/.{1,5}/g)
+      if (match !== null) {
+        referenceArray = [reference.substring(0, 2)].concat(match);
       }
     } else if(this._referenceType === "SCOR"){
       const match = reference.match(/.{1,4}/g);
