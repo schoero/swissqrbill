@@ -40,7 +40,7 @@
 
   The data object is constructed in the following way:
 
-  - **currency** `string: "CHF | "EUR"` *mandatory*, 3 characters.
+  - **currency** `string: "CHF" | "EUR"` *mandatory*, 3 characters.
   - **amount** - `number` *optional*, max. 12 digits.
   - **reference** - `string` *optional*, max 27 characters.
     > QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
