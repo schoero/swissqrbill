@@ -3,8 +3,8 @@
 ## Contents
 
 - Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options][, callback])](#swissqrbillpdfdata-outputpath-options--callback)
-  - [SwissQRBill.PDF(data, writeableStream[, options][, callback])](#swissqrbillpdfdata-writeablestream-options--callback)
+  - [SwissQRBill.PDF(data, outputPath[, options] [, callback])](#swissqrbillpdfdata-outputpath-options--callback)
+  - [SwissQRBill.PDF(data, writeableStream[, options] [, callback])](#swissqrbillpdfdata-writeablestream-options--callback)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
