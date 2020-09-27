@@ -3,8 +3,8 @@
 ## Contents
 
 - Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options], callback)](#swissqrbillpdfdata-outputpath-options-callback)
-  - [SwissQRBill.PDF(data, writeableStream[, options], callback)](#swissqrbillpdfdata-writeablestream-options-callback)
+  - [SwissQRBill.PDF(data, outputPath[, options] [, callback])](#swissqrbillpdfdata-outputpath-options--callback)
+  - [SwissQRBill.PDF(data, writeableStream[, options] [, callback])](#swissqrbillpdfdata-writeablestream-options--callback)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill()](#addqrbill)
@@ -24,8 +24,8 @@
 
 ## Constructor
 
-### SwissQRBill.PDF(data, outputPath[, options], callback)
-### SwissQRBill.PDF(data, writeableStream[, options], callback)
+### SwissQRBill.PDF(data, outputPath[, options] [, callback])
+### SwissQRBill.PDF(data, writeableStream[, options] [, callback])
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
  - **outputPath | writeableStream** - `string` output path for the generated PDF file or `writeableStream` a writeableStream to stream data into. *mandatory*.

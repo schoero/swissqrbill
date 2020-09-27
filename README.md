@@ -113,7 +113,7 @@ pdf.on("finish", () => {
 });
 ```
 
-You can see a fully working example over at https://github.com/Rogerrrrrrrs/SwissQRBill-browser-example.
+You can see a fully working example at https://github.com/Rogerrrrrrrs/SwissQRBill-browser-example.
 
 <br/>
 
@@ -122,6 +122,6 @@ You can see a fully working example over at https://github.com/Rogerrrrrrrs/Swis
 SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#methods).
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
-A simple how to guide to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
+A simple guide how to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
 
 [<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
