@@ -802,7 +802,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     if(this._data.creditor.houseNumber !== undefined){
 
-      // Adress Type
+      // Address Type
       qrString += "S\n";
 
       // Name
@@ -822,7 +822,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     } else {
 
-      // Adress Type
+      // Address Type
       qrString += "K\n";
 
       // Name
