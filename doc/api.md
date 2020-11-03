@@ -79,7 +79,7 @@
    - **language** - `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
    - **size** - `string: "A4" | "A6/5"`. *default* `"A6/5"`.
    - **scissors** - `boolean`: *default* `true`.
-     > Whether you want to show the scissor icons or the text `Separate before paying in`.
+     > Whether you want to show the scissors icons or the text `Separate before paying in`.
    - **autoGenerate** - `boolean`: *default* `true`.
      > Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
