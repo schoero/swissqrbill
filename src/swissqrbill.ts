@@ -780,22 +780,22 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Swiss Payments Code
 
-    qrString += "SPC\n";
+    qrString += "SPC";
 
 
     //-- Version
 
-    qrString += "0200\n";
+    qrString += "\n0200";
 
 
     //-- Coding Type UTF-8
 
-    qrString += "1\n";
+    qrString += "\n1";
 
 
     //-- IBAN
 
-    qrString += this._data.creditor.account.replace(/ /g, "")+ "\n" ?? "\n";
+    qrString += "\n" + this._data.creditor.account.replace(/ /g, "") ?? "\n";
 
 
     //-- Creditor
@@ -803,37 +803,37 @@ export class PDF extends ExtendedPDF.PDF {
     if(this._data.creditor.houseNumber !== undefined){
 
       // Address Type
-      qrString += "S\n";
+      qrString += "\nS";
 
       // Name
-      qrString += this._data.creditor.name + "\n";
+      qrString += "\n" + this._data.creditor.name;
 
       // Address
-      qrString += this._data.creditor.address + "\n";
+      qrString += "\n" + this._data.creditor.address;
 
       // House number
-      qrString += this._data.creditor.houseNumber + "\n";
+      qrString += "\n" + this._data.creditor.houseNumber;
 
       // Zip
-      qrString += this._data.creditor.zip + "\n";
+      qrString += "\n" + this._data.creditor.zip;
 
       // City
-      qrString += this._data.creditor.city + "\n";
+      qrString += "\n" + this._data.creditor.city;
 
     } else {
 
       // Address Type
-      qrString += "K\n";
+      qrString += "\nK";
 
       // Name
-      qrString += this._data.creditor.name + "\n";
+      qrString += "\n" + this._data.creditor.name;
 
       // Address
-      qrString += this._data.creditor.address + "\n";
+      qrString += "\n" + this._data.creditor.address;
 
       // Zip + city
       if((this._data.creditor.zip + " " + this._data.creditor.city).length > 70){ throw new Error("Creditor zip plus city must be a maximum of 70 characters."); }
-      qrString += this._data.creditor.zip + " " + this._data.creditor.city + "\n";
+      qrString += "\n" + this._data.creditor.zip + " " + this._data.creditor.city;
 
       // Empty zip field
       qrString += "\n";
@@ -843,7 +843,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     }
 
-    qrString += this._data.creditor.country + "\n";
+    qrString += "\n" + this._data.creditor.country;
 
 
     //-- 7 x empty
@@ -860,7 +860,7 @@ export class PDF extends ExtendedPDF.PDF {
     //-- Amount
 
     if(this._data.amount !== undefined){
-      qrString += this._data.amount.toFixed(2) + "\n";
+      qrString += "\n" + this._data.amount.toFixed(2);
     } else {
       qrString += "\n";
     }
@@ -868,7 +868,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Currency
 
-    qrString += this._data.currency + "\n";
+    qrString += "\n" + this._data.currency;
 
 
     //-- Debtor
@@ -877,37 +877,37 @@ export class PDF extends ExtendedPDF.PDF {
       if(this._data.debtor.houseNumber !== undefined){
 
         // Address type
-        qrString += "S\n";
+        qrString += "\nS";
 
         // Name
-        qrString += this._data.debtor.name + "\n";
+        qrString += "\n" + this._data.debtor.name;
 
         // Address
-        qrString += this._data.debtor.address + "\n";
+        qrString += "\n" + this._data.debtor.address;
 
         // House number
-        qrString += this._data.debtor.houseNumber + "\n";
+        qrString += "\n" + this._data.debtor.houseNumber;
 
         // Zip
-        qrString += this._data.debtor.zip + "\n";
+        qrString += "\n" + this._data.debtor.zip;
 
         // City
-        qrString += this._data.debtor.city + "\n";
+        qrString += "\n" + this._data.debtor.city;
 
       } else {
 
         // Address type
-        qrString += "K\n";
+        qrString += "\nK";
 
         // Name
-        qrString += this._data.debtor.name + "\n";
+        qrString += "\n" + this._data.debtor.name;
 
         // Address
-        qrString += this._data.debtor.address + "\n";
+        qrString += "\n" + this._data.debtor.address;
 
         // Zip + city
         if((this._data.debtor.zip + " " + this._data.debtor.city).length > 70){ throw new Error("Debtor zip plus city must be a maximum of 70 characters."); }
-        qrString += this._data.debtor.zip + " " + this._data.debtor.city + "\n";
+        qrString += "\n" + this._data.debtor.zip + " " + this._data.debtor.city;
 
         // Empty field zip
         qrString += "\n";
@@ -918,7 +918,7 @@ export class PDF extends ExtendedPDF.PDF {
       }
 
       // Country
-      qrString += this._data.debtor.country + "\n";
+      qrString += "\n" + this._data.debtor.country;
 
     } else {
 
@@ -949,13 +949,13 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Reference type
 
-    qrString += this._referenceType + "\n";
+    qrString += "\n" + this._referenceType;
 
 
     //-- Reference
 
     if(this._data.reference !== undefined){
-      qrString += this._data.reference.replace(/ /g, "") + "\n";
+      qrString += "\n" + this._data.reference.replace(/ /g, "");
     } else {
       qrString += "\n";
     }
@@ -964,7 +964,7 @@ export class PDF extends ExtendedPDF.PDF {
     //-- Unstructured message
 
     if(this._data.message !== undefined){
-      qrString += this._data.message + "\n";
+      qrString += "\n" + this._data.message;
     } else {
       qrString += "\n";
     }
@@ -972,13 +972,13 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- End Payment Data
 
-    qrString += "EPD" + "\n";
+    qrString += "\n" + "EPD";
 
 
     //-- Additional information
 
     if(this._data.additionalInformation !== undefined){
-      qrString += this._data.additionalInformation + "\n";
+      qrString += "\n" + this._data.additionalInformation;
     } else {
       qrString += "\n";
     }
@@ -987,11 +987,11 @@ export class PDF extends ExtendedPDF.PDF {
     //-- AV1
 
     if(this._data.av1 !== undefined){
-      qrString += this._data.av1 + "\n";
+      qrString += "\n" + this._data.av1;
     }
 
     if(this._data.av2 !== undefined){
-      qrString += this._data.av2;
+      qrString += "\n" + this._data.av2;
     }
 
 
