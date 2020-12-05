@@ -12,7 +12,11 @@ module.exports = {
   devtool: "inline-source-map",
   resolve: {
     extensions: [ ".tsx", ".ts", ".js" ],
-    fallback: { "stream": require.resolve("stream-browserify") }
+    fallback: {
+      "stream": require.resolve("stream-browserify"),
+      "util": require.resolve("util"),
+      "buffer": require.resolve("buffer")
+    }
   },
   output: {
     filename: "browser.js",
