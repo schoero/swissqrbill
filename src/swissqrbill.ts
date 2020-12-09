@@ -1,5 +1,5 @@
 import { parse } from "svg-parser";
-import QRCode from "qrcode-svg";
+import QRCode from "@rogerrrrrrrs/qrcode-svg";
 import IBAN from "iban";
 import ExtendedPDF from "./extended-pdf";
 
