@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Swiss QR Bill generation in Node.js and browsers ",
   "main": "./lib/node",
   "browser": "./lib/browser",
@@ -19,12 +19,17 @@
   },
   "keywords": [
     "swiss",
-    "switzerland",
     "schweiz",
+    "switzerland",
     "qr",
     "bill",
     "invoice",
-    "rechnung"
+    "rechnung",
+    "swiss-qr-invoice",
+    "swiss-qr-bill",
+    "qr-invoice",
+    "qr-rechnung",
+    "fattura"
   ],
   "author": "Roger Schönbächler",
   "license": "MIT",
@@ -41,18 +46,20 @@
     "@types/svg-parser": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "buffer": "^6.0.3",
     "eslint": "^6.8.0",
     "stream-browserify": "^3.0.0",
     "ts-loader": "^8.0.0",
     "typescript": "^4.0.2",
+    "util": "^0.12.3",
     "webpack": "^5.0.0",
     "webpack-cli": "^4.0.0"
   },
   "dependencies": {
+    "@rogerrrrrrrs/qrcode-svg": "^1.2.1",
     "blob-stream": "^0.1.3",
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",
-    "qrcode-svg": "^1.1.0",
     "svg-parser": "^2.0.4",
     "svgpath": "^2.2.3"
   }

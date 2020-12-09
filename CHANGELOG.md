@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v2.0.3](https://github.com/rogerrrrrrrs/swissqrbill/compare/v2.0.2...v2.0.3) - 09.12.2020
+  * Fixed a problem with QR Code encoding that caused QR Code scanning to fail at certain banks.
+
 # [v2.0.2](https://github.com/rogerrrrrrrs/swissqrbill/compare/v2.0.1...v2.0.2) - 19.08.2020
   * Fixed an issue that caused reference to render incorrectly.
   * Fixed "Compte / Payable à" to display correctly in french QR bills.
