@@ -1,5 +1,5 @@
 import * as SwissQRBill_ from "./swissqrbill";
-import BlobStream from "blob-stream";
+import BlobStream_ from "blob-stream";
 
 module SwissQRBill {
 
@@ -14,14 +14,17 @@ module SwissQRBill {
   export import size = SwissQRBill_.size;
   export import languages = SwissQRBill_.languages;
 
-  export import blobStream = BlobStream;
+  export import utils = SwissQRBill_.utils;
+
+  export import blobStream = BlobStream_;
+  export import BlobStream = BlobStream_;
 
   export class PDF extends SwissQRBill_.PDF {
 
-    constructor(data: data, writeableStream: BlobStream.IBlobStream, options?: options)
-    constructor(data: data, writeableStream: BlobStream.IBlobStream, options?: options, callback?: Function)
-    constructor(data: data, writeableStream: BlobStream.IBlobStream, callback?: Function)
-    constructor(data: data, writeableStream: BlobStream.IBlobStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
+    constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options)
+    constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options, callback?: Function)
+    constructor(data: data, writeableStream: BlobStream_.IBlobStream, callback?: Function)
+    constructor(data: data, writeableStream: BlobStream_.IBlobStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
 
       let callback: Function | undefined = undefined;
       let options: options | undefined = undefined;

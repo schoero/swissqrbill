@@ -231,11 +231,6 @@ module ExtendedPDF {
 
     }
 
-
-    public mmToPoints(mm: number): number {
-      return Math.round(mm * 2.83465);
-    }
-
   }
 
 }
