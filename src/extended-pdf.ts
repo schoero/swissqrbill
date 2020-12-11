@@ -1,7 +1,6 @@
 /// <reference path="../pdfkit.d.ts" />
 import PDFDocument from "pdfkit/js/pdfkit.standalone";
 import svgpath from "svgpath";
-import { utils } from "./swissqrbill";
 
 module ExtendedPDF {
 
@@ -230,11 +229,6 @@ module ExtendedPDF {
 
       return this;
 
-    }
-
-
-    public mmToPoints(mm: number): number {
-      return utils.mmToPoints(mm);
     }
 
   }

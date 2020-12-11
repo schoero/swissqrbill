@@ -1,8 +1,6 @@
 import IBAN from "iban";
 
 
-
-
 export function isQRIBAN(iban: string): boolean {
   const QRIID = iban.substr(4, 5);
   return (+QRIID >= 30000 && +QRIID <= 31999);
@@ -95,7 +93,7 @@ export function formatQRReference(reference: string): string{
 
 
 export function formatSCORReference(reference: string): string{
-  console.log("foramt SCOR");
+
   reference = reference.replace(/ /g, "");
 
   let referenceArray: RegExpMatchArray = [];

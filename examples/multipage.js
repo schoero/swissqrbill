@@ -26,22 +26,22 @@ const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { autoGenerate: 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
-pdf.text("PAGE 1", pdf.mmToPoints(5), pdf.mmToPoints(20), {
-  width: pdf.mmToPoints(210),
+pdf.text("PAGE 1", SwissQRBill.utils.mmToPoints(5), SwissQRBill.utils.mmToPoints(20), {
+  width: SwissQRBill.utils.mmToPoints(210),
   align: "center",
 });
 
 pdf.addPage();
 
-pdf.text("PAGE 2", pdf.mmToPoints(5), pdf.mmToPoints(20), {
-  width: pdf.mmToPoints(210),
+pdf.text("PAGE 2", SwissQRBill.utils.mmToPoints(5), SwissQRBill.utils.mmToPoints(20), {
+  width: SwissQRBill.utils.mmToPoints(210),
   align: "center",
 });
 
 pdf.addPage();
 
-pdf.text("PAGE 3", pdf.mmToPoints(5), pdf.mmToPoints(20), {
-  width: pdf.mmToPoints(210),
+pdf.text("PAGE 3", SwissQRBill.utils.mmToPoints(5), SwissQRBill.utils.mmToPoints(20), {
+  width: SwissQRBill.utils.mmToPoints(210),
   align: "center",
 });
 
