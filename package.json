@@ -29,7 +29,8 @@
     "swiss-qr-bill",
     "qr-invoice",
     "qr-rechnung",
-    "fattura"
+    "fattura",
+    "facture"
   ],
   "author": "Roger Schönbächler",
   "license": "MIT",
