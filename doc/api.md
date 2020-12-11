@@ -28,7 +28,7 @@
 
 # SwissQRBill.utils
 
-- Methods
+- Functions
   - IBAN
     - [isQRIBAN(iban)](#isqribaniban)
     - [isIBANValid(iban)](#isibanvalidiban)
