@@ -45,6 +45,49 @@ export type size = "A4" | "A6/5";
 export type languages = "DE" | "EN" | "IT" | "FR";
 
 
+export abstract class utils {
+
+  public static calculateQRReferenceChecksum(code: string): string {
+
+    code = code.replace(/ /g, "");
+
+    const table = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5];
+    let carry = 0;
+
+    for(let i = 0; i < code.length; i++){
+      carry = table[(carry + parseInt(code.substr(i, 1), 10)) % 10];
+    }
+
+    return ((10 - carry) % 10).toString();
+
+  }
+
+
+  public static isReferenceValid(reference: string): boolean {
+
+    reference = reference.replace(/ /g, "");
+
+    if(reference.length !== 27){
+      return false;
+    }
+
+    const ref = reference.substr(0, 26);
+    const checksum = reference.substr(26, 1);
+
+    const calculatedChecksum = utils.calculateQRReferenceChecksum(ref);
+
+    return calculatedChecksum === checksum;
+
+  }
+
+
+  public static isIBANValid(iban: string): boolean {
+    return IBAN.isValid(iban);
+  }
+
+}
+
+
 export class PDF extends ExtendedPDF.PDF {
 
   public size: size = "A6/5";

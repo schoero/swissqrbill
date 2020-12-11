@@ -15,6 +15,8 @@ module SwissQRBill {
   export import size = SwissQRBill_.size;
   export import languages = SwissQRBill_.languages;
 
+  export import utils = SwissQRBill_.utils;
+
   export class PDF extends SwissQRBill_.PDF {
 
     constructor(data: data, outputPath: string, options?: options)

@@ -14,6 +14,8 @@ module SwissQRBill {
   export import size = SwissQRBill_.size;
   export import languages = SwissQRBill_.languages;
 
+  export import utils = SwissQRBill_.utils;
+
   export import blobStream = BlobStream;
 
   export class PDF extends SwissQRBill_.PDF {
