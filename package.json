@@ -56,7 +56,7 @@
     "webpack-cli": "^4.0.0"
   },
   "dependencies": {
-    "@rogerrrrrrrs/qrcode-svg": "^1.2.1",
+    "@schoero/qrcode-svg": "^1.2.2",
     "blob-stream": "^0.1.3",
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",

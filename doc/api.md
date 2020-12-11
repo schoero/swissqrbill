@@ -19,7 +19,7 @@
 ## SwissQRBill.BlobStream
 
 - Constructor
-  - [SwissQRBill.BlobStream()](#blobstream)
+  - [SwissQRBill.BlobStream()](#swissqrbillblobstream)
 - Methods
   - [toBlob(type)](#toblobtype)
   - [toBlobURL(type)](#tobloburltype)
