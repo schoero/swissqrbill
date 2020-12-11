@@ -1,11 +1,11 @@
 # SwissQRBill
-<a href="https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/LICENSE">
+<a href="https://github.com/schoero/SwissQRBill/blob/master/LICENSE">
   <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen&style=flat-square">
 </a>
 <a href="https://www.npmjs.com/package/swissqrbill">
   <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen&style=flat-square">
 </a>
-<a href="https://github.com/Rogerrrrrrrs/SwissQRBill/issues">
+<a href="https://github.com/schoero/SwissQRBill/issues">
   <img alt="Issues" src="https://img.shields.io/github/issues-raw/rogerrrrrrrs/swissqrbill?style=flat-square">
 </a>
 <a href="https://www.npmjs.com/package/swissqrbill">
@@ -14,8 +14,8 @@
 <a href="https://www.npmjs.com/package/swissqrbill">
   <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
 </a>
-<a href="https://github.com/Rogerrrrrrrs/SwissQRBill/actions?query=workflow%3ACI">
-  <img alt="CI" src="https://img.shields.io/github/workflow/status/Rogerrrrrrrs/SwissQRBill/CI?style=flat-square">
+<a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
+  <img alt="CI" src="https://img.shields.io/github/workflow/status/schoero/SwissQRBill/CI?style=flat-square">
 </a>
 
 <br/>
@@ -26,7 +26,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 <br/>
 <br/>
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/qrbill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/qrbill.pdf)
+[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 
 ## Links
@@ -35,9 +35,10 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
  * [Installation](#installation)
  * [Quick start](#quick-start)
  * [Browser usage](#browser-usage)
- * [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md)
+ * [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
+ * [Utilities documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/utils.md)
  * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
- * [How to create a complete bill](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
+ * [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
  * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 
 
@@ -45,7 +46,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
  - Generates PDF with scalable vector graphics
  - Works in browser and node
  - Supports german, english, italian and french invoices
- - Supports A4 invoices as well as A6/5 (QR Bill only)
+ - Supports A4 invoices as well as A6/5 (QR bill only)
  - Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit)
  - Easy to use
  - Free and open source
@@ -91,7 +92,7 @@ const pdf = new SwissQRBill.PDF(data, "qrbill.pdf", () => {
 ```
 
 This will create the above PDF file. You can pass an optional third parameter containing options such as language or size etc. as well as a callback function that gets called right after the file has finished writing.
-A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
+A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
 
@@ -113,15 +114,17 @@ pdf.on("finish", () => {
 });
 ```
 
-You can see a fully working example at https://github.com/Rogerrrrrrrs/SwissQRBill-browser-example.
+You can see a fully working example at https://github.com/schoero/SwissQRBill-browser-example.
 
 <br/>
 
 ## Further informations
 
-SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/api.md#methods).
+SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/schoero/SwissQRBill/tree/master/doc/api.md#methods).
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
-A simple guide how to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
+Some extra functions that may be useful for creating a QR bill are documented in [doc/utils.md](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/utils.md)
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+A simple guide how to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
+
+[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)

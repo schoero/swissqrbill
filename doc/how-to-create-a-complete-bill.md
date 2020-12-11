@@ -5,7 +5,7 @@
 In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
 
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
-The methods used from SwissQRBill are documented in the [API documentation](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/doc/api.md).
+The methods used from SwissQRBill are documented in the [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
 
 
 ### Setup
@@ -276,10 +276,10 @@ Once our document is finished, we have to call the `end()` method to finalize th
 pdf.end();
 ```
 
-We also have to wait until the file has been finished writing before we are able to interact with the generated pdf file. We can do this either by passing a callback function as the last parameter to `new SwissQRBill()` or by listening for the `finish` event on the SwissQRBill instance. You can find examples using callbacks and events in [examples/callback.js](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/examples/callback.js) and [examples/event.js](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/examples/event.js)
+We also have to wait until the file has been finished writing before we are able to interact with the generated pdf file. We can do this either by passing a callback function as the last parameter to `new SwissQRBill()` or by listening for the `finish` event on the SwissQRBill instance. You can find examples using callbacks and events in [examples/callback.js](https://github.com/schoero/SwissQRBill/tree/master/examples/callback.js) and [examples/event.js](https://github.com/schoero/SwissQRBill/tree/master/examples/event.js)
 
-The complete code can be found in [examples/how-to-create-a-complete-bill.js](https://github.com/Rogerrrrrrrs/SwissQRBill/tree/master/examples/how-to-create-a-complete-bill.js).
+The complete code can be found in [examples/how-to-create-a-complete-bill.js](https://github.com/schoero/SwissQRBill/tree/master/examples/how-to-create-a-complete-bill.js).
 
 When you run the code above, SwissQRBill should generate a PDF file name complete-qr-bill.pdf that looks like this:
 
-[<img src="https://raw.githubusercontent.com/Rogerrrrrrrs/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/Rogerrrrrrrs/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)
+[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)

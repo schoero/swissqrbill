@@ -1,7 +1,7 @@
 import { parse } from "svg-parser";
 import QRCode from "@rogerrrrrrrs/qrcode-svg";
-import IBAN from "iban";
 import ExtendedPDF from "./extended-pdf";
+import * as utils from "./utils";
 
 export interface data {
   currency: currency,
@@ -44,49 +44,7 @@ export type currency = "CHF" | "EUR";
 export type size = "A4" | "A6/5";
 export type languages = "DE" | "EN" | "IT" | "FR";
 
-
-export abstract class utils {
-
-  public static calculateQRReferenceChecksum(code: string): string {
-
-    code = code.replace(/ /g, "");
-
-    const table = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5];
-    let carry = 0;
-
-    for(let i = 0; i < code.length; i++){
-      carry = table[(carry + parseInt(code.substr(i, 1), 10)) % 10];
-    }
-
-    return ((10 - carry) % 10).toString();
-
-  }
-
-
-  public static isReferenceValid(reference: string): boolean {
-
-    reference = reference.replace(/ /g, "");
-
-    if(reference.length !== 27){
-      return false;
-    }
-
-    const ref = reference.substr(0, 26);
-    const checksum = reference.substr(26, 1);
-
-    const calculatedChecksum = utils.calculateQRReferenceChecksum(ref);
-
-    return calculatedChecksum === checksum;
-
-  }
-
-
-  public static isIBANValid(iban: string): boolean {
-    return IBAN.isValid(iban);
-  }
-
-}
-
+export import utils = utils;
 
 export class PDF extends ExtendedPDF.PDF {
 
@@ -179,9 +137,9 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Validate reference
 
-    if(this._isQRIBAN(this._data.creditor.account)){
+    if(utils.isQRIBAN(this._data.creditor.account)){
       if(this._data.reference !== undefined){
-        if(this._isQRReference(this._data.reference)){
+        if(utils.isQRReference(this._data.reference)){
           this._referenceType = "QRR";
         }
       }
@@ -190,7 +148,7 @@ export class PDF extends ExtendedPDF.PDF {
       if(this._data.reference === undefined){
         this._referenceType = "NON";
       } else {
-        if(!this._isQRReference(this._data.reference)){
+        if(!utils.isQRReference(this._data.reference)){
           this._referenceType = "SCOR";
         }
       }
@@ -353,7 +311,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     this.fontSize(8);
     this.font("Helvetica");
-    this.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
+    this.text(`${utils.formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
       width: this.mmToPoints(52)
     });
 
@@ -435,7 +393,7 @@ export class PDF extends ExtendedPDF.PDF {
     });
 
     if(this._data.amount !== undefined){
-      this.text(this._formatAmount(this._data.amount), this.mmToPoints(20), this._marginTop + this.mmToPoints(71), {
+      this.text(utils.formatAmount(this._data.amount), this.mmToPoints(20), this._marginTop + this.mmToPoints(71), {
         width: this.mmToPoints(37)
       });
     } else {
@@ -482,7 +440,7 @@ export class PDF extends ExtendedPDF.PDF {
     });
 
     if(this._data.amount !== undefined){
-      this.text(this._formatAmount(this._data.amount), this.mmToPoints(87), this._marginTop + this.mmToPoints(72), {
+      this.text(utils.formatAmount(this._data.amount), this.mmToPoints(87), this._marginTop + this.mmToPoints(72), {
         width: this.mmToPoints(36)
       });
     } else {
@@ -528,7 +486,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     this.fontSize(10);
     this.font("Helvetica");
-    this.text(`${this._formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this._marginTop + this.mmToPoints(9.5), {
+    this.text(`${utils.formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, this.mmToPoints(118), this._marginTop + this.mmToPoints(9.5), {
       width: this.mmToPoints(87)
     });
 
@@ -621,7 +579,7 @@ export class PDF extends ExtendedPDF.PDF {
       throw new Error(`The provided IBAN number '${this._data.creditor.account}' is either too long or too short.`);
     }
 
-    if(IBAN.isValid(this._data.creditor.account) === false){
+    if(utils.isIBANValid(this._data.creditor.account) === false){
       throw new Error(`The provided IBAN number '${this._data.creditor.account}' is not valid.`);
     }
 
@@ -632,14 +590,20 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Validate reference
 
-    if(this._isQRIBAN(this._data.creditor.account)){
+    if(utils.isQRIBAN(this._data.creditor.account)){
 
       if(this._data.reference === undefined){
         throw new Error("If there is no reference, a conventional IBAN must be used.");
       }
 
-      if(this._isQRReference(this._data.reference)){
+      if(utils.isQRReference(this._data.reference)){
+
         this._referenceType = "QRR";
+
+        if(!utils.isQRReferenceValid(this._data.reference)){
+          throw new Error("QR reference checksum is not valid.");
+        }
+
       } else {
         throw new Error("QR reference requires the use of a QR-IBAN (and vice versa).");
       }
@@ -649,7 +613,7 @@ export class PDF extends ExtendedPDF.PDF {
       if(this._data.reference === undefined){
         this._referenceType = "NON";
       } else {
-        if(this._isQRReference(this._data.reference)){
+        if(utils.isQRReference(this._data.reference)){
           throw new Error("Creditor Reference requires the use of a conventional IBAN.");
         } else {
           this._referenceType = "SCOR";
@@ -1157,88 +1121,13 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  private _formatAmount(amount: number): string {
-
-    const amountString = amount.toFixed(2) + "";
-    const amountArray = amountString.split(".");
-
-    let formatedAmountWithoutDecimals = "";
-
-    for(let x = amountArray[0].length -1, i= 1; x >= 0; x--, i++){
-      formatedAmountWithoutDecimals = amountArray[0][x] + formatedAmountWithoutDecimals;
-      if(i === 3){
-        formatedAmountWithoutDecimals = " " + formatedAmountWithoutDecimals;
-        i = 0;
-      }
-    }
-
-    return formatedAmountWithoutDecimals + "." + amountArray[1];
-
-  }
-
-
   private _formatReference(reference: string): string {
-
-    reference = reference.replace(/ /g, "");
-
-    let referenceArray: RegExpMatchArray = [];
-
     if(this._referenceType === "QRR"){
-      const match = reference.substring(2).match(/.{1,5}/g);
-      if(match !== null){
-        referenceArray = [reference.substring(0, 2)].concat(match);
-      }
+      return utils.formatQRReference(reference);
     } else if(this._referenceType === "SCOR"){
-      const match = reference.match(/.{1,4}/g);
-      if(match !== null){
-        referenceArray = match;
-      }
-    } else {
-      return reference;
+      return utils.formatSCORReference(reference);
     }
-
-    return referenceArray.join(" ");
-
-  }
-
-
-  private _formatIBAN(iban: string): string | undefined {
-
-    iban = iban.replace(/ /g, "");
-
-    const ibanArray = iban.replace(/ /g, "").match(/.{1,4}/g);
-
-    if(ibanArray === null){
-      return undefined;
-    }
-
-    return ibanArray.join(" ");
-
-  }
-
-
-  private _isQRIBAN(iban: string): boolean {
-    const QRIID = iban.substr(4, 5);
-    return (+QRIID >= 30000 && +QRIID <= 31999);
-  }
-
-
-  private _isQRReference(reference: string): boolean {
-
-    reference = reference.replace(/ /g, "");
-
-    if(reference.length === 27){
-      if(!isNaN(+reference)){
-        return true;
-      }
-    }
-
-    if(reference.replace(/ /g, "").length <= 25){
-      return false;
-    }
-
-    throw new Error("Reference is not valid.");
-
+    return reference;
   }
 
 

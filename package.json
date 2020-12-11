@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rogerrrrrrrs/SwissQRBill.git"
+    "url": "git+https://github.com/schoero/SwissQRBill.git"
   },
   "keywords": [
     "swiss",
@@ -34,9 +34,9 @@
   "author": "Roger Schönbächler",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Rogerrrrrrrs/SwissQRBill/issues"
+    "url": "https://github.com/schoero/SwissQRBill/issues"
   },
-  "homepage": "https://github.com/Rogerrrrrrrs/SwissQRBill#readme",
+  "homepage": "https://github.com/schoero/SwissQRBill#readme",
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
     "@types/iban": "0.0.30",
