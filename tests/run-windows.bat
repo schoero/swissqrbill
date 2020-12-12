@@ -1,4 +1,6 @@
 if not exist output mkdir output
+echo "utils"
+  call node utils
 echo "a4"
   call node a4
 echo "a6-5"
