@@ -311,7 +311,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     this.fontSize(8);
     this.font("Helvetica");
-    this.text(`${utils.formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, {
+    this.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
       width: utils.mmToPoints(52)
     });
 
@@ -486,7 +486,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     this.fontSize(10);
     this.font("Helvetica");
-    this.text(`${utils.formatIBAN(this._data.creditor.account)??this._data.creditor.account}\n${this._formatAddress(this._data.creditor)}`, utils.mmToPoints(118), this._marginTop + utils.mmToPoints(9.5), {
+    this.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, utils.mmToPoints(118), this._marginTop + utils.mmToPoints(9.5), {
       width: utils.mmToPoints(87)
     });
 
@@ -575,7 +575,7 @@ export class PDF extends ExtendedPDF.PDF {
       throw new Error("You must provide an IBAN or QR-IBAN number.");
     }
 
-    if(this._data.creditor.account.replace(/ /g, "").length !== 21){
+    if(this._data.creditor.account.length !== 21){
       throw new Error(`The provided IBAN number '${this._data.creditor.account}' is either too long or too short.`);
     }
 
@@ -736,7 +736,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     if(this._data.reference !== undefined){
       if(typeof this._data.reference !== "string"){ throw new Error("Reference name must be a string."); }
-      if(this._data.reference.replace(/ /g, "").length > 27){ throw new Error("Reference name must be a maximum of 27 characters."); }
+      if(this._data.reference.length > 27){ throw new Error("Reference name must be a maximum of 27 characters."); }
     }
 
 
@@ -802,7 +802,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- IBAN
 
-    qrString += "\n" + this._data.creditor.account.replace(/ /g, "") ?? "\n";
+    qrString += "\n" + this._data.creditor.account ?? "\n";
 
 
     //-- Creditor
@@ -962,7 +962,7 @@ export class PDF extends ExtendedPDF.PDF {
     //-- Reference
 
     if(this._data.reference !== undefined){
-      qrString += "\n" + this._data.reference.replace(/ /g, "");
+      qrString += "\n" + this._data.reference;
     } else {
       qrString += "\n";
     }
@@ -1107,7 +1107,16 @@ export class PDF extends ExtendedPDF.PDF {
 
       for(let k = 0; k < keys.length; k++){
         if(typeof object[keys[k]] === "string"){
+
           object[keys[k]] = this._removeLinebreaks(object[keys[k]]);
+
+          if(keys[k] === "account"){
+            object[keys[k]] = object[keys[k]].replace(/ /g, "");
+          }
+          if(keys[k] === "reference"){
+            object[keys[k]] = object[keys[k]].replace(/ /g, "");
+          }
+
         } else {
           if(typeof object[keys[k]] === "object"){
             _cleanObject(object[keys[k]]);

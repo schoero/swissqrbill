@@ -2,6 +2,7 @@ import IBAN from "iban";
 
 
 export function isQRIBAN(iban: string): boolean {
+  iban = iban.replace(/ /g, "");
   const QRIID = iban.substr(4, 5);
   return (+QRIID >= 30000 && +QRIID <= 31999);
 }
