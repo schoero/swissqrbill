@@ -46,7 +46,6 @@ export type size = "A4" | "A6/5";
 export type languages = "DE" | "EN" | "IT" | "FR";
 
 export import utils = utils;
-import { rejects } from "assert";
 
 export class PDF extends ExtendedPDF.PDF {
 
@@ -1004,7 +1003,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Create QR Code
 
-    const qrcodeString = await QRCode.toString(qrString, { type: "svg", width: utils.mmToPoints(46) }, (err, svg) => {
+    const qrcodeString = await QRCode.toString(qrString, { type: "svg", width: utils.mmToPoints(46), margin: 0 }, (err, svg) => {
       return new Promise((resolve, reject) => {
         if(err){
           reject(err);

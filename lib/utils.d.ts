@@ -1,0 +1,10 @@
+export declare function isQRIBAN(iban: string): boolean;
+export declare function isIBANValid(iban: string): boolean;
+export declare function formatIBAN(iban: string): string;
+export declare function isQRReference(reference: string): boolean;
+export declare function isQRReferenceValid(reference: string): boolean;
+export declare function calculateQRReferenceChecksum(code: string): string;
+export declare function formatQRReference(reference: string): string;
+export declare function formatSCORReference(reference: string): string;
+export declare function formatAmount(amount: number): string;
+export declare function mmToPoints(mm: number): number;
