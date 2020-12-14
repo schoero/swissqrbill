@@ -1003,7 +1003,12 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Create QR Code
 
-    const qrcodeString = await QRCode.toString(qrString, { type: "svg", width: utils.mmToPoints(46), margin: 0 }, (err, svg) => {
+    const qrcodeString = await QRCode.toString([{ data: qrString, mode: "byte" }], {
+      type: "svg",
+      width: utils.mmToPoints(46),
+      margin: 0,
+      errorCorrectionLevel: "M"
+    }, (err, svg) => {
       return new Promise((resolve, reject) => {
         if(err){
           reject(err);
