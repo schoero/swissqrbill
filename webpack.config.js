@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 module.exports = {
   entry: "./src/browser.ts",
   module: {
@@ -18,6 +20,11 @@ module.exports = {
       "buffer": require.resolve("buffer")
     }
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+  ],
   output: {
     filename: "browser.js",
     path: __dirname + "/lib",
