@@ -1,7 +1,8 @@
 import { parse } from "svg-parser";
-import QRCode from "@schoero/qrcode-svg";
+// import QRCode from "@schoero/qrcode-svg";
 import ExtendedPDF from "./extended-pdf";
 import * as utils from "./utils";
+import QRCode from "qrcode";
 
 export interface data {
   currency: currency,
@@ -45,6 +46,7 @@ export type size = "A4" | "A6/5";
 export type languages = "DE" | "EN" | "IT" | "FR";
 
 export import utils = utils;
+import { rejects } from "assert";
 
 export class PDF extends ExtendedPDF.PDF {
 
@@ -178,11 +180,9 @@ export class PDF extends ExtendedPDF.PDF {
     this.addPage();
 
     if(this._autoGenerate === true){
-
-      this.addQRBill();
-
-      this.end();
-
+      this.addQRBill().then(() => {
+        this.end();
+      });
     }
 
   }
@@ -209,7 +209,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  public addQRBill(): void {
+  public async addQRBill() {
 
     if(this.page.height - this.y < utils.mmToPoints(105) && this.y !== this.page.margins.top){
       this.addPage({
@@ -223,7 +223,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     this._drawOutlines();
     this._drawReceipt();
-    this._drawPaymentPart();
+    await this._drawPaymentPart();
 
   }
 
@@ -410,7 +410,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  private _drawPaymentPart(): void {
+  private async _drawPaymentPart(){
 
     this.fontSize(11);
     this.font("Helvetica-Bold");
@@ -419,7 +419,7 @@ export class PDF extends ExtendedPDF.PDF {
       align: "left",
     });
 
-    this._generateQRCode();
+    await this._generateQRCode();
 
     this.fillColor("black");
 
@@ -780,7 +780,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  private _generateQRCode(): void {
+  private async _generateQRCode(){
 
     let qrString = "";
 
@@ -1004,16 +1004,31 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Create QR Code
 
-    const qrcodeString = new QRCode({
-      content: qrString,
-      join: true,
-      width: utils.mmToPoints(46),
-      height: utils.mmToPoints(46),
-      padding: 0,
-      ecl: "M"
-    }).svg();
+    const qrcodeString = await QRCode.toString(qrString, { type: "svg", width: utils.mmToPoints(46) }, (err, svg) => {
+      return new Promise((resolve, reject) => {
+        if(err){
+          reject(err);
+        } else {
+          resolve(svg);
+        }
+      });
+    }) as unknown as string;
+
+
+    // const qrcodeString = new QRCode({
+    //   content: qrString,
+    //   join: true,
+    //   width: utils.mmToPoints(46),
+    //   height: utils.mmToPoints(46),
+    //   padding: 0,
+    //   ecl: "M"
+    // }).svg();
+
+    // console.log("qrcodeString: ", qrcodeString);
 
     const svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
+
+    // console.log("svgPath: ", svgPath);
 
     if(svgPath === undefined){
       throw new Error("Could not convert svg image to path");
@@ -1056,6 +1071,8 @@ export class PDF extends ExtendedPDF.PDF {
 
     firstChildLoop: for(const firstChild of svgObject.children){
 
+      console.log("firstChild: ", firstChild);
+
       if(firstChild.type !== "element"){
         continue firstChildLoop;
       }
@@ -1070,6 +1087,9 @@ export class PDF extends ExtendedPDF.PDF {
         }
         if(secondChild.properties === undefined){
           continue secondChildLoop;
+        }
+        if(secondChild.properties.fill !== "#000000"){
+          continue;
         }
         if(secondChild.properties.d === undefined){
           continue secondChildLoop;
