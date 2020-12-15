@@ -1,7 +1,8 @@
 
 # Change Log
 
-# [v2.1.0](https://github.com/schoero/swissqrbill/compare/v2.0.3...v2.1.0) - 11.12.2020
+# [v2.1.0](https://github.com/schoero/swissqrbill/compare/v2.0.3...v2.1.0) - 15.12.2020
+  * Changed the implemented QR code library to fix an issue that caused QR code scanning to fail on some QR readers.
   * Added [utility functions](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md#swissqrbillutils) to simplify the creation of QR bills
   * Added additional QR-Reference validation
 
