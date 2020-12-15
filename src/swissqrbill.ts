@@ -1,8 +1,7 @@
 import { parse } from "svg-parser";
-// import QRCode from "@schoero/qrcode-svg";
+import QRCode from "@schoero/qrcode";
 import ExtendedPDF from "./extended-pdf";
 import * as utils from "./utils";
-import QRCode from "qrcode";
 
 export interface data {
   currency: currency,
@@ -1017,17 +1016,16 @@ export class PDF extends ExtendedPDF.PDF {
 
     this.moveTo(utils.mmToPoints(67), this._marginTop + utils.mmToPoints(17));
 
+    this.addPath(svgPath, utils.mmToPoints(67), this._marginTop + utils.mmToPoints(17))
+      .undash()
+      .fillColor("black")
+      .fill();
+
 
     //-- Black rectangle
 
     const background = "M18.3 0.7L1.6 0.7 0.7 0.7 0.7 1.6 0.7 18.3 0.7 19.1 1.6 19.1 18.3 19.1 19.1 19.1 19.1 18.3 19.1 1.6 19.1 0.7Z";
     const cross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
-
-
-    this.addPath(svgPath, utils.mmToPoints(67), this._marginTop + utils.mmToPoints(17))
-      .undash()
-      .fillColor("black")
-      .fill();
 
     this.addPath(background, utils.mmToPoints(86), this._marginTop + utils.mmToPoints(36))
       .fillColor("black")

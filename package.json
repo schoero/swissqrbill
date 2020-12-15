@@ -29,6 +29,8 @@
     "swiss-qr-bill",
     "qr-invoice",
     "qr-rechnung",
+    "qr-fattura",
+    "qr-facture",
     "fattura",
     "facture"
   ],
@@ -58,11 +60,10 @@
     "webpack-cli": "^4.0.0"
   },
   "dependencies": {
-    "@schoero/qrcode-svg": "^1.2.2",
+    "@schoero/qrcode": "^1.4.5",
     "blob-stream": "^0.1.3",
     "iban": "0.0.14",
     "pdfkit": "^0.11.0",
-    "qrcode": "git+https://github.com/schoero/node-qrcode.git#scalable-svg",
     "svg-parser": "^2.0.4",
     "svgpath": "^2.2.3"
   }
