@@ -206,7 +206,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  public addQRBill() {
+  public addQRBill(): void {
 
     if(this.page.height - this.y < utils.mmToPoints(105) && this.y !== this.page.margins.top){
       this.addPage({
@@ -558,7 +558,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  private _validateData(){
+  private _validateData(): void {
 
 
     //-- Creditor
