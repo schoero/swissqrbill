@@ -109,7 +109,7 @@ export declare class PDF extends ExtendedPDF.PDF {
     constructor(data: data, options?: options);
     addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument;
     end(): void;
-    addQRBill(): Promise<void>;
+    addQRBill(): void;
     private _drawOutlines;
     private _drawReceipt;
     private _drawPaymentPart;

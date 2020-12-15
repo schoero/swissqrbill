@@ -179,9 +179,8 @@ export class PDF extends ExtendedPDF.PDF {
     this.addPage();
 
     if(this._autoGenerate === true){
-      this.addQRBill().then(() => {
-        this.end();
-      });
+      this.addQRBill();
+      this.end();
     }
 
   }
@@ -208,7 +207,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  public async addQRBill() {
+  public addQRBill() {
 
     if(this.page.height - this.y < utils.mmToPoints(105) && this.y !== this.page.margins.top){
       this.addPage({
@@ -222,7 +221,7 @@ export class PDF extends ExtendedPDF.PDF {
 
     this._drawOutlines();
     this._drawReceipt();
-    await this._drawPaymentPart();
+    this._drawPaymentPart();
 
   }
 
@@ -409,7 +408,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  private async _drawPaymentPart(){
+  private _drawPaymentPart(): void {
 
     this.fontSize(11);
     this.font("Helvetica-Bold");
@@ -418,7 +417,7 @@ export class PDF extends ExtendedPDF.PDF {
       align: "left",
     });
 
-    await this._generateQRCode();
+    this._generateQRCode();
 
     this.fillColor("black");
 
@@ -779,7 +778,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  private async _generateQRCode(){
+  private _generateQRCode(): void {
 
     let qrString = "";
 
@@ -1003,36 +1002,14 @@ export class PDF extends ExtendedPDF.PDF {
 
     //-- Create QR Code
 
-    const qrcodeString = await QRCode.toString(qrString, {
+    const qrcodeString = QRCode.toString(qrString, {
       type: "svg",
       width: utils.mmToPoints(46),
       margin: 0,
       errorCorrectionLevel: "M"
-    }, (err, svg) => {
-      return new Promise((resolve, reject) => {
-        if(err){
-          reject(err);
-        } else {
-          resolve(svg);
-        }
-      });
-    }) as unknown as string;
-
-
-    // const qrcodeString = new QRCode({
-    //   content: qrString,
-    //   join: true,
-    //   width: utils.mmToPoints(46),
-    //   height: utils.mmToPoints(46),
-    //   padding: 0,
-    //   ecl: "M"
-    // }).svg();
-
-    // console.log("qrcodeString: ", qrcodeString);
+    }, () => { }) as unknown as string;
 
     const svgPath = this._getSVGPathFromQRCodeString(qrcodeString);
-
-    // console.log("svgPath: ", svgPath);
 
     if(svgPath === undefined){
       throw new Error("Could not convert svg image to path");
@@ -1075,8 +1052,6 @@ export class PDF extends ExtendedPDF.PDF {
 
     firstChildLoop: for(const firstChild of svgObject.children){
 
-      console.log("firstChild: ", firstChild);
-
       if(firstChild.type !== "element"){
         continue firstChildLoop;
       }
@@ -1101,7 +1076,9 @@ export class PDF extends ExtendedPDF.PDF {
         if(typeof secondChild.properties.d !== "string"){
           continue secondChildLoop;
         }
+
         return secondChild.properties.d;
+
       }
 
     }
