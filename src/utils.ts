@@ -114,17 +114,17 @@ export function formatAmount(amount: number): string {
   const amountString = amount.toFixed(2) + "";
   const amountArray = amountString.split(".");
 
-  let formatedAmountWithoutDecimals = "";
+  let formattedAmountWithoutDecimals = "";
 
   for(let x = amountArray[0].length -1, i= 1; x >= 0; x--, i++){
-    formatedAmountWithoutDecimals = amountArray[0][x] + formatedAmountWithoutDecimals;
+    formattedAmountWithoutDecimals = amountArray[0][x] + formattedAmountWithoutDecimals;
     if(i === 3){
-      formatedAmountWithoutDecimals = " " + formatedAmountWithoutDecimals;
+      formattedAmountWithoutDecimals = " " + formattedAmountWithoutDecimals;
       i = 0;
     }
   }
 
-  return formatedAmountWithoutDecimals + "." + amountArray[1];
+  return formattedAmountWithoutDecimals + "." + amountArray[1];
 
 }
 
