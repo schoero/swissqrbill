@@ -1,5 +1,8 @@
 #!/bin/sh
 mkdir -p output
+
+set -e
+
 echo "utils"
   node utils
 echo "a4"
