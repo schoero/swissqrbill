@@ -25,7 +25,7 @@ module SwissQRBill {
     constructor(data: data, writeableStream: fs.WriteStream, options?: options, callback?: Function)
     constructor(data: data, outputPath: string, callback?: Function)
     constructor(data: data, writeableStream: fs.WriteStream, callback?: Function)
-    constructor(data: data, outputPathOrWriteableStream: string | fs.WriteStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined){
+    constructor(data: data, outputPathOrWriteableStream: string | fs.WriteStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
 
       let callback: Function | undefined = undefined;
       let options: options | undefined = undefined;

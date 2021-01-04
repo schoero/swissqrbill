@@ -121,7 +121,7 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  constructor(data: data, options?: options){
+  constructor(data: data, options?: options) {
 
     super({ autoFirstPage: false, bufferPages: true });
 
@@ -279,7 +279,7 @@ export class PDF extends ExtendedPDF.PDF {
         this.font("Helvetica");
         this.text(PDF.translations[this._language].separate, utils.mmToPoints(0), this._marginTop - 12, {
           width: utils.mmToPoints(210),
-          align: "center",
+          align: "center"
         });
 
       }
@@ -294,7 +294,7 @@ export class PDF extends ExtendedPDF.PDF {
     this.font("Helvetica-Bold");
     this.text(PDF.translations[this._language].receipt, utils.mmToPoints(5), this._marginTop + utils.mmToPoints(5), {
       width: utils.mmToPoints(52),
-      align: "left",
+      align: "left"
     });
 
     this.fontSize(6);
@@ -401,7 +401,7 @@ export class PDF extends ExtendedPDF.PDF {
     this.font("Helvetica-Bold");
     this.text(PDF.translations[this._language].acceptancePoint, utils.mmToPoints(5), this._marginTop + utils.mmToPoints(82), {
       width: utils.mmToPoints(52),
-      align: "right",
+      align: "right"
     });
 
   }
@@ -413,7 +413,7 @@ export class PDF extends ExtendedPDF.PDF {
     this.font("Helvetica-Bold");
     this.text(PDF.translations[this._language].paymentPart, utils.mmToPoints(67), this._marginTop + utils.mmToPoints(5), {
       width: utils.mmToPoints(51),
-      align: "left",
+      align: "left"
     });
 
     this._generateQRCode();
@@ -1090,7 +1090,7 @@ export class PDF extends ExtendedPDF.PDF {
 
 
   private _formatAddress(data: debtor | creditor): string {
-    if(data.houseNumber !== undefined) {
+    if(data.houseNumber !== undefined){
       return `${data.name}\n${data.address} ${data.houseNumber}\n${data.zip} ${data.city}`;
     } else {
       return `${data.name}\n${data.address}\n${data.zip} ${data.city}`;

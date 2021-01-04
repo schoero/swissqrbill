@@ -77,7 +77,7 @@ export function calculateQRReferenceChecksum(code: string): string {
 }
 
 
-export function formatQRReference(reference: string): string{
+export function formatQRReference(reference: string): string {
 
   reference = reference.replace(/ /g, "");
 
@@ -93,7 +93,7 @@ export function formatQRReference(reference: string): string{
 }
 
 
-export function formatSCORReference(reference: string): string{
+export function formatSCORReference(reference: string): string {
 
   reference = reference.replace(/ /g, "");
 
@@ -116,7 +116,7 @@ export function formatAmount(amount: number): string {
 
   let formatedAmountWithoutDecimals = "";
 
-  for(let x = amountArray[0].length -1, i= 1; x >= 0; x--, i++){
+  for(let x = amountArray[0].length - 1, i = 1; x >= 0; x--, i++){
     formatedAmountWithoutDecimals = amountArray[0][x] + formatedAmountWithoutDecimals;
     if(i === 3){
       formatedAmountWithoutDecimals = " " + formatedAmountWithoutDecimals;
