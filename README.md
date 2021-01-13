@@ -100,10 +100,10 @@ A complete documentation for all methods and parameters can be found in [doc/api
 
 ## Browser usage
 
-To use SwissQRBill inside browsers, you have to pass a writeableStream in the second parameter, instead of the output path. To create a writeableStream in the browser you can use the built in `SwissQRBill.blobStream()` method.
+To use SwissQRBill inside browsers, you have to pass a writeableStream in the second parameter, instead of the output path. To create a writeableStream in the browser you can use the built in `SwissQRBill.BlobStream()` function.
 
 ```js
-const stream = SwissQRBill.blobStream();
+const stream = new SwissQRBill.BlobStream();
 
 const pdf = new SwissQRBill.PDF(data, stream);
 

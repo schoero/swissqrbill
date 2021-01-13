@@ -22,7 +22,7 @@ const data = {
 };
 
 
-const stream = SwissQRBill.blobStream();
+const stream = new SwissQRBill.BlobStream();
 
 const pdf = new SwissQRBill.PDF(data, stream);
 
