@@ -1,25 +1,33 @@
-# SwissQRBill
-<a href="https://github.com/schoero/SwissQRBill/blob/master/LICENSE">
-  <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen&style=flat-square">
-</a>
-<a href="https://www.npmjs.com/package/swissqrbill">
-  <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen&style=flat-square">
-</a>
-<a href="https://github.com/schoero/SwissQRBill/issues">
-  <img alt="Issues" src="https://img.shields.io/github/issues-raw/schoero/swissqrbill?style=flat-square">
-</a>
-<a href="https://www.npmjs.com/package/swissqrbill">
-  <img alt="Dependencies" src="https://img.shields.io/david/schoero/swissqrbill?style=flat-square">
-</a>
-<a href="https://www.npmjs.com/package/swissqrbill">
-  <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
-</a>
-<a href="https://github.com/schoero/SwissQRBill/stargazers">
-  <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
-</a>
-<a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
-  <img alt="CI" src="https://img.shields.io/github/workflow/status/schoero/SwissQRBill/CI?style=flat-square">
-</a>
+<div align="center">
+  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/swissqrbill-logo.svg">
+</div>
+
+---
+<div align="center">
+  <a href="https://github.com/schoero/SwissQRBill/blob/master/LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen&style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/swissqrbill">
+    <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen&style=flat-square">
+  </a>
+  <a href="https://github.com/schoero/SwissQRBill/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues-raw/schoero/swissqrbill?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/swissqrbill">
+    <img alt="Dependencies" src="https://img.shields.io/david/schoero/swissqrbill?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/swissqrbill">
+    <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
+  </a>
+  <a href="https://github.com/schoero/SwissQRBill/stargazers">
+    <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
+  </a>
+  <a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
+    <img alt="CI" src="https://img.shields.io/github/workflow/status/schoero/SwissQRBill/CI?style=flat-square">
+  </a>
+</div>
+
+---
 
 <br/>
 <br/>
