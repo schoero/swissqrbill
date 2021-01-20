@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v2.2.0](https://github.com/schoero/swissqrbill/compare/v2.1.0...v2.2.0) - 20.01.2021
+  * Switched from `fs.WriteStream` to `stream.Writable` in order to provide more streaming flexibility.
+
 # [v2.1.0](https://github.com/schoero/swissqrbill/compare/v2.0.3...v2.1.0) - 15.12.2020
   * Changed the implemented QR code library to fix an issue that caused QR code scanning to fail on some QR readers.
   * Added [utility functions](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md#swissqrbillutils) to simplify the creation of QR bills.
