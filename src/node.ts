@@ -1,4 +1,5 @@
 import fs from "fs";
+import stream from "stream";
 import * as SwissQRBill_ from "./swissqrbill";
 
 
@@ -20,12 +21,12 @@ module SwissQRBill {
   export class PDF extends SwissQRBill_.PDF {
 
     constructor(data: data, outputPath: string, options?: options)
-    constructor(data: data, writeableStream: fs.WriteStream, options?: options)
+    constructor(data: data, writeableStream: stream.Writable, options?: options)
     constructor(data: data, outputPath: string, options?: options, callback?: Function)
-    constructor(data: data, writeableStream: fs.WriteStream, options?: options, callback?: Function)
+    constructor(data: data, writeableStream: stream.Writable, options?: options, callback?: Function)
     constructor(data: data, outputPath: string, callback?: Function)
-    constructor(data: data, writeableStream: fs.WriteStream, callback?: Function)
-    constructor(data: data, outputPathOrWriteableStream: string | fs.WriteStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
+    constructor(data: data, writeableStream: stream.Writable, callback?: Function)
+    constructor(data: data, outputPathOrWriteableStream: string | stream.Writable, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
 
       let callback: Function | undefined = undefined;
       let options: options | undefined = undefined;
@@ -44,7 +45,7 @@ module SwissQRBill {
 
       super(data, options);
 
-      let stream: fs.WriteStream | undefined;
+      let stream: stream.Writable | undefined;
 
       if(typeof outputPathOrWriteableStream === "string"){
         stream = fs.createWriteStream(outputPathOrWriteableStream);
