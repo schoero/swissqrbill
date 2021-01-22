@@ -106,9 +106,16 @@
    - **language** - `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
    - **size** - `string: "A4" | "A6/5"`. *default* `"A6/5"`.
    - **scissors** - `boolean`: *default* `true`.
-     > Whether you want to show the scissors icons or the text `Separate before paying in`.
+     Whether you want to show the scissors icons or the text `Separate before paying in`.
+     > **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
+   - **separate** - `boolean`: *default* `false`.
+     Whether you want to show the text `Separate before paying in` rather than the scissors icons.
+
+     > **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
+   - **outlines** - `boolean`: *default* `true`.
+     Whether you want render the outlines. This option may be disabled if you use perforated paper.
    - **autoGenerate** - `boolean`: *default* `true`.
-     > Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
+     Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
 <br/>
 

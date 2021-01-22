@@ -33,10 +33,22 @@ echo "normal-iban-creditor-reference"
   call node normal-iban-creditor-reference
 echo "normal-iban-no-reference"
   call node normal-iban-no-reference
+echo "no-scissors"
+  call node no-scissors
+echo "no-scissors-no-outlines"
+  call node no-scissors-no-outlines
+echo "no-scissors-no-separate"
+  call node no-scissors-no-separate
+echo "no-separate-no-outlines"
+  call node no-separate-no-outlines
+echo "no-scissors-no-separate-no-outlines"
+  call node no-scissors-no-separate-no-outlines
 echo "qr-iban"
   call node qr-iban
 echo "separate"
   call node separate
+echo "separate-scissors"
+  call node separate-scissors
 echo "callback"
   call node callback
 echo "callback-with-options"

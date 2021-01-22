@@ -33,7 +33,9 @@ export interface options {
   language?: languages,
   size?: size,
   scissors?: boolean,
-  autoGenerate?: boolean
+  separate?: boolean,
+  outlines?: boolean
+  autoGenerate?: boolean,
 }
 
 export import PDFTable = ExtendedPDF.PDFTable;
@@ -51,6 +53,8 @@ export class PDF extends ExtendedPDF.PDF {
   public size: size = "A6/5";
   private _data: data;
   private _scissors: boolean = true;
+  private _separate: boolean = false;
+  private _outlines: boolean = true;
   private _language: languages = "DE";
   private _marginTop: number = 0;
   private _autoGenerate: boolean = true;
@@ -167,6 +171,18 @@ export class PDF extends ExtendedPDF.PDF {
       }
       if(options.scissors !== undefined){
         this._scissors = options.scissors;
+        this._separate = !options.scissors;
+      }
+      if(options.separate !== undefined){
+        this._separate = options.separate;
+        this._scissors = !options.separate;
+      }
+      if(options.scissors === false && options.separate === false){
+        this._separate = false;
+        this._scissors = false;
+      }
+      if(options.outlines !== undefined){
+        this._outlines = options.outlines;
       }
       if(options.autoGenerate !== undefined){
         this._autoGenerate = options.autoGenerate;
@@ -228,12 +244,30 @@ export class PDF extends ExtendedPDF.PDF {
   private _drawOutlines(): void {
 
 
-    //-- Horizontal line
+    //-- Lines
 
-    if(this.page.height > utils.mmToPoints(105)){
+    if(this._outlines === true){
 
-      this.moveTo(0, this._marginTop)
-        .lineTo(utils.mmToPoints(210), this._marginTop)
+
+      //-- Horizontal line
+
+      if(this.page.height > utils.mmToPoints(105)){
+
+        this.moveTo(0, this._marginTop)
+          .lineTo(utils.mmToPoints(210), this._marginTop)
+          .lineWidth(.75)
+          .strokeOpacity(1)
+          .dash(1, { size: 1 })
+          .strokeColor("black")
+          .stroke();
+
+      }
+
+
+      //-- Vertical line
+
+      this.moveTo(utils.mmToPoints(62), this._marginTop)
+        .lineTo(utils.mmToPoints(62), this._marginTop + utils.mmToPoints(105))
         .lineWidth(.75)
         .strokeOpacity(1)
         .dash(1, { size: 1 })
@@ -243,15 +277,7 @@ export class PDF extends ExtendedPDF.PDF {
     }
 
 
-    //-- Vertical line
-
-    this.moveTo(utils.mmToPoints(62), this._marginTop)
-      .lineTo(utils.mmToPoints(62), this._marginTop + utils.mmToPoints(105))
-      .lineWidth(.75)
-      .strokeOpacity(1)
-      .dash(1, { size: 1 })
-      .strokeColor("black")
-      .stroke();
+    //-- Scissors
 
     if(this._scissors === true){
 
@@ -271,7 +297,12 @@ export class PDF extends ExtendedPDF.PDF {
         .fill();
       this.translate(0, 0);
 
-    } else {
+    }
+
+
+    //-- Separation text
+
+    if(this._separate === true){
 
       if(this.page.height > utils.mmToPoints(105)){
 
@@ -283,6 +314,7 @@ export class PDF extends ExtendedPDF.PDF {
         });
 
       }
+
     }
 
   }

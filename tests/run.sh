@@ -33,6 +33,16 @@ echo "no-debtor-no-amount-no-reference"
   node no-debtor-no-amount-no-reference
 echo "no-debtor-no-reference"
   node no-debtor-no-reference
+echo "no-scissors"
+  node no-scissors
+echo "no-scissors-no-outlines"
+  node no-scissors-no-outlines
+echo "no-scissors-no-separate"
+  node no-scissors-no-separate
+echo "no-separate-no-outlines"
+  node no-separate-no-outlines
+echo "no-scissors-no-separate-no-outlines"
+  node no-scissors-no-separate-no-outlines
 echo "normal-iban-creditor-reference"
   node normal-iban-creditor-reference
 echo "normal-iban-no-reference"
@@ -41,6 +51,8 @@ echo "qr-iban"
   node qr-iban
 echo "separate"
   node separate
+echo "separate-scissors"
+  node separate-scissors
 echo "callback"
   node callback
 echo "callback-with-options"
