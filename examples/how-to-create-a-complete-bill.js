@@ -31,7 +31,7 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "complete-qr-bill.pdf", { autoGenerate: false, size: "A4" });
+const pdf = new SwissQRBill.PDF(data, "complete-qr-bill.pdf", { "autoGenerate": false, "size": "A4" });
 
 
 //-- Add logo
