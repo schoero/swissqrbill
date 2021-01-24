@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v2.3.0](https://github.com/schoero/swissqrbill/compare/v2.2.0...v2.3.0) - 24.01.2021
+  * Added [options](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md#options) to disable rendering of outlines, scissors icons or text `Separate before paying in`, for use with perforated or preprinted paper.
+
 # [v2.2.0](https://github.com/schoero/swissqrbill/compare/v2.1.0...v2.2.0) - 20.01.2021
   * Switched from `fs.WriteStream` to `stream.Writable` in order to provide more streaming flexibility.
 

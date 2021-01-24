@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Swiss QR Bill generation in Node.js and browsers ",
   "main": "./lib/node",
   "browser": "./lib/browser",
