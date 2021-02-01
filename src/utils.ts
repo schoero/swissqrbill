@@ -10,10 +10,6 @@ export function isIBANValid(iban: string): boolean {
   iban = iban.replace(/ /g, "");
   iban = iban.toUpperCase();
 
-  if(iban.length !== 21){
-    return false;
-  }
-
 
   //-- Move country code + checksum to end
 
