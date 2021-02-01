@@ -282,7 +282,7 @@ Returns a `boolean`: true if the given iban is a QR-IBAN and false otherwise.
 #### isIBANValid(iban)
  - iban - `string` containing the iban to be checked.
 Validates the given iban.
-Returns a `boolean`: true if the given iban is valid and false otherwise.
+Returns a `boolean`: true if the checksum of the given iban is valid and false otherwise.
 
 #### formatIBAN(iban)
  - iban - `string` containing the iban to be formatted.
