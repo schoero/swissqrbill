@@ -1,6 +1,3 @@
-import IBAN from "iban";
-
-
 export function isQRIBAN(iban: string): boolean {
   iban = iban.replace(/ /g, "");
   const QRIID = iban.substr(4, 5);
@@ -9,7 +6,41 @@ export function isQRIBAN(iban: string): boolean {
 
 
 export function isIBANValid(iban: string): boolean {
-  return IBAN.isValid(iban);
+
+  iban = iban.replace(/ /g, "");
+  iban = iban.toUpperCase();
+
+  if(iban.length !== 21){
+    return false;
+  }
+
+
+  //-- Move country code + checksum to end
+
+  iban = iban.substr(4) + iban.substr(0, 4);
+
+
+  //-- Convert letters to numbers, beginning with A = 10...Z = 35
+
+  const A = "A".charCodeAt(0);
+
+  const ibanArr = iban.split("");
+
+  for(let i = 0; i < ibanArr.length; i++){
+
+    const charCode = ibanArr[i].charCodeAt(0);
+
+    if(charCode >= A){
+      ibanArr[i] = charCode - A + 10 + "";
+    }
+
+  }
+
+
+  //-- Calculate mod9710
+
+  return mod9710(ibanArr.join("")) === 1;
+
 }
 
 
@@ -61,19 +92,8 @@ export function isQRReferenceValid(reference: string): boolean {
 }
 
 
-export function calculateQRReferenceChecksum(code: string): string {
-
-  code = code.replace(/ /g, "");
-
-  const table = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5];
-  let carry = 0;
-
-  for(let i = 0; i < code.length; i++){
-    carry = table[(carry + parseInt(code.substr(i, 1), 10)) % 10];
-  }
-
-  return ((10 - carry) % 10).toString();
-
+export function calculateQRReferenceChecksum(reference: string): string {
+  return mod10(reference);
 }
 
 
@@ -131,4 +151,35 @@ export function formatAmount(amount: number): string {
 
 export function mmToPoints(mm: number): number {
   return Math.round(mm * 2.83465);
+}
+
+
+function mod9710(iban: string) {
+
+  let remainder = iban;
+  let block: string;
+
+  while(remainder.length > 2){
+    block = remainder.slice(0, 9);
+    remainder = parseInt(block, 10) % 97 + remainder.slice(block.length);
+  }
+
+  return parseInt(remainder, 10) % 97;
+
+}
+
+
+function mod10(code: string): string {
+
+  code = code.replace(/ /g, "");
+
+  const table = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5];
+  let carry = 0;
+
+  for(let i = 0; i < code.length; i++){
+    carry = table[(carry + parseInt(code.substr(i, 1), 10)) % 10];
+  }
+
+  return ((10 - carry) % 10).toString();
+
 }
