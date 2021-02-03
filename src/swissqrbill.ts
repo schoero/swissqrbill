@@ -634,7 +634,7 @@ export class PDF extends ExtendedPDF.PDF {
         }
 
       } else {
-        throw new Error("QR reference requires the use of a QR-IBAN (and vice versa).");
+        throw new Error("QR-IBAN requires the use of a QR-Reference (and vice versa).");
       }
 
     } else {
@@ -643,7 +643,7 @@ export class PDF extends ExtendedPDF.PDF {
         this._referenceType = "NON";
       } else {
         if(utils.isQRReference(this._data.reference)){
-          throw new Error("Creditor Reference requires the use of a conventional IBAN.");
+          throw new Error("QR-Reference requires the use of a QR-IBAN (and vice versa).");
         } else {
           this._referenceType = "SCOR";
         }
