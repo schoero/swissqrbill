@@ -630,7 +630,7 @@ export class PDF extends ExtendedPDF.PDF {
         this._referenceType = "QRR";
 
         if(!utils.isQRReferenceValid(this._data.reference)){
-          throw new Error("QR reference checksum is not valid.");
+          throw new Error("QR-Reference checksum is not valid.");
         }
 
       } else {
