@@ -1,6 +1,10 @@
 
 # Change Log
 
+# [v2.3.1](https://github.com/schoero/swissqrbill/compare/v2.3.0...v2.3.1) - 06.02.2021
+  * Removed iban dependency and integrated IBAN validation directly into the library.
+  * Fixed some misleading error messages.
+
 # [v2.3.0](https://github.com/schoero/swissqrbill/compare/v2.2.0...v2.3.0) - 24.01.2021
   * Added [options](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md#options) to disable rendering of outlines, scissors icons or text `Separate before paying in`, for use with perforated or preprinted paper.
 
