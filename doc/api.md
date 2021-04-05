@@ -86,7 +86,7 @@
     - **account** - `string` *mandatory*, 21 characters.
     - **address** - `string` *mandatory*, max 70 characters.
     - **houseNumber** - `string | number` *optional*, max 16 characters.
-    - **zip** - `number` *mandatory*, max 16 characters.
+    - **zip** - `number | string` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
   - **debtor** *optional*
@@ -94,7 +94,7 @@
       > First name + last name or company name.
     - **address** - `string` *mandatory*, max 70 characters.
     - **houseNumber** - `string | number` *optional*, max 16 characters.
-    - **zip** - `number` *mandatory*, max 16 characters.
+    - **zip** - `number | string` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
 
