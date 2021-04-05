@@ -1,7 +1,7 @@
 
 # Change Log
 
-# [v2.3.2](https://github.com/schoero/swissqrbill/compare/v2.3.1...v2.3.2) - 05.04.2021
+# [v2.3.3](https://github.com/schoero/swissqrbill/compare/v2.3.1...v2.3.3) - 05.04.2021
   * A string is now allowed for the zip code field. [#294](https://github.com/schoero/SwissQRBill/pull/294)
 
 # [v2.3.1](https://github.com/schoero/swissqrbill/compare/v2.3.0...v2.3.1) - 06.02.2021
