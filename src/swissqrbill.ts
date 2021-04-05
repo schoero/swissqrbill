@@ -19,7 +19,7 @@ export interface data {
 export interface debtor {
   name: string,
   address: string,
-  zip: number,
+  zip: string | number,
   city: string,
   country: string
   houseNumber?: string | number
