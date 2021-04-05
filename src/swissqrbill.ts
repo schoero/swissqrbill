@@ -677,7 +677,7 @@ export class PDF extends ExtendedPDF.PDF {
     //-- Creditor Zip
 
     if(this._data.creditor.zip === undefined){ throw new Error("Creditor zip cannot be undefined."); }
-    if(typeof this._data.creditor.zip !== "number"){ throw new Error("Creditor zip must be a number."); }
+    if(typeof this._data.creditor.zip !== "string" && typeof this._data.creditor.zip !== "number"){ throw new Error("Creditor zip must be either a string or a number."); }
     if(this._data.creditor.zip.toString().length > 16){ throw new Error("Creditor zip must be a maximum of 16 characters."); }
 
 
@@ -741,7 +741,7 @@ export class PDF extends ExtendedPDF.PDF {
       //-- Debtor zip
 
       if(this._data.debtor.zip === undefined){ throw new Error("Debtor zip cannot be undefined if the debtor object is available."); }
-      if(typeof this._data.debtor.zip !== "number"){ throw new Error("Debtor zip must be a number."); }
+      if(typeof this._data.debtor.zip !== "string" && typeof this._data.debtor.zip !== "number"){ throw new Error("Debtor zip must be either a string or a number."); }
       if(this._data.debtor.zip.toString().length > 16){ throw new Error("Debtor zip must be a maximum of 16 characters."); }
 
 

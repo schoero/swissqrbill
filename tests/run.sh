@@ -61,3 +61,5 @@ echo "event"
   node event
 echo "stream"
   node stream
+echo "zip-string"
+  node zip-string
