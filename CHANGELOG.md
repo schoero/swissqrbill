@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v2.3.2](https://github.com/schoero/swissqrbill/compare/v2.3.1...v2.3.2) - 05.04.2021
+  * A string is now allowed for the zip code field. [#294](https://github.com/schoero/SwissQRBill/pull/294)
+
 # [v2.3.1](https://github.com/schoero/swissqrbill/compare/v2.3.0...v2.3.1) - 06.02.2021
   * Removed iban dependency and integrated IBAN validation directly into the library.
   * Fixed some misleading error messages.
@@ -9,7 +12,7 @@
   * Added [options](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md#options) to disable rendering of outlines, scissors icons or text `Separate before paying in`, for use with perforated or preprinted paper.
 
 # [v2.2.0](https://github.com/schoero/swissqrbill/compare/v2.1.0...v2.2.0) - 20.01.2021
-  * Switched from `fs.WriteStream` to `stream.Writable` in order to provide more streaming flexibility.
+  * Switched from `fs.WriteStream` to `stream.Writable` in order to provide more streaming flexibility. [#207](https://github.com/schoero/SwissQRBill/pull/207)
 
 # [v2.1.0](https://github.com/schoero/swissqrbill/compare/v2.0.3...v2.1.0) - 15.12.2020
   * Changed the implemented QR code library to fix an issue that caused QR code scanning to fail on some QR readers.
