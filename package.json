@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "description": "Swiss QR Bill generation in Node.js and browsers ",
   "main": "./lib/node",
   "browser": "./lib/browser",
@@ -11,7 +11,7 @@
   "scripts": {
     "test": "tsc && cd tests && sh run.sh",
     "test-windows": "tsc && cd tests && call run-windows.bat",
-    "build": "tsc && webpack --mode development"
+    "build": "tsc && webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -42,20 +42,20 @@
   "homepage": "https://github.com/schoero/SwissQRBill#readme",
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
-    "@types/node": "^15.12.2",
+    "@types/node": "^15.14.0",
     "@types/qrcode": "^1.4.0",
     "@types/qrcode-svg": "^1.1.0",
     "@types/svg-parser": "^2.0.2",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
     "buffer": "^6.0.3",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "process": "^0.11.10",
     "stream-browserify": "^3.0.0",
     "ts-loader": "^9.2.3",
-    "typescript": "^4.3.2",
+    "typescript": "^4.3.5",
     "util": "^0.12.4",
-    "webpack": "^5.38.1",
+    "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
