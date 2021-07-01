@@ -222,13 +222,13 @@ export class PDF extends ExtendedPDF.PDF {
   }
 
 
-  public addQRBill(): void {
+  public addQRBill(size: size = "A6/5"): void {
 
     if(this.page.height - this.y < utils.mmToPoints(105) && this.y !== this.page.margins.top){
       this.addPage({
-        layout: "landscape",
         margin: 0,
-        size: [utils.mmToPoints(105), utils.mmToPoints(210)]
+        layout: size === "A4" ? "portrait" : "landscape",
+        size: size === "A4" ? size : [utils.mmToPoints(105), utils.mmToPoints(210)]
       });
     }
 

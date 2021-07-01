@@ -7,7 +7,7 @@
   - [SwissQRBill.PDF(data, writeableStream[, options] [, callback])](#swissqrbillpdfdata-writeablestream-options--callback)
 - Methods
   - [addPage(options)](#addpageoptions)
-  - [addQRBill()](#addqrbill)
+  - [addQRBill([size])](#addqrbillsize)
   - [addTable(table)](#addtabletable)
 - Events
   - [finish](#event-finish)
@@ -156,8 +156,10 @@ This method is basically the same as the original [PDFKit `addPage()` method](ht
 However the default values are changed to use the default page size provided in the constructor options.
 
 
-### addQRBill()
-Adds the QR Bill to the bottom of the current page if there is enough space, otherwise it will be added as a standalone A6/5 page.
+### addQRBill([size])
+ - size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
+
+Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
 > **Note:** This function is automatically called when the option autoGenerate is set to true.
 
 ### addTable(table)

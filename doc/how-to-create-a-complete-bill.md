@@ -263,7 +263,7 @@ pdf.addTable(table);
 
 ### Adding the QR bill
 
-When we call the `addQRBill()` method, SwissQRBill will automatically add the QR slip to the bottom of the current page if there is enough space left, otherwise it will generate a new page in the size of `A6/5`.
+When we call the `addQRBill()` method, SwissQRBill will automatically add the QR slip to the bottom of the current page if there is enough space left, otherwise it will generate a new page in the size of `A6/5` by default.
 
 ```js
 pdf.addQRBill();
