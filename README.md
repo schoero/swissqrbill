@@ -117,7 +117,7 @@ const stream = new SwissQRBill.BlobStream();
 const pdf = new SwissQRBill.PDF(data, stream);
 
 pdf.on("finish", () => {
-  const iframe = document.getElementById("iframe") as HTMLIFrameElement;
+  const iframe = document.getElementById("iframe");
   if(iframe){
     iframe.src = stream.toBlobURL("application/pdf");
   }
