@@ -4,7 +4,7 @@
 
 - Constructor
   - [SwissQRBill.PDF(data, outputPath[, options] [, callback])](#swissqrbillpdfdata-outputpath-options--callback)
-  - [SwissQRBill.PDF(data, writeableStream[, options] [, callback])](#swissqrbillpdfdata-writeablestream-options--callback)
+  - [SwissQRBill.PDF(data, writableStream[, options] [, callback])](#swissqrbillpdfdata-writablestream-options--callback)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill([size])](#addqrbillsize)
@@ -52,10 +52,10 @@
 ## Constructor
 
 #### SwissQRBill.PDF(data, outputPath[, options] [, callback])
-#### SwissQRBill.PDF(data, writeableStream[, options] [, callback])
+#### SwissQRBill.PDF(data, writableStream[, options] [, callback])
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
- - **outputPath | writeableStream** - `string` output path for the generated PDF file or `writeableStream` a writeableStream to stream data into. *mandatory*.
+ - **outputPath | writableStream** - `string` output path for the generated PDF file or `writableStream` a writableStream to stream data into. *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
  - **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
@@ -249,7 +249,7 @@ This could be used to add page numbers to the pages as described [here](http://p
 ## Constructor
 
 ### SwissQRBill.BlobStream()
- Creates a new writeableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
+ Creates a new writableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
  Returns a [BlobStream](#BlobStream-1) instance.
 > **Warning:** This method does only exist when executed inside a browser
 
