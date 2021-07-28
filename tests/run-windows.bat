@@ -33,6 +33,10 @@ echo "normal-iban-creditor-reference"
   call node normal-iban-creditor-reference
 echo "normal-iban-no-reference"
   call node normal-iban-no-reference
+echo "not-enough-space"
+  call node not-enough-space
+echo "not-enough-space-a4"
+  call node not-enough-space-a4
 echo "no-scissors"
   call node no-scissors
 echo "no-scissors-no-outlines"

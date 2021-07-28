@@ -47,6 +47,10 @@ echo "normal-iban-creditor-reference"
   node normal-iban-creditor-reference
 echo "normal-iban-no-reference"
   node normal-iban-no-reference
+echo "not-enough-space"
+  node not-enough-space
+echo "not-enough-space-a4"
+  node not-enough-space-a4
 echo "qr-iban"
   node qr-iban
 echo "separate"

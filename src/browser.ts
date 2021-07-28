@@ -21,10 +21,10 @@ module SwissQRBill {
 
   export class PDF extends SwissQRBill_.PDF {
 
-    constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options)
-    constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options, callback?: Function)
-    constructor(data: data, writeableStream: BlobStream_.IBlobStream, callback?: Function)
-    constructor(data: data, writeableStream: BlobStream_.IBlobStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
+    constructor(data: data, writableStream: BlobStream_.IBlobStream, options?: options)
+    constructor(data: data, writableStream: BlobStream_.IBlobStream, options?: options, callback?: Function)
+    constructor(data: data, writableStream: BlobStream_.IBlobStream, callback?: Function)
+    constructor(data: data, writableStream: BlobStream_.IBlobStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
 
       let callback: Function | undefined = undefined;
       let options: options | undefined = undefined;
@@ -43,7 +43,7 @@ module SwissQRBill {
 
       super(data, options);
 
-      const stream = super.pipe(writeableStream);
+      const stream = super.pipe(writableStream);
 
       stream.on("finish", ev => {
 
