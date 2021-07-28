@@ -14,9 +14,6 @@
     <img alt="Issues" src="https://img.shields.io/github/issues-raw/schoero/swissqrbill?style=flat-square">
   </a>
   <a href="https://www.npmjs.com/package/swissqrbill">
-    <img alt="Dependencies" src="https://img.shields.io/david/schoero/swissqrbill?style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/swissqrbill">
     <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
   </a>
   <a href="https://github.com/schoero/SwissQRBill/stargazers">
