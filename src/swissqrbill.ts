@@ -815,7 +815,7 @@ export class PDF extends ExtendedPDF.PDF {
     //-- Additional information
 
     if(this._data.additionalInformation !== undefined){
-      if(this._data.additionalInformation.length > 140){ throw new Error("AdditionalInfromation must be a maximum of 140 characters."); }
+      if(this._data.additionalInformation.length > 140){ throw new Error("AdditionalInformation must be a maximum of 140 characters."); }
       if(typeof this._data.additionalInformation !== "string"){ throw new Error("AdditionalInformation must be a string."); }
     }
 
@@ -823,7 +823,7 @@ export class PDF extends ExtendedPDF.PDF {
     //-- Message + Additional information
 
     if(this._data.message !== undefined && this._data.additionalInformation !== undefined){
-      if(this._data.additionalInformation.length + this._data.message.length > 140){ throw new Error("Message and additionalInfromation combined must be a maximum of 140 characters."); }
+      if(this._data.additionalInformation.length + this._data.message.length > 140){ throw new Error("Message and additionalInformation combined must be a maximum of 140 characters."); }
     }
 
 
