@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v2.4.1](https://github.com/schoero/swissqrbill/compare/v2.4.0...v2.4.1) - 25.08.2021
+  * Fixed missing rendering of `message` [#340](https://github.com/schoero/SwissQRBill/pull/340)
+
 # [v2.4.0](https://github.com/schoero/swissqrbill/compare/v2.3.3...v2.4.0) - 01.07.2021
   * Added an optional size parameter to specify the new page size in `addQRBill()` [#338](https://github.com/schoero/SwissQRBill/pull/338)
 
