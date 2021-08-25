@@ -540,9 +540,9 @@ export class PDF extends ExtendedPDF.PDF {
     }
 
 
-    //-- Additional information
+    //-- Message / Additional information
 
-    if(this._data.additionalInformation !== undefined){
+    if(this._data.message !== undefined || this._data.additionalInformation !== undefined){
 
       this.fontSize(8);
       this.font("Helvetica-Bold");
@@ -552,9 +552,44 @@ export class PDF extends ExtendedPDF.PDF {
 
       this.fontSize(10);
       this.font("Helvetica");
-      this.text(this._data.additionalInformation, {
+
+      const options = {
         width: utils.mmToPoints(87)
-      });
+      };
+
+      const singleLineHeight = this.heightOfString("A", options);
+      const maxLines = this._referenceType === "QRR" || this._referenceType === "SCOR" ? 3 : 4;
+      const linesOfMessage = this._data.message !== undefined ? this.heightOfString(this._data.message, options) / singleLineHeight : 0;
+      const linesOfAdditionalInformation = this._data.additionalInformation !== undefined ? this.heightOfString(this._data.additionalInformation, options) / singleLineHeight : 0;
+
+      if(this._data.additionalInformation !== undefined){
+
+        if(this._referenceType === "QRR" || this._referenceType === "SCOR"){
+
+          // QRR and SCOR have 1 line for the message and 2 lines for the additional information
+
+          if(this._data.message !== undefined){
+            this.text(this._data.message, { ...options, lineBreak: false, ellipsis: true, height: singleLineHeight });
+          }
+
+        } else {
+
+          // Non QRR and SCOR have 4 lines total available and the message should be shortened if necessary
+
+          if(this._data.message !== undefined){
+            if(linesOfMessage + linesOfAdditionalInformation > maxLines){
+              const maxLinesOfMessage = maxLines - linesOfAdditionalInformation;
+              this.text(this._data.message, { ...options, height: singleLineHeight * maxLinesOfMessage, lineBreak: true, ellipsis: true });
+            }
+          }
+
+        }
+
+        this.text(this._data.additionalInformation, options);
+
+      } else if(this._data.message !== undefined){
+        this.text(this._data.message, { ...options, height: singleLineHeight * maxLines, lineBreak: true, ellipsis: true });
+      }
 
       this.moveDown();
 
@@ -782,6 +817,13 @@ export class PDF extends ExtendedPDF.PDF {
     if(this._data.additionalInformation !== undefined){
       if(this._data.additionalInformation.length > 140){ throw new Error("AdditionalInfromation must be a maximum of 140 characters."); }
       if(typeof this._data.additionalInformation !== "string"){ throw new Error("AdditionalInformation must be a string."); }
+    }
+
+
+    //-- Message + Additional information
+
+    if(this._data.message !== undefined && this._data.additionalInformation !== undefined){
+      if(this._data.additionalInformation.length + this._data.message.length > 140){ throw new Error("Message and additionalInfromation combined must be a maximum of 140 characters."); }
     }
 
 
