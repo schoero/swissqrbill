@@ -17,6 +17,14 @@ echo "french"
   call node french
 echo "italian"
   call node italian
+echo "message"
+  call message
+echo "no-reference-message"
+  call no-reference-message
+echo "message-additional-information"
+  call message-additional-information
+echo "additional-information"
+  call additional-information
 echo "multipage"
   call node multipage
 echo "no-amount"

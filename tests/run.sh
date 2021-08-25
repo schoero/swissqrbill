@@ -21,6 +21,14 @@ echo "french"
   node french
 echo "italian"
   node italian
+echo "message"
+  node message
+echo "no-reference-message"
+  node no-reference-message
+echo "message-additional-information"
+  node message-additional-information
+echo "additional-information"
+  node additional-information
 echo "multipage"
   node multipage
 echo "no-amount"
