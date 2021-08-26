@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Swiss QR Bill generation in Node.js and browsers ",
   "main": "./lib/node",
   "browser": "./lib/browser",
@@ -42,7 +42,7 @@
   "homepage": "https://github.com/schoero/SwissQRBill#readme",
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
-    "@types/node": "^16.7.1",
+    "@types/node": "^16.7.2",
     "@types/qrcode": "^1.4.1",
     "@types/qrcode-svg": "^1.1.1",
     "@types/svg-parser": "^2.0.3",
