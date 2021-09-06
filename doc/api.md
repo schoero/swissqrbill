@@ -4,10 +4,10 @@
 
 - Constructor
   - [SwissQRBill.PDF(data, outputPath[, options] [, callback])](#swissqrbillpdfdata-outputpath-options--callback)
-  - [SwissQRBill.PDF(data, writeableStream[, options] [, callback])](#swissqrbillpdfdata-writeablestream-options--callback)
+  - [SwissQRBill.PDF(data, writableStream[, options] [, callback])](#swissqrbillpdfdata-writablestream-options--callback)
 - Methods
   - [addPage(options)](#addpageoptions)
-  - [addQRBill()](#addqrbill)
+  - [addQRBill([size])](#addqrbillsize)
   - [addTable(table)](#addtabletable)
 - Events
   - [finish](#event-finish)
@@ -52,10 +52,10 @@
 ## Constructor
 
 #### SwissQRBill.PDF(data, outputPath[, options] [, callback])
-#### SwissQRBill.PDF(data, writeableStream[, options] [, callback])
+#### SwissQRBill.PDF(data, writableStream[, options] [, callback])
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
- - **outputPath | writeableStream** - `string` output path for the generated PDF file or `writeableStream` a writeableStream to stream data into. *mandatory*.
+ - **outputPath | writableStream** - `string` output path for the generated PDF file or `writableStream` a writableStream to stream data into. *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
  - **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
@@ -156,8 +156,10 @@ This method is basically the same as the original [PDFKit `addPage()` method](ht
 However the default values are changed to use the default page size provided in the constructor options.
 
 
-### addQRBill()
-Adds the QR Bill to the bottom of the current page if there is enough space, otherwise it will be added as a standalone A6/5 page.
+### addQRBill([size])
+ - size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
+
+Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
 > **Note:** This function is automatically called when the option autoGenerate is set to true.
 
 ### addTable(table)
@@ -247,7 +249,7 @@ This could be used to add page numbers to the pages as described [here](http://p
 ## Constructor
 
 ### SwissQRBill.BlobStream()
- Creates a new writeableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
+ Creates a new writableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
  Returns a [BlobStream](#BlobStream-1) instance.
 > **Warning:** This method does only exist when executed inside a browser
 

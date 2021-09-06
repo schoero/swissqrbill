@@ -20,12 +20,12 @@ export import languages = types.Languages;
 export class PDF extends SwissQRBill_.PDF {
 
   constructor(data: data, outputPath: string, options?: options)
-  constructor(data: data, writeableStream: Writable, options?: options)
+  constructor(data: data, writableStream: Writable, options?: options)
   constructor(data: data, outputPath: string, options?: options, callback?: Function)
-  constructor(data: data, writeableStream: Writable, options?: options, callback?: Function)
+  constructor(data: data, writableStream: Writable, options?: options, callback?: Function)
   constructor(data: data, outputPath: string, callback?: Function)
-  constructor(data: data, writeableStream: Writable, callback?: Function)
-  constructor(data: data, outputPathOrWriteableStream: string | Writable, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
+  constructor(data: data, writableStream: Writable, callback?: Function)
+  constructor(data: data, outputPathOrWritableStream: string | Writable, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
 
     let callback: Function | undefined = undefined;
     let options: options | undefined = undefined;
@@ -46,10 +46,10 @@ export class PDF extends SwissQRBill_.PDF {
 
     let stream: Writable | undefined;
 
-    if(typeof outputPathOrWriteableStream === "string"){
-      stream = createWriteStream(outputPathOrWriteableStream);
+    if(typeof outputPathOrWritableStream === "string"){
+      stream = createWriteStream(outputPathOrWritableStream);
     } else {
-      stream = outputPathOrWriteableStream;
+      stream = outputPathOrWritableStream;
     }
 
     super.pipe(stream);

@@ -17,6 +17,14 @@ echo "french"
   call node french
 echo "italian"
   call node italian
+echo "message"
+  call message
+echo "no-reference-message"
+  call no-reference-message
+echo "message-additional-information"
+  call message-additional-information
+echo "additional-information"
+  call additional-information
 echo "multipage"
   call node multipage
 echo "no-amount"
@@ -33,6 +41,10 @@ echo "normal-iban-creditor-reference"
   call node normal-iban-creditor-reference
 echo "normal-iban-no-reference"
   call node normal-iban-no-reference
+echo "not-enough-space"
+  call node not-enough-space
+echo "not-enough-space-a4"
+  call node not-enough-space-a4
 echo "no-scissors"
   call node no-scissors
 echo "no-scissors-no-outlines"

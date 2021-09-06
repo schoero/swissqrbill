@@ -19,7 +19,7 @@ export import BlobStream = BlobStream_;
 
 export class PDF extends SwissQRBill_.PDF {
 
-  constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options)
+  constructor(data: data, writableStream: BlobStream_.IBlobStream, options?: options)
   constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options, callback?: Function)
   constructor(data: data, writeableStream: BlobStream_.IBlobStream, callback?: Function)
   constructor(data: data, writeableStream: BlobStream_.IBlobStream, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
