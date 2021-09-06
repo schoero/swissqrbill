@@ -222,8 +222,15 @@ export function validateData(data: Data) {
   //-- Additional information
 
   if(data.additionalInformation !== undefined){
-    if(data.additionalInformation.length > 140){ throw new Error("AdditionalInfromation must be a maximum of 140 characters."); }
+    if(data.additionalInformation.length > 140){ throw new Error("AdditionalInformation must be a maximum of 140 characters."); }
     if(typeof data.additionalInformation !== "string"){ throw new Error("AdditionalInformation must be a string."); }
+  }
+
+
+  //-- Message + Additional information
+
+  if(data.message !== undefined && data.additionalInformation !== undefined){
+    if(data.additionalInformation.length + data.message.length > 140){ throw new Error("Message and additionalInformation combined must be a maximum of 140 characters."); }
   }
 
 

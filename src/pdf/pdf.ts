@@ -100,13 +100,13 @@ export class PDF extends ExtendedPDF {
   }
 
 
-  public addQRBill(): void {
+  public addQRBill(size: Size = "A6/5"): void {
 
     if(this.page.height - this.y < utils.mmToPoints(105) && this.y !== this.page.margins.top){
       this.addPage({
-        layout: "landscape",
         margin: 0,
-        size: [utils.mmToPoints(105), utils.mmToPoints(210)]
+        layout: size === "A4" ? "portrait" : "landscape",
+        size: size === "A4" ? size : [utils.mmToPoints(105), utils.mmToPoints(210)]
       });
     }
 
@@ -418,9 +418,9 @@ export class PDF extends ExtendedPDF {
     }
 
 
-    //-- Additional information
+    //-- Message / Additional information
 
-    if(this._data.additionalInformation !== undefined){
+    if(this._data.message !== undefined || this._data.additionalInformation !== undefined){
 
       this.fontSize(8);
       this.font("Helvetica-Bold");
@@ -430,9 +430,45 @@ export class PDF extends ExtendedPDF {
 
       this.fontSize(10);
       this.font("Helvetica");
-      this.text(this._data.additionalInformation, {
+
+      const options = {
         width: utils.mmToPoints(87)
-      });
+      };
+
+      const singleLineHeight = this.heightOfString("A", options);
+      const referenceType = utils.getReferenceType(this._data.reference);
+      const maxLines = referenceType === "QRR" || referenceType === "SCOR" ? 3 : 4;
+      const linesOfMessage = this._data.message !== undefined ? this.heightOfString(this._data.message, options) / singleLineHeight : 0;
+      const linesOfAdditionalInformation = this._data.additionalInformation !== undefined ? this.heightOfString(this._data.additionalInformation, options) / singleLineHeight : 0;
+
+      if(this._data.additionalInformation !== undefined){
+
+        if(referenceType === "QRR" || referenceType === "SCOR"){
+
+          // QRR and SCOR have 1 line for the message and 2 lines for the additional information
+
+          if(this._data.message !== undefined){
+            this.text(this._data.message, { ...options, lineBreak: false, ellipsis: true, height: singleLineHeight });
+          }
+
+        } else {
+
+          // Non QRR and SCOR have 4 lines total available and the message should be shortened if necessary
+
+          if(this._data.message !== undefined){
+            if(linesOfMessage + linesOfAdditionalInformation > maxLines){
+              const maxLinesOfMessage = maxLines - linesOfAdditionalInformation;
+              this.text(this._data.message, { ...options, height: singleLineHeight * maxLinesOfMessage, lineBreak: true, ellipsis: true });
+            }
+          }
+
+        }
+
+        this.text(this._data.additionalInformation, options);
+
+      } else if(this._data.message !== undefined){
+        this.text(this._data.message, { ...options, height: singleLineHeight * maxLines, lineBreak: true, ellipsis: true });
+      }
 
       this.moveDown();
 
