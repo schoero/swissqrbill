@@ -1,74 +1,77 @@
-import fs from "fs";
-import stream from "stream";
-import * as SwissQRBill_ from "./swissqrbill";
+import { createWriteStream } from "fs";
+import { Writable } from "stream";
 
+import * as SwissQRBill_ from "./pdf/pdf";
+import * as utils from "./common/utils";
+import * as types from "./common/types";
 
-module SwissQRBill {
+import { PDFTable, PDFRow, PDFColumn } from "./pdf/extended-pdf";
 
-  export import data = SwissQRBill_.data;
-  export import debtor = SwissQRBill_.debtor;
-  export import creditor = SwissQRBill_.creditor;
-  export import options = SwissQRBill_.options;
-  export import PDFTable = SwissQRBill_.PDFTable;
-  export import PDFRow = SwissQRBill_.PDFRow;
-  export import PDFColumn = SwissQRBill_.PDFColumn;
-  export import currency = SwissQRBill_.currency;
-  export import size = SwissQRBill_.size;
-  export import languages = SwissQRBill_.languages;
+export { PDFTable, PDFRow, PDFColumn, utils };
 
-  export import utils = SwissQRBill_.utils;
+export import data = types.Data;
+export import debtor = types.Debtor;
+export import creditor = types.Creditor;
+export import options = types.PDFOptions;
+export import currency = types.Currency;
+export import size = types.Size;
+export import languages = types.Languages;
 
-  export class PDF extends SwissQRBill_.PDF {
+export class PDF extends SwissQRBill_.PDF {
 
-    constructor(data: data, outputPath: string, options?: options)
-    constructor(data: data, writeableStream: stream.Writable, options?: options)
-    constructor(data: data, outputPath: string, options?: options, callback?: Function)
-    constructor(data: data, writeableStream: stream.Writable, options?: options, callback?: Function)
-    constructor(data: data, outputPath: string, callback?: Function)
-    constructor(data: data, writeableStream: stream.Writable, callback?: Function)
-    constructor(data: data, outputPathOrWriteableStream: string | stream.Writable, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
+  constructor(data: data, outputPath: string, options?: options)
+  constructor(data: data, writeableStream: Writable, options?: options)
+  constructor(data: data, outputPath: string, options?: options, callback?: Function)
+  constructor(data: data, writeableStream: Writable, options?: options, callback?: Function)
+  constructor(data: data, outputPath: string, callback?: Function)
+  constructor(data: data, writeableStream: Writable, callback?: Function)
+  constructor(data: data, outputPathOrWriteableStream: string | Writable, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
 
-      let callback: Function | undefined = undefined;
-      let options: options | undefined = undefined;
+    let callback: Function | undefined = undefined;
+    let options: options | undefined = undefined;
 
-      if(typeof optionsOrCallback === "object"){
+    if(typeof optionsOrCallback === "object"){
 
-        options = optionsOrCallback;
+      options = optionsOrCallback;
 
-        if(typeof callbackOrUndefined === "function"){
-          callback = callbackOrUndefined;
-        }
-
-      } else if(typeof optionsOrCallback === "function"){
-        callback = optionsOrCallback;
+      if(typeof callbackOrUndefined === "function"){
+        callback = callbackOrUndefined;
       }
 
-      super(data, options);
-
-      let stream: stream.Writable | undefined;
-
-      if(typeof outputPathOrWriteableStream === "string"){
-        stream = fs.createWriteStream(outputPathOrWriteableStream);
-      } else {
-        stream = outputPathOrWriteableStream;
-      }
-
-      super.pipe(stream);
-
-      stream.on("finish", ev => {
-
-        if(typeof callback === "function"){
-          callback(this);
-        }
-
-        this.emit("finish", ev);
-
-      });
-
+    } else if(typeof optionsOrCallback === "function"){
+      callback = optionsOrCallback;
     }
+
+    super(data, options);
+
+    let stream: Writable | undefined;
+
+    if(typeof outputPathOrWriteableStream === "string"){
+      stream = createWriteStream(outputPathOrWriteableStream);
+    } else {
+      stream = outputPathOrWriteableStream;
+    }
+
+    super.pipe(stream);
+
+    stream.on("finish", ev => {
+
+      if(typeof callback === "function"){
+        callback(this);
+      }
+
+      this.emit("finish", ev);
+
+    });
 
   }
 
 }
 
-export = SwissQRBill;
+const SwissQRBill = {
+  types: types,
+  utils: utils,
+  PDF: PDF
+};
+
+export default SwissQRBill;

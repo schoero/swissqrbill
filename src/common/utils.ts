@@ -88,6 +88,17 @@ export function isQRReferenceValid(reference: string): boolean {
 }
 
 
+export function getReferenceType(reference: string | undefined): "QRR" | "SCOR" | "NON" {
+  if(typeof reference === "undefined"){
+    return "NON";
+  } else if(isQRReference(reference)){
+    return "QRR";
+  } else {
+    return "SCOR";
+  }
+}
+
+
 export function calculateQRReferenceChecksum(reference: string): string {
   return mod10(reference);
 }
