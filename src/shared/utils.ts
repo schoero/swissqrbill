@@ -161,6 +161,11 @@ export function mmToPoints(mm: number): number {
 }
 
 
+export function mmToPixels(mm: number): number {
+  return Math.round(mm * 3.7795275591);
+}
+
+
 function mod9710(iban: string) {
 
   let remainder = iban;

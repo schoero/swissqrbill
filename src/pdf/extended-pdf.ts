@@ -1,7 +1,6 @@
 import PDFDocument from "pdfkit";
 import svgpath from "svgpath";
 
-
 export interface PDFTable {
   rows: Array<PDFRow>,
   width?: number,
@@ -35,7 +34,7 @@ export interface PDFColumn {
   textOptions?: PDFKit.Mixins.TextOptions
 }
 
-export class PDF extends PDFDocument {
+export class ExtendedPDF extends PDFDocument {
 
   constructor(options?: PDFKit.PDFDocumentOptions) {
 

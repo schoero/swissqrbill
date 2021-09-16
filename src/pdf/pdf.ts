@@ -1,11 +1,11 @@
-import { PDF as ExtendedPDF } from "./extended-pdf";
-import { Size, Data, Languages, PDFOptions, Debtor, Creditor } from "../common/types";
-import * as utils from "../common/utils";
-import translations from "../common/translations";
-import generateQRCode from "../common/qr-code";
-import { validateData, cleanData } from "../common/common";
+import { ExtendedPDF } from "./extended-pdf";
+import { Size, Data, Languages, PDFOptions, Debtor, Creditor } from "../shared/types";
+import * as utils from "../shared/utils";
+import translations from "../shared/translations";
+import generateQRCode from "../shared/qr-code";
+import { validateData, cleanData } from "../shared/shared";
 
-export class PDF extends ExtendedPDF {
+export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6/5";
   private _data: Data;
@@ -283,6 +283,9 @@ export class PDF extends ExtendedPDF {
 
     }
 
+
+    //-- Amount
+
     this.fontSize(6);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].currency, utils.mmToPoints(5), this._marginTop + utils.mmToPoints(68), {
@@ -506,7 +509,7 @@ export class PDF extends ExtendedPDF {
 
   private _drawQRCode(): void {
 
-    const { qrcode, swissCross, swissCrossBackground } = generateQRCode(this._data);
+    const qrcode = generateQRCode(this._data, utils.mmToPoints(46));
 
     this.moveTo(utils.mmToPoints(67), this._marginTop + utils.mmToPoints(17));
 
@@ -521,9 +524,12 @@ export class PDF extends ExtendedPDF {
 
     //-- Add Swiss Cross
 
+    const swissCrossBackground = "M18.3 0.7L1.6 0.7 0.7 0.7 0.7 1.6 0.7 18.3 0.7 19.1 1.6 19.1 18.3 19.1 19.1 19.1 19.1 18.3 19.1 1.6 19.1 0.7Z";
+    const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
+
     this.addPath(swissCrossBackground, utils.mmToPoints(86), this._marginTop + utils.mmToPoints(36))
       .fillColor("black")
-      .lineWidth(1.4357)
+      .lineWidth(1.42)
       .strokeColor("white")
       .fillAndStroke();
 

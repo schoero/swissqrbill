@@ -1,4 +1,4 @@
-import { Data } from "./types";
+import { Creditor, Data, Debtor } from "./types";
 import * as utils from "./utils";
 
 

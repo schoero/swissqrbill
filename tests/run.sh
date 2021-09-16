@@ -3,6 +3,8 @@ mkdir -p output
 
 set -e
 
+echo "svg"
+  node svg
 echo "utils"
   node utils
 echo "a4"

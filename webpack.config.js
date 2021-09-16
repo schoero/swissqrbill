@@ -7,27 +7,25 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
   devtool: "inline-source-map",
   resolve: {
-    extensions: [ ".tsx", ".ts", ".js" ],
+    extensions: [".tsx", ".ts", ".js"],
     fallback: {
-      "stream": require.resolve("stream-browserify"),
-      "util": require.resolve("util"),
-      "buffer": require.resolve("buffer")
+      "stream": false,
+      "util": false,
+      "buffer": false,
+      "fs": false,
+      "zlib": false,
+      "iconv-lite": false
     }
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      process: "process/browser",
-    }),
-  ],
   output: {
     filename: "browser.js",
-    path: __dirname + "/lib",
+    path: __dirname + "/lib/",
     libraryTarget: "umd"
-  },
+  }
 };

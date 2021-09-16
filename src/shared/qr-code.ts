@@ -1,10 +1,10 @@
-import { Data } from "./types.js";
+import { Data } from "./types";
 import * as QRCode from "@schoero/qrcode";
 import { parse } from "svg-parser";
-import { utils } from "../node.js";
+import { utils } from "../node";
 
 
-export default function generateQRCode(data: Data): { qrcode: string, swissCross: string, swissCrossBackground: string } {
+export default function generateQRCode(data: Data, size: number): string {
 
   let qrString = "";
 
@@ -230,24 +230,12 @@ export default function generateQRCode(data: Data): { qrcode: string, swissCross
 
   const qrcodeString = QRCode.toString(qrString, {
     type: "svg",
-    width: utils.mmToPoints(46),
     margin: 0,
+    width: size,
     errorCorrectionLevel: "M"
   }, () => { }) as unknown as string;
 
-  const qrcode = getSVGPathFromQRCodeString(qrcodeString);
-
-  if(qrcode === undefined){
-    throw new Error("Could not convert svg image to path");
-  }
-
-
-  //-- Black rectangle
-
-  const swissCrossBackground = "M18.3 0.7L1.6 0.7 0.7 0.7 0.7 1.6 0.7 18.3 0.7 19.1 1.6 19.1 18.3 19.1 19.1 19.1 19.1 18.3 19.1 1.6 19.1 0.7Z";
-  const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
-
-  return { qrcode, swissCross, swissCrossBackground };
+  return getSVGPathFromQRCodeString(qrcodeString)!;
 
 }
 

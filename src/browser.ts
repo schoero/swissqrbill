@@ -1,7 +1,9 @@
-import * as SwissQRBill_ from "./pdf/pdf";
+import { PDF_ } from "./pdf/pdf";
 import BlobStream_ from "blob-stream";
+
 import * as types from "./common/types";
 import * as utils from "./common/utils";
+
 import { PDFTable, PDFRow, PDFColumn } from "./pdf/extended-pdf";
 
 export { PDFTable, PDFRow, PDFColumn, utils };
@@ -17,7 +19,7 @@ export import languages = types.Languages;
 export import blobStream = BlobStream_;
 export import BlobStream = BlobStream_;
 
-export class PDF extends SwissQRBill_.PDF {
+export class PDF extends PDF_ {
 
   constructor(data: data, writableStream: BlobStream_.IBlobStream, options?: options)
   constructor(data: data, writeableStream: BlobStream_.IBlobStream, options?: options, callback?: Function)

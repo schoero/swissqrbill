@@ -1,12 +1,13 @@
 import { createWriteStream } from "fs";
 import { Writable } from "stream";
 
-import * as SwissQRBill_ from "./pdf/pdf";
-import * as utils from "./common/utils";
-import * as types from "./common/types";
+import { PDF_ } from "./pdf/pdf";
+import { SVG_ } from "./svg";
+
+import * as utils from "./shared/utils";
+import * as types from "./shared/types";
 
 import { PDFTable, PDFRow, PDFColumn } from "./pdf/extended-pdf";
-
 export { PDFTable, PDFRow, PDFColumn, utils };
 
 export import data = types.Data;
@@ -17,7 +18,7 @@ export import currency = types.Currency;
 export import size = types.Size;
 export import languages = types.Languages;
 
-export class PDF extends SwissQRBill_.PDF {
+export class PDF extends PDF_ {
 
   constructor(data: data, outputPath: string, options?: options)
   constructor(data: data, writableStream: Writable, options?: options)
@@ -68,10 +69,22 @@ export class PDF extends SwissQRBill_.PDF {
 
 }
 
+export class SVG extends SVG_ {
+  constructor(data: data) {
+    super(data);
+  }
+
+
+  public toString(): string {
+    return this.outerHTML;
+  }
+}
+
 const SwissQRBill = {
   types: types,
   utils: utils,
-  PDF: PDF
+  PDF: PDF,
+  SVG: SVG
 };
 
 export default SwissQRBill;
