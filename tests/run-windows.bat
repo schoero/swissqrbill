@@ -1,4 +1,7 @@
 if not exist output mkdir output
+if not exist output mkdir output/pdf
+if not exist output mkdir output/svg
+
 echo "utils"
   call node utils
 echo "a4"

@@ -1,10 +1,10 @@
 #!/bin/sh
 mkdir -p output
+mkdir -p output/pdf
+mkdir -p output/svg
 
 set -e
 
-echo "svg"
-  node svg
 echo "utils"
   node utils
 echo "a4"
