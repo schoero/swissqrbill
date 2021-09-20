@@ -42,7 +42,7 @@
   - Amount
     - [formatAmount(amount)](#formatamountamount)
   - Other
-    - [mmToPoints(mm)](#mmtopointsmm)
+    - [mm2pt(mm)](#mmtopointsmm)
 
 
 <br/>
@@ -85,7 +85,7 @@
       > First name + last name or company name.
     - **account** - `string` *mandatory*, 21 characters.
     - **address** - `string` *mandatory*, max 70 characters.
-    - **houseNumber** - `string | number` *optional*, max 16 characters.
+    - **buildingNumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number | string` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
@@ -93,7 +93,7 @@
     - **name** - `string` *mandatory*, max. 70 characters.
       > First name + last name or company name.
     - **address** - `string` *mandatory*, max 70 characters.
-    - **houseNumber** - `string | number` *optional*, max 16 characters.
+    - **buildingNumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number | string` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
@@ -128,7 +128,7 @@ const data = {
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac",
-    houseNumber: "1268",
+    buildingNumber: "1268",
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
@@ -137,7 +137,7 @@ const data = {
   debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse",
-    houseNumber: 28,
+    buildingNumber: 28,
     zip: 9400,
     city: "Rorschach",
     country: "CH"
@@ -333,7 +333,7 @@ Returns a `string` containing the formatted amount.
 
 ### Other
 
-#### mmToPoints(mm)
+#### mm2pt(mm)
  - mm - `number` containg the millimeters you want to convert to points.  
  Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.  
  Returns a `number` containing the converted millimeters in points.

@@ -41,7 +41,7 @@
   "homepage": "https://github.com/schoero/SwissQRBill#readme",
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
-    "@types/node": "^16.9.1",
+    "@types/node": "^16.9.4",
     "@types/pdfkit": "^0.11.2",
     "@types/qrcode": "^1.4.1",
     "@types/qrcode-svg": "^1.1.1",
@@ -59,7 +59,7 @@
     "@schoero/qrcode": "^1.4.5",
     "blob-stream": "^0.1.3",
     "pdfkit": "^0.12.3",
-    "svg-engine": "^0.1.0-alpha.1",
+    "svg-engine": "^0.1.0",
     "svg-parser": "^2.0.4",
     "svgpath": "^2.3.1"
   }

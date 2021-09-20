@@ -37,9 +37,7 @@ export interface PDFColumn {
 export class ExtendedPDF extends PDFDocument {
 
   constructor(options?: PDFKit.PDFDocumentOptions) {
-
     super(options);
-
   }
 
 
@@ -188,7 +186,7 @@ export class ExtendedPDF extends PDFDocument {
         }
 
 
-        //-- Draw rectangle
+        //-- Add rectangle
 
         this.rect(columnX, rowY, columnWidth, rowHeight)
           .fillColor(fillColor)

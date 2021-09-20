@@ -2,7 +2,7 @@ import { createWriteStream } from "fs";
 import { Writable } from "stream";
 
 import { PDF_ } from "./pdf/pdf";
-import { SVG_ } from "./svg";
+import { SVG_ } from "./svg/svg";
 
 import * as utils from "./shared/utils";
 import * as types from "./shared/types";
@@ -10,26 +10,27 @@ import * as types from "./shared/types";
 import { PDFTable, PDFRow, PDFColumn } from "./pdf/extended-pdf";
 export { PDFTable, PDFRow, PDFColumn, utils };
 
-export import data = types.Data;
-export import debtor = types.Debtor;
-export import creditor = types.Creditor;
-export import options = types.PDFOptions;
-export import currency = types.Currency;
-export import size = types.Size;
-export import languages = types.Languages;
+export import Data = types.Data;
+export import Debtor = types.Debtor;
+export import Creditor = types.Creditor;
+export import PDFOptions = types.PDFOptions;
+export import Currency = types.Currency;
+export import Size = types.Size;
+export import Languages = types.Languages;
+export import SVGOptions = types.SVGOptions;
 
 export class PDF extends PDF_ {
 
-  constructor(data: data, outputPath: string, options?: options)
-  constructor(data: data, writableStream: Writable, options?: options)
-  constructor(data: data, outputPath: string, options?: options, callback?: Function)
-  constructor(data: data, writableStream: Writable, options?: options, callback?: Function)
-  constructor(data: data, outputPath: string, callback?: Function)
-  constructor(data: data, writableStream: Writable, callback?: Function)
-  constructor(data: data, outputPathOrWritableStream: string | Writable, optionsOrCallback?: options | Function, callbackOrUndefined?: Function | undefined) {
+  constructor(data: Data, outputPath: string, options?: PDFOptions)
+  constructor(data: Data, writableStream: Writable, options?: PDFOptions)
+  constructor(data: Data, outputPath: string, options?: PDFOptions, callback?: Function)
+  constructor(data: Data, writableStream: Writable, options?: PDFOptions, callback?: Function)
+  constructor(data: Data, outputPath: string, callback?: Function)
+  constructor(data: Data, writableStream: Writable, callback?: Function)
+  constructor(data: Data, outputPathOrWritableStream: string | Writable, optionsOrCallback?: PDFOptions | Function, callbackOrUndefined?: Function | undefined) {
 
     let callback: Function | undefined = undefined;
-    let options: options | undefined = undefined;
+    let options: PDFOptions | undefined = undefined;
 
     if(typeof optionsOrCallback === "object"){
 
@@ -70,14 +71,15 @@ export class PDF extends PDF_ {
 }
 
 export class SVG extends SVG_ {
-  constructor(data: data) {
-    super(data);
-  }
 
+  constructor(data: Data, options?: SVGOptions) {
+    super(data, options);
+  }
 
   public toString(): string {
     return this.outerHTML;
   }
+
 }
 
 const SwissQRBill = {

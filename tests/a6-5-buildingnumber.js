@@ -1,4 +1,5 @@
 const SwissQRBill = require("../");
+const { writeFileSync } = require("fs");
 
 const data = {
   currency: "CHF",
@@ -7,7 +8,7 @@ const data = {
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac",
-    houseNumber: 1268,
+    buildingNumber: 1268,
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
@@ -16,7 +17,7 @@ const data = {
   debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse",
-    houseNumber: 28,
+    buildingNumber: 28,
     zip: 9400,
     city: "Rorschach",
     country: "CH"
@@ -24,4 +25,6 @@ const data = {
 };
 
 
-const pdf = new SwissQRBill.PDF(data, "./output/a6-5-housenumber.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/a6-5-buildingnumber.pdf");
+const svg = new SwissQRBill.SVG(data);
+writeFileSync("./output/svg/a6-5-buildingnumber.svg", svg.toString());

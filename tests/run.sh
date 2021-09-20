@@ -12,7 +12,7 @@ echo "a4"
 echo "a6-5"
   node a6-5
 echo "a6-5-housenmuber"
-  node a6-5-housenumber
+  node a6-5-buildingnumber
 echo "av1av2"
   node av1av2
 echo "english"

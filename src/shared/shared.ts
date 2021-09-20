@@ -108,11 +108,11 @@ export function validateData(data: Data) {
   if(data.creditor.address.length > 70){ throw new Error("Creditor address must be a maximum of 70 characters."); }
 
 
-  //-- Creditor houseNumber
+  //-- Creditor buildingNumber
 
-  if(data.creditor.houseNumber !== undefined){
-    if(typeof data.creditor.houseNumber !== "string" && typeof data.creditor.houseNumber !== "number"){ throw new Error("Debtor houseNumber must be either a string or a number."); }
-    if(data.creditor.houseNumber.toString().length > 16){ throw new Error("Creditor houseNumber can be a maximum of 16 characters."); }
+  if(data.creditor.buildingNumber !== undefined){
+    if(typeof data.creditor.buildingNumber !== "string" && typeof data.creditor.buildingNumber !== "number"){ throw new Error("Debtor buildingNumber must be either a string or a number."); }
+    if(data.creditor.buildingNumber.toString().length > 16){ throw new Error("Creditor buildingNumber can be a maximum of 16 characters."); }
   }
 
 
@@ -172,11 +172,11 @@ export function validateData(data: Data) {
     if(data.debtor.address.length > 70){ throw new Error("Debtor address must be a maximum of 70 characters."); }
 
 
-    //-- Debtor houseNumber
+    //-- Debtor buildingNumber
 
-    if(data.debtor.houseNumber !== undefined){
-      if(typeof data.debtor.houseNumber !== "string" && typeof data.debtor.houseNumber !== "number"){ throw new Error("Debtor house number must be either a string or a number."); }
-      if(data.debtor.houseNumber.toString().length > 16){ throw new Error("Debtor house number can be a maximum of 16 characters."); }
+    if(data.debtor.buildingNumber !== undefined){
+      if(typeof data.debtor.buildingNumber !== "string" && typeof data.debtor.buildingNumber !== "number"){ throw new Error("Debtor house number must be either a string or a number."); }
+      if(data.debtor.buildingNumber.toString().length > 16){ throw new Error("Debtor house number can be a maximum of 16 characters."); }
     }
 
 

@@ -156,13 +156,20 @@ export function formatAmount(amount: number): string {
 }
 
 
-export function mmToPoints(mm: number): number {
-  return Math.round(mm * 2.83465);
+export function pt2mm(points: number): number {
+  return points / 2.83465;
 }
 
+export function mm2pt(millimeters: number): number {
+  return millimeters * 2.83465;
+}
 
-export function mmToPixels(mm: number): number {
-  return Math.round(mm * 3.7795275591);
+export function mm2px(millimeters: number): number {
+  return millimeters * 960 / 254;
+}
+
+export function px2mm(pixels: number): number {
+  return pixels * 254 / 960;
 }
 
 

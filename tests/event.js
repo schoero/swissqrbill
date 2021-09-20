@@ -1,4 +1,5 @@
 const SwissQRBill = require("../");
+const { writeFileSync } = require("fs");
 
 const data = {
   currency: "CHF",
@@ -21,7 +22,7 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/event.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/event.pdf");
 
 pdf.on("finish", () => {
   console.log("File has been successfully created.");

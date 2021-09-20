@@ -1,4 +1,5 @@
 const SwissQRBill = require("../");
+const { writeFileSync } = require("fs");
 
 const data = {
   currency: "CHF",
@@ -21,4 +22,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/normal-iban.pdf");
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/normal-iban-no-reference.pdf");
+const svg = new SwissQRBill.SVG(data);
+writeFileSync("./output/svg/normal-iban-no-reference.svg", svg.toString());

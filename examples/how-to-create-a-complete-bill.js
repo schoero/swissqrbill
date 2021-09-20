@@ -36,15 +36,15 @@ const pdf = new SwissQRBill.PDF(data, "complete-qr-bill.pdf", { "autoGenerate": 
 
 //-- Add logo
 
-pdf.addPath(logoBackground, SwissQRBill.utils.mmToPoints(20), SwissQRBill.utils.mmToPoints(14))
+pdf.addPath(logoBackground, SwissQRBill.utils.mm2pt(20), SwissQRBill.utils.mm2pt(14))
   .fillColor("#EA5151")
   .fill();
 
-pdf.addPath(logo, SwissQRBill.utils.mmToPoints(20), SwissQRBill.utils.mmToPoints(14))
+pdf.addPath(logo, SwissQRBill.utils.mm2pt(20), SwissQRBill.utils.mm2pt(14))
   .fillColor("#FFFFFF")
   .fill();
 
-pdf.addPath(logoText, SwissQRBill.utils.mmToPoints(20), SwissQRBill.utils.mmToPoints(14))
+pdf.addPath(logoText, SwissQRBill.utils.mm2pt(20), SwissQRBill.utils.mm2pt(14))
   .fillColor("#454141")
   .fill();
 
@@ -54,9 +54,9 @@ pdf.addPath(logoText, SwissQRBill.utils.mmToPoints(20), SwissQRBill.utils.mmToPo
 pdf.fontSize(12);
 pdf.fillColor("black");
 pdf.font("Helvetica");
-pdf.text(data.creditor.name + "\n" + data.creditor.address + "\n" + data.creditor.zip + " " + data.creditor.city, SwissQRBill.utils.mmToPoints(20), SwissQRBill.utils.mmToPoints(35), {
-  width: SwissQRBill.utils.mmToPoints(100),
-  height: SwissQRBill.utils.mmToPoints(50),
+pdf.text(data.creditor.name + "\n" + data.creditor.address + "\n" + data.creditor.zip + " " + data.creditor.city, SwissQRBill.utils.mm2pt(20), SwissQRBill.utils.mm2pt(35), {
+  width: SwissQRBill.utils.mm2pt(100),
+  height: SwissQRBill.utils.mm2pt(50),
   align: "left"
 });
 
@@ -65,9 +65,9 @@ pdf.text(data.creditor.name + "\n" + data.creditor.address + "\n" + data.credito
 
 pdf.fontSize(12);
 pdf.font("Helvetica");
-pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip + " " + data.debtor.city, SwissQRBill.utils.mmToPoints(130), SwissQRBill.utils.mmToPoints(60), {
-  width: SwissQRBill.utils.mmToPoints(70),
-  height: SwissQRBill.utils.mmToPoints(50),
+pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip + " " + data.debtor.city, SwissQRBill.utils.mm2pt(130), SwissQRBill.utils.mm2pt(60), {
+  width: SwissQRBill.utils.mm2pt(70),
+  height: SwissQRBill.utils.mm2pt(50),
   align: "left"
 });
 
@@ -76,8 +76,8 @@ pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip 
 
 pdf.fontSize(14);
 pdf.font("Helvetica-Bold");
-pdf.text("Rechnung Nr. 1071672", SwissQRBill.utils.mmToPoints(20), SwissQRBill.utils.mmToPoints(100), {
-  width: SwissQRBill.utils.mmToPoints(170),
+pdf.text("Rechnung Nr. 1071672", SwissQRBill.utils.mm2pt(20), SwissQRBill.utils.mm2pt(100), {
+  width: SwissQRBill.utils.mm2pt(170),
   align: "left"
 });
 
@@ -86,7 +86,7 @@ const date = new Date();
 pdf.fontSize(11);
 pdf.font("Helvetica");
 pdf.text("Musterstadt " + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear(), {
-  width: SwissQRBill.utils.mmToPoints(170),
+  width: SwissQRBill.utils.mm2pt(170),
   align: "right"
 });
 
@@ -94,7 +94,7 @@ pdf.text("Musterstadt " + date.getDate() + "." + (date.getMonth() + 1) + "." + d
 //-- Add table
 
 const table = {
-  width: SwissQRBill.utils.mmToPoints(170),
+  width: SwissQRBill.utils.mm2pt(170),
   rows: [
     {
       height: 30,
@@ -102,45 +102,45 @@ const table = {
       columns: [
         {
           text: "Position",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "Anzahl",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "Bezeichnung"
         }, {
           text: "Total",
-          width: SwissQRBill.utils.mmToPoints(30)
+          width: SwissQRBill.utils.mm2pt(30)
         }
       ]
     }, {
       columns: [
         {
           text: "1",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "14 Std.",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "Programmierung SwissQRBill"
         }, {
           text: "CHF 1'540.00",
-          width: SwissQRBill.utils.mmToPoints(30)
+          width: SwissQRBill.utils.mm2pt(30)
         }
       ]
     }, {
       columns: [
         {
           text: "2",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "8 Std.",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "Dokumentation"
         }, {
           text: "CHF 880.00",
-          width: SwissQRBill.utils.mmToPoints(30)
+          width: SwissQRBill.utils.mm2pt(30)
         }
       ]
     }, {
@@ -148,47 +148,47 @@ const table = {
       columns: [
         {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "Summe",
           font: "Helvetica-Bold"
         }, {
           text: "CHF 2'420.00",
           font: "Helvetica-Bold",
-          width: SwissQRBill.utils.mmToPoints(30)
+          width: SwissQRBill.utils.mm2pt(30)
         }
       ]
     }, {
       columns: [
         {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "MwSt."
         }, {
           text: "7.7%",
-          width: SwissQRBill.utils.mmToPoints(30)
+          width: SwissQRBill.utils.mm2pt(30)
         }
       ]
     }, {
       columns: [
         {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "MwSt. Betrag"
         }, {
           text: "CHF 186.35",
-          width: SwissQRBill.utils.mmToPoints(30)
+          width: SwissQRBill.utils.mm2pt(30)
         }
       ]
     }, {
@@ -196,16 +196,16 @@ const table = {
       columns: [
         {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "",
-          width: SwissQRBill.utils.mmToPoints(20)
+          width: SwissQRBill.utils.mm2pt(20)
         }, {
           text: "Rechnungstotal",
           font: "Helvetica-Bold"
         }, {
           text: "CHF 2'606.35",
-          width: SwissQRBill.utils.mmToPoints(30),
+          width: SwissQRBill.utils.mm2pt(30),
           font: "Helvetica-Bold"
         }
       ]

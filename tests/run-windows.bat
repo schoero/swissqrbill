@@ -6,7 +6,7 @@ echo "a4"
 echo "a6-5"
   call node a6-5
 echo "a6-5-housenmuber"
-  call node a6-5-housenumber
+  call node a6-5-buildingnumber
 echo "av1av2"
   call node av1av2
 echo "english"

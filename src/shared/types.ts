@@ -7,7 +7,6 @@ export interface Data {
   currency: Currency,
   creditor: Creditor,
   debtor?: Debtor,
-  debitor?: Debtor,
   amount?: number,
   reference?: string,
   message?: string,
@@ -22,7 +21,7 @@ export interface Debtor {
   zip: string | number,
   city: string,
   country: string
-  houseNumber?: string | number
+  buildingNumber?: string | number
 }
 
 export interface Creditor extends Debtor {
@@ -36,4 +35,8 @@ export interface PDFOptions {
   separate?: boolean,
   outlines?: boolean
   autoGenerate?: boolean,
+}
+
+export interface SVGOptions {
+  language?: Languages,
 }

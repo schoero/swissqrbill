@@ -31,7 +31,7 @@ export default function generateQRCode(data: Data, size: number): string {
 
   //-- Creditor
 
-  if(data.creditor.houseNumber !== undefined){
+  if(data.creditor.buildingNumber !== undefined){
 
     // Address Type
     qrString += "\nS";
@@ -43,7 +43,7 @@ export default function generateQRCode(data: Data, size: number): string {
     qrString += "\n" + data.creditor.address;
 
     // House number
-    qrString += "\n" + data.creditor.houseNumber;
+    qrString += "\n" + data.creditor.buildingNumber;
 
     // Zip
     qrString += "\n" + data.creditor.zip;
@@ -105,7 +105,7 @@ export default function generateQRCode(data: Data, size: number): string {
   //-- Debtor
 
   if(data.debtor !== undefined){
-    if(data.debtor.houseNumber !== undefined){
+    if(data.debtor.buildingNumber !== undefined){
 
       // Address type
       qrString += "\nS";
@@ -117,7 +117,7 @@ export default function generateQRCode(data: Data, size: number): string {
       qrString += "\n" + data.debtor.address;
 
       // House number
-      qrString += "\n" + data.debtor.houseNumber;
+      qrString += "\n" + data.debtor.buildingNumber;
 
       // Zip
       qrString += "\n" + data.debtor.zip;
