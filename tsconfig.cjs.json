@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./lib/node/cjs",
+    "module": "CommonJS",
+    "target": "es2015"
+  },
+  "include": ["src"],
+  "exclude": [
+    "lib/",
+    "src/browser/"
+  ]
+}

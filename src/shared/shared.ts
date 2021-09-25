@@ -1,5 +1,5 @@
-import { Creditor, Data, Debtor } from "./types";
-import * as utils from "./utils";
+import { isQRIBAN, isQRReference, isIBANValid, isQRReferenceValid } from "./utils.js";
+import { Data } from "./types";
 
 
 export function cleanData(data: Data): Data {
@@ -58,7 +58,7 @@ export function validateData(data: Data) {
     throw new Error(`The provided IBAN number '${data.creditor.account}' is either too long or too short.`);
   }
 
-  if(utils.isIBANValid(data.creditor.account) === false){
+  if(isIBANValid(data.creditor.account) === false){
     throw new Error(`The provided IBAN number '${data.creditor.account}' is not valid.`);
   }
 
@@ -69,14 +69,14 @@ export function validateData(data: Data) {
 
   //-- Validate reference
 
-  if(utils.isQRIBAN(data.creditor.account)){
+  if(isQRIBAN(data.creditor.account)){
 
     if(data.reference === undefined){
       throw new Error("If there is no reference, a conventional IBAN must be used.");
     }
 
-    if(utils.isQRReference(data.reference)){
-      if(!utils.isQRReferenceValid(data.reference)){
+    if(isQRReference(data.reference)){
+      if(!isQRReferenceValid(data.reference)){
         throw new Error("QR-Reference checksum is not valid.");
       }
     } else {
@@ -86,7 +86,7 @@ export function validateData(data: Data) {
   } else {
 
     if(data.reference !== undefined){
-      if(utils.isQRReference(data.reference)){
+      if(isQRReference(data.reference)){
         throw new Error("QR-Reference requires the use of a QR-IBAN (and vice versa).");
       }
     }

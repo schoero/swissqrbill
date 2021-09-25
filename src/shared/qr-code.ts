@@ -1,7 +1,6 @@
+import QRCode from "@schoero/qrcode";
+import { getReferenceType } from "../shared/utils.js";
 import { Data } from "./types";
-import * as QRCode from "@schoero/qrcode";
-import { parse } from "svg-parser";
-import { utils } from "../node";
 
 
 export default function generateQRCode(data: Data, size: number): string {
@@ -180,7 +179,7 @@ export default function generateQRCode(data: Data, size: number): string {
 
   //-- Reference type
 
-  qrString += "\n" + utils.getReferenceType(data.reference);
+  qrString += "\n" + getReferenceType(data.reference);
 
 
   //-- Reference
@@ -241,43 +240,13 @@ export default function generateQRCode(data: Data, size: number): string {
 
 function getSVGPathFromQRCodeString(qrcodeString: string): string | undefined {
 
-  const svgObject = parse(qrcodeString);
+  const regex = /<path fill="#000000" d="(.*?)"\/>/m;
+  const match = regex.exec(qrcodeString);
 
-  if(svgObject.children === undefined){
-    return;
+  if(match !== null){
+    return match[1];
   }
 
-  firstChildLoop: for(const firstChild of svgObject.children){
-
-    if(firstChild.type !== "element"){
-      continue firstChildLoop;
-    }
-
-    secondChildLoop: for(const secondChild of firstChild.children){
-
-      if(typeof secondChild !== "object"){
-        continue secondChildLoop;
-      }
-      if(secondChild.type !== "element"){
-        continue secondChildLoop;
-      }
-      if(secondChild.properties === undefined){
-        continue secondChildLoop;
-      }
-      if(secondChild.properties.fill !== "#000000"){
-        continue;
-      }
-      if(secondChild.properties.d === undefined){
-        continue secondChildLoop;
-      }
-      if(typeof secondChild.properties.d !== "string"){
-        continue secondChildLoop;
-      }
-
-      return secondChild.properties.d;
-
-    }
-
-  }
+  return;
 
 }

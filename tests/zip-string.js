@@ -1,4 +1,4 @@
-const SwissQRBill = require("../lib/node");
+const SwissQRBill = require("../");
 const { writeFileSync } = require("fs");
 
 const data = {

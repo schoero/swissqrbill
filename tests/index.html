@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser</title>
+</head>
+<body>
+  
+  <script src="../lib/browser/umd/browser.js"></script>
+  <script>
+
+    const data = {
+      currency: "CHF",
+      amount: 1199.95,
+      reference: "210000000003139471430009017",
+      additionalInformation: "//S1/10/10201409/11/170309/20/14000000/ 30/106017086",
+      creditor: {
+        name: "Robert Schneider AG",
+        address: "Rue du Lac 1268",
+        zip: 2501,
+        city: "Biel",
+        account: "CH4431999123000889012",
+        country: "CH"
+      },
+      debtor: {
+        name: "Pia-Maria Rutschmann-Schnyder",
+        address: "Grosse Marktgasse 28",
+        zip: 9400,
+        city: "Rorschach",
+        country: "CH"
+      }
+    };
+
+    const svg = new SwissQRBill.SVG(data);
+    console.log(window.document.body.appendChild(svg.element));
+
+    // const stream = new SwissQRBill.BlobStream();
+    // const pdf = new SwissQRBill.PDF(data, stream);
+
+    // pdf.on("finish", () => {
+    //   window.location.href = stream.toBlobURL("application/pdf");
+    //   console.log("PDF has been successfully created.");
+    // });
+
+  </script>
+
+</body>
+</html>

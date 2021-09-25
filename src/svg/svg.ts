@@ -1,14 +1,14 @@
 import { Data, Languages, Debtor, Creditor, SVGOptions } from "../shared/types";
-import { validateData, cleanData } from "../shared/shared";
+import { validateData, cleanData } from "../shared/shared.js";
 import { calculateTextWidth } from "./characterWidth.js";
 import { SVG, calc } from "svg-engine";
-import * as utils from "../shared/utils";
-import translations from "../shared/translations";
+import * as utils from "../shared/utils.js";
+import translations from "../shared/translations.js";
 import generateQRCode from "../shared/qr-code.js";
 
 export class SVG_ {
 
-  private _element: SVG;
+  protected instance: SVG;
   private _data: Data;
 
   private _language: Languages = "DE";
@@ -39,9 +39,9 @@ export class SVG_ {
 
     //-- Create SVG
 
-    this._element = new SVG();
-    this._element.width("210mm");
-    this._element.height("105mm");
+    this.instance = new SVG();
+    this.instance.width("210mm");
+    this.instance.height("105mm");
 
     this._render();
 
@@ -49,7 +49,7 @@ export class SVG_ {
 
 
   public get outerHTML(): string {
-    return this._element.outerHTML;
+    return this.instance.outerHTML;
   }
 
 
@@ -62,7 +62,7 @@ export class SVG_ {
 
     //-- Vertical line
 
-    this._element.addLine("62mm", "0mm", "62mm", "105mm")
+    this.instance.addLine("62mm", "0mm", "62mm", "105mm")
       .stroke(1, "dashed", "black");
 
 
@@ -76,7 +76,7 @@ export class SVG_ {
 
     //-- Receipt
 
-    const receiptContainer = this._element.addSVG()
+    const receiptContainer = this.instance.addSVG()
       .x("5mm")
       .y("5mm");
 
@@ -243,7 +243,7 @@ export class SVG_ {
 
     //-- Payment part middle column
 
-    const paymentPartContainer = this._element.addSVG()
+    const paymentPartContainer = this.instance.addSVG()
       .x("67mm")
       .y("5mm");
 
@@ -340,7 +340,7 @@ export class SVG_ {
 
     //-- Payment part right column
 
-    const paymentPartDebtorContainer = this._element.addSVG()
+    const paymentPartDebtorContainer = this.instance.addSVG()
       .x("118mm")
       .y("5mm");
 
@@ -536,7 +536,7 @@ export class SVG_ {
 
     const qrcode = generateQRCode(this._data, utils.mm2px(46));
 
-    const qrcodeSVG = this._element.addSVG("46mm", "46mm")
+    const qrcodeSVG = this.instance.addSVG("46mm", "46mm")
       .y("17mm")
       .x("67mm");
 
@@ -671,7 +671,7 @@ export class SVG_ {
 
   private _addRectangle(x: number, y: number, width: number, height: number) {
 
-    const container = this._element.addSVG(width + "mm", height + "mm");
+    const container = this.instance.addSVG(width + "mm", height + "mm");
     container.x(x + "mm").y(y + "mm");
 
     const length = 3;

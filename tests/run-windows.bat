@@ -7,7 +7,7 @@ echo "utils"
 echo "a4"
   call node a4
 echo "a6-5"
-  call node a6-5
+  call node a6-5.mjs
 echo "a6-5-housenmuber"
   call node a6-5-buildingnumber
 echo "av1av2"

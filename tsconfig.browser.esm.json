@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./lib/browser/esm",
+    "module": "esnext",
+    "target": "esnext"
+  },
+  "include": ["src/browser/index.ts"],
+  "exclude": [
+    "lib/",
+    "src/browser/bundle.ts",
+    "src/node/"
+  ]
+}

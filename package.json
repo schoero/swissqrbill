@@ -1,16 +1,31 @@
 {
   "name": "swissqrbill",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-beta.1",
   "description": "Swiss QR Bill generation in Node.js and browsers",
-  "main": "./lib/node",
-  "browser": "./lib/browser",
+  "main": "./lib/node/cjs/node/index.js",
+  "module": "./lib/node/esm/node/index.js",
+  "browser": "./lib/browser/bundle/index.js",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "node": {
+        "require": "./lib/node/cjs/node/index.js",
+        "import": "./lib/node/esm/node/index.js"
+      },
+      "browser": {
+        "require": "./lib/borwser/cjs/browser/index.js",
+        "import": "./lib/browser/esm/browser/index.js"
+      }
+    }
+  },
   "files": [
-    "./lib/**/*"
+    "lib"
   ],
   "scripts": {
-    "test": "tsc && cd tests && sh run.sh",
+    "test": "npm run build && cd tests && sh run.sh",
     "test-windows": "tsc && cd tests && call run-windows.bat",
-    "build": "tsc && webpack --mode production"
+    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
+    "postbuild": "sh fix-exports.sh"
   },
   "repository": {
     "type": "git",
@@ -42,25 +57,31 @@
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
     "@types/node": "^16.9.4",
-    "@types/pdfkit": "^0.11.2",
     "@types/qrcode": "^1.4.1",
     "@types/qrcode-svg": "^1.1.1",
     "@types/svg-parser": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
-    "@typescript-eslint/parser": "^4.31.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "assert": "^2.0.0",
+    "brfs": "^2.0.2",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
     "eslint": "^7.32.0",
     "process": "^0.11.10",
-    "ts-loader": "^9.2.5",
+    "readable-stream": "^3.0.0",
+    "transform-loader": "^0.2.4",
+    "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
+    "util": "^0.12.4",
     "webpack": "^5.53.0",
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
     "@schoero/qrcode": "^1.4.5",
+    "@types/pdfkit": "^0.11.2",
     "blob-stream": "^0.1.3",
     "pdfkit": "^0.12.3",
     "svg-engine": "^0.1.0",
-    "svg-parser": "^2.0.4",
     "svgpath": "^2.3.1"
   }
 }

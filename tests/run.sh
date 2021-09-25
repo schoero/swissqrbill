@@ -10,7 +10,7 @@ echo "utils"
 echo "a4"
   node a4
 echo "a6-5"
-  node a6-5
+  node a6-5.mjs
 echo "a6-5-housenmuber"
   node a6-5-buildingnumber
 echo "av1av2"

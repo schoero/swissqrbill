@@ -1,9 +1,9 @@
-import { ExtendedPDF } from "./extended-pdf";
+import { ExtendedPDF } from "./extended-pdf.js";
 import { Size, Data, Languages, PDFOptions, Debtor, Creditor } from "../shared/types";
-import { validateData, cleanData } from "../shared/shared";
-import * as utils from "../shared/utils";
-import translations from "../shared/translations";
-import generateQRCode from "../shared/qr-code";
+import { validateData, cleanData } from "../shared/shared.js";
+import * as utils from "../shared/utils.js";
+import translations from "../shared/translations.js";
+import generateQRCode from "../shared/qr-code.js";
 
 export class PDF_ extends ExtendedPDF {
 

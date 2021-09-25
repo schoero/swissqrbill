@@ -1,23 +1,7 @@
 import { createWriteStream } from "fs";
 import { Writable } from "stream";
-
-import { PDF_ } from "./pdf/pdf";
-import { SVG_ } from "./svg/svg";
-
-import * as utils from "./shared/utils";
-import * as types from "./shared/types";
-
-import { PDFTable, PDFRow, PDFColumn } from "./pdf/extended-pdf";
-export { PDFTable, PDFRow, PDFColumn, utils };
-
-export import Data = types.Data;
-export import Debtor = types.Debtor;
-export import Creditor = types.Creditor;
-export import PDFOptions = types.PDFOptions;
-export import Currency = types.Currency;
-export import Size = types.Size;
-export import Languages = types.Languages;
-export import SVGOptions = types.SVGOptions;
+import { PDF_ } from "../pdf/pdf.js";
+import { PDFOptions, Data } from "../shared/types.js";
 
 export class PDF extends PDF_ {
 
@@ -69,24 +53,3 @@ export class PDF extends PDF_ {
   }
 
 }
-
-export class SVG extends SVG_ {
-
-  constructor(data: Data, options?: SVGOptions) {
-    super(data, options);
-  }
-
-  public toString(): string {
-    return this.outerHTML;
-  }
-
-}
-
-const SwissQRBill = {
-  types: types,
-  utils: utils,
-  PDF: PDF,
-  SVG: SVG
-};
-
-export default SwissQRBill;
