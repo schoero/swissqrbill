@@ -90,7 +90,7 @@ const SwissQRBill = require("swissqrbill"); // CommonJS. Not tree-shakeable.
 
 <br/>
 
-While you can still do this, it is recommended to switch to the new ES module imports to be able to take advantage of tree-shaking. SwissQRBill uses the new [conditional exports feature](https://nodejs.org/api/packages.html#packages_exports_sugar) that was added in node v12.16.0. 
+While you can still do this, it is recommended to switch to the new ES module imports to be able to take advantage of tree-shaking. SwissQRBill uses the new [conditional exports feature](https://nodejs.org/api/packages.html#packages_exports_sugar) that was added in node v12.16.0 or v13.6.0.
 
 This allows you to import only the parts of SwissQRBill that you actually need.
 
