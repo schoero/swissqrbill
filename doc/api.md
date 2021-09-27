@@ -16,6 +16,17 @@
 
 <br/>
 
+# SwissQRBill.SVG
+
+- Constructor
+  - [SwissQRBill.SVG(data[, options])](#swissqrbillsvgdata-options)
+- Methods
+  - [toString()](#tostring)
+- Getters
+  - [element](#element)
+
+<br/>
+
 # SwissQRBill.BlobStream
 
 - Constructor
@@ -99,7 +110,7 @@
     - **country** - `string` *mandatory*, 2 characters.
 
 
-#### options
+##### options
 
   Available options: 
 
@@ -242,6 +253,45 @@ The beforeEnd event is emitted right before the file gets finalized.
 This could be used to add page numbers to the pages as described [here](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages).
 
 
+<br/>
+
+
+# SwissQRBill.SVG
+## Constructor
+
+#### SwissQRBill.SVG(data[, options])
+
+ - [**data**](#data-1) - `object` containing all relevant billing data, *mandatory*.
+ - [**options**](#options-1) - `object` containing settings, *optional*.
+
+##### data
+
+  The data object is the same as the [data object](#data) in the PDF constructor above.
+
+##### options
+
+  Available options: 
+
+   - **language** - `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
+
+<br/>
+
+## Methods
+
+### toString()
+Returns the outerHTML of the SVG.
+<br/>
+
+## Getters
+
+### element
+Returns the SVG element.
+> **Note:** This function is only available in the browser.
+
+```js
+const svg = new SVG(data);
+document.body.appendChild(svg.element);
+```
 <br/>
 
 # SwissQRBill.BlobStream
