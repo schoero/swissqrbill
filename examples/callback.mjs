@@ -1,4 +1,4 @@
-import SwissQRBill from "swissqrbill/bundle";
+import { PDF } from "swissqrbill/pdf";
 
 const data = {
   currency: "CHF",
@@ -21,11 +21,6 @@ const data = {
   }
 };
 
-
-const stream = new SwissQRBill.BlobStream();
-const pdf = new SwissQRBill.PDF(data, stream);
-
-pdf.on("finish", () => {
-  window.location.href = stream.toBlobURL("application/pdf");
-  console.log("PDF has been successfully created.");
+const pdf = new PDF(data, "./output/callback.pdf", () => {
+  console.log("File has been successfully created.");
 });

@@ -1,4 +1,4 @@
-const SwissQRBill = require("swissqrbill");
+import { PDF } from "swissqrbill/pdf";
 
 const data = {
   currency: "CHF",
@@ -21,4 +21,8 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/a6.pdf", { "size": "A6/5" });
+const pdf = new PDF(data, "./output/event.pdf");
+
+pdf.on("finish", () => {
+  console.log("File has been successfully created.");
+});

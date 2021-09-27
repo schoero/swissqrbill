@@ -1,4 +1,4 @@
-const SwissQRBill = require("swissqrbill");
+import { SVG } from "swissqrbill/svg";
 
 const data = {
   currency: "CHF",
@@ -21,6 +21,5 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/callback.pdf", () => {
-  console.log("File has been successfully created.");
-});
+const svg = new SVG(data);
+console.log(svg.toString());

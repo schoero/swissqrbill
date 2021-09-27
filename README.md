@@ -37,6 +37,9 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 [<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 
+<br/>
+<br/>
+
 ## Links
 
  * [Features](#features)
@@ -51,6 +54,9 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
  * [QR bill specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
 
 
+<br/>
+<br/>
+
 ## Features
  - Generate complete invoices, or only the QR Bill, as a PDF file.
  - Generate the QR Bill as a scalable vector graphic (SVG).
@@ -60,12 +66,17 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
  - Easy to use.
  - Free and open source.
 
+<br/>
+<br/>
 
 ## Installation
 
 ```
 npm i swissqrbill --save
 ```
+
+<br/>
+<br/>
 
 ## Importing the library
 
@@ -77,6 +88,8 @@ In versions prior to v3.0.0, you could simply include SwissQRBill like this:
 const SwissQRBill = require("swissqrbill"); // CommonJS. Not tree-shakeable.
 ```
 
+<br/>
+
 While you can still do this, it is recommended to switch to the new ES module imports to be able to take advantage of tree-shaking. SwissQRBill uses the new [conditional exports feature](https://nodejs.org/api/packages.html#packages_exports_sugar) that was added in node v12.16.0. 
 
 This allows you to import only the parts of SwissQRBill that you actually need.
@@ -87,8 +100,10 @@ import { SVG } from "swissqrbill/svg"; // ESM. Tree-shakeable
 import { mm2pt } from "swissqrbill/utils"; // ESM. Tree-shakeable
 ```
 
-Unfortunately, TypeScript with a version prior to the upcoming [version 4.5](https://github.com/microsoft/TypeScript/issues/45418), and Node.js prior to v12.16.0, do not support this feature.
-You can still take advantage of tree-shaking, but you may have to import the files directly by their path.
+<br/>
+
+Unfortunately, TypeScript with a version prior to the upcoming [version 4.5](https://github.com/microsoft/TypeScript/issues/45418), and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
+If you are using a TypeScript or Node.js version, that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
 
 ```js
 import { PDF } from "swissqrbill/lib/node/esm/node/pdf.js"; // ESM. Tree-shakeable
@@ -96,20 +111,28 @@ import { SVG } from "swissqrbill/lib/node/esm/node/svg.js"; // ESM. Tree-shakeab
 import { mm2pt } from "swissqrbill/lib/node/esm/shared/utils.js"; // ESM. Tree-shakeable
 ```
 
+<br/>
+
 ### Browser
 
 For the browser it is a bit more complicated. The easiest way would be to include the pre-bundled version.
 
 ```html
-<script type="text/javascript" src="path-to-swissqrbill/bundle" />
+<script type="text/javascript" src="path-to-swissqrbill/bundle/index.js" />
 ```
 
+<br/>
+
 If you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
-You can find an example, how this could be done using webpack at https://github.com/schoero/SwissQRBill-browser-example.
+You can find an example, how this could be done using webpack, at https://github.com/schoero/SwissQRBill-browser-example.
+
+
+<br/>
+<br/>
 
 ## Quick start
 
-It's quite easy to create a simple QR bill. All you have to do is create a new `SwissQRBill.PDF` instance and pass your billing data object as the first parameter and your output path as the second parameter.
+Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill.PDF` instance and pass your billing data object as the first parameter and your output path as the second parameter.
 
 ```js
 import { PDF } from "swissqrbill/pdf";
@@ -144,6 +167,7 @@ This will create the PDF file above. You can pass an optional third parameter co
 A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
 
 <br/>
+<br/>
 
 ## Browser usage
 
@@ -152,6 +176,8 @@ A complete documentation for all methods and parameters can be found in [doc/api
 To use SwissQRBill inside browsers, you have to pass a writableStream in the second parameter, instead of the output path. To create a writableStream in the browser you can use the built in `SwissQRBill.BlobStream()` function.
 
 ```js
+import { PDF, BlobStream } from "swissqrbill/pdf";
+
 const stream = new BlobStream();
 const pdf = new PDF(data, stream);
 
@@ -165,10 +191,11 @@ pdf.on("finish", () => {
 ```
 
 <br/>
+<br/>
 
 ## Further informations
 
-SwissQRBill extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/schoero/SwissQRBill/tree/master/doc/api.md#methods).
+SwissQRBill.PDF extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/schoero/SwissQRBill/tree/master/doc/api.md#methods).
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
 A simple guide how to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:

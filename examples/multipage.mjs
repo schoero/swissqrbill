@@ -1,4 +1,4 @@
-const SwissQRBill = require("swissqrpdf");
+import { PDF } from "swissqrbill/pdf";
 
 const data = {
   currency: "CHF",
@@ -21,28 +21,28 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { "autoGenerate": false });
+const pdf = new PDF(data, "./output/multipage.pdf", { "autoGenerate": false });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
 pdf.text("PAGE 1", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
   width: SwissQRBill.utils.mm2pt(210),
-  align: "center",
+  align: "center"
 });
 
 pdf.addPage();
 
 pdf.text("PAGE 2", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
   width: SwissQRBill.utils.mm2pt(210),
-  align: "center",
+  align: "center"
 });
 
 pdf.addPage();
 
 pdf.text("PAGE 3", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
   width: SwissQRBill.utils.mm2pt(210),
-  align: "center",
+  align: "center"
 });
 
 pdf.addQRBill();

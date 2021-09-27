@@ -1,9 +1,10 @@
 import { PDF_ } from "../pdf/pdf.js";
 
-import { IBlobStream } from "blob-stream";
+import { default as BlobStream_, IBlobStream } from "blob-stream";
 import { PDFOptions, Data } from "../shared/types.js";
 
-
+export import blobStream = BlobStream_;
+export import BlobStream = BlobStream_;
 export class PDF extends PDF_ {
 
   constructor(data: Data, writableStream: IBlobStream, options?: PDFOptions)

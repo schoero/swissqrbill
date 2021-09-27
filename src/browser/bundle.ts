@@ -14,7 +14,7 @@ export * from "./pdf.js";
 import fs from "fs";
 
 
-//-- Register fonts for the bundled versino
+//-- Register fonts for the bundled version
 
 //@ts-ignore
 import Helvetica from "../../node_modules/pdfkit/js/data/Helvetica.afm";
