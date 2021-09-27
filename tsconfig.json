@@ -9,10 +9,6 @@
     "strict": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": {
-      "pdfkit": ["pdfkit/js/pdfkit.esnext.js"]
-    }
   },
   "include": [
     "src"
