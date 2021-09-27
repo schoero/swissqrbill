@@ -1,6 +1,33 @@
 
 # Change Log
 
+# [v3.0.0-beta.2](https://github.com/schoero/swissqrbill/compare/v2.4.2...v3.0.0-beta.2) - 27.09.2021
+  * New features
+    * SVG
+      * Added support for SVG rendering [#343](https://github.com/schoero/SwissQRBill/issues/343).
+    * Added es6 module exports.
+    * Support for tree shaking.
+    * utils
+      * Added `mm2px()` function.
+      * Added `px2mm()` function.
+      * Added `pt2mm()` function.
+  * Breaking changes
+    * imports
+      * SwissQRBill is now available as a CommonJS and an ES module. This may change how the module has to be imported. Please take a look at the [importing the library](https://github.com/schoero/SwissQRBill/tree/v3#importing-the-library) section in the readme.
+    * data
+      * the field `houseNumber` has been renamed to `buildingNumber`.
+      * the deprecated field `debitor` has been removed. Use `debtor` instead.
+    * utils
+      * `mmToPoints()` function has been renamed to `mm2pt()`.
+    * PDF
+      * Removed deprecated `mmToPoints()` export. Use `utils.mm2pt()` instead.
+  * Fixes
+    * PDF
+      * The positioning of the box when no amount is provided has been slightly corrected.
+      * The positioning iban on the payment part has been slightly corrected.
+      * Fixed positioning of the debtor boxes when no debtor is provided and the creditor address break to multiple lines.
+  
+
 # [v2.4.2](https://github.com/schoero/swissqrbill/compare/v2.4.1...v2.4.2) - 26.08.2021
   * Fixed translation of `additionalInformation` and `payableByName`. [#342](https://github.com/schoero/SwissQRBill/pull/342)
 
