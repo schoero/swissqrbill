@@ -1,4 +1,12 @@
 
+
+//-- PDF types
+
+export { PDFTable, PDFRow, PDFColumn } from "../pdf/extended-pdf";
+
+
+//-- SwissQRBill types
+
 export type Currency = "CHF" | "EUR";
 export type Size = "A4" | "A6/5";
 export type Languages = "DE" | "EN" | "IT" | "FR";
