@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.3",
   "description": "Swiss QR Bill generation in Node.js and browsers",
   "main": "./lib/node/cjs/node/index.js",
   "module": "./lib/node/esm/node/index.js",
@@ -63,8 +63,31 @@
         "import": "./lib/node/esm/shared/utils.js"
       }
     },
+    
     "./bundle": "./lib/browser/bundle/index.js",
-    "./types": "./lib/node/esm/shared/types"
+    "./types": "./lib/node/esm/shared/types",
+
+    "./lib/browser/bundle/index.js": "./lib/browser/bundle/index.js",
+
+    "./lib/node/cjs/node/index.js": "./lib/node/cjs/node/index.js",
+    "./lib/node/esm/node/index.js": "./lib/node/esm/node/index.js",
+    "./lib/browser/esm/browser/index.js": "./lib/browser/esm/browser/index.js",
+    
+    "./lib/node/esm/shared/types": "./lib/node/esm/shared/types",
+    "./lib/browser/esm/shared/types": "./lib/browser/esm/shared/types",
+
+    "./lib/node/cjs/node/svg.js": "./lib/node/cjs/node/svg.js",
+    "./lib/node/esm/node/svg.js": "./lib/node/esm/node/svg.js",
+    "./lib/browser/esm/browser/svg.js": "./lib/browser/esm/browser/svg.js",
+
+    "./lib/node/cjs/node/pdf.js": "./lib/node/cjs/node/pdf.js",
+    "./lib/node/esm/node/pdf.js": "./lib/node/esm/node/pdf.js",
+    "./lib/browser/esm/browser/pdf.js": "./lib/browser/esm/browser/pdf.js",
+
+    "./lib/node/cjs/shared/utils.js": "./lib/node/cjs/shared/utils.js",
+    "./lib/node/esm/shared/utils.js": "./lib/node/esm/shared/utils.js",
+    "./lib/browser/esm/shared/utils.js": "./lib/browser/esm/shared/utils.js"
+
   },
   "files": [
     "lib"
