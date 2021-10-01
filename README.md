@@ -55,7 +55,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
 
 <br/>
-<br/>
 
 ## Features
  - Generate complete invoices, or only the QR Bill, as a PDF file.
@@ -67,7 +66,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
  - Free and open source.
 
 <br/>
-<br/>
 
 ## Installation
 
@@ -75,7 +73,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 npm i swissqrbill --save
 ```
 
-<br/>
 <br/>
 
 ## Importing the library
@@ -118,12 +115,16 @@ import { mm2pt } from "swissqrbill/lib/node/esm/shared/utils.js"; // ESM. Tree-s
 For the browser it is a bit more complicated. The easiest way would be to include the pre-bundled version.
 
 ```html
-<script type="text/javascript" src="path-to-swissqrbill/bundle/index.js" />
+<script type="text/javascript" src="https://unpkg.com/swissqrbill/lib/browser/bundle/index.js" />
 ```
 
-<br/>
+You can also import the bundle directly, if you are using a bundler like webpack.
 
-If you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
+```js
+  import SwissQRBill from "swissqrbill/lib/browser/bundle";
+```
+
+However, if you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
 You can find an example, how this could be done using webpack, at https://github.com/schoero/SwissQRBill-browser-example.
 
 
