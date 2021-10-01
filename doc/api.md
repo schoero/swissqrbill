@@ -53,7 +53,10 @@
   - Amount
     - [formatAmount(amount)](#formatamountamount)
   - Other
-    - [mm2pt(mm)](#mmtopointsmm)
+    - [mm2pt(millimeters)](#mm2ptmillimeters)
+    - [pt2mm(points)](#pt2mmpoints)
+    - [mm2px(millimeters)](#mm2pxmillimeters)
+    - [px2mm(pixels)](#px2mmpixels)
 
 
 <br/>
