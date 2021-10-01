@@ -121,7 +121,7 @@ For the browser it is a bit more complicated. The easiest way would be to includ
 You can also import the bundle directly, if you are using a bundler like webpack.
 
 ```js
-  import SwissQRBill from "swissqrbill/lib/browser/bundle";
+import SwissQRBill from "swissqrbill/lib/browser/bundle";
 ```
 
 However, if you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
