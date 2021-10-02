@@ -191,6 +191,14 @@ pdf.on("finish", () => {
 });
 ```
 
+Alternatively, you could render the QR Bill as a scalable vector graphic (SVG). But keep in mind, using SVG you can only render the QR Bill part and not an entire invoice.
+
+```js
+import { SVG } from "swissqrbill/svg";
+
+const svg = new SVG(data);
+document.body.appendChild(svg.element);
+```
 <br/>
 <br/>
 
