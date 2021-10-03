@@ -1,6 +1,7 @@
-import QRCode from "@schoero/qrcode";
 import { getReferenceType } from "../shared/utils.js";
 import { Data } from "./types";
+
+import QRCode from "@schoero/qrcode";
 
 
 export default function generateQRCode(data: Data, size: number): string {

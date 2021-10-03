@@ -10,6 +10,7 @@ export * as types from "../shared/types.js";
 export * from "./svg.js";
 export * from "./pdf.js";
 
+
 const SwissQRBill = {
   utils: utils,
   types: types,

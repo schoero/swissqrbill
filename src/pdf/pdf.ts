@@ -5,6 +5,7 @@ import * as utils from "../shared/utils.js";
 import translations from "../shared/translations.js";
 import generateQRCode from "../shared/qr-code.js";
 
+
 export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6/5";
@@ -495,6 +496,7 @@ export class PDF_ extends ExtendedPDF {
       this._addRectangle(118, utils.pt2mm(this.y), 65, 25);
 
     }
+
   }
 
 

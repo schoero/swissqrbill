@@ -1,6 +1,7 @@
 import PDFDocument from "pdfkit";
 import svgpath from "svgpath";
 
+
 export interface PDFTable {
   rows: Array<PDFRow>,
   width?: number,

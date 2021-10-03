@@ -3,6 +3,7 @@ import { Writable } from "stream";
 import { PDF_ } from "../pdf/pdf.js";
 import { PDFOptions, Data } from "../shared/types.js";
 
+
 export class PDF extends PDF_ {
 
   constructor(data: Data, outputPath: string, options?: PDFOptions)

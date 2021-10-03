@@ -540,6 +540,7 @@ export class SVG_ {
       .y("17mm")
       .x("67mm");
 
+
     //-- Add QR Code
 
     qrcodeSVG.addPath(qrcode)
@@ -650,7 +651,9 @@ export class SVG_ {
 
 
   private _elipsis(text: string, lengthInPixel: number, size: "8pt" | "10pt"): string {
+
     let result = "";
+
     if(calculateTextWidth(text, size) > lengthInPixel){
       for(let c = 0; c < text.length; c++){
         if(calculateTextWidth(result + text[c] + "...", size) <= lengthInPixel){
@@ -662,10 +665,13 @@ export class SVG_ {
     } else {
       return text;
     }
+
     if(result.substr(-1) === " "){
       result = result.slice(0, -1);
     }
+
     return result + "...";
+
   }
 
 
@@ -688,4 +694,5 @@ export class SVG_ {
     return container;
 
   }
+
 }
