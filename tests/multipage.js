@@ -21,28 +21,28 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/multipage.pdf", { "autoGenerate": false, "size": "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/multipage.pdf", { "autoGenerate": false, "size": "A4" });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
-pdf.text("PAGE 1", SwissQRBill.utils.mmToPoints(5), SwissQRBill.utils.mmToPoints(20), {
-  width: SwissQRBill.utils.mmToPoints(210),
-  align: "center",
+pdf.text("PAGE 1", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
+  width: SwissQRBill.utils.mm2pt(210),
+  align: "center"
 });
 
 pdf.addPage();
 
-pdf.text("PAGE 2", SwissQRBill.utils.mmToPoints(5), SwissQRBill.utils.mmToPoints(20), {
-  width: SwissQRBill.utils.mmToPoints(210),
-  align: "center",
+pdf.text("PAGE 2", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
+  width: SwissQRBill.utils.mm2pt(210),
+  align: "center"
 });
 
 pdf.addPage();
 
-pdf.text("PAGE 3", SwissQRBill.utils.mmToPoints(5), SwissQRBill.utils.mmToPoints(20), {
-  width: SwissQRBill.utils.mmToPoints(210),
-  align: "center",
+pdf.text("PAGE 3", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
+  width: SwissQRBill.utils.mm2pt(210),
+  align: "center"
 });
 
 pdf.addQRBill();

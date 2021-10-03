@@ -1,4 +1,4 @@
-const SwissQRBill = require("swissqrbill/lib/browser");
+import SwissQRBill from "swissqrbill/bundle";
 
 const data = {
   currency: "CHF",
@@ -23,7 +23,6 @@ const data = {
 
 
 const stream = new SwissQRBill.BlobStream();
-
 const pdf = new SwissQRBill.PDF(data, stream);
 
 pdf.on("finish", () => {

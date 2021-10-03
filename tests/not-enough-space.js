@@ -21,13 +21,13 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/not-enough-space.pdf", { "autoGenerate": false, "size": "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/not-enough-space.pdf", { "autoGenerate": false, "size": "A4" });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
-pdf.text("PAGE 1", SwissQRBill.utils.mmToPoints(5), pdf.page.height - 50, {
-  width: SwissQRBill.utils.mmToPoints(210),
+pdf.text("PAGE 1", SwissQRBill.utils.mm2pt(5), pdf.page.height - 50, {
+  width: SwissQRBill.utils.mm2pt(210),
   align: "center"
 });
 

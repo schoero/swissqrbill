@@ -1,4 +1,5 @@
-const SwissQRBill = require("../");
+import { PDF, SVG } from "../lib/node/esm/node/index.js";
+import { writeFileSync } from "fs";
 
 const data = {
   currency: "CHF",
@@ -21,4 +22,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/a6-5.pdf", { "size": "A6/5" });
+const pdf = new PDF(data, "./output/pdf/a6-5.pdf", { "size": "A6/5" });
+const svg = new SVG(data);
+writeFileSync("./output/svg/a6-5.svg", svg.toString());

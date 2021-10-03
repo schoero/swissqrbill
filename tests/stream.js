@@ -22,5 +22,5 @@ const data = {
   }
 };
 
-const stream = fs.createWriteStream("./output/stream.pdf");
+const stream = fs.createWriteStream("./output/pdf/stream.pdf");
 const pdf = new SwissQRBill.PDF(data, stream, { "size": "A6/5" });

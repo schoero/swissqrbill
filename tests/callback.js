@@ -21,6 +21,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/callback.pdf", () => {
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/callback.pdf", () => {
   console.log("File has been successfully created.");
 });

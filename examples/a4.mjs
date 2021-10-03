@@ -1,15 +1,15 @@
-const SwissQRBill = require("swissqrbill");
+import { PDF } from "swissqrbill/pdf";
 
 const data = {
   currency: "CHF",
   amount: 1199.95,
-  reference: "RF18539007547034",
+  reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",
     zip: 2501,
     city: "Biel",
-    account: "CH5800791123000889012",
+    account: "CH4431999123000889012",
     country: "CH"
   },
   debtor: {
@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/normal-iban-creditor-reference.pdf");
+const pdf = new PDF(data, "./output/a4.pdf", { "size": "A4" });

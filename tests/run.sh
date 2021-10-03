@@ -1,5 +1,7 @@
 #!/bin/sh
 mkdir -p output
+mkdir -p output/pdf
+mkdir -p output/svg
 
 set -e
 
@@ -8,9 +10,9 @@ echo "utils"
 echo "a4"
   node a4
 echo "a6-5"
-  node a6-5
+  node a6-5.mjs
 echo "a6-5-housenmuber"
-  node a6-5-housenumber
+  node a6-5-buildingnumber
 echo "av1av2"
   node av1av2
 echo "english"

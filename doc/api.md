@@ -16,6 +16,17 @@
 
 <br/>
 
+# SwissQRBill.SVG
+
+- Constructor
+  - [SwissQRBill.SVG(data[, options])](#swissqrbillsvgdata-options)
+- Methods
+  - [toString()](#tostring)
+- Getters
+  - [element](#element)
+
+<br/>
+
 # SwissQRBill.BlobStream
 
 - Constructor
@@ -42,7 +53,10 @@
   - Amount
     - [formatAmount(amount)](#formatamountamount)
   - Other
-    - [mmToPoints(mm)](#mmtopointsmm)
+    - [mm2pt(millimeters)](#mm2ptmillimeters)
+    - [pt2mm(points)](#pt2mmpoints)
+    - [mm2px(millimeters)](#mm2pxmillimeters)
+    - [px2mm(pixels)](#px2mmpixels)
 
 
 <br/>
@@ -85,7 +99,7 @@
       > First name + last name or company name.
     - **account** - `string` *mandatory*, 21 characters.
     - **address** - `string` *mandatory*, max 70 characters.
-    - **houseNumber** - `string | number` *optional*, max 16 characters.
+    - **buildingNumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number | string` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
@@ -93,13 +107,13 @@
     - **name** - `string` *mandatory*, max. 70 characters.
       > First name + last name or company name.
     - **address** - `string` *mandatory*, max 70 characters.
-    - **houseNumber** - `string | number` *optional*, max 16 characters.
+    - **buildingNumber** - `string | number` *optional*, max 16 characters.
     - **zip** - `number | string` *mandatory*, max 16 characters.
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
 
 
-#### options
+##### options
 
   Available options: 
 
@@ -128,7 +142,7 @@ const data = {
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac",
-    houseNumber: "1268",
+    buildingNumber: "1268",
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
@@ -137,7 +151,7 @@ const data = {
   debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse",
-    houseNumber: 28,
+    buildingNumber: 28,
     zip: 9400,
     city: "Rorschach",
     country: "CH"
@@ -244,6 +258,45 @@ This could be used to add page numbers to the pages as described [here](http://p
 
 <br/>
 
+
+# SwissQRBill.SVG
+## Constructor
+
+#### SwissQRBill.SVG(data[, options])
+
+ - [**data**](#data-1) - `object` containing all relevant billing data, *mandatory*.
+ - [**options**](#options-1) - `object` containing settings, *optional*.
+
+##### data
+
+  The data object is the same as the [data object](#data) in the PDF constructor above.
+
+##### options
+
+  Available options: 
+
+   - **language** - `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
+
+<br/>
+
+## Methods
+
+### toString()
+Returns the outerHTML of the SVG.
+<br/>
+
+## Getters
+
+### element
+Returns the SVG element.
+> **Note:** This function is only available in the browser.
+
+```js
+const svg = new SVG(data);
+document.body.appendChild(svg.element);
+```
+<br/>
+
 # SwissQRBill.BlobStream
 
 ## Constructor
@@ -333,7 +386,22 @@ Returns a `string` containing the formatted amount.
 
 ### Other
 
-#### mmToPoints(mm)
- - mm - `number` containg the millimeters you want to convert to points.  
+#### mm2pt(millimeters)
+ - millimeters - `number` containg the millimeters you want to convert to points.  
  Converts milimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.  
  Returns a `number` containing the converted millimeters in points.
+
+#### pt2mm(points)
+ - points - `number` containg the points you want to convert to millimeters.  
+ Converts points to millimeters. This method can be used to simplify positioning while you create your own layout using PDFKit.  
+ Returns a `number` containing the converted points in millimeters.
+
+#### mm2px(millimeters)
+ - millimeters - `number` containg the millimeters you want to convert to pixels.  
+ Converts milimeters to pixels. This method can be used to simplify positioning while you create your own layout using PDFKit.  
+ Returns a `number` containing the converted millimeters in pixels.
+
+#### px2mm(pixels)
+ - pixels - `number` containg the pixels you want to convert to millimeters.  
+ Converts pixels to millimeters. This method can be used to simplify positioning while you create your own layout using PDFKit.
+ Returns a `number` containing the converted pixels in millimeters.
