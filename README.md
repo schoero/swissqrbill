@@ -44,6 +44,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
  * [Features](#features)
  * [Installation](#installation)
+ * [Migrating from v2.x](#migrating-from-v2x)
  * [Importing the library](#importing-the-library)
  * [Quick start](#quick-start)
  * [Browser usage](#browser-usage)
@@ -72,6 +73,16 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 ```
 npm i swissqrbill --save
 ```
+
+<br/>
+
+## Migrating from v2.x
+
+If you want to migrate from v2.x to v3.x, there are mainly two things that need to be changed: 
+ - `mmToPoints()` has to be renamed to `mm2pt()`
+ - the `data` field `houseNumber` has to be renamed to `buildingNumber`
+
+Other than that, there are now ES module exports. Please take a look at following section to check if you can improve the way you import the library.
 
 <br/>
 
