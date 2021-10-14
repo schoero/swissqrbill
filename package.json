@@ -1,6 +1,6 @@
 {
   "name": "swissqrbill",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Swiss QR Bill generation in Node.js and browsers",
   "main": "./lib/node/cjs/node/index.js",
   "module": "./lib/node/esm/node/index.js",
@@ -77,57 +77,39 @@
         "import": "./lib/node/esm/shared/types.js"
       }
     },
-    
     "./bundle": "./lib/browser/bundle/index.js",
-
     "./lib/browser/bundle/index": "./lib/browser/bundle/index",
     "./lib/browser/bundle/index.js": "./lib/browser/bundle/index.js",
-
-
     "./lib/node/cjs/node/index": "./lib/node/cjs/node/index",
     "./lib/node/esm/node/index": "./lib/node/esm/node/index",
     "./lib/browser/esm/browser/index": "./lib/browser/esm/browser/index",
-
     "./lib/node/cjs/node/index.js": "./lib/node/cjs/node/index.js",
     "./lib/node/esm/node/index.js": "./lib/node/esm/node/index.js",
     "./lib/browser/esm/browser/index.js": "./lib/browser/esm/browser/index.js",
-
-
     "./lib/node/cjs/node/svg": "./lib/node/cjs/node/svg",
     "./lib/node/esm/node/svg": "./lib/node/esm/node/svg",
     "./lib/browser/esm/browser/svg": "./lib/browser/esm/browser/svg",
-
     "./lib/node/cjs/node/svg.js": "./lib/node/cjs/node/svg.js",
     "./lib/node/esm/node/svg.js": "./lib/node/esm/node/svg.js",
     "./lib/browser/esm/browser/svg.js": "./lib/browser/esm/browser/svg.js",
-
-
     "./lib/node/cjs/node/pdf": "./lib/node/cjs/node/pdf",
     "./lib/node/esm/node/pdf": "./lib/node/esm/node/pdf",
     "./lib/browser/esm/browser/pdf": "./lib/browser/esm/browser/pdf",
-
     "./lib/node/cjs/node/pdf.js": "./lib/node/cjs/node/pdf.js",
     "./lib/node/esm/node/pdf.js": "./lib/node/esm/node/pdf.js",
     "./lib/browser/esm/browser/pdf.js": "./lib/browser/esm/browser/pdf.js",
-
-
     "./lib/node/cjs/shared/utils": "./lib/node/cjs/shared/utils",
     "./lib/node/esm/shared/utils": "./lib/node/esm/shared/utils",
     "./lib/browser/esm/shared/utils": "./lib/browser/esm/shared/utils",
-
     "./lib/node/cjs/shared/utils.js": "./lib/node/cjs/shared/utils.js",
     "./lib/node/esm/shared/utils.js": "./lib/node/esm/shared/utils.js",
     "./lib/browser/esm/shared/utils.js": "./lib/browser/esm/shared/utils.js",
-
-
     "./lib/node/cjs/shared/types": "./lib/node/cjs/shared/types",
     "./lib/node/esm/shared/types": "./lib/node/esm/shared/types",
     "./lib/browser/esm/shared/types": "./lib/browser/esm/shared/types",
-
     "./lib/node/cjs/shared/types.js": "./lib/node/cjs/shared/types.js",
     "./lib/node/esm/shared/types.js": "./lib/node/esm/shared/types.js",
     "./lib/browser/esm/shared/types.js": "./lib/browser/esm/shared/types.js"
-
   },
   "files": [
     "lib"
@@ -168,32 +150,32 @@
   "homepage": "https://github.com/schoero/SwissQRBill#readme",
   "devDependencies": {
     "@types/blob-stream": "^0.1.30",
-    "@types/node": "^16.10.1",
+    "@types/node": "^16.10.9",
     "@types/qrcode": "^1.4.1",
     "@types/qrcode-svg": "^1.1.1",
     "@types/svg-parser": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "assert": "^2.0.0",
     "brfs": "^2.0.2",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.1",
     "process": "^0.11.10",
     "readable-stream": "^3.6.0",
     "transform-loader": "^0.2.4",
     "ts-loader": "^9.2.6",
-    "typescript": "^4.4.3",
+    "typescript": "^4.4.4",
     "util": "^0.12.4",
-    "webpack": "^5.54.0",
-    "webpack-cli": "^4.8.0"
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
   },
   "dependencies": {
     "@schoero/qrcode": "^1.4.5",
     "@types/pdfkit": "^0.11.2",
     "blob-stream": "^0.1.3",
     "pdfkit": "^0.12.3",
-    "svg-engine": "^0.2.0",
+    "svg-engine": "^0.2.2",
     "svgpath": "^2.3.1"
   }
 }

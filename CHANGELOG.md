@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v3.0.1](https://github.com/schoero/swissqrbill/compare/v3.0.0...v3.0.1) - 14.10.2021
+  * Changed build target to ES6 to support older Browsers and Node.js versions. [#347](https://github.com/schoero/SwissQRBill/pull/347)
+  
 # [v3.0.0](https://github.com/schoero/swissqrbill/compare/v2.4.2...v3.0.0) - 03.10.2021
   * New features
     * SVG
