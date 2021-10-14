@@ -3,8 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "outDir": "./lib/node/esm",
-    "module": "esnext",
-    "target": "esnext"
+    "module": "esnext"
   },
   "include": ["src"],
   "exclude": [
