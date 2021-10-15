@@ -16,6 +16,9 @@
   <a href="https://www.npmjs.com/package/swissqrbill">
     <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
   </a>
+  <a href="https://www.jsdelivr.com/package/npm/swissqrbill">
+    <img alt="JSDelivr hits" src="https://img.shields.io/jsdelivr/npm/hm/swissqrbill?color=brightgreen&style=flat-square">
+  </a>
   <a href="https://github.com/schoero/SwissQRBill/stargazers">
     <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
   </a>
