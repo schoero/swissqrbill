@@ -19,8 +19,8 @@ npm i swissqrbill --save
 Then you are able to include SwissQRBill to your project.
 
 ```js
-import PDF from "swissqrbill/pdf";
-import mm2pt from "swissqrbill/utils";
+import { PDF } from "swissqrbill/pdf";
+import { mm2pt } from "swissqrbill/utils";
 ```
 
 Once everything is set up we can start with creating a data object which contains the necessarry payment informations. These informations could be generated automatically by your program, or be retreived from your database.
