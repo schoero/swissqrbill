@@ -76,6 +76,12 @@ export class PDF_ extends ExtendedPDF {
   }
 
 
+  /**
+   * Adds a new page to the PDF. This method is basically the same as the original [PDFKit `addPage()` method](https://pdfkit.org/docs/getting_started.html#adding_pages). However the default values are changed to use the default page size provided in the constructor options.
+   * @param {PDFKit.PDFDocumentOptions} [options] `object` containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)
+   * @returns {PDFKit.PDFDocument} `this`
+   * @memberof PDF_
+   */
   public addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
 
     if(options === undefined){
@@ -97,6 +103,12 @@ export class PDF_ extends ExtendedPDF {
   }
 
 
+  /**
+   * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+   *
+   * @param {Size} [size="A6/5"] `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
+   * @memberof PDF_
+   */
   public addQRBill(size: Size = "A6/5"): void {
 
     if(this.page.height - this.y < utils.mm2pt(105) && this.y !== this.page.margins.top){

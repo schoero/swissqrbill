@@ -9,11 +9,25 @@ export class SVG extends SVG_ {
   }
 
 
+  /**
+   * Outputs the SVG as a string.
+   *
+   * @returns {string} `string` containing the outerHTML of the SVG.
+   * @memberof SVG
+   */
   public toString(): string {
     return this.outerHTML;
   }
 
 
+  /**
+   * Returns the SVG element.
+   * > **Note:** This function is only available in the browser.
+   *
+   * @readonly
+   * @type {SVGElement}
+   * @memberof SVG
+   */
   public get element(): SVGElement {
     return this.instance.element as unknown as SVGElement;
   }
