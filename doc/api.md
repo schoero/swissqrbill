@@ -366,8 +366,6 @@ document.body.appendChild(svg.element);
 
 # SwissQRBill.utils
 
-## Functions
-
 ### isQRIBAN(iban)
  - iban - `string` containing the iban to be checked.
 Checks whether the given iban is a QR-IBAN or not.
