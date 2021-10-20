@@ -65,11 +65,7 @@
 
 # SwissQRBill.PDF
 
-<br/>
-
 ## Constructor
-
-<br/>
 
 ### SwissQRBill.PDF(data, outputPath[, options] [, callback])
 ### SwissQRBill.PDF(data, writableStream[, options] [, callback])
@@ -82,8 +78,6 @@
 > **Note:** The outputPath option is only available in Node.js.
 
 > **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
-
-<br/>
 
 ##### data
 
@@ -120,9 +114,6 @@
     - **city** - `string` *mandatory*, max 35 characters.
     - **country** - `string` *mandatory*, 2 characters.
 
-
-<br/>
-
 ##### options
 
   Available options: 
@@ -139,9 +130,6 @@
      Whether you want render the outlines. This option may be disabled if you use perforated paper.
    - **autoGenerate** - `boolean`: *default* `true`.
      Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-
-<br/>
-
 
 ```js
 const data = {
@@ -172,8 +160,6 @@ const data = {
 <br/>
 
 ## Methods
-
-<br/>
 
 ### addPage(options)
  - options - `object` containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)  
@@ -215,8 +201,6 @@ Returns `this`.
 
  Returns `this`.
 
-<br/>
-
  ##### table
 
   The table object is constructed in the following way:
@@ -245,8 +229,6 @@ Returns `this`.
       - **font** `string` font of the text inside the cell *optional*<br/>
       - **fontSize** `number` font size of the text inside the cell *optional*<br/>
       - **textOptions** `object` same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling) *optional*<br/>
-
-<br/>
 
 ```js
 const table = {
@@ -282,8 +264,6 @@ const table = {
 
 ## Events
 
-<br/>
-
 ### Event: "finish"
 The finish event is emitted when the file has finished writing. 
 You have to wait until the file has finished writing before you are able to interact with the genereated file.
@@ -310,20 +290,14 @@ This could be used to add page numbers to the pages as described [here](http://p
 # SwissQRBill.SVG
 ## Constructor
 
-<br/>
-
 ### SwissQRBill.SVG(data[, options])
 
  - [**data**](#data-1) - `object` containing all relevant billing data, *mandatory*.
  - [**options**](#options-1) - `object` containing settings, *optional*.
 
-<br/>
-
 ##### data
 
   The data object is the same as the [data object](#data) in the PDF constructor above.
-
-<br/>
 
 ##### options
 
@@ -336,8 +310,6 @@ This could be used to add page numbers to the pages as described [here](http://p
 
 ## Methods
 
-<br/>
-
 ### toString()
  Outputs the SVG as a string.
  Returns the outerHTML of the SVG.
@@ -346,8 +318,6 @@ This could be used to add page numbers to the pages as described [here](http://p
 <br/>
 
 ## Getters
-
-<br/>
 
 ### element
  Returns the SVG element.
@@ -363,11 +333,7 @@ document.body.appendChild(svg.element);
 
 # SwissQRBill.BlobStream
 
-<br/>
-
 ## Constructor
-
-<br/>
 
 ### SwissQRBill.BlobStream()
  Creates a new writableStream which streams the generated pdf into a [HTML5 Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
@@ -378,8 +344,6 @@ document.body.appendChild(svg.element);
 <br/>
 
 ## Methods
-
-<br/>
 
 ### toBlob(type)
  - type - `string` [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml) of the streamed data, for example `"application/pdf"`.
@@ -402,11 +366,7 @@ document.body.appendChild(svg.element);
 
 # SwissQRBill.utils
 
-<br/>
-
 ## Functions
-  
-<br/>
 
 ### isQRIBAN(iban)
  - iban - `string` containing the iban to be checked.
