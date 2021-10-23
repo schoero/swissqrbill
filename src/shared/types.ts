@@ -14,81 +14,53 @@ export type Languages = "DE" | "EN" | "IT" | "FR";
 export interface Data {
 
   /**
-   * `string: "CHF" | "EUR"` *mandatory*, 3 characters.
-   *
-   * @type {Currency}
-   * @memberof Data
+   * The currency to be used. **3 characters.**
    */
   currency: Currency;
 
   /**
-   * `number` *optional*, max. 12 digits.
-   *
-   * @type {number}
-   * @memberof Data
+   * The amount. **Max. 12 digits.**
    */
   amount?: number;
 
   /**
-   * `string` *optional*, max 27 characters.
+   * A reference number. **Max 27 characters.**
    * > QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
    *   Creditor Reference (ISO 11649): Maximum 25 characters.
-   *
-   * @type {string}
-   * @memberof Data
    */
   reference?: string;
 
   /**
-   * `string` *optional*, max. 140 characters.
+   * A message. **Max. 140 characters.**
    * > message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference.
-   *
-   * @type {string}
-   * @memberof Data
    */
   message?: string;
 
   /**
-   * `string` *optional*, max. 140 characters.
+   * Additional information. **Max 140 characters.**
    * > Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment.
-   *
-   * @type {string}
-   * @memberof Data
    */
   additionalInformation?: string;
 
   /**
-   * `string` *optional*, max. 100 characters.
+   * Alternative scheme. **Max. 100 characters.**
    * > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
-   *
-   * @type {string}
-   * @memberof Data
    */
   av1?: string;
 
   /**
-   * `string` *optional*, max. 100 characters.
+   * Alternative scheme. **Max. 100 characters.**
    * > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
-   *
-   * @type {string}
-   * @memberof Data
    */
   av2?: string;
 
   /**
-   * `object` Creditor related data *mandatory*
-   *
-   * @type {Creditor}
-   * @memberof Data
+   * Creditor related data.
    */
   creditor: Creditor;
 
-
   /**
-   * `object` Debtor related data *optional*
-   *
-   * @type {Debtor}
-   * @memberof Data
+   * Debtor related data.
    */
   debtor?: Debtor;
 }
@@ -96,50 +68,32 @@ export interface Data {
 export interface Debtor {
 
   /**
-   * `string` *mandatory*, max. 70 characters.
-   *
-   * @type {string}
-   * @memberof Debtor
+   * Name. **Max. 70 characters.**
    */
   name: string;
 
   /**
-   * `string` *mandatory*, max 70 characters.
-   *
-   * @type {string}
-   * @memberof Debtor
+   * Address. **Max 70 characters.**
    */
   address: string;
 
   /**
-   * `string | number` *optional*, max 16 characters.
-   *
-   * @type {(string | number)}
-   * @memberof Debtor
+   * Building number. **Max 16 characters.**
    */
   buildingNumber?: string | number;
 
   /**
-   * `number | string` *mandatory*, max 16 characters.
-   *
-   * @type {(string | number)}
-   * @memberof Debtor
+   * Postal code. **Max 16 characters.**
    */
   zip: string | number;
 
   /**
-   * `string` *mandatory*, max 35 characters.
-   *
-   * @type {string}
-   * @memberof Debtor
+   * City. **Max 35 characters.**
    */
   city: string;
 
   /**
-   * `string` *mandatory*, 2 characters.
-   *
-   * @type {string}
-   * @memberof Debtor
+   * Country code. **2 characters.**
    */
   country: string;
 }
@@ -147,10 +101,7 @@ export interface Debtor {
 export interface Creditor extends Debtor {
 
   /**
-   * `string` IBAN *mandatory*, 21 characters.
-   *
-   * @type {string}
-   * @memberof Creditor
+   * The IBAN. **21 characters.**
    */
   account: string;
 }
@@ -158,56 +109,40 @@ export interface Creditor extends Debtor {
 export interface PDFOptions {
 
   /**
-   * `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
-   *
-   * @type {Languages}
-   * @memberof PDFOptions
+   * The language with which the bill is rendered.
+   * @defaultValue `DE`
    */
   language?: Languages;
 
   /**
-   * `string: "A4" | "A6/5"`. *default* `"A6/5"`.
-   *
-   * @type {Size}
-   * @memberof PDFOptions
+   * The page size.
+   * @defaultValue `"A6/5"`
    */
   size?: Size;
 
   /**
-   * `boolean`: *default* `true`.
    *  Whether you want to show the scissors icons or the text `Separate before paying in`.
    *  > **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
-   *
-   * @type {boolean}
-   * @memberof PDFOptions
+   * @defaultValue `true`
    */
   scissors?: boolean;
 
   /**
-   * `boolean`: *default* `false`.
    *  Whether you want to show the text `Separate before paying in` rather than the scissors icons.
    *  > **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
-   *
-   * @type {boolean}
-   * @memberof PDFOptions
+   * @defaultValue `false`
    */
   separate?: boolean;
 
   /**
-   * `boolean`: *default* `true`.
    *  Whether you want render the outlines. This option may be disabled if you use perforated paper.
-   *
-   * @type {boolean}
-   * @memberof PDFOptions
+   * @defaultValue `true`
    */
   outlines?: boolean;
 
   /**
-   * `boolean`: *default* `true`.
    *  Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-   *
-   * @type {boolean}
-   * @memberof PDFOptions
+   * @defaultValue `true`
    */
   autoGenerate?: boolean;
 }
@@ -215,10 +150,8 @@ export interface PDFOptions {
 export interface SVGOptions {
 
   /**
-   * `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
-   *
-   * @type {Languages}
-   * @memberof SVGOptions
+   * The language with which the bill is rendered.
+   * @defaultValue `DE`
    */
   language?: Languages;
 }

@@ -4,176 +4,104 @@ import svgpath from "svgpath";
 
 export interface PDFTable {
   /**
-   * `Array` of rows *mandatory*
-   *
-   * @type {Array<PDFRow>}
-   * @memberof PDFTable
+   * Table rows.
    */
   rows: Array<PDFRow>;
   /**
-   * `number` width of whole table *optional*
-   *
-   * @type {number}
-   * @memberof PDFTable
+   * Width of whole table.
    */
   width?: number;
   /**
-   * `number` horizontal start position of the table *optional*
-   *
-   * @type {number}
-   * @memberof PDFTable
+   * Horizontal start position of the table.
    */
   x?: number;
   /**
-   * `number` vertical start position of the table *optional*
-   *
-   * @type {number}
-   * @memberof PDFTable
+   * Vertical start position of the table.
    */
   y?: number;
   /**
-   * `number | [top: number, right: number, bottom: number, left: number]` cell padding of the table cells *optional*
-   *
-   * @type {(number | [number, number?, number?, number?])}
-   * @memberof PDFTable
+   * Cell padding of the table cells.
    */
   padding?: number | [number, number?, number?, number?];
   /**
-   * `number` width of the border lines *optional*
-   *
-   * @type {number}
-   * @memberof PDFTable
+   * Width of the border lines.
    */
   lineWidth?: number;
   /**
-   * `string` font of the text inside the table *optional*
-   *
-   * @type {string}
-   * @memberof PDFTable
+   * Font of the text inside the table.
    */
   font?: string;
   /**
-   * `number` font size of the text inside the table *optional*
-   *
-   * @type {number}
-   * @memberof PDFTable
+   * Font size of the text inside the table.
    */
   fontSize?: number;
 }
 export interface PDFRow {
   /**
-   * `Array` of columns *mandatory*
-   *
-   * @type {Array<PDFColumn>}
-   * @memberof PDFRow
+   * Table columns.
    */
   columns: Array<PDFColumn>,
   /**
-   * `string` background color of the row *optional*
-   *
-   * @type {string}
-   * @memberof PDFRow
+   * Background color of the row.
    */
   fillColor?: string;
   /**
-   * `string` border color of the row *optional*
-   *
-   * @type {string}
-   * @memberof PDFRow
+   * Border color of the row.
    */
   strokeColor?: string;
   /**
-   * `number` height of the row *optional*
-   *
-   * @type {number}
-   * @memberof PDFRow
+   * Height of the row.
    */
   height?: number;
   /**
-   * `number | [top: number, right: number, bottom: number, left: number]` cell padding of the table cells inside the row *optional*
-   *
-   * @type {(number | [number, number?, number?, number?])}
-   * @memberof PDFRow
+   * Cell padding of the table cells inside the row.
    */
   padding?: number | [number, number?, number?, number?];
   /**
-   * `string` font of the text inside the row *optional*
-   *
-   * @type {string}
-   * @memberof PDFRow
+   * Font of the text inside the row.
    */
   font?: string;
   /**
-   * `number` font size of the text inside the row *optional*
-   *
-   * @type {number}
-   * @memberof PDFRow
+   * Font size of the text inside the row.
    */
   fontSize?: number;
   /**
-   * `boolean` A header row gets inserted automatically on new pages. Only one header row is allowed. *optional*
-   *
-   * @type {boolean}
-   * @memberof PDFRow
+   * A header row gets inserted automatically on new pages. Only one header row is allowed.
    */
   header?: boolean;
 }
 
 export interface PDFColumn {
   /**
-   * `string | number | boolean` cell text *mandatory*
-   *
-   * @type {(string | number | boolean)}
-   * @memberof PDFColumn
+   * Cell text.
    */
   text: string | number | boolean;
   /**
-   * `number` width of the cell *optional*
-   *
-   * @type {number}
-   * @memberof PDFColumn
+   * Width of the cell.
    */
   width?: number;
   /**
-   * `number | [top: number, right: number, bottom: number, left: number]` cell padding of the table cell *optional*
-   *
-   * @type {(number | [number, number?, number?, number?])}
-   * @memberof PDFColumn
+   * Cell padding of the table cell.
    */
   padding?: number | [number, number?, number?, number?];
   /**
-   * `string` background color of the cell *optional*
-   *
-   * @type {string}
-   * @memberof PDFColumn
+   * Background color of the cell.
    */
   fillColor?: string;
   /**
-   * `string` border color of the cell *optional*
-   *
-   * @type {string}
-   * @memberof PDFColumn
+   * Border color of the cell.
    */
   strokeColor?: string;
   /**
-   * `string` font of the text inside the cell *optional*
-   *
-   * @type {string}
-   * @memberof PDFColumn
+   * Font of the text inside the cell.
    */
   font?: string;
   /**
-   * `number` font size of the text inside the cell *optional*
-   *
-   * @type {number}
-   * @memberof PDFColumn
+   * Font size of the text inside the cell.
    */
   fontSize?: number;
   /**
-   * `object` same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling) *optional*
-   *
-   * @type {PDFKit.Mixins.TextOptions}
-   * @memberof PDFColumn
+   * Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling).
    */
   textOptions?: PDFKit.Mixins.TextOptions
 }
@@ -188,10 +116,10 @@ export class ExtendedPDF extends PDFDocument {
   /**
    * Inserts a table to the document.
    *
-   * @param {PDFTable} table
-   * @returns {PDFKit.PDFDocument} `this`
-   * @memberof ExtendedPDF
+   * @param table - An Object which contains the table information.
+   * @returns `this`
    * @example
+   * ```
    * const table = {
    *   rows: [
    *     {
@@ -218,6 +146,7 @@ export class ExtendedPDF extends PDFDocument {
    *     }
    *   ]
    * };
+   * ```
    */
   public addTable(table: PDFTable): PDFKit.PDFDocument {
 
@@ -395,11 +324,10 @@ export class ExtendedPDF extends PDFDocument {
   /**
    * Adds a path to the document on the given position.
    *
-   * @param {string} path `string` The path data to insert. This is the same as the `d` attribute of a SVG path.
-   * @param {number} x `number` The x position where the path should be inserted.
-   * @param {number} y `number` The y position where the path should be inserted.
-   * @returns {PDFKit.PDFDocument} `this`
-   * @memberof ExtendedPDF
+   * @param path - The path data to insert. This is the same as the `d` attribute of a SVG path.
+   * @param x - The x position where the path should be inserted.
+   * @param y - The y position where the path should be inserted.
+   * @returns `this`
    */
   public addPath(path: string, x: number, y: number): PDFKit.PDFDocument {
 

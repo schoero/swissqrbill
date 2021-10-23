@@ -3,8 +3,8 @@
 /**
  * Checks whether the given iban is a QR-IBAN or not.
  *
- * @param {string} iban `string` containing the iban to be checked.
- * @returns {boolean} `boolean` `true` if the given iban is a QR-IBAN and `false` otherwise.
+ * @param iban - The IBAN to be checked.
+ * @returns `true` if the given IBAN is a QR-IBAN and `false` otherwise.
  */
 export function isQRIBAN(iban: string): boolean {
   iban = iban.replace(/ /g, "");
@@ -14,10 +14,10 @@ export function isQRIBAN(iban: string): boolean {
 
 
 /**
- * Validates the given iban.
+ * Validates the given IBAN.
  *
- * @param {string} iban `string` containing the iban to be checked.
- * @returns {boolean} `boolean` `true` if the checksum of the given iban is valid and `false` otherwise.
+ * @param iban - The IBAN to be checked.
+ * @returns `true` if the checksum of the given IBAN is valid and `false` otherwise.
  */
 export function isIBANValid(iban: string): boolean {
 
@@ -55,10 +55,10 @@ export function isIBANValid(iban: string): boolean {
 
 
 /**
- * Formats the given iban according the specifications to be easily readable.
+ * Formats the given IBAN according the specifications to be easily readable.
  *
- * @param {string} iban `string` containing the iban to be formatted.
- * @returns {string} `string` containing the formatted iban.
+ * @param iban - The IBAN to be formatted.
+ * @returns The formatted IBAN.
  */
 export function formatIBAN(iban: string): string {
   iban = iban.replace(/ /g, "");
@@ -70,8 +70,8 @@ export function formatIBAN(iban: string): string {
 /**
  * Checks whether the given reference is a QR-Reference or not.
  *
- * @param {string} reference `string` containing the reference to be checked.
- * @returns {boolean} `boolean` `true` if the given iban is a QR-Reference and `false` otherwise.
+ * @param reference - The Reference to be checked.
+ * @returns `true` if the given reference is a QR-Reference and `false` otherwise.
  */
 export function isQRReference(reference: string): boolean {
 
@@ -95,8 +95,8 @@ export function isQRReference(reference: string): boolean {
 /**
  * Validates the given reference.
  *
- * @param {string} reference `string` containing the reference to be checked.
- * @returns {boolean} `boolean` `true` if the given reference is valid and `false` otherwise.
+ * @param reference - The reference to be checked.
+ * @returns `true` if the given reference is valid and `false` otherwise.
  */
 export function isQRReferenceValid(reference: string): boolean {
 
@@ -123,8 +123,8 @@ export function isQRReferenceValid(reference: string): boolean {
 /**
  * Calculates the checksum according the specifications.
  *
- * @param {string} reference `string` containing the 26 digits long reference (without the checksum) whose checksum should be calculated.
- * @returns {string} `string` containing the calculated checksum.
+ * @param reference - The 26 digits long reference (without the checksum) whose checksum should be calculated.
+ * @returns The calculated checksum.
  */
 export function calculateQRReferenceChecksum(reference: string): string {
   return mod10(reference);
@@ -134,8 +134,8 @@ export function calculateQRReferenceChecksum(reference: string): string {
 /**
  * Formats the given QR-Reference according the specifications to be easily readable.
  *
- * @param {string} reference `string` containing the QR-Reference to be formatted.
- * @returns {string} `string` containing the formatted QR-Reference.
+ * @param reference - The QR-Reference to be formatted.
+ * @returns The formatted QR-Reference.
  */
 export function formatQRReference(reference: string): string {
 
@@ -156,8 +156,8 @@ export function formatQRReference(reference: string): string {
 /**
  * Formats the given SCOR-Reference according the specifications to be easily readable.
  *
- * @param {string} reference `string` containing the SCOR-Reference to be formatted.
- * @returns {string} `string` containing the formatted SCOR-Reference.
+ * @param reference - The SCOR-Reference to be formatted.
+ * @returns The formatted SCOR-Reference.
  */
 export function formatSCORReference(reference: string): string {
 
@@ -178,8 +178,8 @@ export function formatSCORReference(reference: string): string {
 /**
  * Formats the given amount according the specifications to be easily readable.
  *
- * @param {number} amount `number` containing the amount to be formatted.
- * @returns {string} `string` containing the formatted amount.
+ * @param amount - containing the amount to be formatted.
+ * @returns The formatted amount.
  */
 export function formatAmount(amount: number): string {
 
@@ -204,8 +204,8 @@ export function formatAmount(amount: number): string {
 /**
  * Converts milimeters to points.
  *
- * @param {number} millimeters `number` containg the millimeters you want to convert to points.
- * @returns {number} `number` containing the converted millimeters in points.
+ * @param millimeters - The millimeters you want to convert to points.
+ * @returns The converted millimeters in points.
  */
 export function mm2pt(millimeters: number): number {
   return millimeters * 2.83465;
@@ -215,8 +215,8 @@ export function mm2pt(millimeters: number): number {
 /**
  * Converts points to millimeters.
  *
- * @param {number} points `number` containg the points you want to convert to millimeters.
- * @returns {number} `number` containing the converted points in millimeters.
+ * @param points - The points you want to convert to millimeters.
+ * @returns The converted points in millimeters.
  */
 export function pt2mm(points: number): number {
   return points / 2.83465;
@@ -226,8 +226,8 @@ export function pt2mm(points: number): number {
 /**
  * Converts milimeters to pixels.
  *
- * @param {number} millimeters `number` containg the millimeters you want to convert to pixels.
- * @returns {number} `number` containing the converted millimeters in pixels.
+ * @param millimeters - The millimeters you want to convert to pixels.
+ * @returns The converted millimeters in pixels.
  */
 export function mm2px(millimeters: number): number {
   return millimeters * 960 / 254;
@@ -237,8 +237,8 @@ export function mm2px(millimeters: number): number {
 /**
  * Converts pixels to millimeters.
  *
- * @param {number} pixels `number` containg the pixels you want to convert to millimeters.
- * @returns {number} `number` containing the converted pixels in millimeters.
+ * @param pixels - containg the pixels you want to convert to millimeters.
+ * @returns The converted pixels in millimeters.
  */
 export function px2mm(pixels: number): number {
   return pixels * 254 / 960;
