@@ -367,25 +367,25 @@ document.body.appendChild(svg.element);
 # SwissQRBill.utils
 
 ### isQRIBAN(iban)
- - iban - `string` containing the iban to be checked.
-Checks whether the given iban is a QR-IBAN or not.
-Returns a `boolean`: true if the given iban is a QR-IBAN and false otherwise.
+ - iban - `string` containing the IBAN to be checked.
+Checks whether the given IBAN is a QR-IBAN or not.
+Returns a `boolean`: true if the given IBAN is a QR-IBAN and false otherwise.
 
 <br/>
 <br/>
 
 ### isIBANValid(iban)
- - iban - `string` containing the iban to be checked.
-Validates the given iban.
-Returns a `boolean`: true if the checksum of the given iban is valid and false otherwise.
+ - iban - `string` containing the IBAN to be checked.
+Validates the given IBAN.
+Returns a `boolean`: true if the checksum of the given IBAN is valid and false otherwise.
 
 <br/>
 <br/>
 
 ### formatIBAN(iban)
- - iban - `string` containing the iban to be formatted.
-Formats the given iban according the specifications to be easily readable.
-Returns a `string` containing the formatted iban.
+ - iban - `string` containing the IBAN to be formatted.
+Formats the given IBAN according the specifications to be easily readable.
+Returns a `string` containing the formatted IBAN.
 
 <br/>
 <br/>
