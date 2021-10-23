@@ -393,7 +393,7 @@ Returns a `string` containing the formatted iban.
 ### isQRReference(reference)
  - reference - `string` containing the reference to be checked.
 Checks whether the given reference is a QR-Reference or not.
-Returns a `boolean`: true if the given iban is a QR-Reference and false otherwise.
+Returns a `boolean`: true if the given reference is a QR-Reference and false otherwise.
 
 <br/>
 <br/>
