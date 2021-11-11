@@ -183,7 +183,7 @@ export function formatSCORReference(reference: string): string {
  */
 export function formatAmount(amount: number): string {
 
-  const amountString = amount.toFixed(2) + "";
+  const amountString = amount.toFixed(2);
   const amountArray = amountString.split(".");
 
   let formattedAmountWithoutDecimals = "";
@@ -196,7 +196,7 @@ export function formatAmount(amount: number): string {
     }
   }
 
-  return formattedAmountWithoutDecimals + "." + amountArray[1];
+  return formattedAmountWithoutDecimals.trim() + "." + amountArray[1];
 
 }
 
