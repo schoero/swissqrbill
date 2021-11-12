@@ -243,7 +243,7 @@ export class PDF_ extends ExtendedPDF {
 
       this.fontSize(8);
       this.font("Helvetica");
-      this.text(this._formatReference(this._data.reference), {
+      this.text(utils.formatReference(this._data.reference), {
         width: utils.mm2pt(52),
         lineGap: -.5
       });
@@ -444,7 +444,7 @@ export class PDF_ extends ExtendedPDF {
 
       this.fontSize(10);
       this.font("Helvetica");
-      this.text(this._formatReference(this._data.reference), {
+      this.text(utils.formatReference(this._data.reference), {
         width: utils.mm2pt(87),
         lineGap: -.75
       });
@@ -578,21 +578,6 @@ export class PDF_ extends ExtendedPDF {
     } else {
       return `${data.name}\n${data.address}\n${data.zip} ${data.city}`;
     }
-  }
-
-
-  private _formatReference(reference: string): string {
-
-    const referenceType = utils.getReferenceType(reference);
-
-    if(referenceType === "QRR"){
-      return utils.formatQRReference(reference);
-    } else if(referenceType === "SCOR"){
-      return utils.formatSCORReference(reference);
-    }
-
-    return reference;
-
   }
 
 

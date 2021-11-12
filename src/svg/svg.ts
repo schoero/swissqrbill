@@ -137,7 +137,7 @@ export class SVG_ {
         .fontWeight("bold")
         .fontSize("6pt");
 
-      receiptTextContainer.addTSpan(utils.formatIBAN(this._data.reference))
+      receiptTextContainer.addTSpan(utils.formatReference(this._data.reference))
         .x(0)
         .dy("9pt")
         .fontFamily("Arial")
@@ -395,7 +395,7 @@ export class SVG_ {
         .fontWeight("bold")
         .fontSize("8pt");
 
-      paymentPartRightTextContainer.addTSpan(utils.formatIBAN(this._data.reference))
+      paymentPartRightTextContainer.addTSpan(utils.formatReference(this._data.reference))
         .x(0)
         .dy("11pt")
         .fontFamily("Arial")

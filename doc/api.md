@@ -49,7 +49,8 @@
     - [isQRReference(reference)](#isqrreferencereference)
     - [isQRReferenceValid(reference)](#isqrreferencereference)
     - [calculateQRReferenceChecksum(reference)](#calculateqrreferencechecksumreference)
-    - [formatQRReference(reference)](#formatQRReferencereference)
+    - [formatReference(reference)](#formatreferencereference)
+    - [formatQRReference(reference)](#formatqrreferencereference)
     - [formatSCORReference(reference)](#formatscorreferencereference)
   - Amount
     - [formatAmount(amount)](#formatamountamount)
@@ -410,6 +411,14 @@ Returns a `boolean`: true if the given reference is valid and false otherwise.
  - reference - `string` containing the 26 digits long reference (without the checksum) whose checksum should be calculated.
 Calculates the checksum according the specifications.
 Returns a `string` containing the calculated checksum.
+
+<br/>
+<br/>
+
+### formatReference(reference)
+ - reference - `string` containing the reference to be formatted.
+Detects the type of the given reference and formats it according the specifications to be easily readable.
+Returns a `string` containing the formatted reference.
 
 <br/>
 <br/>
