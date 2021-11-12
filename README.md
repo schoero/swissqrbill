@@ -113,8 +113,8 @@ import { mm2pt } from "swissqrbill/utils"; // ESM. Tree-shakeable
 
 <br/>
 
-Unfortunately, TypeScript with a version prior to the upcoming [version 4.5](https://github.com/microsoft/TypeScript/issues/45418), and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
-If you are using a TypeScript or Node.js version, that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
+Unfortunately, The [current version of TypeScript](https://github.com/microsoft/TypeScript/issues/46452) and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
+If you are using a TypeScript or Node.js version that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
 
 ```js
 import { PDF } from "swissqrbill/lib/node/esm/node/pdf.js"; // ESM. Tree-shakeable
