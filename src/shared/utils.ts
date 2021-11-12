@@ -223,7 +223,7 @@ export function formatAmount(amount: number): string {
 
 
 /**
- * Converts milimeters to points.
+ * Converts millimeters to points.
  *
  * @param millimeters - The millimeters you want to convert to points.
  * @returns The converted millimeters in points.
@@ -245,7 +245,7 @@ export function pt2mm(points: number): number {
 
 
 /**
- * Converts milimeters to pixels.
+ * Converts millimeters to pixels.
  *
  * @param millimeters - The millimeters you want to convert to pixels.
  * @returns The converted millimeters in pixels.
