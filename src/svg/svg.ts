@@ -528,7 +528,7 @@ export class SVG_ {
 
       const referenceHeight = this._data.reference !== undefined ? "22pt" : "0";
       const additionalInformationHeight = this._data.additionalInformation !== undefined || this._data.message !== undefined ? "22pt" : "0";
-      this._addRectangle(118, calc(`5mm + 8pt + (${paymentPartLineCount} * 11pt) + ${referenceHeight} + ${additionalInformationHeight} + 22pt + 1mm`, "mm"), 65, 25);
+      this._addRectangle(118, calc(`5mm + 11pt + (${paymentPartLineCount} * 11pt) + ${referenceHeight} + ${additionalInformationHeight} + 22pt + 1mm`, "mm"), 65, 25);
 
     }
   }
