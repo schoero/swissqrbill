@@ -1,14 +1,21 @@
 
 # Change Log
 
+# [v3.1.0](https://github.com/schoero/swissqrbill/compare/v3.0.1...v3.1.0) - 12.11.2021
+  * Added TSDoc comments. [#348](https://github.com/schoero/SwissQRBill/pull/348)
+  * Removed unwanted space in `utils.formatAmount()`. [#349](https://github.com/schoero/SwissQRBill/pull/349)
+  * Fixed the formatting of the reference in SVG renderings. [#351](https://github.com/schoero/SwissQRBill/pull/351)
+  * Added a new `utils.formatReference()` function that auto detects the reference type.
+  * Improved the text spacing and positioning. [#352](https://github.com/schoero/SwissQRBill/pull/352)
+
 # [v3.0.1](https://github.com/schoero/swissqrbill/compare/v3.0.0...v3.0.1) - 14.10.2021
   * Changed build target to ES6 to support older Browsers and Node.js versions. [#347](https://github.com/schoero/SwissQRBill/pull/347)
   
 # [v3.0.0](https://github.com/schoero/swissqrbill/compare/v2.4.2...v3.0.0) - 03.10.2021
   * New features
     * SVG
-      * Added support for SVG rendering [#343](https://github.com/schoero/SwissQRBill/issues/343).
-    * Added es6 module exports.
+      * Added support for SVG rendering. [#343](https://github.com/schoero/SwissQRBill/issues/343)
+    * Added ES6 module exports.
     * Support for tree shaking.
     * utils
       * Added `mm2px()` function.
