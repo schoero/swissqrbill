@@ -154,6 +154,27 @@ export function formatQRReference(reference: string): string {
 
 
 /**
+ * Detects the type of the given reference and formats it according the specifications to be easily readable.
+ *
+ * @param reference - The reference to be formatted.
+ * @returns The formatted reference.
+ */
+export function formatReference(reference: string): string {
+
+  const referenceType = getReferenceType(reference);
+
+  if(referenceType === "QRR"){
+    return formatQRReference(reference);
+  } else if(referenceType === "SCOR"){
+    return formatSCORReference(reference);
+  }
+
+  return reference;
+
+}
+
+
+/**
  * Formats the given SCOR-Reference according the specifications to be easily readable.
  *
  * @param reference - The SCOR-Reference to be formatted.
