@@ -132,7 +132,7 @@ export class SVG_ {
 
       receiptTextContainer.addTSpan(translations[this._language].reference)
         .x(0)
-        .dy("15pt")
+        .dy("18pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("6pt");
@@ -156,7 +156,7 @@ export class SVG_ {
 
       receiptTextContainer.addTSpan(translations[this._language].payableBy)
         .x(0)
-        .dy("15pt")
+        .dy("18pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("6pt");
@@ -183,13 +183,13 @@ export class SVG_ {
 
       receiptTextContainer.addTSpan(translations[this._language].payableByName)
         .x(0)
-        .dy("15pt")
+        .dy("18pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("6pt");
 
-      const referenceHeight = this._data.reference !== undefined ? "15pt" : "0";
-      this._addRectangle(5, calc(`12mm + 9pt + (${receiptLineCount} * 9pt) + ${referenceHeight} + 15pt + 1mm`, "mm"), 52, 20);
+      const referenceHeight = this._data.reference !== undefined ? "18pt" : "0";
+      this._addRectangle(5, calc(`12mm + 9pt + (${receiptLineCount} * 9pt) + ${referenceHeight} + 18pt + 1mm`, "mm"), 52, 20);
 
     }
 
@@ -206,8 +206,10 @@ export class SVG_ {
       .fontWeight("bold")
       .fontSize("6pt");
 
+    const amountXPosition = this._data.amount === undefined ? 13 : 22;
+
     amountContainer.addTSpan(translations[this._language].amount)
-      .x("13mm")
+      .x(amountXPosition + "mm")
       .fontFamily("Arial")
       .fontWeight("bold")
       .fontSize("6pt");
@@ -221,7 +223,7 @@ export class SVG_ {
 
     if(this._data.amount !== undefined){
       amountContainer.addTSpan(utils.formatAmount(this._data.amount))
-        .x("13mm")
+        .x(amountXPosition + "mm")
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("8pt");
@@ -274,7 +276,7 @@ export class SVG_ {
       .fontSize("8pt");
 
     paymentPartMiddleTextContainer.addTSpan(translations[this._language].amount)
-      .x("20mm")
+      .x("22mm")
       .fontFamily("Arial")
       .fontWeight("bold")
       .fontSize("8pt");
@@ -288,7 +290,7 @@ export class SVG_ {
 
     if(this._data.amount !== undefined){
       paymentPartMiddleTextContainer.addTSpan(utils.formatAmount(this._data.amount))
-        .x("20mm")
+        .x("22mm")
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("10pt");
@@ -352,7 +354,7 @@ export class SVG_ {
     paymentPartRightTextContainer.addTSpan(translations[this._language].account)
       .x(0)
       .y(0)
-      .dy("8pt")
+      .dy("11pt")
       .fontFamily("Arial")
       .fontWeight("bold")
       .fontSize("8pt");
@@ -388,7 +390,7 @@ export class SVG_ {
 
       paymentPartRightTextContainer.addTSpan(translations[this._language].reference)
         .x(0)
-        .dy("19pt")
+        .dy("22pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("8pt");
@@ -410,7 +412,7 @@ export class SVG_ {
 
       paymentPartRightTextContainer.addTSpan(translations[this._language].additionalInformation)
         .x(0)
-        .dy("19pt")
+        .dy("22pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("8pt");
@@ -495,7 +497,7 @@ export class SVG_ {
 
       paymentPartRightTextContainer.addTSpan(translations[this._language].payableBy)
         .x(0)
-        .dy("19pt")
+        .dy("22pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("8pt");
@@ -519,14 +521,14 @@ export class SVG_ {
 
       paymentPartRightTextContainer.addTSpan(translations[this._language].payableByName)
         .x(0)
-        .dy("19pt")
+        .dy("22pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("8pt");
 
-      const referenceHeight = this._data.reference !== undefined ? "19pt" : "0";
-      const additionalInformationHeight = this._data.additionalInformation !== undefined || this._data.message !== undefined ? "19pt" : "0";
-      this._addRectangle(118, calc(`5mm + 8pt + (${paymentPartLineCount} * 11pt) + ${referenceHeight} + ${additionalInformationHeight} + 19pt + 1mm`, "mm"), 65, 25);
+      const referenceHeight = this._data.reference !== undefined ? "22pt" : "0";
+      const additionalInformationHeight = this._data.additionalInformation !== undefined || this._data.message !== undefined ? "22pt" : "0";
+      this._addRectangle(118, calc(`5mm + 8pt + (${paymentPartLineCount} * 11pt) + ${referenceHeight} + ${additionalInformationHeight} + 22pt + 1mm`, "mm"), 65, 25);
 
     }
   }
