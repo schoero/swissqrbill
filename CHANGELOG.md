@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v3.1.1](https://github.com/schoero/swissqrbill/compare/v3.1.0...v3.1.1) - 13.11.2021
+  * Fixed swiss cross positioning for PDF rendering. [#353](https://github.com/schoero/SwissQRBill/pull/353)
+
 # [v3.1.0](https://github.com/schoero/swissqrbill/compare/v3.0.1...v3.1.0) - 12.11.2021
   * Added TSDoc comments. [#348](https://github.com/schoero/SwissQRBill/pull/348)
   * Removed unwanted space in `utils.formatAmount()`. [#349](https://github.com/schoero/SwissQRBill/pull/349)
@@ -10,7 +13,7 @@
 
 # [v3.0.1](https://github.com/schoero/swissqrbill/compare/v3.0.0...v3.0.1) - 14.10.2021
   * Changed build target to ES6 to support older Browsers and Node.js versions. [#347](https://github.com/schoero/SwissQRBill/pull/347)
-  
+
 # [v3.0.0](https://github.com/schoero/swissqrbill/compare/v2.4.2...v3.0.0) - 03.10.2021
   * New features
     * SVG
@@ -36,7 +39,6 @@
       * The positioning of the box when no amount is provided has been slightly corrected.
       * The positioning iban on the payment part has been slightly corrected.
       * Fixed positioning of the debtor boxes when no debtor is provided and the creditor address break to multiple lines.
-  
 
 # [v2.4.2](https://github.com/schoero/swissqrbill/compare/v2.4.1...v2.4.2) - 26.08.2021
   * Fixed translation of `additionalInformation` and `payableByName`. [#342](https://github.com/schoero/SwissQRBill/pull/342)
