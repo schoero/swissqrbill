@@ -559,13 +559,13 @@ export class PDF_ extends ExtendedPDF {
     const swissCrossBackground = "M18.3 0.7L1.6 0.7 0.7 0.7 0.7 1.6 0.7 18.3 0.7 19.1 1.6 19.1 18.3 19.1 19.1 19.1 19.1 18.3 19.1 1.6 19.1 0.7Z";
     const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
 
-    this.addPath(swissCrossBackground, utils.mm2pt(86), this._marginTop + utils.mm2pt(36))
+    this.addPath(swissCrossBackground, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
       .fillColor("black")
       .lineWidth(1.42)
       .strokeColor("white")
       .fillAndStroke();
 
-    this.addPath(swissCross, utils.mm2pt(86), this._marginTop + utils.mm2pt(36))
+    this.addPath(swissCross, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
       .fillColor("white")
       .fill();
 
