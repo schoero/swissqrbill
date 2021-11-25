@@ -239,9 +239,6 @@ export function validateData(data: Data) {
   if(data.av1 !== undefined){
     if(data.av1.length > 100){ throw new Error("AV1 must be a maximum of 100 characters."); }
     if(typeof data.av1 !== "string"){ throw new Error("AV1 must be a string."); }
-    if(data.av1.substr(0, 5) !== "eBill"){
-      throw new Error("AV1 must begin with eBill");
-    }
   }
 
 
@@ -250,9 +247,6 @@ export function validateData(data: Data) {
   if(data.av2 !== undefined){
     if(data.av2.length > 100){ throw new Error("AV2 must be a maximum of 100 characters."); }
     if(typeof data.av2 !== "string"){ throw new Error("AV2 must be a string."); }
-    if(data.av2.substr(0, 5) !== "eBill"){
-      throw new Error("AV2 must begin with eBill");
-    }
   }
 
 }
