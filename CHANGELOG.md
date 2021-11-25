@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v3.1.2](https://github.com/schoero/swissqrbill/compare/v3.1.1...v3.1.2) - 26.11.2021
+  * Removed deprecated restrictions for AV1 and AV2. [#355](https://github.com/schoero/SwissQRBill/pull/355)
+
 # [v3.1.1](https://github.com/schoero/swissqrbill/compare/v3.1.0...v3.1.1) - 13.11.2021
   * Fixed swiss cross positioning for PDF rendering. [#353](https://github.com/schoero/SwissQRBill/pull/353)
 
