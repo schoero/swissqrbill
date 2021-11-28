@@ -3,8 +3,8 @@ const { writeFileSync } = require("fs");
 
 const data = {
   currency: "CHF",
-  av1: "eBillUV;UltraPay005;12345",
-  av2: "eBillXY;XYService;54321",
+  av1: "eBill/UV;UltraPay005;12345",
+  av2: "eBill/XY;XYService;54321",
   creditor: {
     name: "Robert Schneider ultra long name of the company to use multiple lines",
     address: "Rue du Lac 1268 Ultra long address nam eto use multiple lines",
