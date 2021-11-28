@@ -383,35 +383,41 @@ export class PDF_ extends ExtendedPDF {
     //-- AV1 and AV2
 
     if(this._data.av1 !== undefined){
+
+      const [scheme, data] = this._data.av1.split(/(\/.+)/);
+
       this.fontSize(7);
       this.font("Helvetica-Bold");
-      this.text("Name AV1:", utils.mm2pt(67), this._marginTop + utils.mm2pt(90), {
-        width: utils.mm2pt(15),
+      this.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(90), {
+        width: utils.mm2pt(138),
+        continued: true,
         lineGap: 1
       });
 
-      this.fontSize(7);
       this.font("Helvetica");
-      this.text((this._data.av1.length > 87 ? this._data.av1.substr(0, 87) + "..." : this._data.av1), utils.mm2pt(81), this._marginTop + utils.mm2pt(90), {
-        width: utils.mm2pt(37),
-        lineGap: -.5
+      this.text(this._data.av1.length > 90 ? data.substr(0, 87) + "..." : data, {
+        continued: false
       });
+
     }
 
     if(this._data.av2 !== undefined){
+
+      const [scheme, data] = this._data.av2.split(/(\/.+)/);
+
       this.fontSize(7);
       this.font("Helvetica-Bold");
-      this.text("Name AV2:", utils.mm2pt(67), this._marginTop + utils.mm2pt(93), {
-        width: utils.mm2pt(15),
+      this.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(93), {
+        width: utils.mm2pt(138),
+        continued: true,
         lineGap: 1
       });
 
-      this.fontSize(7);
       this.font("Helvetica");
-      this.text((this._data.av2.length > 87 ? this._data.av2.substr(0, 87) + "..." : this._data.av2), utils.mm2pt(81), this._marginTop + utils.mm2pt(93), {
-        width: utils.mm2pt(37),
+      this.text(this._data.av2.length > 90 ? data.substr(0, 87) + "..." : data, {
         lineGap: -.5
       });
+
     }
 
 
