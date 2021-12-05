@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v3.1.3](https://github.com/schoero/swissqrbill/compare/v3.1.2...v3.1.3) - 05.12.2021
+  * Fixed rendering of AV1 and AV2. [#357](https://github.com/schoero/SwissQRBill/pull/357)
+
 # [v3.1.2](https://github.com/schoero/swissqrbill/compare/v3.1.1...v3.1.2) - 26.11.2021
   * Removed deprecated restrictions for AV1 and AV2. [#355](https://github.com/schoero/SwissQRBill/pull/355)
 
