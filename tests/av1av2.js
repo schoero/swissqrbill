@@ -5,8 +5,8 @@ const data = {
   currency: "CHF",
   amount: 1199.95,
   reference: "210000000003139471430009017",
-  av1: "eBillUV;UltraPay005;12345",
-  av2: "eBillXY;XYService;54321",
+  av1: "eBill/UV;UltraPay005;12345",
+  av2: "eBill/XY;XYService;54321",
   creditor: {
     name: "Robert Schneider AG",
     address: "Rue du Lac 1268",

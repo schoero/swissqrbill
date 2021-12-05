@@ -307,15 +307,15 @@ export class SVG_ {
 
     if(this._data.av1 !== undefined){
 
-      alternativeSchemeContainer.addTSpan("Name AV1:")
+      const [scheme, data] = this._data.av1.split(/(\/.+)/);
+
+      alternativeSchemeContainer.addTSpan(scheme)
         .x(0)
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("7pt");
 
-      alternativeSchemeContainer.addTSpan(this._data.av1.length > 87 ? this._data.av1.substr(0, 87) + "..." : this._data.av1)
-        .x(0)
-        .dx("15mm")
+      alternativeSchemeContainer.addTSpan(this._data.av1.length > 90 ? data.substr(0, 87) + "..." : data)
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("7pt");
@@ -323,16 +323,16 @@ export class SVG_ {
     }
     if(this._data.av2 !== undefined){
 
-      alternativeSchemeContainer.addTSpan("Name AV2:")
+      const [scheme, data] = this._data.av2.split(/(\/.+)/);
+
+      alternativeSchemeContainer.addTSpan(scheme)
         .x(0)
         .dy("8pt")
         .fontFamily("Arial")
         .fontWeight("bold")
         .fontSize("7pt");
 
-      alternativeSchemeContainer.addTSpan(this._data.av2.length > 87 ? this._data.av2.substr(0, 87) + "..." : this._data.av2)
-        .x(0)
-        .dx("15mm")
+      alternativeSchemeContainer.addTSpan(this._data.av2.length > 90 ? data.substr(0, 87) + "..." : data)
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("7pt");
