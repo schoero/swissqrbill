@@ -149,6 +149,7 @@
   },
   "homepage": "https://github.com/schoero/SwissQRBill#readme",
   "devDependencies": {
+    "@schoero/eslint-config": "^1.0.0",
     "@types/blob-stream": "^0.1.30",
     "@types/node": "^16.11.11",
     "@types/qrcode": "^1.4.1",
