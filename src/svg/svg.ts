@@ -568,10 +568,11 @@ export class SVG_ {
 
 
   private _formatAddress(data: Debtor | Creditor): Array<string> {
+    const countryPrefix = data.country !== "CH" ? data.country.toUpperCase() + " - " : "";
     if(data.buildingNumber !== undefined){
-      return [data.name, data.address + " " + data.buildingNumber, data.zip + " " + data.city];
+      return [data.name, data.address + " " + data.buildingNumber, `${countryPrefix}${data.zip} ${data.city}`];
     } else {
-      return [data.name, data.address, data.zip + " " + data.city];
+      return [data.name, data.address, `${countryPrefix}${data.zip} ${data.city}`];
     }
   }
 
