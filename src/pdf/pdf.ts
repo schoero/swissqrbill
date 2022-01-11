@@ -287,7 +287,7 @@ export class PDF_ extends ExtendedPDF {
 
       //-- Add rectangle
 
-      this._addRectangle(5, utils.pt2mm(this.y), 52, 20);
+      this._addRectangle(5, utils.pt2mm(this.y - this._marginTop), 52, 20);
 
     }
 
@@ -540,7 +540,7 @@ export class PDF_ extends ExtendedPDF {
         lineGap: 1
       });
 
-      this._addRectangle(118, utils.pt2mm(this.y), 65, 25);
+      this._addRectangle(118, utils.pt2mm(this.y - this._marginTop), 65, 25);
 
     }
 
