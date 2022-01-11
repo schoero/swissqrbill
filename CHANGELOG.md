@@ -1,6 +1,11 @@
 
 # Change Log
 
+# [v3.1.4](https://github.com/schoero/swissqrbill/compare/v3.1.3...v3.1.4) - 11.01.2022
+  * Fixed rendering of debtor rectangle in when page size is A4. [#361](https://github.com/schoero/SwissQRBill/pull/361)
+  * Fixed rendering of country code for foreign payments. [#362](https://github.com/schoero/SwissQRBill/pull/362)
+  * Fixed missing of `-` character in svg text rendering. [#363](https://github.com/schoero/SwissQRBill/pull/363)
+
 # [v3.1.3](https://github.com/schoero/swissqrbill/compare/v3.1.2...v3.1.3) - 05.12.2021
   * Fixed rendering of AV1 and AV2. [#357](https://github.com/schoero/SwissQRBill/pull/357)
 
