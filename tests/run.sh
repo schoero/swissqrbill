@@ -9,6 +9,8 @@ echo "utils"
   node utils
 echo "a4"
   node a4
+echo "a4-no-debtor-no-amount-no-reference"
+  node a4-no-debtor-no-amount-no-reference
 echo "a6-5"
   node a6-5.mjs
 echo "a6-5-housenmuber"
