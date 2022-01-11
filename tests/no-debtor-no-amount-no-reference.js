@@ -6,10 +6,10 @@ const data = {
   av1: "eBill/UV;UltraPay005;12345",
   av2: "eBill/XY;XYService;54321",
   creditor: {
-    name: "Robert Schneider ultra long name of the company to use multiple lines",
-    address: "Rue du Lac 1268 Ultra long address nam eto use multiple lines",
+    name: "Robert Schneider",
+    address: "Rue du Lac 1268",
     zip: 2501,
-    city: "Zug ultra long city name multi line",
+    city: "Zug",
     account: "CH5800791123000889012",
     country: "CH"
   }
