@@ -430,7 +430,7 @@ export class SVG_ {
           // QRR and SCOR have 1 line for the message and 2 lines for the additional information
 
           if(this._data.message !== undefined){
-            paymentPartRightTextContainer.addTSpan(this._elipsis(this._data.message, lengthInPixel, "10pt"))
+            paymentPartRightTextContainer.addTSpan(this._ellipsis(this._data.message, lengthInPixel, "10pt"))
               .x(0)
               .dy("11pt")
               .fontFamily("Arial")
@@ -593,7 +593,7 @@ export class SVG_ {
 
   private _fitTextToWidth(text: string, lengthInPixel: number, maxLines: number, size: "8pt" | "10pt"): Array<string> {
 
-    const remainder = text.split(/ |-/g);
+    const remainder = text.split(/([ |-])/g);
     let lines: Array<string> = [];
     let currentLine = "";
 
@@ -621,16 +621,19 @@ export class SVG_ {
     };
 
     while(remainder.length > 0){
-      const nextWord = remainder.shift() + " ";
-      if(calculateTextWidth(currentLine + nextWord, size) <= lengthInPixel){
-        currentLine += nextWord;
+
+      const nextWord = remainder.shift()!;
+      const separator = remainder.shift() ?? "";
+
+      if(calculateTextWidth(currentLine + nextWord + separator, size) <= lengthInPixel){
+        currentLine += nextWord + separator;
       } else {
         if(currentLine !== ""){
           const { lines: newLines, leftover } = checkCurrentLine(currentLine);
           lines.push(...newLines);
-          currentLine = leftover + nextWord;
+          currentLine = leftover + nextWord + separator;
         } else {
-          currentLine = nextWord;
+          currentLine = nextWord + separator;
         }
       }
     }
@@ -644,7 +647,7 @@ export class SVG_ {
 
     if(lines.length > maxLines){
       lines = lines.slice(0, maxLines);
-      lines[lines.length - 1] = this._elipsis(lines[lines.length - 1], lengthInPixel, size);
+      lines[lines.length - 1] = this._ellipsis(lines[lines.length - 1], lengthInPixel, size);
     }
 
     return lines;
@@ -652,7 +655,7 @@ export class SVG_ {
   }
 
 
-  private _elipsis(text: string, lengthInPixel: number, size: "8pt" | "10pt"): string {
+  private _ellipsis(text: string, lengthInPixel: number, size: "8pt" | "10pt"): string {
 
     let result = "";
 
