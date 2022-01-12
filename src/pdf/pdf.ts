@@ -579,7 +579,7 @@ export class PDF_ extends ExtendedPDF {
 
 
   private _formatAddress(data: Debtor | Creditor): string {
-    const countryPrefix = data.country !== "CH" ? data.country.toUpperCase() + " - " : "";
+    const countryPrefix = data.country !== "CH" ? data.country + " - " : "";
     if(data.buildingNumber !== undefined){
       return `${data.name}\n${data.address} ${data.buildingNumber}\n${countryPrefix}${data.zip} ${data.city}`;
     } else {

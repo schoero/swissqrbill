@@ -1,10 +1,10 @@
 import { isQRIBAN, isQRReference, isIBANValid, isQRReferenceValid } from "./utils.js";
-import { Data } from "./types";
+import { Creditor, Data, Debtor } from "./types";
 
 
 export function cleanData(data: Data): Data {
 
-  const _cleanObject = (object: object): void => {
+  const _cleanObject = (object: Data | Creditor | Debtor): void => {
 
     const keys = Object.keys(object);
 
@@ -18,6 +18,9 @@ export function cleanData(data: Data): Data {
         }
         if(keys[k] === "reference"){
           object[keys[k]] = object[keys[k]].replace(/ /g, "");
+        }
+        if(keys[k] === "country"){
+          object[keys[k]] = object[keys[k]].toUpperCase();
         }
 
       } else {
