@@ -158,7 +158,8 @@ const data = {
   reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
+    address: "Rue du Lac",
+    buildingNumber: "1268",
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
@@ -166,7 +167,8 @@ const data = {
   },
   debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
-    address: "Grosse Marktgasse 28",
+    address: "Grosse Marktgasse",
+    buildingNumber: "28",
     zip: 9400,
     city: "Rorschach",
     country: "CH"
