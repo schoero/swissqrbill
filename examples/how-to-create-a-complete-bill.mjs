@@ -96,10 +96,14 @@ pdf.text("Musterstadt " + date.getDate() + "." + (date.getMonth() + 1) + "." + d
 
 const table = {
   width: mm2pt(170),
+  padding: 5,
   rows: [
     {
+      backgroundColor: "#ECF0F1",
+      header: true,
+      align: "left",
       height: 30,
-      fillColor: "#ECF0F1",
+      verticalAlign: "middle",
       columns: [
         {
           text: "Position",
@@ -115,6 +119,7 @@ const table = {
         }
       ]
     }, {
+      height: 20,
       columns: [
         {
           text: "1",
@@ -130,6 +135,7 @@ const table = {
         }
       ]
     }, {
+      height: 20,
       columns: [
         {
           text: "2",
@@ -145,7 +151,7 @@ const table = {
         }
       ]
     }, {
-      height: 40,
+      height: 30,
       columns: [
         {
           text: "",
@@ -163,6 +169,7 @@ const table = {
         }
       ]
     }, {
+      height: 30,
       columns: [
         {
           text: "",
@@ -178,6 +185,7 @@ const table = {
         }
       ]
     }, {
+      height: 30,
       columns: [
         {
           text: "",
