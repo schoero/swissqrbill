@@ -87,8 +87,31 @@ export interface PDFColumn {
 
 export class ExtendedPDF extends PDFDocument {
 
+  private _currentPage: number = -1;
+
   constructor(options?: PDFKit.PDFDocumentOptions) {
+
     super(options);
+
+
+    //-- Keep track of the current page
+
+    this.on("pageAdded", () => {
+      this._currentPage = this.bufferedPageRange().count - 1;
+    });
+
+  }
+
+
+  public get currentPage(): number {
+    return this._currentPage;
+  }
+
+
+  public switchToPage(n: number): PDFKit.PDFPage {
+    const page = super.switchToPage(n);
+    this._currentPage = n;
+    return page;
   }
 
 
@@ -134,6 +157,7 @@ export class ExtendedPDF extends PDFDocument {
     }
 
     const amountOfRows = table.rows.length;
+    const startPage = this.currentPage;
     const tableX = table.x ? table.x : this.x;
     const tableY = table.y ? table.y : this.y;
     const tableWidth = table.width ? table.width : this.page.width - tableX - this.page.margins.right;
@@ -149,6 +173,14 @@ export class ExtendedPDF extends PDFDocument {
 
     for(let layer = 0; layer < 3; layer++){ // 3 layers: background, border, text
 
+
+      //-- Go back to start page
+
+      this.switchToPage(startPage);
+
+
+      //-- Render table
+
       let rowY = tableY;
       rowLoop: for(let rowIndex = 0; rowIndex < table.rows.length; rowIndex ++){
 
@@ -160,7 +192,7 @@ export class ExtendedPDF extends PDFDocument {
         const rowNumber = rowIndex + 1;
 
         const rowPadding = row.padding ? row.padding : basePadding;
-        const rowFillColor = row.backgroundColor ? row.backgroundColor : undefined;
+        const rowBackgroundColor = row.backgroundColor ? row.backgroundColor : undefined;
         const rowBorder = row.border ? row.border : baseBorder;
         const rowBorderColors = row.borderColors ? row.borderColors : baseBorderColors;
         const rowFontSize = row.fontSize ? row.fontSize : baseFontSize;
@@ -200,7 +232,7 @@ export class ExtendedPDF extends PDFDocument {
 
           const columnWidth = column.width ? column.width : (tableWidth - widthUsed) / (remainingColumns);
           const columnPadding = column.padding ? column.padding : rowPadding;
-          const columnBackgroundColor = column.backgroundColor ? column.backgroundColor : rowFillColor;
+          const columnBackgroundColor = column.backgroundColor ? column.backgroundColor : rowBackgroundColor;
           const columnBorder = column.border ? column.border : rowBorder;
           const columnBorderColors = column.borderColors ? column.borderColors : rowBorderColors;
           const columnFontSize = column.fontSize ? column.fontSize : rowFontSize;
@@ -248,6 +280,39 @@ export class ExtendedPDF extends PDFDocument {
           }
 
 
+          //-- Check for page overflow
+
+          if(rowY + rowHeight >= this.page.height - this.page.margins.bottom){
+
+
+            //-- Insert new page
+
+            if(layer === 0){
+
+              this.addPage();
+              rowY = this.y;
+
+
+              //-- Insert header
+
+              for(const headerRow of table.rows){
+                if(headerRow.header === true){
+                  table.rows.splice(rowIndex, 0, headerRow);
+                  rowIndex --;
+                  continue rowLoop;
+                }
+              }
+
+            } else {
+              this.switchToPage(this.currentPage + 1);
+              this.x = this.page.margins.left ?? 0;
+              this.y = this.page.margins.top ?? 0;
+              rowY = this.y;
+            }
+
+          }
+
+
           //-- Background layer
 
           if(layer === 0){
@@ -260,29 +325,6 @@ export class ExtendedPDF extends PDFDocument {
                 .fillColor(columnBackgroundColor)
                 .fillOpacity(fillOpacity)
                 .fill();
-            }
-
-
-            //-- Check for page overflow
-
-            if(rowY + rowHeight >= this.page.height - this.page.margins.bottom){
-
-
-              //-- Insert new page
-
-              this.addPage();
-              rowY = this.y;
-
-
-              //-- Insert header
-
-              for(const headerRow of table.rows){
-                if(headerRow.header === true){
-                  table.rows.splice(rowIndex, 0, headerRow, headerRow);
-                  continue rowLoop;
-                }
-              }
-
             }
 
           }
@@ -384,11 +426,11 @@ export class ExtendedPDF extends PDFDocument {
             }
           }
 
-          columnX = columnX + columnWidth;
+          columnX += columnWidth;
 
         }
 
-        rowY = rowY + rowHeight;
+        rowY += rowHeight;
 
 
         //-- Update position to ensure that the table does not overlap the payment part
