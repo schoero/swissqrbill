@@ -72,7 +72,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
 ## Installation
 
-```
+```sh
 npm i swissqrbill
 ```
 
