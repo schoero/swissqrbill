@@ -32,12 +32,12 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should gradually replace the current payment slips. In addition to the payment section, you can generate a complete invoice with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should replace the current payment slips until September 30, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
+[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.svg">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 
 <br/>
@@ -76,16 +76,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 ```
 npm i swissqrbill --save
 ```
-
-<br/>
-
-## Migrating from v2.x
-
-If you want to migrate from v2.x to v3.x, there are mainly two things that need to be changed: 
- - `mmToPoints()` has to be renamed to `mm2pt()`
- - the `data` field `houseNumber` has to be renamed to `buildingNumber`
-
-Other than that, there are now ES module exports. Please take a look at following section to check if you can improve the way you import the library.
 
 <br/>
 
