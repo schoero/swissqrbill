@@ -1,8 +1,6 @@
 import { getReferenceType } from "../shared/utils.js";
 import { Data } from "./types";
-
-import QRCode from "@schoero/qrcode";
-
+import { qrcodegen } from "./qr-code-generator.js";
 
 export default function generateQRCode(data: Data, size: number): string {
 
@@ -228,26 +226,24 @@ export default function generateQRCode(data: Data, size: number): string {
 
   //-- Create QR Code
 
-  const qrcodeString = QRCode.toString(qrString, {
-    type: "svg",
-    margin: 0,
-    width: size,
-    errorCorrectionLevel: "M"
-  }, () => { }) as unknown as string;
+  const eci = qrcodegen.QrSegment.makeEci(26);
+  const segments = qrcodegen.QrSegment.makeSegments(qrString);
+  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM);
 
-  return getSVGPathFromQRCodeString(qrcodeString)!;
+  const blockSize = size / qrCode.size;
+  const parts: Array<string> = [];
 
-}
+  for(let x = 0; x < qrCode.size; x++){
+    const xPos = x * blockSize;
+    for(let y = 0; y < qrCode.size; y++){
+      const yPos = y * blockSize;
+      if(qrCode.getModule(x, y)){
+        parts.push(`M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `);
+      }
+    }
 
-function getSVGPathFromQRCodeString(qrcodeString: string): string | undefined {
-
-  const regex = /<path fill="#000000" d="(.*?)"\/>/m;
-  const match = regex.exec(qrcodeString);
-
-  if(match !== null){
-    return match[1];
   }
 
-  return;
+  return parts.join(" ");
 
 }
