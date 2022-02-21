@@ -1,6 +1,9 @@
 
 # Change Log
 
+# [v3.1.5](https://github.com/schoero/swissqrbill/compare/v3.1.4...v3.1.5) - 21.02.2022
+  * Fixed umlauts not correctly decoded with PostFinance scanner. [#367](https://github.com/schoero/SwissQRBill/pull/367)
+
 # [v3.1.4](https://github.com/schoero/swissqrbill/compare/v3.1.3...v3.1.4) - 11.01.2022
   * Fixed rendering of debtor rectangle in when page size is A4. [#361](https://github.com/schoero/SwissQRBill/pull/361)
   * Fixed rendering of country code for foreign payments. [#362](https://github.com/schoero/SwissQRBill/pull/362)
