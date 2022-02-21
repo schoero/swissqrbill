@@ -47,7 +47,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
  * [Features](#features)
  * [Installation](#installation)
- * [Migrating from v2.x](#migrating-from-v2x)
  * [Importing the library](#importing-the-library)
  * [Quick start](#quick-start)
  * [Browser usage](#browser-usage)
