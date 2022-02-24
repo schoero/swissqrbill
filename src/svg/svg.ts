@@ -60,6 +60,12 @@ export class SVG_ {
     let paymentPartLineCount = 0;
 
 
+    //-- Background image
+
+    this.instance.addRect(0, 0, "100%", "100%")
+      .fill("#fff");
+
+
     //-- Vertical line
 
     this.instance.addLine("62mm", "0mm", "62mm", "105mm")

@@ -32,12 +32,12 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should gradually replace the current payment slips. In addition to the payment section, you can generate a complete invoice with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should replace the current payment slips until September 30, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
+[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.svg">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
 
 
 <br/>
@@ -47,7 +47,6 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
  * [Features](#features)
  * [Installation](#installation)
- * [Migrating from v2.x](#migrating-from-v2x)
  * [Importing the library](#importing-the-library)
  * [Quick start](#quick-start)
  * [Browser usage](#browser-usage)
@@ -73,19 +72,9 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
 ## Installation
 
+```sh
+npm i swissqrbill
 ```
-npm i swissqrbill --save
-```
-
-<br/>
-
-## Migrating from v2.x
-
-If you want to migrate from v2.x to v3.x, there are mainly two things that need to be changed: 
- - `mmToPoints()` has to be renamed to `mm2pt()`
- - the `data` field `houseNumber` has to be renamed to `buildingNumber`
-
-Other than that, there are now ES module exports. Please take a look at following section to check if you can improve the way you import the library.
 
 <br/>
 
@@ -158,7 +147,8 @@ const data = {
   reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
+    address: "Rue du Lac",
+    buildingNumber: "1268",
     zip: 2501,
     city: "Biel",
     account: "CH4431999123000889012",
@@ -166,7 +156,8 @@ const data = {
   },
   debtor: {
     name: "Pia-Maria Rutschmann-Schnyder",
-    address: "Grosse Marktgasse 28",
+    address: "Grosse Marktgasse",
+    buildingNumber: "28",
     zip: 9400,
     city: "Rorschach",
     country: "CH"
