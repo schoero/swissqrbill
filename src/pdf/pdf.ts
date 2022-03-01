@@ -9,7 +9,7 @@ import generateQRCode from "../shared/qr-code.js";
 export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6/5";
-  private _data: Data;
+  protected _data: Data;
   private _scissors: boolean = true;
   private _separate: boolean = false;
   private _outlines: boolean = true;
