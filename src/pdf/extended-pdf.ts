@@ -40,7 +40,7 @@ export interface PDFRow {
   /**
    * Table columns.
    */
-  columns: Array<PDFColumn>,
+  columns: Array<PDFColumn>;
   /**
    * Background color of the row.
    */
@@ -103,7 +103,7 @@ export interface PDFColumn {
   /**
    * Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling).
    */
-  textOptions?: PDFKit.Mixins.TextOptions
+  textOptions?: PDFKit.Mixins.TextOptions;
 }
 
 export class ExtendedPDF extends PDFDocument {
@@ -341,4 +341,21 @@ export class ExtendedPDF extends PDFDocument {
 
   }
 
+
+  /**
+   * Draw an image on the given position.
+   *
+   * @param src - The image file to insert. This can be jpg or png image.
+   * @param x - The x position where the image should be inserted.
+   * @param y - The y position where the image should be inserted.
+   * @param options - The image options.
+   * @returns `this`
+   */
+  public addImage(src: string, x?: number, y?: number, options?: PDFKit.Mixins.ImageOption): PDFKit.PDFDocument {
+
+    this.image(src, x, y, options);
+
+    return this;
+
+  }
 }

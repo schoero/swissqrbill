@@ -86,6 +86,12 @@ pdf.addPath(logoText, mm2pt(20), mm2pt(14))
 
 ```
 
+We can add also jpg/ png images to the document using `addImage()`.
+
+```
+pdf.addImage("./logo.png", mm2pt(90), mm2pt(30));
+```
+
 We use the `SwissQRBill.mm2pt()` method to place the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors.
 
 ### Adding the addresses
