@@ -7,23 +7,22 @@ In this manual you will learn how you can use SwissQRBill to create a complete P
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
 The methods used from SwissQRBill are documented in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
 
-
 ### Setup
 
 If you haven't already done so, please install the library using:
 
-```
-npm i swissqrbill --save
+```sh
+npm i swissqrbill
 ```
 
-Then you are able to include SwissQRBill to your project.
+Then you are able to include SwissQRBill to your project. Take a look at the [Importing the library](../README.md#importing-the-library) section in the readme for further information.
 
 ```js
 import { PDF } from "swissqrbill/pdf";
 import { mm2pt } from "swissqrbill/utils";
 ```
 
-Once everything is set up we can start with creating a data object which contains the necessarry payment informations. These informations could be generated automatically by your program, or be retreived from your database.
+Once everything is set up we can start by creating a data object which contains the necessary payment information. These information could be generated automatically by your program, or be retrieved from your database.
 
 ```js
 const data = {
@@ -48,7 +47,6 @@ const data = {
 };
 ```
 
-
 ### Creating the PDF
 
 Once we have our data ready we can create a new instance of `SwissQRBill` and store it to the variable `pdf`.
@@ -61,10 +59,14 @@ const pdf = new PDF(data, "complete-qr-bill.pdf", { "autoGenerate": false, "size
 Please note that we have set `autoGenerate` to `false` and `size` to `A4`.
 This will create a PDF with the filename `complete-bill.pdf` without finalizing the document, so that we are able to add content to it.
 
+### Adding a logo
 
-### Adding our logo
+It is possible to add raster images like `.jpg` or `.png` using the built in `pdf.image()` method from PDFKit. Take a look at the [original PDFKit documentation](http://pdfkit.org/docs/images.html) for further details on that.
 
-We can add images as vector paths to the document using `addPath()`. You can find tools to convert your normal SVG files to vector paths online.
+If you have your logo as a vector graphic like `.svg`, it is better to include it as such, to benefit from the lossless scalability of vector images.  
+Unfortunately, by default, we can't just include the `.svg` image as a whole, we have to include each vector path separately. But there is a npm module called [SVG-to-PDFKit](https://github.com/alafr/SVG-to-PDFKit) that aims to make this possible.
+
+In this example, we are going to use the `addPath()` method to add the vector paths directly.
 
 ```js
 const logoBackground = "M33 0H0v33h33V0z";
@@ -112,7 +114,6 @@ pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip 
 
 ```
 
-
 ### Create a title and a date
 
 ```js
@@ -132,7 +133,6 @@ pdf.text("Musterstadt " + date.getDate() + "." + (date.getMonth() + 1) + "." + d
   align: "right"
 });
 ```
-
 
 ### Adding a table
 
