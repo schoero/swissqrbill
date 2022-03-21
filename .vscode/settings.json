@@ -1,12 +1,8 @@
 {
-  "workbench.colorCustomizations": {
-    "editorWhitespace.foreground": "#FFFFFF10"
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
   "foldOnOpen.targets": ["AllBlockComments"],
   "javascript.preferences.importModuleSpecifierEnding": "js",
   "typescript.preferences.importModuleSpecifierEnding": "js",
-  "liveServer.settings.port": 5501
 }
