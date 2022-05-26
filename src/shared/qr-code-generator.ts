@@ -87,9 +87,11 @@ export namespace qrcodegen {
     // This function allows the user to create a custom sequence of segments that switches
     // between modes (such as alphanumeric and byte) to encode text in less space.
     // This is a mid-level API; the high-level API is encodeText() and encodeBinary().
-    public static encodeSegments(segs: Readonly<Array<QrSegment>>, ecl: QrCode.Ecc,
+    public static encodeSegments(
+      segs: Readonly<Array<QrSegment>>, ecl: QrCode.Ecc,
       minVersion: int = 1, maxVersion: int = 40,
-      mask: int = -1, boostEcl: boolean = true): QrCode {
+      mask: int = -1, boostEcl: boolean = true
+    ): QrCode {
 
       if(!(QrCode.MIN_VERSION <= minVersion && minVersion <= maxVersion && maxVersion <= QrCode.MAX_VERSION)
           || mask < -1 || mask > 7)

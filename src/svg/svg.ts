@@ -604,7 +604,7 @@ export class SVG_ {
     let lines: Array<string> = [];
     let currentLine = "";
 
-    const checkCurrentLine = (currentLine: string): { lines: Array<string>, leftover: string } => {
+    const checkCurrentLine = (currentLine: string): { lines: Array<string>; leftover: string; } => {
       const lines: Array<string> = [];
       let leftover: string = "";
       if(calculateTextWidth(currentLine, size) > lengthInPixel){

@@ -40,7 +40,7 @@ export interface PDFRow {
   /**
    * Table columns.
    */
-  columns: Array<PDFColumn>,
+  columns: Array<PDFColumn>;
   /**
    * Background color of the row.
    */
@@ -103,7 +103,7 @@ export interface PDFColumn {
   /**
    * Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling).
    */
-  textOptions?: PDFKit.Mixins.TextOptions
+  textOptions?: PDFKit.Mixins.TextOptions;
 }
 
 export class ExtendedPDF extends PDFDocument {
