@@ -39,34 +39,33 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
 [<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.svg">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
 
-
 <br/>
 <br/>
 
 ## Links
 
- * [Features](#features)
- * [Installation](#installation)
- * [Importing the library](#importing-the-library)
- * [Quick start](#quick-start)
- * [Browser usage](#browser-usage)
- * [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
- * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
- * [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
- * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
- * [QR bill specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
-
+* [Features](#features)
+* [Installation](#installation)
+* [Importing the library](#importing-the-library)
+* [Quick start](#quick-start)
+* [Browser usage](#browser-usage)
+* [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
+* [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
+* [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
+* [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
+* [QR bill specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
 
 <br/>
 
 ## Features
- - Generate complete invoices, or only the QR Bill, as a PDF file.
- - Generate the QR Bill as a scalable vector graphic (SVG).
- - Works in browsers and Node.js.
- - Supports german, english, italian and french invoices.
- - Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit).
- - Easy to use.
- - Free and open source.
+
+* Generate complete invoices, or only the QR Bill, as a PDF file.
+* Generate the QR Bill as a scalable vector graphic (SVG).
+* Works in browsers and Node.js.
+* Supports german, english, italian and french invoices.
+* Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit).
+* Easy to use.
+* Free and open source.
 
 <br/>
 
@@ -102,7 +101,18 @@ import { mm2pt } from "swissqrbill/utils"; // ESM. Tree-shakeable
 
 <br/>
 
-Unfortunately, The [current version of TypeScript](https://github.com/microsoft/TypeScript/issues/46452) and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
+Be aware that TypeScript versions prior to v4.7.0 and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
+To get conditional exports to work with TypeScript > v4.7.0, you have to set these two options your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "NodeNext"
+  }
+}
+```
+
 If you are using a TypeScript or Node.js version that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
 
 ```js
@@ -128,8 +138,7 @@ import SwissQRBill from "swissqrbill/lib/browser/bundle";
 ```
 
 However, if you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
-You can find an example, how this could be done using webpack, at https://github.com/schoero/SwissQRBill-browser-example.
-
+You can find an example, how this could be done using webpack, at <https://github.com/schoero/SwissQRBill-browser-example>.
 
 <br/>
 <br/>
@@ -204,6 +213,7 @@ import { SVG } from "swissqrbill/svg";
 const svg = new SVG(data);
 document.body.appendChild(svg.element);
 ```
+
 <br/>
 <br/>
 
