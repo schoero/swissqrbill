@@ -128,7 +128,7 @@ import { mm2pt } from "swissqrbill/lib/node/esm/shared/utils.js"; // ESM. Tree-s
 For the browser it is a bit more complicated. The easiest way would be to include the pre-bundled version.
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill/lib/browser/bundle/index.js" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill/lib/browser/bundle/index.js"></script>
 ```
 
 You can also import the bundle directly, if you are using a bundler like webpack.
