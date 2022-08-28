@@ -553,7 +553,7 @@ export class PDF_ extends ExtendedPDF {
 
     //-- Add QR Code
 
-    this.fillColor("black").addContent(qrcode).fill();
+    this.addContent(qrcode).fillColor("black").fill();
 
     //-- Add Swiss Cross
 
@@ -561,6 +561,7 @@ export class PDF_ extends ExtendedPDF {
     const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
 
     this.addPath(swissCrossBackground, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
+      .undash()
       .fillColor("black")
       .lineWidth(1.42)
       .strokeColor("white")
