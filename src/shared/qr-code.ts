@@ -1,6 +1,6 @@
 import { getReferenceType } from "../shared/utils.js";
-import { Data } from "./types";
 import { qrcodegen } from "./qr-code-generator.js";
+import { Data } from "./types";
 
 /**
  * Limits the maximum and minimum number possible according to the PDF specifications.
@@ -240,7 +240,7 @@ export default function generateQRCode(data: Data, type: "pdf" | "svg", xOrigin:
 
   const eci = qrcodegen.QrSegment.makeEci(26);
   const segments = qrcodegen.QrSegment.makeSegments(qrString);
-  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM);
+  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM, 10, 25);
 
   const blockSize = size / qrCode.size;
   const parts: Array<string> = [];
