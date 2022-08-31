@@ -542,7 +542,7 @@ export class SVG_ {
 
   private _renderQRCode() {
 
-    const qrcode = generateQRCode(this._data, utils.mm2px(46));
+    const qrcode = generateQRCode(this._data, "svg", 0, 0, utils.mm2px(46));
 
     const qrcodeSVG = this.instance.addSVG("46mm", "46mm")
       .y("17mm")

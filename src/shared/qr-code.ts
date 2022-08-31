@@ -2,7 +2,19 @@ import { getReferenceType } from "../shared/utils.js";
 import { Data } from "./types";
 import { qrcodegen } from "./qr-code-generator.js";
 
-export default function generateQRCode(data: Data, size: number): string {
+/**
+ * Limits the maximum and minimum number possible according to the PDF specifications.
+ * Borrowed from: https://github.com/foliojs/pdfkit/blob/120c3f9519e49d719a88d22d70139cc9f54d17d8/lib/object.js#L123-L130
+ */
+function limitNumber(n: number) {
+  if(n > -1e21 && n < 1e21){
+    return Math.round(n * 1e6) / 1e6;
+  }
+
+  throw new Error(`unsupported number: ${n}`);
+}
+
+export default function generateQRCode(data: Data, type: "pdf" | "svg", xOrigin: number, yOrigin: number, size: number): string {
 
   let qrString = "";
 
@@ -238,7 +250,17 @@ export default function generateQRCode(data: Data, size: number): string {
     for(let y = 0; y < qrCode.size; y++){
       const yPos = y * blockSize;
       if(qrCode.getModule(x, y)){
-        parts.push(`M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `);
+
+        switch (type){
+          case "pdf":
+            parts.push(`${limitNumber(xOrigin + xPos)} ${limitNumber(yOrigin + yPos)} ${limitNumber(blockSize)} ${limitNumber(blockSize)} re`);
+            break;
+
+          case "svg":
+            parts.push(`M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `);
+            break;
+        }
+
       }
     }
 
