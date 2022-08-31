@@ -1,6 +1,11 @@
 
 # Change Log
 
+# [v3.2.1](https://github.com/schoero/swissqrbill/compare/v3.2.0...v3.2.1) - 31.08.2022
+
+* Performance improvements for in QR-Code rendering for PDF renderings. [#384](https://github.com/schoero/SwissQRBill/pull/384)
+* Enforce minimum and maximum allowed QR-Code versions according to the specifications.
+
 # [v3.2.0](https://github.com/schoero/swissqrbill/compare/v3.1.5...v3.2.0) - 05.03.2022
 
 * Changed `PDF_._data` property to be protected to allow extending the `PDF_` class. [#368](https://github.com/schoero/SwissQRBill/pull/368)
