@@ -551,9 +551,11 @@ export class PDF_ extends ExtendedPDF {
 
     const qrcode = generateQRCode(this._data, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
 
+
     //-- Add QR Code
 
     this.addContent(qrcode).fillColor("black").fill();
+
 
     //-- Add Swiss Cross
 
