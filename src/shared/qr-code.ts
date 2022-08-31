@@ -2,7 +2,11 @@ import { getReferenceType } from "../shared/utils.js";
 import { Data } from "./types";
 import { qrcodegen } from "./qr-code-generator.js";
 
-function number(n: number) {
+/**
+ * Limits the maximum and minimum number possible according to the PDF specifications.
+ * Borrowed from: https://github.com/foliojs/pdfkit/blob/120c3f9519e49d719a88d22d70139cc9f54d17d8/lib/object.js#L123-L130
+ */
+function limitNumber(n: number) {
   if(n > -1e21 && n < 1e21){
     return Math.round(n * 1e6) / 1e6;
   }
@@ -249,7 +253,7 @@ export default function generateQRCode(data: Data, type: "pdf" | "svg", xOrigin:
 
         switch (type){
           case "pdf":
-            parts.push(`${number(xOrigin + xPos)} ${number(yOrigin + yPos)} ${number(blockSize)} ${number(blockSize)} re`);
+            parts.push(`${limitNumber(xOrigin + xPos)} ${limitNumber(yOrigin + yPos)} ${limitNumber(blockSize)} ${limitNumber(blockSize)} re`);
             break;
 
           case "svg":
