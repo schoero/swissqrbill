@@ -138,7 +138,7 @@ export class QRBill {
       doc.path(scissorsCenter)
         .fillColor("black")
         .fill();
-      doc.translate(0, 0);
+      doc.restore();
 
     }
 
