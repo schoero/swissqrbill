@@ -8,6 +8,8 @@ import generateQRCode from "../shared/qr-code.js";
 export class QRBill {
 
   private readonly _data: Data;
+  private readonly _qrcode: string;
+
   private _scissors: boolean = true;
   private _separate: boolean = false;
   private _outlines: boolean = true;
@@ -28,6 +30,10 @@ export class QRBill {
 
     validateData(this._data);
 
+
+    //-- Generate QR Code
+
+    this._qrcode = generateQRCode(this._data, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
 
     //-- Apply options
 
@@ -509,13 +515,8 @@ export class QRBill {
 
   private _renderQRCode(doc: PDFKit.PDFDocument): void {
 
-    // TODO(@danielpanero) Since _data is immutable we would consider caching the qrcode on creation
-    const qrcode = generateQRCode(this._data, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
-
-
     //-- Add QR Code
-    doc.addContent(qrcode).fillColor("black").fill();
-
+    doc.addContent(this._qrcode).fillColor("black").fill();
 
     //-- Add Swiss Cross
 
