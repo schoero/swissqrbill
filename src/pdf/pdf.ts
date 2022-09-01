@@ -124,13 +124,19 @@ export class QRBill {
 
       if(doc.page.height > utils.mm2pt(105)){
 
-        doc.addPath(scissorsTop, utils.mm2pt(105), this._marginTop)
+        doc.save().translate(utils.mm2pt(105), this._marginTop);
+
+        doc.addContent(scissorsTop)
           .fillColor("black")
           .fill();
 
+        doc.restore();
+
       }
 
-      doc.addPath(scissorsCenter, utils.mm2pt(62), this._marginTop + 30)
+      doc.save().translate(utils.mm2pt(62), this._marginTop + 30);
+
+      doc.addContent(scissorsCenter)
         .fillColor("black")
         .fill();
       doc.translate(0, 0);
@@ -519,17 +525,24 @@ export class QRBill {
     const swissCrossBackground = "M18.3 0.7L1.6 0.7 0.7 0.7 0.7 1.6 0.7 18.3 0.7 19.1 1.6 19.1 18.3 19.1 19.1 19.1 19.1 18.3 19.1 1.6 19.1 0.7Z";
     const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
 
-    doc.addPath(swissCrossBackground, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
+    doc.save().translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+
+    doc.addContent(swissCrossBackground)
       .undash()
       .fillColor("black")
       .lineWidth(1.42)
       .strokeColor("white")
       .fillAndStroke();
 
-    doc.addPath(swissCross, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
+    doc.restore();
+
+    doc.save().translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+
+    doc.addContent(swissCross)
       .fillColor("white")
       .fill();
 
+    doc.restore();
   }
 
 
