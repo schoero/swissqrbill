@@ -32,8 +32,7 @@ export class QRBill {
 
 
     //-- Generate QR Code
-
-    this._qrcode = generateQRCode(this._data, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
+    this._qrcode = generateQRCode(this._data, "pdf", utils.mm2pt(46));
 
     //-- Apply options
 
@@ -515,7 +514,9 @@ export class QRBill {
   private _renderQRCode(doc: PDFKit.PDFDocument): void {
 
     //-- Add QR Code
+    doc.save().translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
     doc.addContent(this._qrcode).fillColor("black").fill();
+    doc.restore();
 
     //-- Add Swiss Cross
 

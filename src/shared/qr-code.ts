@@ -14,7 +14,7 @@ function limitNumber(n: number) {
   throw new Error(`unsupported number: ${n}`);
 }
 
-export default function generateQRCode(data: Data, type: "pdf" | "svg", xOrigin: number, yOrigin: number, size: number): string {
+export default function generateQRCode(data: Data, type: "pdf" | "svg", size: number): string {
 
   let qrString = "";
 
@@ -253,7 +253,7 @@ export default function generateQRCode(data: Data, type: "pdf" | "svg", xOrigin:
 
         switch (type){
           case "pdf":
-            parts.push(`${limitNumber(xOrigin + xPos)} ${limitNumber(yOrigin + yPos)} ${limitNumber(blockSize)} ${limitNumber(blockSize)} re`);
+            parts.push(`${limitNumber(xPos)} ${limitNumber(yPos)} ${limitNumber(blockSize)} ${limitNumber(blockSize)} re`);
             break;
 
           case "svg":
