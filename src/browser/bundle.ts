@@ -1,4 +1,4 @@
-import { PDF } from "./pdf.js";
+import { PDF, QRBill } from "./pdf.js";
 import { SVG } from "./svg.js";
 import BlobStream_ from "blob-stream";
 
@@ -34,7 +34,8 @@ const SwissQRBill = {
   BlobStream: BlobStream_,
   blobStream: BlobStream_,
   PDF: PDF,
-  SVG: SVG
+  SVG: SVG,
+  QRBill: QRBill
 };
 
 export default SwissQRBill;

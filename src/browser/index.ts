@@ -1,4 +1,4 @@
-import { PDF, BlobStream } from "./pdf.js";
+import { PDF, BlobStream, QRBill } from "./pdf.js";
 import { SVG } from "./svg.js";
 
 import * as utils from "../shared/utils.js";
@@ -17,7 +17,8 @@ const SwissQRBill = {
   BlobStream: BlobStream,
   blobStream: BlobStream,
   PDF: PDF,
-  SVG: SVG
+  SVG: SVG,
+  QRBill: QRBill
 };
 
 export default SwissQRBill;

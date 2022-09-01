@@ -1,10 +1,11 @@
-import { PDF_ } from "../pdf/pdf.js";
+import { PDF_, QRBill } from "../pdf/pdf.js";
 import { default as BlobStream_, IBlobStream } from "blob-stream";
 import { PDFOptions, Data } from "../shared/types.js";
 
 export import blobStream = BlobStream_;
 export import BlobStream = BlobStream_;
 
+export { QRBill };
 
 export class PDF extends PDF_ {
 

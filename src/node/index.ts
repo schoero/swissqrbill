@@ -1,4 +1,4 @@
-import { PDF } from "./pdf.js";
+import { PDF, QRBill } from "./pdf.js";
 import { SVG } from "./svg.js";
 
 import * as utils from "../shared/utils.js";
@@ -15,7 +15,8 @@ const SwissQRBill = {
   utils: utils,
   types: types,
   PDF: PDF,
-  SVG: SVG
+  SVG: SVG,
+  QRBill: QRBill
 };
 
 export default SwissQRBill;

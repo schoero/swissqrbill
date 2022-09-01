@@ -1,8 +1,9 @@
 import { createWriteStream } from "fs";
 import { Writable } from "stream";
-import { PDF_ } from "../pdf/pdf.js";
+import { PDF_, QRBill } from "../pdf/pdf.js";
 import { PDFOptions, Data } from "../shared/types.js";
 
+export { QRBill };
 
 export class PDF extends PDF_ {
 
