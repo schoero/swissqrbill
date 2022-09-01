@@ -583,7 +583,10 @@ export class QRBill {
 export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6/5";
-  private _data: Data;
+
+  private _bill: QRBill;
+
+  //-- This is only needed for back-compatibility, when _data will be removed, this can be removed as well. 
   private _options?: PDFOptions;
 
   private _autoGenerate: boolean = true;
@@ -593,20 +596,8 @@ export class PDF_ extends ExtendedPDF {
 
     super({ autoFirstPage: false, bufferPages: true });
 
-    // TODO(@danielpanero): decide if we want to use _data for back-compatibility or use _bill and changeBill(newBill: Bill){_bill = newBill}
-    this._data = data;
+    this._bill = new QRBill(data, options);
     this._options = options;
-
-
-    //-- Clean data (remove line breaks and unnecessary whitespaces)
-
-    this._data = cleanData(this._data);
-
-
-    //-- Validate data
-
-    validateData(this._data);
-
 
     //-- Apply options
 
@@ -663,9 +654,28 @@ export class PDF_ extends ExtendedPDF {
    * @param size - The size of the new page if not enough space is left for the QR slip.
    */
   public addQRBill(size: Size = "A6/5"): void {
-    const tmp = new QRBill(this._data, this._options);
-    tmp.render(this, size);
+    this._bill.render(this, size);
   }
 
+  public changeBill(bill: QRBill): void {
+    this._bill = bill;
+  }
 
+  /**
+   * Return the data contained in the current bill
+   *
+   * @deprecated
+   */
+  get _data(): Data {
+    return this._bill["_data"];
+  }
+
+  /**
+   * Changes the current data
+   *
+   * @deprecated Use the new method changeBill
+   */
+  set _data(data: Data) {
+    this._bill = new QRBill(data, this._options);
+  }
 }
