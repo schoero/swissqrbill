@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-separate-no-outline.pdf", { "separate" : false, "outlines": false, "size": "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-separate-no-outlines.pdf", { "separate" : false, "outlines": false, "size": "A4" });

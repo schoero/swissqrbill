@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-scissors-no-separate-no-outline.pdf", { "scissors" : false, "separate": false, "outlines": false, "size": "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-scissors-no-separate-no-outlines.pdf", { "scissors" : false, "separate": false, "outlines": false, "size": "A4" });
