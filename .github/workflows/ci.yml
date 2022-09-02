@@ -15,4 +15,5 @@ jobs:
     - name: Run a one-line script
       run: |
         npm ci
+        sudo bash install.sh
         npm test
