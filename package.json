@@ -115,7 +115,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "npm run build && cd tests && sh run.sh",
+    "test": "npm run build && cd tests && bash run.sh",
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
     "postbuild": "sh fix-exports.sh"
   },
