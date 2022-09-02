@@ -65,7 +65,7 @@ export class QRBill {
    * @param doc - The PDFKit instance
    * @param size - The size of the new page if not enough space is left for the QR slip.
    */
-  public render(doc: PDFKit.PDFDocument, size: Size = "A6/5"): void {
+  public attachTo(doc: PDFKit.PDFDocument, size: Size = "A6/5"): void {
 
     if(doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top){
       doc.addPage({
@@ -654,7 +654,7 @@ export class PDF_ extends ExtendedPDF {
    * @param size - The size of the new page if not enough space is left for the QR slip.
    */
   public addQRBill(size: Size = "A6/5"): void {
-    this._bill.render(this, size);
+    this._bill.attachTo(this, size);
   }
 
   public changeBill(bill: QRBill): void {
