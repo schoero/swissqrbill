@@ -79,3 +79,7 @@ echo "stream"
   node stream
 echo "zip-string"
   node zip-string
+echo "standalone-pdfkit"
+  node standalone-pdfkit
+echo "multiple-bills"
+  node multiple-bills
