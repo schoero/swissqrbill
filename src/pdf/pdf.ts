@@ -10,6 +10,7 @@ export class QRBill {
   private readonly _data: Data;
   private readonly _qrcode: string;
 
+  private _size: Size = "A6/5";
   private _scissors: boolean = true;
   private _separate: boolean = false;
   private _outlines: boolean = true;
@@ -37,6 +38,9 @@ export class QRBill {
     //-- Apply options
 
     if(options !== undefined){
+      if(options.size !== undefined){
+        this._size = options.size;
+      }
       if(options.language !== undefined){
         this._language = options.language;
       }
@@ -65,7 +69,10 @@ export class QRBill {
    * @param doc - The PDFKit instance
    * @param size - The size of the new page if not enough space is left for the QR slip.
    */
-  public attachTo(doc: PDFKit.PDFDocument, size: Size = "A6/5"): void {
+  public attachTo(doc: PDFKit.PDFDocument, size?: Size): void {
+    if(size == undefined){
+      size = this._size;
+    }
 
     if(doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top){
       doc.addPage({
@@ -653,7 +660,11 @@ export class PDF_ extends ExtendedPDF {
    *
    * @param size - The size of the new page if not enough space is left for the QR slip.
    */
-  public addQRBill(size: Size = "A6/5"): void {
+  public addQRBill(size?: Size): void {
+    if(size == undefined){
+      size = this.size;
+    }
+
     this._bill.attachTo(this, size);
   }
 
