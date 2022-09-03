@@ -1,5 +1,12 @@
 # API documentation
 
+# SwissQRBill.QRBill
+
+- Constructor
+  - [SwissQRBill.QRBill(data [, options])](#swissqrbillqrbill)
+- Methods
+  - [attachTo(doc, [size])](#attachto)
+
 # SwissQRBill.PDF
 
 - Constructor
@@ -64,21 +71,14 @@
 <br/>
 <br/>
 
-# SwissQRBill.PDF
+# SwissQRBill.QRBill
 
 ## Constructor
 
-### SwissQRBill.PDF(data, outputPath[, options] [, callback])
-### SwissQRBill.PDF(data, writableStream[, options] [, callback])
+### SwissQRBill.QRBill(data [, options])
 
  - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
- - **outputPath | writableStream** - `string` output path for the generated PDF file or `writableStream` a writableStream to stream data into. *mandatory*.
  - [**options**](#options) - `object` containing settings, *optional*.
- - **callback** - `function` that gets called right after the pdf has been created, *optional*.
-
-> **Note:** The outputPath option is only available in Node.js.
-
-> **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
 
 ##### data
 
@@ -129,8 +129,6 @@
      > **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
    - **outlines** - `boolean`: *default* `true`.
      Whether you want render the outlines. This option may be disabled if you use perforated paper.
-   - **autoGenerate** - `boolean`: *default* `true`.
-     Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
 ```js
 const data = {
@@ -162,6 +160,44 @@ const data = {
 
 ## Methods
 
+### attachTo(doc, [size])
+ - doc - `object` [PDFKit.Document](https://pdfkit.org/docs/getting_started.html)
+ - size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
+Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+
+<br/>
+<br/>
+
+# SwissQRBill.PDF
+
+## Constructor
+
+### SwissQRBill.PDF(data, outputPath[, options] [, callback])
+### SwissQRBill.PDF(data, writableStream[, options] [, callback])
+ - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
+ - **outputPath | writableStream** - `string` output path for the generated PDF file or `writableStream` a writableStream to stream data into. *mandatory*.
+ - [**options**](#options) - `object` containing settings, *optional*.
+ - **callback** - `function` that gets called right after the pdf has been created, *optional*.
+
+> **Note:** The outputPath option is only available in Node.js.
+
+> **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
+
+##### data
+
+  The data object is the same as the [data object](#data) in the QRBill constructor above.
+
+##### options
+
+  The options object is the same as the [options object](#options) in the QRBill constructor above, only with an additional setting:
+   - **autoGenerate** - `boolean`: *default* `true`.
+     Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
+
+<br/>
+<br/>
+
+## Methods
+
 ### addPage(options)
  - options - `object` containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)  
 Adds a new page to the PDF.
@@ -179,6 +215,17 @@ Returns `this`.
 
 Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
 > **Note:** This function is automatically called when the option autoGenerate is set to true.
+
+<br/>
+<br/>
+
+### changeQRBill(bill)
+ - [**bill**](#swissqrbillqrbill) - `object` A new bill.
+
+Changes the current QRBill stored
+> **Note:** This function is only needed in the case, there is the need of rendering multiple bills
+
+> **Note:** After changing the current QR Bill, in order to render it, [**addQRBill**](#addqrbillsize) needs to be called
 
 <br/>
 <br/>
@@ -298,7 +345,7 @@ This could be used to add page numbers to the pages as described [here](http://p
 
 ##### data
 
-  The data object is the same as the [data object](#data) in the PDF constructor above.
+  The data object is the same as the [data object](#data) in the QRBill constructor above.
 
 ##### options
 

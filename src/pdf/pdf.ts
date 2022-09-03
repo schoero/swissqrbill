@@ -668,7 +668,7 @@ export class PDF_ extends ExtendedPDF {
     this._bill.attachTo(this, size);
   }
 
-  public changeBill(bill: QRBill): void {
+  public changeQRBill(bill: QRBill): void {
     this._bill = bill;
   }
 
@@ -684,7 +684,7 @@ export class PDF_ extends ExtendedPDF {
   /**
    * Changes the current data
    *
-   * @deprecated Use the new method changeBill
+   * @deprecated Use the new method changeQRBill
    */
   set _data(data: Data) {
     this._bill = new QRBill(data, this._options);
