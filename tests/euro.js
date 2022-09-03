@@ -3,7 +3,7 @@ const { writeFileSync } = require("fs");
 
 const data = {
   currency: "EUR",
-  amount: 1199.95,
+  amount: 1199.97,
   reference: "210000000003139471430009017",
   creditor: {
     name: "Robert Schneider AG",
