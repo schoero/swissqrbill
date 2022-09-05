@@ -22,6 +22,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/italian.pdf", { language: "IT" });
+const pdf = new SwissQRBill.PDF("./output/pdf/italian.pdf", data, { language: "IT" });
 const svg = new SwissQRBill.SVG(data, { language: "IT" });
 writeFileSync("./output/svg/italian.svg", svg.toString());

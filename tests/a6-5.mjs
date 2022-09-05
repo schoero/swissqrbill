@@ -22,6 +22,6 @@ const data = {
   }
 };
 
-const pdf = new PDF(data, "./output/pdf/a6-5.pdf", { "size": "A6/5" });
+const pdf = new PDF("./output/pdf/a6-5.pdf", data, { "size": "A6/5" });
 const svg = new SVG(data);
 writeFileSync("./output/svg/a6-5.svg", svg.toString());

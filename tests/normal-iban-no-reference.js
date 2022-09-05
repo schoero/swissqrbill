@@ -22,6 +22,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/normal-iban-no-reference.pdf");
+const pdf = new SwissQRBill.PDF("./output/pdf/normal-iban-no-reference.pdf", data);
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/normal-iban-no-reference.svg", svg.toString());

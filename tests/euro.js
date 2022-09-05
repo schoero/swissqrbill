@@ -22,6 +22,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/euro.pdf");
+const pdf = new SwissQRBill.PDF("./output/pdf/euro.pdf", data);
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/euro.svg", svg.toString());

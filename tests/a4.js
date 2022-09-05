@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/a4.pdf", { "size": "A4" });
+const pdf = new SwissQRBill.PDF("./output/pdf/a4.pdf", data, { "size": "A4" });

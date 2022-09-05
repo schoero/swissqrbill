@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-scissors.pdf", { "scissors" : false, "size": "A4" });
+const pdf = new SwissQRBill.PDF("./output/pdf/no-scissors.pdf", data, { "scissors" : false, "size": "A4" });

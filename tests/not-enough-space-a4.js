@@ -21,7 +21,7 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/not-enough-space-a4.pdf", { "autoGenerate": false, "size": "A4" });
+const pdf = new SwissQRBill.PDF("./output/pdf/not-enough-space-a4.pdf", data, { "autoGenerate": false, "size": "A4" });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");

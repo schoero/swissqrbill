@@ -21,6 +21,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-amount.pdf");
+const pdf = new SwissQRBill.PDF("./output/pdf/no-amount.pdf", data);
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/no-amount.svg", svg.toString());

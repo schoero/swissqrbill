@@ -25,6 +25,6 @@ const data = {
 };
 
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/a6-5-buildingnumber.pdf");
+const pdf = new SwissQRBill.PDF("./output/pdf/a6-5-buildingnumber.pdf", data);
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/a6-5-buildingnumber.svg", svg.toString());

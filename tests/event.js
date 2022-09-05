@@ -22,7 +22,7 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/event.pdf");
+const pdf = new SwissQRBill.PDF("./output/pdf/event.pdf", data);
 
 pdf.on("finish", () => {
   console.log("File has been successfully created.");

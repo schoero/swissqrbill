@@ -14,6 +14,6 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-debtor-no-reference.pdf");
+const pdf = new SwissQRBill.PDF("./output/pdf/no-debtor-no-reference.pdf", data);
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/no-debtor-no-reference.svg", svg.toString());

@@ -12,4 +12,4 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/a4-no-debtor-no-amount-no-reference.pdf", { size: "A4" });
+const pdf = new SwissQRBill.PDF("./output/pdf/a4-no-debtor-no-amount-no-reference.pdf", data, { size: "A4" });
