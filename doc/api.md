@@ -3,18 +3,18 @@
 # SwissQRBill.QRBill
 
 - Constructor
-  - [SwissQRBill.QRBill(data [, options])](#swissqrbillqrbill)
+  - [SwissQRBill.QRBill(data [, options])](#swissqrbillqrbill-1)
 - Methods
   - [attachTo(doc, [size])](#attachto)
 
 # SwissQRBill.PDF
 
 - Constructor
-  - [SwissQRBill.PDF(data, outputPath[, options] [, callback])](#swissqrbillpdfdata-outputpath-options--callback)
-  - [SwissQRBill.PDF(data, writableStream[, options] [, callback])](#swissqrbillpdfdata-writablestream-options--callback)
+  - [SwissQRBill.PDF(outputPath[, callback])](#swissqrbillpdf-1)
+  - [SwissQRBill.PDF(writableStream[, callback])](#swissqrbillpdf-1)
 - Methods
   - [addPage(options)](#addpageoptions)
-  - [addQRBill([size])](#addqrbillsize)
+  - [addQRBill(bill[, size])](addqrbillbill-size)
   - [addTable(table)](#addtabletable)
   - [addPath(path, x, y)](#addpathpath-x-y)
 - Events
@@ -172,26 +172,16 @@ Adds the QR Slip to the bottom of the current page if there is enough space, oth
 
 ## Constructor
 
-### SwissQRBill.PDF(data, outputPath[, options] [, callback])
-### SwissQRBill.PDF(data, writableStream[, options] [, callback])
- - [**data**](#data) - `object` containing all relevant billing data, *mandatory*.
+### SwissQRBill.PDF(outputPath[, callback])
+### SwissQRBill.PDF(writableStream[, callback])
  - **outputPath | writableStream** - `string` output path for the generated PDF file or `writableStream` a writableStream to stream data into. *mandatory*.
- - [**options**](#options) - `object` containing settings, *optional*.
  - **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
 > **Note:** The outputPath option is only available in Node.js.
 
+> **Note:** Although passing data and options as parameters is still supported, it will deprecated in favour of the new syntax [addQRBill](#addqrbillsize)
+
 > **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
-
-##### data
-
-  The data object is the same as the [data object](#data) in the QRBill constructor above.
-
-##### options
-
-  The options object is the same as the [options object](#options) in the QRBill constructor above, only with an additional setting:
-   - **autoGenerate** - `boolean`: *default* `true`.
-     Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
 
 <br/>
 <br/>
@@ -210,22 +200,13 @@ Returns `this`.
 <br/>
 <br/>
 
-### addQRBill([size])
+### addQRBill(bill[, size])
+ - [**bill**](#swissqrbillqrbill) - `object` 
  - size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
 
 Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
-> **Note:** This function is automatically called when the option autoGenerate is set to true.
 
-<br/>
-<br/>
-
-### changeQRBill(bill)
- - [**bill**](#swissqrbillqrbill) - `object` A new bill.
-
-Changes the current QRBill stored
-> **Note:** This function is only needed in the case, there is the need of rendering multiple bills
-
-> **Note:** After changing the current QR Bill, in order to render it, [**addQRBill**](#addqrbillsize) needs to be called
+> **Note:** Although passing data and options as parameters in the constructor is still supported, it will deprecated in favour of the new syntax
 
 <br/>
 <br/>
