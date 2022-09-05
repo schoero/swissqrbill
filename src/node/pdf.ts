@@ -7,27 +7,45 @@ export { QRBill };
 
 export class PDF extends PDF_ {
 
-  constructor(data: Data, outputPath: string, options?: PDFOptions);
-  constructor(data: Data, writableStream: Writable, options?: PDFOptions);
-  constructor(data: Data, outputPath: string, options?: PDFOptions, callback?: Function);
-  constructor(data: Data, writableStream: Writable, options?: PDFOptions, callback?: Function);
-  constructor(data: Data, outputPath: string, callback?: Function);
-  constructor(data: Data, writableStream: Writable, callback?: Function);
-  constructor(data: Data, outputPathOrWritableStream: string | Writable, optionsOrCallback?: PDFOptions | Function, callbackOrUndefined?: Function | undefined) {
+  /**
+   * @deprecated Although passing data and options as parameters is still supported, it will deprecated in favour of the new syntax {@link addQRBill}
+   */
+  constructor(outputPath: string, data: Data, options: PDFOptions);
+  constructor(writableStream: Writable, data: Data, options: PDFOptions);
 
-    let callback: Function | undefined = undefined;
-    let options: PDFOptions | undefined = undefined;
+  constructor(outputPath: string, data: Data);
+  constructor(writableStream: Writable, data: Data);
 
-    if(typeof optionsOrCallback === "object"){
+  constructor(outputPath: string, callback: Function, data: Data, options: PDFOptions);
+  constructor(writableStream: Writable, callback: Function, data: Data, options: PDFOptions);
 
-      options = optionsOrCallback;
+  constructor(outputPath: string, callback: Function, data: Data);
+  constructor(writableStream: Writable, callback: Function, data: Data);
 
-      if(typeof callbackOrUndefined === "function"){
-        callback = callbackOrUndefined;
-      }
+  /**
+   * @param outputPath output path for the generated PDF file
+   * @param callback function that gets called right after the pdf has been created, optional.
+   */
+  constructor(outputPath: string, callback?: Function);
 
-    } else if(typeof optionsOrCallback === "function"){
-      callback = optionsOrCallback;
+  /**
+   * @param writableStream a writableStream to stream data into
+   * @param callback function that gets called right after the pdf has been created, optional.
+   */
+  constructor(writableStream: Writable, callback?: Function);
+  constructor(outputPathOrWritableStream: string | Writable, callbackOrData?: Function | Data, dataOrOptions?: Data | PDFOptions, optionsOrUndefined?: PDFOptions) {
+    let callback: Function | undefined;
+    let data: Data | undefined;
+    let options: PDFOptions | undefined;
+
+    if(typeof callbackOrData === "function"){
+      callback = callbackOrData;
+
+      data = dataOrOptions as Data;
+      options = optionsOrUndefined as PDFOptions;
+    } else {
+      data = callbackOrData;
+      options = dataOrOptions as PDFOptions;
     }
 
     super(data, options);

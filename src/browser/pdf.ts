@@ -9,24 +9,34 @@ export { QRBill };
 
 export class PDF extends PDF_ {
 
-  constructor(data: Data, writableStream: IBlobStream, options?: PDFOptions);
-  constructor(data: Data, writeableStream: IBlobStream, options?: PDFOptions, callback?: Function);
-  constructor(data: Data, writeableStream: IBlobStream, callback?: Function);
-  constructor(data: Data, writeableStream: IBlobStream, optionsOrCallback?: PDFOptions | Function, callbackOrUndefined?: Function | undefined) {
+  /**
+   * @deprecated Although passing data and options as parameters is still supported, it will deprecated in favour of the new syntax {@link addQRBill}
+  */
+  constructor(writableStream: IBlobStream, data: Data, options: PDFOptions);
+  constructor(writableStream: IBlobStream, data: Data);
 
-    let callback: Function | undefined = undefined;
-    let options: PDFOptions | undefined = undefined;
+  constructor(writableStream: IBlobStream, callback: Function, data: Data, options: PDFOptions);
+  constructor(writableStream: IBlobStream, callback: Function, data: Data);
 
-    if(typeof optionsOrCallback === "object"){
+  /**
+    * @param writableStream a writableStream to stream data into
+    * @param callback function that gets called right after the pdf has been created, optional.
+  */
+  constructor(writableStream: IBlobStream, callback?: Function);
+  constructor(writeableStream: IBlobStream, callbackOrData?: Function | Data, dataOrOptions?: Data | PDFOptions, optionsOrUndefined?: PDFOptions | undefined) {
 
-      options = optionsOrCallback;
+    let callback: Function | undefined;
+    let data: Data | undefined;
+    let options: PDFOptions | undefined;
 
-      if(typeof callbackOrUndefined === "function"){
-        callback = callbackOrUndefined;
-      }
+    if(typeof callbackOrData == "function"){
+      callback = callbackOrData;
 
-    } else if(typeof optionsOrCallback === "function"){
-      callback = optionsOrCallback;
+      data = dataOrOptions as Data;
+      options = optionsOrUndefined as PDFOptions;
+    } else {
+      data = callbackOrData;
+      options = dataOrOptions as PDFOptions;
     }
 
     super(data, options);

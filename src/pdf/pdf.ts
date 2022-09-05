@@ -591,19 +591,33 @@ export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6/5";
 
-  private _bill: QRBill;
+  /**
+   * @deprecated Use the new syntax {@link addQRBill()}
+   */
+  protected _data?: Data;
 
-  //-- This is only needed for back-compatibility, when _data will be removed, this can be removed as well. 
+  /**
+   * @deprecated Use the new syntax {@link addQRBill()}
+   */
   private _options?: PDFOptions;
 
   private _autoGenerate: boolean = true;
 
 
-  constructor(data: Data, options?: PDFOptions) {
+  /**
+   * @deprecated Although passing data and options as parameters is still supported, it will deprecated in favour of the new syntax {@link addQRBill}
+   * @param data
+   * @param options
+   */
+  constructor(data?: Data, options?: PDFOptions) {
 
     super({ autoFirstPage: false, bufferPages: true });
 
-    this._bill = new QRBill(data, options);
+    if(data || options){
+      console.warn("Although passing data or options as parameter is still supported, it will deprecated in favour of the new syntax");
+    }
+
+    this._data = data;
     this._options = options;
 
     //-- Apply options
@@ -656,37 +670,59 @@ export class PDF_ extends ExtendedPDF {
 
 
   /**
+   * @deprecated Although the old syntax addQRBill(size?: Size) is still supported, it will be deprecated
+   */
+  public addQRBill(): void;
+  public addQRBill(size: Size): void;
+
+  /**
    * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
    *
-   * @param size - The size of the new page if not enough space is left for the QR slip.
+   * @param bill - The {@link QRBill} that will be attached
+   *
    */
-  public addQRBill(size?: Size): void {
-    if(size == undefined){
+  public addQRBill(bill: QRBill): void;
+
+  /**
+   * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+   *
+   * @param bill - The {@link QRBill} that will be attached
+   * @param size - The {@link Size} of the new page if not enough space is left for the QR slip.
+   *
+   */
+  public addQRBill(bill: QRBill, size: Size): void;
+  public addQRBill(...args: [] | [ Size | QRBill ] | [ QRBill, Size ]): void {
+    let bill: QRBill |undefined;
+    let size: Size |undefined;
+
+    switch (args.length){
+      case 1:
+        if(args[0] instanceof QRBill){
+          bill = args[0];
+        } else {
+          size = args[0];
+        }
+        break;
+
+      case 2:
+        [bill, size] = args;
+        break;
+    }
+
+    if(!bill){
+      if(this._data){
+        console.warn("Although passing data or options as parameter in the constructor is still supported, it will deprecated in favour of the new syntax");
+
+        bill = new QRBill(this._data, this._options);
+      } else {
+        throw new Error("Neither bill or _data were provided");
+      }
+    }
+
+    if(!size){
       size = this.size;
     }
 
-    this._bill.attachTo(this, size);
-  }
-
-  public changeQRBill(bill: QRBill): void {
-    this._bill = bill;
-  }
-
-  /**
-   * Return the data contained in the current bill
-   *
-   * @deprecated
-   */
-  get _data(): Data {
-    return this._bill["_data"];
-  }
-
-  /**
-   * Changes the current data
-   *
-   * @deprecated Use the new method changeQRBill
-   */
-  set _data(data: Data) {
-    this._bill = new QRBill(data, this._options);
+    bill.attachTo(this, size);
   }
 }
