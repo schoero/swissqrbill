@@ -711,8 +711,6 @@ export class PDF_ extends ExtendedPDF {
 
     if(!bill){
       if(this._data){
-        console.warn("Although passing data or options as parameter in the constructor is still supported, it will deprecated in favour of the new syntax");
-
         bill = new QRBill(this._data, this._options);
       } else {
         throw new Error("Neither bill or _data were provided");
