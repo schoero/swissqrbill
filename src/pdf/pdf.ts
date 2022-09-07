@@ -1,5 +1,5 @@
 import { ExtendedPDF } from "./extended-pdf.js";
-import { Size, Data, Languages, PDFOptions, Debtor, Creditor } from "../shared/types";
+import { Size, Data, Languages, Options, Debtor, Creditor } from "../shared/types";
 import { validateData, cleanData } from "../shared/shared.js";
 import * as utils from "../shared/utils.js";
 import translations from "../shared/translations.js";
@@ -17,7 +17,7 @@ export class QRBill {
   private _language: Languages = "DE";
   private _marginTop: number = 0;
 
-  constructor(data: Data, options?: PDFOptions) {
+  constructor(data: Data, options?: Options) {
 
     this._data = data;
 
@@ -594,8 +594,9 @@ export class PDF extends ExtendedPDF {
     options = Object.assign({}, {
       margin: utils.mm2pt(5),
       layout: size === "A4" ? "portrait" : "landscape",
-      size: size === "A4" ? size : [utils.mm2pt(105), utils.mm2pt(210)]
-    }, options);
+      size: size === "A4" ? size : [utils.mm2pt(105), utils.mm2pt(210)],
+      autoFirstPage: false
+    } as PDFKit.PDFDocumentOptions, options);
 
     super(options);
 
@@ -627,7 +628,7 @@ export class PDF extends ExtendedPDF {
   }
 
   /**
-   * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+   * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the size specified in the options of the QRBill (default A6/5) and add it to the bottom of this page.
    *
    * @param bill - The {@link QRBill} that will be attached
    *
@@ -642,10 +643,6 @@ export class PDF extends ExtendedPDF {
    *
    */
   public addQRBill(bill: QRBill, size?: Size): void {
-    if(!size){
-      size = this.size;
-    }
-
     bill.attachTo(this, size);
   }
 }

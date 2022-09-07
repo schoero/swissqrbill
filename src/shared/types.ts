@@ -106,7 +106,7 @@ export interface Creditor extends Debtor {
   account: string;
 }
 
-export interface PDFOptions {
+export interface Options {
 
   /**
    * The language with which the bill is rendered.
@@ -139,12 +139,6 @@ export interface PDFOptions {
    * @defaultValue `true`
    */
   outlines?: boolean;
-
-  /**
-   *  Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-   * @defaultValue `true`
-   */
-  autoGenerate?: boolean;
 }
 
 export interface SVGOptions {
