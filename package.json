@@ -37,8 +37,8 @@
     },
     "./pdf": {
       "node": {
-        "require": "./lib/node/cjs/node/pdf.js",
-        "import": "./lib/node/esm/node/pdf.js"
+        "require": "./lib/node/cjs/node/pdf/pdf.js",
+        "import": "./lib/node/esm/node/pdf/pdf.js"
       },
       "browser": {
         "require": "./lib/browser/bundle/index.js",

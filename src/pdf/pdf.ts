@@ -74,7 +74,7 @@ export class QRBill {
       size = this._size;
     }
 
-    if(doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top){
+    if(!doc.page || (doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top)){
       doc.addPage({
         margin: 0,
         layout: size === "A4" ? "portrait" : "landscape",
@@ -587,59 +587,20 @@ export class QRBill {
 }
 
 
-export class PDF_ extends ExtendedPDF {
-
+export class PDF extends ExtendedPDF {
   public size: Size = "A6/5";
 
-  /**
-   * @deprecated Use the new syntax {@link addQRBill()}
-   */
-  protected _data?: Data;
+  constructor(size: Size = "A6/5", options?: PDFKit.PDFDocumentOptions) {
+    options = Object.assign({}, {
+      margin: utils.mm2pt(5),
+      layout: size === "A4" ? "portrait" : "landscape",
+      size: size === "A4" ? size : [utils.mm2pt(105), utils.mm2pt(210)]
+    }, options);
 
-  /**
-   * @deprecated Use the new syntax {@link addQRBill()}
-   */
-  private _options?: PDFOptions;
+    super(options);
 
-  private _autoGenerate: boolean = true;
-
-
-  /**
-   * @deprecated Although passing data and options as parameters is still supported, it will deprecated in favour of the new syntax {@link addQRBill}
-   * @param data
-   * @param options
-   */
-  constructor(data?: Data, options?: PDFOptions) {
-
-    super({ autoFirstPage: false, bufferPages: true });
-
-    if(data || options){
-      console.warn("Although passing data or options as parameter is still supported, it will deprecated in favour of the new syntax");
-    }
-
-    this._data = data;
-    this._options = options;
-
-    //-- Apply options
-
-    if(options !== undefined){
-      if(options.size !== undefined){
-        this.size = options.size;
-      }
-      if(options.autoGenerate !== undefined){
-        this._autoGenerate = options.autoGenerate;
-      }
-    }
-
+    this.size = size;
     this.info.Producer = this.info.Creator = this.info.Author = "SwissQRBill";
-
-    this.addPage();
-
-    if(this._autoGenerate){
-      this.addQRBill();
-      this.end();
-    }
-
   }
 
 
@@ -649,14 +610,11 @@ export class PDF_ extends ExtendedPDF {
    * @returns `this`
    */
   public addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
-
-    if(options === undefined){
-      options = {
-        margin: utils.mm2pt(5),
-        layout: this.size === "A4" ? "portrait" : "landscape",
-        size: this.size === "A4" ? this.size : [utils.mm2pt(105), utils.mm2pt(210)]
-      };
-    }
+    options = Object.assign({}, {
+      margin: utils.mm2pt(5),
+      layout: this.size === "A4" ? "portrait" : "landscape",
+      size: this.size === "A4" ? this.size : [utils.mm2pt(105), utils.mm2pt(210)]
+    }, options);
 
     return super.addPage(options);
 
@@ -667,13 +625,6 @@ export class PDF_ extends ExtendedPDF {
     this.emit("beforeEnd", this);
     return super.end();
   }
-
-
-  /**
-   * @deprecated Although the old syntax addQRBill(size?: Size) is still supported, it will be deprecated
-   */
-  public addQRBill(): void;
-  public addQRBill(size: Size): void;
 
   /**
    * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
@@ -690,33 +641,7 @@ export class PDF_ extends ExtendedPDF {
    * @param size - The {@link Size} of the new page if not enough space is left for the QR slip.
    *
    */
-  public addQRBill(bill: QRBill, size: Size): void;
-  public addQRBill(...args: [] | [ Size | QRBill ] | [ QRBill, Size ]): void {
-    let bill: QRBill |undefined;
-    let size: Size |undefined;
-
-    switch (args.length){
-      case 1:
-        if(args[0] instanceof QRBill){
-          bill = args[0];
-        } else {
-          size = args[0];
-        }
-        break;
-
-      case 2:
-        [bill, size] = args;
-        break;
-    }
-
-    if(!bill){
-      if(this._data){
-        bill = new QRBill(this._data, this._options);
-      } else {
-        throw new Error("Neither bill or _data were provided");
-      }
-    }
-
+  public addQRBill(bill: QRBill, size?: Size): void {
     if(!size){
       size = this.size;
     }

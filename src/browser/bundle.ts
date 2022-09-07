@@ -1,4 +1,4 @@
-import { PDF, QRBill } from "./pdf.js";
+import { PDF, QRBill } from "../pdf/pdf.js";
 import { SVG } from "./svg.js";
 import BlobStream_ from "blob-stream";
 
@@ -9,7 +9,7 @@ import * as types from "../shared/types.js";
 export * as types from "../shared/types.js";
 
 export * from "./svg.js";
-export * from "./pdf.js";
+export * from "../pdf/pdf.js";
 
 import fs from "fs";
 
