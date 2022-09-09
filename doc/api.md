@@ -10,15 +10,13 @@
 # SwissQRBill.PDF
 
 - Constructor
-  - [SwissQRBill.PDF(outputPath[, callback])](#swissqrbillpdf-1)
-  - [SwissQRBill.PDF(writableStream[, callback])](#swissqrbillpdf-1)
+  - [SwissQRBill.PDF([ size] [, options]](#swissqrbillpdf-1)
 - Methods
   - [addPage(options)](#addpageoptions)
   - [addQRBill(bill[, size])](addqrbillbill-size)
   - [addTable(table)](#addtabletable)
   - [addPath(path, x, y)](#addpathpath-x-y)
 - Events
-  - [finish](#event-finish)
   - [pageAdded](#event-pageadded)
   - [beforeEnd](#event-beforeEnd)
 
@@ -160,10 +158,25 @@ const data = {
 
 ## Methods
 
-### attachTo(doc, [size])
+### attachTo(doc [, size])
  - doc - `object` [PDFKit.Document](https://pdfkit.org/docs/getting_started.html)
  - size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
 Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+
+ ```typescript
+const doc = new PDFKit();
+const stream = fs.createWriteStream("output.pdf");
+doc.pipe(stream);
+
+...
+
+const bill = new QRBill({...},{...})
+bill.attachTo(doc)
+
+...
+
+pdf.end();
+```
 
 <br/>
 <br/>
@@ -172,16 +185,33 @@ Adds the QR Slip to the bottom of the current page if there is enough space, oth
 
 ## Constructor
 
-### SwissQRBill.PDF(outputPath[, callback])
-### SwissQRBill.PDF(writableStream[, callback])
- - **outputPath | writableStream** - `string` output path for the generated PDF file or `writableStream` a writableStream to stream data into. *mandatory*.
- - **callback** - `function` that gets called right after the pdf has been created, *optional*.
+### SwissQRBill.PDF([ size] [, options])
+ - **size** - `string: "A4" | "A6/5"` size of the new page *optional*, *default* `"A6/5"`.
+ - **options** - `object` [PDFKit.PDFDocumentOptions](https://pdfkit.org/docs/getting_started.html), *optional*.
 
-> **Note:** The outputPath option is only available in Node.js.
+##### Node
+ ```typescript
+const pdf = new SwissQRBill.PDF("A4");
+const stream = fs.createWriteStream("output.pdf");
 
-> **Note:** Although passing data and options as parameters is still supported, it will deprecated in favour of the new syntax [addQRBill](#addqrbillsize)
+pdf.pipe(stream);
 
-> **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
+...
+
+pdf.end();
+```
+
+##### Browser
+ ```typescript
+const pdf = new SwissQRBill.PDF("A4");
+const stream = new SwissQRBill.BlobStream();
+
+pdf.pipe(stream);
+
+...
+
+pdf.end();
+```
 
 <br/>
 <br/>
@@ -205,8 +235,6 @@ Returns `this`.
  - size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
 
 Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
-
-> **Note:** Although passing data and options as parameters in the constructor is still supported, it will deprecated in favour of the new syntax
 
 <br/>
 <br/>
@@ -292,13 +320,6 @@ const table = {
 <br/>
 
 ## Events
-
-### Event: "finish"
-The finish event is emitted when the file has finished writing. 
-You have to wait until the file has finished writing before you are able to interact with the genereated file.
-
-<br/>
-<br/>
 
 ### Event: "pageAdded"
 The pageAdded event is emitted every time a page is added.
