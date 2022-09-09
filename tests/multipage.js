@@ -1,6 +1,7 @@
-const SwissQRBill = require("../");
+const { PDF, QRBill, utils } = require("../");
+const { createWriteStream } = require("fs");
 
-const data = {
+const bill = new QRBill({
   currency: "CHF",
   amount: 1199.95,
   reference: "210000000003139471430009017",
@@ -19,32 +20,37 @@ const data = {
     city: "Rorschach",
     country: "CH"
   }
-};
+}, { size: "A4" });
 
-const pdf = new SwissQRBill.PDF("./output/pdf/multipage.pdf", data, { "autoGenerate": false, "size": "A4" });
+const pdf = new PDF("A4");
+const stream = createWriteStream("./output/pdf/multipage.pdf");
+
+pdf.pipe(stream);
+
+pdf.addPage();
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
-pdf.text("PAGE 1", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
-  width: SwissQRBill.utils.mm2pt(210),
+pdf.text("PAGE 1", utils.mm2pt(5), utils.mm2pt(20), {
+  width: utils.mm2pt(210),
   align: "center"
 });
 
 pdf.addPage();
 
-pdf.text("PAGE 2", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
-  width: SwissQRBill.utils.mm2pt(210),
+pdf.text("PAGE 2", utils.mm2pt(5), utils.mm2pt(20), {
+  width: utils.mm2pt(210),
   align: "center"
 });
 
 pdf.addPage();
 
-pdf.text("PAGE 3", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
-  width: SwissQRBill.utils.mm2pt(210),
+pdf.text("PAGE 3", utils.mm2pt(5), utils.mm2pt(20), {
+  width: utils.mm2pt(210),
   align: "center"
 });
 
-pdf.addQRBill();
+pdf.addQRBill(bill);
 
 pdf.end();

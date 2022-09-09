@@ -1,10 +1,10 @@
-const fs = require("fs");
-
+const { createWriteStream } = require("fs");
 const PDFKit = require("pdfkit");
-const SwissQRBill = require("../");
 
-const stream = fs.createWriteStream("./output/pdf/multiple-bills.pdf");
+const { QRBill } = require("../");
+
 const pdf = new PDFKit({ size: "A4", autoFirstPage: false, margin: 0 });
+const stream = createWriteStream("./output/pdf/multiple-bills.pdf");
 
 pdf.pipe(stream);
 
@@ -13,7 +13,7 @@ pdf.text("First page");
 
 const bills = [
   // A4
-  new SwissQRBill.QRBill({
+  new QRBill({
     currency: "CHF",
     amount: 1199.95,
     reference: "210000000003139471430009017",
@@ -35,7 +35,7 @@ const bills = [
   }),
 
   // No debtor, no amount
-  new SwissQRBill.QRBill({
+  new QRBill({
     currency: "CHF",
     amount: 1199.95,
     reference: "RF18539007547034",
@@ -50,7 +50,7 @@ const bills = [
   }),
 
   // No scissors, no outlines
-  new SwissQRBill.QRBill({
+  new QRBill({
     currency: "CHF",
     amount: 1199.95,
     reference: "210000000003139471430009017",
@@ -72,7 +72,7 @@ const bills = [
   }, { "scissors" : false, "outlines": false, "size": "A4" }),
 
   // A6-5
-  new SwissQRBill.QRBill({
+  new QRBill({
     currency: "CHF",
     amount: 1199.95,
     reference: "210000000003139471430009017",
@@ -94,7 +94,7 @@ const bills = [
   }, { "size": "A6/5" }),
 
   // Normal iban creditor reference
-  new SwissQRBill.QRBill({
+  new QRBill({
     currency: "CHF",
     amount: 1199.95,
     creditor: {

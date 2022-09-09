@@ -1,4 +1,5 @@
-const SwissQRBill = require("../");
+const { PDF, QRBill, utils } = require("../");
+const { createWriteStream } = require("fs");
 
 const data = {
   currency: "CHF",
@@ -21,16 +22,20 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF("./output/pdf/not-enough-space.pdf", data, { "autoGenerate": false, "size": "A4" });
+const pdf = new PDF();
+const stream = createWriteStream("./output/pdf/not-enough-space.pdf");
 
+pdf.pipe(stream);
+
+pdf.addPage();
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
-pdf.text("PAGE 1", SwissQRBill.utils.mm2pt(5), pdf.page.height - 50, {
-  width: SwissQRBill.utils.mm2pt(210),
+pdf.text("PAGE 1", utils.mm2pt(5), pdf.page.height - 50, {
+  width: utils.mm2pt(210),
   align: "center"
 });
 
-pdf.addQRBill();
+pdf.addQRBill(new QRBill(data), { "size": "A4" });
 
 pdf.end();

@@ -1,6 +1,7 @@
-const SwissQRBill = require("../");
+const { createWriteStream } = require("fs");
+const { QRBill, PDF } = require("../");
 
-const data = {
+const bill = new QRBill({
   currency: "CHF",
   amount: 1199.95,
   reference: "210000000003139471430009017",
@@ -19,6 +20,11 @@ const data = {
     city: "Rorschach",
     country: "CH"
   }
-};
+});
 
-const pdf = new SwissQRBill.PDF("./output/pdf/a4.pdf", data, { "size": "A4" });
+const pdf = new PDF("A4", { });
+const stream = createWriteStream("./output/pdf/a4.pdf");
+
+pdf.pipe(stream);
+pdf.addQRBill(bill);
+pdf.end();

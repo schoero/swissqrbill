@@ -1,5 +1,5 @@
-const SwissQRBill = require("../");
-const { writeFileSync } = require("fs");
+const { PDF, SVG, QRBill } = require("../");
+const { writeFileSync, createWriteStream } = require("fs");
 
 const data = {
   currency: "CHF",
@@ -22,6 +22,12 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF("./output/pdf/italian.pdf", data, { language: "IT" });
-const svg = new SwissQRBill.SVG(data, { language: "IT" });
+const pdf = new PDF();
+const stream = createWriteStream("./output/pdf/italian.pdf");
+
+pdf.pipe(stream);
+pdf.addQRBill(new QRBill(data, { language: "IT" }));
+pdf.end();
+
+const svg = new SVG(data, { language: "IT" });
 writeFileSync("./output/svg/italian.svg", svg.toString());

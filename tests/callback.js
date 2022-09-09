@@ -1,4 +1,5 @@
-const SwissQRBill = require("../");
+const { PDF, QRBill } = require("../");
+const { createWriteStream } = require("fs");
 
 const data = {
   currency: "CHF",
@@ -21,6 +22,13 @@ const data = {
   }
 };
 
-const pdf = new SwissQRBill.PDF("./output/pdf/callback.pdf", () => {
+const pdf = new PDF();
+const stream = createWriteStream("./output/pdf/callback.pdf");
+
+stream.on("finish", () => {
   console.log("File has been successfully created.");
-}, data);
+});
+
+pdf.pipe(stream);
+pdf.addQRBill(new QRBill(data));
+pdf.end();

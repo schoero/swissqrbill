@@ -1,17 +1,17 @@
-const fs = require("fs");
-
 const PDFKit = require("pdfkit");
-const SwissQRBill = require("../");
+const { QRBill } = require("../");
+const { createWriteStream } = require("fs");
 
-const stream = fs.createWriteStream("./output/pdf/standalone-pdfkit.pdf");
-const pdf = new PDFKit({ size: "A4", autoFirstPage: false, margin: 0 });
+const stream = createWriteStream("./output/pdf/standalone-pdfkit.pdf");
 
-pdf.pipe(stream);
+const doc = new PDFKit({ size: "A4", autoFirstPage: false, margin: 0 });
 
-pdf.addPage();
-pdf.text("First page");
+doc.pipe(stream);
 
-const bill = new SwissQRBill.QRBill({
+doc.addPage();
+doc.text("First page");
+
+const bill = new QRBill({
   currency: "CHF",
   amount: 1199.95,
   reference: "210000000003139471430009017",
@@ -32,11 +32,11 @@ const bill = new SwissQRBill.QRBill({
   }
 });
 
-bill.attachTo(pdf);
+bill.attachTo(doc);
 
-pdf.addPage();
+doc.addPage();
 
-pdf.text("Second Page");
+doc.text("Second Page");
 
-pdf.end();
+doc.end();
 
