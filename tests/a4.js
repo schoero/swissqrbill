@@ -20,9 +20,9 @@ const bill = new QRBill({
     city: "Rorschach",
     country: "CH"
   }
-});
+}, { size: "A4" });
 
-const pdf = new PDF("A4", { });
+const pdf = new PDF("A4");
 const stream = createWriteStream("./output/pdf/a4.pdf");
 
 pdf.pipe(stream);
