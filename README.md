@@ -32,7 +32,7 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should replace the current payment slips until September 30, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
