@@ -1,6 +1,8 @@
 import { getReferenceType } from "../shared/utils.js";
-import { Data } from "./types";
+
 import { qrcodegen } from "./qr-code-generator.js";
+import { Data } from "./types";
+
 
 export default function generateQRCode(data: Data, size: number): string {
 
@@ -24,7 +26,7 @@ export default function generateQRCode(data: Data, size: number): string {
 
   //-- IBAN
 
-  qrString += "\n" + data.creditor.account ?? "\n";
+  qrString += `\n${data.creditor.account}` ?? "\n";
 
 
   //-- Creditor
@@ -35,19 +37,19 @@ export default function generateQRCode(data: Data, size: number): string {
     qrString += "\nS";
 
     // Name
-    qrString += "\n" + data.creditor.name;
+    qrString += `\n${data.creditor.name}`;
 
     // Address
-    qrString += "\n" + data.creditor.address;
+    qrString += `\n${data.creditor.address}`;
 
     // House number
-    qrString += "\n" + data.creditor.buildingNumber;
+    qrString += `\n${data.creditor.buildingNumber}`;
 
     // Zip
-    qrString += "\n" + data.creditor.zip;
+    qrString += `\n${data.creditor.zip}`;
 
     // City
-    qrString += "\n" + data.creditor.city;
+    qrString += `\n${data.creditor.city}`;
 
   } else {
 
@@ -55,14 +57,14 @@ export default function generateQRCode(data: Data, size: number): string {
     qrString += "\nK";
 
     // Name
-    qrString += "\n" + data.creditor.name;
+    qrString += `\n${data.creditor.name}`;
 
     // Address
-    qrString += "\n" + data.creditor.address;
+    qrString += `\n${data.creditor.address}`;
 
     // Zip + city
-    if((data.creditor.zip + " " + data.creditor.city).length > 70){ throw new Error("Creditor zip plus city must be a maximum of 70 characters."); }
-    qrString += "\n" + data.creditor.zip + " " + data.creditor.city;
+    if(`${data.creditor.zip} ${data.creditor.city}`.length > 70){ throw new Error("Creditor zip plus city must be a maximum of 70 characters."); }
+    qrString += `\n${data.creditor.zip} ${data.creditor.city}`;
 
     // Empty zip field
     qrString += "\n";
@@ -72,7 +74,7 @@ export default function generateQRCode(data: Data, size: number): string {
 
   }
 
-  qrString += "\n" + data.creditor.country;
+  qrString += `\n${data.creditor.country}`;
 
 
   //-- 7 x empty
@@ -89,7 +91,7 @@ export default function generateQRCode(data: Data, size: number): string {
   //-- Amount
 
   if(data.amount !== undefined){
-    qrString += "\n" + data.amount.toFixed(2);
+    qrString += `\n${data.amount.toFixed(2)}`;
   } else {
     qrString += "\n";
   }
@@ -97,7 +99,7 @@ export default function generateQRCode(data: Data, size: number): string {
 
   //-- Currency
 
-  qrString += "\n" + data.currency;
+  qrString += `\n${data.currency}`;
 
 
   //-- Debtor
@@ -109,19 +111,19 @@ export default function generateQRCode(data: Data, size: number): string {
       qrString += "\nS";
 
       // Name
-      qrString += "\n" + data.debtor.name;
+      qrString += `\n${data.debtor.name}`;
 
       // Address
-      qrString += "\n" + data.debtor.address;
+      qrString += `\n${data.debtor.address}`;
 
       // House number
-      qrString += "\n" + data.debtor.buildingNumber;
+      qrString += `\n${data.debtor.buildingNumber}`;
 
       // Zip
-      qrString += "\n" + data.debtor.zip;
+      qrString += `\n${data.debtor.zip}`;
 
       // City
-      qrString += "\n" + data.debtor.city;
+      qrString += `\n${data.debtor.city}`;
 
     } else {
 
@@ -129,14 +131,14 @@ export default function generateQRCode(data: Data, size: number): string {
       qrString += "\nK";
 
       // Name
-      qrString += "\n" + data.debtor.name;
+      qrString += `\n${data.debtor.name}`;
 
       // Address
-      qrString += "\n" + data.debtor.address;
+      qrString += `\n${data.debtor.address}`;
 
       // Zip + city
-      if((data.debtor.zip + " " + data.debtor.city).length > 70){ throw new Error("Debtor zip plus city must be a maximum of 70 characters."); }
-      qrString += "\n" + data.debtor.zip + " " + data.debtor.city;
+      if(`${data.debtor.zip} ${data.debtor.city}`.length > 70){ throw new Error("Debtor zip plus city must be a maximum of 70 characters."); }
+      qrString += `\n${data.debtor.zip} ${data.debtor.city}`;
 
       // Empty field zip
       qrString += "\n";
@@ -147,7 +149,7 @@ export default function generateQRCode(data: Data, size: number): string {
     }
 
     // Country
-    qrString += "\n" + data.debtor.country;
+    qrString += `\n${data.debtor.country}`;
 
   } else {
 
@@ -178,13 +180,13 @@ export default function generateQRCode(data: Data, size: number): string {
 
   //-- Reference type
 
-  qrString += "\n" + getReferenceType(data.reference);
+  qrString += `\n${getReferenceType(data.reference)}`;
 
 
   //-- Reference
 
   if(data.reference !== undefined){
-    qrString += "\n" + data.reference;
+    qrString += `\n${data.reference}`;
   } else {
     qrString += "\n";
   }
@@ -193,7 +195,7 @@ export default function generateQRCode(data: Data, size: number): string {
   //-- Unstructured message
 
   if(data.message !== undefined){
-    qrString += "\n" + data.message;
+    qrString += `\n${data.message}`;
   } else {
     qrString += "\n";
   }
@@ -207,7 +209,7 @@ export default function generateQRCode(data: Data, size: number): string {
   //-- Additional information
 
   if(data.additionalInformation !== undefined){
-    qrString += "\n" + data.additionalInformation;
+    qrString += `\n${data.additionalInformation}`;
   } else {
     qrString += "\n";
   }
@@ -216,11 +218,11 @@ export default function generateQRCode(data: Data, size: number): string {
   //-- AV1
 
   if(data.av1 !== undefined){
-    qrString += "\n" + data.av1;
+    qrString += `\n${data.av1}`;
   }
 
   if(data.av2 !== undefined){
-    qrString += "\n" + data.av2;
+    qrString += `\n${data.av2}`;
   }
 
 
@@ -231,7 +233,7 @@ export default function generateQRCode(data: Data, size: number): string {
   const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM);
 
   const blockSize = size / qrCode.size;
-  const parts: Array<string> = [];
+  const parts: string[] = [];
 
   for(let x = 0; x < qrCode.size; x++){
     const xPos = x * blockSize;

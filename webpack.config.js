@@ -1,14 +1,15 @@
 const webpack = require("webpack");
 
+
 module.exports = {
+  devtool: "inline-source-map",
   entry: "./src/browser/bundle.ts",
-  target: "web",
   module: {
     rules: [
       {
+        exclude: /node_modules/,
         test: /\.(js|ts)?$/,
-        use: "ts-loader",
-        exclude: /node_modules/
+        use: "ts-loader"
       },
       // bundle and load afm files verbatim
       {
@@ -18,55 +19,55 @@ module.exports = {
       // convert to base64 and include inline file system binary files used by fontkit and linebreak
       {
         enforce: "post",
-        test: /fontkit[/\\]index.js$/,
         loader: "transform-loader",
         options: {
           brfs: {}
-        }
+        },
+        test: /fontkit[/\\]index.js$/
       },
       {
         enforce: "post",
-        test: /linebreak[/\\]src[/\\]linebreaker.js/,
         loader: "transform-loader",
         options: {
           brfs: {}
-        }
+        },
+        test: /linebreak[/\\]src[/\\]linebreaker.js/
       }
     ]
   },
-  devtool: "inline-source-map",
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      // maps fs to a virtual one allowing to register file content dynamically
-      fs: "pdfkit/js/virtual-fs.js",
-      // iconv-lite is used to load cid less fonts (not spec compliant)
-      "iconv-lite": false
-    },
-    fallback: {
-      crypto: false,
-      stream: require.resolve("readable-stream"),
-      util: require.resolve("util"),
-      buffer: require.resolve("buffer"),
-      zlib: require.resolve("browserify-zlib"),
-      assert: require.resolve("assert/")
-    }
+  output: {
+    filename: "index.js",
+    library: "SwissQRBill",
+    libraryTarget: "umd",
+    path: `${__dirname}/lib/browser/bundle/`
   },
   plugins: [
     new webpack.ProvidePlugin({
-      process: "process/browser",
-      Buffer: ["buffer", "Buffer"]
+      Buffer: ["buffer", "Buffer"],
+      process: "process/browser"
     }),
-    new webpack.NormalModuleReplacementPlugin(new RegExp(/\.js$/), function(resource) {
+    new webpack.NormalModuleReplacementPlugin(new RegExp(/\.js$/), resource => {
       if(resource.context.includes("node_modules") !== true){
         resource.request = resource.request.replace(".js", "");
       }
     })
   ],
-  output: {
-    filename: "index.js",
-    path: __dirname + "/lib/browser/bundle/",
-    libraryTarget: "umd",
-    library: "SwissQRBill"
-  }
+  resolve: {
+    alias: {
+      // maps fs to a virtual one allowing to register file content dynamically
+      "fs": "pdfkit/js/virtual-fs.js",
+      // iconv-lite is used to load cid less fonts (not spec compliant)
+      "iconv-lite": false
+    },
+    extensions: [".tsx", ".ts", ".js"],
+    fallback: {
+      assert: require.resolve("assert/"),
+      buffer: require.resolve("buffer"),
+      crypto: false,
+      stream: require.resolve("readable-stream"),
+      util: require.resolve("util"),
+      zlib: require.resolve("browserify-zlib")
+    }
+  },
+  target: "web"
 };

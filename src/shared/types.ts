@@ -1,17 +1,20 @@
-
-
 //-- PDF types
 
-export { PDFTable, PDFRow, PDFColumn } from "../pdf/extended-pdf";
+export { PDFColumn, PDFRow, PDFTable } from "../pdf/extended-pdf";
 
 
 //-- SwissQRBill types
 
 export type Currency = "CHF" | "EUR";
 export type Size = "A4" | "A6/5";
-export type Languages = "DE" | "EN" | "IT" | "FR";
+export type Languages = "DE" | "EN" | "FR" | "IT";
 
 export interface Data {
+
+  /**
+   * Creditor related data.
+   */
+  creditor: Creditor;
 
   /**
    * The currency to be used. **3 characters.**
@@ -19,28 +22,15 @@ export interface Data {
   currency: Currency;
 
   /**
-   * The amount. **Max. 12 digits.**
-   */
-  amount?: number;
-
-  /**
-   * A reference number. **Max 27 characters.**
-   * > QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
-   *   Creditor Reference (ISO 11649): Maximum 25 characters.
-   */
-  reference?: string;
-
-  /**
-   * A message. **Max. 140 characters.**
-   * > message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference.
-   */
-  message?: string;
-
-  /**
    * Additional information. **Max 140 characters.**
    * > Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment.
    */
   additionalInformation?: string;
+
+  /**
+   * The amount. **Max. 12 digits.**
+   */
+  amount?: number;
 
   /**
    * Alternative scheme. **Max. 100 characters.**
@@ -55,37 +45,30 @@ export interface Data {
   av2?: string;
 
   /**
-   * Creditor related data.
-   */
-  creditor: Creditor;
-
-  /**
    * Debtor related data.
    */
   debtor?: Debtor;
+
+  /**
+   * A message. **Max. 140 characters.**
+   * > message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference.
+   */
+  message?: string;
+
+  /**
+   * A reference number. **Max 27 characters.**
+   * > QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
+   *   Creditor Reference (ISO 11649): Maximum 25 characters.
+   */
+  reference?: string;
 }
 
 export interface Debtor {
 
   /**
-   * Name. **Max. 70 characters.**
-   */
-  name: string;
-
-  /**
    * Address. **Max 70 characters.**
    */
   address: string;
-
-  /**
-   * Building number. **Max 16 characters.**
-   */
-  buildingNumber?: string | number;
-
-  /**
-   * Postal code. **Max 16 characters.**
-   */
-  zip: string | number;
 
   /**
    * City. **Max 35 characters.**
@@ -96,6 +79,21 @@ export interface Debtor {
    * Country code. **2 characters.**
    */
   country: string;
+
+  /**
+   * Name. **Max. 70 characters.**
+   */
+  name: string;
+
+  /**
+   * Postal code. **Max 16 characters.**
+   */
+  zip: number | string;
+
+  /**
+   * Building number. **Max 16 characters.**
+   */
+  buildingNumber?: number | string;
 }
 
 export interface Creditor extends Debtor {
@@ -109,16 +107,22 @@ export interface Creditor extends Debtor {
 export interface PDFOptions {
 
   /**
+   *  Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
+   * @defaultValue `true`
+   */
+  autoGenerate?: boolean;
+
+  /**
    * The language with which the bill is rendered.
    * @defaultValue `DE`
    */
   language?: Languages;
 
   /**
-   * The page size.
-   * @defaultValue `"A6/5"`
+   *  Whether you want render the outlines. This option may be disabled if you use perforated paper.
+   * @defaultValue `true`
    */
-  size?: Size;
+  outlines?: boolean;
 
   /**
    *  Whether you want to show the scissors icons or the text `Separate before paying in`.
@@ -135,16 +139,10 @@ export interface PDFOptions {
   separate?: boolean;
 
   /**
-   *  Whether you want render the outlines. This option may be disabled if you use perforated paper.
-   * @defaultValue `true`
+   * The page size.
+   * @defaultValue `"A6/5"`
    */
-  outlines?: boolean;
-
-  /**
-   *  Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-   * @defaultValue `true`
-   */
-  autoGenerate?: boolean;
+  size?: Size;
 }
 
 export interface SVGOptions {

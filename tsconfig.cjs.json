@@ -2,8 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "outDir": "./lib/node/cjs",
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "outDir": "./lib/node/cjs"
   },
   "include": ["src"],
   "exclude": [

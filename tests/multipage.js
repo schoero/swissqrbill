@@ -1,48 +1,49 @@
 const SwissQRBill = require("../");
 
+
 const data = {
-  currency: "CHF",
   amount: 1199.95,
-  reference: "210000000003139471430009017",
   creditor: {
-    name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
-    zip: 2501,
-    city: "Biel",
     account: "CH4431999123000889012",
-    country: "CH"
+    address: "Rue du Lac 1268",
+    city: "Biel",
+    country: "CH",
+    name: "Robert Schneider AG",
+    zip: 2501
   },
+  currency: "CHF",
   debtor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse 28",
-    zip: 9400,
     city: "Rorschach",
-    country: "CH"
-  }
+    country: "CH",
+    name: "Pia-Maria Rutschmann-Schnyder",
+    zip: 9400
+  },
+  reference: "210000000003139471430009017"
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/multipage.pdf", { "autoGenerate": false, "size": "A4" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/multipage.pdf", { autoGenerate: false, size: "A4" });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");
 
 pdf.text("PAGE 1", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
-  width: SwissQRBill.utils.mm2pt(210),
-  align: "center"
+  align: "center",
+  width: SwissQRBill.utils.mm2pt(210)
 });
 
 pdf.addPage();
 
 pdf.text("PAGE 2", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
-  width: SwissQRBill.utils.mm2pt(210),
-  align: "center"
+  align: "center",
+  width: SwissQRBill.utils.mm2pt(210)
 });
 
 pdf.addPage();
 
 pdf.text("PAGE 3", SwissQRBill.utils.mm2pt(5), SwissQRBill.utils.mm2pt(20), {
-  width: SwissQRBill.utils.mm2pt(210),
-  align: "center"
+  align: "center",
+  width: SwissQRBill.utils.mm2pt(210)
 });
 
 pdf.addQRBill();

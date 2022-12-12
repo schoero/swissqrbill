@@ -1,92 +1,93 @@
 import PDFDocument from "pdfkit";
 import svgpath from "svgpath";
 
+
 export interface PDFTable {
   /** Table rows. */
-  rows: Array<PDFRow>;
+  rows: PDFRow[];
+  /** Horizontal alignment of texts inside the table */
+  align?: "center" | "left" | "right";
+  /**  Width of the borders of the row. */
+  border?: number | [top: number, right?: number, bottom?: number, left?: number];
+  /** The colors of the border */
+  borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  /**  Font of the text inside the table. */
+  font?: string;
+  /** Font color of texts inside table. */
+  fontColor?: string;
+  /** Font size of the text inside the table. */
+  fontSize?: number;
+  /** Cell padding of the table cells. */
+  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  /**  Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
+  textOptions?: PDFKit.Mixins.TextOptions;
+  /** Vertical alignment of texts inside the table */
+  verticalAlign?: "bottom" | "middle" | "top";
   /** Width of whole table. */
   width?: number;
   /**  Horizontal start position of the table. */
   x?: number;
   /**  Vertical start position of the table. */
   y?: number;
-  /**  Width of the borders of the row. */
-  border?: number | [top: number, right?: number, bottom?: number, left?: number];
-  /** The colors of the border */
-  borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
-  /** Cell padding of the table cells. */
-  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
-  /**  Font of the text inside the table. */
-  font?: string;
-  /** Font size of the text inside the table. */
-  fontSize?: number;
-  /** Font color of texts inside table. */
-  fontColor?: string;
-  /** Horizontal alignment of texts inside the table */
-  align?: "left" | "center" | "right";
-  /** Vertical alignment of texts inside the table */
-  verticalAlign?: "top" | "middle" | "bottom";
-  /**  Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
-  textOptions?: PDFKit.Mixins.TextOptions;
 }
 export interface PDFRow {
   /** Table columns. */
-  columns: Array<PDFColumn>;
+  columns: PDFColumn[];
+  /** Horizontal alignment of texts inside the row */
+  align?: "center" | "left" | "right";
   /** Background color of the row. */
   backgroundColor?: string;
   /** Width of the borders of the row. */
   border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
-  /**  Height of the row. Overrides minHeight and maxHeight */
-  height?: number;
-  /** Minimum height of the row */
-  minHeight?: number;
-  /** Maximum height of the row */
-  maxHeight?: number;
-  /**  Cell padding of the table cells inside the row. */
-  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** Font of the text inside the row. */
   font?: string;
-  /** Font size of the text inside the row. */
-  fontSize?: number;
   /** Font color of texts inside the row. */
   fontColor?: string;
-  /** Horizontal alignment of texts inside the row */
-  align?: "left" | "center" | "right";
-  /** Vertical alignment of texts inside the row */
-  verticalAlign?: "top" | "middle" | "bottom";
-  /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
-  textOptions?: PDFKit.Mixins.TextOptions;
+  /** Font size of the text inside the row. */
+  fontSize?: number;
   /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
   header?: boolean;
+  /**  Height of the row. Overrides minHeight and maxHeight */
+  height?: number;
+  /** Maximum height of the row */
+  maxHeight?: number;
+  /** Minimum height of the row */
+  minHeight?: number;
+  /**  Cell padding of the table cells inside the row. */
+  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
+  textOptions?: PDFKit.Mixins.TextOptions;
+  /** Vertical alignment of texts inside the row */
+  verticalAlign?: "bottom" | "middle" | "top";
 }
 
 export interface PDFColumn {
   /** Cell text. */
-  text: string | number | boolean;
-  /** Width of the cell. */
-  width?: number;
+  text: boolean | number | string;
+  /** Horizontal alignment of the text inside the cell */
+  align?: "center" | "left" | "right";
+  /** Background color of the cell. */
+  backgroundColor?: string;
   /**  Width of the borders of the row. */
   border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
-  /** Cell padding of the table cell. */
-  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
-  /** Background color of the cell. */
-  backgroundColor?: string;
   /** Font of the text inside the cell. */
   font?: string;
-  /** Font size of the text inside the cell. */
-  fontSize?: number;
   /** Font color of texts inside the cell. */
   fontColor?: string;
-  /** Horizontal alignment of the text inside the cell */
-  align?: "left" | "center" | "right";
-  /** Vertical alignment of the text inside the cell */
-  verticalAlign?: "top" | "middle" | "bottom";
+  /** Font size of the text inside the cell. */
+  fontSize?: number;
+  /** Cell padding of the table cell. */
+  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
+  /** Vertical alignment of the text inside the cell */
+  verticalAlign?: "bottom" | "middle" | "top";
+  /** Width of the cell. */
+  width?: number;
 }
 
 export class ExtendedPDF extends PDFDocument {
@@ -174,7 +175,7 @@ export class ExtendedPDF extends PDFDocument {
     const baseFont = table.font ? table.font : "Helvetica";
     const baseAlign = table.align ? table.align : undefined;
     const baseVerticalAlign = table.verticalAlign ? table.verticalAlign : "top";
-    const autoRowHeights: Array<number> = [];
+    const autoRowHeights: number[] = [];
 
     for(let layer = 0; layer < 5; layer++){ // 5 layers: height calculation, page calculation, background, border, text
 
@@ -191,7 +192,7 @@ export class ExtendedPDF extends PDFDocument {
 
       //-- Render table
 
-      rowLoop: for(let rowIndex = 0; rowIndex < table.rows.length; rowIndex ++){
+      rowLoop: for(let rowIndex = 0; rowIndex < table.rows.length; rowIndex++){
 
         const row = table.rows[rowIndex];
 
@@ -236,14 +237,14 @@ export class ExtendedPDF extends PDFDocument {
           for(const rowColumn of row.columns){
             if(rowColumn.width !== undefined){
               widthUsed += rowColumn.width;
-              remainingColumns --;
+              remainingColumns--;
             }
           }
 
 
           //-- Set properties
 
-          const columnWidth = column.width ? column.width : (tableWidth - widthUsed) / (remainingColumns);
+          const columnWidth = column.width ? column.width : (tableWidth - widthUsed) / remainingColumns;
           const columnPadding = column.padding ? column.padding : rowPadding;
           const columnBackgroundColor = column.backgroundColor ? column.backgroundColor : rowBackgroundColor;
           const columnBorder = column.border ? column.border : rowBorder;
@@ -264,10 +265,10 @@ export class ExtendedPDF extends PDFDocument {
           //-- Apply text options
 
           const textOptions: PDFKit.Mixins.TextOptions = {
-            width: columnWidth - (paddings.left ?? 0) - (paddings.right ?? 0),
-            lineBreak: true,
+            baseline: "middle",
             height: rowHeight !== undefined ? rowHeight - (paddings.top ?? 0) - (paddings.bottom ?? 0) : undefined,
-            baseline: "middle"
+            lineBreak: true,
+            width: columnWidth - (paddings.left ?? 0) - (paddings.right ?? 0)
           };
 
           if(column.textOptions !== undefined){
@@ -284,7 +285,7 @@ export class ExtendedPDF extends PDFDocument {
           this.font(columnFont);
           this.fontSize(columnFontSize);
 
-          const textHeight = this.heightOfString(column.text + "", textOptions);
+          const textHeight = this.heightOfString(`${column.text}`, textOptions);
           const singleLineHeight = this.heightOfString("A", textOptions);
 
 
@@ -335,7 +336,7 @@ export class ExtendedPDF extends PDFDocument {
               for(const headerRow of table.rows){
                 if(headerRow.header === true){
                   table.rows.splice(rowIndex, 0, headerRow);
-                  rowIndex --;
+                  rowIndex--;
                   continue rowLoop;
                 }
               }
@@ -374,21 +375,21 @@ export class ExtendedPDF extends PDFDocument {
             let textPosY = rowY;
 
             if(columnVerticalAlign === "top"){
-              textPosY = rowY + (paddings.top ?? 0) + (singleLineHeight / 2);
+              textPosY = rowY + (paddings.top ?? 0) + singleLineHeight / 2;
             } else if(columnVerticalAlign === "middle"){
-              textPosY = rowY + (rowHeight / 2) - (textHeight / 2) + (singleLineHeight / 2);
+              textPosY = rowY + rowHeight / 2 - textHeight / 2 + singleLineHeight / 2;
             } else if(columnVerticalAlign === "bottom"){
-              textPosY = rowY + rowHeight - (paddings.bottom ?? 0) - textHeight + (singleLineHeight / 2);
+              textPosY = rowY + rowHeight - (paddings.bottom ?? 0) - textHeight + singleLineHeight / 2;
             }
 
-            if(textPosY < rowY + (paddings.top ?? 0) + (singleLineHeight / 2)){
-              textPosY = rowY + (paddings.top ?? 0) + (singleLineHeight / 2);
+            if(textPosY < rowY + (paddings.top ?? 0) + singleLineHeight / 2){
+              textPosY = rowY + (paddings.top ?? 0) + singleLineHeight / 2;
             }
 
             this.fillColor(columnFontColor)
               .fillOpacity(1);
 
-            this.text(column.text + "", columnX + (paddings.left ?? 0), textPosY, textOptions);
+            this.text(`${column.text}`, columnX + (paddings.left ?? 0), textPosY, textOptions);
 
           }
 
@@ -504,21 +505,21 @@ export class ExtendedPDF extends PDFDocument {
   }
 
 
-  private _positionsToObject<T extends string | number>(numberOrPositions: T | [top: T, right?: T, bottom?: T, left?: T]): { top?: T; right?: T; bottom?: T; left?: T; } {
+  private _positionsToObject<T extends number | string>(numberOrPositions: T | [top: T, right?: T, bottom?: T, left?: T]): { bottom?: T; left?: T; right?: T; top?: T; } {
 
     if(typeof numberOrPositions === "number" || typeof numberOrPositions === "string"){
       return {
-        top: numberOrPositions,
-        right: numberOrPositions,
         bottom: numberOrPositions,
-        left: numberOrPositions
+        left: numberOrPositions,
+        right: numberOrPositions,
+        top: numberOrPositions
       };
     } else {
       return {
-        top: numberOrPositions[0],
-        right: numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
         bottom: numberOrPositions[2] ? numberOrPositions[2] : numberOrPositions[0],
-        left: numberOrPositions[3] ? numberOrPositions[3] : numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0]
+        left: numberOrPositions[3] ? numberOrPositions[3] : numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
+        right: numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
+        top: numberOrPositions[0]
       };
     }
 

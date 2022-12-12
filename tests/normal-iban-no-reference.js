@@ -1,25 +1,27 @@
-const SwissQRBill = require("../");
 const { writeFileSync } = require("fs");
 
+const SwissQRBill = require("../");
+
+
 const data = {
-  currency: "CHF",
   amount: 1199.95,
-  reference: "RF18539007547034",
   creditor: {
-    name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
-    zip: 2501,
-    city: "Biel",
     account: "CH5800791123000889012",
-    country: "CH"
+    address: "Rue du Lac 1268",
+    city: "Biel",
+    country: "CH",
+    name: "Robert Schneider AG",
+    zip: 2501
   },
+  currency: "CHF",
   debtor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse 28",
-    zip: 9400,
     city: "Rorschach",
-    country: "CH"
-  }
+    country: "CH",
+    name: "Pia-Maria Rutschmann-Schnyder",
+    zip: 9400
+  },
+  reference: "RF18539007547034"
 };
 
 const pdf = new SwissQRBill.PDF(data, "./output/pdf/normal-iban-no-reference.pdf");

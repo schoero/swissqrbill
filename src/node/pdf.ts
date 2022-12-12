@@ -1,18 +1,19 @@
 import { createWriteStream } from "fs";
 import { Writable } from "stream";
+
 import { PDF_ } from "../pdf/pdf.js";
-import { PDFOptions, Data } from "../shared/types.js";
+import { Data, PDFOptions } from "../shared/types.js";
 
 
 export class PDF extends PDF_ {
 
-  constructor(data: Data, outputPath: string, options?: PDFOptions)
-  constructor(data: Data, writableStream: Writable, options?: PDFOptions)
-  constructor(data: Data, outputPath: string, options?: PDFOptions, callback?: Function)
-  constructor(data: Data, writableStream: Writable, options?: PDFOptions, callback?: Function)
-  constructor(data: Data, outputPath: string, callback?: Function)
-  constructor(data: Data, writableStream: Writable, callback?: Function)
-  constructor(data: Data, outputPathOrWritableStream: string | Writable, optionsOrCallback?: PDFOptions | Function, callbackOrUndefined?: Function | undefined) {
+  constructor(data: Data, outputPath: string, options?: PDFOptions);
+  constructor(data: Data, writableStream: Writable, options?: PDFOptions);
+  constructor(data: Data, outputPath: string, options?: PDFOptions, callback?: Function);
+  constructor(data: Data, writableStream: Writable, options?: PDFOptions, callback?: Function);
+  constructor(data: Data, outputPath: string, callback?: Function);
+  constructor(data: Data, writableStream: Writable, callback?: Function);
+  constructor(data: Data, outputPathOrWritableStream: Writable | string, optionsOrCallback?: Function | PDFOptions, callbackOrUndefined?: Function | undefined) {
 
     let callback: Function | undefined = undefined;
     let options: PDFOptions | undefined = undefined;

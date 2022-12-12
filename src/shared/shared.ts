@@ -1,10 +1,10 @@
-import { isQRIBAN, isQRReference, isIBANValid, isQRReferenceValid } from "./utils.js";
 import { Creditor, Data, Debtor } from "./types";
+import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils.js";
 
 
 export function cleanData(data: Data): Data {
 
-  const _cleanObject = (object: Data | Creditor | Debtor): void => {
+  const _cleanObject = (object: Creditor | Data | Debtor): void => {
 
     const keys = Object.keys(object);
 
@@ -201,7 +201,7 @@ export function validateData(data: Data) {
 
     if(data.debtor.country === undefined){ throw new Error("Debtor country cannot be undefined if the debtor object is available."); }
     if(typeof data.debtor.country !== "string"){ throw new Error("Debtor country must be a string."); }
-    if((data.debtor.country).length !== 2){ throw new Error("Debtor country must be 2 characters."); }
+    if(data.debtor.country.length !== 2){ throw new Error("Debtor country must be 2 characters."); }
 
   }
 

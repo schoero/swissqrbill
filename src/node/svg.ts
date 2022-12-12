@@ -1,5 +1,5 @@
+import { Data, SVGOptions } from "../shared/types.js";
 import { SVG_ } from "../svg/svg.js";
-import { SVGOptions, Data } from "../shared/types.js";
 
 
 export class SVG extends SVG_ {

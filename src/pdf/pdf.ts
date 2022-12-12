@@ -1,9 +1,10 @@
-import { ExtendedPDF } from "./extended-pdf.js";
-import { Size, Data, Languages, PDFOptions, Debtor, Creditor } from "../shared/types";
-import { validateData, cleanData } from "../shared/shared.js";
-import * as utils from "../shared/utils.js";
-import translations from "../shared/translations.js";
 import generateQRCode from "../shared/qr-code.js";
+import { cleanData, validateData } from "../shared/shared.js";
+import translations from "../shared/translations.js";
+import { Creditor, Data, Debtor, Languages, PDFOptions, Size } from "../shared/types";
+import * as utils from "../shared/utils.js";
+
+import { ExtendedPDF } from "./extended-pdf.js";
 
 
 export class PDF_ extends ExtendedPDF {
@@ -85,8 +86,8 @@ export class PDF_ extends ExtendedPDF {
 
     if(options === undefined){
       options = {
-        margin: utils.mm2pt(5),
         layout: this.size === "A4" ? "portrait" : "landscape",
+        margin: utils.mm2pt(5),
         size: this.size === "A4" ? this.size : [utils.mm2pt(105), utils.mm2pt(210)]
       };
     }
@@ -111,8 +112,8 @@ export class PDF_ extends ExtendedPDF {
 
     if(this.page.height - this.y < utils.mm2pt(105) && this.y !== this.page.margins.top){
       this.addPage({
-        margin: 0,
         layout: size === "A4" ? "portrait" : "landscape",
+        margin: 0,
         size: size === "A4" ? size : [utils.mm2pt(105), utils.mm2pt(210)]
       });
     }
@@ -192,8 +193,8 @@ export class PDF_ extends ExtendedPDF {
         this.fontSize(11);
         this.font("Helvetica");
         this.text(translations[this._language].separate, utils.mm2pt(0), this._marginTop - 12, {
-          width: utils.mm2pt(210),
-          align: "center"
+          align: "center",
+          width: utils.mm2pt(210)
         });
 
       }
@@ -206,15 +207,15 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(11);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].receipt, utils.mm2pt(5), this._marginTop + utils.mm2pt(5), {
-      width: utils.mm2pt(52),
-      align: "left"
+      align: "left",
+      width: utils.mm2pt(52)
     });
 
     this.fontSize(6);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].account, utils.mm2pt(5), this._marginTop + utils.mm2pt(12) + 3, {
-      width: utils.mm2pt(52),
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(52)
     });
 
 
@@ -223,8 +224,8 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(8);
     this.font("Helvetica");
     this.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
-      width: utils.mm2pt(52),
-      lineGap: -.5
+      lineGap: -.5,
+      width: utils.mm2pt(52)
     });
 
     this.moveDown();
@@ -237,15 +238,15 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(6);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].reference, {
-        width: utils.mm2pt(52),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(52)
       });
 
       this.fontSize(8);
       this.font("Helvetica");
       this.text(utils.formatReference(this._data.reference), {
-        width: utils.mm2pt(52),
-        lineGap: -.5
+        lineGap: -.5,
+        width: utils.mm2pt(52)
       });
 
     }
@@ -261,15 +262,15 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(6);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].payableBy, {
-        width: utils.mm2pt(52),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(52)
       });
 
       this.fontSize(8);
       this.font("Helvetica");
       this.text(this._formatAddress(this._data.debtor), {
-        width: utils.mm2pt(52),
-        lineGap: -.5
+        lineGap: -.5,
+        width: utils.mm2pt(52)
       });
 
     } else {
@@ -280,8 +281,8 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(6);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].payableByName, {
-        width: utils.mm2pt(52),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(52)
       });
 
 
@@ -297,28 +298,28 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(6);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(68), {
-      width: utils.mm2pt(15),
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(15)
     });
 
     const amountXPosition = this._data.amount === undefined ? 18 : 27;
 
     this.text(translations[this._language].amount, utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(68), {
-      width: utils.mm2pt(52 - amountXPosition),
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(52 - amountXPosition)
     });
 
     this.fontSize(8);
     this.font("Helvetica");
     this.text(this._data.currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(71), {
-      width: utils.mm2pt(15),
-      lineGap: -.5
+      lineGap: -.5,
+      width: utils.mm2pt(15)
     });
 
     if(this._data.amount !== undefined){
       this.text(utils.formatAmount(this._data.amount), utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(71), {
-        width: utils.mm2pt(52 - amountXPosition),
-        lineGap: -.5
+        lineGap: -.5,
+        width: utils.mm2pt(52 - amountXPosition)
       });
     } else {
       this._addRectangle(27, 68, 30, 10);
@@ -327,9 +328,9 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(6);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].acceptancePoint, utils.mm2pt(5), this._marginTop + utils.mm2pt(82), {
-      width: utils.mm2pt(52),
       align: "right",
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(52)
     });
 
 
@@ -338,9 +339,9 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(11);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].paymentPart, utils.mm2pt(67), this._marginTop + utils.mm2pt(5), {
-      width: utils.mm2pt(51),
       align: "left",
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(51)
     });
 
 
@@ -355,8 +356,8 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(8);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(68), {
-      width: utils.mm2pt(15),
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(15)
     });
 
     this.text(translations[this._language].amount, utils.mm2pt(89), this._marginTop + utils.mm2pt(68), {
@@ -366,14 +367,14 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(10);
     this.font("Helvetica");
     this.text(this._data.currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(72), {
-      width: utils.mm2pt(15),
-      lineGap: -.5
+      lineGap: -.5,
+      width: utils.mm2pt(15)
     });
 
     if(this._data.amount !== undefined){
       this.text(utils.formatAmount(this._data.amount), utils.mm2pt(89), this._marginTop + utils.mm2pt(72), {
-        width: utils.mm2pt(29),
-        lineGap: -.5
+        lineGap: -.5,
+        width: utils.mm2pt(29)
       });
     } else {
       this._addRectangle(78, 72, 40, 15);
@@ -389,13 +390,13 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(7);
       this.font("Helvetica-Bold");
       this.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(90), {
-        width: utils.mm2pt(138),
         continued: true,
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(138)
       });
 
       this.font("Helvetica");
-      this.text(this._data.av1.length > 90 ? data.substr(0, 87) + "..." : data, {
+      this.text(this._data.av1.length > 90 ? `${data.substr(0, 87)}...` : data, {
         continued: false
       });
 
@@ -408,13 +409,13 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(7);
       this.font("Helvetica-Bold");
       this.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(93), {
-        width: utils.mm2pt(138),
         continued: true,
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(138)
       });
 
       this.font("Helvetica");
-      this.text(this._data.av2.length > 90 ? data.substr(0, 87) + "..." : data, {
+      this.text(this._data.av2.length > 90 ? `${data.substr(0, 87)}...` : data, {
         lineGap: -.5
       });
 
@@ -426,15 +427,15 @@ export class PDF_ extends ExtendedPDF {
     this.fontSize(8);
     this.font("Helvetica-Bold");
     this.text(translations[this._language].account, utils.mm2pt(118), this._marginTop + utils.mm2pt(5) + 3, {
-      width: utils.mm2pt(87),
-      lineGap: 1
+      lineGap: 1,
+      width: utils.mm2pt(87)
     });
 
     this.fontSize(10);
     this.font("Helvetica");
     this.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
-      width: utils.mm2pt(87),
-      lineGap: -.75
+      lineGap: -.75,
+      width: utils.mm2pt(87)
     });
 
     this.moveDown();
@@ -444,15 +445,15 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(8);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].reference, {
-        width: utils.mm2pt(87),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(87)
       });
 
       this.fontSize(10);
       this.font("Helvetica");
       this.text(utils.formatReference(this._data.reference), {
-        width: utils.mm2pt(87),
-        lineGap: -.75
+        lineGap: -.75,
+        width: utils.mm2pt(87)
       });
 
       this.moveDown();
@@ -467,16 +468,16 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(8);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].additionalInformation, {
-        width: utils.mm2pt(87),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(87)
       });
 
       this.fontSize(10);
       this.font("Helvetica");
 
       const options = {
-        width: utils.mm2pt(87),
-        lineGap: -.75
+        lineGap: -.75,
+        width: utils.mm2pt(87)
       };
 
       const singleLineHeight = this.heightOfString("A", options);
@@ -491,7 +492,7 @@ export class PDF_ extends ExtendedPDF {
           // QRR and SCOR have 1 line for the message and 2 lines for the additional information
 
           if(this._data.message !== undefined){
-            this.text(this._data.message, { ...options, lineBreak: false, ellipsis: true, height: singleLineHeight });
+            this.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight, lineBreak: false });
           }
 
         } else {
@@ -500,7 +501,7 @@ export class PDF_ extends ExtendedPDF {
 
           if(this._data.message !== undefined){
             const maxLinesOfMessage = maxLines - linesOfAdditionalInformation;
-            this.text(this._data.message, { ...options, height: singleLineHeight * maxLinesOfMessage, lineBreak: true, ellipsis: true });
+            this.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLinesOfMessage, lineBreak: true });
           }
 
         }
@@ -508,7 +509,7 @@ export class PDF_ extends ExtendedPDF {
         this.text(this._data.additionalInformation, options);
 
       } else if(this._data.message !== undefined){
-        this.text(this._data.message, { ...options, height: singleLineHeight * maxLines, lineBreak: true, ellipsis: true });
+        this.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLines, lineBreak: true });
       }
 
       this.moveDown();
@@ -520,15 +521,15 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(8);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].payableBy, {
-        width: utils.mm2pt(87),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(87)
       });
 
       this.fontSize(10);
       this.font("Helvetica");
       this.text(this._formatAddress(this._data.debtor), {
-        width: utils.mm2pt(87),
-        lineGap: -.75
+        lineGap: -.75,
+        width: utils.mm2pt(87)
       });
 
     } else {
@@ -536,8 +537,8 @@ export class PDF_ extends ExtendedPDF {
       this.fontSize(8);
       this.font("Helvetica-Bold");
       this.text(translations[this._language].payableByName, {
-        width: utils.mm2pt(87),
-        lineGap: 1
+        lineGap: 1,
+        width: utils.mm2pt(87)
       });
 
       this._addRectangle(118, utils.pt2mm(this.y - this._marginTop), 65, 25);
@@ -578,8 +579,8 @@ export class PDF_ extends ExtendedPDF {
   }
 
 
-  private _formatAddress(data: Debtor | Creditor): string {
-    const countryPrefix = data.country !== "CH" ? data.country + " - " : "";
+  private _formatAddress(data: Creditor | Debtor): string {
+    const countryPrefix = data.country !== "CH" ? `${data.country} - ` : "";
     if(data.buildingNumber !== undefined){
       return `${data.name}\n${data.address} ${data.buildingNumber}\n${countryPrefix}${data.zip} ${data.city}`;
     }

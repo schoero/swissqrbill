@@ -1,5 +1,3 @@
-
-
 /**
  * Checks whether the given iban is a QR-IBAN or not.
  *
@@ -9,7 +7,7 @@
 export function isQRIBAN(iban: string): boolean {
   iban = iban.replace(/ /g, "");
   const QRIID = iban.substr(4, 5);
-  return (+QRIID >= 30000 && +QRIID <= 31999);
+  return +QRIID >= 30000 && +QRIID <= 31999;
 }
 
 
@@ -41,7 +39,7 @@ export function isIBANValid(iban: string): boolean {
     const charCode = ibanArr[i].charCodeAt(0);
 
     if(charCode >= A){
-      ibanArr[i] = charCode - A + 10 + "";
+      ibanArr[i] = `${charCode - A + 10}`;
     }
 
   }
@@ -212,12 +210,12 @@ export function formatAmount(amount: number): string {
   for(let x = amountArray[0].length - 1, i = 1; x >= 0; x--, i++){
     formattedAmountWithoutDecimals = amountArray[0][x] + formattedAmountWithoutDecimals;
     if(i === 3){
-      formattedAmountWithoutDecimals = " " + formattedAmountWithoutDecimals;
+      formattedAmountWithoutDecimals = ` ${formattedAmountWithoutDecimals}`;
       i = 0;
     }
   }
 
-  return formattedAmountWithoutDecimals.trim() + "." + amountArray[1];
+  return `${formattedAmountWithoutDecimals.trim()}.${amountArray[1]}`;
 
 }
 
@@ -266,7 +264,7 @@ export function px2mm(pixels: number): number {
 }
 
 
-export function getReferenceType(reference: string | undefined): "QRR" | "SCOR" | "NON" {
+export function getReferenceType(reference: string | undefined): "NON" | "QRR" | "SCOR" {
   if(typeof reference === "undefined"){
     return "NON";
   } else if(isQRReference(reference)){

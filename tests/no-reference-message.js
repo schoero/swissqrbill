@@ -1,27 +1,29 @@
-const SwissQRBill = require("../");
 const { writeFileSync } = require("fs");
 
+const SwissQRBill = require("../");
+
+
 const data = {
-  currency: "CHF",
   amount: 1199.95,
-  message: "Invoice number 12345 from order number 12345 on may 3rd 2021.",
   creditor: {
-    name: "Robert Schneider AG",
-    address: "Rue du Lac 1268",
-    zip: 2501,
-    city: "Biel",
     account: "CH5800791123000889012",
-    country: "CH"
+    address: "Rue du Lac 1268",
+    city: "Biel",
+    country: "CH",
+    name: "Robert Schneider AG",
+    zip: 2501
   },
+  currency: "CHF",
   debtor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse 28",
-    zip: 9400,
     city: "Rorschach",
-    country: "CH"
-  }
+    country: "CH",
+    name: "Pia-Maria Rutschmann-Schnyder",
+    zip: 9400
+  },
+  message: "Invoice number 12345 from order number 12345 on may 3rd 2021."
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-reference-message.pdf", { "size": "A6/5" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-reference-message.pdf", { size: "A6/5" });
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/no-reference-message.svg", svg.toString());

@@ -1,10 +1,13 @@
-import { Data, Languages, Debtor, Creditor, SVGOptions } from "../shared/types";
-import { validateData, cleanData } from "../shared/shared.js";
-import { calculateTextWidth } from "./characterWidth.js";
-import { SVG, calc } from "svg-engine";
-import * as utils from "../shared/utils.js";
-import translations from "../shared/translations.js";
+import { calc, SVG } from "svg-engine";
+
 import generateQRCode from "../shared/qr-code.js";
+import { cleanData, validateData } from "../shared/shared.js";
+import translations from "../shared/translations.js";
+import { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types";
+import * as utils from "../shared/utils.js";
+
+import { calculateTextWidth } from "./characterWidth.js";
+
 
 export class SVG_ {
 
@@ -76,7 +79,8 @@ export class SVG_ {
 
     const scissorsCenter = "M8.55299 18.3969C9.54465 17.5748 9.51074 16.0915 9.08357 14.9829L6.47473 8.02261C7.58167 5.9986 7.26467 3.99833 7.80373 3.99833C8.22582 3.99833 8.13259 4.38482 9.23105 4.32719C10.2854 4.27125 11.0652 3.1711 10.9957 2.13197C11.0025 1.09115 10.2041 0.0130391 9.1056 0.00456339C7.99867 -0.0734135 6.96972 0.858918 6.89683 1.95907C6.70527 3.24907 7.48674 5.53413 5.56613 6.60547C4.09305 5.80705 4.08797 4.38991 4.16255 3.10838C4.22358 2.04552 3.91845 0.76738 2.87424 0.260531C1.87241 -0.229367 0.446794 0.25036 0.139972 1.37594C-0.277034 2.51168 0.250156 4.07122 1.55541 4.34244C2.56233 4.55095 3.03528 3.83729 3.40143 4.1119C3.67774 4.31871 3.5167 5.62906 4.566 7.96667L1.908 15.5033C1.64356 16.456 1.65204 17.6206 2.58776 18.463L5.5424 10.6484L8.55299 18.3969ZM10.1634 2.87953C9.55143 3.97629 7.88849 3.88645 7.56641 2.74731C7.20704 1.71666 8.20887 0.397838 9.32767 0.726697C10.2447 0.919943 10.5821 2.12858 10.1634 2.87953ZM3.36753 2.927C2.94544 4.07122 1.00789 3.87797 0.746835 2.71341C0.479001 1.94042 0.8638 0.836881 1.77409 0.758904C2.88102 0.608036 3.87946 1.90821 3.36753 2.927Z";
 
-    const scissorsSVG = this.instance.addSVG("11px", "19px").x(calc("62mm - 5.25px")).y("30pt");
+    const scissorsSVG = this.instance.addSVG("11px", "19px").x(calc("62mm - 5.25px"))
+      .y("30pt");
     scissorsSVG.addPath(scissorsCenter).fill("black");
 
 
@@ -115,7 +119,7 @@ export class SVG_ {
       .fontSize("8pt");
     receiptLineCount++;
 
-    let receiptCreditorAddressLines: Array<string> = [];
+    let receiptCreditorAddressLines: string[] = [];
     for(const line of formattedCreditorAddress){
       const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
       receiptCreditorAddressLines = [...receiptCreditorAddressLines, ...messageLines];
@@ -167,7 +171,7 @@ export class SVG_ {
         .fontWeight("bold")
         .fontSize("6pt");
 
-      let receiptDebtorAddressLines: Array<string> = [];
+      let receiptDebtorAddressLines: string[] = [];
       for(const line of formattedDebtorAddress){
         const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
         receiptDebtorAddressLines = [...receiptDebtorAddressLines, ...messageLines];
@@ -185,7 +189,7 @@ export class SVG_ {
     } else {
 
 
-      //- Add rectangle
+      //-- Add rectangle
 
       receiptTextContainer.addTSpan(translations[this._language].payableByName)
         .x(0)
@@ -215,7 +219,7 @@ export class SVG_ {
     const amountXPosition = this._data.amount === undefined ? 13 : 22;
 
     amountContainer.addTSpan(translations[this._language].amount)
-      .x(amountXPosition + "mm")
+      .x(`${amountXPosition}mm`)
       .fontFamily("Arial")
       .fontWeight("bold")
       .fontSize("6pt");
@@ -229,7 +233,7 @@ export class SVG_ {
 
     if(this._data.amount !== undefined){
       amountContainer.addTSpan(utils.formatAmount(this._data.amount))
-        .x(amountXPosition + "mm")
+        .x(`${amountXPosition}mm`)
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("8pt");
@@ -321,7 +325,7 @@ export class SVG_ {
         .fontWeight("bold")
         .fontSize("7pt");
 
-      alternativeSchemeContainer.addTSpan(this._data.av1.length > 90 ? data.substr(0, 87) + "..." : data)
+      alternativeSchemeContainer.addTSpan(this._data.av1.length > 90 ? `${data.substr(0, 87)}...` : data)
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("7pt");
@@ -338,7 +342,7 @@ export class SVG_ {
         .fontWeight("bold")
         .fontSize("7pt");
 
-      alternativeSchemeContainer.addTSpan(this._data.av2.length > 90 ? data.substr(0, 87) + "..." : data)
+      alternativeSchemeContainer.addTSpan(this._data.av2.length > 90 ? `${data.substr(0, 87)}...` : data)
         .fontFamily("Arial")
         .fontWeight("normal")
         .fontSize("7pt");
@@ -373,7 +377,7 @@ export class SVG_ {
       .fontSize("10pt");
     paymentPartLineCount++;
 
-    let paymentPartCreditorAddressLines: Array<string> = [];
+    let paymentPartCreditorAddressLines: string[] = [];
     for(const line of formattedCreditorAddress){
       const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
       paymentPartCreditorAddressLines = [...paymentPartCreditorAddressLines, ...messageLines];
@@ -508,7 +512,7 @@ export class SVG_ {
         .fontWeight("bold")
         .fontSize("8pt");
 
-      let paymentPartDebtorAddressLines: Array<string> = [];
+      let paymentPartDebtorAddressLines: string[] = [];
       for(const line of formattedDebtorAddress){
         const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
         paymentPartDebtorAddressLines = [...paymentPartDebtorAddressLines, ...messageLines];
@@ -573,10 +577,10 @@ export class SVG_ {
   }
 
 
-  private _formatAddress(data: Debtor | Creditor): Array<string> {
-    const countryPrefix = data.country !== "CH" ? data.country + " - " : "";
+  private _formatAddress(data: Creditor | Debtor): string[] {
+    const countryPrefix = data.country !== "CH" ? `${data.country} - ` : "";
     if(data.buildingNumber !== undefined){
-      return [data.name, data.address + " " + data.buildingNumber, `${countryPrefix}${data.zip} ${data.city}`];
+      return [data.name, `${data.address} ${data.buildingNumber}`, `${countryPrefix}${data.zip} ${data.city}`];
     } else {
       return [data.name, data.address, `${countryPrefix}${data.zip} ${data.city}`];
     }
@@ -598,14 +602,14 @@ export class SVG_ {
   }
 
 
-  private _fitTextToWidth(text: string, lengthInPixel: number, maxLines: number, size: "8pt" | "10pt"): Array<string> {
+  private _fitTextToWidth(text: string, lengthInPixel: number, maxLines: number, size: "8pt" | "10pt"): string[] {
 
     const remainder = text.split(/([ |-])/g);
-    let lines: Array<string> = [];
+    let lines: string[] = [];
     let currentLine = "";
 
-    const checkCurrentLine = (currentLine: string): { lines: Array<string>, leftover: string } => {
-      const lines: Array<string> = [];
+    const checkCurrentLine = (currentLine: string): { leftover: string; lines: string[]; } => {
+      const lines: string[] = [];
       let leftover: string = "";
       if(calculateTextWidth(currentLine, size) > lengthInPixel){
         const currentWordRemainder = currentLine.split("");
@@ -624,7 +628,7 @@ export class SVG_ {
       } else {
         lines.push(currentLine);
       }
-      return { lines, leftover };
+      return { leftover, lines };
     };
 
     while(remainder.length > 0){
@@ -668,7 +672,7 @@ export class SVG_ {
 
     if(calculateTextWidth(text, size) > lengthInPixel){
       for(let c = 0; c < text.length; c++){
-        if(calculateTextWidth(result + text[c] + "...", size) <= lengthInPixel){
+        if(calculateTextWidth(`${result + text[c]}...`, size) <= lengthInPixel){
           result += text[c];
         } else {
           break;
@@ -682,26 +686,26 @@ export class SVG_ {
       result = result.slice(0, -1);
     }
 
-    return result + "...";
+    return `${result}...`;
 
   }
 
 
   private _addRectangle(x: number, y: number, width: number, height: number) {
 
-    const container = this.instance.addSVG(width + "mm", height + "mm");
-    container.x(x + "mm").y(y + "mm");
+    const container = this.instance.addSVG(`${width}mm`, `${height}mm`);
+    container.x(`${x}mm`).y(`${y}mm`);
 
     const length = 3;
 
-    container.addLine("0mm", "0mm", length + "mm", "0mm").stroke(".75pt", "solid", "black");
-    container.addLine(width - length + "mm", "0mm", width + "mm", "0mm").stroke(".75pt", "solid", "black");
-    container.addLine(width + "mm", "0mm", width + "mm", length + "mm").stroke(".75pt", "solid", "black");
-    container.addLine(width + "mm", height - length + "mm", width + "mm", height + "mm").stroke(".75pt", "solid", "black");
-    container.addLine(width - length + "mm", height + "mm", width + "mm", height + "mm").stroke(".75pt", "solid", "black");
-    container.addLine("0mm", height + "mm", length + "mm", height + "mm").stroke(".75pt", "solid", "black");
-    container.addLine("0mm", height - length + "mm", "0mm", height + "mm").stroke(".75pt", "solid", "black");
-    container.addLine("0mm", "0mm", "0mm", length + "mm").stroke(".75pt", "solid", "black");
+    container.addLine("0mm", "0mm", `${length}mm`, "0mm").stroke(".75pt", "solid", "black");
+    container.addLine(`${width - length}mm`, "0mm", `${width}mm`, "0mm").stroke(".75pt", "solid", "black");
+    container.addLine(`${width}mm`, "0mm", `${width}mm`, `${length}mm`).stroke(".75pt", "solid", "black");
+    container.addLine(`${width}mm`, `${height - length}mm`, `${width}mm`, `${height}mm`).stroke(".75pt", "solid", "black");
+    container.addLine(`${width - length}mm`, `${height}mm`, `${width}mm`, `${height}mm`).stroke(".75pt", "solid", "black");
+    container.addLine("0mm", `${height}mm`, `${length}mm`, `${height}mm`).stroke(".75pt", "solid", "black");
+    container.addLine("0mm", `${height - length}mm`, "0mm", `${height}mm`).stroke(".75pt", "solid", "black");
+    container.addLine("0mm", "0mm", "0mm", `${length}mm`).stroke(".75pt", "solid", "black");
 
     return container;
 

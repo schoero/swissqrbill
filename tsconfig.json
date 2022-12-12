@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "declaration": false,
+    "esModuleInterop": true,
     "lib": ["ES2020", "DOM"],
     "module": "ESNext",
     "moduleResolution": "Node",
-    "sourceMap": true,
-    "declaration": false,
-    "strict": true,
     "noImplicitAny": false,
-    "esModuleInterop": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES6"
   },
   "include": [
     "src"
