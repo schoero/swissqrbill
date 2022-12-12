@@ -1,127 +1,170 @@
 {
-  "name": "swissqrbill",
   "version": "3.1.5",
+  "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
-  "main": "./lib/node/cjs/node/index.js",
-  "module": "./lib/node/esm/node/index.js",
-  "browser": "./lib/browser/bundle/index.js",
+  "license": "MIT",
+  "author": "Roger Schönbächler",
+  "homepage": "https://github.com/schoero/SwissQRBill#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schoero/SwissQRBill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/schoero/SwissQRBill/issues"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
-      "node": {
-        "require": "./lib/node/cjs/node/index.js",
-        "import": "./lib/node/esm/node/index.js"
-      },
       "browser": {
-        "require": "./lib/browser/bundle/index.js",
-        "import": "./lib/browser/esm/browser/index.js"
+        "import": "./lib/browser/esm/browser/index.js",
+        "require": "./lib/browser/bundle/index.js"
       },
       "default": {
-        "require": "./lib/node/cjs/node/index.js",
-        "import": "./lib/node/esm/node/index.js"
-      }
-    },
-    "./svg": {
+        "import": "./lib/node/esm/node/index.js",
+        "require": "./lib/node/cjs/node/index.js"
+      },
       "node": {
-        "require": "./lib/node/cjs/node/svg.js",
-        "import": "./lib/node/esm/node/svg.js"
-      },
-      "browser": {
-        "require": "./lib/browser/bundle/index.js",
-        "import": "./lib/browser/esm/browser/svg.js"
-      },
-      "default": {
-        "require": "./lib/node/cjs/node/svg.js",
-        "import": "./lib/node/esm/node/svg.js"
-      }
-    },
-    "./pdf": {
-      "node": {
-        "require": "./lib/node/cjs/node/pdf.js",
-        "import": "./lib/node/esm/node/pdf.js"
-      },
-      "browser": {
-        "require": "./lib/browser/bundle/index.js",
-        "import": "./lib/browser/esm/browser/pdf.js"
-      },
-      "default": {
-        "require": "./lib/node/cjs/node/pdf.js",
-        "import": "./lib/node/esm/node/pdf.js"
-      }
-    },
-    "./utils": {
-      "node": {
-        "require": "./lib/node/cjs/shared/utils.js",
-        "import": "./lib/node/esm/shared/utils.js"
-      },
-      "browser": {
-        "require": "./lib/browser/bundle/index.js",
-        "import": "./lib/browser/esm/shared/utils.js"
-      },
-      "default": {
-        "require": "./lib/node/cjs/shared/utils.js",
-        "import": "./lib/node/esm/shared/utils.js"
-      }
-    },
-    "./types": {
-      "node": {
-        "require": "./lib/node/cjs/shared/types.js",
-        "import": "./lib/node/esm/shared/types.js"
-      },
-      "browser": {
-        "require": "./lib/browser/bundle/index.js",
-        "import": "./lib/browser/esm/shared/types.js"
-      },
-      "default": {
-        "require": "./lib/node/cjs/shared/types.js",
-        "import": "./lib/node/esm/shared/types.js"
+        "import": "./lib/node/esm/node/index.js",
+        "require": "./lib/node/cjs/node/index.js"
       }
     },
     "./bundle": "./lib/browser/bundle/index.js",
     "./lib/browser/bundle/index": "./lib/browser/bundle/index",
     "./lib/browser/bundle/index.js": "./lib/browser/bundle/index.js",
-    "./lib/node/cjs/node/index": "./lib/node/cjs/node/index",
-    "./lib/node/esm/node/index": "./lib/node/esm/node/index",
     "./lib/browser/esm/browser/index": "./lib/browser/esm/browser/index",
-    "./lib/node/cjs/node/index.js": "./lib/node/cjs/node/index.js",
-    "./lib/node/esm/node/index.js": "./lib/node/esm/node/index.js",
     "./lib/browser/esm/browser/index.js": "./lib/browser/esm/browser/index.js",
-    "./lib/node/cjs/node/svg": "./lib/node/cjs/node/svg",
-    "./lib/node/esm/node/svg": "./lib/node/esm/node/svg",
-    "./lib/browser/esm/browser/svg": "./lib/browser/esm/browser/svg",
-    "./lib/node/cjs/node/svg.js": "./lib/node/cjs/node/svg.js",
-    "./lib/node/esm/node/svg.js": "./lib/node/esm/node/svg.js",
-    "./lib/browser/esm/browser/svg.js": "./lib/browser/esm/browser/svg.js",
-    "./lib/node/cjs/node/pdf": "./lib/node/cjs/node/pdf",
-    "./lib/node/esm/node/pdf": "./lib/node/esm/node/pdf",
     "./lib/browser/esm/browser/pdf": "./lib/browser/esm/browser/pdf",
-    "./lib/node/cjs/node/pdf.js": "./lib/node/cjs/node/pdf.js",
-    "./lib/node/esm/node/pdf.js": "./lib/node/esm/node/pdf.js",
     "./lib/browser/esm/browser/pdf.js": "./lib/browser/esm/browser/pdf.js",
-    "./lib/node/cjs/shared/utils": "./lib/node/cjs/shared/utils",
-    "./lib/node/esm/shared/utils": "./lib/node/esm/shared/utils",
-    "./lib/browser/esm/shared/utils": "./lib/browser/esm/shared/utils",
-    "./lib/node/cjs/shared/utils.js": "./lib/node/cjs/shared/utils.js",
-    "./lib/node/esm/shared/utils.js": "./lib/node/esm/shared/utils.js",
-    "./lib/browser/esm/shared/utils.js": "./lib/browser/esm/shared/utils.js",
-    "./lib/node/cjs/shared/types": "./lib/node/cjs/shared/types",
-    "./lib/node/esm/shared/types": "./lib/node/esm/shared/types",
+    "./lib/browser/esm/browser/svg": "./lib/browser/esm/browser/svg",
+    "./lib/browser/esm/browser/svg.js": "./lib/browser/esm/browser/svg.js",
     "./lib/browser/esm/shared/types": "./lib/browser/esm/shared/types",
+    "./lib/browser/esm/shared/types.js": "./lib/browser/esm/shared/types.js",
+    "./lib/browser/esm/shared/utils": "./lib/browser/esm/shared/utils",
+    "./lib/browser/esm/shared/utils.js": "./lib/browser/esm/shared/utils.js",
+    "./lib/node/cjs/node/index": "./lib/node/cjs/node/index",
+    "./lib/node/cjs/node/index.js": "./lib/node/cjs/node/index.js",
+    "./lib/node/cjs/node/pdf": "./lib/node/cjs/node/pdf",
+    "./lib/node/cjs/node/pdf.js": "./lib/node/cjs/node/pdf.js",
+    "./lib/node/cjs/node/svg": "./lib/node/cjs/node/svg",
+    "./lib/node/cjs/node/svg.js": "./lib/node/cjs/node/svg.js",
+    "./lib/node/cjs/shared/types": "./lib/node/cjs/shared/types",
     "./lib/node/cjs/shared/types.js": "./lib/node/cjs/shared/types.js",
+    "./lib/node/cjs/shared/utils": "./lib/node/cjs/shared/utils",
+    "./lib/node/cjs/shared/utils.js": "./lib/node/cjs/shared/utils.js",
+    "./lib/node/esm/node/index": "./lib/node/esm/node/index",
+    "./lib/node/esm/node/index.js": "./lib/node/esm/node/index.js",
+    "./lib/node/esm/node/pdf": "./lib/node/esm/node/pdf",
+    "./lib/node/esm/node/pdf.js": "./lib/node/esm/node/pdf.js",
+    "./lib/node/esm/node/svg": "./lib/node/esm/node/svg",
+    "./lib/node/esm/node/svg.js": "./lib/node/esm/node/svg.js",
+    "./lib/node/esm/shared/types": "./lib/node/esm/shared/types",
     "./lib/node/esm/shared/types.js": "./lib/node/esm/shared/types.js",
-    "./lib/browser/esm/shared/types.js": "./lib/browser/esm/shared/types.js"
+    "./lib/node/esm/shared/utils": "./lib/node/esm/shared/utils",
+    "./lib/node/esm/shared/utils.js": "./lib/node/esm/shared/utils.js",
+    "./pdf": {
+      "browser": {
+        "import": "./lib/browser/esm/browser/pdf.js",
+        "require": "./lib/browser/bundle/index.js"
+      },
+      "default": {
+        "import": "./lib/node/esm/node/pdf.js",
+        "require": "./lib/node/cjs/node/pdf.js"
+      },
+      "node": {
+        "import": "./lib/node/esm/node/pdf.js",
+        "require": "./lib/node/cjs/node/pdf.js"
+      }
+    },
+    "./svg": {
+      "browser": {
+        "import": "./lib/browser/esm/browser/svg.js",
+        "require": "./lib/browser/bundle/index.js"
+      },
+      "default": {
+        "import": "./lib/node/esm/node/svg.js",
+        "require": "./lib/node/cjs/node/svg.js"
+      },
+      "node": {
+        "import": "./lib/node/esm/node/svg.js",
+        "require": "./lib/node/cjs/node/svg.js"
+      }
+    },
+    "./types": {
+      "browser": {
+        "import": "./lib/browser/esm/shared/types.js",
+        "require": "./lib/browser/bundle/index.js"
+      },
+      "default": {
+        "import": "./lib/node/esm/shared/types.js",
+        "require": "./lib/node/cjs/shared/types.js"
+      },
+      "node": {
+        "import": "./lib/node/esm/shared/types.js",
+        "require": "./lib/node/cjs/shared/types.js"
+      }
+    },
+    "./utils": {
+      "browser": {
+        "import": "./lib/browser/esm/shared/utils.js",
+        "require": "./lib/browser/bundle/index.js"
+      },
+      "default": {
+        "import": "./lib/node/esm/shared/utils.js",
+        "require": "./lib/node/cjs/shared/utils.js"
+      },
+      "node": {
+        "import": "./lib/node/esm/shared/utils.js",
+        "require": "./lib/node/cjs/shared/utils.js"
+      }
+    }
+  },
+  "main": "./lib/node/cjs/node/index.js",
+  "module": "./lib/node/esm/node/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
+    "eslint": "node_modules/.bin/eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml ./",
+    "eslint:ci": "npm run eslint -- --max-warnings 0",
+    "eslint:fix": "npm run eslint -- --fix",
+    "lint": "npm run eslint && npm run markdownlint",
+    "lint:ci": "npm run eslint:ci && npm run markdownlint:ci",
+    "lint:fix": "npm run eslint:fix && npm run markdownlint:fix",
+    "markdownlint": "node_modules/.bin/markdownlint-cli2 '**/*.md' '#node_modules'",
+    "markdownlint:ci": "npm run markdownlint",
+    "markdownlint:fix": "node_modules/.bin/markdownlint-cli2-fix '**/*.md' '#node_modules'",
+    "postbuild": "sh fix-exports.sh",
+    "test": "npm run build && cd tests && sh run.sh"
   },
   "files": [
     "lib"
   ],
-  "scripts": {
-    "test": "npm run build && cd tests && sh run.sh",
-    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
-    "postbuild": "sh fix-exports.sh"
+  "dependencies": {
+    "@types/pdfkit": "^0.12.8",
+    "blob-stream": "^0.1.3",
+    "pdfkit": "^0.13.0",
+    "svg-engine": "^0.2.3",
+    "svgpath": "^2.6.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/schoero/SwissQRBill.git"
+  "devDependencies": {
+    "@schoero/eslint-config": "^1.28.7",
+    "@schoero/markdownlint-config": "^1.1.2",
+    "@types/blob-stream": "^0.1.30",
+    "@types/node": "^18.11.13",
+    "@types/svg-parser": "^2.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "assert": "^2.0.0",
+    "brfs": "^2.0.2",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "eslint": "^8.29.0",
+    "process": "^0.11.10",
+    "readable-stream": "^3.6.0",
+    "transform-loader": "^0.2.4",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "util": "^0.12.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "keywords": [
     "swiss",
@@ -142,38 +185,5 @@
     "pdf",
     "svg"
   ],
-  "author": "Roger Schönbächler",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/schoero/SwissQRBill/issues"
-  },
-  "homepage": "https://github.com/schoero/SwissQRBill#readme",
-  "devDependencies": {
-    "@schoero/eslint-config": "^1.28.7",
-    "@types/blob-stream": "^0.1.30",
-    "@types/node": "^18.11.13",
-    "@types/svg-parser": "^2.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.46.1",
-    "@typescript-eslint/parser": "^5.46.1",
-    "assert": "^2.0.0",
-    "brfs": "^2.0.2",
-    "browserify-zlib": "^0.2.0",
-    "buffer": "^6.0.3",
-    "eslint": "^8.29.0",
-    "process": "^0.11.10",
-    "readable-stream": "^3.6.0",
-    "transform-loader": "^0.2.4",
-    "ts-loader": "^9.4.2",
-    "typescript": "^4.9.4",
-    "util": "^0.12.5",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
-  },
-  "dependencies": {
-    "@types/pdfkit": "^0.12.8",
-    "blob-stream": "^0.1.3",
-    "pdfkit": "^0.13.0",
-    "svg-engine": "^0.2.3",
-    "svgpath": "^2.6.0"
-  }
+  "browser": "./lib/browser/bundle/index.js"
 }

@@ -1,12 +1,58 @@
 {
-  "workbench.colorCustomizations": {
-    "editorWhitespace.foreground": "#FFFFFF10"
+
+
+  //-- ESLint
+
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+  "[json5]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "yaml"],
+  "prettier.enable": false, // eslint-disable-next-line jsonc/sort-keys
+  "editor.formatOnSave": false, // eslint-disable-next-line jsonc/sort-keys
+
+
+  //-- Hide JSDoc comments
+
   "foldOnOpen.targets": ["AllBlockComments"],
-  "javascript.preferences.importModuleSpecifierEnding": "js",
+
+
+  //-- ES module import
+
+  "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifierEnding": "js",
-  "liveServer.settings.port": 5501
+
+  //-- Markdown
+
+  // eslint-disable-next-line jsonc/sort-keys
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true,
+    "editor.wordWrapColumn": 119
+  },
+
+
+  //-- VSCode
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.markdownlint": true,
+    "source.organizeImports": false
+  },
+
+  "editor.rulers": [
+    119
+  ]
+
 }
