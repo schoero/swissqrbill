@@ -20,7 +20,16 @@
   },
   "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "yaml"],
   "prettier.enable": false, // eslint-disable-next-line jsonc/sort-keys
-  "editor.formatOnSave": false, // eslint-disable-next-line jsonc/sort-keys
+  "editor.formatOnSave": false,
+
+
+  //-- File nesting
+
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${basename}.${extname},${basename}.test.${extname},${basename}.test-d.${extname}"
+  },
 
 
   //-- Hide JSDoc comments
@@ -32,6 +41,7 @@
 
   "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifierEnding": "js",
+
 
   //-- Markdown
 
