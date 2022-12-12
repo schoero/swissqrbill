@@ -139,7 +139,7 @@ export function formatQRReference(reference: string): string {
 
   reference = reference.replace(/ /g, "");
 
-  let referenceArray: RegExpMatchArray = [];
+  let referenceArray: RegExpMatchArray | undefined;
 
   const match = reference.substring(2).match(/.{1,5}/g);
   if(match !== null){
@@ -147,6 +147,26 @@ export function formatQRReference(reference: string): string {
   }
 
   return referenceArray.join(" ");
+
+}
+
+
+/**
+ * Formats the given SCOR-Reference according the specifications to be easily readable.
+ *
+ * @param reference - The SCOR-Reference to be formatted.
+ * @returns The formatted SCOR-Reference.
+ */
+export function formatSCORReference(reference: string): string {
+
+  reference = reference.replace(/ /g, "");
+
+  const match = reference.match(/.{1,4}/g);
+  if(match !== null){
+    return match.join(" ");
+  }
+
+  return reference;
 
 }
 
@@ -168,28 +188,6 @@ export function formatReference(reference: string): string {
   }
 
   return reference;
-
-}
-
-
-/**
- * Formats the given SCOR-Reference according the specifications to be easily readable.
- *
- * @param reference - The SCOR-Reference to be formatted.
- * @returns The formatted SCOR-Reference.
- */
-export function formatSCORReference(reference: string): string {
-
-  reference = reference.replace(/ /g, "");
-
-  let referenceArray: RegExpMatchArray = [];
-
-  const match = reference.match(/.{1,4}/g);
-  if(match !== null){
-    referenceArray = match;
-  }
-
-  return referenceArray.join(" ");
 
 }
 
