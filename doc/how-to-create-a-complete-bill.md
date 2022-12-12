@@ -7,7 +7,6 @@ In this manual you will learn how you can use SwissQRBill to create a complete P
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
 The methods used from SwissQRBill are documented in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
 
-
 ### Setup
 
 If you haven't already done so, please install the library using:
@@ -27,40 +26,37 @@ Once everything is set up we can start with creating a data object which contain
 
 ```js
 const data = {
-  currency: "CHF",
   amount: 2606.35,
-  reference: "210000000003139471430009017",
   creditor: {
-    name: "SwissQRBill",
-    address: "Bahnhofstrasse 7",
-    zip: 1234,
-    city: "Musterstadt",
     account: "CH4431999123000889012",
-    country: "CH"
+    address: "Bahnhofstrasse 7",
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
   },
+  currency: "CHF",
   debtor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse 28",
-    zip: 9400,
     city: "Rorschach",
-    country: "CH"
-  }
+    country: "CH",
+    name: "Pia-Maria Rutschmann-Schnyder",
+    zip: 9400
+  },
+  reference: "210000000003139471430009017"
 };
 ```
-
 
 ### Creating the PDF
 
 Once we have our data ready we can create a new instance of `SwissQRBill` and store it to the variable `pdf`.
 
 ```js
-
-const pdf = new PDF(data, "complete-qr-bill.pdf", { "autoGenerate": false, "size": "A4" });
+const pdf = new PDF(data, "complete-qr-bill.pdf", { autoGenerate: false, size: "A4" });
 ```
 
 Please note that we have set `autoGenerate` to `false` and `size` to `A4`.
 This will create a PDF with the filename `complete-bill.pdf` without finalizing the document, so that we are able to add content to it.
-
 
 ### Adding our logo
 
@@ -83,7 +79,6 @@ pdf.addPath(logo, mm2pt(20), mm2pt(14))
 pdf.addPath(logoText, mm2pt(20), mm2pt(14))
   .fillColor("#454141")
   .fill();
-
 ```
 
 We use the `SwissQRBill.mm2pt()` method to place the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors.
@@ -96,22 +91,20 @@ Next, we add the address of our business and the customer address to the PDF. Yo
 pdf.fontSize(12);
 pdf.fillColor("black");
 pdf.font("Helvetica");
-pdf.text(data.creditor.name + "\n" + data.creditor.address + "\n" + data.creditor.zip + " " + data.creditor.city, mm2pt(20), mm2pt(35), {
-  width: mm2pt(100),
+pdf.text(`${data.creditor.name}\n${data.creditor.address}\n${data.creditor.zip} ${data.creditor.city}`, mm2pt(20), mm2pt(35), {
+  align: "left",
   height: mm2pt(50),
-  align: "left"
+  width: mm2pt(100)
 });
 
 pdf.fontSize(12);
 pdf.font("Helvetica");
-pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip + " " + data.debtor.city, mm2pt(130), mm2pt(60), {
-  width: mm2pt(70),
+pdf.text(`${data.debtor.name}\n${data.debtor.address}\n${data.debtor.zip} ${data.debtor.city}`, mm2pt(130), mm2pt(60), {
+  align: "left",
   height: mm2pt(50),
-  align: "left"
+  width: mm2pt(70)
 });
-
 ```
-
 
 ### Create a title and a date
 
@@ -119,20 +112,19 @@ pdf.text(data.debtor.name + "\n" + data.debtor.address + "\n" + data.debtor.zip 
 pdf.fontSize(14);
 pdf.font("Helvetica-Bold");
 pdf.text("Rechnung Nr. 1071672", mm2pt(20), mm2pt(100), {
-  width: mm2pt(170),
-  align: "left"
+  align: "left",
+  width: mm2pt(170)
 });
 
 const date = new Date();
 
 pdf.fontSize(11);
 pdf.font("Helvetica");
-pdf.text("Musterstadt " + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear(), {
-  width: mm2pt(170),
-  align: "right"
+pdf.text(`Musterstadt ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`, {
+  align: "right",
+  width: mm2pt(170)
 });
 ```
-
 
 ### Adding a table
 
@@ -140,11 +132,8 @@ To create a table we can use the `addTable()` method.
 
 ```js
 const table = {
-  width: mm2pt(170),
   rows: [
     {
-      height: 30,
-      fillColor: "#ECF0F1",
       columns: [
         {
           text: "Position",
@@ -158,7 +147,9 @@ const table = {
           text: "Total",
           width: mm2pt(30)
         }
-      ]
+      ],
+      fillColor: "#ECF0F1",
+      height: 30
     }, {
       columns: [
         {
@@ -190,7 +181,6 @@ const table = {
         }
       ]
     }, {
-      height: 40,
       columns: [
         {
           text: "",
@@ -199,14 +189,15 @@ const table = {
           text: "",
           width: mm2pt(20)
         }, {
-          text: "Summe",
-          font: "Helvetica-Bold"
-        }, {
-          text: "CHF 2'420.00",
           font: "Helvetica-Bold",
+          text: "Summe"
+        }, {
+          font: "Helvetica-Bold",
+          text: "CHF 2'420.00",
           width: mm2pt(30)
         }
-      ]
+      ],
+      height: 40
     }, {
       columns: [
         {
@@ -238,7 +229,6 @@ const table = {
         }
       ]
     }, {
-      height: 40,
       columns: [
         {
           text: "",
@@ -247,16 +237,18 @@ const table = {
           text: "",
           width: mm2pt(20)
         }, {
-          text: "Rechnungstotal",
-          font: "Helvetica-Bold"
+          font: "Helvetica-Bold",
+          text: "Rechnungstotal"
         }, {
+          font: "Helvetica-Bold",
           text: "CHF 2'606.35",
-          width: mm2pt(30),
-          font: "Helvetica-Bold"
+          width: mm2pt(30)
         }
-      ]
+      ],
+      height: 40
     }
-  ]
+  ],
+  width: mm2pt(170)
 };
 
 pdf.addTable(table);

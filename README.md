@@ -39,34 +39,33 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
 [<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.svg">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
 
-
 <br/>
 <br/>
 
 ## Links
 
- * [Features](#features)
- * [Installation](#installation)
- * [Importing the library](#importing-the-library)
- * [Quick start](#quick-start)
- * [Browser usage](#browser-usage)
- * [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
- * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
- * [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
- * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
- * [QR bill specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
-
+* [Features](#features)
+* [Installation](#installation)
+* [Importing the library](#importing-the-library)
+* [Quick start](#quick-start)
+* [Browser usage](#browser-usage)
+* [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
+* [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
+* [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
+* [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
+* [QR bill specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
 
 <br/>
 
 ## Features
- - Generate complete invoices, or only the QR Bill, as a PDF file.
- - Generate the QR Bill as a scalable vector graphic (SVG).
- - Works in browsers and Node.js.
- - Supports german, english, italian and french invoices.
- - Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit).
- - Easy to use.
- - Free and open source.
+
+* Generate complete invoices, or only the QR Bill, as a PDF file.
+* Generate the QR Bill as a scalable vector graphic (SVG).
+* Works in browsers and Node.js.
+* Supports german, english, italian and french invoices.
+* Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit).
+* Easy to use.
+* Free and open source.
 
 <br/>
 
@@ -128,8 +127,7 @@ import SwissQRBill from "swissqrbill/lib/browser/bundle";
 ```
 
 However, if you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
-You can find an example, how this could be done using webpack, at https://github.com/schoero/SwissQRBill-browser-example.
-
+You can find an example, how this could be done using webpack, at <https://github.com/schoero/SwissQRBill-browser-example>.
 
 <br/>
 <br/>
@@ -142,26 +140,26 @@ Once you have imported SwissQRBill, it is quite easy to create a simple QR bill.
 import { PDF } from "swissqrbill/pdf";
 
 const data = {
-  currency: "CHF",
   amount: 1199.95,
-  reference: "210000000003139471430009017",
   creditor: {
-    name: "Robert Schneider AG",
+    account: "CH4431999123000889012",
     address: "Rue du Lac",
     buildingNumber: "1268",
-    zip: 2501,
     city: "Biel",
-    account: "CH4431999123000889012",
-    country: "CH"
+    country: "CH",
+    name: "Robert Schneider AG",
+    zip: 2501
   },
+  currency: "CHF",
   debtor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
     address: "Grosse Marktgasse",
     buildingNumber: "28",
-    zip: 9400,
     city: "Rorschach",
-    country: "CH"
-  }
+    country: "CH",
+    name: "Pia-Maria Rutschmann-Schnyder",
+    zip: 9400
+  },
+  reference: "210000000003139471430009017"
 };
 
 const pdf = new PDF(data, "qrbill.pdf", () => {
@@ -182,7 +180,7 @@ A complete documentation for all methods and parameters can be found in [doc/api
 To use SwissQRBill inside browsers, you have to pass a writableStream in the second parameter, instead of the output path. To create a writableStream in the browser you can use the built in `SwissQRBill.BlobStream()` function.
 
 ```js
-import { PDF, BlobStream } from "swissqrbill/pdf";
+import { BlobStream, PDF } from "swissqrbill/pdf";
 
 const stream = new BlobStream();
 const pdf = new PDF(data, stream);
@@ -204,6 +202,7 @@ import { SVG } from "swissqrbill/svg";
 const svg = new SVG(data);
 document.body.appendChild(svg.element);
 ```
+
 <br/>
 <br/>
 

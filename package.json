@@ -122,7 +122,7 @@
   "module": "./lib/node/esm/node/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
-    "eslint": "node_modules/.bin/eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml ./",
+    "eslint": "node_modules/.bin/eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml,.md ./",
     "eslint:ci": "npm run eslint -- --max-warnings 0",
     "eslint:fix": "npm run eslint -- --fix",
     "lint": "npm run eslint && npm run markdownlint",
