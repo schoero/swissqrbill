@@ -145,7 +145,8 @@
     "svgpath": "^2.6.0"
   },
   "devDependencies": {
-    "@schoero/eslint-config": "^1.28.8",
+    "@schoero/cspell-config": "^1.5.0",
+    "@schoero/eslint-config": "^1.28.12",
     "@schoero/markdownlint-config": "^1.1.2",
     "@types/blob-stream": "^0.1.30",
     "@types/node": "^18.11.13",

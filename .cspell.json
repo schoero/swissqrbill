@@ -1,0 +1,8 @@
+{
+  "import": [
+    "@schoero/cspell-config"
+  ],
+  "words": [
+    "swissqrbill"
+  ]
+}
