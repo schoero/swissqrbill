@@ -32,7 +32,7 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should replace the current payment slips until September 30, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
@@ -101,7 +101,18 @@ import { mm2pt } from "swissqrbill/utils"; // ESM. Tree-shakeable
 
 <br/>
 
-Unfortunately, The [current version of TypeScript](https://github.com/microsoft/TypeScript/issues/46452) and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
+Be aware that TypeScript versions prior to v4.7.0 and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
+To get conditional exports to work with TypeScript > v4.7.0, you have to set these two options your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "NodeNext"
+  }
+}
+```
+
 If you are using a TypeScript or Node.js version that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
 
 ```js
@@ -117,7 +128,7 @@ import { mm2pt } from "swissqrbill/lib/node/esm/shared/utils.js"; // ESM. Tree-s
 For the browser it is a bit more complicated. The easiest way would be to include the pre-bundled version.
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill/lib/browser/bundle/index.js" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill/lib/browser/bundle/index.js"></script>
 ```
 
 You can also import the bundle directly, if you are using a bundler like webpack.

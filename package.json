@@ -1,5 +1,5 @@
 {
-  "version": "3.1.5",
+  "version": "3.2.1",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
   "license": "MIT",

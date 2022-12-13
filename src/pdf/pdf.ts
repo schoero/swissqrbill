@@ -10,7 +10,7 @@ import { ExtendedPDF } from "./extended-pdf.js";
 export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6/5";
-  private _data: Data;
+  protected _data: Data;
   private _scissors: boolean = true;
   private _separate: boolean = false;
   private _outlines: boolean = true;
@@ -551,13 +551,12 @@ export class PDF_ extends ExtendedPDF {
   private _renderQRCode(): void {
 
     const qrData = generateQRData(this._data);
-    const qrCode = renderQRCode(qrData, utils.mm2pt(46));
+    const qrCode = renderQRCode(qrData, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
 
 
     //-- Add QR Code
 
-    this.addPath(qrCode, utils.mm2pt(67), this._marginTop + utils.mm2pt(17))
-      .undash()
+    this.addContent(qrCode)
       .fillColor("black")
       .fill();
 
@@ -568,6 +567,7 @@ export class PDF_ extends ExtendedPDF {
     const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
 
     this.addPath(swissCrossBackground, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
+      .undash()
       .fillColor("black")
       .lineWidth(1.42)
       .strokeColor("white")

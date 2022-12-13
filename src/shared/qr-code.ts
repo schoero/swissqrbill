@@ -90,14 +90,11 @@ export function generateQRData(data: Data): string {
 }
 
 
-export function renderQRCode(qrData: string, size: number): string {
-
-
-  //-- Create QR Code
+export function renderQRCode(qrData: string, type: "pdf" | "svg", xOrigin: number, yOrigin: number, size: number): string {
 
   const eci = qrcodegen.QrSegment.makeEci(26);
   const segments = qrcodegen.QrSegment.makeSegments(qrData);
-  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM);
+  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM, 10, 25);
 
   const blockSize = size / qrCode.size;
   const parts: string[] = [];
@@ -107,7 +104,17 @@ export function renderQRCode(qrData: string, size: number): string {
     for(let y = 0; y < qrCode.size; y++){
       const yPos = y * blockSize;
       if(qrCode.getModule(x, y)){
-        parts.push(`M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `);
+
+        switch (type){
+          case "pdf":
+            parts.push(`${_limitNumber(xOrigin + xPos)} ${_limitNumber(yOrigin + yPos)} ${_limitNumber(blockSize)} ${_limitNumber(blockSize)} re`);
+            break;
+
+          case "svg":
+            parts.push(`M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `);
+            break;
+        }
+
       }
     }
 
@@ -115,4 +122,16 @@ export function renderQRCode(qrData: string, size: number): string {
 
   return parts.join(" ");
 
+}
+
+/**
+ * Limits the maximum and minimum number possible according to the PDF specifications.
+ * Borrowed from: https://github.com/foliojs/pdfkit/blob/120c3f9519e49d719a88d22d70139cc9f54d17d8/lib/object.js#L123-L130
+ */
+function _limitNumber(n: number) {
+  if(n > -1e21 && n < 1e21){
+    return Math.round(n * 1e6) / 1e6;
+  }
+
+  throw new Error(`unsupported number: ${n}`);
 }

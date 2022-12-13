@@ -13,7 +13,7 @@ export class PDF extends PDF_ {
   constructor(data: Data, writableStream: Writable, options?: PDFOptions, callback?: Function);
   constructor(data: Data, outputPath: string, callback?: Function);
   constructor(data: Data, writableStream: Writable, callback?: Function);
-  constructor(data: Data, outputPathOrWritableStream: Writable | string, optionsOrCallback?: Function | PDFOptions, callbackOrUndefined?: Function | undefined) {
+  constructor(data: Data, outputPathOrWritableStream: string | Writable, optionsOrCallback?: PDFOptions | Function, callbackOrUndefined?: Function | undefined) {
 
     let callback: Function | undefined = undefined;
     let options: PDFOptions | undefined = undefined;

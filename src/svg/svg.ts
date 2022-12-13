@@ -190,6 +190,7 @@ export class SVG_ {
 
 
       //-- Add rectangle
+      //-- Add rectangle
 
       receiptTextContainer.addTSpan(translations[this._language].payableByName)
         .x(0)
@@ -547,7 +548,7 @@ export class SVG_ {
   private _renderQRCode() {
 
     const qrData = generateQRData(this._data);
-    const qrCode = renderQRCode(qrData, utils.mm2px(46));
+    const qrCode = renderQRCode(qrData, "svg", 0, 0, utils.mm2px(46));
 
     const qrCodeSVG = this.instance.addSVG("46mm", "46mm")
       .y("17mm")
