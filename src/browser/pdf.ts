@@ -1,6 +1,8 @@
-import { PDF_ } from "../pdf/pdf.js";
 import { default as BlobStream_, IBlobStream } from "blob-stream";
-import { PDFOptions, Data } from "../shared/types.js";
+
+import { PDF_ } from "../pdf/pdf.js";
+import { Data, PDFOptions } from "../shared/types.js";
+
 
 export import blobStream = BlobStream_;
 export import BlobStream = BlobStream_;
@@ -8,10 +10,10 @@ export import BlobStream = BlobStream_;
 
 export class PDF extends PDF_ {
 
-  constructor(data: Data, writableStream: IBlobStream, options?: PDFOptions)
-  constructor(data: Data, writeableStream: IBlobStream, options?: PDFOptions, callback?: Function)
-  constructor(data: Data, writeableStream: IBlobStream, callback?: Function)
-  constructor(data: Data, writeableStream: IBlobStream, optionsOrCallback?: PDFOptions | Function, callbackOrUndefined?: Function | undefined) {
+  constructor(data: Data, writableStream: IBlobStream, options?: PDFOptions);
+  constructor(data: Data, writeableStream: IBlobStream, options?: PDFOptions, callback?: Function);
+  constructor(data: Data, writeableStream: IBlobStream, callback?: Function);
+  constructor(data: Data, writeableStream: IBlobStream, optionsOrCallback?: Function | PDFOptions, callbackOrUndefined?: Function | undefined) {
 
     let callback: Function | undefined = undefined;
     let options: PDFOptions | undefined = undefined;

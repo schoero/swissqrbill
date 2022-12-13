@@ -20,8 +20,7 @@ const data = {
     country: "CH",
     name: "Pia-Maria Rutschmann-Schnyder",
     zip: 9400
-  },
-  reference: "RF18539007547034"
+  }
 };
 
 const pdf = new SwissQRBill.PDF(data, "./output/pdf/normal-iban-no-reference.pdf");

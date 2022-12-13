@@ -1,6 +1,6 @@
 import { calc, SVG } from "svg-engine";
 
-import generateQRCode from "../shared/qr-code.js";
+import { generateQRData, renderQRCode } from "../shared/qr-code.js";
 import { cleanData, validateData } from "../shared/shared.js";
 import translations from "../shared/translations.js";
 import { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types";
@@ -546,32 +546,33 @@ export class SVG_ {
 
   private _renderQRCode() {
 
-    const qrcode = generateQRCode(this._data, utils.mm2px(46));
+    const qrData = generateQRData(this._data);
+    const qrCode = renderQRCode(qrData, utils.mm2px(46));
 
-    const qrcodeSVG = this.instance.addSVG("46mm", "46mm")
+    const qrCodeSVG = this.instance.addSVG("46mm", "46mm")
       .y("17mm")
       .x("67mm");
 
 
     //-- Add QR Code
 
-    qrcodeSVG.addPath(qrcode)
+    qrCodeSVG.addPath(qrCode)
       .fill("black");
 
 
     //-- Add background
 
-    qrcodeSVG.addRect("19mm", "19mm", "8mm", "8mm")
+    qrCodeSVG.addRect("19mm", "19mm", "8mm", "8mm")
       .fill("white");
-    qrcodeSVG.addRect("19.5mm", "19.5mm", "7mm", "7mm")
+    qrCodeSVG.addRect("19.5mm", "19.5mm", "7mm", "7mm")
       .fill("black");
 
 
     //-- Add swiss cross
 
-    qrcodeSVG.addRect("22.415mm", "21.055mm", "1.17mm", "3.89mm")
+    qrCodeSVG.addRect("22.415mm", "21.055mm", "1.17mm", "3.89mm")
       .fill("white");
-    qrcodeSVG.addRect("21.055mm", "22.415mm", "3.89mm", "1.17mm")
+    qrCodeSVG.addRect("21.055mm", "22.415mm", "3.89mm", "1.17mm")
       .fill("white");
 
   }

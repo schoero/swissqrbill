@@ -1,3 +1,22 @@
 {
-  "extends": "@schoero"
+  "extends": "@schoero",
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/no-unnecessary-condition": "off"
+      }
+    },
+    {
+      "env": {
+        "browser": true,
+        "es6": true,
+        "node": false
+      },
+      "files": ["src/browser/**/*.ts"],
+      "parserOptions": {
+        "createDefaultProgram": true
+      }
+    }
+  ]
 }

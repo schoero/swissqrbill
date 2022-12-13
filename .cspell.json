@@ -3,6 +3,12 @@
     "@schoero/cspell-config"
   ],
   "words": [
-    "swissqrbill"
+    "swissqrbill",
+    "SCOR",
+    "QRIID",
+    "QRR",
+    "QRIBAN",
+    "qriban",
+    "iban"
   ]
 }

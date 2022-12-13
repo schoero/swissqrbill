@@ -119,6 +119,7 @@
     }
   },
   "main": "./lib/node/cjs/node/index.js",
+  "browser": "./lib/browser/bundle/index.js",
   "module": "./lib/node/esm/node/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
@@ -133,7 +134,9 @@
     "markdownlint:fix": "node_modules/.bin/markdownlint-cli2-fix '**/*.md' '#node_modules'",
     "postbuild": "sh fix-exports.sh",
     "test": "node_modules/.bin/vitest -c ./vite.config.ts",
-    "test:legacy": "npm run build && cd tests && sh run.sh"
+    "test:legacy": "npm run build && cd tests && sh run.sh",
+    "test:update": "npm run test -- --update --run",
+    "test:visual": "VISUAL=true npm run test -- --run"
   },
   "files": [
     "lib"
@@ -147,8 +150,9 @@
   },
   "devDependencies": {
     "@schoero/cspell-config": "^1.5.0",
-    "@schoero/eslint-config": "^1.28.12",
+    "@schoero/eslint-config": "^1.28.13",
     "@schoero/markdownlint-config": "^1.1.2",
+    "@schoero/ts-config": "^0.3.0",
     "@types/blob-stream": "^0.1.30",
     "@types/node": "^18.11.13",
     "@types/svg-parser": "^2.0.3",
@@ -159,12 +163,14 @@
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "eslint": "^8.29.0",
+    "pdf-to-png-converter": "^2.7.1",
     "process": "^0.11.10",
-    "readable-stream": "^3.6.0",
+    "readable-stream": "^4.2.0",
     "transform-loader": "^0.2.4",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4",
     "util": "^0.12.5",
+    "vite-tsconfig-paths": "^4.0.2",
     "vitest": "^0.25.7",
     "vitest-github-actions-reporter": "^0.9.0",
     "webpack": "^5.75.0",
@@ -188,6 +194,5 @@
     "facture",
     "pdf",
     "svg"
-  ],
-  "browser": "./lib/browser/bundle/index.js"
+  ]
 }

@@ -1,4 +1,4 @@
-import generateQRCode from "../shared/qr-code.js";
+import { generateQRData, renderQRCode } from "../shared/qr-code.js";
 import { cleanData, validateData } from "../shared/shared.js";
 import translations from "../shared/translations.js";
 import { Creditor, Data, Debtor, Languages, PDFOptions, Size } from "../shared/types";
@@ -550,12 +550,13 @@ export class PDF_ extends ExtendedPDF {
 
   private _renderQRCode(): void {
 
-    const qrcode = generateQRCode(this._data, utils.mm2pt(46));
+    const qrData = generateQRData(this._data);
+    const qrCode = renderQRCode(qrData, utils.mm2pt(46));
 
 
     //-- Add QR Code
 
-    this.addPath(qrcode, utils.mm2pt(67), this._marginTop + utils.mm2pt(17))
+    this.addPath(qrCode, utils.mm2pt(67), this._marginTop + utils.mm2pt(17))
       .undash()
       .fillColor("black")
       .fill();

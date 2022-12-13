@@ -1,17 +1,25 @@
 {
+  "extends": "@schoero/ts-config",
   "compilerOptions": {
+    "baseUrl": ".",
     "declaration": false,
-    "esModuleInterop": true,
-    "lib": ["ES2020", "DOM"],
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "declarationMap": false,
+    "lib": ["ESNext", "DOM"],
     "noImplicitAny": false,
-    "sourceMap": true,
-    "strict": true,
+    "paths": {
+      "swissqrbill:*": ["src/*"],
+      "swissqrbill:browser:*": ["src/browser/*"],
+      "swissqrbill:node:*": ["src/node/*"],
+      "swissqrbill:pdf:*": ["src/pdf/*"],
+      "swissqrbill:shared:*": ["src/shared/*"],
+      "swissqrbill:svg:*": ["src/svg/*"],
+      "swissqrbill:tests:*": ["tests/*"]
+    },
     "target": "ES6"
   },
   "include": [
-    "src"
+    "src",
+    "tests"
   ],
   "exclude": [
     "node_modules",

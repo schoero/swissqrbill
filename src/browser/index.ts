@@ -1,23 +1,23 @@
-import { PDF, BlobStream } from "./pdf.js";
+import * as types from "../shared/types.js";
+import * as utils from "../shared/utils.js";
+
+import { BlobStream, PDF } from "./pdf.js";
 import { SVG } from "./svg.js";
 
-import * as utils from "../shared/utils.js";
-export * as utils from "../shared/utils.js";
 
-import * as types from "../shared/types.js";
 export * as types from "../shared/types.js";
-
-export * from "./svg.js";
+export * as utils from "../shared/utils.js";
 export * from "./pdf.js";
+export * from "./svg.js";
 
 
 const SwissQRBill = {
-  utils: utils,
-  types: types,
-  BlobStream: BlobStream,
+  BlobStream,
+  PDF,
+  SVG,
   blobStream: BlobStream,
-  PDF: PDF,
-  SVG: SVG
+  types,
+  utils
 };
 
 export default SwissQRBill;
