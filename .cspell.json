@@ -11,6 +11,12 @@
     "SCOR",
     "swiss",
     "swissqrbill",
-    "undash"
+    "undash",
+    "qrcodegen"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "lib/**",
+    "src/shared/qr-code-generator.ts"
   ]
 }
