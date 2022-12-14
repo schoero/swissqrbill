@@ -136,7 +136,6 @@
     "spellcheck": "node_modules/.bin/cspell lint",
     "spellcheck:ci": "npm run spellcheck -- --no-progress",
     "test": "node_modules/.bin/vitest --config ./vite.config.ts --threads=false",
-    "test:legacy": "npm run build && cd tests && sh run.sh",
     "test:update": "npm run test -- --update --run",
     "test:visual": "VISUAL=true npm run test -- --run"
   },
