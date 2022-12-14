@@ -47,7 +47,7 @@ jobs:
         run: npm test
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         node:
           - 18
