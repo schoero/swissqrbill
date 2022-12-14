@@ -468,7 +468,7 @@ Returns a `string` containing the formatted amount.
 
 ### mm2pt(millimeters)
 
-* millimeters - `number` containg the millimeters you want to convert to points.
+* millimeters - `number` containing the millimeters you want to convert to points.
  Converts millimeters to points. This method can be used to simplify positioning while you create your own layout using PDFKit.
  Returns a `number` containing the converted millimeters in points.
 
@@ -477,7 +477,7 @@ Returns a `string` containing the formatted amount.
 
 ### pt2mm(points)
 
-* points - `number` containg the points you want to convert to millimeters.
+* points - `number` containing the points you want to convert to millimeters.
  Converts points to millimeters. This method can be used to simplify positioning while you create your own layout using PDFKit.
  Returns a `number` containing the converted points in millimeters.
 
@@ -486,7 +486,7 @@ Returns a `string` containing the formatted amount.
 
 ### mm2px(millimeters)
 
-* millimeters - `number` containg the millimeters you want to convert to pixels.
+* millimeters - `number` containing the millimeters you want to convert to pixels.
  Converts millimeters to pixels. This method can be used to simplify positioning while you create your own layout using PDFKit.
  Returns a `number` containing the converted millimeters in pixels.
 
@@ -495,6 +495,6 @@ Returns a `string` containing the formatted amount.
 
 ### px2mm(pixels)
 
-* pixels - `number` containg the pixels you want to convert to millimeters.
+* pixels - `number` containing the pixels you want to convert to millimeters.
  Converts pixels to millimeters. This method can be used to simplify positioning while you create your own layout using PDFKit.
  Returns a `number` containing the converted pixels in millimeters.
