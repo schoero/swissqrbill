@@ -1,6 +1,4 @@
-import { mkdirSync } from "node:fs";
-
-import { beforeAll, describe, expect, test } from "vitest";
+import { describe, expect, test } from "vitest";
 
 import { minimalRequired } from "swissqrbill:tests:data/data.js";
 import { pdf } from "swissqrbill:tests:utils/pdf.js";
@@ -11,12 +9,6 @@ const OUT_DIR_PDF = "tests/output/pdf/options";
 const OUT_DIR_SVG = "tests/output/svg/options";
 
 describe("Options", async () => {
-
-  beforeAll(async () => {
-    mkdirSync(OUT_DIR_PDF, { recursive: true });
-    mkdirSync(OUT_DIR_SVG, { recursive: true });
-  });
-
 
   test("Size: A4", async () => {
     const name = "size-a4";

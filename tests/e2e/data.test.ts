@@ -1,6 +1,4 @@
-import { mkdirSync } from "node:fs";
-
-import { beforeAll, describe, expect, test } from "vitest";
+import { describe, expect, test } from "vitest";
 
 import {
   creditorWithBuildingNumber,
@@ -31,11 +29,6 @@ const OUT_DIR_PDF = "tests/output/pdf/data";
 const OUT_DIR_SVG = "tests/output/svg/data";
 
 describe("Data", async () => {
-
-  beforeAll(() => {
-    mkdirSync(OUT_DIR_PDF, { recursive: true });
-    mkdirSync(OUT_DIR_SVG, { recursive: true });
-  });
 
 
   //-- Minimal required
