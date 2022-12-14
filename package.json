@@ -123,21 +123,21 @@
   "module": "./lib/node/esm/node/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && tsc -p tsconfig.browser.esm.json && webpack --mode production",
-    "eslint": "node_modules/.bin/eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml,.md ./",
+    "eslint": "eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml,.md ./",
     "eslint:ci": "npm run eslint -- --max-warnings 0",
     "eslint:fix": "npm run eslint -- --fix",
     "lint": "npm run eslint && npm run markdownlint",
     "lint:ci": "npm run eslint:ci && npm run markdownlint:ci",
     "lint:fix": "npm run eslint:fix && npm run markdownlint:fix",
-    "markdownlint": "node_modules/.bin/markdownlint-cli2 '**/*.md' '#node_modules'",
+    "markdownlint": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "markdownlint:ci": "npm run markdownlint",
-    "markdownlint:fix": "node_modules/.bin/markdownlint-cli2-fix '**/*.md' '#node_modules'",
+    "markdownlint:fix": "markdownlint-cli2-fix '**/*.md' '#node_modules'",
     "postbuild": "sh fix-exports.sh",
-    "spellcheck": "node_modules/.bin/cspell lint",
+    "spellcheck": "cspell lint",
     "spellcheck:ci": "npm run spellcheck -- --no-progress",
-    "test": "node_modules/.bin/vitest --config ./vite.config.ts --threads=false",
+    "test": "vitest --config ./vite.config.ts --threads=false",
     "test:update": "npm run test -- --update --run",
-    "test:visual": "VISUAL=true npm run test -- --run"
+    "test:visual": "cross-env VISUAL=true npm run test -- --run"
   },
   "files": [
     "lib"
@@ -163,6 +163,7 @@
     "brfs": "^2.0.2",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
+    "cross-env": "^7.0.3",
     "eslint": "^8.29.0",
     "pdf2json": "^3.0.1",
     "process": "^0.11.10",
