@@ -6,6 +6,9 @@ import { Data } from "./types";
 
 export function generateQRData(data: Data): string {
 
+  const amount = data.amount?.toFixed(2);
+  const reference = getReferenceType(data.reference);
+
   const qrData: string[] = [
     "SPC",                                                 // Swiss Payments Code
     "0200",                                                // Version
@@ -36,7 +39,7 @@ export function generateQRData(data: Data): string {
     "",                                                    // 5x Empty
     "",                                                    // 6x Empty
     "",                                                    // 7x Empty
-    data.amount?.toFixed(2) ?? "",            // Amount
+    amount ?? "",                                          // Amount
     data.currency,                                         // Currency
     ...data.debtor
       ? [
@@ -68,7 +71,7 @@ export function generateQRData(data: Data): string {
         "",                                                // Empty city field
         ""                                                 // Empty country
       ],
-    getReferenceType(data.reference),                      // Reference type
+    reference,                                             // Reference type
     data.reference ?? "",                                  // Reference
     data.message ?? "",                                    // Unstructured message
     "EPD",                                                 // End of payment data
