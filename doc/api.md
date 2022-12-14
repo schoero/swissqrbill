@@ -271,7 +271,7 @@ const table = {
 ### Event: "finish"
 
 The finish event is emitted when the file has finished writing.
-You have to wait until the file has finished writing before you are able to interact with the genereated file.
+You have to wait until the file has finished writing before you are able to interact with the generated file.
 
 <br/>
 <br/>
