@@ -10,6 +10,7 @@
       "swissqrbill:*": ["src/*"],
       "swissqrbill:browser:*": ["src/browser/*"],
       "swissqrbill:node:*": ["src/node/*"],
+      "swissqrbill:node_modules:*": ["node_modules/*"],
       "swissqrbill:pdf:*": ["src/pdf/*"],
       "swissqrbill:shared:*": ["src/shared/*"],
       "swissqrbill:svg:*": ["src/svg/*"],

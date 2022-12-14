@@ -23,7 +23,8 @@ export interface Data {
 
   /**
    * Additional information. **Max 140 characters.**
-   * > Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment.
+   *
+   * Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment.
    */
   additionalInformation?: string;
 
@@ -34,13 +35,15 @@ export interface Data {
 
   /**
    * Alternative scheme. **Max. 100 characters.**
-   * > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
+   *
+   * Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
    */
   av1?: string;
 
   /**
    * Alternative scheme. **Max. 100 characters.**
-   * > Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
+   *
+   * Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
    */
   av2?: string;
 
@@ -51,13 +54,15 @@ export interface Data {
 
   /**
    * A message. **Max. 140 characters.**
-   * > message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference.
+   *
+   * message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference.
    */
   message?: string;
 
   /**
    * A reference number. **Max 27 characters.**
-   * > QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
+   *
+   * QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
    *   Creditor Reference (ISO 11649): Maximum 25 characters.
    */
   reference?: string;
@@ -119,21 +124,23 @@ export interface PDFOptions {
   language?: Languages;
 
   /**
-   *  Whether you want render the outlines. This option may be disabled if you use perforated paper.
+   * Whether you want render the outlines. This option may be disabled if you use perforated paper.
    * @defaultValue `true`
    */
   outlines?: boolean;
 
   /**
-   *  Whether you want to show the scissors icons or the text `Separate before paying in`.
-   *  > **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
+   * Whether you want to show the scissors icons or the text `Separate before paying in`.
+   *
+   * **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
    * @defaultValue `true`
    */
   scissors?: boolean;
 
   /**
-   *  Whether you want to show the text `Separate before paying in` rather than the scissors icons.
-   *  > **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
+   * Whether you want to show the text `Separate before paying in` rather than the scissors icons.
+   *
+   * **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
    * @defaultValue `false`
    */
   separate?: boolean;

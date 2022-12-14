@@ -113,7 +113,7 @@ export class ExtendedPDF extends PDFDocument {
   }
 
 
-  public switchToPage(n: number): PDFKit.PDFPage {
+  public override switchToPage(n: number): PDFKit.PDFPage {
     const page = super.switchToPage(n);
     this._currentPage = n;
     return page;

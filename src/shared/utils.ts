@@ -6,7 +6,7 @@
  */
 export function isQRIBAN(iban: string): boolean {
   iban = iban.replace(/ /g, "");
-  const QRIID = iban.substr(4, 5);
+  const QRIID = iban.substring(4, 9);
   return +QRIID >= 30000 && +QRIID <= 31999;
 }
 
@@ -19,13 +19,14 @@ export function isQRIBAN(iban: string): boolean {
  */
 export function isIBANValid(iban: string): boolean {
 
-  iban = iban.replace(/ /g, "");
-  iban = iban.toUpperCase();
+  iban = iban
+    .replace(/ /g, "")
+    .toUpperCase();
 
 
   //-- Move country code + checksum to end
 
-  iban = iban.substr(4) + iban.substr(0, 4);
+  iban = iban.substring(4) + iban.substring(0, 4);
 
 
   //-- Convert letters to numbers, beginning with A = 10...Z = 35
@@ -59,8 +60,9 @@ export function isIBANValid(iban: string): boolean {
  * @returns The formatted IBAN.
  */
 export function formatIBAN(iban: string): string {
-  iban = iban.replace(/ /g, "");
-  const ibanArray = iban.replace(/ /g, "").match(/.{1,4}/g);
+  const ibanArray = iban
+    .replace(/ /g, "")
+    .match(/.{1,4}/g);
   return ibanArray?.join(" ") ?? iban;
 }
 
@@ -79,9 +81,7 @@ export function isQRReference(reference: string): boolean {
     if(!isNaN(+reference)){
       return true;
     }
-  }
-
-  if(reference.replace(/ /g, "").length <= 25){
+  } else if(reference.length <= 25){
     return false;
   }
 
@@ -108,8 +108,8 @@ export function isQRReferenceValid(reference: string): boolean {
     return false;
   }
 
-  const ref = reference.substr(0, 26);
-  const checksum = reference.substr(26, 1);
+  const ref = reference.substring(0, 26);
+  const checksum = reference.substring(26, 27);
 
   const calculatedChecksum = calculateQRReferenceChecksum(ref);
 
@@ -137,16 +137,15 @@ export function calculateQRReferenceChecksum(reference: string): string {
  */
 export function formatQRReference(reference: string): string {
 
-  reference = reference.replace(/ /g, "");
+  const trimmedReference = reference.replace(/ /g, "");
 
-  let referenceArray: RegExpMatchArray | undefined;
+  const match = trimmedReference
+    .substring(2)
+    .match(/.{1,5}/g);
 
-  const match = reference.substring(2).match(/.{1,5}/g);
-  if(match !== null){
-    referenceArray = [reference.substring(0, 2)].concat(match);
-  }
-
-  return referenceArray.join(" ");
+  return match
+    ? `${trimmedReference.substring(0, 2)} ${match.join(" ")}`
+    : reference;
 
 }
 
@@ -159,14 +158,10 @@ export function formatQRReference(reference: string): string {
  */
 export function formatSCORReference(reference: string): string {
 
-  reference = reference.replace(/ /g, "");
+  const trimmedReference = reference.replace(/ /g, "");
+  const match = trimmedReference.match(/.{1,4}/g);
 
-  const match = reference.match(/.{1,4}/g);
-  if(match !== null){
-    return match.join(" ");
-  }
-
-  return reference;
+  return match?.join(" ") ?? reference;
 
 }
 
@@ -280,7 +275,7 @@ function mod9710(iban: string) {
 
   while(remainder.length > 2){
     block = remainder.slice(0, 9);
-    remainder = parseInt(block, 10) % 97 + remainder.slice(block.length);
+    remainder = `${parseInt(block, 10) % 97}${remainder.slice(block.length)}`;
   }
 
   return parseInt(remainder, 10) % 97;
@@ -290,13 +285,13 @@ function mod9710(iban: string) {
 
 function mod10(code: string): string {
 
-  code = code.replace(/ /g, "");
+  const trimmedCode = code.replace(/ /g, "");
 
   const table = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5];
   let carry = 0;
 
-  for(let i = 0; i < code.length; i++){
-    carry = table[(carry + parseInt(code.substr(i, 1), 10)) % 10];
+  for(let i = 0; i < trimmedCode.length; i++){
+    carry = table[(carry + parseInt(trimmedCode.substring(i, i + 1), 10)) % 10];
   }
 
   return ((10 - carry) % 10).toString();

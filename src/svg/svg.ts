@@ -21,7 +21,7 @@ export class SVG_ {
     this._data = data;
 
 
-    //-- Clean data (remove line breaks and unnecessary whitespaces)
+    //-- Clean data (remove line breaks and unnecessary white spaces)
 
     this._data = cleanData(this._data);
 
@@ -674,7 +674,7 @@ export class SVG_ {
 
     if(calculateTextWidth(text, size) > lengthInPixel){
       for(let c = 0; c < text.length; c++){
-        if(calculateTextWidth(`${result + text[c]}...`, size) <= lengthInPixel){
+        if(calculateTextWidth(`${result}${text[c]}...`, size) <= lengthInPixel){
           result += text[c];
         } else {
           break;

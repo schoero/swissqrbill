@@ -1,12 +1,7 @@
-import { Data, SVGOptions } from "../shared/types.js";
 import { SVG_ } from "../svg/svg.js";
 
 
 export class SVG extends SVG_ {
-
-  constructor(data: Data, options?: SVGOptions) {
-    super(data, options);
-  }
 
 
   /**
@@ -21,7 +16,8 @@ export class SVG extends SVG_ {
 
   /**
    * Returns the SVG element.
-   * > **Note:** This function is only available in the browser.
+   *
+   * **Note:** This function is only available in the browser.
    *
    * @readonly
    */

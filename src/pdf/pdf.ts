@@ -26,7 +26,7 @@ export class PDF_ extends ExtendedPDF {
     this._data = data;
 
 
-    //-- Clean data (remove line breaks and unnecessary whitespaces)
+    //-- Clean data (remove line breaks and unnecessary white spaces)
 
     this._data = cleanData(this._data);
 
@@ -82,7 +82,7 @@ export class PDF_ extends ExtendedPDF {
    * @param options - An object containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)
    * @returns `this`
    */
-  public addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
+  public override addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
 
     if(options === undefined){
       options = {
@@ -97,7 +97,7 @@ export class PDF_ extends ExtendedPDF {
   }
 
 
-  public end(): void {
+  public override end(): void {
     this.emit("beforeEnd", this);
     return super.end();
   }

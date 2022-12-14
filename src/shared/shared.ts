@@ -9,23 +9,23 @@ export function cleanData(data: Data): Data {
     const keys = Object.keys(object);
 
     for(let k = 0; k < keys.length; k++){
-      if(typeof object[keys[k]] === "string"){
+      if(typeof object[keys[k]!] === "string"){
 
-        object[keys[k]] = removeLinebreaks(object[keys[k]]);
+        object[keys[k]!] = removeLineBreaks(object[keys[k]!]);
 
         if(keys[k] === "account"){
-          object[keys[k]] = object[keys[k]].replace(/ /g, "");
+          object[keys[k]!] = object[keys[k]!].replace(/ /g, "");
         }
         if(keys[k] === "reference"){
-          object[keys[k]] = object[keys[k]].replace(/ /g, "");
+          object[keys[k]!] = object[keys[k]!].replace(/ /g, "");
         }
         if(keys[k] === "country"){
-          object[keys[k]] = object[keys[k]].toUpperCase();
+          object[keys[k]!] = object[keys[k]!].toUpperCase();
         }
 
       } else {
-        if(typeof object[keys[k]] === "object"){
-          _cleanObject(object[keys[k]]);
+        if(typeof object[keys[k]!] === "object"){
+          _cleanObject(object[keys[k]!]);
         }
       }
     }
@@ -38,7 +38,7 @@ export function cleanData(data: Data): Data {
 }
 
 
-export function removeLinebreaks(text: string): string {
+export function removeLineBreaks(text: string): string {
   return text.replace(/\n/g, "").replace(/\r/g, "");
 }
 

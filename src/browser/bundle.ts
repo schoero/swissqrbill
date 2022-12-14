@@ -2,10 +2,9 @@ import fs from "fs";
 
 import BlobStream_ from "blob-stream";
 
-//-- Register fonts for the bundled version
-// @ts-expect-error
+// @ts-expect-error - Import resolution does not work here
 import Helvetica from "../../node_modules/pdfkit/js/data/Helvetica.afm";
-// @ts-expect-error
+// @ts-expect-error - Import resolution does not work here
 import HelveticaBold from "../../node_modules/pdfkit/js/data/Helvetica-Bold.afm";
 import * as types from "../shared/types.js";
 import * as utils from "../shared/utils.js";
