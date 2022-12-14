@@ -190,7 +190,6 @@ export class SVG_ {
 
 
       //-- Add rectangle
-      //-- Add rectangle
 
       receiptTextContainer.addTSpan(translations[this._language].payableByName)
         .x(0)
