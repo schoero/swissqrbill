@@ -6,7 +6,7 @@ export { PDFColumn, PDFRow, PDFTable } from "../pdf/extended-pdf";
 //-- SwissQRBill types
 
 export type Currency = "CHF" | "EUR";
-export type Size = "A4" | "A6/5";
+export type Size = "A4" | "A6" | "A6/5";
 export type Languages = "DE" | "EN" | "FR" | "IT";
 
 export interface Data {
@@ -147,7 +147,7 @@ export interface PDFOptions {
 
   /**
    * The page size.
-   * @defaultValue `"A6/5"`
+   * @defaultValue `"A6"`
    */
   size?: Size;
 }

@@ -21,4 +21,4 @@ const data = {
   }
 };
 
-const pdf = new PDF(data, "./output/a6.pdf", { "size": "A6/5" });
+const pdf = new PDF(data, "./output/a6.pdf", { "size": "A6" });

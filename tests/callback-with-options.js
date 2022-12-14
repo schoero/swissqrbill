@@ -22,6 +22,6 @@ const data = {
   reference: "210000000003139471430009017"
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/callback-with-options.pdf", { size: "A6/5" }, () => {
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/callback-with-options.pdf", { size: "A6" }, () => {
   console.log("File has been successfully created.");
 });

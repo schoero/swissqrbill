@@ -24,6 +24,6 @@ const data = {
   message: "Invoice number 12345 from order number 12345 on may 3rd 2021."
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-reference-message.pdf", { size: "A6/5" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/no-reference-message.pdf", { size: "A6" });
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/no-reference-message.svg", svg.toString());

@@ -26,6 +26,6 @@ const data = {
   reference: "210000000003139471430009017"
 };
 
-const pdf = new SwissQRBill.PDF(data, "./output/pdf/message-additional-information.pdf", { size: "A6/5" });
+const pdf = new SwissQRBill.PDF(data, "./output/pdf/message-additional-information.pdf", { size: "A6" });
 const svg = new SwissQRBill.SVG(data);
 writeFileSync("./output/svg/message-additional-information.svg", svg.toString());

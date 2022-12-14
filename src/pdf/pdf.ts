@@ -9,7 +9,7 @@ import { ExtendedPDF } from "./extended-pdf.js";
 
 export class PDF_ extends ExtendedPDF {
 
-  public size: Size = "A6/5";
+  public size: Size = "A6";
   protected _data: Data;
   private _scissors: boolean = true;
   private _separate: boolean = false;
@@ -108,7 +108,7 @@ export class PDF_ extends ExtendedPDF {
    *
    * @param size - The size of the new page if not enough space is left for the QR slip.
    */
-  public addQRBill(size: Size = "A6/5"): void {
+  public addQRBill(size: Size = "A6"): void {
 
     if(this.page.height - this.y < utils.mm2pt(105) && this.y !== this.page.margins.top){
       this.addPage({

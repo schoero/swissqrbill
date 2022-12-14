@@ -120,7 +120,7 @@
   Available options:
 
 * **language** - `string: "DE" | "EN" | "IT" | "FR"`. *default* `"DE"`.
-* **size** - `string: "A4" | "A6/5"`. *default* `"A6/5"`.
+* **size** - `string: "A4" | "A6"`. *default* `"A6"`.
 * **scissors** - `boolean`: *default* `true`.
      Whether you want to show the scissors icons or the text `Separate before paying in`.
      > **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
@@ -176,7 +176,7 @@ Returns `this`.
 
 ### addQRBill([size])
 
-* size - `string: "A4" | "A6/5"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6/5"`.
+* size - `string: "A4" | "A6"` size of the new page if not enough space is left for the QR slip. *optional*, *default* `"A6"`.
 
 Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
 > **Note:** This function is automatically called when the option autoGenerate is set to true.
