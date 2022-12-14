@@ -44,7 +44,14 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm test
+        run: npm run test:visual
+
+      - name: Upload test output
+        uses: actions/upload-artifact@v3
+        with:
+          name: Output
+          path: test/output
+          retention-days: 1
 
     strategy:
       fail-fast: true
