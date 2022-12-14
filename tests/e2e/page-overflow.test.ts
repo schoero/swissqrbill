@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 
 import { mm2pt } from "swissqrbill:shared/utils.js";
 import { minimalRequired } from "swissqrbill:tests:data/data.js";
-import { createPDF } from "swissqrbill:tests:utils/pdf2.js";
+import { createPDF } from "swissqrbill:tests:utils/pdf.js";
 
 
 const OUT_DIR_PDF = "tests/output/pdf/multi-page";
