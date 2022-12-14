@@ -164,7 +164,7 @@
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "eslint": "^8.29.0",
-    "pdf-to-png-converter": "^2.7.1",
+    "pdf2json": "^3.0.1",
     "process": "^0.11.10",
     "readable-stream": "^4.2.0",
     "transform-loader": "^0.2.4",
