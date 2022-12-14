@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Output
-          path: tests/output
+          path: test/output
           retention-days: 1
 
     strategy:
