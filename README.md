@@ -23,7 +23,7 @@
     <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
   </a>
   <a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
-    <img alt="CI" src="https://img.shields.io/github/workflow/status/schoero/SwissQRBill/CI?style=flat-square">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/schoero/SwissQRBill/ci.yml?branch=master&style=flat-square">
   </a>
 </div>
 
