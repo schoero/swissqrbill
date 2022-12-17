@@ -1,6 +1,6 @@
 # API documentation
 
-# SwissQRBill.PDF
+## SwissQRBill.PDF
 
 * Constructor
   * [SwissQRBill.PDF(data, outputPath[, options] [, callback])](#swissqrbillpdfdata-outputpath-options--callback)
@@ -13,11 +13,11 @@
 * Events
   * [finish](#event-finish)
   * [pageAdded](#event-pageadded)
-  * [beforeEnd](#event-beforeEnd)
+  * [beforeEnd](#event-beforeend)
 
 <br/>
 
-# SwissQRBill.SVG
+## SwissQRBill.SVG
 
 * Constructor
   * [SwissQRBill.SVG(data[, options])](#swissqrbillsvgdata-options)
@@ -28,7 +28,7 @@
 
 <br/>
 
-# SwissQRBill.BlobStream
+## SwissQRBill.BlobStream
 
 * Constructor
   * [SwissQRBill.BlobStream()](#swissqrbillblobstream-1)
@@ -38,7 +38,7 @@
 
 <br/>
 
-# SwissQRBill.utils
+## SwissQRBill.utils
 
 * Functions
   * IBAN
@@ -63,7 +63,7 @@
 <br/>
 <br/>
 
-# SwissQRBill.PDF
+## SwissQRBill.PDF
 
 ## Constructor
 
@@ -77,7 +77,6 @@
 * **callback** - `function` that gets called right after the pdf has been created, *optional*.
 
 > **Note:** The outputPath option is only available in Node.js.
-
 > **Note:** The creation of the PDF file is not synchronous. You can take advantage of the callback function that gets called when the PDF is ready to interact with the created PDF file.
 
 ##### data

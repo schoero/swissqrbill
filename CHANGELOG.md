@@ -164,5 +164,5 @@
 # [v1.0.5](https://github.com/schoero/swissqrbill/compare/v1.0.4...v1.0.5) - 03.03.2020
 
 * Fixed french characters.
-* Removes new lines in userdata.
+* Removes new lines in user data.
 * Fixed some layout issues.

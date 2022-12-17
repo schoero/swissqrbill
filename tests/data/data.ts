@@ -190,5 +190,5 @@ export const minimalRequiredWithAlternativeScheme2: Data = {
 export const minimalRequiredWithAlternativeScheme1and2: Data = {
   ...minimalRequired,
   av1: "twint/light/02:5d5caa0c078149c694380b72d273ba7#9837183ed9f8bab7286856d786edf5721d55f82b#",
-  av2: "rn/twint/a~UuoWrVwETE-AZMysjqoCtQ~s~kNAfGk8vSou0wsvzHvTiSw/rn"
+  av2: "rn/twint/a~UuoWrVwETE-AZMysjqoCtQ~s~kNAfGk8vSou0wsvzHvTiSw/rn" // cspell:disable-line
 };

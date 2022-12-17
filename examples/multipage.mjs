@@ -21,7 +21,7 @@ const data = {
   }
 };
 
-const pdf = new PDF(data, "./output/multipage.pdf", { "autoGenerate": false });
+const pdf = new PDF(data, "./output/multi-page.pdf", { "autoGenerate": false });
 
 pdf.fontSize(11);
 pdf.font("Helvetica-Bold");

@@ -249,7 +249,7 @@ export function mm2px(millimeters: number): number {
 /**
  * Converts pixels to millimeters.
  *
- * @param pixels - containg the pixels you want to convert to millimeters.
+ * @param pixels - containing the pixels you want to convert to millimeters.
  * @returns The converted pixels in millimeters.
  */
 export function px2mm(pixels: number): number {

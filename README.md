@@ -32,7 +32,7 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#further-information) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
@@ -173,7 +173,7 @@ const data = {
   reference: "210000000003139471430009017"
 };
 
-const pdf = new PDF(data, "qrbill.pdf", () => {
+const pdf = new PDF(data, "qr-bill.pdf", () => {
   console.log("PDF has been successfully created.");
 });
 ```
@@ -217,7 +217,7 @@ document.body.appendChild(svg.element);
 <br/>
 <br/>
 
-## Further informations
+## Further information
 
 SwissQRBill.PDF extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/schoero/SwissQRBill/tree/master/doc/api.md#methods).
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).

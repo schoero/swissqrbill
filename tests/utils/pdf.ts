@@ -37,7 +37,6 @@ export function createPDF(data: Data, path: string, options?: PDFOptions): { pdf
         resolve(snapshots.Pages.map(page => JSON.stringify(page)));
       }
 
-
     });
 
   });
