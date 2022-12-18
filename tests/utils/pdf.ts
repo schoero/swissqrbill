@@ -51,7 +51,7 @@ export function createPDF(data: Data, path: string, options?: PDFOptions): { pdf
 
 export async function pdf(data: Data, path: string, options?: PDFOptions) {
   const { snapshots } = createPDF(data, path, options);
-  return await snapshots;
+  return snapshots;
 }
 
 
