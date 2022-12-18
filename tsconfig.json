@@ -6,6 +6,7 @@
     "declarationMap": false,
     "lib": ["ESNext", "DOM"],
     "noImplicitAny": false,
+    "outDir": "lib",
     "paths": {
       "swissqrbill:*": ["src/*"],
       "swissqrbill:browser:*": ["src/browser/*"],
