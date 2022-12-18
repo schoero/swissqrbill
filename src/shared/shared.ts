@@ -1,4 +1,4 @@
-import { Creditor, Data, Debtor } from "./types";
+import { Creditor, Data, Debtor } from "./types.js";
 import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils.js";
 
 

@@ -1,7 +1,7 @@
 import { generateQRData, renderQRCode } from "../shared/qr-code.js";
 import { cleanData, validateData } from "../shared/shared.js";
 import translations from "../shared/translations.js";
-import { Creditor, Data, Debtor, Languages, PDFOptions, Size } from "../shared/types";
+import { Creditor, Data, Debtor, Languages, PDFOptions, Size } from "../shared/types.js";
 import * as utils from "../shared/utils.js";
 
 import { ExtendedPDF } from "./extended-pdf.js";

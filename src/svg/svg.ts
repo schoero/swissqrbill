@@ -3,7 +3,7 @@ import { calc, SVG } from "svg-engine";
 import { generateQRData, renderQRCode } from "../shared/qr-code.js";
 import { cleanData, validateData } from "../shared/shared.js";
 import translations from "../shared/translations.js";
-import { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types";
+import { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types.js";
 import * as utils from "../shared/utils.js";
 
 import { calculateTextWidth } from "./characterWidth.js";
