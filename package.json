@@ -155,7 +155,7 @@
     "@schoero/cspell-config": "^1.6.2",
     "@schoero/eslint-config": "^1.28.15",
     "@schoero/markdownlint-config": "^1.1.2",
-    "@schoero/ts-config": "^0.3.1",
+    "@schoero/vite-config": "^0.0.7",
     "@types/blob-stream": "^0.1.30",
     "@types/node": "^18.11.16",
     "@types/svg-parser": "^2.0.3",
