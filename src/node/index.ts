@@ -1,21 +1,20 @@
-import * as types from "../shared/types.js";
-import * as utils from "../shared/utils.js";
+import * as types_ from "../shared/types.js";
+import * as utils_ from "../shared/utils.js";
 
 import { PDF } from "./pdf.js";
 import { SVG } from "./svg.js";
 
 
-export * as types from "../shared/types.js";
-export * as utils from "../shared/utils.js";
+export const types = types_;
+export const utils = utils_;
+
 export * from "./pdf.js";
 export * from "./svg.js";
 
 
-const SwissQRBill = {
+export default {
   PDF,
   SVG,
   types,
   utils
 };
-
-export default SwissQRBill;

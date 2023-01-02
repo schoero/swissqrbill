@@ -25,7 +25,7 @@ export * from "./svg.js";
 fs.writeFileSync("data/Helvetica.afm", Helvetica);
 fs.writeFileSync("data/Helvetica-Bold.afm", HelveticaBold);
 
-const SwissQRBill = {
+export default {
   BlobStream: BlobStream_,
   PDF,
   SVG,
@@ -33,5 +33,3 @@ const SwissQRBill = {
   types,
   utils
 };
-
-export default SwissQRBill;
