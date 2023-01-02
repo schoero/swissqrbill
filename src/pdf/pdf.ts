@@ -10,7 +10,8 @@ import { ExtendedPDF } from "./extended-pdf.js";
 export class PDF_ extends ExtendedPDF {
 
   public size: Size = "A6";
-  protected _data: Data;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  protected _data: Data; // Was originally a private property but was opened in #368
   private _scissors: boolean = true;
   private _separate: boolean = false;
   private _outlines: boolean = true;
