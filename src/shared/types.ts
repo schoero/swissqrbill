@@ -1,6 +1,6 @@
 //-- PDF types
 
-export { PDFColumn, PDFRow, PDFTable } from "../pdf/extended-pdf";
+export { PDFColumn, PDFRow, PDFTable } from "../pdf/extended-pdf.js";
 
 
 //-- SwissQRBill types
