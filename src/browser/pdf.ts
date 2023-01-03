@@ -14,8 +14,8 @@ export class PDF extends PDF_ {
   constructor(data: Data, writeableStream: IBlobStream, options?: PDFOptions, callback?: Function);
   constructor(data: Data, writeableStream: IBlobStream, optionsOrCallback?: Function | PDFOptions, callbackOrUndefined?: Function | undefined) {
 
-    let callback: Function | undefined = undefined;
-    let options: PDFOptions | undefined = undefined;
+    let callback: Function | undefined;
+    let options: PDFOptions | undefined;
 
     if(typeof optionsOrCallback === "object"){
 

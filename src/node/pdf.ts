@@ -1,5 +1,5 @@
-import { createWriteStream } from "fs";
-import { Writable } from "stream";
+import { createWriteStream } from "node:fs";
+import { Writable } from "node:stream";
 
 import { PDF_ } from "../pdf/pdf.js";
 import { Data, PDFOptions } from "../shared/types.js";
@@ -13,8 +13,8 @@ export class PDF extends PDF_ {
   constructor(data: Data, writableStream: Writable, options?: PDFOptions, callback?: Function);
   constructor(data: Data, outputPathOrWritableStream: Writable | string, optionsOrCallback?: Function | PDFOptions, callbackOrUndefined?: Function | undefined) {
 
-    let callback: Function | undefined = undefined;
-    let options: PDFOptions | undefined = undefined;
+    let callback: Function | undefined;
+    let options: PDFOptions | undefined;
 
     if(typeof optionsOrCallback === "object"){
 

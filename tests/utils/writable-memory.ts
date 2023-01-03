@@ -1,4 +1,4 @@
-import { Duplex } from "stream";
+import { Duplex } from "node:stream";
 
 
 export class WritableMemory extends Duplex {
@@ -9,8 +9,7 @@ export class WritableMemory extends Duplex {
   }
 
 
-  public override _read() {
-  }
+  public override _read() {}
 
 
   public override _final(callback: (error?: Error | null) => void) {

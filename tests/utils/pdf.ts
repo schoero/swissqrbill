@@ -32,7 +32,7 @@ export function createPDF(data: Data, path: string, options?: PDFOptions): { pdf
       if(typeof snapshots === "object" &&
         snapshots !== null &&
         "Pages" in snapshots &&
-        snapshots.Pages instanceof Array
+        Array.isArray(snapshots.Pages)
       ){
         resolve(snapshots.Pages.map(page => JSON.stringify(page)));
       }
