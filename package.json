@@ -153,8 +153,8 @@
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.1.2",
     "@cspell/dict-it-it": "^2.0.0",
-    "@schoero/cspell-config": "^1.6.3",
-    "@schoero/eslint-config": "^1.33.0",
+    "@schoero/cspell-config": "^1.6.5",
+    "@schoero/eslint-config": "^1.33.2",
     "@schoero/markdownlint-config": "^1.1.2",
     "@schoero/ts-config": "^0.3.2",
     "@schoero/vite-config": "^0.0.8",
