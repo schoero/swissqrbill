@@ -2,7 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve as resolvePath } from "node:path";
 
 import { SVG } from "swissqrbill:node:svg.js";
-import { Data, SVGOptions } from "swissqrbill:shared:types.js";
+
+import type { Data, SVGOptions } from "swissqrbill:shared:types.js";
 
 
 const VISUAL = process.env.VISUAL === "true";

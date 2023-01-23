@@ -1,7 +1,9 @@
-import { default as BlobStream_, IBlobStream } from "blob-stream";
+import { default as BlobStream_ } from "blob-stream";
 
 import { PDF_ } from "../pdf/pdf.js";
-import { Data, PDFOptions } from "../shared/types.js";
+
+import type { Data, PDFOptions } from "../shared/types.js";
+import type { IBlobStream } from "blob-stream";
 
 
 export import blobStream = BlobStream_;

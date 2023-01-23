@@ -1,5 +1,6 @@
-import { Creditor, Data, Debtor } from "swissqrbill:shared:types.js";
 import { fillUntil } from "swissqrbill:tests:utils/fill.js";
+
+import type { Creditor, Data, Debtor } from "swissqrbill:shared:types.js";
 
 
 //-- Default data

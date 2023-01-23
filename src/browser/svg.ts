@@ -9,7 +9,7 @@ export class SVG extends SVG_ {
    *
    * @returns The outerHTML of the SVG as a `string`.
    */
-  public toString(): string {
+  public override toString(): string {
     return this.outerHTML;
   }
 

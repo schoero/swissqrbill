@@ -1,7 +1,8 @@
 import { getReferenceType } from "../shared/utils.js";
 
 import { qrcodegen } from "./qr-code-generator.js";
-import { Data } from "./types.js";
+
+import type { Data } from "./types.js";
 
 
 export function generateQRData(data: Data): string {

@@ -4,9 +4,10 @@ import { dirname, resolve as resolvePath } from "node:path";
 import PDFParser from "pdf2json";
 
 import { PDF } from "swissqrbill:node:pdf.js";
-import { Data, PDFOptions } from "swissqrbill:shared:types.js";
 
 import { WritableMemory } from "./writable-memory.js";
+
+import type { Data, PDFOptions } from "swissqrbill:shared:types.js";
 
 
 const VISUAL = process.env.VISUAL === "true";

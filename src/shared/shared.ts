@@ -1,5 +1,6 @@
-import { Creditor, Data, Debtor } from "./types.js";
 import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils.js";
+
+import type { Creditor, Data, Debtor } from "./types.js";
 
 
 export function cleanData(data: Data): Data {

@@ -1,8 +1,10 @@
 import { createWriteStream } from "node:fs";
-import { Writable } from "node:stream";
 
 import { PDF_ } from "../pdf/pdf.js";
-import { Data, PDFOptions } from "../shared/types.js";
+
+import type { Writable } from "node:stream";
+
+import type { Data, PDFOptions } from "../shared/types.js";
 
 
 export class PDF extends PDF_ {
