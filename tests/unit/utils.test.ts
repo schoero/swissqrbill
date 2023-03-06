@@ -12,7 +12,8 @@ import {
   isQRIBAN,
   isQRReference,
   isQRReferenceValid,
-  isSCORReference
+  isSCORReference,
+  isSCORReferenceValid
 } from "swissqrbill:shared:utils.js";
 
 
@@ -99,6 +100,7 @@ describe("utils", () => {
   });
 
   test("isSCORReference", () => {
+
     expect(isSCORReference("RF48 5000 0567 8901 2345")).toBe(true);
     expect(isSCORReference("RF485000056789012345")).toBe(true);
     expect(isSCORReference("RF00000000000000000000000")).toBe(true);
@@ -110,6 +112,17 @@ describe("utils", () => {
 
     expect(isSCORReference("21 00000 00003 13947 14300 09017")).toBe(false);
     expect(isSCORReference("210000000003139471430009017")).toBe(false);
+
+  });
+
+  test("isSCORReferenceValid", () => {
+
+    expect(isSCORReferenceValid("RF48 5000 0567 8901 2345")).toBe(true);
+    expect(isSCORReferenceValid("RF485000056789012345")).toBe(true);
+
+    expect(isSCORReferenceValid("RF48 5000 0567 8901 2346")).toBe(false);
+    expect(isSCORReferenceValid("RF485000056789012346")).toBe(false);
+
   });
 
   test("calculateSCORReferenceChecksum", () => {
