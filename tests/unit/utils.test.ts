@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 
 import {
   calculateQRReferenceChecksum,
+  calculateSCORReferenceChecksum,
   formatAmount,
   formatIBAN,
   formatQRReference,
@@ -10,7 +11,8 @@ import {
   isIBANValid,
   isQRIBAN,
   isQRReference,
-  isQRReferenceValid
+  isQRReferenceValid,
+  isSCORReference
 } from "swissqrbill:shared:utils.js";
 
 
@@ -94,6 +96,28 @@ describe("utils", () => {
   test("formatQRReference", () => {
     expect(formatQRReference("210000000003139471430009017")).toBe("21 00000 00003 13947 14300 09017");
     expect(formatQRReference("  2  1 0000000003139471430009017  ")).toBe("21 00000 00003 13947 14300 09017");
+  });
+
+  test("isSCORReference", () => {
+    expect(isSCORReference("RF48 5000 0567 8901 2345")).toBe(true);
+    expect(isSCORReference("RF485000056789012345")).toBe(true);
+    expect(isSCORReference("RF00000000000000000000000")).toBe(true);
+    expect(isSCORReference("RF0000000000000000000000A")).toBe(true);
+
+    expect(isSCORReference("485000056789012345")).toBe(false);
+    expect(isSCORReference("RF48")).toBe(false);
+    expect(isSCORReference("RF000000000000000000000000")).toBe(false);
+
+    expect(isSCORReference("21 00000 00003 13947 14300 09017")).toBe(false);
+    expect(isSCORReference("210000000003139471430009017")).toBe(false);
+  });
+
+  test("calculateSCORReferenceChecksum", () => {
+    expect(calculateSCORReferenceChecksum("5000056789012345")).toBe("48");
+    expect(calculateSCORReferenceChecksum("0000000000000000")).toBe("04");
+    expect(calculateSCORReferenceChecksum("000000000000000A")).toBe("25");
+    expect(calculateSCORReferenceChecksum("000000000000000B")).toBe("95");
+    expect(calculateSCORReferenceChecksum("123456789")).toBe("18");
   });
 
   test("formatSCORReference", () => {
