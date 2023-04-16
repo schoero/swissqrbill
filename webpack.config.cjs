@@ -49,7 +49,11 @@ module.exports = {
       if(resource.context.includes("node_modules") !== true){
         resource.request = resource.request.replace(".js", "");
       }
+    }),
+    new webpack.NormalModuleReplacementPlugin(/^node:/, resource => {
+      resource.request = resource.request.replace(/^node:/, "");
     })
+
   ],
   resolve: {
     alias: {

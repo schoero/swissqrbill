@@ -5,6 +5,7 @@
     "declaration": false,
     "declarationMap": false,
     "lib": ["ESNext", "DOM"],
+    "moduleResolution": "node",
     "noImplicitAny": false,
     "outDir": "lib",
     "paths": {
@@ -19,6 +20,7 @@
       "swissqrbill:svg:*": ["src/svg/*"],
       "swissqrbill:tests:*": ["tests/*"]
     },
+    "skipLibCheck": true,
     "target": "ES6"
   },
   "include": [
