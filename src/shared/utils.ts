@@ -141,7 +141,7 @@ export function formatQRReference(reference: string): string {
 
   reference = reference.replace(/ /g, "");
 
-  let referenceArray: RegExpMatchArray = [];
+  let referenceArray: string[] = [];
 
   const match = reference.substring(2).match(/.{1,5}/g);
   if(match !== null){
@@ -184,7 +184,7 @@ export function formatSCORReference(reference: string): string {
 
   reference = reference.replace(/ /g, "");
 
-  let referenceArray: RegExpMatchArray = [];
+  let referenceArray: string[] = [];
 
   const match = reference.match(/.{1,4}/g);
   if(match !== null){
