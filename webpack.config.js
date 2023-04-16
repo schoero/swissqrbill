@@ -2,7 +2,6 @@ const webpack = require("webpack");
 
 
 module.exports = {
-  devtool: "inline-source-map",
   entry: "./src/browser/bundle.ts",
   module: {
     rules: [

@@ -310,6 +310,7 @@ export function px2mm(pixels: number): number {
 
 /**
  * Detects the type of the given reference.
+ *
  * @param reference - The reference to get the type of.
  * @returns The type of the given reference.
  */
@@ -325,6 +326,7 @@ export function getReferenceType(reference: string | undefined): "NON" | "QRR" |
 
 /**
  * Calculates the checksum according to the ISO 7064 standard.
+ *
  * @param input - The input whose checksum should be calculated.
  * @returns The calculated checksum.
  */
@@ -362,6 +364,7 @@ function mod97(input: string): number {
 
 /**
  * Calculates the checksum according to the ISO 7812-1 standard.
+ *
  * @param input - The input whose checksum should be calculated.
  * @returns The calculated checksum.
  */

@@ -1,6 +1,16 @@
 
 # Change Log
 
+# [v3.2.3](https://github.com/schoero/swissqrbill/compare/v3.2.2...v3.2.3) - 16.04.2023
+
+* Updated dependencies.
+* Removed source maps from the pre-built bundle.
+
+# [v3.2.2](https://github.com/schoero/swissqrbill/compare/v3.2.1...v3.2.2) - 14.01.2023
+
+* Updated dependencies.
+* Fixed CI status badge.
+
 # [v3.2.1](https://github.com/schoero/swissqrbill/compare/v3.2.0...v3.2.1) - 31.08.2022
 
 * Performance improvements for in QR-Code rendering for PDF renderings. [#384](https://github.com/schoero/SwissQRBill/pull/384)
