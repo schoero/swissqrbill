@@ -113,21 +113,18 @@ export interface PDFOptions {
 
   /**
    *  Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-   *
    * @defaultValue `true`
    */
   autoGenerate?: boolean;
 
   /**
    * The language with which the bill is rendered.
-   *
    * @defaultValue `DE`
    */
   language?: Languages;
 
   /**
    * Whether you want render the outlines. This option may be disabled if you use perforated paper.
-   *
    * @defaultValue `true`
    */
   outlines?: boolean;
@@ -136,7 +133,6 @@ export interface PDFOptions {
    * Whether you want to show the scissors icons or the text `Separate before paying in`.
    *
    * **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
-   *
    * @defaultValue `true`
    */
   scissors?: boolean;
@@ -145,14 +141,12 @@ export interface PDFOptions {
    * Whether you want to show the text `Separate before paying in` rather than the scissors icons.
    *
    * **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
-   *
    * @defaultValue `false`
    */
   separate?: boolean;
 
   /**
    * The page size.
-   *
    * @defaultValue `"A6"`
    */
   size?: Size;
@@ -162,7 +156,6 @@ export interface SVGOptions {
 
   /**
    * The language with which the bill is rendered.
-   *
    * @defaultValue `DE`
    */
   language?: Languages;

@@ -6,7 +6,6 @@ export class SVG extends SVG_ {
 
   /**
    * Outputs the SVG as a string.
-   *
    * @returns The outerHTML of the SVG as a `string`.
    */
   public override toString(): string {
@@ -18,7 +17,6 @@ export class SVG extends SVG_ {
    * Returns the SVG element.
    *
    * **Note:** This function is only available in the browser.
-   *
    * @readonly
    */
   public get element(): SVGElement {

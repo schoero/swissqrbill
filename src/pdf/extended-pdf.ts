@@ -122,7 +122,6 @@ export class ExtendedPDF extends PDFDocument {
 
   /**
    * Inserts a table to the document.
-   *
    * @param table - An Object which contains the table information.
    * @returns `this`
    * @example
@@ -486,7 +485,6 @@ export class ExtendedPDF extends PDFDocument {
 
   /**
    * Adds a path to the document on the given position.
-   *
    * @param path - The path data to insert. This is the same as the `d` attribute of a SVG path.
    * @param x - The x position where the path should be inserted.
    * @param y - The y position where the path should be inserted.
