@@ -642,7 +642,7 @@ export class SVG_ {
         currentLine += nextWord + separator;
       } else {
         if(currentLine !== ""){
-          const { lines: newLines, leftover } = checkCurrentLine(currentLine);
+          const { leftover, lines: newLines } = checkCurrentLine(currentLine);
           lines.push(...newLines);
           currentLine = leftover + nextWord + separator;
         } else {
@@ -651,7 +651,7 @@ export class SVG_ {
       }
     }
     if(currentLine !== "" && currentLine !== " "){
-      const { lines: newLines, leftover } = checkCurrentLine(currentLine);
+      const { leftover, lines: newLines } = checkCurrentLine(currentLine);
       lines.push(...newLines);
       if(leftover !== ""){
         lines.push(leftover);

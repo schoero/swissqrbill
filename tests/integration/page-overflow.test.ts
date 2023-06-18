@@ -7,9 +7,9 @@ import { createPDF } from "swissqrbill:tests:utils/pdf.js";
 
 const OUT_DIR_PDF = "tests/output/pdf/multi-page";
 
-describe("Multiple pages", () => {
+describe("multiple pages", () => {
 
-  test("Page overflow", async () => {
+  test("page overflow", async () => {
     const name = "page-overflow";
     const { pdf, snapshots } = createPDF(minimalRequired, `${OUT_DIR_PDF}/${name}.pdf`, { autoGenerate: false, size: "A4" });
 

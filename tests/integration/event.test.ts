@@ -5,9 +5,9 @@ import { minimalRequired } from "swissqrbill:tests:data/data.js";
 import { WritableMemory } from "swissqrbill:tests:utils/writable-memory.js";
 
 
-describe("Finalize", () => {
+describe("finalize", () => {
 
-  test("Event", async () => {
+  test("event", async () => {
     const promise = new Promise(resolve => {
       const stream = new WritableMemory();
       const pdf = new PDF(minimalRequired, stream, { autoGenerate: true, size: "A4" });
@@ -18,7 +18,7 @@ describe("Finalize", () => {
     return expect(promise).resolves.toBe(true);
   });
 
-  test("Callback", async () => {
+  test("callback", async () => {
     const promise = new Promise(resolve => {
       const stream = new WritableMemory();
       const pdf = new PDF(minimalRequired, stream, { autoGenerate: true, size: "A4" }, () => {

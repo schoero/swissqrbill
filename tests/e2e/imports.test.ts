@@ -5,7 +5,7 @@ describe("imports", () => {
 
   describe("node", async () => {
 
-    const { PDF, SVG, types, utils, default: nodeDefault, ...rest } = await import("swissqrbill:node");
+    const { PDF, SVG, default: nodeDefault, types, utils, ...rest } = await import("swissqrbill:node");
 
     it("should have a default export that exports all components", () => {
       expect(nodeDefault).toBeDefined();
@@ -38,14 +38,14 @@ describe("imports", () => {
   describe("browser", async () => {
 
     const {
+      BlobStream,
       PDF,
       SVG,
-      types,
-      utils,
-      default: browserDefault,
       blobStream,
+      default: browserDefault,
+      types,
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      BlobStream,
+      utils,
       ...rest
     } = await import("swissqrbill:browser");
 
