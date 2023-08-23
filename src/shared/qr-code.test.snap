@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`generateQRData > Additional Information 1`] = `
+exports[`generateQRData > additional Information 1`] = `
 "SPC
 0200
 1
@@ -35,7 +35,7 @@ EPD
 //S1/10/10201409/11/190512/20/1400.000-53/30/106017086/31/180508/32/7.7/40/2:10;0:30"
 `;
 
-exports[`generateQRData > Alternative schemes AV1 & AV2 1`] = `
+exports[`generateQRData > alternative schemes AV1 & AV2 1`] = `
 "SPC
 0200
 1
@@ -72,7 +72,7 @@ twint/light/02:5d5caa0c078149c694380b72d273ba7#9837183ed9f8bab7286856d786edf5721
 rn/twint/a~UuoWrVwETE-AZMysjqoCtQ~s~kNAfGk8vSou0wsvzHvTiSw/rn"
 `;
 
-exports[`generateQRData > Alternative schemes AV1 1`] = `
+exports[`generateQRData > alternative schemes AV1 1`] = `
 "SPC
 0200
 1
@@ -108,7 +108,7 @@ EPD
 eBill/B/peter@muster.ch"
 `;
 
-exports[`generateQRData > Alternative schemes AV2 1`] = `
+exports[`generateQRData > alternative schemes AV2 1`] = `
 "SPC
 0200
 1
@@ -144,7 +144,7 @@ EPD
 eBill/B/peter@muster.ch"
 `;
 
-exports[`generateQRData > Creditor with QR IBAN 1`] = `
+exports[`generateQRData > creditor with QR IBAN 1`] = `
 "SPC
 0200
 1
@@ -179,7 +179,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Creditor with building number 1`] = `
+exports[`generateQRData > creditor with building number 1`] = `
 "SPC
 0200
 1
@@ -214,7 +214,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Creditor with building number as string 1`] = `
+exports[`generateQRData > creditor with building number as string 1`] = `
 "SPC
 0200
 1
@@ -249,7 +249,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Creditor with maxed out field lengths 1`] = `
+exports[`generateQRData > creditor with maxed out field lengths 1`] = `
 "SPC
 0200
 1
@@ -284,7 +284,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Creditor with normal IBAN 1`] = `
+exports[`generateQRData > creditor with normal IBAN 1`] = `
 "SPC
 0200
 1
@@ -319,7 +319,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Creditor with normal IBAN and reference 1`] = `
+exports[`generateQRData > creditor with normal IBAN and reference 1`] = `
 "SPC
 0200
 1
@@ -354,7 +354,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Currency 1`] = `
+exports[`generateQRData > currency 1`] = `
 "SPC
 0200
 1
@@ -389,7 +389,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Debtor with building number 1`] = `
+exports[`generateQRData > debtor with building number 1`] = `
 "SPC
 0200
 1
@@ -424,7 +424,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Debtor with building number as string 1`] = `
+exports[`generateQRData > debtor with building number as string 1`] = `
 "SPC
 0200
 1
@@ -459,7 +459,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Debtor with maxed out field lengths 1`] = `
+exports[`generateQRData > debtor with maxed out field lengths 1`] = `
 "SPC
 0200
 1
@@ -494,7 +494,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Message 1`] = `
+exports[`generateQRData > message 1`] = `
 "SPC
 0200
 1
@@ -529,7 +529,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Message with maxed out field length 1`] = `
+exports[`generateQRData > message with maxed out field length 1`] = `
 "SPC
 0200
 1
@@ -564,7 +564,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Minimal required data + amount 1`] = `
+exports[`generateQRData > minimal required data + amount 1`] = `
 "SPC
 0200
 1
@@ -599,7 +599,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Minimal required data + debtor 1`] = `
+exports[`generateQRData > minimal required data + debtor 1`] = `
 "SPC
 0200
 1
@@ -634,7 +634,7 @@ EPD
 "
 `;
 
-exports[`generateQRData > Minimal required data 1`] = `
+exports[`generateQRData > minimal required data 1`] = `
 "SPC
 0200
 1

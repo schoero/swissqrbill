@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { describe, expect, it } from "vitest";
 
 
@@ -5,20 +6,19 @@ describe("imports", () => {
 
   describe("node", async () => {
 
-    const { PDF, SVG, default: nodeDefault, types, utils, ...rest } = await import("swissqrbill:node");
+    const { PDF, SVG, Types, default: nodeDefault, utils, ...rest } = await import("swissqrbill:node");
 
     it("should have a default export that exports all components", () => {
       expect(nodeDefault).toBeDefined();
       expect(nodeDefault).toHaveProperty("PDF");
       expect(nodeDefault).toHaveProperty("SVG");
-      expect(nodeDefault).toHaveProperty("types");
       expect(nodeDefault).toHaveProperty("utils");
     });
 
     it("should export all components separately", () => {
       expect(PDF).toBeDefined();
       expect(SVG).toBeDefined();
-      expect(types).toBeDefined();
+      expect(Types).toBeDefined();
       expect(utils).toBeDefined();
     });
 
@@ -29,7 +29,6 @@ describe("imports", () => {
     it("should export the same components in the default export as in the named exports", () => {
       expect(nodeDefault.PDF).toBe(PDF);
       expect(nodeDefault.SVG).toBe(SVG);
-      expect(nodeDefault.types).toBe(types);
       expect(nodeDefault.utils).toBe(utils);
     });
 
@@ -41,10 +40,9 @@ describe("imports", () => {
       BlobStream,
       PDF,
       SVG,
+      Types,
       blobStream,
       default: browserDefault,
-      types,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       utils,
       ...rest
     } = await import("swissqrbill:browser");
@@ -53,7 +51,6 @@ describe("imports", () => {
       expect(browserDefault).toBeDefined();
       expect(browserDefault).toHaveProperty("PDF");
       expect(browserDefault).toHaveProperty("SVG");
-      expect(browserDefault).toHaveProperty("types");
       expect(browserDefault).toHaveProperty("utils");
       expect(browserDefault).toHaveProperty("BlobStream");
       expect(browserDefault).toHaveProperty("blobStream");
@@ -62,7 +59,7 @@ describe("imports", () => {
     it("should export all components separately", () => {
       expect(PDF).toBeDefined();
       expect(SVG).toBeDefined();
-      expect(types).toBeDefined();
+      expect(Types).toBeDefined();
       expect(utils).toBeDefined();
       expect(BlobStream).toBeDefined();
       expect(blobStream).toBeDefined();
@@ -75,7 +72,6 @@ describe("imports", () => {
     it("should export the same components in the default export as in the named exports", () => {
       expect(browserDefault.PDF).toBe(PDF);
       expect(browserDefault.SVG).toBe(SVG);
-      expect(browserDefault.types).toBe(types);
       expect(browserDefault.utils).toBe(utils);
       expect(browserDefault.BlobStream).toBe(BlobStream);
       expect(browserDefault.blobStream).toBe(blobStream);
