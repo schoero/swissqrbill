@@ -56,7 +56,7 @@ export async function pdf(data: Data, path: string, options?: PDFOptions) {
 }
 
 
-async function pdfBufferToJson(buffer: Buffer) {
+export async function pdfBufferToJson(buffer: Buffer) {
   const parser = new PDFParser();
   parser.parseBuffer(buffer);
   return new Promise((resolve, reject) => {
