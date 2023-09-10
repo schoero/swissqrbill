@@ -1,13 +1,7 @@
-import { default as BlobStream_ } from "blob-stream";
-
 import { PDF_ } from "../pdf/pdf.js";
 
 import type { Data, PDFOptions } from "../shared/types.js";
 import type { IBlobStream } from "blob-stream";
-
-
-export import blobStream = BlobStream_;
-export import BlobStream = BlobStream_;
 
 
 export class PDF extends PDF_ {
@@ -48,3 +42,5 @@ export class PDF extends PDF_ {
   }
 
 }
+
+export { default as BlobStream, default as blobStream } from "blob-stream";
