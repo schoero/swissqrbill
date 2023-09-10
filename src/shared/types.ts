@@ -2,9 +2,7 @@
 
 export { PDFColumn, PDFRow, PDFTable } from "../pdf/extended-pdf.js";
 
-
-//-- SwissQRBill types
-
+// SwissQRBill types
 export type Currency = "CHF" | "EUR";
 export type Size = "A4" | "A6" | "A6/5";
 export type Languages = "DE" | "EN" | "FR" | "IT";

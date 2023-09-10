@@ -2,9 +2,7 @@ import { fillUntil } from "swissqrbill:tests:utils/fill.js";
 
 import type { Creditor, Data, Debtor } from "swissqrbill:shared:types.js";
 
-
-//-- Default data
-
+// Default data
 const creditor: Creditor = {
   account: "CH5800791123000889012",
   address: "Creditor Address",
@@ -22,25 +20,19 @@ const debtor: Debtor = {
   zip: 5678
 };
 
-
-//-- Minimal required
-
+// Minimal required
 export const minimalRequired: Data = {
   creditor,
   currency: "CHF"
 };
 
-
-//-- Amount
-
+// Amount
 export const minimalRequiredWithAmount: Data = {
   ...minimalRequired,
   amount: 123.45
 };
 
-
-//-- Creditor
-
+// Creditor
 export const creditorWithBuildingNumber: Data = {
   ...minimalRequired,
   creditor: {
@@ -102,9 +94,7 @@ export const creditorWithMaxedOutFieldLengths: Data = {
   }
 };
 
-
-//-- Debtor
-
+// Debtor
 export const minimalRequiredWithDebtor: Data = {
   ...minimalRequired,
   debtor
@@ -145,9 +135,7 @@ export const debtorWithMaxedOutFieldLengths: Data = {
   }
 };
 
-
-//-- Message
-
+// Message
 export const minimalRequiredWithMessage: Data = {
   ...minimalRequired,
   message: "DO NOT USE FOR PAYMENT"
@@ -158,26 +146,20 @@ export const minimalRequiredWithMaxedOutMessage: Data = {
   message: fillUntil("Message", 140)
 };
 
-
-//-- Currency
-
+// Currency
 export const minimalRequiredWithEuro: Data = {
   ...minimalRequired,
   currency: "EUR"
 };
 
-
-//-- Additional Information
-
+// Additional Information
 export const minimalRequiredWithAdditionalInformation: Data = {
   ...minimalRequired,
   additionalInformation: "//S1/10/10201409/11/190512/20/1400.000-53/30/106017086/31/180508/32/7.7/40/2:10;0:30",
   amount: 0.00
 };
 
-
-//-- Alternative Scheme
-
+// Alternative Scheme
 export const minimalRequiredWithAlternativeScheme1: Data = {
   ...minimalRequired,
   av1: "eBill/B/peter@muster.ch"

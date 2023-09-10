@@ -46,14 +46,10 @@ export function removeLineBreaks(text: string): string {
 
 export function validateData(data: Data) {
 
-
-  //-- Creditor
-
+  // Creditor
   if(data.creditor === undefined){ throw new Error("Creditor cannot be undefined."); }
 
-
-  //-- Creditor account
-
+  // Creditor account
   if(data.creditor.account === undefined){
     throw new Error("You must provide an IBAN or QR-IBAN number.");
   }
@@ -70,9 +66,7 @@ export function validateData(data: Data) {
     throw new Error("Only CH and LI IBAN numbers are allowed.");
   }
 
-
-  //-- Validate reference
-
+  // Validate reference
   if(isQRIBAN(data.creditor.account)){
 
     if(data.reference === undefined){
@@ -97,158 +91,116 @@ export function validateData(data: Data) {
 
   }
 
-
-  //-- Creditor name
-
+  // Creditor name
   if(data.creditor.name === undefined){ throw new Error("Creditor name cannot be undefined."); }
   if(typeof data.creditor.name !== "string"){ throw new Error("Creditor name must be a string."); }
   if(data.creditor.name.length > 70){ throw new Error("Creditor name must be a maximum of 70 characters."); }
 
-
-  //-- Creditor Address
-
+  // Creditor Address
   if(data.creditor.address === undefined){ throw new Error("Creditor address cannot be undefined."); }
   if(typeof data.creditor.address !== "string"){ throw new Error("Creditor address must be a string."); }
   if(data.creditor.address.length > 70){ throw new Error("Creditor address must be a maximum of 70 characters."); }
 
-
-  //-- Creditor buildingNumber
-
+  // Creditor buildingNumber
   if(data.creditor.buildingNumber !== undefined){
     if(typeof data.creditor.buildingNumber !== "string" && typeof data.creditor.buildingNumber !== "number"){ throw new Error("Debtor buildingNumber must be either a string or a number."); }
     if(data.creditor.buildingNumber.toString().length > 16){ throw new Error("Creditor buildingNumber can be a maximum of 16 characters."); }
   }
 
-
-  //-- Creditor Zip
-
+  // Creditor Zip
   if(data.creditor.zip === undefined){ throw new Error("Creditor zip cannot be undefined."); }
   if(typeof data.creditor.zip !== "string" && typeof data.creditor.zip !== "number"){ throw new Error("Creditor zip must be either a string or a number."); }
   if(data.creditor.zip.toString().length > 16){ throw new Error("Creditor zip must be a maximum of 16 characters."); }
 
-
-  //-- Creditor city
-
+  // Creditor city
   if(data.creditor.city === undefined){ throw new Error("Creditor city cannot be undefined."); }
   if(typeof data.creditor.city !== "string"){ throw new Error("Creditor city must be a string."); }
   if(data.creditor.city.length > 35){ throw new Error("Creditor city must be a maximum of 35 characters."); }
 
-
-  //-- Creditor country
-
+  // Creditor country
   if(data.creditor.country === undefined){ throw new Error("Creditor country cannot be undefined."); }
   if(typeof data.creditor.country !== "string"){ throw new Error("Creditor country must be a string."); }
   if(data.creditor.country.length !== 2){ throw new Error("Creditor country must be 2 characters."); }
 
-
-  //-- Amount
-
+  // Amount
   if(data.amount !== undefined){
     if(typeof data.amount !== "number"){ throw new Error("Amount must be a number."); }
     if(data.amount.toFixed(2).toString().length > 12){ throw new Error("Amount must be a maximum of 12 digits."); }
   }
 
-
-  //-- Currency
-
+  // Currency
   if(data.currency === undefined){ throw new Error("Currency cannot be undefined."); }
   if(typeof data.currency !== "string"){ throw new Error("Currency must be a string."); }
   if(data.currency.length !== 3){ throw new Error("Currency must be a length of 3 characters."); }
   if(data.currency !== "CHF" && data.currency !== "EUR"){ throw new Error("Currency must be either 'CHF' or 'EUR'"); }
 
-
-  //-- Debtor
-
+  // Debtor
   if(data.debtor !== undefined){
 
-
-    //-- Debtor name
-
+    // Debtor name
     if(data.debtor.name === undefined){ throw new Error("Debtor name cannot be undefined if the debtor object is available."); }
     if(typeof data.debtor.name !== "string"){ throw new Error("Debtor name must be a string."); }
     if(data.debtor.name.length > 70){ throw new Error("Debtor name must be a maximum of 70 characters."); }
 
-
-    //-- Debtor address
-
+    // Debtor address
     if(data.debtor.address === undefined){ throw new Error("Debtor address cannot be undefined if the debtor object is available."); }
     if(typeof data.debtor.address !== "string"){ throw new Error("Debtor address must be a string."); }
     if(data.debtor.address.length > 70){ throw new Error("Debtor address must be a maximum of 70 characters."); }
 
-
-    //-- Debtor buildingNumber
-
+    // Debtor buildingNumber
     if(data.debtor.buildingNumber !== undefined){
       if(typeof data.debtor.buildingNumber !== "string" && typeof data.debtor.buildingNumber !== "number"){ throw new Error("Debtor house number must be either a string or a number."); }
       if(data.debtor.buildingNumber.toString().length > 16){ throw new Error("Debtor house number can be a maximum of 16 characters."); }
     }
 
-
-    //-- Debtor zip
-
+    // Debtor zip
     if(data.debtor.zip === undefined){ throw new Error("Debtor zip cannot be undefined if the debtor object is available."); }
     if(typeof data.debtor.zip !== "string" && typeof data.debtor.zip !== "number"){ throw new Error("Debtor zip must be either a string or a number."); }
     if(data.debtor.zip.toString().length > 16){ throw new Error("Debtor zip must be a maximum of 16 characters."); }
 
-
-    //-- Debtor city
-
+    // Debtor city
     if(data.debtor.city === undefined){ throw new Error("Debtor city cannot be undefined if the debtor object is available."); }
     if(typeof data.debtor.city !== "string"){ throw new Error("Debtor city must be a string."); }
     if(data.debtor.city.length > 35){ throw new Error("Debtor city must be a maximum of 35 characters."); }
 
-
-    //-- Debtor country
-
+    // Debtor country
     if(data.debtor.country === undefined){ throw new Error("Debtor country cannot be undefined if the debtor object is available."); }
     if(typeof data.debtor.country !== "string"){ throw new Error("Debtor country must be a string."); }
     if(data.debtor.country.length !== 2){ throw new Error("Debtor country must be 2 characters."); }
 
   }
 
-
-  //-- Reference
-
+  // Reference
   if(data.reference !== undefined){
     if(typeof data.reference !== "string"){ throw new Error("Reference name must be a string."); }
     if(data.reference.length > 27){ throw new Error("Reference name must be a maximum of 27 characters."); }
   }
 
-
-  //-- Message
-
+  // Message
   if(data.message !== undefined){
     if(data.message.length > 140){ throw new Error("Message must be a maximum of 140 characters."); }
     if(typeof data.message !== "string"){ throw new Error("Message must be a string."); }
   }
 
-
-  //-- Additional information
-
+  // Additional information
   if(data.additionalInformation !== undefined){
     if(data.additionalInformation.length > 140){ throw new Error("AdditionalInformation must be a maximum of 140 characters."); }
     if(typeof data.additionalInformation !== "string"){ throw new Error("AdditionalInformation must be a string."); }
   }
 
-
-  //-- Message + Additional information
-
+  // Message + Additional information
   if(data.message !== undefined && data.additionalInformation !== undefined){
     if(data.additionalInformation.length + data.message.length > 140){ throw new Error("Message and additionalInformation combined must be a maximum of 140 characters."); }
   }
 
-
-  //-- AV1
-
+  // AV1
   if(data.av1 !== undefined){
     if(typeof data.av1 !== "string"){ throw new Error("AV1 must be a string."); }
     if(data.av1.length > 100){ throw new Error("AV1 must be a maximum of 100 characters."); }
     if(data.av1.split(/(\/.+)/).length <= 2){ throw new Error("AV1 must contain a separator (e.g. /)"); }
   }
 
-
-  //-- AV2
-
+  // AV2
   if(data.av2 !== undefined){
     if(typeof data.av2 !== "string"){ throw new Error("AV2 must be a string."); }
     if(data.av2.length > 100){ throw new Error("AV2 must be a maximum of 100 characters."); }

@@ -30,9 +30,7 @@ const OUT_DIR_SVG = "tests/output/svg/data";
 
 describe("data", async () => {
 
-
-  //-- Minimal required
-
+  // Minimal required
   test("minimal required data", async () => {
     const name = "minimal-required";
     const pdfSnapshot = await pdf(minimalRequired, `${OUT_DIR_PDF}/${name}.pdf`);
@@ -57,9 +55,7 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-
-  //-- Creditor
-
+  // Creditor
   test("creditor with building number", async () => {
     const name = "creditor-with-building-number";
     const pdfSnapshot = await pdf(creditorWithBuildingNumber, `${OUT_DIR_PDF}/${name}.pdf`);
@@ -108,9 +104,7 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-
-  //-- Debtor
-
+  // Debtor
   test("debtor with building number", async () => {
     const name = "debtor-with-building-number";
     const pdfSnapshot = await pdf(debtorWithBuildingNumber, `${OUT_DIR_PDF}/${name}.pdf`);
@@ -135,9 +129,7 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-
-  //-- Message
-
+  // Message
   test("message", async () => {
     const name = "message";
     const pdfSnapshot = await pdf(minimalRequiredWithMessage, `${OUT_DIR_PDF}/${name}.pdf`);
@@ -154,9 +146,7 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-
-  //-- Currency
-
+  // Currency
   test("currency", async () => {
     const name = "currency";
     const pdfSnapshot = await pdf(minimalRequiredWithEuro, `${OUT_DIR_PDF}/${name}.pdf`);
@@ -165,9 +155,7 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-
-  //-- Additional Information
-
+  // Additional Information
   test("additional Information", async () => {
     const name = "additional-information";
     const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `${OUT_DIR_PDF}/${name}.pdf`);
@@ -176,9 +164,7 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-
-  //-- Alternative schemes
-
+  // Alternative schemes
   test("alternative schemes AV1", async () => {
     const name = "alternative-schemes-av1";
     const pdfSnapshot = await pdf(minimalRequiredWithAlternativeScheme1, `${OUT_DIR_PDF}/${name}.pdf`);

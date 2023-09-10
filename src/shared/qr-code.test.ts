@@ -26,9 +26,7 @@ import {
 
 describe("generateQRData", () => {
 
-
-  //-- Minimal required
-
+  // Minimal required
   test("minimal required data", () => {
     const qrString = generateQRData(minimalRequired);
     expect(qrString).toMatchSnapshot();
@@ -44,9 +42,7 @@ describe("generateQRData", () => {
     expect(qrString).toMatchSnapshot();
   });
 
-
-  //-- Creditor
-
+  // Creditor
   test("creditor with building number", () => {
     const qrString = generateQRData(creditorWithBuildingNumber);
     expect(qrString).toMatchSnapshot();
@@ -77,9 +73,7 @@ describe("generateQRData", () => {
     expect(qrString).toMatchSnapshot();
   });
 
-
-  //-- Debtor
-
+  // Debtor
   test("debtor with building number", () => {
     const qrString = generateQRData(debtorWithBuildingNumber);
     expect(qrString).toMatchSnapshot();
@@ -95,9 +89,7 @@ describe("generateQRData", () => {
     expect(qrString).toMatchSnapshot();
   });
 
-
-  //-- Message
-
+  // Message
   test("message", () => {
     const qrString = generateQRData(minimalRequiredWithMessage);
     expect(qrString).toMatchSnapshot();
@@ -108,25 +100,19 @@ describe("generateQRData", () => {
     expect(qrString).toMatchSnapshot();
   });
 
-
-  //-- Currency
-
+  // Currency
   test("currency", () => {
     const qrString = generateQRData(minimalRequiredWithEuro);
     expect(qrString).toMatchSnapshot();
   });
 
-
-  //-- Additional Information
-
+  // Additional Information
   test("additional Information", () => {
     const qrString = generateQRData(minimalRequiredWithAdditionalInformation);
     expect(qrString).toMatchSnapshot();
   });
 
-
-  //-- Alternative schemes
-
+  // Alternative schemes
   test("alternative schemes AV1", () => {
     const qrString = generateQRData(minimalRequiredWithAlternativeScheme1);
     expect(qrString).toMatchSnapshot();

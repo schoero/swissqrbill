@@ -1,8 +1,6 @@
 {
 
-
-  //-- ESLint
-
+  // ESLint
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
@@ -22,29 +20,21 @@
   "prettier.enable": false, // eslint-disable-next-line jsonc/sort-keys
   "editor.formatOnSave": false,
 
-
-  //-- File nesting
-
+  // File nesting
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     "*.ts": "${basename}.${extname},${basename}.test.${extname},${basename}.test.snap,${basename}.test-d.${extname}"
   },
 
-
-  //-- Hide JSDoc comments
-
+  // Hide JSDoc comments
   "foldOnOpen.targets": ["AllBlockComments"],
 
-
-  //-- ES module import
-
+  // ES module import
   "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifierEnding": "js",
 
-
-  //-- Markdown
-
+  // Markdown
   // eslint-disable-next-line jsonc/sort-keys
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
@@ -52,9 +42,7 @@
     "editor.wordWrapColumn": 119
   },
 
-
-  //-- VSCode
-
+  // VSCode
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.markdownlint": true,

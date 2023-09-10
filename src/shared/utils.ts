@@ -21,14 +21,10 @@ export function isIBANValid(iban: string): boolean {
     .replace(/ /g, "")
     .toUpperCase();
 
-
-  //-- Move country code + checksum to end
-
+  // Move country code + checksum to end
   iban = iban.substring(4) + iban.substring(0, 4);
 
-
-  //-- Calculate mod97
-
+  // Calculate mod97
   return mod97(iban) === 1;
 
 }
@@ -313,9 +309,7 @@ export function getReferenceType(reference: string | undefined): "NON" | "QRR" |
  */
 function mod97(input: string): number {
 
-
-  //-- Convert letters to numbers (A = 10, B = 11, ..., Z = 35)
-
+  // Convert letters to numbers (A = 10, B = 11, ..., Z = 35)
   const charCodeOfLetterA = "A".charCodeAt(0);
 
   const inputArr = input.split("");
@@ -329,9 +323,7 @@ function mod97(input: string): number {
 
   input = inputArr.join("");
 
-
-  //-- Apply the mod97 algorithm
-
+  // Apply the mod97 algorithm
   let remainder = 0;
   for(let i = 0; i < input.length; i++){
     const digit = +input[i];

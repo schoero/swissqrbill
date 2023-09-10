@@ -21,28 +21,20 @@ export class SVG_ {
 
     this._data = data;
 
-
-    //-- Clean data (remove line breaks and unnecessary white spaces)
-
+    // Clean data (remove line breaks and unnecessary white spaces)
     this._data = cleanData(this._data);
 
-
-    //-- Validate data
-
+    // Validate data
     validateData(this._data);
 
-
-    //-- Apply options
-
+    // Apply options
     if(options !== undefined){
       if(options.language !== undefined){
         this._language = options.language;
       }
     }
 
-
-    //-- Create SVG
-
+    // Create SVG
     this.instance = new SVG();
     this.instance.width("210mm");
     this.instance.height("105mm");
@@ -63,30 +55,22 @@ export class SVG_ {
     let receiptLineCount = 0;
     let paymentPartLineCount = 0;
 
-
-    //-- Background image
-
+    // Background image
     this.instance.addRect(0, 0, "100%", "100%")
       .fill("#fff");
 
-
-    //-- Vertical line
-
+    // Vertical line
     this.instance.addLine("62mm", "0mm", "62mm", "105mm")
       .stroke(1, "dashed", "black");
 
-
-    //-- Scissors
-
+    // Scissors
     const scissorsCenter = "M8.55299 18.3969C9.54465 17.5748 9.51074 16.0915 9.08357 14.9829L6.47473 8.02261C7.58167 5.9986 7.26467 3.99833 7.80373 3.99833C8.22582 3.99833 8.13259 4.38482 9.23105 4.32719C10.2854 4.27125 11.0652 3.1711 10.9957 2.13197C11.0025 1.09115 10.2041 0.0130391 9.1056 0.00456339C7.99867 -0.0734135 6.96972 0.858918 6.89683 1.95907C6.70527 3.24907 7.48674 5.53413 5.56613 6.60547C4.09305 5.80705 4.08797 4.38991 4.16255 3.10838C4.22358 2.04552 3.91845 0.76738 2.87424 0.260531C1.87241 -0.229367 0.446794 0.25036 0.139972 1.37594C-0.277034 2.51168 0.250156 4.07122 1.55541 4.34244C2.56233 4.55095 3.03528 3.83729 3.40143 4.1119C3.67774 4.31871 3.5167 5.62906 4.566 7.96667L1.908 15.5033C1.64356 16.456 1.65204 17.6206 2.58776 18.463L5.5424 10.6484L8.55299 18.3969ZM10.1634 2.87953C9.55143 3.97629 7.88849 3.88645 7.56641 2.74731C7.20704 1.71666 8.20887 0.397838 9.32767 0.726697C10.2447 0.919943 10.5821 2.12858 10.1634 2.87953ZM3.36753 2.927C2.94544 4.07122 1.00789 3.87797 0.746835 2.71341C0.479001 1.94042 0.8638 0.836881 1.77409 0.758904C2.88102 0.608036 3.87946 1.90821 3.36753 2.927Z";
 
     const scissorsSVG = this.instance.addSVG("11px", "19px").x(calc("62mm - 5.25px"))
       .y("30pt");
     scissorsSVG.addPath(scissorsCenter).fill("black");
 
-
-    //-- Receipt
-
+    // Receipt
     const receiptContainer = this.instance.addSVG()
       .x("5mm")
       .y("5mm");
@@ -101,9 +85,7 @@ export class SVG_ {
       .fontWeight("bold")
       .fontSize("11pt");
 
-
-    //-- Creditor
-
+    // Creditor
     receiptTextContainer.addTSpan(translations[this._language].account)
       .x(0)
       .y("7mm")
@@ -136,9 +118,7 @@ export class SVG_ {
         .fontSize("8pt");
     }
 
-
-    //-- Reference
-
+    // Reference
     if(this._data.reference !== undefined){
 
       receiptTextContainer.addTSpan(translations[this._language].reference)
@@ -158,9 +138,7 @@ export class SVG_ {
 
     }
 
-
-    //-- Debtor
-
+    // Debtor
     if(this._data.debtor !== undefined){
 
       const formattedDebtorAddress = this._formatAddress(this._data.debtor);
@@ -189,9 +167,7 @@ export class SVG_ {
 
     } else {
 
-
-      //-- Add rectangle
-
+      // Add rectangle
       receiptTextContainer.addTSpan(translations[this._language].payableByName)
         .x(0)
         .dy("18pt")
@@ -204,9 +180,7 @@ export class SVG_ {
 
     }
 
-
-    //-- Amount
-
+    // Amount
     const amountContainer = receiptContainer.addText()
       .y("63mm");
 
@@ -242,9 +216,7 @@ export class SVG_ {
       this._addRectangle(27, 68, 30, 10);
     }
 
-
-    //-- Acceptance point
-
+    // Acceptance point
     amountContainer.addTSpan(translations[this._language].acceptancePoint)
       .x("52mm")
       .y("82mm")
@@ -253,9 +225,7 @@ export class SVG_ {
       .fontWeight("bold")
       .fontSize("6pt");
 
-
-    //-- Payment part middle column
-
+    // Payment part middle column
     const paymentPartContainer = this.instance.addSVG()
       .x("67mm")
       .y("5mm");
@@ -268,14 +238,10 @@ export class SVG_ {
       .fontWeight("bold")
       .fontSize("11pt");
 
-
-    //-- QR Code
-
+    // QR Code
     this._renderQRCode();
 
-
-    //-- Amount
-
+    // Amount
     const paymentPartMiddleTextContainer = paymentPartContainer.addText()
       .y("63mm");
 
@@ -309,9 +275,7 @@ export class SVG_ {
       this._addRectangle(78, calc("68mm + 8pt + 5pt", "mm"), 40, 15);
     }
 
-
-    //-- AV1 and AV2
-
+    // AV1 and AV2
     const alternativeSchemeContainer = paymentPartContainer.addText()
       .x(0)
       .y("90mm");
@@ -350,18 +314,14 @@ export class SVG_ {
 
     }
 
-
-    //-- Payment part right column
-
+    // Payment part right column
     const paymentPartDebtorContainer = this.instance.addSVG()
       .x("118mm")
       .y("5mm");
 
     const paymentPartRightTextContainer = paymentPartDebtorContainer.addText();
 
-
-    //-- Creditor
-
+    // Creditor
     paymentPartRightTextContainer.addTSpan(translations[this._language].account)
       .x(0)
       .y(0)
@@ -394,9 +354,7 @@ export class SVG_ {
       paymentPartLineCount++;
     }
 
-
-    //-- Reference
-
+    // Reference
     if(this._data.reference !== undefined){
 
       paymentPartRightTextContainer.addTSpan(translations[this._language].reference)
@@ -416,9 +374,7 @@ export class SVG_ {
 
     }
 
-
-    //-- Message / Additional information
-
+    // Message / Additional information
     if(this._data.message !== undefined || this._data.additionalInformation !== undefined){
 
       paymentPartRightTextContainer.addTSpan(translations[this._language].additionalInformation)
@@ -499,9 +455,7 @@ export class SVG_ {
 
     }
 
-
-    //-- Debtor
-
+    // Debtor
     if(this._data.debtor !== undefined){
 
       const formattedDebtorAddress = this._formatAddress(this._data.debtor);
@@ -554,23 +508,17 @@ export class SVG_ {
       .y("17mm")
       .x("67mm");
 
-
-    //-- Add QR Code
-
+    // Add QR Code
     qrCodeSVG.addPath(qrCode)
       .fill("black");
 
-
-    //-- Add background
-
+    // Add background
     qrCodeSVG.addRect("19mm", "19mm", "8mm", "8mm")
       .fill("white");
     qrCodeSVG.addRect("19.5mm", "19.5mm", "7mm", "7mm")
       .fill("black");
 
-
-    //-- Add swiss cross
-
+    // Add swiss cross
     qrCodeSVG.addRect("22.415mm", "21.055mm", "1.17mm", "3.89mm")
       .fill("white");
     qrCodeSVG.addRect("21.055mm", "22.415mm", "3.89mm", "1.17mm")
