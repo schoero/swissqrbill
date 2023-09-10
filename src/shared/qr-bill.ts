@@ -263,6 +263,7 @@ export class QRBill {
     doc.font("Helvetica-Bold");
     doc.text(translations[this._language].acceptancePoint, utils.mm2pt(5), this._marginTop + utils.mm2pt(82), {
       align: "right",
+      height: utils.mm2pt(18),
       lineGap: 1,
       width: utils.mm2pt(52)
     });
