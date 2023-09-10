@@ -13,8 +13,9 @@ import { PDF } from "./pdf.js";
 import { SVG } from "./svg.js";
 
 
-export import blobStream = BlobStream_;
-export import BlobStream = BlobStream_;
+export const blobStream = BlobStream_;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const BlobStream = BlobStream_;
 
 
 export * as types from "../shared/types.js";

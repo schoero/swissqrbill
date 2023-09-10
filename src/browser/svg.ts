@@ -18,6 +18,7 @@ export class SVG extends SVG_ {
    *
    * **Note:** This function is only available in the browser.
    * @readonly
+   * @returns The SVG element.
    */
   public get element(): SVGElement {
     return this.instance.element as unknown as SVGElement;
