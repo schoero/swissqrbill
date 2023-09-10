@@ -1,6 +1,6 @@
 import { createWriteStream } from "node:fs";
 
-import { PDF_ } from "../pdf/pdf.js";
+import { PDF_ } from "../pdf/swissqrbill.js";
 
 import type { Writable } from "node:stream";
 

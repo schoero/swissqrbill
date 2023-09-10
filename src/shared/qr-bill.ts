@@ -3,7 +3,7 @@ import { cleanData, validateData } from "./shared.js";
 import translations from "./translations.js";
 import * as utils from "./utils.js";
 
-import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "./types.js";
+import type { Creditor, Data, Debtor, Languages, QRBillOptions } from "./types.js";
 
 
 export class QRBill {
@@ -54,15 +54,14 @@ export class QRBill {
   /**
    * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
    * @param doc The PDFKit instance
-   * @param size The size of the new page if not enough space is left for the QR slip.
    */
-  public attachTo(doc: PDFKit.PDFDocument, size?: Size): void {
+  public attachTo(doc: PDFKit.PDFDocument): void {
 
     if(!doc.page || doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top){
       doc.addPage({
-        layout: size === "A4" ? "portrait" : "landscape",
+        layout: "landscape",
         margin: 0,
-        size: size === "A4" ? size : [utils.mm2pt(105), utils.mm2pt(210)]
+        size: [utils.mm2pt(105), utils.mm2pt(210)]
       });
     }
 
@@ -110,8 +109,9 @@ export class QRBill {
 
       if(doc.page.height > utils.mm2pt(105)){
 
-        doc.save().translate(utils.mm2pt(105), this._marginTop);
+        doc.save();
 
+        doc.translate(utils.mm2pt(105), this._marginTop);
         doc.addContent(scissorsTop)
           .fillColor("black")
           .fill();
@@ -120,11 +120,13 @@ export class QRBill {
 
       }
 
-      doc.save().translate(utils.mm2pt(62), this._marginTop + 30);
+      doc.save();
 
+      doc.translate(utils.mm2pt(62), this._marginTop + 30);
       doc.addContent(scissorsCenter)
         .fillColor("black")
         .fill();
+
       doc.restore();
 
     }
@@ -275,7 +277,40 @@ export class QRBill {
     });
 
     // QR Code
-    this._renderQRCode(doc);
+    const qrData = generateQRData(this._data);
+    const qrCode = renderQRCode(qrData, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
+
+    // Add QR Code
+    doc.save().translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
+    doc.addContent(qrCode).fillColor("black")
+      .fill();
+    doc.restore();
+
+    // Add Swiss Cross
+    const swissCrossBackground = "18.3 0.7 m1.6 0.7 l0.7 0.7 l0.7 1.6 l0.7 18.3 l0.7 19.1 l1.6 19.1 l18.3 19.1 l19.1 19.1 l19.1 18.3 l19.1 1.6 l19.1 0.7 lh";
+    const swissCross = "8.3 4 m11.6 4 l11.6 15 l8.3 15 l8.3 4 lh4.4 7.9 m15.4 7.9 l15.4 11.2 l4.4 11.2 l4.4 7.9 lh";
+
+    doc.save();
+
+    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+    doc.addContent(swissCrossBackground)
+      .undash()
+      .fillColor("black")
+      .lineWidth(1.42)
+      .strokeColor("white")
+      .fillAndStroke();
+
+    doc.restore();
+
+    doc.save();
+
+    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+    doc.addContent(swissCross)
+      .fillColor("white")
+      .fill();
+
+    doc.restore();
+
     doc.fillColor("black");
 
     // Amount
@@ -466,46 +501,6 @@ export class QRBill {
     }
 
   }
-
-
-  private _renderQRCode(doc: PDFKit.PDFDocument): void {
-
-    const qrData = generateQRData(this._data);
-    const qrCode = renderQRCode(qrData, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
-
-    // Add QR Code
-    doc.save().translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
-    doc.addContent(qrCode).fillColor("black")
-      .fill();
-    doc.restore();
-
-    // Add Swiss Cross
-    const swissCrossBackground = "18.3 0.7 m1.6 0.7 l0.7 0.7 l0.7 1.6 l0.7 18.3 l0.7 19.1 l1.6 19.1 l18.3 19.1 l19.1 19.1 l19.1 18.3 l19.1 1.6 l19.1 0.7 lh";
-    const swissCross = "8.3 4 m11.6 4 l11.6 15 l8.3 15 l8.3 4 lh4.4 7.9 m15.4 7.9 l15.4 11.2 l4.4 11.2 l4.4 7.9 lh";
-
-    doc.save();
-
-    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
-    doc.addContent(swissCrossBackground)
-      .undash()
-      .fillColor("black")
-      .lineWidth(1.42)
-      .strokeColor("white")
-      .fillAndStroke();
-
-    doc.restore();
-
-    doc.save();
-
-    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
-    doc.addContent(swissCross)
-      .fillColor("white")
-      .fill();
-
-    doc.restore();
-
-  }
-
 
   private _formatAddress(data: Creditor | Debtor): string {
     const countryPrefix = data.country !== "CH" ? `${data.country} - ` : "";

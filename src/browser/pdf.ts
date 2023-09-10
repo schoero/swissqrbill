@@ -1,4 +1,4 @@
-import { PDF_ } from "../pdf/pdf.js";
+import { PDF_ } from "../pdf/swissqrbill.js";
 
 import type { Data, PDFOptions } from "../shared/types.js";
 import type { IBlobStream } from "blob-stream";
