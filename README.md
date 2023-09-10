@@ -23,7 +23,7 @@
     <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
   </a>
   <a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
-    <img alt="CI" src="https://img.shields.io/github/workflow/status/schoero/SwissQRBill/CI?style=flat-square">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/schoero/SwissQRBill/ci.yml?branch=master&style=flat-square">
   </a>
 </div>
 
@@ -32,7 +32,7 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and should replace the current payment slips until September 30, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
@@ -53,7 +53,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
 * [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
-* [QR bill specifications](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf)
+* [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
 
 <br/>
 
