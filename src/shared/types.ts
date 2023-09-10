@@ -107,13 +107,7 @@ export interface Creditor extends Debtor {
   account: string;
 }
 
-export interface PDFOptions {
-
-  /**
-   * Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-   * @defaultValue `true`
-   */
-  autoGenerate?: boolean;
+export interface QRBillOptions {
 
   /**
    * The language with which the bill is rendered.
@@ -142,6 +136,15 @@ export interface PDFOptions {
    * @defaultValue `false`
    */
   separate?: boolean;
+}
+
+export interface PDFOptions extends QRBillOptions {
+
+  /**
+   * Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
+   * @defaultValue `true`
+   */
+  autoGenerate?: boolean;
 
   /**
    * The page size.

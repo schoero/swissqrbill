@@ -1,51 +1,26 @@
-import { generateQRData, renderQRCode } from "../shared/qr-code.js";
-import { cleanData, validateData } from "../shared/shared.js";
-import translations from "../shared/translations.js";
-import * as utils from "../shared/utils.js";
+import { generateQRData, renderQRCode } from "./qr-code.js";
+import { cleanData, validateData } from "./shared.js";
+import translations from "./translations.js";
+import * as utils from "./utils.js";
 
-import { ExtendedPDF } from "./extended-pdf.js";
-
-import type { Creditor, Data, Debtor, Languages, PDFOptions, Size } from "../shared/types.js";
+import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "./types.js";
 
 
-export class PDF_ extends ExtendedPDF {
+export class QRBill {
 
-  public size: Size = "A6";
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected _data: Data; // Was originally a private property but was opened in #368
+
   private _scissors: boolean = true;
   private _separate: boolean = false;
   private _outlines: boolean = true;
   private _language: Languages = "DE";
   private _marginTop: number = 0;
-  private _autoGenerate: boolean = true;
 
-
-  /**
-   * The finish event is emitted when the file has finished writing. You have to wait until the file has finished writing before you are able to interact with the generated file.
-   * @eventProperty
-   */
-  finish;
-
-  /**
-   * The pageAdded event is emitted every time a page is added. This can be useful to add a header or footer to the pages as described in the [PDFKit documentation](https://pdfkit.org/docs/getting_started.html#adding_pages).
-   * @eventProperty
-   */
-  pageAdded;
-
-  /**
-   * The beforeEnd event is emitted right before the file gets finalized. This could be used to add page numbers to the pages as described in the [PDFKit documentation](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages)
-   * @eventProperty
-   */
-  beforeEnd;
-
-  constructor(data: Data, options?: PDFOptions) {
-
-    super({ autoFirstPage: false, bufferPages: true });
+  constructor(data: Data, options?: QRBillOptions) {
 
     this._data = data;
 
-    // Clean data (remove line breaks and unnecessary white spaces)
+    // Remove line breaks and unnecessary white spaces
     this._data = cleanData(this._data);
 
     // Validate data
@@ -55,9 +30,6 @@ export class PDF_ extends ExtendedPDF {
     if(options !== undefined){
       if(options.language !== undefined){
         this._language = options.language;
-      }
-      if(options.size !== undefined){
-        this.size = options.size;
       }
       if(options.scissors !== undefined){
         this._scissors = options.scissors;
@@ -74,79 +46,42 @@ export class PDF_ extends ExtendedPDF {
       if(options.outlines !== undefined){
         this._outlines = options.outlines;
       }
-      if(options.autoGenerate !== undefined){
-        this._autoGenerate = options.autoGenerate;
-      }
     }
 
-    this.info.Producer = this.info.Creator = this.info.Author = "SwissQRBill";
-
-    this.addPage();
-
-    if(this._autoGenerate){
-      this.addQRBill();
-      this.end();
-    }
-
-  }
-
-
-  /**
-   * Adds a new page to the PDF. This method is basically the same as the original [PDFKit `addPage()` method](https://pdfkit.org/docs/getting_started.html#adding_pages). However the default values are changed to use the default page size provided in the constructor options.
-   * @param options An object containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)
-   * @returns `this`
-   */
-  public override addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
-
-    if(options === undefined){
-      options = {
-        layout: this.size === "A4" ? "portrait" : "landscape",
-        margin: utils.mm2pt(5),
-        size: this.size === "A4" ? this.size : [utils.mm2pt(105), utils.mm2pt(210)]
-      };
-    }
-
-    return super.addPage(options);
-
-  }
-
-
-  public override end(): void {
-    this.emit("beforeEnd", this);
-    return super.end();
   }
 
 
   /**
    * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+   * @param doc The PDFKit instance
    * @param size The size of the new page if not enough space is left for the QR slip.
    */
-  public addQRBill(size: Size = "A6"): void {
+  public attachTo(doc: PDFKit.PDFDocument, size?: Size): void {
 
-    if(this.page.height - this.y < utils.mm2pt(105) && this.y !== this.page.margins.top){
-      this.addPage({
+    if(!doc.page || doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top){
+      doc.addPage({
         layout: size === "A4" ? "portrait" : "landscape",
         margin: 0,
         size: size === "A4" ? size : [utils.mm2pt(105), utils.mm2pt(210)]
       });
     }
 
-    this._marginTop = this.page.height - utils.mm2pt(105);
+    this._marginTop = doc.page.height - utils.mm2pt(105);
 
-    this._render();
+    this._render(doc);
 
   }
 
 
-  private _render(): void {
+  private _render(doc: PDFKit.PDFDocument): void {
 
     // Lines
     if(this._outlines){
 
       // Horizontal line
-      if(this.page.height > utils.mm2pt(105)){
+      if(doc.page.height > utils.mm2pt(105)){
 
-        this.moveTo(0, this._marginTop)
+        doc.moveTo(0, this._marginTop)
           .lineTo(utils.mm2pt(210), this._marginTop)
           .lineWidth(.75)
           .strokeOpacity(1)
@@ -157,7 +92,7 @@ export class PDF_ extends ExtendedPDF {
       }
 
       // Vertical line
-      this.moveTo(utils.mm2pt(62), this._marginTop)
+      doc.moveTo(utils.mm2pt(62), this._marginTop)
         .lineTo(utils.mm2pt(62), this._marginTop + utils.mm2pt(105))
         .lineWidth(.75)
         .strokeOpacity(1)
@@ -170,32 +105,38 @@ export class PDF_ extends ExtendedPDF {
     // Scissors
     if(this._scissors){
 
-      const scissorsTop = "M4.545 -1.803C4.06 -2.388 3.185 -2.368 2.531 -2.116l-4.106 1.539c-1.194 -0.653 -2.374 -0.466 -2.374 -0.784c0 -0.249 0.228 -0.194 0.194 -0.842c-0.033 -0.622 -0.682 -1.082 -1.295 -1.041c-0.614 -0.004 -1.25 0.467 -1.255 1.115c-0.046 0.653 0.504 1.26 1.153 1.303c0.761 0.113 2.109 -0.348 2.741 0.785c-0.471 0.869 -1.307 0.872 -2.063 0.828c-0.627 -0.036 -1.381 0.144 -1.68 0.76c-0.289 0.591 -0.006 1.432 0.658 1.613c0.67 0.246 1.59 -0.065 1.75 -0.835c0.123 -0.594 -0.298 -0.873 -0.136 -1.089c0.122 -0.163 0.895 -0.068 2.274 -0.687L2.838 2.117C3.4 2.273 4.087 2.268 4.584 1.716L-0.026 -0.027L4.545 -1.803zm-9.154 -0.95c0.647 0.361 0.594 1.342 -0.078 1.532c-0.608 0.212 -1.386 -0.379 -1.192 -1.039c0.114 -0.541 0.827 -0.74 1.27 -0.493zm0.028 4.009c0.675 0.249 0.561 1.392 -0.126 1.546c-0.456 0.158 -1.107 -0.069 -1.153 -0.606c-0.089 -0.653 0.678 -1.242 1.279 -0.94z";
-      const scissorsCenter = "M1.803 4.545C2.388 4.06 2.368 3.185 2.116 2.531l-1.539 -4.106c0.653 -1.194 0.466 -2.374 0.784 -2.374c0.249 0 0.194 0.228 0.842 0.194c0.622 -0.033 1.082 -0.682 1.041 -1.295c0.004 -0.614 -0.467 -1.25 -1.115 -1.255c-0.653 -0.046 -1.26 0.504 -1.303 1.153c-0.113 0.761 0.348 2.109 -0.785 2.741c-0.869 -0.471 -0.872 -1.307 -0.828 -2.063c0.036 -0.627 -0.144 -1.381 -0.76 -1.68c-0.591 -0.289 -1.432 -0.006 -1.613 0.658c-0.246 0.67 0.065 1.59 0.835 1.75c0.594 0.123 0.873 -0.298 1.089 -0.136c0.163 0.122 0.068 0.895 0.687 2.274L-2.117 2.838C-2.273 3.4 -2.268 4.087 -1.716 4.584L0.027 -0.026L1.803 4.545zm0.95 -9.154c-0.361 0.647 -1.342 0.594 -1.532 -0.078c-0.212 -0.608 0.379 -1.386 1.039 -1.192c0.541 0.114 0.74 0.827 0.493 1.27zm-4.009 0.028c-0.249 0.675 -1.392 0.561 -1.546 -0.126c-0.158 -0.456 0.069 -1.107 0.606 -1.153c0.653 -0.089 1.242 0.678 0.94 1.279z";
+      const scissorsTop = "4.545 -1.803 m4.06 -2.388 3.185 -2.368 2.531 -2.116 c-1.575 -0.577 l-2.769 -1.23 -3.949 -1.043 -3.949 -1.361 c-3.949 -1.61 -3.721 -1.555 -3.755 -2.203 c-3.788 -2.825 -4.437 -3.285 -5.05 -3.244 c-5.664 -3.248 -6.3 -2.777 -6.305 -2.129 c-6.351 -1.476 -5.801 -0.869 -5.152 -0.826 c-4.391 -0.713 -3.043 -1.174 -2.411 -0.041 c-2.882 0.828 -3.718 0.831 -4.474 0.787 c-5.101 0.751 -5.855 0.931 -6.154 1.547 c-6.443 2.138 -6.16 2.979 -5.496 3.16 c-4.826 3.406 -3.906 3.095 -3.746 2.325 c-3.623 1.731 -4.044 1.452 -3.882 1.236 c-3.76 1.073 -2.987 1.168 -1.608 0.549 c2.838 2.117 l3.4 2.273 4.087 2.268 4.584 1.716 c-0.026 -0.027 l4.545 -1.803 lh-4.609 -2.753 m-3.962 -2.392 -4.015 -1.411 -4.687 -1.221 c-5.295 -1.009 -6.073 -1.6 -5.879 -2.26 c-5.765 -2.801 -5.052 -3 -4.609 -2.753 ch-4.581 1.256 m-3.906 1.505 -4.02 2.648 -4.707 2.802 c-5.163 2.96 -5.814 2.733 -5.86 2.196 c-5.949 1.543 -5.182 0.954 -4.581 1.256 ch";
+      const scissorsCenter = "1.803 4.545 m2.388 4.06 2.368 3.185 2.116 2.531 c0.577 -1.575 l1.23 -2.769 1.043 -3.949 1.361 -3.949 c1.61 -3.949 1.555 -3.721 2.203 -3.755 c2.825 -3.788 3.285 -4.437 3.244 -5.05 c3.248 -5.664 2.777 -6.3 2.129 -6.305 c1.476 -6.351 0.869 -5.801 0.826 -5.152 c0.713 -4.391 1.174 -3.043 0.041 -2.411 c-0.828 -2.882 -0.831 -3.718 -0.787 -4.474 c-0.751 -5.101 -0.931 -5.855 -1.547 -6.154 c-2.138 -6.443 -2.979 -6.16 -3.16 -5.496 c-3.406 -4.826 -3.095 -3.906 -2.325 -3.746 c-1.731 -3.623 -1.452 -4.044 -1.236 -3.882 c-1.073 -3.76 -1.168 -2.987 -0.549 -1.608 c-2.117 2.838 l-2.273 3.4 -2.268 4.087 -1.716 4.584 c0.027 -0.026 l1.803 4.545 lh2.753 -4.609 m2.392 -3.962 1.411 -4.015 1.221 -4.687 c1.009 -5.295 1.6 -6.073 2.26 -5.879 c2.801 -5.765 3 -5.052 2.753 -4.609 ch-1.256 -4.581 m-1.505 -3.906 -2.648 -4.02 -2.802 -4.707 c-2.96 -5.163 -2.733 -5.814 -2.196 -5.86 c-1.543 -5.949 -0.954 -5.182 -1.256 -4.581 ch";
 
-      if(this.page.height > utils.mm2pt(105)){
+      if(doc.page.height > utils.mm2pt(105)){
 
-        this.addPath(scissorsTop, utils.mm2pt(105), this._marginTop)
+        doc.save().translate(utils.mm2pt(105), this._marginTop);
+
+        doc.addContent(scissorsTop)
           .fillColor("black")
           .fill();
 
+        doc.restore();
+
       }
 
-      this.addPath(scissorsCenter, utils.mm2pt(62), this._marginTop + 30)
+      doc.save().translate(utils.mm2pt(62), this._marginTop + 30);
+
+      doc.addContent(scissorsCenter)
         .fillColor("black")
         .fill();
-      this.translate(0, 0);
+      doc.restore();
 
     }
 
     // Separation text
     if(this._separate){
 
-      if(this.page.height > utils.mm2pt(105)){
+      if(doc.page.height > utils.mm2pt(105)){
 
-        this.fontSize(11);
-        this.font("Helvetica");
-        this.text(translations[this._language].separate, utils.mm2pt(0), this._marginTop - 12, {
+        doc.fontSize(11);
+        doc.font("Helvetica");
+        doc.text(translations[this._language].separate, utils.mm2pt(0), this._marginTop - 12, {
           align: "center",
           width: utils.mm2pt(210)
         });
@@ -205,43 +146,43 @@ export class PDF_ extends ExtendedPDF {
     }
 
     // Receipt
-    this.fontSize(11);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].receipt, utils.mm2pt(5), this._marginTop + utils.mm2pt(5), {
+    doc.fontSize(11);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].receipt, utils.mm2pt(5), this._marginTop + utils.mm2pt(5), {
       align: "left",
       width: utils.mm2pt(52)
     });
 
-    this.fontSize(6);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].account, utils.mm2pt(5), this._marginTop + utils.mm2pt(12) + 3, {
+    doc.fontSize(6);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].account, utils.mm2pt(5), this._marginTop + utils.mm2pt(12) + 3, {
       lineGap: 1,
       width: utils.mm2pt(52)
     });
 
     // Creditor
-    this.fontSize(8);
-    this.font("Helvetica");
-    this.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
+    doc.fontSize(8);
+    doc.font("Helvetica");
+    doc.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
       lineGap: -.5,
       width: utils.mm2pt(52)
     });
 
-    this.moveDown();
+    doc.moveDown();
 
     // Reference
     if(this._data.reference !== undefined){
 
-      this.fontSize(6);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].reference, {
+      doc.fontSize(6);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].reference, {
         lineGap: 1,
         width: utils.mm2pt(52)
       });
 
-      this.fontSize(8);
-      this.font("Helvetica");
-      this.text(utils.formatReference(this._data.reference), {
+      doc.fontSize(8);
+      doc.font("Helvetica");
+      doc.text(utils.formatReference(this._data.reference), {
         lineGap: -.5,
         width: utils.mm2pt(52)
       });
@@ -251,118 +192,118 @@ export class PDF_ extends ExtendedPDF {
     // Debtor
     if(this._data.debtor !== undefined){
 
-      this.fontSize(9);
-      this.moveDown();
+      doc.fontSize(9);
+      doc.moveDown();
 
-      this.fontSize(6);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].payableBy, {
+      doc.fontSize(6);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].payableBy, {
         lineGap: 1,
         width: utils.mm2pt(52)
       });
 
-      this.fontSize(8);
-      this.font("Helvetica");
-      this.text(this._formatAddress(this._data.debtor), {
+      doc.fontSize(8);
+      doc.font("Helvetica");
+      doc.text(this._formatAddress(this._data.debtor), {
         lineGap: -.5,
         width: utils.mm2pt(52)
       });
 
     } else {
 
-      this.fontSize(9);
-      this.moveDown();
+      doc.fontSize(9);
+      doc.moveDown();
 
-      this.fontSize(6);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].payableByName, {
+      doc.fontSize(6);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].payableByName, {
         lineGap: 1,
         width: utils.mm2pt(52)
       });
 
       // Add rectangle
-      this._addRectangle(5, utils.pt2mm(this.y - this._marginTop), 52, 20);
+      this._addRectangle(doc, 5, utils.pt2mm(doc.y - this._marginTop), 52, 20);
 
     }
 
     // Amount
-    this.fontSize(6);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(68), {
+    doc.fontSize(6);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(68), {
       lineGap: 1,
       width: utils.mm2pt(15)
     });
 
     const amountXPosition = this._data.amount === undefined ? 18 : 27;
 
-    this.text(translations[this._language].amount, utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(68), {
+    doc.text(translations[this._language].amount, utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(68), {
       lineGap: 1,
       width: utils.mm2pt(52 - amountXPosition)
     });
 
-    this.fontSize(8);
-    this.font("Helvetica");
-    this.text(this._data.currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(71), {
+    doc.fontSize(8);
+    doc.font("Helvetica");
+    doc.text(this._data.currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(71), {
       lineGap: -.5,
       width: utils.mm2pt(15)
     });
 
     if(this._data.amount !== undefined){
-      this.text(utils.formatAmount(this._data.amount), utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(71), {
+      doc.text(utils.formatAmount(this._data.amount), utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(71), {
         lineGap: -.5,
         width: utils.mm2pt(52 - amountXPosition)
       });
     } else {
-      this._addRectangle(27, 68, 30, 10);
+      this._addRectangle(doc, 27, 68, 30, 10);
     }
 
-    this.fontSize(6);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].acceptancePoint, utils.mm2pt(5), this._marginTop + utils.mm2pt(82), {
+    doc.fontSize(6);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].acceptancePoint, utils.mm2pt(5), this._marginTop + utils.mm2pt(82), {
       align: "right",
       lineGap: 1,
       width: utils.mm2pt(52)
     });
 
     // Payment part middle container
-    this.fontSize(11);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].paymentPart, utils.mm2pt(67), this._marginTop + utils.mm2pt(5), {
+    doc.fontSize(11);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].paymentPart, utils.mm2pt(67), this._marginTop + utils.mm2pt(5), {
       align: "left",
       lineGap: 1,
       width: utils.mm2pt(51)
     });
 
     // QR Code
-    this._renderQRCode();
-    this.fillColor("black");
+    this._renderQRCode(doc);
+    doc.fillColor("black");
 
     // Amount
-    this.fontSize(8);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(68), {
+    doc.fontSize(8);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(68), {
       lineGap: 1,
       width: utils.mm2pt(15)
     });
 
-    this.text(translations[this._language].amount, utils.mm2pt(89), this._marginTop + utils.mm2pt(68), {
+    doc.text(translations[this._language].amount, utils.mm2pt(89), this._marginTop + utils.mm2pt(68), {
       width: utils.mm2pt(29)
     });
 
-    this.fontSize(10);
-    this.font("Helvetica");
-    this.text(this._data.currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(72), {
+    doc.fontSize(10);
+    doc.font("Helvetica");
+    doc.text(this._data.currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(72), {
       lineGap: -.5,
       width: utils.mm2pt(15)
     });
 
     if(this._data.amount !== undefined){
-      this.text(utils.formatAmount(this._data.amount), utils.mm2pt(89), this._marginTop + utils.mm2pt(72), {
+      doc.text(utils.formatAmount(this._data.amount), utils.mm2pt(89), this._marginTop + utils.mm2pt(72), {
         lineGap: -.5,
         width: utils.mm2pt(29)
       });
     } else {
-      this._addRectangle(78, 72, 40, 15);
+      this._addRectangle(doc, 78, 72, 40, 15);
     }
 
     // AV1 and AV2
@@ -370,16 +311,16 @@ export class PDF_ extends ExtendedPDF {
 
       const [scheme, data] = this._data.av1.split(/(\/.+)/);
 
-      this.fontSize(7);
-      this.font("Helvetica-Bold");
-      this.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(90), {
+      doc.fontSize(7);
+      doc.font("Helvetica-Bold");
+      doc.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(90), {
         continued: true,
         lineGap: 1,
         width: utils.mm2pt(138)
       });
 
-      this.font("Helvetica");
-      this.text(this._data.av1.length > 90 ? `${data.substr(0, 87)}...` : data, {
+      doc.font("Helvetica");
+      doc.text(this._data.av1.length > 90 ? `${data.substr(0, 87)}...` : data, {
         continued: false
       });
 
@@ -389,80 +330,80 @@ export class PDF_ extends ExtendedPDF {
 
       const [scheme, data] = this._data.av2.split(/(\/.+)/);
 
-      this.fontSize(7);
-      this.font("Helvetica-Bold");
-      this.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(93), {
+      doc.fontSize(7);
+      doc.font("Helvetica-Bold");
+      doc.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(93), {
         continued: true,
         lineGap: 1,
         width: utils.mm2pt(138)
       });
 
-      this.font("Helvetica");
-      this.text(this._data.av2.length > 90 ? `${data.substr(0, 87)}...` : data, {
+      doc.font("Helvetica");
+      doc.text(this._data.av2.length > 90 ? `${data.substr(0, 87)}...` : data, {
         lineGap: -.5
       });
 
     }
 
     // Payment part right column
-    this.fontSize(8);
-    this.font("Helvetica-Bold");
-    this.text(translations[this._language].account, utils.mm2pt(118), this._marginTop + utils.mm2pt(5) + 3, {
+    doc.fontSize(8);
+    doc.font("Helvetica-Bold");
+    doc.text(translations[this._language].account, utils.mm2pt(118), this._marginTop + utils.mm2pt(5) + 3, {
       lineGap: 1,
       width: utils.mm2pt(87)
     });
 
-    this.fontSize(10);
-    this.font("Helvetica");
-    this.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
+    doc.fontSize(10);
+    doc.font("Helvetica");
+    doc.text(`${utils.formatIBAN(this._data.creditor.account)}\n${this._formatAddress(this._data.creditor)}`, {
       lineGap: -.75,
       width: utils.mm2pt(87)
     });
 
-    this.moveDown();
+    doc.moveDown();
 
     if(this._data.reference !== undefined){
 
-      this.fontSize(8);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].reference, {
+      doc.fontSize(8);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].reference, {
         lineGap: 1,
         width: utils.mm2pt(87)
       });
 
-      this.fontSize(10);
-      this.font("Helvetica");
-      this.text(utils.formatReference(this._data.reference), {
+      doc.fontSize(10);
+      doc.font("Helvetica");
+      doc.text(utils.formatReference(this._data.reference), {
         lineGap: -.75,
         width: utils.mm2pt(87)
       });
 
-      this.moveDown();
+      doc.moveDown();
 
     }
 
     // Message / Additional information
     if(this._data.message !== undefined || this._data.additionalInformation !== undefined){
 
-      this.fontSize(8);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].additionalInformation, {
+      doc.fontSize(8);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].additionalInformation, {
         lineGap: 1,
         width: utils.mm2pt(87)
       });
 
-      this.fontSize(10);
-      this.font("Helvetica");
+      doc.fontSize(10);
+      doc.font("Helvetica");
 
       const options = {
         lineGap: -.75,
         width: utils.mm2pt(87)
       };
 
-      const singleLineHeight = this.heightOfString("A", options);
+      const singleLineHeight = doc.heightOfString("A", options);
       const referenceType = utils.getReferenceType(this._data.reference);
       const maxLines = referenceType === "QRR" || referenceType === "SCOR" ? 3 : 4;
-      const linesOfAdditionalInformation = this._data.additionalInformation !== undefined ? this.heightOfString(this._data.additionalInformation, options) / singleLineHeight : 0;
+      const linesOfAdditionalInformation = this._data.additionalInformation !== undefined ? doc.heightOfString(this._data.additionalInformation, options) / singleLineHeight : 0;
 
       if(this._data.additionalInformation !== undefined){
 
@@ -471,7 +412,7 @@ export class PDF_ extends ExtendedPDF {
           // QRR and SCOR have 1 line for the message and 2 lines for the additional information
 
           if(this._data.message !== undefined){
-            this.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight, lineBreak: false });
+            doc.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight, lineBreak: false });
           }
 
         } else {
@@ -480,77 +421,88 @@ export class PDF_ extends ExtendedPDF {
 
           if(this._data.message !== undefined){
             const maxLinesOfMessage = maxLines - linesOfAdditionalInformation;
-            this.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLinesOfMessage, lineBreak: true });
+            doc.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLinesOfMessage, lineBreak: true });
           }
 
         }
 
-        this.text(this._data.additionalInformation, options);
+        doc.text(this._data.additionalInformation, options);
 
       } else if(this._data.message !== undefined){
-        this.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLines, lineBreak: true });
+        doc.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLines, lineBreak: true });
       }
 
-      this.moveDown();
+      doc.moveDown();
 
     }
 
     if(this._data.debtor !== undefined){
 
-      this.fontSize(8);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].payableBy, {
+      doc.fontSize(8);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].payableBy, {
         lineGap: 1,
         width: utils.mm2pt(87)
       });
 
-      this.fontSize(10);
-      this.font("Helvetica");
-      this.text(this._formatAddress(this._data.debtor), {
+      doc.fontSize(10);
+      doc.font("Helvetica");
+      doc.text(this._formatAddress(this._data.debtor), {
         lineGap: -.75,
         width: utils.mm2pt(87)
       });
 
     } else {
 
-      this.fontSize(8);
-      this.font("Helvetica-Bold");
-      this.text(translations[this._language].payableByName, {
+      doc.fontSize(8);
+      doc.font("Helvetica-Bold");
+      doc.text(translations[this._language].payableByName, {
         lineGap: 1,
         width: utils.mm2pt(87)
       });
 
-      this._addRectangle(118, utils.pt2mm(this.y - this._marginTop), 65, 25);
+      this._addRectangle(doc, 118, utils.pt2mm(doc.y - this._marginTop), 65, 25);
 
     }
 
   }
 
 
-  private _renderQRCode(): void {
+  private _renderQRCode(doc: PDFKit.PDFDocument): void {
 
     const qrData = generateQRData(this._data);
     const qrCode = renderQRCode(qrData, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
 
     // Add QR Code
-    this.addContent(qrCode)
-      .fillColor("black")
+    doc.save().translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
+    doc.addContent(qrCode).fillColor("black")
       .fill();
+    doc.restore();
 
     // Add Swiss Cross
-    const swissCrossBackground = "M18.3 0.7L1.6 0.7 0.7 0.7 0.7 1.6 0.7 18.3 0.7 19.1 1.6 19.1 18.3 19.1 19.1 19.1 19.1 18.3 19.1 1.6 19.1 0.7Z";
-    const swissCross = "M8.3 4H11.6V15H8.3V4Z M4.4 7.9H15.4V11.2H4.4V7.9Z";
+    const swissCrossBackground = "18.3 0.7 m1.6 0.7 l0.7 0.7 l0.7 1.6 l0.7 18.3 l0.7 19.1 l1.6 19.1 l18.3 19.1 l19.1 19.1 l19.1 18.3 l19.1 1.6 l19.1 0.7 lh";
+    const swissCross = "8.3 4 m11.6 4 l11.6 15 l8.3 15 l8.3 4 lh4.4 7.9 m15.4 7.9 l15.4 11.2 l4.4 11.2 l4.4 7.9 lh";
 
-    this.addPath(swissCrossBackground, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
+    doc.save();
+
+    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+    doc.addContent(swissCrossBackground)
       .undash()
       .fillColor("black")
       .lineWidth(1.42)
       .strokeColor("white")
       .fillAndStroke();
 
-    this.addPath(swissCross, utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36))
+    doc.restore();
+
+    doc.save();
+
+    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+    doc.addContent(swissCross)
       .fillColor("white")
       .fill();
+
+    doc.restore();
 
   }
 
@@ -565,11 +517,11 @@ export class PDF_ extends ExtendedPDF {
   }
 
 
-  private _addRectangle(x: number, y: number, width: number, height: number): void {
+  private _addRectangle(doc: PDFKit.PDFDocument, x: number, y: number, width: number, height: number): void {
 
     const length = 3;
 
-    this.moveTo(utils.mm2pt(x + length), this._marginTop + utils.mm2pt(y))
+    doc.moveTo(utils.mm2pt(x + length), this._marginTop + utils.mm2pt(y))
       .lineTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y))
       .lineTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y + length))
       .moveTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y + height - length))
