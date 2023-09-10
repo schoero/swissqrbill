@@ -1,4 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/schoero/unwritten/main/schemas/renderer/config.json",
-  "extends": "@schoero/unwritten-config/.unwritten.json"
+  "$schema": "../unwritten/schemas/renderer/config.json",
+  "extends": "@schoero/unwritten-config"
 }
