@@ -94,7 +94,7 @@ export function generateQRData(data: Data): string {
 }
 
 
-export function renderQRCode(qrData: string, type: "pdf" | "svg", xOrigin: number, yOrigin: number, size: number): string {
+export function renderQRCode(qrData: string, type: "pdf" | "svg", size: number, xOrigin: number = 0, yOrigin: number = 0): string {
 
   const eci = qrcodegen.QrSegment.makeEci(26);
   const segments = qrcodegen.QrSegment.makeSegments(qrData);

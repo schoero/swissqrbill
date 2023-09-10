@@ -279,12 +279,16 @@ export class QRBill {
 
     // QR Code
     const qrData = generateQRData(this._data);
-    const qrCode = renderQRCode(qrData, "pdf", utils.mm2pt(67), this._marginTop + utils.mm2pt(17), utils.mm2pt(46));
+    const qrCode = renderQRCode(qrData, "pdf", utils.mm2pt(46));
 
     // Add QR Code
-    doc.save().translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
-    doc.addContent(qrCode).fillColor("black")
-      .fill();
+    doc.save();
+
+    doc.translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
+    doc.addContent(qrCode);
+    doc.fillColor("black");
+    doc.fill();
+
     doc.restore();
 
     // Add Swiss Cross
@@ -446,7 +450,6 @@ export class QRBill {
         if(referenceType === "QRR" || referenceType === "SCOR"){
 
           // QRR and SCOR have 1 line for the message and 2 lines for the additional information
-
           if(this._data.message !== undefined){
             doc.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight, lineBreak: false });
           }
@@ -454,7 +457,6 @@ export class QRBill {
         } else {
 
           // Non QRR and SCOR have 4 lines total available and the message should be shortened if necessary
-
           if(this._data.message !== undefined){
             const maxLinesOfMessage = maxLines - linesOfAdditionalInformation;
             doc.text(this._data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLinesOfMessage, lineBreak: true });
