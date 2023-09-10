@@ -7,11 +7,11 @@ export interface PDFTable {
   rows: PDFRow[];
   /** Horizontal alignment of texts inside the table */
   align?: "center" | "left" | "right";
-  /**  Width of the borders of the row. */
+  /** Width of the borders of the row. */
   border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
-  /**  Font of the text inside the table. */
+  /** Font of the text inside the table. */
   font?: string;
   /** Font color of texts inside table. */
   fontColor?: string;
@@ -19,15 +19,15 @@ export interface PDFTable {
   fontSize?: number;
   /** Cell padding of the table cells. */
   padding?: number | [top: number, right?: number, bottom?: number, left?: number];
-  /**  Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
+  /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
   /** Vertical alignment of texts inside the table */
   verticalAlign?: "bottom" | "middle" | "top";
   /** Width of whole table. */
   width?: number;
-  /**  Horizontal start position of the table. */
+  /** Horizontal start position of the table. */
   x?: number;
-  /**  Vertical start position of the table. */
+  /** Vertical start position of the table. */
   y?: number;
 }
 export interface PDFRow {
@@ -49,13 +49,13 @@ export interface PDFRow {
   fontSize?: number;
   /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
   header?: boolean;
-  /**  Height of the row. Overrides minHeight and maxHeight */
+  /** Height of the row. Overrides minHeight and maxHeight */
   height?: number;
   /** Maximum height of the row */
   maxHeight?: number;
   /** Minimum height of the row */
   minHeight?: number;
-  /**  Cell padding of the table cells inside the row. */
+  /** Cell padding of the table cells inside the row. */
   padding?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
@@ -70,7 +70,7 @@ export interface PDFColumn {
   align?: "center" | "left" | "right";
   /** Background color of the cell. */
   backgroundColor?: string;
-  /**  Width of the borders of the row. */
+  /** Width of the borders of the row. */
   border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
@@ -122,29 +122,30 @@ export class ExtendedPDF extends PDFDocument {
 
   /**
    * Inserts a table to the document.
-   * @param table - An Object which contains the table information.
+   * @param table An Object which contains the table information.
    * @returns `this`
+   * @throws { Error } Throws an error if no table rows are provided.
    * @example
-   * ```
+   * ```ts
    * const table = {
    *   rows: [
    *     {
-   *       fillColor: "#ECF0F1",
    *       columns: [
    *         {
-   *           text: "Row 1 cell 1",
+   *           text: "Row 1 cell 1"
    *         }, {
-   *           text: "Row 1 cell 2",
+   *           text: "Row 1 cell 2"
    *         }, {
    *           text: "Row 1 cell 3"
    *         }
-   *       ]
+   *       ],
+   *       fillColor: "#ECF0F1"
    *     }, {
    *       columns: [
    *         {
-   *           text: "Row 2 cell 1",
+   *           text: "Row 2 cell 1"
    *         }, {
-   *           text: "Row 2 cell 2",
+   *           text: "Row 2 cell 2"
    *         }, {
    *           text: "Row 2 cell 3"
    *         }
@@ -485,9 +486,9 @@ export class ExtendedPDF extends PDFDocument {
 
   /**
    * Adds a path to the document on the given position.
-   * @param path - The path data to insert. This is the same as the `d` attribute of a SVG path.
-   * @param x - The x position where the path should be inserted.
-   * @param y - The y position where the path should be inserted.
+   * @param path The path data to insert. This is the same as the `d` attribute of a SVG path.
+   * @param x The x position where the path should be inserted.
+   * @param y The y position where the path should be inserted.
    * @returns `this`
    */
   public addPath(path: string, x: number, y: number): PDFKit.PDFDocument {

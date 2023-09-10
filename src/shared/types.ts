@@ -63,7 +63,7 @@ export interface Data {
    * A reference number. **Max 27 characters.**
    *
    * QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
-   *   Creditor Reference (ISO 11649): Maximum 25 characters.
+   * Creditor Reference (ISO 11649): Maximum 25 characters.
    */
   reference?: string;
 }
@@ -112,7 +112,7 @@ export interface Creditor extends Debtor {
 export interface PDFOptions {
 
   /**
-   *  Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
+   * Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
    * @defaultValue `true`
    */
   autoGenerate?: boolean;

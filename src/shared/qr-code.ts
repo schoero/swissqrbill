@@ -131,13 +131,14 @@ export function renderQRCode(qrData: string, type: "pdf" | "svg", xOrigin: numbe
 /**
  * Limits the maximum and minimum number possible according to the PDF specifications.
  * Borrowed from: https://github.com/foliojs/pdfkit/blob/120c3f9519e49d719a88d22d70139cc9f54d17d8/lib/object.js#L123-L130
- * @param n - The number to limit
+ * @param n The number to limit
  * @returns The limited number
+ * @throws { RangeError } If the number is out of range.
  */
 function limitNumber(n: number) {
   if(n > -1e21 && n < 1e21){
     return Math.round(n * 1e6) / 1e6;
   }
 
-  throw new Error(`unsupported number: ${n}`);
+  throw new RangeError(`unsupported number: ${n}`);
 }

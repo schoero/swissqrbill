@@ -21,6 +21,24 @@ export class PDF_ extends ExtendedPDF {
   private _autoGenerate: boolean = true;
 
 
+  /**
+   * The finish event is emitted when the file has finished writing. You have to wait until the file has finished writing before you are able to interact with the generated file.
+   * @eventProperty
+   */
+  finish;
+
+  /**
+   * The pageAdded event is emitted every time a page is added. This can be useful to add a header or footer to the pages as described in the [PDFKit documentation](https://pdfkit.org/docs/getting_started.html#adding_pages).
+   * @eventProperty
+   */
+  pageAdded;
+
+  /**
+   * The beforeEnd event is emitted right before the file gets finalized. This could be used to add page numbers to the pages as described in the [PDFKit documentation](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages)
+   * @eventProperty
+   */
+  beforeEnd;
+
   constructor(data: Data, options?: PDFOptions) {
 
     super({ autoFirstPage: false, bufferPages: true });
@@ -81,7 +99,7 @@ export class PDF_ extends ExtendedPDF {
 
   /**
    * Adds a new page to the PDF. This method is basically the same as the original [PDFKit `addPage()` method](https://pdfkit.org/docs/getting_started.html#adding_pages). However the default values are changed to use the default page size provided in the constructor options.
-   * @param options - An object containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)
+   * @param options An object containing [PDFKit document options.](https://pdfkit.org/docs/getting_started.html#adding_pages)
    * @returns `this`
    */
   public override addPage(options?: PDFKit.PDFDocumentOptions): PDFKit.PDFDocument {
@@ -107,7 +125,7 @@ export class PDF_ extends ExtendedPDF {
 
   /**
    * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
-   * @param size - The size of the new page if not enough space is left for the QR slip.
+   * @param size The size of the new page if not enough space is left for the QR slip.
    */
   public addQRBill(size: Size = "A6"): void {
 

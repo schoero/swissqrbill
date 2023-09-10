@@ -1,6 +1,6 @@
 /**
  * Checks whether the given iban is a QR-IBAN or not.
- * @param iban - The IBAN to be checked.
+ * @param iban The IBAN to be checked.
  * @returns `true` if the given IBAN is a QR-IBAN and `false` otherwise.
  */
 export function isQRIBAN(iban: string): boolean {
@@ -12,7 +12,7 @@ export function isQRIBAN(iban: string): boolean {
 
 /**
  * Validates the given IBAN.
- * @param iban - The IBAN to be checked.
+ * @param iban The IBAN to be checked.
  * @returns `true` if the checksum of the given IBAN is valid and `false` otherwise.
  */
 export function isIBANValid(iban: string): boolean {
@@ -36,7 +36,7 @@ export function isIBANValid(iban: string): boolean {
 
 /**
  * Formats the given IBAN according the specifications to be easily readable.
- * @param iban - The IBAN to be formatted.
+ * @param iban The IBAN to be formatted.
  * @returns The formatted IBAN.
  */
 export function formatIBAN(iban: string): string {
@@ -49,9 +49,9 @@ export function formatIBAN(iban: string): string {
 
 /**
  * Checks whether the given reference is a QR-Reference or not.
- * @remarks The QR-Reference is a 27 digits long string containing only digits. The last digit is the checksum.
- * @param reference - The Reference to be checked.
+ * @param reference The Reference to be checked.
  * @returns `true` if the given reference is a QR-Reference and `false` otherwise.
+ * @remarks The QR-Reference is a 27 digits long string containing only digits. The last digit is the checksum.
  */
 export function isQRReference(reference: string): boolean {
 
@@ -72,7 +72,7 @@ export function isQRReference(reference: string): boolean {
 
 /**
  * Validates the given QR-Reference.
- * @param reference - The reference to be checked.
+ * @param reference The reference to be checked.
  * @returns `true` if the given reference is valid and `false` otherwise.
  */
 export function isQRReferenceValid(reference: string): boolean {
@@ -95,9 +95,9 @@ export function isQRReferenceValid(reference: string): boolean {
 
 /**
  * Checks whether the given reference is a SCOR-Reference or not.
- * @remarks The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing a 2 digit checksum and a max 21 digits long reference.
- * @param reference - The Reference to be checked.
+ * @param reference The Reference to be checked.
  * @returns `true` if the given reference is a SCOR-Reference and `false` otherwise.
+ * @remarks The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing a 2 digit checksum and a max 21 digits long reference.
  */
 export function isSCORReference(reference: string): boolean {
 
@@ -122,7 +122,7 @@ export function isSCORReference(reference: string): boolean {
 
 /**
  * Validates the given SCOR-Reference.
- * @param reference - The reference to be checked.
+ * @param reference The reference to be checked.
  * @returns `true` if the given reference is valid and `false` otherwise.
  */
 export function isSCORReferenceValid(reference: string): boolean {
@@ -152,7 +152,7 @@ export function isSCORReferenceValid(reference: string): boolean {
 
 /**
  * Calculates the checksum according to the ISO 11649 standard.
- * @param reference - The max 21 digits long reference (without the "RF" and the 2 digit checksum) whose checksum should be calculated.
+ * @param reference The max 21 digits long reference (without the "RF" and the 2 digit checksum) whose checksum should be calculated.
  * @returns The calculated checksum as 2 digit string.
  */
 export function calculateSCORReferenceChecksum(reference: string): string {
@@ -164,7 +164,7 @@ export function calculateSCORReferenceChecksum(reference: string): string {
 
 /**
  * Calculates the checksum according the specifications.
- * @param reference - The 26 digits long reference (without the checksum) whose checksum should be calculated.
+ * @param reference The 26 digits long reference (without the checksum) whose checksum should be calculated.
  * @returns The calculated checksum.
  */
 export function calculateQRReferenceChecksum(reference: string): string {
@@ -173,7 +173,7 @@ export function calculateQRReferenceChecksum(reference: string): string {
 
 /**
  * Formats the given QR-Reference according the specifications to be easily readable.
- * @param reference - The QR-Reference to be formatted.
+ * @param reference The QR-Reference to be formatted.
  * @returns The formatted QR-Reference.
  */
 export function formatQRReference(reference: string): string {
@@ -193,7 +193,7 @@ export function formatQRReference(reference: string): string {
 
 /**
  * Formats the given SCOR-Reference according the specifications to be easily readable.
- * @param reference - The SCOR-Reference to be formatted.
+ * @param reference The SCOR-Reference to be formatted.
  * @returns The formatted SCOR-Reference.
  */
 export function formatSCORReference(reference: string): string {
@@ -208,7 +208,7 @@ export function formatSCORReference(reference: string): string {
 
 /**
  * Detects the type of the given reference and formats it according the specifications to be easily readable.
- * @param reference - The reference to be formatted.
+ * @param reference The reference to be formatted.
  * @returns The formatted reference.
  */
 export function formatReference(reference: string): string {
@@ -228,7 +228,7 @@ export function formatReference(reference: string): string {
 
 /**
  * Formats the given amount according the specifications to be easily readable.
- * @param amount - containing the amount to be formatted.
+ * @param amount containing the amount to be formatted.
  * @returns The formatted amount.
  */
 export function formatAmount(amount: number): string {
@@ -253,7 +253,7 @@ export function formatAmount(amount: number): string {
 
 /**
  * Converts millimeters to points.
- * @param millimeters - The millimeters you want to convert to points.
+ * @param millimeters The millimeters you want to convert to points.
  * @returns The converted millimeters in points.
  */
 export function mm2pt(millimeters: number): number {
@@ -263,7 +263,7 @@ export function mm2pt(millimeters: number): number {
 
 /**
  * Converts points to millimeters.
- * @param points - The points you want to convert to millimeters.
+ * @param points The points you want to convert to millimeters.
  * @returns The converted points in millimeters.
  */
 export function pt2mm(points: number): number {
@@ -273,7 +273,7 @@ export function pt2mm(points: number): number {
 
 /**
  * Converts millimeters to pixels.
- * @param millimeters - The millimeters you want to convert to pixels.
+ * @param millimeters The millimeters you want to convert to pixels.
  * @returns The converted millimeters in pixels.
  */
 export function mm2px(millimeters: number): number {
@@ -283,7 +283,7 @@ export function mm2px(millimeters: number): number {
 
 /**
  * Converts pixels to millimeters.
- * @param pixels - containing the pixels you want to convert to millimeters.
+ * @param pixels containing the pixels you want to convert to millimeters.
  * @returns The converted pixels in millimeters.
  */
 export function px2mm(pixels: number): number {
@@ -293,7 +293,7 @@ export function px2mm(pixels: number): number {
 
 /**
  * Detects the type of the given reference.
- * @param reference - The reference to get the type of.
+ * @param reference The reference to get the type of.
  * @returns The type of the given reference.
  */
 export function getReferenceType(reference: string | undefined): "NON" | "QRR" | "SCOR" {
@@ -308,7 +308,7 @@ export function getReferenceType(reference: string | undefined): "NON" | "QRR" |
 
 /**
  * Calculates the checksum according to the ISO 7064 standard.
- * @param input - The input whose checksum should be calculated.
+ * @param input The input whose checksum should be calculated.
  * @returns The calculated checksum.
  */
 function mod97(input: string): number {
@@ -345,7 +345,7 @@ function mod97(input: string): number {
 
 /**
  * Calculates the checksum according to the ISO 7812-1 standard.
- * @param input - The input whose checksum should be calculated.
+ * @param input The input whose checksum should be calculated.
  * @returns The calculated checksum.
  */
 function mod10(input: string): string {
