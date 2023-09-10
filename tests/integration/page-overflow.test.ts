@@ -25,7 +25,7 @@ describe("multiple pages", () => {
 
     pdf.end();
 
-    await expect(snapshots).resolves.to.have.toHaveLength(2);
+    await expect(snapshots).resolves.toHaveLength(2);
     await expect(snapshots).resolves.toMatchSnapshot();
 
   });
