@@ -1,3 +1,4 @@
+import { isSpaceSufficient } from "./pdf-utils.js";
 import { generateQRData, renderQRCode } from "./qr-code.js";
 import { cleanData, validateData } from "./shared.js";
 import translations from "./translations.js";
@@ -14,7 +15,9 @@ export class QRBill {
   private _separate: boolean = false;
   private _outlines: boolean = true;
   private _language: Languages = "DE";
-  private _marginTop: number = 0;
+
+  private _x: number = 0;
+  private _y: number = 0;
 
   constructor(data: Data, options?: QRBillOptions) {
 
@@ -54,23 +57,38 @@ export class QRBill {
   /**
    * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
    * @param doc The PDFKit instance
+   * @param xPosition The x position where the QR Bill will be placed.
+   * @param yPosition The y position where the QR Bill will be placed.
    */
-  public attachTo(doc: PDFKit.PDFDocument): void {
+  public attachTo(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page.height - utils.mm2pt(105)): void {
 
-    if(!doc.page || doc.page.height - doc.y < utils.mm2pt(105) && doc.y !== doc.page.margins.top){
+    const width = utils.mm2pt(210);
+    const height = utils.mm2pt(105);
+
+    if(!isSpaceSufficient(doc, xPosition, yPosition, width, height)){
       doc.addPage({
         layout: "landscape",
         margin: 0,
         size: [utils.mm2pt(105), utils.mm2pt(210)]
       });
+      xPosition = 0;
+      yPosition = 0;
     }
 
-    this._marginTop = doc.page.height - utils.mm2pt(105);
+    this._x = xPosition;
+    this._y = yPosition;
 
     this._render(doc);
 
   }
 
+  private x(millimeters: number = 0) {
+    return this._x + utils.mm2pt(millimeters);
+  }
+
+  private y(millimeters: number = 0) {
+    return this._y + utils.mm2pt(millimeters);
+  }
 
   private _render(doc: PDFKit.PDFDocument): void {
 
@@ -80,8 +98,8 @@ export class QRBill {
       // Horizontal line
       if(doc.page.height > utils.mm2pt(105)){
 
-        doc.moveTo(0, this._marginTop)
-          .lineTo(utils.mm2pt(210), this._marginTop)
+        doc.moveTo(this.x(), this.y())
+          .lineTo(this.x(210), this.y())
           .lineWidth(.75)
           .strokeOpacity(1)
           .dash(1, { size: 1 })
@@ -91,8 +109,8 @@ export class QRBill {
       }
 
       // Vertical line
-      doc.moveTo(utils.mm2pt(62), this._marginTop)
-        .lineTo(utils.mm2pt(62), this._marginTop + utils.mm2pt(105))
+      doc.moveTo(this.x(62), this.y())
+        .lineTo(this.x(62), this.y(105))
         .lineWidth(.75)
         .strokeOpacity(1)
         .dash(1, { size: 1 })
@@ -111,7 +129,7 @@ export class QRBill {
 
         doc.save();
 
-        doc.translate(utils.mm2pt(105), this._marginTop);
+        doc.translate(this.x(105), this.y());
         doc.addContent(scissorsTop)
           .fillColor("black")
           .fill();
@@ -122,7 +140,7 @@ export class QRBill {
 
       doc.save();
 
-      doc.translate(utils.mm2pt(62), this._marginTop + 30);
+      doc.translate(this.x(62), this.y() + 30);
       doc.addContent(scissorsCenter)
         .fillColor("black")
         .fill();
@@ -138,7 +156,7 @@ export class QRBill {
 
         doc.fontSize(11);
         doc.font("Helvetica");
-        doc.text(translations[this._language].separate, utils.mm2pt(0), this._marginTop - 12, {
+        doc.text(translations[this._language].separate, 0, this.y() - 12, {
           align: "center",
           width: utils.mm2pt(210)
         });
@@ -150,14 +168,14 @@ export class QRBill {
     // Receipt
     doc.fontSize(11);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].receipt, utils.mm2pt(5), this._marginTop + utils.mm2pt(5), {
+    doc.text(translations[this._language].receipt, this.x(5), this.y(5), {
       align: "left",
       width: utils.mm2pt(52)
     });
 
     doc.fontSize(6);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].account, utils.mm2pt(5), this._marginTop + utils.mm2pt(12) + 3, {
+    doc.text(translations[this._language].account, this.x(5), this.y(12) + 3, {
       lineGap: 1,
       width: utils.mm2pt(52)
     });
@@ -224,34 +242,34 @@ export class QRBill {
       });
 
       // Add rectangle
-      this._addRectangle(doc, 5, utils.pt2mm(doc.y - this._marginTop), 52, 20);
+      this._addRectangle(doc, 5, utils.pt2mm(doc.y - this.y()), 52, 20);
 
     }
 
     // Amount
     doc.fontSize(6);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(68), {
+    doc.text(translations[this._language].currency, this.x(5), this.y(68), {
       lineGap: 1,
       width: utils.mm2pt(15)
     });
 
     const amountXPosition = this._data.amount === undefined ? 18 : 27;
 
-    doc.text(translations[this._language].amount, utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(68), {
+    doc.text(translations[this._language].amount, this.x(amountXPosition), this.y(68), {
       lineGap: 1,
       width: utils.mm2pt(52 - amountXPosition)
     });
 
     doc.fontSize(8);
     doc.font("Helvetica");
-    doc.text(this._data.currency, utils.mm2pt(5), this._marginTop + utils.mm2pt(71), {
+    doc.text(this._data.currency, this.x(5), this.y(71), {
       lineGap: -.5,
       width: utils.mm2pt(15)
     });
 
     if(this._data.amount !== undefined){
-      doc.text(utils.formatAmount(this._data.amount), utils.mm2pt(amountXPosition), this._marginTop + utils.mm2pt(71), {
+      doc.text(utils.formatAmount(this._data.amount), this.x(amountXPosition), this.y(71), {
         lineGap: -.5,
         width: utils.mm2pt(52 - amountXPosition)
       });
@@ -261,7 +279,7 @@ export class QRBill {
 
     doc.fontSize(6);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].acceptancePoint, utils.mm2pt(5), this._marginTop + utils.mm2pt(82), {
+    doc.text(translations[this._language].acceptancePoint, this.x(5), this.y(82), {
       align: "right",
       height: utils.mm2pt(18),
       lineGap: 1,
@@ -271,7 +289,7 @@ export class QRBill {
     // Payment part middle container
     doc.fontSize(11);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].paymentPart, utils.mm2pt(67), this._marginTop + utils.mm2pt(5), {
+    doc.text(translations[this._language].paymentPart, this.x(67), this.y(5), {
       align: "left",
       lineGap: 1,
       width: utils.mm2pt(51)
@@ -284,7 +302,7 @@ export class QRBill {
     // Add QR Code
     doc.save();
 
-    doc.translate(utils.mm2pt(67), this._marginTop + utils.mm2pt(17));
+    doc.translate(this.x(67), this.y(17));
     doc.addContent(qrCode);
     doc.fillColor("black");
     doc.fill();
@@ -297,7 +315,7 @@ export class QRBill {
 
     doc.save();
 
-    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+    doc.translate(this.x(86.5), this.y(36));
     doc.addContent(swissCrossBackground)
       .undash()
       .fillColor("black")
@@ -309,7 +327,7 @@ export class QRBill {
 
     doc.save();
 
-    doc.translate(utils.mm2pt(86.5), this._marginTop + utils.mm2pt(36));
+    doc.translate(this.x(86.5), this.y(36));
     doc.addContent(swissCross)
       .fillColor("white")
       .fill();
@@ -321,24 +339,24 @@ export class QRBill {
     // Amount
     doc.fontSize(8);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(68), {
+    doc.text(translations[this._language].currency, this.x(67), this.y(68), {
       lineGap: 1,
       width: utils.mm2pt(15)
     });
 
-    doc.text(translations[this._language].amount, utils.mm2pt(89), this._marginTop + utils.mm2pt(68), {
+    doc.text(translations[this._language].amount, this.x(89), this.y(68), {
       width: utils.mm2pt(29)
     });
 
     doc.fontSize(10);
     doc.font("Helvetica");
-    doc.text(this._data.currency, utils.mm2pt(67), this._marginTop + utils.mm2pt(72), {
+    doc.text(this._data.currency, this.x(67), this.y(72), {
       lineGap: -.5,
       width: utils.mm2pt(15)
     });
 
     if(this._data.amount !== undefined){
-      doc.text(utils.formatAmount(this._data.amount), utils.mm2pt(89), this._marginTop + utils.mm2pt(72), {
+      doc.text(utils.formatAmount(this._data.amount), this.x(89), this.y(72), {
         lineGap: -.5,
         width: utils.mm2pt(29)
       });
@@ -353,7 +371,7 @@ export class QRBill {
 
       doc.fontSize(7);
       doc.font("Helvetica-Bold");
-      doc.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(90), {
+      doc.text(scheme, this.x(67), this.y(90), {
         continued: true,
         lineGap: 1,
         width: utils.mm2pt(138)
@@ -372,7 +390,7 @@ export class QRBill {
 
       doc.fontSize(7);
       doc.font("Helvetica-Bold");
-      doc.text(scheme, utils.mm2pt(67), this._marginTop + utils.mm2pt(93), {
+      doc.text(scheme, this.x(67), this.y(93), {
         continued: true,
         lineGap: 1,
         width: utils.mm2pt(138)
@@ -388,7 +406,7 @@ export class QRBill {
     // Payment part right column
     doc.fontSize(8);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this._language].account, utils.mm2pt(118), this._marginTop + utils.mm2pt(5) + 3, {
+    doc.text(translations[this._language].account, this.x(118), this.y(5) + 3, {
       lineGap: 1,
       width: utils.mm2pt(87)
     });
@@ -499,7 +517,7 @@ export class QRBill {
         width: utils.mm2pt(87)
       });
 
-      this._addRectangle(doc, 118, utils.pt2mm(doc.y - this._marginTop), 65, 25);
+      this._addRectangle(doc, 118, utils.pt2mm(doc.y - this.y()), 65, 25);
 
     }
 
@@ -519,18 +537,18 @@ export class QRBill {
 
     const length = 3;
 
-    doc.moveTo(utils.mm2pt(x + length), this._marginTop + utils.mm2pt(y))
-      .lineTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y))
-      .lineTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y + length))
-      .moveTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y + height - length))
-      .lineTo(utils.mm2pt(x), this._marginTop + utils.mm2pt(y + height))
-      .lineTo(utils.mm2pt(x + length), this._marginTop + utils.mm2pt(y + height))
-      .moveTo(utils.mm2pt(x + width - length), this._marginTop + utils.mm2pt(y + height))
-      .lineTo(utils.mm2pt(x + width), this._marginTop + utils.mm2pt(y + height))
-      .lineTo(utils.mm2pt(x + width), this._marginTop + utils.mm2pt(y + height - length))
-      .moveTo(utils.mm2pt(x + width), this._marginTop + utils.mm2pt(y + length))
-      .lineTo(utils.mm2pt(x + width), this._marginTop + utils.mm2pt(y))
-      .lineTo(utils.mm2pt(x + width - length), this._marginTop + utils.mm2pt(y))
+    doc.moveTo(this.x(x + length), this.y(y))
+      .lineTo(this.x(x), this.y(y))
+      .lineTo(this.x(x), this.y(y + length))
+      .moveTo(this.x(x), this.y(y + height - length))
+      .lineTo(this.x(x), this.y(y + height))
+      .lineTo(this.x(x + length), this.y(y + height))
+      .moveTo(this.x(x + width - length), this.y(y + height))
+      .lineTo(this.x(x + width), this.y(y + height))
+      .lineTo(this.x(x + width), this.y(y + height - length))
+      .moveTo(this.x(x + width), this.y(y + length))
+      .lineTo(this.x(x + width), this.y(y))
+      .lineTo(this.x(x + width - length), this.y(y))
       .lineWidth(.75)
       .undash()
       .strokeColor("black")
