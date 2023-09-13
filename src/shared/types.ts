@@ -1,6 +1,6 @@
 //-- PDF types
 
-export { PDFColumn, PDFRow, PDFTable } from "../pdf/extended-pdf.js";
+export { PDFColumn, PDFRow, PDFTable } from "../pdf/table.js";
 
 // SwissQRBill types
 export type Currency = "CHF" | "EUR";

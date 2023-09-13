@@ -1,28 +1,26 @@
-import PDFDocument from "pdfkit";
-import svgpath from "svgpath";
-
-
 export interface PDFTable {
   /** Table rows. */
   rows: PDFRow[];
   /** Horizontal alignment of texts inside the table */
   align?: "center" | "left" | "right";
+  /** Background color of the table. */
+  backgroundColor?: string;
   /** Width of the borders of the row. */
   border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
   /** Font of the text inside the table. */
   font?: string;
-  /** Font color of texts inside table. */
-  fontColor?: string;
   /** Font size of the text inside the table. */
   fontSize?: number;
   /** Cell padding of the table cells. */
   padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  /** Text color of texts inside table. */
+  textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
   /** Vertical alignment of texts inside the table */
-  verticalAlign?: "bottom" | "middle" | "top";
+  verticalAlign?: "bottom" | "center" | "top";
   /** Width of whole table. */
   width?: number;
   /** Horizontal start position of the table. */
@@ -43,8 +41,6 @@ export interface PDFRow {
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
   /** Font of the text inside the row. */
   font?: string;
-  /** Font color of texts inside the row. */
-  fontColor?: string;
   /** Font size of the text inside the row. */
   fontSize?: number;
   /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
@@ -57,10 +53,12 @@ export interface PDFRow {
   minHeight?: number;
   /** Cell padding of the table cells inside the row. */
   padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  /** Text color of texts inside the row. */
+  textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
   /** Vertical alignment of texts inside the row */
-  verticalAlign?: "bottom" | "middle" | "top";
+  verticalAlign?: "bottom" | "center" | "top";
 }
 
 export interface PDFColumn {
@@ -76,53 +74,26 @@ export interface PDFColumn {
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
   /** Font of the text inside the cell. */
   font?: string;
-  /** Font color of texts inside the cell. */
-  fontColor?: string;
   /** Font size of the text inside the cell. */
   fontSize?: number;
   /** Cell padding of the table cell. */
   padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  /** Text color of texts inside the cell. */
+  textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
   /** Vertical alignment of the text inside the cell */
-  verticalAlign?: "bottom" | "middle" | "top";
+  verticalAlign?: "bottom" | "center" | "top";
   /** Width of the cell. */
   width?: number;
 }
 
-export class ExtendedPDF extends PDFDocument {
-
-  private _currentPage: number = -1;
-
-  constructor(options?: PDFKit.PDFDocumentOptions) {
-
-    super(options);
-
-    // Keep track of the current page
-    this.on("pageAdded", () => {
-      this._currentPage = this.bufferedPageRange().count - 1;
-    });
-
-  }
-
-
-  public get currentPage(): number {
-    return this._currentPage;
-  }
-
-
-  public override switchToPage(n: number): PDFKit.PDFPage {
-    const page = super.switchToPage(n);
-    this._currentPage = n;
-    return page;
-  }
-
+export class Table {
 
   /**
    * Inserts a table to the document.
-   * @param table An Object which contains the table information.
-   * @returns `this`
-   * @throws { Error } Throws an error if no table rows are provided.
+   * @param data An Object which contains the table information.
+   * @returns The Table instance.
    * @example
    * ```ts
    * const table = {
@@ -137,7 +108,7 @@ export class ExtendedPDF extends PDFDocument {
    *           text: "Row 1 cell 3"
    *         }
    *       ],
-   *       fillColor: "#ECF0F1"
+   *       backgroundColor: "#ECF0F1"
    *     }, {
    *       columns: [
    *         {
@@ -153,40 +124,68 @@ export class ExtendedPDF extends PDFDocument {
    * };
    * ```
    */
-  public addTable(table: PDFTable): PDFKit.PDFDocument {
+  constructor(private data: PDFTable) {}
 
-    if(table.rows === undefined){
+
+  // Hacky workaround to get the current page of the document
+  private getCurrentPage(doc: PDFKit.PDFDocument): number {
+    const page = doc.page;
+    for(let i = doc.bufferedPageRange().start; i < doc.bufferedPageRange().count; i++){
+      doc.switchToPage(i);
+      if(doc.page === page){
+        return i;
+      }
+    }
+    return doc.bufferedPageRange().count;
+  }
+
+
+  /**
+   * Attaches the table to a PDFKit document instance.
+   * @param doc The PDFKit document instance
+   * @returns The Table instance.
+   * @throws { Error } Throws an error if no table rows are provided.
+   */
+  public attachTo(doc: PDFKit.PDFDocument) {
+
+    if(this.data.rows === undefined){
       throw new Error("No table rows provided.");
     }
 
-    const amountOfRows = table.rows.length;
-    const startPage = this.currentPage;
-    const tableX = table.x ? table.x : this.x;
-    const tableY = table.y ? table.y : this.y;
-    const tableWidth = table.width ? table.width : this.page.width - tableX - this.page.margins.right;
+    doc.options.bufferPages = true;
 
-    const baseBorder = table.border ? table.border : undefined;
-    const baseBorderColors = table.borderColor ? table.borderColor : "#000000";
-    const basePadding = table.padding ? table.padding : 0;
-    const baseFontSize = table.fontSize ? table.fontSize : 11;
-    const baseFontColor = table.fontColor ? table.fontColor : "#000000";
-    const baseFont = table.font ? table.font : "Helvetica";
-    const baseAlign = table.align ? table.align : undefined;
-    const baseVerticalAlign = table.verticalAlign ? table.verticalAlign : "top";
+    const startX = doc.x;
+
+    const amountOfRows = this.data.rows.length;
+    const startPage = this.getCurrentPage(doc);
+    const tableX = this.data.x ? this.data.x : doc.x;
+    const tableY = this.data.y ? this.data.y : doc.y;
+    const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
+
+    const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
+    const tableBorder = this.data.border ? this.data.border : undefined;
+    const tableBorderColors = this.data.borderColor ? this.data.borderColor : "#000000";
+    const tablePadding = this.data.padding ? this.data.padding : 0;
+    const tableFontSize = this.data.fontSize ? this.data.fontSize : 11;
+    const tableTextColor = this.data.textColor ? this.data.textColor : "#000000";
+    const tableFont = this.data.font ? this.data.font : "Helvetica";
+    const tableAlign = this.data.align ? this.data.align : undefined;
+    const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
+
     const autoRowHeights: number[] = [];
 
     for(let layer = 0; layer < 5; layer++){ // 5 layers: height calculation, page calculation, background, border, text
 
       // Go back to start page
-      this.switchToPage(startPage);
+      doc.switchToPage(startPage);
 
       // Track position and height
       let rowY = tableY;
 
       // Render table
-      rowLoop: for(let rowIndex = 0; rowIndex < table.rows.length; rowIndex++){
+      rowLoop: for(let rowIndex = 0; rowIndex < this.data.rows.length; rowIndex++){
 
-        const row = table.rows[rowIndex];
+        const row = this.data.rows[rowIndex];
 
         const amountOfColumns = row.columns.length;
         const columnWidth = tableWidth / amountOfColumns;
@@ -197,18 +196,18 @@ export class ExtendedPDF extends PDFDocument {
         const rowHeight = autoRowHeights[rowIndex];
         const minRowHeight = row.minHeight;
         const maxRowHeight = row.maxHeight;
-        const rowPadding = row.padding ? row.padding : basePadding;
-        const rowBackgroundColor = row.backgroundColor ? row.backgroundColor : undefined;
-        const rowBorder = row.border ? row.border : baseBorder;
-        const rowBorderColors = row.borderColor ? row.borderColor : baseBorderColors;
-        const rowFontSize = row.fontSize ? row.fontSize : baseFontSize;
-        const rowFont = row.font ? row.font : baseFont;
-        const rowFontColor = row.fontColor ? row.fontColor : baseFontColor;
-        const rowAlign = row.align ? row.align : baseAlign;
-        const rowVerticalAlign = row.verticalAlign ? row.verticalAlign : baseVerticalAlign;
+        const rowPadding = row.padding ? row.padding : tablePadding;
+        const rowBackgroundColor = row.backgroundColor ? row.backgroundColor : tableBackgroundColor;
+        const rowBorder = row.border ? row.border : tableBorder;
+        const rowBorderColors = row.borderColor ? row.borderColor : tableBorderColors;
+        const rowFontSize = row.fontSize ? row.fontSize : tableFontSize;
+        const rowFont = row.font ? row.font : tableFont;
+        const rowTextColor = row.textColor ? row.textColor : tableTextColor;
+        const rowAlign = row.align ? row.align : tableAlign;
+        const rowVerticalAlign = row.verticalAlign ? row.verticalAlign : tableVerticalAlign;
 
         // Move to start position
-        this.moveTo(tableX, tableY);
+        doc.moveTo(tableX, tableY);
 
         // Draw columns
         let columnX = tableX;
@@ -235,7 +234,7 @@ export class ExtendedPDF extends PDFDocument {
           const columnBorderColors = column.borderColor ? column.borderColor : rowBorderColors;
           const columnFontSize = column.fontSize ? column.fontSize : rowFontSize;
           const columnFont = column.font ? column.font : rowFont;
-          const columnFontColor = column.fontColor ? column.fontColor : rowFontColor;
+          const columnTextColor = column.textColor ? column.textColor : rowTextColor;
           const columnAlign = column.align ? column.align : rowAlign;
           const columnVerticalAlign = column.verticalAlign ? column.verticalAlign : rowVerticalAlign;
 
@@ -243,7 +242,7 @@ export class ExtendedPDF extends PDFDocument {
           const borderOpacity = columnBorderColors === undefined ? 0 : 1;
           const paddings = this._positionsToObject<number>(columnPadding);
 
-          this.moveTo(columnX + columnWidth, rowY);
+          doc.moveTo(columnX + columnWidth, rowY);
 
           // Apply text options
           const textOptions: PDFKit.Mixins.TextOptions = {
@@ -262,15 +261,19 @@ export class ExtendedPDF extends PDFDocument {
             textOptions.align = columnAlign;
           }
 
-          this.font(columnFont);
-          this.fontSize(columnFontSize);
+          doc.font(columnFont);
+          doc.fontSize(columnFontSize);
 
-          const textHeight = this.heightOfString(`${column.text}`, textOptions);
-          const singleLineHeight = this.heightOfString("A", textOptions);
+          const textHeight = doc.heightOfString(`${column.text}`, textOptions);
+          const singleLineHeight = doc.heightOfString("A", textOptions);
 
           // Calculate auto row height
           if(layer === 0){
-            if(autoRowHeights[rowIndex] === undefined || autoRowHeights[rowIndex] < textHeight + (paddings.top ?? 0) + (paddings.bottom ?? 0)){
+
+            if(
+              autoRowHeights[rowIndex] === undefined ||
+              autoRowHeights[rowIndex] < textHeight + (paddings.top ?? 0) + (paddings.bottom ?? 0)
+            ){
               autoRowHeights[rowIndex] = textHeight + (paddings.top ?? 0) + (paddings.bottom ?? 0);
               if(minRowHeight !== undefined && autoRowHeights[rowIndex] < minRowHeight){
                 autoRowHeights[rowIndex] = minRowHeight;
@@ -290,34 +293,39 @@ export class ExtendedPDF extends PDFDocument {
             } else {
               continue rowLoop;
             }
+          }
+
+
+          // Insert new page before overflowing rows
+          if(layer === 1){
+
+            if(rowY + rowHeight >= doc.page.height - doc.page.margins.bottom){
+              doc.addPage();
+              rowY = doc.y;
+
+              // Insert header
+              const headerRow = this.data.rows.find(row => row.header);
+              if(headerRow !== undefined){
+                this.data.rows.splice(rowIndex, 0, headerRow);
+                autoRowHeights.splice(rowIndex, 0, autoRowHeights[this.data.rows.indexOf(headerRow)]);
+                rowIndex--;
+                continue rowLoop;
+              }
+            }
 
           }
 
-          // Check for page overflow
-          if(rowY + rowHeight >= this.page.height - this.page.margins.bottom){
-
-            // Insert new page
-            if(layer === 1){
-
-              this.addPage();
-              rowY = this.y;
-
-              // Insert header
-              for(const headerRow of table.rows){
-                if(headerRow.header === true){
-                  table.rows.splice(rowIndex, 0, headerRow);
-                  rowIndex--;
-                  continue rowLoop;
-                }
-              }
-
-            } else if(layer > 1){
-              this.switchToPage(this.currentPage + 1);
-              this.x = this.page.margins.left ?? 0;
-              this.y = this.page.margins.top ?? 0;
-              rowY = this.y;
+          // Switch page before overflowing rows and header rows
+          if(layer > 1){
+            if(
+              !!row.header && rowY !== doc.page.margins.top ||
+              rowY + rowHeight >= doc.page.height - doc.page.margins.bottom
+            ){
+              doc.switchToPage(this.getCurrentPage(doc) + 1);
+              doc.x = doc.page.margins.left ?? 0;
+              doc.y = doc.page.margins.top ?? 0;
+              rowY = doc.y;
             }
-
           }
 
           // Background layer
@@ -325,7 +333,7 @@ export class ExtendedPDF extends PDFDocument {
 
             // Fill background
             if(columnBackgroundColor !== undefined){
-              this.rect(columnX, rowY, columnWidth, rowHeight)
+              doc.rect(columnX, rowY, columnWidth, rowHeight)
                 .fillColor(columnBackgroundColor)
                 .fillOpacity(fillOpacity)
                 .fill();
@@ -340,7 +348,7 @@ export class ExtendedPDF extends PDFDocument {
 
             if(columnVerticalAlign === "top"){
               textPosY = rowY + (paddings.top ?? 0) + singleLineHeight / 2;
-            } else if(columnVerticalAlign === "middle"){
+            } else if(columnVerticalAlign === "center"){
               textPosY = rowY + rowHeight / 2 - textHeight / 2 + singleLineHeight / 2;
             } else if(columnVerticalAlign === "bottom"){
               textPosY = rowY + rowHeight - (paddings.bottom ?? 0) - textHeight + singleLineHeight / 2;
@@ -350,10 +358,10 @@ export class ExtendedPDF extends PDFDocument {
               textPosY = rowY + (paddings.top ?? 0) + singleLineHeight / 2;
             }
 
-            this.fillColor(columnFontColor)
+            doc.fillColor(columnTextColor)
               .fillOpacity(1);
 
-            this.text(`${column.text}`, columnX + (paddings.left ?? 0), textPosY, textOptions);
+            doc.text(`${column.text}`, columnX + (paddings.left ?? 0), textPosY, textOptions);
 
           }
 
@@ -366,7 +374,7 @@ export class ExtendedPDF extends PDFDocument {
               const borderColor = this._positionsToObject<string>(columnBorderColors);
 
               // Reset styles
-              this.undash()
+              doc.undash()
                 .lineJoin("miter")
                 .lineCap("butt")
                 .strokeOpacity(borderOpacity);
@@ -376,8 +384,8 @@ export class ExtendedPDF extends PDFDocument {
                 const borderBottomMargin = border.bottom ? border.bottom / 2 : 0;
                 const borderTopMargin = border.top ? border.top / 2 : 0;
 
-                this.moveTo(columnX, rowY + rowHeight + borderBottomMargin);
-                this.lineTo(columnX, rowY - borderTopMargin)
+                doc.moveTo(columnX, rowY + rowHeight + borderBottomMargin);
+                doc.lineTo(columnX, rowY - borderTopMargin)
                   .strokeColor(borderColor.left)
                   .lineWidth(border.left)
                   .stroke();
@@ -388,8 +396,8 @@ export class ExtendedPDF extends PDFDocument {
                 const borderTopMargin = border.top ? border.top / 2 : 0;
                 const borderBottomMargin = border.bottom ? border.bottom / 2 : 0;
 
-                this.moveTo(columnX + columnWidth, rowY - borderTopMargin);
-                this.lineTo(columnX + columnWidth, rowY + rowHeight + borderBottomMargin)
+                doc.moveTo(columnX + columnWidth, rowY - borderTopMargin);
+                doc.lineTo(columnX + columnWidth, rowY + rowHeight + borderBottomMargin)
                   .strokeColor(borderColor.right)
                   .lineWidth(border.right)
                   .stroke();
@@ -400,8 +408,8 @@ export class ExtendedPDF extends PDFDocument {
                 const borderLeftMargin = border.left ? border.left / 2 : 0;
                 const borderRightMargin = border.right ? border.right / 2 : 0;
 
-                this.moveTo(columnX - borderLeftMargin, rowY);
-                this.lineTo(columnX + columnWidth + borderRightMargin, rowY)
+                doc.moveTo(columnX - borderLeftMargin, rowY);
+                doc.lineTo(columnX + columnWidth + borderRightMargin, rowY)
                   .strokeColor(borderColor.top)
                   .lineWidth(border.top)
                   .stroke();
@@ -412,8 +420,8 @@ export class ExtendedPDF extends PDFDocument {
                 const borderRightMargin = border.right ? border.right / 2 : 0;
                 const borderLeftMargin = border.left ? border.left / 2 : 0;
 
-                this.moveTo(columnX + columnWidth + borderRightMargin, rowY + rowHeight);
-                this.lineTo(columnX - borderLeftMargin, rowY + rowHeight)
+                doc.moveTo(columnX + columnWidth + borderRightMargin, rowY + rowHeight);
+                doc.lineTo(columnX - borderLeftMargin, rowY + rowHeight)
                   .strokeColor(borderColor.bottom)
                   .lineWidth(border.bottom)
                   .stroke();
@@ -430,32 +438,14 @@ export class ExtendedPDF extends PDFDocument {
         rowY += rowHeight;
 
         // Update position to ensure that the table does not overlap the payment part
-        this.x = columnX;
-        this.y = rowY;
+        doc.x = columnX;
+        doc.y = rowY;
 
       }
 
     }
 
-    return this;
-
-  }
-
-
-  /**
-   * Adds a path to the document on the given position.
-   * @param path The path data to insert. This is the same as the `d` attribute of a SVG path.
-   * @param x The x position where the path should be inserted.
-   * @param y The y position where the path should be inserted.
-   * @returns `this`
-   */
-  public addPath(path: string, x: number, y: number): PDFKit.PDFDocument {
-
-    path = svgpath(path)
-      .translate(x, y)
-      .toString();
-
-    this.path(path);
+    doc.x = startX;
 
     return this;
 
