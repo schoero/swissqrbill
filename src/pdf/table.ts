@@ -88,6 +88,14 @@ export interface PDFColumn {
   width?: number;
 }
 
+enum TableLayer {
+  HeightCalculation,
+  PageInjection,
+  BackgroundColor,
+  Borders,
+  Text
+}
+
 export class Table {
 
   /**
@@ -174,9 +182,9 @@ export class Table {
 
     const autoRowHeights: number[] = [];
 
-    for(let layer = 0; layer < 5; layer++){ // 5 layers: height calculation, page calculation, background, border, text
+    for(let layer: TableLayer = 0; layer < Object.keys(TableLayer).length; layer++){
 
-      // Go back to start page
+      // Always start on the first page for each layer
       doc.switchToPage(startPage);
 
       // Track position and height
@@ -186,12 +194,6 @@ export class Table {
       rowLoop: for(let rowIndex = 0; rowIndex < this.data.rows.length; rowIndex++){
 
         const row = this.data.rows[rowIndex];
-
-        const amountOfColumns = row.columns.length;
-        const columnWidth = tableWidth / amountOfColumns;
-        const rowNumber = rowIndex + 1;
-
-        // Todo: Add auto height
 
         const rowHeight = autoRowHeights[rowIndex];
         const minRowHeight = row.minHeight;
@@ -209,22 +211,21 @@ export class Table {
         // Move to start position
         doc.moveTo(tableX, tableY);
 
-        // Draw columns
         let columnX = tableX;
+
+        // Render columns
         columnLoop: for(let columnIndex = 0; columnIndex < row.columns.length; columnIndex++){
 
           const column = row.columns[columnIndex];
-          const columnNumber = columnIndex + 1;
-          let remainingColumns = row.columns.length;
 
           // Calculate autoWidth
-          let widthUsed = 0;
-          for(const rowColumn of row.columns){
-            if(rowColumn.width !== undefined){
-              widthUsed += rowColumn.width;
-              remainingColumns--;
+          const { remainingColumns, widthUsed } = row.columns.reduce((acc, column) => {
+            if(column.width !== undefined){
+              acc.widthUsed += column.width;
+              acc.remainingColumns--;
             }
-          }
+            return acc;
+          }, { remainingColumns: row.columns.length, widthUsed: 0 });
 
           // Set properties
           const columnWidth = column.width ? column.width : (tableWidth - widthUsed) / remainingColumns;
@@ -242,24 +243,18 @@ export class Table {
           const borderOpacity = columnBorderColors === undefined ? 0 : 1;
           const paddings = this._positionsToObject<number>(columnPadding);
 
+          // Move to column start position
           doc.moveTo(columnX + columnWidth, rowY);
 
           // Apply text options
           const textOptions: PDFKit.Mixins.TextOptions = {
+            ...column.textOptions ?? {},
+            align: columnAlign,
             baseline: "middle",
             height: rowHeight !== undefined ? rowHeight - (paddings.top ?? 0) - (paddings.bottom ?? 0) : undefined,
             lineBreak: true,
             width: columnWidth - (paddings.left ?? 0) - (paddings.right ?? 0)
           };
-
-          if(column.textOptions !== undefined){
-            Object.assign(textOptions, column.textOptions);
-          }
-
-          // Override align
-          if(columnAlign !== undefined){
-            textOptions.align = columnAlign;
-          }
 
           doc.font(columnFont);
           doc.fontSize(columnFontSize);
@@ -267,8 +262,8 @@ export class Table {
           const textHeight = doc.heightOfString(`${column.text}`, textOptions);
           const singleLineHeight = doc.heightOfString("A", textOptions);
 
-          // Calculate auto row height
-          if(layer === 0){
+          // Render layers
+          if(layer === TableLayer.HeightCalculation){
 
             if(
               autoRowHeights[rowIndex] === undefined ||
@@ -295,9 +290,8 @@ export class Table {
             }
           }
 
-
           // Insert new page before overflowing rows
-          if(layer === 1){
+          if(layer === TableLayer.PageInjection){
 
             if(rowY + rowHeight >= doc.page.height - doc.page.margins.bottom){
               doc.addPage();
@@ -316,7 +310,7 @@ export class Table {
           }
 
           // Switch page before overflowing rows and header rows
-          if(layer > 1){
+          if(layer > TableLayer.PageInjection){
             if(
               !!row.header && rowY !== doc.page.margins.top ||
               rowY + rowHeight >= doc.page.height - doc.page.margins.bottom
@@ -328,8 +322,7 @@ export class Table {
             }
           }
 
-          // Background layer
-          if(layer === 2){
+          if(layer === TableLayer.BackgroundColor){
 
             // Fill background
             if(columnBackgroundColor !== undefined){
@@ -341,8 +334,7 @@ export class Table {
 
           }
 
-          // Text layer
-          if(layer === 3){
+          if(layer === TableLayer.Text){
 
             let textPosY = rowY;
 
@@ -365,8 +357,7 @@ export class Table {
 
           }
 
-          // Border layer
-          if(layer === 4){
+          if(layer === TableLayer.Borders){
 
             if(columnBorder !== undefined && columnBorderColors !== undefined){
 
