@@ -3,12 +3,12 @@ import { cleanData, validateData } from "../shared/shared.js";
 import translations from "../shared/translations.js";
 import * as utils from "../shared/utils.js";
 
-import { ExtendedPDF } from "./extended-pdf.js";
+import { Table } from "./table.js";
 
 import type { Creditor, Data, Debtor, Languages, PDFOptions, Size } from "../shared/types.js";
 
 
-export class PDF_ extends ExtendedPDF {
+export class PDF_ extends Table {
 
   public size: Size = "A6";
   // eslint-disable-next-line @typescript-eslint/naming-convention

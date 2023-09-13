@@ -1,12 +1,16 @@
-import { isSpaceSufficient } from "./pdf-utils.js";
-import { generateQRData, renderQRCode } from "./qr-code.js";
-import { cleanData, validateData } from "./shared.js";
-import translations from "./translations.js";
-import * as utils from "./utils.js";
+import { generateQRData, renderQRCode } from "../shared/qr-code.js";
+import { cleanData, validateData } from "../shared/shared.js";
+import translations from "../shared/translations.js";
+import * as utils from "../shared/utils.js";
 
-import type { Creditor, Data, Debtor, Languages, QRBillOptions } from "./types.js";
+import { isSpaceSufficient } from "./utils.js";
 
+import type { Creditor, Data, Debtor, Languages, QRBillOptions } from "../shared/types.js";
 
+/**
+ * The QRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
+ * using the {@link QRBill.attachTo} method.
+ */
 export class QRBill {
 
   protected _data: Data; // Was originally a private property but was opened in #368
