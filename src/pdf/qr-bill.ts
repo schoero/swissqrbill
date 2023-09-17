@@ -377,6 +377,7 @@ export class QRBill {
       doc.font("Helvetica-Bold");
       doc.text(scheme, this.x(67), this.y(90), {
         continued: true,
+        height: utils.mm2pt(3),
         lineGap: 1,
         width: utils.mm2pt(138)
       });
@@ -396,6 +397,7 @@ export class QRBill {
       doc.font("Helvetica-Bold");
       doc.text(scheme, this.x(67), this.y(93), {
         continued: true,
+        height: utils.mm2pt(3),
         lineGap: 1,
         width: utils.mm2pt(138)
       });
