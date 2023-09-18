@@ -17,8 +17,10 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "yaml"],
-  "prettier.enable": false, // eslint-disable-next-line jsonc/sort-keys
   "editor.formatOnSave": false,
+
+  // Prettier
+  "prettier.enable": false,
 
   // File nesting
   "explorer.fileNesting.enabled": true,
@@ -54,6 +56,9 @@
 
   "editor.rulers": [
     119
-  ]
+  ],
 
+  "search.exclude": {
+    "lib": true
+  }
 }
