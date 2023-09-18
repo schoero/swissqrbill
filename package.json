@@ -1,5 +1,5 @@
 {
-  "version": "3.2.1",
+  "version": "4.0.0-alpha.1",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
@@ -15,113 +15,25 @@
   },
   "sideEffects": false,
   "exports": {
-    ".": {
-      "browser": {
-        "import": "./lib/browser/esm/browser/index.js",
-        "require": "./lib/browser/bundle/index.js"
-      },
-      "default": {
-        "import": "./lib/node/esm/node/index.js",
-        "require": "./lib/node/cjs/node/index.js"
-      },
-      "node": {
-        "import": "./lib/node/esm/node/index.js",
-        "require": "./lib/node/cjs/node/index.js"
-      }
-    },
-    "./bundle": "./lib/browser/bundle/index.js",
-    "./lib/browser/bundle/index": "./lib/browser/bundle/index",
-    "./lib/browser/bundle/index.js": "./lib/browser/bundle/index.js",
-    "./lib/browser/esm/browser/index": "./lib/browser/esm/browser/index",
-    "./lib/browser/esm/browser/index.js": "./lib/browser/esm/browser/index.js",
-    "./lib/browser/esm/browser/pdf": "./lib/browser/esm/browser/pdf",
-    "./lib/browser/esm/browser/pdf.js": "./lib/browser/esm/browser/pdf.js",
-    "./lib/browser/esm/browser/svg": "./lib/browser/esm/browser/svg",
-    "./lib/browser/esm/browser/svg.js": "./lib/browser/esm/browser/svg.js",
-    "./lib/browser/esm/shared/types": "./lib/browser/esm/shared/types",
-    "./lib/browser/esm/shared/types.js": "./lib/browser/esm/shared/types.js",
-    "./lib/browser/esm/shared/utils": "./lib/browser/esm/shared/utils",
-    "./lib/browser/esm/shared/utils.js": "./lib/browser/esm/shared/utils.js",
-    "./lib/node/cjs/node/index": "./lib/node/cjs/node/index",
-    "./lib/node/cjs/node/index.js": "./lib/node/cjs/node/index.js",
-    "./lib/node/cjs/node/pdf": "./lib/node/cjs/node/pdf",
-    "./lib/node/cjs/node/pdf.js": "./lib/node/cjs/node/pdf.js",
-    "./lib/node/cjs/node/svg": "./lib/node/cjs/node/svg",
-    "./lib/node/cjs/node/svg.js": "./lib/node/cjs/node/svg.js",
-    "./lib/node/cjs/shared/types": "./lib/node/cjs/shared/types",
-    "./lib/node/cjs/shared/types.js": "./lib/node/cjs/shared/types.js",
-    "./lib/node/cjs/shared/utils": "./lib/node/cjs/shared/utils",
-    "./lib/node/cjs/shared/utils.js": "./lib/node/cjs/shared/utils.js",
-    "./lib/node/esm/node/index": "./lib/node/esm/node/index",
-    "./lib/node/esm/node/index.js": "./lib/node/esm/node/index.js",
-    "./lib/node/esm/node/pdf": "./lib/node/esm/node/pdf",
-    "./lib/node/esm/node/pdf.js": "./lib/node/esm/node/pdf.js",
-    "./lib/node/esm/node/svg": "./lib/node/esm/node/svg",
-    "./lib/node/esm/node/svg.js": "./lib/node/esm/node/svg.js",
-    "./lib/node/esm/shared/types": "./lib/node/esm/shared/types",
-    "./lib/node/esm/shared/types.js": "./lib/node/esm/shared/types.js",
-    "./lib/node/esm/shared/utils": "./lib/node/esm/shared/utils",
-    "./lib/node/esm/shared/utils.js": "./lib/node/esm/shared/utils.js",
     "./pdf": {
-      "browser": {
-        "import": "./lib/browser/esm/browser/pdf.js",
-        "require": "./lib/browser/bundle/index.js"
-      },
-      "default": {
-        "import": "./lib/node/esm/node/pdf.js",
-        "require": "./lib/node/cjs/node/pdf.js"
-      },
-      "node": {
-        "import": "./lib/node/esm/node/pdf.js",
-        "require": "./lib/node/cjs/node/pdf.js"
-      }
+      "import": "./lib/esm/pdf/swissqrbill.js",
+      "require": "./lib/cjs/pdf/swissqrbill.js"
     },
     "./svg": {
-      "browser": {
-        "import": "./lib/browser/esm/browser/svg.js",
-        "require": "./lib/browser/bundle/index.js"
-      },
-      "default": {
-        "import": "./lib/node/esm/node/svg.js",
-        "require": "./lib/node/cjs/node/svg.js"
-      },
-      "node": {
-        "import": "./lib/node/esm/node/svg.js",
-        "require": "./lib/node/cjs/node/svg.js"
-      }
+      "import": "./lib/esm/svg/swissqrbill.js",
+      "require": "./lib/cjs/svg/swissqrbill.js"
     },
     "./types": {
-      "browser": {
-        "import": "./lib/browser/esm/shared/types.js",
-        "require": "./lib/browser/bundle/index.js"
-      },
-      "default": {
-        "import": "./lib/node/esm/shared/types.js",
-        "require": "./lib/node/cjs/shared/types.js"
-      },
-      "node": {
-        "import": "./lib/node/esm/shared/types.js",
-        "require": "./lib/node/cjs/shared/types.js"
-      }
+      "import": "./lib/esm/shared/types.js",
+      "require": "./lib/cjs/shared/types.js"
     },
     "./utils": {
-      "browser": {
-        "import": "./lib/browser/esm/shared/utils.js",
-        "require": "./lib/browser/bundle/index.js"
-      },
-      "default": {
-        "import": "./lib/node/esm/shared/utils.js",
-        "require": "./lib/node/cjs/shared/utils.js"
-      },
-      "node": {
-        "import": "./lib/node/esm/shared/utils.js",
-        "require": "./lib/node/cjs/shared/utils.js"
-      }
+      "import": "./lib/esm/shared/utils.js",
+      "require": "./lib/cjs/shared/utils.js"
     }
   },
-  "main": "./lib/node/cjs/node/index.js",
-  "browser": "./lib/browser/bundle/index.js",
-  "module": "./lib/node/esm/node/index.js",
+  "main": "./lib/cjs/pdf/swissqrbill.js",
+  "module": "./lib/esm/pdf/swissqrbill.js",
   "scripts": {
     "build": "npm run build:esm && npm run build:cjs && npm run build:browser",
     "build:browser": "./scripts/build-browser.sh",
