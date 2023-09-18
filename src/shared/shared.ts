@@ -40,7 +40,9 @@ export function cleanData(data: Data): Data {
 
 
 export function removeLineBreaks(text: string): string {
-  return text.replace(/\n/g, "").replace(/\r/g, "");
+  return text
+    .replace(/\n/g, "")
+    .replace(/\r/g, "");
 }
 
 

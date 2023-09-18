@@ -136,6 +136,12 @@ export interface QRBillOptions {
    * @defaultValue `false`
    */
   separate?: boolean;
+
+  /**
+   * The page size.
+   * @defaultValue `"A6"`
+   */
+  size?: Size;
 }
 
 export interface PDFOptions extends QRBillOptions {
@@ -145,12 +151,6 @@ export interface PDFOptions extends QRBillOptions {
    * @defaultValue `true`
    */
   autoGenerate?: boolean;
-
-  /**
-   * The page size.
-   * @defaultValue `"A6"`
-   */
-  size?: Size;
 }
 
 export interface SVGOptions {

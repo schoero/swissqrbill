@@ -28,6 +28,7 @@ export interface PDFTable {
   /** Vertical start position of the table. */
   y?: number;
 }
+
 export interface PDFRow {
   /** Table columns. */
   columns: PDFColumn[];
@@ -160,11 +161,11 @@ export class Table {
       throw new Error("No table rows provided.");
     }
 
+    // Buffer pages to be able to create table spanning multiple pages
     doc.options.bufferPages = true;
 
     const startX = doc.x;
 
-    const amountOfRows = this.data.rows.length;
     const startPage = this.getCurrentPage(doc);
     const tableX = this.data.x ? this.data.x : doc.x;
     const tableY = this.data.y ? this.data.y : doc.y;
@@ -294,6 +295,7 @@ export class Table {
           if(layer === TableLayer.PageInjection){
 
             if(rowY + rowHeight >= doc.page.height - doc.page.margins.bottom){
+
               doc.addPage();
               rowY = doc.y;
 
