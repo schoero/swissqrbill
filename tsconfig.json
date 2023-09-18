@@ -9,10 +9,6 @@
     "outDir": "lib",
     "paths": {
       "swissqrbill:*": ["src/*"],
-      "swissqrbill:browser": ["src/browser/index.js"],
-      "swissqrbill:browser:*": ["src/browser/*"],
-      "swissqrbill:node": ["src/node/index.js"],
-      "swissqrbill:node:*": ["src/node/*"],
       "swissqrbill:node_modules:*": ["node_modules/*"],
       "swissqrbill:pdf:*": ["src/pdf/*"],
       "swissqrbill:shared:*": ["src/shared/*"],
