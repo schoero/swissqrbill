@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 
-import { utils } from "swissqrbill:node/index.js";
 import { mm2pt } from "swissqrbill:shared/utils.js";
 import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
 import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
@@ -75,8 +74,8 @@ describe("qr-bill", async () => {
     const qrBill3 = new SwissQRBill(minimalRequired);
 
     qrBill1.attachTo(pdf, 0, 0);
-    qrBill2.attachTo(pdf, 0, utils.mm2pt(105));
-    qrBill3.attachTo(pdf, 0, utils.mm2pt(210));
+    qrBill2.attachTo(pdf, 0, mm2pt(105));
+    qrBill3.attachTo(pdf, 0, mm2pt(210));
     pdf.end();
 
     await expect(pdf.snapshots).resolves.toHaveLength(2);
@@ -87,7 +86,7 @@ describe("qr-bill", async () => {
     const pdf = new TestDocument("qr-bill/freely-placed.pdf", { layout: "landscape", size: "A4" });
     const qrBill = new SwissQRBill(minimalRequired);
 
-    qrBill.attachTo(pdf, utils.mm2pt(43.5), utils.mm2pt(52.5));
+    qrBill.attachTo(pdf, mm2pt(43.5), mm2pt(52.5));
     pdf.end();
 
     await expect(pdf.snapshots).resolves.toHaveLength(1);
