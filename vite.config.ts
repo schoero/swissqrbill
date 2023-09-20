@@ -1,6 +1,33 @@
+import { sync } from "glob";
+import dts from "vite-plugin-dts";
+import noBundlePlugin from "vite-plugin-no-bundle";
+
 import { config, defineConfig } from "@schoero/vite-config";
 
 
 export default defineConfig({
-  ...config
+  ...config,
+  build: {
+    emptyOutDir: true,
+    lib: {
+      entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**"] }),
+      formats: ["es", "cjs"]
+    },
+    minify: false,
+    outDir: "lib",
+    rollupOptions: {
+      external: [
+        /node_modules/,
+        /^node:.*/
+      ]
+    },
+    target: "es6"
+  },
+  plugins: [
+    ...config.plugins ?? [],
+    dts({
+      entryRoot: "./src"
+    }),
+    noBundlePlugin()
+  ]
 });

@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0-alpha.1",
+  "version": "4.0.0-alpha.3",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
@@ -16,34 +16,33 @@
   "sideEffects": false,
   "exports": {
     "./errors": {
-      "import": "./lib/esm/shared/errors.js",
-      "require": "./lib/cjs/shared/errors.js"
+      "import": "./lib/shared/errors.js",
+      "require": "./lib/shared/errors.cjs"
     },
     "./pdf": {
-      "import": "./lib/esm/pdf/swissqrbill.js",
-      "require": "./lib/cjs/pdf/swissqrbill.js"
+      "import": "./lib/pdf/swissqrbill.js",
+      "require": "./lib/pdf/swissqrbill.cjs"
     },
     "./svg": {
-      "import": "./lib/esm/svg/swissqrbill.js",
-      "require": "./lib/cjs/svg/swissqrbill.js"
+      "import": "./lib/svg/swissqrbill.js",
+      "require": "./lib/svg/swissqrbill.cjs"
     },
     "./table": {
-      "import": "./lib/esm/pdf/table.js",
-      "require": "./lib/cjs/pdf/table.js"
+      "import": "./lib/pdf/table.js",
+      "require": "./lib/pdf/table.cjs"
     },
     "./types": {
-      "import": "./lib/esm/shared/types.js",
-      "require": "./lib/cjs/shared/types.js"
+      "import": "./lib/shared/types.js",
+      "require": "./lib/shared/types.cjs"
     },
     "./utils": {
-      "import": "./lib/esm/shared/utils.js",
-      "require": "./lib/cjs/shared/utils.js"
+      "import": "./lib/shared/utils.js",
+      "require": "./lib/shared/utils.cjs"
     }
   },
+  "types": "./lib/shared/types.d.ts",
   "scripts": {
-    "build": "npm run build:esm && npm run build:cjs",
-    "build:cjs": "./scripts/build-cjs.sh",
-    "build:esm": "./scripts/build-esm.sh",
+    "build": "vite build",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:shared",
     "docs:pdf": "unwritten src/pdf/swissqrbill.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",
@@ -83,10 +82,13 @@
     "@types/svg-parser": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "glob": "^10.3.4",
     "pdf2json": "^3.0.4",
     "pdfkit": "^0.13.0",
     "typescript": "^5.2.2",
     "unwritten": "^0.0.3",
+    "vite-plugin-dts": "^3.5.3",
+    "vite-plugin-no-bundle": "^3.0.0",
     "vitest": "^0.34.4"
   },
   "keywords": [
