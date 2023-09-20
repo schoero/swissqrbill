@@ -81,7 +81,7 @@
     "@schoero/unwritten-config": "^0.0.3",
     "@schoero/vite-config": "^0.0.25",
     "@types/blob-stream": "^0.1.31",
-    "@types/node": "^20.6.2",
+    "@types/node": "^20.6.3",
     "@types/svg-parser": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
