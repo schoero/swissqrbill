@@ -82,6 +82,7 @@
     "@types/svg-parser": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "cross-env": "^7.0.3",
     "glob": "^10.3.4",
     "pdf2json": "^3.0.4",
     "pdfkit": "^0.13.0",
