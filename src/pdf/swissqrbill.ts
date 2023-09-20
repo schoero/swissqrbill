@@ -1,7 +1,7 @@
 import { validateData } from "swissqrbill:shared/validator.js";
 
-import { generateQRData, renderQRCode } from "../shared/qr-code.js";
 import { cleanData } from "../shared/cleaner.js";
+import { generateQRData, renderQRCode } from "../shared/qr-code.js";
 import translations from "../shared/translations.js";
 import * as utils from "../shared/utils.js";
 
@@ -199,7 +199,7 @@ export class SwissQRBill {
 
     doc.fontSize(6);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this.language].account, this.x(5), this.y(12) + 3, {
+    doc.text(translations[this.language].account, this.x(5), this.y(12), {
       lineGap: 1,
       width: utils.mm2pt(52)
     });
@@ -212,6 +212,7 @@ export class SwissQRBill {
       width: utils.mm2pt(52)
     });
 
+    doc.fontSize(9);
     doc.moveDown();
 
     // Reference
@@ -231,13 +232,13 @@ export class SwissQRBill {
         width: utils.mm2pt(52)
       });
 
+      doc.fontSize(9);
+      doc.moveDown();
+
     }
 
     // Debtor
     if(this.data.debtor !== undefined){
-
-      doc.fontSize(9);
-      doc.moveDown();
 
       doc.fontSize(6);
       doc.font("Helvetica-Bold");
@@ -254,9 +255,6 @@ export class SwissQRBill {
       });
 
     } else {
-
-      doc.fontSize(9);
-      doc.moveDown();
 
       doc.fontSize(6);
       doc.font("Helvetica-Bold");
@@ -432,7 +430,7 @@ export class SwissQRBill {
     // Payment part right column
     doc.fontSize(8);
     doc.font("Helvetica-Bold");
-    doc.text(translations[this.language].account, this.x(118), this.y(5) + 3, {
+    doc.text(translations[this.language].account, this.x(118), this.y(5), {
       lineGap: 1,
       width: utils.mm2pt(87)
     });
@@ -444,6 +442,7 @@ export class SwissQRBill {
       width: utils.mm2pt(87)
     });
 
+    doc.fontSize(9);
     doc.moveDown();
 
     if(this.data.reference !== undefined){
@@ -462,6 +461,7 @@ export class SwissQRBill {
         width: utils.mm2pt(87)
       });
 
+      doc.fontSize(9);
       doc.moveDown();
 
     }
@@ -514,6 +514,7 @@ export class SwissQRBill {
         doc.text(this.data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLines, lineBreak: true });
       }
 
+      doc.fontSize(9);
       doc.moveDown();
 
     }
