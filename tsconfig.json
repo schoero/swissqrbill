@@ -15,6 +15,7 @@
       "swissqrbill:svg:*": ["src/svg/*"],
       "swissqrbill:tests:*": ["tests/*"]
     },
+    "rootDir": ".",
     "skipLibCheck": true
   },
   "include": [
