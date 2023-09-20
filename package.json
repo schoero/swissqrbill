@@ -27,6 +27,10 @@
       "import": "./lib/esm/svg/swissqrbill.js",
       "require": "./lib/cjs/svg/swissqrbill.js"
     },
+    "./table": {
+      "import": "./lib/esm/pdf/table.js",
+      "require": "./lib/cjs/pdf/table.js"
+    },
     "./types": {
       "import": "./lib/esm/shared/types.js",
       "require": "./lib/cjs/shared/types.js"
