@@ -2,12 +2,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "module": "ESNext",
+    "module": "NodeNext",
     "outDir": "./lib/node/esm"
   },
   "include": ["src"],
   "exclude": [
     "lib/",
-    "src/browser/"
+    "src/**/*.test.ts"
   ]
 }
