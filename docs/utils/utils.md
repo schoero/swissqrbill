@@ -32,11 +32,11 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)
   
 #### Parameter
   
-- **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The IBAN to be checked.
+- **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN to be checked.  
   
 #### Return Type
   
-[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given IBAN is a QR-IBAN and `false`
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given IBAN is a QR-IBAN and `false`  
   
 #### Description
   
@@ -50,11 +50,11 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)
   
 #### Parameter
   
-- **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The IBAN to be checked.
+- **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN to be checked.  
   
 #### Return Type
   
-[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the checksum of the given IBAN is valid and `false`
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the checksum of the given IBAN is valid and `false`  
   
 #### Description
   
@@ -64,15 +64,15 @@ Validates the given IBAN.
   
 ### formatIBAN(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L42C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
   
 #### Parameter
   
-- **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The IBAN to be formatted.
+- **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN to be formatted.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted IBAN.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted IBAN.  
   
 #### Description
   
@@ -82,15 +82,15 @@ Formats the given IBAN according the specifications to be easily readable.
   
 ### isQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L56C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The Reference to be checked.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The Reference to be checked.  
   
 #### Return Type
   
-[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is a QR-Reference and `false`
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is a QR-Reference and `false`  
   
 #### Description
   
@@ -104,15 +104,15 @@ The QR-Reference is a 27 digits long string containing only digits. The last dig
   
 ### isQRReferenceValid(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L78C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The reference to be checked.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The reference to be checked.  
   
 #### Return Type
   
-[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is valid and `false`
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is valid and `false`  
   
 #### Description
   
@@ -122,15 +122,15 @@ Validates the given QR-Reference.
   
 ### isSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L102C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The Reference to be checked.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The Reference to be checked.  
   
 #### Return Type
   
-[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is a SCOR-Reference and `false`
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is a SCOR-Reference and `false`  
   
 #### Description
   
@@ -144,15 +144,15 @@ The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing 
   
 ### isSCORReferenceValid(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L128C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The reference to be checked.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The reference to be checked.  
   
 #### Return Type
   
-[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is valid and `false`
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is valid and `false`  
   
 #### Description
   
@@ -162,15 +162,15 @@ Validates the given SCOR-Reference.
   
 ### calculateSCORReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L158C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The max 21 digits long reference (without the "RF" and the 2 digit checksum) whose checksum should be calculated.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The max 21 digits long reference (without the "RF" and the 2 digit checksum) whose checksum should be calculated.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The calculated checksum as 2 digit string.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The calculated checksum as 2 digit string.  
   
 #### Description
   
@@ -180,15 +180,15 @@ Calculates the checksum according to the ISO 11649 standard.
   
 ### calculateQRReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L170C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The 26 digits long reference (without the checksum) whose checksum should be calculated.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The 26 digits long reference (without the checksum) whose checksum should be calculated.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The calculated checksum.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The calculated checksum.  
   
 #### Description
   
@@ -198,15 +198,15 @@ Calculates the checksum according the specifications.
   
 ### formatQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L179C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The QR-Reference to be formatted.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The QR-Reference to be formatted.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted QR-Reference.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted QR-Reference.  
   
 #### Description
   
@@ -216,15 +216,15 @@ Formats the given QR-Reference according the specifications to be easily readabl
   
 ### formatSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L199C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The SCOR-Reference to be formatted.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The SCOR-Reference to be formatted.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted SCOR-Reference.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted SCOR-Reference.  
   
 #### Description
   
@@ -234,15 +234,15 @@ Formats the given SCOR-Reference according the specifications to be easily reada
   
 ### formatReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L214C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - The reference to be formatted.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The reference to be formatted.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted reference.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted reference.  
   
 #### Description
   
@@ -252,15 +252,15 @@ Detects the type of the given reference and formats it according the specificati
   
 ### formatAmount(amount)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L234C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
   
 #### Parameter
   
-- **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) - containing the amount to be formatted.
+- **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the amount to be formatted.  
   
 #### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted amount.
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted amount.  
   
 #### Description
   
@@ -270,15 +270,15 @@ Formats the given amount according the specifications to be easily readable.
   
 ### mm2pt(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L259C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
   
 #### Parameter
   
-- **millimeters** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) - The millimeters you want to convert to points.
+- **millimeters** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The millimeters you want to convert to points.  
   
 #### Return Type
   
-[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted millimeters in points.
+[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted millimeters in points.  
   
 #### Description
   
@@ -288,15 +288,15 @@ Converts millimeters to points.
   
 ### pt2mm(points)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L269C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
   
 #### Parameter
   
-- **points** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) - The points you want to convert to millimeters.
+- **points** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The points you want to convert to millimeters.  
   
 #### Return Type
   
-[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted points in millimeters.
+[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted points in millimeters.  
   
 #### Description
   
@@ -306,15 +306,15 @@ Converts points to millimeters.
   
 ### mm2px(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L279C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
   
 #### Parameter
   
-- **millimeters** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) - The millimeters you want to convert to pixels.
+- **millimeters** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The millimeters you want to convert to pixels.  
   
 #### Return Type
   
-[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted millimeters in pixels.
+[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted millimeters in pixels.  
   
 #### Description
   
@@ -324,15 +324,15 @@ Converts millimeters to pixels.
   
 ### px2mm(pixels)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L289C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
   
 #### Parameter
   
-- **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) - containing the pixels you want to convert to millimeters.
+- **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the pixels you want to convert to millimeters.  
   
 #### Return Type
   
-[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted pixels in millimeters.
+[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted pixels in millimeters.  
   
 #### Description
   
@@ -342,15 +342,15 @@ Converts pixels to millimeters.
   
 ### getReferenceType(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L299C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
   
 #### Parameter
   
-- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) - The reference to get the type of.
+- **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) The reference to get the type of.  
   
 #### Return Type
   
-`"NON"` | `"QRR"` | `"SCOR"` The type of the given reference.
+`"NON"` | `"QRR"` | `"SCOR"` The type of the given reference.  
   
 #### Description
   
