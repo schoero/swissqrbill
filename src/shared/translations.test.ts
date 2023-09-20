@@ -1,11 +1,11 @@
 import { describe, expect, test } from "vitest";
 
-import { minimalRequired } from "swissqrbill:tests:data/data.js";
+import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
 import { pdf } from "swissqrbill:tests:utils/pdf.js";
 import { svg } from "swissqrbill:tests:utils/svg.js";
 
 
-describe("tanslations", async () => {
+describe("translations", async () => {
 
   test("language: English", async () => {
     const name = "language-en";
