@@ -1,7 +1,9 @@
 import { calc, SVG } from "svg-engine";
 
+import { validateData } from "swissqrbill:shared/validator.js";
+
+import { cleanData } from "../shared/cleaner.js";
 import { generateQRData, renderQRCode } from "../shared/qr-code.js";
-import { cleanData, validateData } from "../shared/shared.js";
 import translations from "../shared/translations.js";
 import * as utils from "../shared/utils.js";
 

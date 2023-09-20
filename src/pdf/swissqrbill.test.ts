@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { utils } from "swissqrbill:node/index.js";
 import { mm2pt } from "swissqrbill:shared/utils.js";
-import { minimalRequired } from "swissqrbill:tests:data/data.js";
+import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
 import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
 
 import { SwissQRBill } from "./swissqrbill.js";

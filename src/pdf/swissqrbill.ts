@@ -1,5 +1,7 @@
+import { validateData } from "swissqrbill:shared/validator.js";
+
 import { generateQRData, renderQRCode } from "../shared/qr-code.js";
-import { cleanData, validateData } from "../shared/shared.js";
+import { cleanData } from "../shared/cleaner.js";
 import translations from "../shared/translations.js";
 import * as utils from "../shared/utils.js";
 

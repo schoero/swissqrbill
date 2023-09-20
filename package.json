@@ -15,6 +15,10 @@
   },
   "sideEffects": false,
   "exports": {
+    "./errors": {
+      "import": "./lib/esm/shared/errors.js",
+      "require": "./lib/cjs/shared/errors.js"
+    },
     "./pdf": {
       "import": "./lib/esm/pdf/swissqrbill.js",
       "require": "./lib/cjs/pdf/swissqrbill.js"

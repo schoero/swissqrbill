@@ -21,7 +21,7 @@ import {
   minimalRequiredWithEuro,
   minimalRequiredWithMaxedOutMessage,
   minimalRequiredWithMessage
-} from "swissqrbill:tests:data/data.js";
+} from "swissqrbill:tests:data/valid-data.js";
 
 
 describe("generateQRData", () => {

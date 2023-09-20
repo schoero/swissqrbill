@@ -4,7 +4,7 @@ import type { Creditor, Data, Debtor } from "swissqrbill:shared:types.js";
 
 // Default data
 const creditor: Creditor = {
-  account: "CH5800791123000889012",
+  account: "CH58 0079 1123 0008 8901 2",
   address: "Creditor Address",
   city: "Creditor City",
   country: "CH",
