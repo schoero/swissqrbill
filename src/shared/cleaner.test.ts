@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { cleanData } from "swissqrbill:shared/cleaner.js";
+import { cleanData } from "swissqrbill:shared/cleaner";
 
-import type { Data } from "swissqrbill:shared/types.js";
+import type { Data } from "swissqrbill:shared/types";
 
 
 describe("cleaner", () => {

@@ -1,4 +1,4 @@
-import type { PDFTable } from "swissqrbill:shared/types.js";
+import type { PDFTable } from "swissqrbill:shared/types";
 
 
 export const backgroundColorOverrides: PDFTable = {

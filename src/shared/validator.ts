@@ -1,8 +1,8 @@
-import { ValidationError, ValidationErrors } from "swissqrbill:shared/errors.js";
+import { ValidationError, ValidationErrors } from "swissqrbill:shared/errors";
 
-import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils.js";
+import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils";
 
-import type { Data } from "./types.js";
+import type { Data } from "./types";
 
 
 /**

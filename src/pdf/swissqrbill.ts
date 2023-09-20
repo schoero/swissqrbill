@@ -1,11 +1,11 @@
-import { validateData } from "swissqrbill:shared/validator.js";
+import { validateData } from "swissqrbill:shared/validator";
 
-import { cleanData } from "../shared/cleaner.js";
-import { generateQRData, renderQRCode } from "../shared/qr-code.js";
-import translations from "../shared/translations.js";
-import * as utils from "../shared/utils.js";
+import { cleanData } from "../shared/cleaner";
+import { generateQRData, renderQRCode } from "../shared/qr-code";
+import translations from "../shared/translations";
+import * as utils from "../shared/utils";
 
-import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "../shared/types.js";
+import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "../shared/types";
 
 /**
  * The QRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance

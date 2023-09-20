@@ -1,4 +1,4 @@
-import type { Creditor, Data, Debtor } from "./types.js";
+import type { Creditor, Data, Debtor } from "./types";
 
 
 export function cleanData(data: Data): Data {

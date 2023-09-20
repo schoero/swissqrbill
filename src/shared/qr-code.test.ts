@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
-import { cleanData } from "swissqrbill:shared/cleaner.js";
-import { generateQRData } from "swissqrbill:shared:qr-code.js";
+import { cleanData } from "swissqrbill:shared/cleaner";
+import { generateQRData } from "swissqrbill:shared:qr-code";
 import {
   creditorWithBuildingNumber,
   creditorWithBuildingNumberString,
@@ -22,7 +22,7 @@ import {
   minimalRequiredWithEuro,
   minimalRequiredWithMaxedOutMessage,
   minimalRequiredWithMessage
-} from "swissqrbill:tests:data/valid-data.js";
+} from "swissqrbill:tests:data/valid-data";
 
 
 describe("generateQRData", () => {

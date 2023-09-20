@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { Table } from "swissqrbill:pdf/table.js";
+import { Table } from "swissqrbill:pdf/table";
 import {
   alignmentOverrides,
   alignmentVariants,
@@ -14,8 +14,8 @@ import {
   paddingOverrides,
   paddingVariants,
   textColorOverrides
-} from "swissqrbill:tests:data/table.js";
-import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
+} from "swissqrbill:tests:data/table";
+import { TestDocument } from "swissqrbill:tests:utils/pdf";
 
 
 describe("table", async () => {

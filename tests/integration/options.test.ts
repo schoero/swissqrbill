@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 
-import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
-import { pdf } from "swissqrbill:tests:utils/pdf.js";
+import { minimalRequired } from "swissqrbill:tests:data/valid-data";
+import { pdf } from "swissqrbill:tests:utils/pdf";
 
 
 describe("options", async () => {

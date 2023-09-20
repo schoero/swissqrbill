@@ -74,7 +74,7 @@
     "@schoero/cspell-config": "^1.6.16",
     "@schoero/eslint-config": "^1.41.17",
     "@schoero/markdownlint-config": "^1.1.7",
-    "@schoero/ts-config": "^0.3.5",
+    "@schoero/ts-config": "^0.3.6",
     "@schoero/unwritten-config": "^0.0.3",
     "@schoero/vite-config": "^0.0.25",
     "@types/node": "^20.6.3",

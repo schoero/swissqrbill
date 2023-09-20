@@ -1,9 +1,9 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
-import { SwissQRBill } from "swissqrbill:svg:swissqrbill.js";
+import { SwissQRBill } from "swissqrbill:svg:swissqrbill";
 
-import type { Data, SVGOptions } from "swissqrbill:shared:types.js";
+import type { Data, SVGOptions } from "swissqrbill:shared:types";
 
 
 export type TestDocumentName = `${string}/${string}.svg`;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { fillUntil } from "./fill.js";
+import { fillUntil } from "./fill";
 
 
 describe("fill", () => {

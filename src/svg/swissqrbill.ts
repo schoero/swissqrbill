@@ -1,15 +1,15 @@
 import { calc, SVG } from "svg-engine";
 
-import { validateData } from "swissqrbill:shared/validator.js";
+import { validateData } from "swissqrbill:shared/validator";
 
-import { cleanData } from "../shared/cleaner.js";
-import { generateQRData, renderQRCode } from "../shared/qr-code.js";
-import translations from "../shared/translations.js";
-import * as utils from "../shared/utils.js";
+import { cleanData } from "../shared/cleaner";
+import { generateQRData, renderQRCode } from "../shared/qr-code";
+import translations from "../shared/translations";
+import * as utils from "../shared/utils";
 
-import { calculateTextWidth } from "./characterWidth.js";
+import { calculateTextWidth } from "./characterWidth";
 
-import type { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types.js";
+import type { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types";
 
 
 export class SwissQRBill {

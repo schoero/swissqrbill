@@ -14,7 +14,7 @@ import {
   isQRReferenceValid,
   isSCORReference,
   isSCORReferenceValid
-} from "swissqrbill:shared:utils.js";
+} from "swissqrbill:shared:utils";
 
 
 // https://github.com/swico/qr-bill#qr-iban

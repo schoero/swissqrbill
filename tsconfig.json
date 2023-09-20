@@ -15,8 +15,7 @@
       "swissqrbill:svg:*": ["src/svg/*"],
       "swissqrbill:tests:*": ["tests/*"]
     },
-    "skipLibCheck": true,
-    "target": "ES6"
+    "skipLibCheck": true
   },
   "include": [
     "src",
