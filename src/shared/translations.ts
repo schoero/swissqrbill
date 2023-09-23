@@ -1,4 +1,4 @@
-const translations = {
+export const translations = {
   DE: {
     acceptancePoint: "Annahmestelle",
     account: "Konto / Zahlbar an",
@@ -56,5 +56,3 @@ const translations = {
     separate: "Da staccare prima del versamento"
   }
 };
-
-export default translations;

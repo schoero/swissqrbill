@@ -1,15 +1,13 @@
 import { calc, SVG } from "svg-engine";
 
+import { cleanData } from "swissqrbill:shared/cleaner";
+import { generateQRData, renderQRCode } from "swissqrbill:shared/qr-code";
+import { translations } from "swissqrbill:shared/translations";
+import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2px } from "swissqrbill:shared/utils";
 import { validateData } from "swissqrbill:shared/validator";
+import { calculateTextWidth } from "swissqrbill:svg/characterWidth";
 
-import { cleanData } from "../shared/cleaner";
-import { generateQRData, renderQRCode } from "../shared/qr-code";
-import translations from "../shared/translations";
-import * as utils from "../shared/utils";
-
-import { calculateTextWidth } from "./characterWidth";
-
-import type { Creditor, Data, Debtor, Languages, SVGOptions } from "../shared/types";
+import type { Creditor, Data, Debtor, Languages, SVGOptions } from "swissqrbill:shared/types";
 
 
 export class SwissQRBill {
@@ -65,9 +63,9 @@ export class SwissQRBill {
    * @readonly
    * @returns The SVG element.
    */
-  public get element(): SVGElement {
-    return this.instance.element as unknown as SVGElement;
-  }
+  // public get element(): SVGElement {
+  //   return this.instance.element as unknown as SVGElement;
+  // }
 
 
   private _render() {
@@ -115,7 +113,7 @@ export class SwissQRBill {
       .fontWeight("bold")
       .fontSize("6pt");
 
-    receiptTextContainer.addTSpan(utils.formatIBAN(this._data.creditor.account))
+    receiptTextContainer.addTSpan(formatIBAN(this._data.creditor.account))
       .x(0)
       .dy("9pt")
       .fontFamily("Arial")
@@ -125,7 +123,7 @@ export class SwissQRBill {
 
     let receiptCreditorAddressLines: string[] = [];
     for(const line of formattedCreditorAddress){
-      const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
+      const messageLines = this._fitTextToWidth(line, mm2px(52), 2, "8pt");
       receiptCreditorAddressLines = [...receiptCreditorAddressLines, ...messageLines];
     }
 
@@ -149,7 +147,7 @@ export class SwissQRBill {
         .fontWeight("bold")
         .fontSize("6pt");
 
-      receiptTextContainer.addTSpan(utils.formatReference(this._data.reference))
+      receiptTextContainer.addTSpan(formatReference(this._data.reference))
         .x(0)
         .dy("9pt")
         .fontFamily("Arial")
@@ -173,7 +171,7 @@ export class SwissQRBill {
 
       let receiptDebtorAddressLines: string[] = [];
       for(const line of formattedDebtorAddress){
-        const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
+        const messageLines = this._fitTextToWidth(line, mm2px(52), 2, "8pt");
         receiptDebtorAddressLines = [...receiptDebtorAddressLines, ...messageLines];
       }
 
@@ -228,7 +226,7 @@ export class SwissQRBill {
       .fontSize("8pt");
 
     if(this._data.amount !== undefined){
-      amountContainer.addTSpan(utils.formatAmount(this._data.amount))
+      amountContainer.addTSpan(formatAmount(this._data.amount))
         .x(`${amountXPosition}mm`)
         .fontFamily("Arial")
         .fontWeight("normal")
@@ -287,7 +285,7 @@ export class SwissQRBill {
       .fontSize("10pt");
 
     if(this._data.amount !== undefined){
-      paymentPartMiddleTextContainer.addTSpan(utils.formatAmount(this._data.amount))
+      paymentPartMiddleTextContainer.addTSpan(formatAmount(this._data.amount))
         .x("22mm")
         .fontFamily("Arial")
         .fontWeight("normal")
@@ -351,7 +349,7 @@ export class SwissQRBill {
       .fontWeight("bold")
       .fontSize("8pt");
 
-    paymentPartRightTextContainer.addTSpan(utils.formatIBAN(this._data.creditor.account))
+    paymentPartRightTextContainer.addTSpan(formatIBAN(this._data.creditor.account))
       .x(0)
       .dy("11pt")
       .fontFamily("Arial")
@@ -361,7 +359,7 @@ export class SwissQRBill {
 
     let paymentPartCreditorAddressLines: string[] = [];
     for(const line of formattedCreditorAddress){
-      const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
+      const messageLines = this._fitTextToWidth(line, mm2px(52), 2, "8pt");
       paymentPartCreditorAddressLines = [...paymentPartCreditorAddressLines, ...messageLines];
     }
 
@@ -385,7 +383,7 @@ export class SwissQRBill {
         .fontWeight("bold")
         .fontSize("8pt");
 
-      paymentPartRightTextContainer.addTSpan(utils.formatReference(this._data.reference))
+      paymentPartRightTextContainer.addTSpan(formatReference(this._data.reference))
         .x(0)
         .dy("11pt")
         .fontFamily("Arial")
@@ -405,9 +403,9 @@ export class SwissQRBill {
         .fontWeight("bold")
         .fontSize("8pt");
 
-      const referenceType = utils.getReferenceType(this._data.reference);
+      const referenceType = getReferenceType(this._data.reference);
       const maxLines = referenceType === "QRR" || referenceType === "SCOR" ? 3 : 4;
-      const lengthInPixel = utils.mm2px(87);
+      const lengthInPixel = mm2px(87);
       const linesOfMessage = this._getLineCountOfText(this._data.message, lengthInPixel, "10pt");
       const linesOfAdditionalInformation = this._getLineCountOfText(this._data.additionalInformation, lengthInPixel, "10pt");
 
@@ -490,7 +488,7 @@ export class SwissQRBill {
 
       let paymentPartDebtorAddressLines: string[] = [];
       for(const line of formattedDebtorAddress){
-        const messageLines = this._fitTextToWidth(line, utils.mm2px(52), 2, "8pt");
+        const messageLines = this._fitTextToWidth(line, mm2px(52), 2, "8pt");
         paymentPartDebtorAddressLines = [...paymentPartDebtorAddressLines, ...messageLines];
       }
 
@@ -523,7 +521,7 @@ export class SwissQRBill {
   private _renderQRCode() {
 
     const qrData = generateQRData(this._data);
-    const qrCode = renderQRCode(qrData, "svg", utils.mm2px(46), 0, 0);
+    const qrCode = renderQRCode(qrData, "svg", mm2px(46), 0, 0);
 
     const qrCodeSVG = this.instance.addSVG("46mm", "46mm")
       .y("17mm")
