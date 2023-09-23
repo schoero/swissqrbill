@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0-alpha.3",
+  "version": "4.0.0-alpha.4",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
@@ -72,7 +72,7 @@
     "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-it-it": "^3.0.1",
     "@schoero/cspell-config": "^1.6.16",
-    "@schoero/eslint-config": "^1.41.17",
+    "@schoero/eslint-config": "^1.41.18",
     "@schoero/markdownlint-config": "^1.1.7",
     "@schoero/ts-config": "^0.3.7",
     "@schoero/unwritten-config": "^0.0.3",
@@ -83,14 +83,14 @@
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "cross-env": "^7.0.3",
-    "glob": "^10.3.4",
+    "glob": "^10.3.6",
     "pdf2json": "^3.0.4",
     "pdfkit": "^0.13.0",
     "typescript": "^5.2.2",
     "unwritten": "^0.0.3",
-    "vite-plugin-dts": "^3.5.3",
+    "vite-plugin-dts": "^3.5.4",
     "vite-plugin-no-bundle": "^3.0.0",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.5"
   },
   "keywords": [
     "swiss",
