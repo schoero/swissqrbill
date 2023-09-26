@@ -324,7 +324,7 @@ export class SwissQRBill {
     doc.save();
 
     doc.translate(this.x(67), this.y(17));
-    doc.path(qrCode);
+    doc.addContent(qrCode);
     doc.fillColor("black");
     doc.fill();
 
