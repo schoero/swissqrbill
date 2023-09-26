@@ -331,8 +331,8 @@ export class SwissQRBill {
     doc.restore();
 
     // Add Swiss Cross
-    const swissCrossBackground = "18.3 0.7 m1.6 0.7 l0.7 0.7 l0.7 1.6 l0.7 18.3 l0.7 19.1 l1.6 19.1 l18.3 19.1 l19.1 19.1 l19.1 18.3 l19.1 1.6 l19.1 0.7 lh";
-    const swissCross = "8.3 4 m11.6 4 l11.6 15 l8.3 15 l8.3 4 lh4.4 7.9 m15.4 7.9 l15.4 11.2 l4.4 11.2 l4.4 7.9 lh";
+    const swissCrossBackground = "18.3 0.7 m 1.6 0.7 l 0.7 0.7 l 0.7 1.6 l 0.7 18.3 l 0.7 19.1 l 1.6 19.1 l 18.3 19.1 l 19.1 19.1 l 19.1 18.3 l 19.1 1.6 l 19.1 0.7 l h";
+    const swissCross = "8.3 4 m 11.6 4 l 11.6 15 l 8.3 15 l 8.3 4 l h 4.4 7.9 m 15.4 7.9 l 15.4 11.2 l 4.4 11.2 l 4.4 7.9 l h";
 
     doc.save();
 
