@@ -108,17 +108,11 @@ export function renderQRCode(qrData: string, type: "pdf" | "svg", size: number, 
     for(let y = 0; y < qrCode.size; y++){
       const yPos = y * blockSize;
       if(qrCode.getModule(x, y)){
-
-        switch (type){
-          case "pdf":
-            parts.push(`${limitNumber(xOrigin + xPos)} ${limitNumber(yOrigin + yPos)} ${limitNumber(blockSize)} ${limitNumber(blockSize)} re`);
-            break;
-
-          case "svg":
-            parts.push(`M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `);
-            break;
-        }
-
+        parts.push(
+          type === "pdf"
+            ? `${limitNumber(xOrigin + xPos)} ${limitNumber(yOrigin + yPos)} ${limitNumber(blockSize)} ${limitNumber(blockSize)} re`
+            : `M ${xPos}, ${yPos} V ${yPos + blockSize} H ${xPos + blockSize} V ${yPos} H ${xPos} Z `
+        );
       }
     }
 
