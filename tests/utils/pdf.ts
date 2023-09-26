@@ -2,7 +2,6 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { buffer } from "node:stream/consumers";
 
-import PDFParser from "pdf2json";
 import PDFDocument from "pdfkit";
 
 import { SwissQRBill } from "swissqrbill:pdf/swissqrbill";
@@ -14,6 +13,8 @@ export type TestDocumentName = `${string}/${string}.pdf`;
 
 const VISUAL_DIR = "tests/output/pdf/";
 const VISUAL = process.env.VISUAL === "true";
+
+const ID_REGEX = /2f494420(.*)3e5d0a/i; // /ID [<"(.*)">]/i;
 
 
 export class TestDocument extends PDFDocument {
@@ -27,9 +28,12 @@ export class TestDocument extends PDFDocument {
     super.end();
   }
 
-  public snapshots = new Promise<string[]>(async resolve => {
+  public snapshot = new Promise<string>(async resolve => {
     const chunks = await buffer(this);
-    const snapshots = await pdfBufferToJson(chunks);
+
+    const snapshot = chunks
+      .toString("hex")
+      .replace(ID_REGEX, "");
 
     if(VISUAL === true){
       const path = join(VISUAL_DIR, this.testDocumentName);
@@ -37,13 +41,7 @@ export class TestDocument extends PDFDocument {
       await writeFile(join(VISUAL_DIR, this.testDocumentName), chunks);
     }
 
-    if(typeof snapshots === "object" &&
-      snapshots !== null &&
-      "Pages" in snapshots &&
-      Array.isArray(snapshots.Pages)
-    ){
-      resolve(snapshots.Pages.map(page => JSON.stringify(page)));
-    }
+    resolve(snapshot);
   });
 
 }
@@ -53,15 +51,5 @@ export async function pdf(data: Data, testDocumentName: TestDocumentName, option
   const qrBill = new SwissQRBill(data, options);
   qrBill.attachTo(pdf);
   pdf.end();
-  return pdf.snapshots;
-}
-
-
-export async function pdfBufferToJson(buffer: Buffer) {
-  const parser = new PDFParser();
-  parser.parseBuffer(buffer);
-  return new Promise((resolve, reject) => {
-    parser.on("pdfParser_dataError", reject);
-    parser.on("pdfParser_dataReady", resolve);
-  });
+  return pdf.snapshot;
 }
