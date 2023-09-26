@@ -16,8 +16,7 @@ describe("qr-bill", async () => {
     qrBill.attachTo(pdf);
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render the qr bill in a a4 document with insufficient space on a new page", async () => {
@@ -33,8 +32,7 @@ describe("qr-bill", async () => {
     qrBill.attachTo(pdf);
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(2);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render the qr bill in a a4 document with multiple pages and enough space on the last page", async () => {
@@ -45,8 +43,7 @@ describe("qr-bill", async () => {
     qrBill.attachTo(pdf);
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(2);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render the qr bill in a a4 document with multiple pages and insufficient space on a new page", async () => {
@@ -63,8 +60,7 @@ describe("qr-bill", async () => {
     qrBill.attachTo(pdf);
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(3);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render multiple qr bills on the same page if enough space is left and the positions are fixed", async () => {
@@ -78,8 +74,7 @@ describe("qr-bill", async () => {
     qrBill3.attachTo(pdf, 0, mm2pt(210));
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(2);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render the qr bills freely on a page", async () => {
@@ -89,8 +84,7 @@ describe("qr-bill", async () => {
     qrBill.attachTo(pdf, mm2pt(43.5), mm2pt(52.5));
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
 });

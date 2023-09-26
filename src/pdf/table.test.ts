@@ -27,8 +27,7 @@ describe("table", async () => {
     table.attachTo(pdf);
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render and override text colors correctly", async () => {
@@ -38,8 +37,7 @@ describe("table", async () => {
     table.attachTo(pdf);
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render and override text alignment correctly", async () => {
@@ -53,8 +51,7 @@ describe("table", async () => {
 
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render and override borders correctly", async () => {
@@ -71,8 +68,7 @@ describe("table", async () => {
 
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render and override paddings correctly", async () => {
@@ -86,8 +82,7 @@ describe("table", async () => {
 
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render and override font sizes correctly", async () => {
@@ -98,8 +93,7 @@ describe("table", async () => {
 
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should always fill the entire width if possible, but should not enforce it", async () => {
@@ -111,8 +105,7 @@ describe("table", async () => {
 
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(1);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
   it("should render the header row on every page", async () => {
@@ -123,8 +116,7 @@ describe("table", async () => {
 
     pdf.end();
 
-    await expect(pdf.snapshots).resolves.toHaveLength(2);
-    await expect(pdf.snapshots).resolves.toMatchSnapshot();
+    await expect(pdf.snapshot).resolves.toMatchSnapshot();
   });
 
 });
