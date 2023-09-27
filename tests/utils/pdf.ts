@@ -14,7 +14,7 @@ export type TestDocumentName = `${string}/${string}.pdf`;
 const VISUAL_DIR = "tests/output/pdf/";
 const VISUAL = process.env.VISUAL === "true";
 
-const ID_REGEX = /2f494420(.*)3e5d0a/i; // /ID [<"(.*)">]/i;
+const ID_REGEX = /2f494420(.*)3e5d0a/i; // /ID [<(.*)>]/i;
 
 
 export class TestDocument extends PDFDocument {
