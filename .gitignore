@@ -3,3 +3,4 @@ tests/output
 examples/output
 lib
 .DS_Store
+.env
