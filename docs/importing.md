@@ -7,11 +7,11 @@ Depending how you intend to use the library, there are different ways to import 
 
 ### Node.js
 
-- [Node ESM import](node-esm-import) [StackBlitz][node esm javascript]
+- [Node ESM import](node-esm-import) - [StackBlitz][node esm javascript]
 
 ### Browser
 
-- [bundling with webpack][bundling with webpack]
+- [Node CJS import](node-cjs-import) - [bundling with webpack][bundling with webpack]
 
 ### Node JS
 
