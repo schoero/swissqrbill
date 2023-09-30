@@ -8,6 +8,12 @@
       }
     },
     {
+      "files": ["examples/**/*.js", "examples/**/*.ts"],
+      "rules": {
+        "unicorn/prefer-node-protocol": "off"
+      }
+    },
+    {
       "env": {
         "browser": true,
         "es6": true,
