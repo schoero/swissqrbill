@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "node-esm-javascript",
+  "author": "Roger Schönbächler",
+  "scripts": {
+    "generate": "npm run pdf && npm run svg",
+    "pdf": "node pdf.js",
+    "svg": "node svg.js"
+  },
+  "dependencies": {
+    "pdfkit": "^0.13.0",
+    "swissqrbill": "alpha"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
