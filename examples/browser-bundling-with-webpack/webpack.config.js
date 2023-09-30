@@ -17,12 +17,10 @@ module.exports = {
   },
   module: {
     rules: [
-      // bundle and load afm files verbatim
       {
         test: /\.afm$/,
         type: "asset/source"
       },
-      // convert to base64 and include inline file system binary files used by fontkit and linebreak
       {
         enforce: "post",
         loader: "transform-loader",

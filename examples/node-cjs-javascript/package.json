@@ -1,0 +1,18 @@
+{
+  "type": "commonjs",
+  "name": "node-cjs-javascript",
+  "author": "Roger Schönbächler",
+  "scripts": {
+    "generate": "npm run pdf && npm run svg",
+    "pdf": "node pdf.js",
+    "svg": "node svg.js"
+  },
+  "dependencies": {
+    "pdfkit": "^0.13.0",
+    "swissqrbill": "^4.0.0-alpha.3"
+  },
+  "devDependencies": {
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2"
+  }
+}
