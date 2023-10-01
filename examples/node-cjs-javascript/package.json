@@ -5,7 +5,7 @@
   "scripts": {
     "generate": "npm run pdf && npm run svg",
     "pdf": "node ./src/pdf.js",
-    "postgenerate": "serve output",
+    "postgenerate": "serve output -n",
     "pregenerate": "rm output/* || true && mkdir -p output",
     "svg": "node ./src/svg.js"
   },
