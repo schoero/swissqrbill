@@ -42,7 +42,7 @@
   },
   "types": "./lib/shared/types.d.ts",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:table && npm run docs:shared",
     "docs:pdf": "unwritten src/pdf/swissqrbill.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",

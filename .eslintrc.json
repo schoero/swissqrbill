@@ -8,6 +8,15 @@
       }
     },
     {
+      "files": ["vite.config.ts", "vite.config.bundle.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "project": ["tsconfig.vite.json"],
+        "sourceType": "module"
+      }
+    },
+    {
       "files": ["examples/**/*.js", "examples/**/*.ts"],
       "rules": {
         "unicorn/prefer-node-protocol": "off"

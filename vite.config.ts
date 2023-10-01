@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     lib: {
-      entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**"] }),
+      entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**", "src/svg/"] }),
       formats: ["es", "cjs"]
     },
     minify: false,
