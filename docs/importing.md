@@ -3,7 +3,7 @@
 
 Depending how you intend to use the library, there are different ways to import it. While it is straight forward to import SwissQRBill, it may be a bit more complicated to import PDFKit, which is used to create the PDF itself.
 
-Each example below is available as a StackBlitz project. Please note that they only work in Chrome.
+Each example below is available as a StackBlitz project.
 
 ## Table of contents
 
@@ -74,4 +74,4 @@ PDFKit also provides a pre-built bundle that can be used directly in the browser
 [node esm javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/node-esm-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20ESM%20JavaScript&startScript=generate
 [node cjs javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/node-cjs-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%CJS%20JavaScript&startScript=generate
 [browser bundling with webpack]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/browser-bundling-with-webpack?file=src%2Fpdf.js&title=Browser&20bundling%20with%20webpack&startScript=start
-[browser pre-built bundle]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/browser-pre-built-bundle
+[browser pre-built bundle]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/browser-pre-built-bundle?file=src%2Fpdf.js&title=Browser&pre-built%20bundle&startScript=start
