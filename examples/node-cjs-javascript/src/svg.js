@@ -5,4 +5,4 @@ const data = require("./data.js");
 
 
 const qrBill = new SwissQRBill(data);
-writeFileSync("./swissqrbill.svg", qrBill.toString());
+writeFileSync("./output/swissqrbill.svg", qrBill.toString());

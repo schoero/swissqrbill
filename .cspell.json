@@ -20,6 +20,7 @@
     "linebreak",
     "linebreaker",
     "pdfkit",
+    "postgenerate",
     "qrcodegen",
     "qriban",
     "QRIBAN",

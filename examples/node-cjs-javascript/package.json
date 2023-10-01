@@ -5,10 +5,14 @@
   "scripts": {
     "generate": "npm run pdf && npm run svg",
     "pdf": "node ./src/pdf.js",
+    "postgenerate": "serve output",
     "svg": "node ./src/svg.js"
   },
   "dependencies": {
     "pdfkit": "^0.13.0",
     "swissqrbill": "^4.0.0-alpha.3"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
   }
 }
