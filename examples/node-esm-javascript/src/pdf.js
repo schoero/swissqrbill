@@ -5,7 +5,7 @@ import { SwissQRBill } from "swissqrbill/pdf";
 import { data } from "./data.js";
 
 
-const stream = createWriteStream("./swissqrbill.pdf");
+const stream = createWriteStream("./output/swissqrbill.pdf");
 const pdf = new PDFDocument({ size: "A4" });
 const qrBill = new SwissQRBill(data);
 
