@@ -2,7 +2,7 @@
   "name": "browser-pre-built-bundle",
   "author": "Roger Schönbächler",
   "scripts": {
-    "start": "serve"
+    "start": "serve output"
   },
   "devDependencies": {
     "serve": "^14.2.1"
