@@ -12,7 +12,7 @@ const data = {
 
 const pdf = new PDFDocument({ size: "A4" });
 const stream = pdf.pipe(blobStream());
-const qrBill = new SwissQRBill(data);
+const qrBill = new SwissQRBill.PDF(data);
 
 stream.on("finish", () => {
   const url = stream.toBlobURL("application/pdf");
