@@ -26,7 +26,8 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "*.ts": "${basename}.${extname},${basename}.test.${extname},${basename}.test.snap,${basename}.test-d.${extname}"
+    "*.ts": "${basename}.${extname},${basename}.test.${extname},${basename}.test.snap,${basename}.test-d.${extname}",
+    "*.js": "${basename}.${extname},${basename}.mjs,${basename}.cjs,${basename}.d.ts"
   },
 
   // Hide JSDoc comments
