@@ -8,6 +8,7 @@ export default defineConfig({
     emptyOutDir: false,
     lib: {
       entry: "src/bundle/swissqrbill.ts",
+      fileName: () => "swissqrbill.js",
       formats: ["umd"],
       name: "SwissQRBill"
     },
