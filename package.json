@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0-alpha.5",
+  "version": "4.0.0-alpha.6",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
@@ -42,7 +42,7 @@
   },
   "types": "./lib/shared/types.d.ts",
   "scripts": {
-    "build": "vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
+    "build": "rm -r ./lib && vite build --config vite.config.bundle.ts && vite build --config vite.config.ts",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:table && npm run docs:shared",
     "docs:pdf": "unwritten src/pdf/swissqrbill.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",
