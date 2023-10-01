@@ -8,9 +8,11 @@ const pdf = new PDFDocument({ size: [width, height] });
 const stream = pdf.pipe(blobStream());
 const qrBill = new SwissQRBill.PDF(data);
 
+qrBill.attachTo(pdf);
+pdf.end();
+
 stream.on("finish", () => {
-  const url = stream.toBlobURL("application/pdf");
-  iframe.src = url;
+  window.location.href = stream.toBlobURL("application/pdf");
 });
 
 qrBill.attachTo(pdf);
