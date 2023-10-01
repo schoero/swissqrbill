@@ -5,7 +5,7 @@ const { SwissQRBill } = require("swissqrbill/pdf");
 const data = require("./data");
 
 
-const stream = createWriteStream("./swissqrbill.pdf");
+const stream = createWriteStream("./output/swissqrbill.pdf");
 const pdf = new PDFDocument({ size: "A4" });
 const qrBill = new SwissQRBill(data);
 
