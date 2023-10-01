@@ -17,7 +17,7 @@
   "exports": {
     "./bundle": {
       "import": "./lib/bundle/swissqrbill.js",
-      "require": "./lib/bundle/swissqrbill.cjs"
+      "require": "./lib/bundle/swissqrbill.js"
     },
     "./errors": {
       "import": "./lib/shared/errors.js",
