@@ -9,7 +9,7 @@ import { config, defineConfig } from "@schoero/vite-config";
 export default defineConfig({
   ...config,
   build: {
-    emptyOutDir: true,
+    emptyOutDir: false,
     lib: {
       entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**", "src/svg/"] }),
       formats: ["es", "cjs"]
@@ -22,7 +22,8 @@ export default defineConfig({
   plugins: [
     ...config.plugins ?? [],
     dts({
-      entryRoot: "./src"
+      entryRoot: "./src",
+      exclude: ["**/*.test.ts"]
     }),
     noBundlePlugin()
   ]
