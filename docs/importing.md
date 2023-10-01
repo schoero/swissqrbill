@@ -69,7 +69,27 @@ As PDFKit internally relies on several different built in modules of Node.js, it
 [![Open in StackBlitz](https://img.shields.io/badge/%E2%9A%A1%EF%B8%8E_Open_in_StackBlitz-1374ef?style=flat-square)
 ][browser pre-built bundle]
 
-PDFKit also provides a pre-built bundle that can be used directly in the browser.
+PDFKit provides a pre-built bundle that can be used directly in the browser. Similarly SwissQRBill also provides a pre-built bundle. It can be imported from the JSDelivr CDN as follows:
+
+```html
+ <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/swissqrbill@alpha/lib/bundle/swissqrbill.js"
+></script>
+```
+
+The bundle exposes all exports in the global variable `SwissQRBill`.
+
+```ts
+const SwissQRBill = {
+  PDF,
+  SVG,
+  errors,
+  table,
+  types,
+  utils
+};
+```
 
 [node esm javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/node-esm-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20ESM%20JavaScript&startScript=generate
 [node cjs javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/node-cjs-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%CJS%20JavaScript&startScript=generate
