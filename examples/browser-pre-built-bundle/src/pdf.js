@@ -1,16 +1,10 @@
-const data = {
-  creditor: {
-    account: "CH58 0079 1123 0008 8901 2",
-    address: "Creditor Address",
-    city: "Creditor City",
-    country: "CH",
-    name: "Creditor FirstName LastName",
-    zip: 1234
-  },
-  currency: "CHF"
-};
+import { data } from "./data.js";
 
-const pdf = new PDFDocument({ size: "A4" });
+
+const width = SwissQRBill.utils.mm2pt(210);
+const height = SwissQRBill.utils.mm2pt(105);
+
+const pdf = new PDFDocument({ size: [width, height] });
 const stream = pdf.pipe(blobStream());
 const qrBill = new SwissQRBill.PDF(data);
 
