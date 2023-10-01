@@ -8,12 +8,15 @@
     "noImplicitAny": false,
     "outDir": "lib",
     "paths": {
-      "swissqrbill:*": ["src/*"],
+      "swissqrbill:bundle:*": ["src/bundle/*"],
+      "swissqrbill:errors": ["src/shared/errors"],
       "swissqrbill:node_modules:*": ["node_modules/*"],
       "swissqrbill:pdf:*": ["src/pdf/*"],
       "swissqrbill:shared:*": ["src/shared/*"],
       "swissqrbill:svg:*": ["src/svg/*"],
-      "swissqrbill:tests:*": ["tests/*"]
+      "swissqrbill:tests:*": ["tests/*"],
+      "swissqrbill:types": ["src/shared/types"],
+      "swissqrbill:utils": ["src/shared/utils"]
     },
     "rootDir": ".",
     "skipLibCheck": true

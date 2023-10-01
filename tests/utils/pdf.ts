@@ -4,9 +4,9 @@ import { buffer } from "node:stream/consumers";
 
 import PDFDocument from "pdfkit";
 
-import { SwissQRBill } from "swissqrbill:pdf/swissqrbill";
+import { SwissQRBill } from "swissqrbill:pdf:swissqrbill";
 
-import type { Data, PDFOptions } from "swissqrbill:shared:types";
+import type { Data, PDFOptions } from "swissqrbill:types";
 
 
 export type TestDocumentName = `${string}/${string}.pdf`;

@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0-alpha.6",
+  "version": "4.0.0-alpha.7",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
@@ -15,6 +15,10 @@
   },
   "sideEffects": false,
   "exports": {
+    "./bundle": {
+      "import": "./lib/bundle/swissqrbill.js",
+      "require": "./lib/bundle/swissqrbill.cjs"
+    },
     "./errors": {
       "import": "./lib/shared/errors.js",
       "require": "./lib/shared/errors.cjs"
@@ -42,7 +46,7 @@
   },
   "types": "./lib/shared/types.d.ts",
   "scripts": {
-    "build": "rm -r ./lib && vite build --config vite.config.bundle.ts && vite build --config vite.config.ts",
+    "build": "rm -r ./lib || true && vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:table && npm run docs:shared",
     "docs:pdf": "unwritten src/pdf/swissqrbill.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",
@@ -85,13 +89,13 @@
     "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-it-it": "^3.0.1",
     "@schoero/changelog-config": "^0.0.2",
-    "@schoero/cspell-config": "^1.6.16",
+    "@schoero/cspell-config": "^1.6.17",
     "@schoero/eslint-config": "^1.41.19",
     "@schoero/markdownlint-config": "^1.1.7",
     "@schoero/ts-config": "^0.3.7",
     "@schoero/unwritten-config": "^0.0.3",
     "@schoero/vite-config": "^0.0.26",
-    "@types/node": "^20.7.2",
+    "@types/node": "^20.8.0",
     "@types/pdfkit": "^0.12.12",
     "@types/svg-parser": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
@@ -125,7 +129,7 @@
     "svg"
   ],
   "volta": {
-    "node": "20.7.0",
+    "node": "20.8.0",
     "npm": "10.1.0"
   }
 }

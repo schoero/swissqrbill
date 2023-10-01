@@ -1,13 +1,13 @@
 import { calc, SVG } from "svg-engine";
 
-import { cleanData } from "swissqrbill:shared/cleaner";
-import { generateQRData, renderQRCode } from "swissqrbill:shared/qr-code";
-import { translations } from "swissqrbill:shared/translations";
-import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2px } from "swissqrbill:shared/utils";
-import { validateData } from "swissqrbill:shared/validator";
-import { calculateTextWidth } from "swissqrbill:svg/characterWidth";
+import { cleanData } from "swissqrbill:shared:cleaner";
+import { generateQRData, renderQRCode } from "swissqrbill:shared:qr-code";
+import { translations } from "swissqrbill:shared:translations";
+import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2px } from "swissqrbill:utils";
+import { validateData } from "swissqrbill:shared:validator";
+import { calculateTextWidth } from "swissqrbill:svg:characterWidth";
 
-import type { Creditor, Data, Debtor, Languages, SVGOptions } from "swissqrbill:shared/types";
+import type { Creditor, Data, Debtor, Languages, SVGOptions } from "swissqrbill:types";
 
 
 export class SwissQRBill {

@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { cleanData } from "swissqrbill:shared/cleaner";
-import { resolveMessageParams, ValidationErrors } from "swissqrbill:shared/errors";
-import { validateData } from "swissqrbill:shared/validator";
+import { cleanData } from "swissqrbill:shared:cleaner";
+import { resolveMessageParams, ValidationErrors } from "swissqrbill:errors";
+import { validateData } from "swissqrbill:shared:validator";
 import {
   additionalInformationInvalidType,
   additionalInformationTooLong,

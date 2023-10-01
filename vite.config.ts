@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     lib: {
-      entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**", "src/svg/"] }),
+      entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**", "src/bundle/*"] }),
       formats: ["es", "cjs"]
     },
     minify: false,
@@ -21,10 +21,11 @@ export default defineConfig({
   },
   plugins: [
     ...config.plugins ?? [],
+    noBundlePlugin(),
     dts({
       entryRoot: "./src",
-      exclude: ["**/*.test.ts"]
-    }),
-    noBundlePlugin()
+      exclude: ["src/**/*.test.ts", "test/**", "src/bundle/*"],
+      pathsToAliases: true
+    })
   ]
 });

@@ -1,10 +1,10 @@
-import { cleanData } from "swissqrbill:shared/cleaner";
-import { generateQRData, renderQRCode } from "swissqrbill:shared/qr-code";
-import { translations } from "swissqrbill:shared/translations";
-import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:shared/utils";
-import { validateData } from "swissqrbill:shared/validator";
+import { cleanData } from "swissqrbill:shared:cleaner";
+import { generateQRData, renderQRCode } from "swissqrbill:shared:qr-code";
+import { translations } from "swissqrbill:shared:translations";
+import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
+import { validateData } from "swissqrbill:shared:validator";
 
-import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "swissqrbill:shared/types";
+import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "swissqrbill:types";
 
 
 /**

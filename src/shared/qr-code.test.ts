@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { cleanData } from "swissqrbill:shared/cleaner";
+import { cleanData } from "swissqrbill:shared:cleaner";
 import { generateQRData } from "swissqrbill:shared:qr-code";
 import {
   creditorWithBuildingNumber,

@@ -7,12 +7,11 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     lib: {
-      entry: "src/svg/swissqrbill.ts",
-      fileName: "bundle",
+      entry: "src/bundle/swissqrbill.ts",
       formats: ["es"]
     },
-    minify: true,
-    outDir: "lib",
+    minify: false,
+    outDir: "lib/bundle",
     target: "es6"
   },
   plugins: [

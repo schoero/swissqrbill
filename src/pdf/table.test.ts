@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { Table } from "swissqrbill:pdf/table";
+import { Table } from "swissqrbill:pdf:table";
 import {
   alignmentOverrides,
   alignmentVariants,

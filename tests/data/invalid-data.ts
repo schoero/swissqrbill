@@ -1,6 +1,6 @@
 import { creditorWithQRIBAN, minimalRequired, minimalRequiredWithDebtor } from "swissqrbill:tests:data/valid-data";
 
-import type { Data } from "swissqrbill:shared:types";
+import type { Data } from "swissqrbill:types";
 
 
 // Missing creditor

@@ -3,7 +3,7 @@ import { dirname, join } from "node:path";
 
 import { SwissQRBill } from "swissqrbill:svg:swissqrbill";
 
-import type { Data, SVGOptions } from "swissqrbill:shared:types";
+import type { Data, SVGOptions } from "swissqrbill:types";
 
 
 export type TestDocumentName = `${string}/${string}.svg`;

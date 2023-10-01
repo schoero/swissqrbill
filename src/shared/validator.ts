@@ -1,4 +1,4 @@
-import { ValidationError, ValidationErrors } from "swissqrbill:shared/errors";
+import { ValidationError, ValidationErrors } from "swissqrbill:errors";
 
 import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils";
 

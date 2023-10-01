@@ -67,10 +67,11 @@ As PDFKit internally relies on several different built in modules of Node.js, it
 ### Browser pre-built bundle
 
 [![Open in StackBlitz](https://img.shields.io/badge/%E2%9A%A1%EF%B8%8E_Open_in_StackBlitz-1374ef?style=flat-square)
-][browser prebuilt bundle]
+][browser pre-built bundle]
 
 PDFKit also provides a pre-built bundle that can be used directly in the browser.
 
-[node esm javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/feat/stackblitz-examples/examples/node-esm-javascript
-[node cjs javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/feat/stackblitz-examples/examples/node-cjs-javascript
-[browser bundling with webpack]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/feat/stackblitz-examples/examples/browser-bundling-with-webpack
+[node esm javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/node-esm-javascript
+[node cjs javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/node-cjs-javascript
+[browser bundling with webpack]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/browser-bundling-with-webpack
+[browser pre-built bundle]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/browser-pre-built-bundle
