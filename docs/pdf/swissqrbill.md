@@ -9,10 +9,6 @@
   
       - [constructor(data\[, options\])](#constructordata-options)
   
-    - Property
-  
-      - [data](#data)
-  
     - Method
   
       - [attachTo(doc, xPosition, yPosition)](#attachtodoc-xposition-yposition)
@@ -29,7 +25,7 @@ Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L14C0)
   
 ##### constructor(data\[, options\])
   
-Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L28C2)  
+Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L27C2)  
   
 ###### Parameters
   
@@ -40,18 +36,6 @@ Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L28C2)
   
 [SwissQRBill](#swissqrbill)  
   
-### Property
-  
-#### data
-  
-`protected`  
-  
-Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L16C2)  
-  
-##### Type
-  
-[`Data`](./types.md#data)  
-  
 ### Method
   
 ---
@@ -60,7 +44,7 @@ Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L16C2)
   
 `public`  
   
-Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L72C2)  
+Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L71C2)  
   
 ##### Parameters
   

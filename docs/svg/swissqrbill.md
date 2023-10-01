@@ -26,7 +26,7 @@
   
 ### SwissQRBill
   
-Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L15C0)  
+Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L13C0)  
   
 #### Construct Signature
   
@@ -34,7 +34,7 @@ Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L15C0)
   
 ##### constructor(data\[, options\])
   
-Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L22C2)  
+Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L20C2)  
   
 ###### Parameters
   
@@ -51,7 +51,7 @@ Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L22C2)
   
 `protected`  
   
-Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L17C2)  
+Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L15C2)  
   
 ##### Type
   
@@ -65,7 +65,7 @@ Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L17C2)
   
 `public`  
   
-Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L58C2)  
+Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L56C2)  
   
 ##### Return Type
   
@@ -83,7 +83,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L49C2)  
+Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L47C2)  
   
 ##### Return Type
   
@@ -95,7 +95,7 @@ Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L49C2)
   
 `public`  
   
-Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L68C2)  
+Defined in: [svg/swissqrbill.ts](../svg/swissqrbill.ts#L66C2)  
   
 ##### Return Type
   
