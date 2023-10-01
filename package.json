@@ -44,7 +44,6 @@
       "require": "./lib/shared/utils.cjs"
     }
   },
-  "types": "./lib/shared/types.d.ts",
   "scripts": {
     "build": "rm -r ./lib || true && vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:table && npm run docs:shared",
@@ -79,11 +78,18 @@
     "test:update": "npm run test -- --update --run",
     "test:visual": "cross-env VISUAL=true npm run test -- --run"
   },
+  "engines": {
+    "node": ">=v13.6.0"
+  },
   "files": [
     "lib"
   ],
   "dependencies": {
     "svg-engine": "^0.2.3"
+  },
+  "optionalDependencies": {
+    "pdfkit": ">=0.13.0",
+    "typescript": ">=4.7.0"
   },
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.2",
