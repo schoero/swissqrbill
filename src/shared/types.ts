@@ -141,6 +141,13 @@ export interface QRBillOptions {
    * @defaultValue `"A6"`
    */
   size?: Size;
+
+
+  /**
+   * Font used for the QR-Bill.
+   * @defaultValue 'Helvetica'
+   */
+  fontName?: string
 }
 
 export interface PDFOptions extends QRBillOptions {
