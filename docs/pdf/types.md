@@ -105,6 +105,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L101C0)
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L109C0)  
   
+- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font used for the QR-Bill. `optional`
 - **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
@@ -115,8 +116,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L109C0)
   
 ### PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L146C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
   
+- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font used for the QR-Bill. `optional`
 - **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
@@ -128,6 +130,6 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L146C0)
   
 ### SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L162C0)  
   
 - **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
