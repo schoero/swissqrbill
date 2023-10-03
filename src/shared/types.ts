@@ -109,6 +109,12 @@ export interface Creditor extends Debtor {
 export interface QRBillOptions {
 
   /**
+   * Font used for the QR-Bill.
+   * @defaultValue 'Helvetica'
+   */
+  fontName?: string;
+
+  /**
    * The language with which the bill is rendered.
    * @defaultValue `DE`
    */
@@ -136,18 +142,12 @@ export interface QRBillOptions {
    */
   separate?: boolean;
 
+
   /**
    * The page size.
    * @defaultValue `"A6"`
    */
   size?: Size;
-
-
-  /**
-   * Font used for the QR-Bill.
-   * @defaultValue 'Helvetica'
-   */
-  fontName?: string
 }
 
 export interface PDFOptions extends QRBillOptions {
