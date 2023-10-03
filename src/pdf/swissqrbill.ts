@@ -18,6 +18,7 @@ export class SwissQRBill {
   private separate: boolean = false;
   private outlines: boolean = true;
   private language: Languages = "DE";
+  private fontName: string = "Helvetica"
 
   private size: Size | undefined;
 
@@ -56,6 +57,9 @@ export class SwissQRBill {
       }
       if(options.outlines !== undefined){
         this.outlines = options.outlines;
+      }
+      if (options.fontName !== undefined){
+        this.fontName = options.fontName;
       }
     }
 
@@ -178,7 +182,7 @@ export class SwissQRBill {
       if(doc.page.height > mm2pt(105)){
 
         doc.fontSize(11);
-        doc.font("Helvetica");
+        doc.font(this.fontName);
         doc.text(translations[this.language].separate, 0, this.y() - 12, {
           align: "center",
           width: mm2pt(210)
@@ -190,14 +194,14 @@ export class SwissQRBill {
 
     // Receipt
     doc.fontSize(11);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].receipt, this.x(5), this.y(5), {
       align: "left",
       width: mm2pt(52)
     });
 
     doc.fontSize(6);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].account, this.x(5), this.y(12), {
       lineGap: 1,
       width: mm2pt(52)
@@ -205,7 +209,7 @@ export class SwissQRBill {
 
     // Creditor
     doc.fontSize(8);
-    doc.font("Helvetica");
+    doc.font(this.fontName);
     doc.text(`${formatIBAN(this.data.creditor.account)}\n${this.formatAddress(this.data.creditor)}`, {
       lineGap: -.5,
       width: mm2pt(52)
@@ -218,14 +222,14 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(6);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(52)
       });
 
       doc.fontSize(8);
-      doc.font("Helvetica");
+      doc.font(this.fontName);
       doc.text(formatReference(this.data.reference), {
         lineGap: -.5,
         width: mm2pt(52)
@@ -240,14 +244,14 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(6);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(52)
       });
 
       doc.fontSize(8);
-      doc.font("Helvetica");
+      doc.font(this.fontName);
       doc.text(this.formatAddress(this.data.debtor), {
         lineGap: -.5,
         width: mm2pt(52)
@@ -256,7 +260,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(6);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(52)
@@ -269,7 +273,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(6);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].currency, this.x(5), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -283,7 +287,7 @@ export class SwissQRBill {
     });
 
     doc.fontSize(8);
-    doc.font("Helvetica");
+    doc.font(this.fontName);
     doc.text(this.data.currency, this.x(5), this.y(71), {
       lineGap: -.5,
       width: mm2pt(15)
@@ -299,7 +303,7 @@ export class SwissQRBill {
     }
 
     doc.fontSize(6);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].acceptancePoint, this.x(5), this.y(82), {
       align: "right",
       height: mm2pt(18),
@@ -309,7 +313,7 @@ export class SwissQRBill {
 
     // Payment part middle container
     doc.fontSize(11);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].paymentPart, this.x(67), this.y(5), {
       align: "left",
       lineGap: 1,
@@ -359,7 +363,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(8);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].currency, this.x(67), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -370,7 +374,7 @@ export class SwissQRBill {
     });
 
     doc.fontSize(10);
-    doc.font("Helvetica");
+    doc.font(this.fontName);
     doc.text(this.data.currency, this.x(67), this.y(72), {
       lineGap: -.5,
       width: mm2pt(15)
@@ -391,7 +395,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av1.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(scheme, this.x(67), this.y(90), {
         continued: true,
         height: mm2pt(3),
@@ -399,7 +403,7 @@ export class SwissQRBill {
         width: mm2pt(138)
       });
 
-      doc.font("Helvetica");
+      doc.font(this.fontName);
       doc.text(this.data.av1.length > 90 ? `${data.substring(0, 87)}...` : data, {
         continued: false
       });
@@ -411,7 +415,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av2.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(scheme, this.x(67), this.y(93), {
         continued: true,
         height: mm2pt(3),
@@ -419,7 +423,7 @@ export class SwissQRBill {
         width: mm2pt(138)
       });
 
-      doc.font("Helvetica");
+      doc.font(this.fontName);
       doc.text(this.data.av2.length > 90 ? `${data.substring(0, 87)}...` : data, {
         lineGap: -.5
       });
@@ -428,14 +432,14 @@ export class SwissQRBill {
 
     // Payment part right column
     doc.fontSize(8);
-    doc.font("Helvetica-Bold");
+    doc.font(this.fontName + "-Bold");
     doc.text(translations[this.language].account, this.x(118), this.y(5), {
       lineGap: 1,
       width: mm2pt(87)
     });
 
     doc.fontSize(10);
-    doc.font("Helvetica");
+    doc.font(this.fontName);
     doc.text(`${formatIBAN(this.data.creditor.account)}\n${this.formatAddress(this.data.creditor)}`, {
       lineGap: -.75,
       width: mm2pt(87)
@@ -447,14 +451,14 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(8);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(87)
       });
 
       doc.fontSize(10);
-      doc.font("Helvetica");
+      doc.font(this.fontName);
       doc.text(formatReference(this.data.reference), {
         lineGap: -.75,
         width: mm2pt(87)
@@ -469,14 +473,14 @@ export class SwissQRBill {
     if(this.data.message !== undefined || this.data.additionalInformation !== undefined){
 
       doc.fontSize(8);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].additionalInformation, {
         lineGap: 1,
         width: mm2pt(87)
       });
 
       doc.fontSize(10);
-      doc.font("Helvetica");
+      doc.font(this.fontName);
 
       const options = {
         lineGap: -.75,
@@ -521,14 +525,14 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(8);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(87)
       });
 
       doc.fontSize(10);
-      doc.font("Helvetica");
+      doc.font(this.fontName);
       doc.text(this.formatAddress(this.data.debtor), {
         lineGap: -.75,
         width: mm2pt(87)
@@ -537,7 +541,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(8);
-      doc.font("Helvetica-Bold");
+      doc.font(this.fontName + "-Bold");
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(87)
