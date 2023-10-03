@@ -39,7 +39,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L136C2)
   
 ##### Return Type
   
-[Table](#table) The Table instance.  
+[`Table`](#table) The Table instance.  
   
 ##### Description
   
@@ -92,7 +92,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C2)
   
 ##### Return Type
   
-[Table](#table) The Table instance.  
+[`Table`](#table) The Table instance.  
   
 ##### Throws
   

@@ -17,7 +17,7 @@
   
 ### SwissQRBill
   
-Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L14C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)  
   
 #### Construct Signature
   
@@ -25,7 +25,7 @@ Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L14C0)
   
 ##### constructor(data\[, options\])
   
-Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L27C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L27C2)  
   
 ###### Parameters
   
@@ -34,7 +34,7 @@ Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L27C2)
   
 ##### Return Type
   
-[SwissQRBill](#swissqrbill)  
+[`SwissQRBill`](#swissqrbill)  
   
 ### Method
   
@@ -44,7 +44,7 @@ Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L27C2)
   
 `public`  
   
-Defined in: [pdf/swissqrbill.ts](../pdf/swissqrbill.ts#L71C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L71C2)  
   
 ##### Parameters
   
