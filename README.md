@@ -81,7 +81,7 @@ npm i swissqrbill
 
 ### Node.js
 
-In versions prior to v3.0.0, you could simply include SwissQRBill like this:
+In versions prior to v4.0.0, you could include SwissQRBill like this:
 
 ```js
 const SwissQRBill = require("swissqrbill"); // CommonJS. Not tree-shakeable.
@@ -89,58 +89,17 @@ const SwissQRBill = require("swissqrbill"); // CommonJS. Not tree-shakeable.
 
 <br/>
 
-While you can still do this, it is recommended to switch to the new ES module imports to be able to take advantage of tree-shaking. SwissQRBill uses the new [conditional exports feature](https://nodejs.org/api/packages.html#packages_exports_sugar) that was added in node v12.16.0 or v13.6.0.
+In SwissQRBill `>=4.0.0` this is no longer possible. Instead yo
 
-This allows you to import only the parts of SwissQRBill that you actually need.
-
-```js
-import { PDF } from "swissqrbill/pdf"; // ESM. Tree-shakeable
-import { SVG } from "swissqrbill/svg"; // ESM. Tree-shakeable
-import { mm2pt } from "swissqrbill/utils"; // ESM. Tree-shakeable
+```ts
+// PDF
+import { SwissQRBill } from "swissqrbill/pdf";
+// SVG
+import { SwissQRBill } from "swissqrbill/svg";
+// utils
+import { mm2pt } from "swissqrbill/utils";
 ```
 
-<br/>
-
-Be aware that TypeScript versions prior to v4.7.0 and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
-To get conditional exports to work with TypeScript > v4.7.0, you have to set these two options your `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "NodeNext"
-  }
-}
-```
-
-If you are using a TypeScript or Node.js version that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
-
-```js
-import { PDF } from "swissqrbill/lib/node/esm/node/pdf.js"; // ESM. Tree-shakeable
-import { SVG } from "swissqrbill/lib/node/esm/node/svg.js"; // ESM. Tree-shakeable
-import { mm2pt } from "swissqrbill/lib/node/esm/shared/utils.js"; // ESM. Tree-shakeable
-```
-
-<br/>
-
-### Browser
-
-For the browser it is a bit more complicated. The easiest way would be to include the pre-bundled version.
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill/lib/browser/bundle/index.js"></script>
-```
-
-You can also import the bundle directly, if you are using a bundler like webpack.
-
-```js
-import SwissQRBill from "swissqrbill/lib/browser/bundle";
-```
-
-However, if you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
-You can find an example, how this could be done using webpack, at <https://github.com/schoero/SwissQRBill-browser-example>.
-
-<br/>
 <br/>
 
 ## Quick start
