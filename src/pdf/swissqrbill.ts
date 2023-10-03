@@ -1,8 +1,8 @@
 import { cleanData } from "swissqrbill:shared:cleaner";
 import { generateQRData, renderQRCode } from "swissqrbill:shared:qr-code";
 import { translations } from "swissqrbill:shared:translations";
-import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 import { validateData } from "swissqrbill:shared:validator";
+import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
 import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "swissqrbill:types";
 
@@ -18,7 +18,7 @@ export class SwissQRBill {
   private separate: boolean = false;
   private outlines: boolean = true;
   private language: Languages = "DE";
-  private fontName: string = "Helvetica"
+  private fontName: string = "Helvetica";
 
   private size: Size | undefined;
 
@@ -58,7 +58,7 @@ export class SwissQRBill {
       if(options.outlines !== undefined){
         this.outlines = options.outlines;
       }
-      if (options.fontName !== undefined){
+      if(options.fontName !== undefined){
         this.fontName = options.fontName;
       }
     }
@@ -194,14 +194,14 @@ export class SwissQRBill {
 
     // Receipt
     doc.fontSize(11);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].receipt, this.x(5), this.y(5), {
       align: "left",
       width: mm2pt(52)
     });
 
     doc.fontSize(6);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].account, this.x(5), this.y(12), {
       lineGap: 1,
       width: mm2pt(52)
@@ -222,7 +222,7 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(6);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(52)
@@ -244,7 +244,7 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(6);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(52)
@@ -260,7 +260,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(6);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(52)
@@ -273,7 +273,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(6);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].currency, this.x(5), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -303,7 +303,7 @@ export class SwissQRBill {
     }
 
     doc.fontSize(6);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].acceptancePoint, this.x(5), this.y(82), {
       align: "right",
       height: mm2pt(18),
@@ -313,7 +313,7 @@ export class SwissQRBill {
 
     // Payment part middle container
     doc.fontSize(11);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].paymentPart, this.x(67), this.y(5), {
       align: "left",
       lineGap: 1,
@@ -363,7 +363,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(8);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].currency, this.x(67), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -395,7 +395,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av1.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(scheme, this.x(67), this.y(90), {
         continued: true,
         height: mm2pt(3),
@@ -415,7 +415,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av2.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(scheme, this.x(67), this.y(93), {
         continued: true,
         height: mm2pt(3),
@@ -432,7 +432,7 @@ export class SwissQRBill {
 
     // Payment part right column
     doc.fontSize(8);
-    doc.font(this.fontName + "-Bold");
+    doc.font(`${this.fontName}-Bold`);
     doc.text(translations[this.language].account, this.x(118), this.y(5), {
       lineGap: 1,
       width: mm2pt(87)
@@ -451,7 +451,7 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(8);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(87)
@@ -473,7 +473,7 @@ export class SwissQRBill {
     if(this.data.message !== undefined || this.data.additionalInformation !== undefined){
 
       doc.fontSize(8);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].additionalInformation, {
         lineGap: 1,
         width: mm2pt(87)
@@ -525,7 +525,7 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(8);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(87)
@@ -541,7 +541,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(8);
-      doc.font(this.fontName + "-Bold");
+      doc.font(`${this.fontName}-Bold`);
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(87)
