@@ -84,12 +84,20 @@
   "files": [
     "lib"
   ],
-  "dependencies": {
-    "svg-engine": "^0.2.3"
-  },
-  "optionalDependencies": {
+  "peerDependencies": {
     "pdfkit": ">=0.13.0",
     "typescript": ">=4.7.0"
+  },
+  "peerDependenciesMeta": {
+    "pdfkit": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "svg-engine": "^0.2.3"
   },
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.2",
