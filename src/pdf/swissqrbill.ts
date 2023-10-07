@@ -4,11 +4,11 @@ import { translations } from "swissqrbill:shared:translations";
 import { validateData } from "swissqrbill:shared:validator";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
-import type { Creditor, Data, Debtor, Languages, QRBillOptions, Size } from "swissqrbill:types";
+import type { Creditor, Data, Debtor, Languages, QRBillOptions } from "swissqrbill:types";
 
 
 /**
- * The QRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
+ * The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
  * using the {@link SwissQRBill.attachTo} method.
  */
 export class SwissQRBill {
@@ -18,13 +18,16 @@ export class SwissQRBill {
   private separate: boolean = false;
   private outlines: boolean = true;
   private language: Languages = "DE";
-  private fontName: string = "Helvetica";
-
-  private size: Size | undefined;
+  private font: string = "Helvetica";
 
   private _x: number = 0;
   private _y: number = 0;
 
+  /**
+   * Creates a new SwissQRBill instance.
+   * @param data The data to be used for the QR Bill.
+   * @param options Options to define how the QR Bill should be rendered.
+   */
   constructor(data: Data, options?: QRBillOptions) {
 
     this.data = data;
@@ -48,9 +51,6 @@ export class SwissQRBill {
         this.separate = options.separate;
         this.scissors = !options.separate;
       }
-      if(options.size !== undefined){
-        this.size = options.size;
-      }
       if(options.scissors === false && options.separate === false){
         this.separate = false;
         this.scissors = false;
@@ -58,8 +58,8 @@ export class SwissQRBill {
       if(options.outlines !== undefined){
         this.outlines = options.outlines;
       }
-      if(options.fontName !== undefined){
-        this.fontName = options.fontName;
+      if(options.font !== undefined){
+        this.font = options.font;
       }
     }
 
@@ -67,26 +67,24 @@ export class SwissQRBill {
 
 
   /**
-   * Adds the QR Slip to the bottom of the current page if there is enough space, otherwise it will create a new page with the specified size and add it to the bottom of this page.
+   * Adds the QR Bill to the bottom of the current page if there is enough space,
+   * otherwise it will create a new page for the QR Bill.
    * @param doc The PDFKit instance
-   * @param xPosition The x position where the QR Bill will be placed.
-   * @param yPosition The y position where the QR Bill will be placed.
+   * @param xPosition The horizontal position where the QR Bill will be placed.
+   * @param yPosition The vertical position where the QR Bill will be placed.
    */
   public attachTo(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page.height - mm2pt(105)): void {
 
-    const width = mm2pt(210);
-    const height = mm2pt(105);
+    if(!SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)){
 
-    if(!this.isSpaceSufficient(doc, xPosition, yPosition, width, height)){
       doc.addPage({
-        layout: this.size === "A6/5"
-          ? "landscape"
-          : undefined,
         margin: 0,
-        size: this.getNewPageSize(doc)
+        size: [SwissQRBill.width, SwissQRBill.height]
       });
+
       xPosition = 0;
       yPosition = 0;
+
     }
 
     this._x = xPosition;
@@ -96,18 +94,36 @@ export class SwissQRBill {
 
   }
 
-  private getNewPageSize(doc: PDFKit.PDFDocument): [width: number, height: number] {
+  /**
+   * Checks whether there is enough space on the current page to add the QR Bill.
+   * @param doc The PDFKit document instance
+   * @param xPosition The horizontal position where the QR Bill will be placed.
+   * @param yPosition The vertical position where the QR Bill will be placed.
+   * @returns `true` if there is enough space, otherwise `false`.
+   */
+  public static isSpaceSufficient(doc: PDFKit.PDFDocument, xPosition: number, yPosition: number): boolean {
 
-    const minWidth = mm2pt(210);
-    const minHeight = mm2pt(105);
-
-    if(this.size !== "A6/5" && doc.page.width >= minWidth && doc.page.height >= minHeight){
-      return [doc.page.width, doc.page.height];
+    if(!doc.page){
+      return false;
     }
 
-    return [minWidth, minHeight];
+    return (
+      Math.round(xPosition + SwissQRBill.width) <= Math.round(doc.page.width) &&
+      Math.round(doc.y + SwissQRBill.height) <= Math.round(doc.page.height) &&
+      Math.round(yPosition + SwissQRBill.height) <= Math.round(doc.page.height)
+    );
 
   }
+
+  /**
+   * The horizontal size of the QR Bill.
+   */
+  public static readonly width = mm2pt(210);
+
+  /**
+   * The vertical size of the QR Bill.
+   */
+  public static readonly height = mm2pt(105);
 
   private x(millimeters: number = 0) {
     return this._x + mm2pt(millimeters);
@@ -182,7 +198,7 @@ export class SwissQRBill {
       if(doc.page.height > mm2pt(105)){
 
         doc.fontSize(11);
-        doc.font(this.fontName);
+        doc.font(this.font);
         doc.text(translations[this.language].separate, 0, this.y() - 12, {
           align: "center",
           width: mm2pt(210)
@@ -194,14 +210,14 @@ export class SwissQRBill {
 
     // Receipt
     doc.fontSize(11);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].receipt, this.x(5), this.y(5), {
       align: "left",
       width: mm2pt(52)
     });
 
     doc.fontSize(6);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].account, this.x(5), this.y(12), {
       lineGap: 1,
       width: mm2pt(52)
@@ -209,7 +225,7 @@ export class SwissQRBill {
 
     // Creditor
     doc.fontSize(8);
-    doc.font(this.fontName);
+    doc.font(this.font);
     doc.text(`${formatIBAN(this.data.creditor.account)}\n${this.formatAddress(this.data.creditor)}`, {
       lineGap: -.5,
       width: mm2pt(52)
@@ -222,14 +238,14 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(6);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(52)
       });
 
       doc.fontSize(8);
-      doc.font(this.fontName);
+      doc.font(this.font);
       doc.text(formatReference(this.data.reference), {
         lineGap: -.5,
         width: mm2pt(52)
@@ -244,14 +260,14 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(6);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(52)
       });
 
       doc.fontSize(8);
-      doc.font(this.fontName);
+      doc.font(this.font);
       doc.text(this.formatAddress(this.data.debtor), {
         lineGap: -.5,
         width: mm2pt(52)
@@ -260,7 +276,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(6);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(52)
@@ -273,7 +289,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(6);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].currency, this.x(5), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -287,7 +303,7 @@ export class SwissQRBill {
     });
 
     doc.fontSize(8);
-    doc.font(this.fontName);
+    doc.font(this.font);
     doc.text(this.data.currency, this.x(5), this.y(71), {
       lineGap: -.5,
       width: mm2pt(15)
@@ -303,7 +319,7 @@ export class SwissQRBill {
     }
 
     doc.fontSize(6);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].acceptancePoint, this.x(5), this.y(82), {
       align: "right",
       height: mm2pt(18),
@@ -313,7 +329,7 @@ export class SwissQRBill {
 
     // Payment part middle container
     doc.fontSize(11);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].paymentPart, this.x(67), this.y(5), {
       align: "left",
       lineGap: 1,
@@ -363,7 +379,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(8);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].currency, this.x(67), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -374,7 +390,7 @@ export class SwissQRBill {
     });
 
     doc.fontSize(10);
-    doc.font(this.fontName);
+    doc.font(this.font);
     doc.text(this.data.currency, this.x(67), this.y(72), {
       lineGap: -.5,
       width: mm2pt(15)
@@ -395,7 +411,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av1.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(scheme, this.x(67), this.y(90), {
         continued: true,
         height: mm2pt(3),
@@ -403,7 +419,7 @@ export class SwissQRBill {
         width: mm2pt(138)
       });
 
-      doc.font(this.fontName);
+      doc.font(this.font);
       doc.text(this.data.av1.length > 90 ? `${data.substring(0, 87)}...` : data, {
         continued: false
       });
@@ -415,7 +431,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av2.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(scheme, this.x(67), this.y(93), {
         continued: true,
         height: mm2pt(3),
@@ -423,7 +439,7 @@ export class SwissQRBill {
         width: mm2pt(138)
       });
 
-      doc.font(this.fontName);
+      doc.font(this.font);
       doc.text(this.data.av2.length > 90 ? `${data.substring(0, 87)}...` : data, {
         lineGap: -.5
       });
@@ -432,14 +448,14 @@ export class SwissQRBill {
 
     // Payment part right column
     doc.fontSize(8);
-    doc.font(`${this.fontName}-Bold`);
+    doc.font(`${this.font}-Bold`);
     doc.text(translations[this.language].account, this.x(118), this.y(5), {
       lineGap: 1,
       width: mm2pt(87)
     });
 
     doc.fontSize(10);
-    doc.font(this.fontName);
+    doc.font(this.font);
     doc.text(`${formatIBAN(this.data.creditor.account)}\n${this.formatAddress(this.data.creditor)}`, {
       lineGap: -.75,
       width: mm2pt(87)
@@ -451,14 +467,14 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(8);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(87)
       });
 
       doc.fontSize(10);
-      doc.font(this.fontName);
+      doc.font(this.font);
       doc.text(formatReference(this.data.reference), {
         lineGap: -.75,
         width: mm2pt(87)
@@ -473,14 +489,14 @@ export class SwissQRBill {
     if(this.data.message !== undefined || this.data.additionalInformation !== undefined){
 
       doc.fontSize(8);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].additionalInformation, {
         lineGap: 1,
         width: mm2pt(87)
       });
 
       doc.fontSize(10);
-      doc.font(this.fontName);
+      doc.font(this.font);
 
       const options = {
         lineGap: -.75,
@@ -525,14 +541,14 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(8);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(87)
       });
 
       doc.fontSize(10);
-      doc.font(this.fontName);
+      doc.font(this.font);
       doc.text(this.formatAddress(this.data.debtor), {
         lineGap: -.75,
         width: mm2pt(87)
@@ -541,7 +557,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(8);
-      doc.font(`${this.fontName}-Bold`);
+      doc.font(`${this.font}-Bold`);
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(87)
@@ -585,19 +601,5 @@ export class SwissQRBill {
       .stroke();
 
   }
-
-  private isSpaceSufficient(doc: PDFKit.PDFDocument, xPosition: number, yPosition: number, width: number, height: number): boolean {
-
-    if(!doc.page){
-      return false;
-    }
-
-    return (
-      Math.round(xPosition + width) <= Math.round(doc.page.width) &&
-     Math.round(doc.y + height) <= Math.round(doc.page.height) &&
-     Math.round(yPosition + height) <= Math.round(doc.page.height)
-    );
-  }
-
 
 }

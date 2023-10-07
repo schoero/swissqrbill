@@ -1,6 +1,3 @@
-//-- PDF types
-
-
 // SwissQRBill types
 export type Currency = "CHF" | "EUR";
 export type Size = "A4" | "A6" | "A6/5";
@@ -110,9 +107,10 @@ export interface QRBillOptions {
 
   /**
    * Font used for the QR-Bill.
+   * Fonts other than Helvetica must be registered in the PDFKit document. @see http://pdfkit.org/docs/text.html#fonts
    * @defaultValue 'Helvetica'
    */
-  fontName?: string;
+  font?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
 
   /**
    * The language with which the bill is rendered.
@@ -141,13 +139,6 @@ export interface QRBillOptions {
    * @defaultValue `false`
    */
   separate?: boolean;
-
-
-  /**
-   * The page size.
-   * @defaultValue `"A6"`
-   */
-  size?: Size;
 }
 
 export interface PDFOptions extends QRBillOptions {

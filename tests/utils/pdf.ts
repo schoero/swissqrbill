@@ -47,7 +47,7 @@ export class TestDocument extends PDFDocument {
 }
 
 export async function pdf(data: Data, testDocumentName: TestDocumentName, options?: PDFOptions) {
-  const pdf = new TestDocument(testDocumentName, options);
+  const pdf = new TestDocument(testDocumentName);
   const qrBill = new SwissQRBill(data, options);
   qrBill.attachTo(pdf);
   pdf.end();

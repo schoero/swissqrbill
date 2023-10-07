@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { mm2pt } from "swissqrbill:utils";
 import { minimalRequired } from "swissqrbill:tests:data/valid-data";
 import { TestDocument } from "swissqrbill:tests:utils/pdf";
+import { mm2pt } from "swissqrbill:utils";
 
 import { SwissQRBill } from "./swissqrbill";
 
