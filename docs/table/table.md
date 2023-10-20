@@ -51,6 +51,7 @@ Inserts a table to the document.
 const table = {
   rows: [
     {
+      backgroundColor: "#ECF0F1",
       columns: [
         {
           text: "Row 1 cell 1"
@@ -59,8 +60,7 @@ const table = {
         }, {
           text: "Row 1 cell 3"
         }
-      ],
-      backgroundColor: "#ECF0F1"
+      ]
     }, {
       columns: [
         {

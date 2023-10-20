@@ -8,6 +8,12 @@
       }
     },
     {
+      "files": ["examples/**/*.js", "examples/**/*.ts"],
+      "rules": {
+        "no-undef": "off"
+      }
+    },
+    {
       "files": ["vite.config.ts", "vite.config.bundle.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {

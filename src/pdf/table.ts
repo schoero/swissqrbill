@@ -108,6 +108,7 @@ export class Table {
    * const table = {
    *   rows: [
    *     {
+   *       backgroundColor: "#ECF0F1",
    *       columns: [
    *         {
    *           text: "Row 1 cell 1"
@@ -116,8 +117,7 @@ export class Table {
    *         }, {
    *           text: "Row 1 cell 3"
    *         }
-   *       ],
-   *       backgroundColor: "#ECF0F1"
+   *       ]
    *     }, {
    *       columns: [
    *         {
