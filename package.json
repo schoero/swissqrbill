@@ -103,7 +103,7 @@
     "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-it-it": "^3.0.1",
     "@schoero/changelog-config": "^0.0.2",
-    "@schoero/cspell-config": "^1.7.2",
+    "@schoero/cspell-config": "^1.8.2",
     "@schoero/eslint-config": "^1.41.20",
     "@schoero/markdownlint-config": "^1.1.7",
     "@schoero/ts-config": "^0.3.7",
