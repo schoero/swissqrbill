@@ -291,7 +291,7 @@ export const currencyTooShort = {
 // Currency too long
 export const currencyTooLong = {
   ...minimalRequired,
-  currency: "CHFF"
+  currency: "EURO"
 } as unknown as Data;
 
 // Invalid currency
