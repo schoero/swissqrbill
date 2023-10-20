@@ -22,7 +22,7 @@
   
 ### Currency
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)  
   
 #### Type
   
@@ -32,7 +32,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)
   
 ### Size
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L6C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)  
   
 #### Type
   
@@ -42,7 +42,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L6C0)
   
 ### Languages
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)  
   
 #### Type
   
@@ -54,7 +54,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
   
 ### Data
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L9C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L6C0)  
   
 - **creditor** [`Creditor`](#creditor) Creditor related data.
 - **currency** [`Currency`](#currency) The currency to be used. **3 characters.**
@@ -76,7 +76,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L9C0)
   
 ### Debtor
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L68C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L65C0)  
   
 - **address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
 - **city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
@@ -89,7 +89,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L68C0)
   
 ### Creditor
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L101C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L98C0)  
   
 - **address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
 - **city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
@@ -103,33 +103,33 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L101C0)
   
 ### QRBillOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L109C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L106C0)  
   
-- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font used for the QR-Bill. `optional`
+- **font** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
+  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
 - **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
-- **size** [`Size`](#size) The page size. `optional`
   
 ---
   
 ### PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L144C0)  
   
-- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font used for the QR-Bill. `optional`
+- **font** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
+  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
 - **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
-- **size** [`Size`](#size) The page size. `optional`
 - **autoGenerate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit. `optional`
   
 ---
   
 ### SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L162C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
   
 - **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`

@@ -3,7 +3,7 @@
   
 - Class
   
-  - [SwissQRBill](#swissqrbill)
+  - [SwissQRBill](#swissqrbill-1)
   
     - Constructor
   
@@ -43,7 +43,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L20C2)
   
 ##### Return Type
   
-[`SwissQRBill`](#swissqrbill)  
+[`SwissQRBill`](#swissqrbill-1)  
   
 ### Property
   
