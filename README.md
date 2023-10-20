@@ -4,27 +4,14 @@
 
 ---
 <div align="center">
-  <a href="https://github.com/schoero/SwissQRBill/blob/master/LICENSE">
-    <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/swissqrbill">
-    <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://github.com/schoero/SwissQRBill/issues">
-    <img alt="Issues" src="https://img.shields.io/github/issues-raw/schoero/swissqrbill?style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/swissqrbill">
-    <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
-  </a>
-  <a href="https://www.jsdelivr.com/package/npm/swissqrbill">
-    <img alt="JSDelivr hits" src="https://img.shields.io/jsdelivr/npm/hm/swissqrbill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://github.com/schoero/SwissQRBill/stargazers">
-    <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
-    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/schoero/SwissQRBill/ci.yml?branch=master&style=flat-square">
-  </a>
+
+  [![GitHub license](https://img.shields.io/github/license/schoero/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/blob/main/LICENSE)
+  [![npm version](https://img.shields.io/npm/v/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://www.npmjs.com/package/swissqrbill?activeTab=versions)
+  [![GitHub issues](https://img.shields.io/github/issues/schoero/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/issues)
+  [![npm weekly downloads](https://img.shields.io/npm/dw/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://www.npmjs.com/package/swissqrbill?activeTab=readme)
+  [![GitHub repo stars](https://img.shields.io/github/stars/schoero/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/stargazers)
+  [![GitHub workflow status](https://img.shields.io/github/actions/workflow/status/schoero/swissqrbill/ci.yml?event=push&style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/actions?query=workflow%3ACI)
+
 </div>
 
 ---
