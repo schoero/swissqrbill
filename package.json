@@ -108,7 +108,7 @@
     "@schoero/markdownlint-config": "^1.1.7",
     "@schoero/ts-config": "^0.3.7",
     "@schoero/unwritten-config": "^0.0.3",
-    "@schoero/vite-config": "^0.0.27",
+    "@schoero/vite-config": "^0.0.28",
     "@types/node": "^20.8.7",
     "@types/pdfkit": "^0.13.1",
     "@types/svg-parser": "^2.0.5",
