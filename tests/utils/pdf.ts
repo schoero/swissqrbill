@@ -5,6 +5,7 @@ import { buffer } from "node:stream/consumers";
 import PDFDocument from "pdfkit";
 
 import { SwissQRBill } from "swissqrbill:pdf:swissqrbill";
+import { splitBuffer } from "swissqrbill:tests:utils/buffer";
 
 import type { Data, PDFOptions } from "swissqrbill:types";
 
@@ -14,35 +15,55 @@ export type TestDocumentName = `${string}/${string}.pdf`;
 const VISUAL_DIR = "tests/output/pdf/";
 const VISUAL = process.env.VISUAL === "true";
 
-const ID_REGEX = /2f494420(.*)3e5d0a/i; // /ID [<(.*)>]/i;
-
 
 export class TestDocument extends PDFDocument {
 
+  public snapshots: string[] = [];
+
   constructor(private testDocumentName: TestDocumentName, options?: PDFKit.PDFDocumentOptions) {
-    super(options);
+    super({ ...options, bufferPages: true, compress: false });
     this.info.CreationDate = undefined;
   }
 
-  public override end() {
-    super.end();
-  }
+  public async writeFile() {
 
-  public snapshot = new Promise<string>(async resolve => {
-    const chunks = await buffer(this);
-
-    const snapshot = chunks
-      .toString("hex")
-      .replace(ID_REGEX, "");
-
-    if(VISUAL === true){
-      const path = join(VISUAL_DIR, this.testDocumentName);
-      await mkdir(dirname(path), { recursive: true });
-      await writeFile(join(VISUAL_DIR, this.testDocumentName), chunks);
+    if(this.snapshots.length > 0){
+      throw new Error("TestDocument.end() was called multiple times");
     }
 
-    resolve(snapshot);
-  });
+    const bufferedPageRange = this.bufferedPageRange();
+
+    for(let pageIndex = bufferedPageRange.start; pageIndex < bufferedPageRange.count; pageIndex++){
+
+      this.switchToPage(pageIndex);
+
+      // @ts-expect-error - Typings are invalid
+      const page = await buffer(this.page.content.buffer);
+      const lines = splitBuffer(page, Buffer.from("\n", "binary"));
+      const content = lines.map(
+        line =>
+          line.toString("utf-8")
+      ).join("\n");
+
+      this.snapshots.push(content);
+
+    }
+
+    if(VISUAL === true){
+
+      super.end();
+
+      const pdf = await buffer(this);
+
+      const path = join(VISUAL_DIR, this.testDocumentName);
+      const dir = dirname(path);
+
+      await mkdir(dir, { recursive: true });
+      await writeFile(path, pdf);
+
+    }
+
+  }
 
 }
 
@@ -50,6 +71,6 @@ export async function pdf(data: Data, testDocumentName: TestDocumentName, option
   const pdf = new TestDocument(testDocumentName);
   const qrBill = new SwissQRBill(data, options);
   qrBill.attachTo(pdf);
-  pdf.end();
-  return pdf.snapshot;
+  await pdf.writeFile();
+  return pdf.snapshots;
 }

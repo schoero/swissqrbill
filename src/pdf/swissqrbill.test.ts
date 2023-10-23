@@ -14,9 +14,10 @@ describe("qr-bill", async () => {
     const qrBill = new SwissQRBill(minimalRequired);
 
     qrBill.attachTo(pdf);
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the qr bill in a a4 document with insufficient space on a new page", async () => {
@@ -30,9 +31,10 @@ describe("qr-bill", async () => {
     });
 
     qrBill.attachTo(pdf);
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the qr bill in a a4 document with multiple pages and enough space on the last page", async () => {
@@ -41,9 +43,10 @@ describe("qr-bill", async () => {
 
     pdf.addPage();
     qrBill.attachTo(pdf);
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the qr bill in a a4 document with multiple pages and insufficient space on a new page", async () => {
@@ -58,9 +61,9 @@ describe("qr-bill", async () => {
     });
 
     qrBill.attachTo(pdf);
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render multiple qr bills on the same page if enough space is left and the positions are fixed", async () => {
@@ -72,9 +75,10 @@ describe("qr-bill", async () => {
     qrBill1.attachTo(pdf, 0, 0);
     qrBill2.attachTo(pdf, 0, mm2pt(105));
     qrBill3.attachTo(pdf, 0, mm2pt(210));
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the qr bills freely on a page", async () => {
@@ -82,9 +86,10 @@ describe("qr-bill", async () => {
     const qrBill = new SwissQRBill(minimalRequired);
 
     qrBill.attachTo(pdf, mm2pt(43.5), mm2pt(52.5));
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
 });

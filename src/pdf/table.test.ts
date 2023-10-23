@@ -25,9 +25,10 @@ describe("table", async () => {
     const table = new Table(backgroundColorOverrides);
 
     table.attachTo(pdf);
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render and override text colors correctly", async () => {
@@ -35,9 +36,10 @@ describe("table", async () => {
     const table = new Table(textColorOverrides);
 
     table.attachTo(pdf);
-    pdf.end();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render and override text alignment correctly", async () => {
@@ -49,9 +51,9 @@ describe("table", async () => {
     pdf.moveDown();
     overridesTable.attachTo(pdf);
 
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render and override borders correctly", async () => {
@@ -66,9 +68,9 @@ describe("table", async () => {
     pdf.moveDown();
     borderColorTable.attachTo(pdf);
 
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render and override paddings correctly", async () => {
@@ -80,9 +82,9 @@ describe("table", async () => {
     pdf.moveDown();
     paddingOverridesTable.attachTo(pdf);
 
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render and override font sizes correctly", async () => {
@@ -91,9 +93,9 @@ describe("table", async () => {
 
     fontSizeOverridesTable.attachTo(pdf);
 
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should always fill the entire width if possible, but should not enforce it", async () => {
@@ -103,9 +105,9 @@ describe("table", async () => {
     autoWidthTable.attachTo(pdf);
     pdf.moveDown();
 
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the header row on every page", async () => {
@@ -114,9 +116,9 @@ describe("table", async () => {
 
     headerTable.attachTo(pdf);
 
-    pdf.end();
+    await pdf.writeFile();
 
-    await expect(pdf.snapshot).resolves.toMatchSnapshot();
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
 });
