@@ -6,11 +6,11 @@ on:
       - main
       - master
     paths-ignore:
-      - "doc/**"
+      - "docs/**"
 
   push:
     paths-ignore:
-      - "doc/**"
+      - "docs/**"
 
 jobs:
   lint:
