@@ -4,7 +4,7 @@ import { translations } from "swissqrbill:shared:translations";
 import { validateData } from "swissqrbill:shared:validator";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
-import type { Creditor, Data, Debtor, Languages, QRBillOptions } from "swissqrbill:types";
+import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:types";
 
 
 /**
@@ -17,7 +17,7 @@ export class SwissQRBill {
   private scissors: boolean = true;
   private separate: boolean = false;
   private outlines: boolean = true;
-  private language: Languages = "DE";
+  private language: Language = "DE";
   private font: string = "Helvetica";
 
   private _x: number = 0;
@@ -28,7 +28,7 @@ export class SwissQRBill {
    * @param data The data to be used for the QR Bill.
    * @param options Options to define how the QR Bill should be rendered.
    */
-  constructor(data: Data, options?: QRBillOptions) {
+  constructor(data: Data, options?: PDFOptions) {
 
     this.data = data;
 
@@ -39,28 +39,21 @@ export class SwissQRBill {
     void validateData(this.data);
 
     // Apply options
-    if(options !== undefined){
-      if(options.language !== undefined){
-        this.language = options.language;
-      }
-      if(options.scissors !== undefined){
-        this.scissors = options.scissors;
-        this.separate = !options.scissors;
-      }
-      if(options.separate !== undefined){
-        this.separate = options.separate;
-        this.scissors = !options.separate;
-      }
-      if(options.scissors === false && options.separate === false){
-        this.separate = false;
-        this.scissors = false;
-      }
-      if(options.outlines !== undefined){
-        this.outlines = options.outlines;
-      }
-      if(options.font !== undefined){
-        this.font = options.font;
-      }
+    this.language = options?.language !== undefined ? options.language : this.language;
+    this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
+    this.font = options?.font !== undefined ? options.font : this.font;
+
+    if(options?.scissors !== undefined){
+      this.scissors = options.scissors;
+      this.separate = !options.scissors;
+    }
+    if(options?.separate !== undefined){
+      this.separate = options.separate;
+      this.scissors = !options.separate;
+    }
+    if(options?.scissors === false && options?.separate === false){
+      this.separate = false;
+      this.scissors = false;
     }
 
   }

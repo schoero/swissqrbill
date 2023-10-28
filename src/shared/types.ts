@@ -1,7 +1,8 @@
 // SwissQRBill types
 export type Currency = "CHF" | "EUR";
 export type Size = "A4" | "A6" | "A6/5";
-export type Languages = "DE" | "EN" | "FR" | "IT";
+export type Language = "DE" | "EN" | "FR" | "IT";
+export type FontName = "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
 
 export interface Data {
 
@@ -110,13 +111,13 @@ export interface QRBillOptions {
    * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}
    * @defaultValue 'Helvetica'
    */
-  font?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
+  font?: FontName;
 
   /**
    * The language with which the bill is rendered.
    * @defaultValue `DE`
    */
-  language?: Languages;
+  language?: Language;
 
   /**
    * Whether you want render the outlines. This option may be disabled if you use perforated paper.
@@ -131,6 +132,9 @@ export interface QRBillOptions {
    * @defaultValue `true`
    */
   scissors?: boolean;
+}
+
+export interface PDFOptions extends QRBillOptions {
 
   /**
    * Whether you want to show the text `Separate before paying in` rather than the scissors icons.
@@ -141,20 +145,6 @@ export interface QRBillOptions {
   separate?: boolean;
 }
 
-export interface PDFOptions extends QRBillOptions {
+export interface SVGOptions extends QRBillOptions {
 
-  /**
-   * Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit.
-   * @defaultValue `true`
-   */
-  autoGenerate?: boolean;
-}
-
-export interface SVGOptions {
-
-  /**
-   * The language with which the bill is rendered.
-   * @defaultValue `DE`
-   */
-  language?: Languages;
 }
