@@ -16,8 +16,8 @@
   "sideEffects": false,
   "exports": {
     "./bundle": {
-      "import": "./lib/bundle/swissqrbill.js",
-      "require": "./lib/bundle/swissqrbill.js"
+      "import": "./lib/bundle/index.js",
+      "require": "./lib/bundle/index.js"
     },
     "./errors": {
       "import": "./lib/shared/errors.js",
@@ -42,7 +42,8 @@
   },
   "scripts": {
     "build": "rm -r ./lib || true && vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
-    "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:shared",
+    "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:shared && npm run docs:bundle",
+    "docs:bundle": "unwritten src/bundle/index.ts -t tsconfig.docs.json -o docs/bundle/ ",
     "docs:pdf": "unwritten src/pdf/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",
     "docs:svg": "unwritten src/svg/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/svg/",
