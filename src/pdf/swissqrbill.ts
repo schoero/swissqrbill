@@ -1,5 +1,5 @@
+import { SwissQRCode } from "swissqrbill:pdf:swissqrcode";
 import { cleanData } from "swissqrbill:shared:cleaner";
-import { generateQRData, renderQRCode } from "swissqrbill:shared:qr-code";
 import { translations } from "swissqrbill:shared:translations";
 import { validateData } from "swissqrbill:shared:validator";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
@@ -337,45 +337,12 @@ export class SwissQRBill {
     });
 
     // QR Code
-    const qrData = generateQRData(this.data);
-    const qrCode = renderQRCode(qrData, "pdf", mm2pt(46));
+    const swissQRCode = new SwissQRCode(this.data);
 
-    // Add QR Code
     doc.save();
-
     doc.translate(this.x(67), this.y(17));
-    doc.addContent(qrCode);
-    doc.fillColor("black");
-    doc.fill();
-
+    swissQRCode.attachTo(doc);
     doc.restore();
-
-    // Add Swiss Cross
-    const swissCrossBackground = "18.3 0.7 m 1.6 0.7 l 0.7 0.7 l 0.7 1.6 l 0.7 18.3 l 0.7 19.1 l 1.6 19.1 l 18.3 19.1 l 19.1 19.1 l 19.1 18.3 l 19.1 1.6 l 19.1 0.7 l h";
-    const swissCross = "8.3 4 m 11.6 4 l 11.6 15 l 8.3 15 l 8.3 4 l h 4.4 7.9 m 15.4 7.9 l 15.4 11.2 l 4.4 11.2 l 4.4 7.9 l h";
-
-    doc.save();
-
-    doc.translate(this.x(86.5), this.y(36));
-    doc.addContent(swissCrossBackground)
-      .undash()
-      .fillColor("black")
-      .lineWidth(1.42)
-      .strokeColor("white")
-      .fillAndStroke();
-
-    doc.restore();
-
-    doc.save();
-
-    doc.translate(this.x(86.5), this.y(36));
-    doc.addContent(swissCross)
-      .fillColor("white")
-      .fill();
-
-    doc.restore();
-
-    doc.fillColor("black");
 
     // Amount
     doc.fontSize(8);

@@ -19,9 +19,11 @@ const VISUAL = process.env.VISUAL === "true";
 export class TestDocument extends PDFDocument {
 
   public snapshots: string[] = [];
+  private testDocumentName: TestDocumentName;
 
-  constructor(private testDocumentName: TestDocumentName, options?: PDFKit.PDFDocumentOptions) {
+  constructor(testDocumentName: TestDocumentName, options?: PDFKit.PDFDocumentOptions) {
     super({ ...options, bufferPages: true, compress: false });
+    this.testDocumentName = testDocumentName;
     this.info.CreationDate = undefined;
   }
 

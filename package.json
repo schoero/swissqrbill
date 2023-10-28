@@ -24,16 +24,12 @@
       "require": "./lib/shared/errors.cjs"
     },
     "./pdf": {
-      "import": "./lib/pdf/swissqrbill.js",
-      "require": "./lib/pdf/swissqrbill.cjs"
+      "import": "./lib/pdf/index.js",
+      "require": "./lib/pdf/index.cjs"
     },
     "./svg": {
-      "import": "./lib/svg/swissqrbill.js",
-      "require": "./lib/svg/swissqrbill.cjs"
-    },
-    "./table": {
-      "import": "./lib/pdf/table.js",
-      "require": "./lib/pdf/table.cjs"
+      "import": "./lib/svg/index.js",
+      "require": "./lib/svg/index.cjs"
     },
     "./types": {
       "import": "./lib/shared/types.js",
@@ -46,11 +42,10 @@
   },
   "scripts": {
     "build": "rm -r ./lib || true && vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
-    "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:table && npm run docs:shared",
-    "docs:pdf": "unwritten src/pdf/swissqrbill.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
+    "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:shared",
+    "docs:pdf": "unwritten src/pdf/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",
-    "docs:svg": "unwritten src/svg/swissqrbill.ts src/shared/types.ts -t tsconfig.docs.json -o docs/svg/",
-    "docs:table": "unwritten src/pdf/table.ts -t tsconfig.docs.json -o docs/table/",
+    "docs:svg": "unwritten src/svg/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/svg/",
     "eslint": "eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml,.md ./",
     "eslint:ci": "npm run eslint -- --max-warnings 0",
     "eslint:fix": "npm run eslint -- --fix",

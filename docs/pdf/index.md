@@ -1,0 +1,408 @@
+  
+# Index
+  
+- Classes
+  
+  - [SwissQRBill](#swissqrbill)
+  
+    - Constructor
+  
+      - [constructor(data\[, options\])](#constructordata-options)
+  
+    - Properties
+  
+      - [width](#width)
+      - [height](#height)
+  
+    - Methods
+  
+      - [attachTo(doc, xPosition, yPosition)](#attachtodoc-xposition-yposition)
+      - [isSpaceSufficient(doc, xPosition, yPosition)](#isspacesufficientdoc-xposition-yposition)
+  
+  - [SwissQRCode](#swissqrcode)
+  
+    - Constructor
+  
+      - [constructor(data, size)](#constructordata-size)
+  
+    - Method
+  
+      - [attachTo(doc)](#attachtodoc)
+  
+  - [Table](#table)
+  
+    - Constructor
+  
+      - [constructor(data)](#constructordata)
+  
+    - Method
+  
+      - [attachTo(doc)](#attachtodoc-1)
+  
+## Classes
+  
+### SwissQRBill
+  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)  
+  
+#### Description
+  
+The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
+using the [`attachTo`](#attachtodoc-xposition-yposition) method.  
+  
+#### Construct Signature
+  
+---
+  
+##### constructor(data\[, options\])
+  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
+  
+###### Parameters
+  
+- **data** [`Data`](./types.md#data) The data to be used for the QR Bill.  
+- **options** [`QRBillOptions`](./types.md#qrbilloptions) Options to define how the QR Bill should be rendered. `optional`  
+  
+##### Return Type
+  
+[`SwissQRBill`](#swissqrbill)  
+  
+##### Description
+  
+Creates a new SwissQRBill instance.  
+  
+### Properties
+  
+#### width
+  
+`public` `static` `readonly`  
+  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L121C2)  
+  
+##### Type
+  
+[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+  
+##### Description
+  
+The horizontal size of the QR Bill.  
+  
+#### height
+  
+`public` `static` `readonly`  
+  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L126C2)  
+  
+##### Type
+  
+[`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+  
+##### Description
+  
+The vertical size of the QR Bill.  
+  
+### Methods
+  
+---
+  
+#### attachTo(doc, xPosition, yPosition)
+  
+`public`  
+  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L76C2)  
+  
+##### Parameters
+  
+- **doc** `PDFDocument` The PDFKit instance  
+- **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed. Default: `0`  
+- **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+  
+##### Return Type
+  
+`void`  
+  
+##### Description
+  
+Adds the QR Bill to the bottom of the current page if there is enough space,
+otherwise it will create a new page for the QR Bill.  
+  
+---
+  
+#### isSpaceSufficient(doc, xPosition, yPosition)
+  
+`public` `static`  
+  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L104C2)  
+  
+##### Parameters
+  
+- **doc** `PDFDocument` The PDFKit document instance  
+- **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed.  
+- **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed.  
+  
+##### Return Type
+  
+[`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if there is enough space, otherwise `false`  
+  
+##### Description
+  
+Checks whether there is enough space on the current page to add the QR Bill.  
+  
+## SwissQRCode
+  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)  
+  
+### Construct Signature
+  
+---
+  
+#### constructor(data, size)
+  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
+  
+##### Parameters
+  
+- **data** [`Data`](./types.md#data) The data to be encoded in the QR code.  
+- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
+  
+##### Return Type
+  
+[`SwissQRCode`](#swissqrcode)  
+  
+##### Description
+  
+Creates a Swiss QR Code.  
+  
+### Method
+  
+---
+  
+#### attachTo(doc)
+  
+`public`  
+  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L27C2)  
+  
+##### Parameter
+  
+- **doc** `PDFDocument` The PDF document to attach the Swiss QR Code to.  
+  
+##### Return Type
+  
+`void`  
+  
+##### Description
+  
+Attaches the Swiss QR Code to a PDF document.  
+  
+## Table
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)  
+  
+### Construct Signature
+  
+---
+  
+#### constructor(data)
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L136C2)  
+  
+##### Parameter
+  
+- **data** [`interface`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) An Object which contains the table information.  
+  
+  - **rows** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table rows.
+  
+    - [`interface`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+  
+      - **columns** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table columns.
+  
+        - [`interface`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+  
+          - **text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
+          - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
+          - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the cell. `optional`
+          - **border** `union` Width of the borders of the row. `optional`
+  
+            - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+            - `tuple`
+  
+              - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+              - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+              - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+              - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+          - **borderColor** `union` The colors of the border `optional`
+  
+            - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+            - `tuple`
+  
+              - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+              - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+              - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+              - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  
+          - **font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
+          - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the cell. `optional`
+          - **padding** `union` Cell padding of the table cell. `optional`
+  
+            - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+            - `tuple`
+  
+              - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+              - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+              - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+              - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+          - **textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the cell. `optional`
+          - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
+          - **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell `optional`
+          - **width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of the cell. `optional`
+  
+      - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
+      - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
+      - **border** `union` Width of the borders of the row. `optional`
+  
+        - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+        - `tuple`
+  
+          - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+          - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+          - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+          - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+      - **borderColor** `union` The colors of the border `optional`
+  
+        - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+        - `tuple`
+  
+          - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+          - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+          - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+          - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  
+      - **font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
+      - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the row. `optional`
+      - **header** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) A header row gets inserted automatically on new pages. Only one header row is allowed. `optional`
+      - **height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight `optional`
+      - **maxHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Maximum height of the row `optional`
+      - **minHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Minimum height of the row `optional`
+      - **padding** `union` Cell padding of the table cells inside the row. `optional`
+  
+        - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+        - `tuple`
+  
+          - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+          - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+          - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+          - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+      - **textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the row. `optional`
+      - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
+      - **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
+  
+  - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
+  - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
+  - **border** `union` Width of the borders of the row. `optional`
+  
+    - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - `tuple`
+  
+      - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+      - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+      - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+      - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+  - **borderColor** `union` The colors of the border `optional`
+  
+    - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+    - `tuple`
+  
+      - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+      - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+      - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+      - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  
+  - **font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
+  - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the table. `optional`
+  - **padding** `union` Cell padding of the table cells. `optional`
+  
+    - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - `tuple`
+  
+      - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+      - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+      - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+      - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+  - **textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside table. `optional`
+  - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
+  - **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
+  - **width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of whole table. `optional`
+  - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Horizontal start position of the table. `optional`
+  - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Vertical start position of the table. `optional`
+  
+##### Return Type
+  
+[`Table`](#table) The Table instance.  
+  
+##### Description
+  
+Inserts a table to the document.  
+  
+##### Example
+  
+```ts
+const table = {
+  rows: [
+    {
+      backgroundColor: "#ECF0F1",
+      columns: [
+        {
+          text: "Row 1 cell 1"
+        }, {
+          text: "Row 1 cell 2"
+        }, {
+          text: "Row 1 cell 3"
+        }
+      ]
+    }, {
+      columns: [
+        {
+          text: "Row 2 cell 1"
+        }, {
+          text: "Row 2 cell 2"
+        }, {
+          text: "Row 2 cell 3"
+        }
+      ]
+    }
+  ]
+};
+```  
+  
+### Method
+  
+---
+  
+#### attachTo(doc)
+  
+`public`  
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C2)  
+  
+##### Parameter
+  
+- **doc** `PDFDocument` The PDFKit document instance  
+  
+##### Return Type
+  
+[`Table`](#table) The Table instance.  
+  
+##### Throws
+  
+- `Error` Throws an error if no table rows are provided.
+  
+##### Description
+  
+Attaches the table to a PDFKit document instance.  

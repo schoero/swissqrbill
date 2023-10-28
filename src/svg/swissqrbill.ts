@@ -1,10 +1,10 @@
 import { calc, SVG } from "svg-engine";
 
 import { cleanData } from "swissqrbill:shared:cleaner";
-import { generateQRData, renderQRCode } from "swissqrbill:shared:qr-code";
 import { translations } from "swissqrbill:shared:translations";
 import { validateData } from "swissqrbill:shared:validator";
-import { calculateTextWidth } from "swissqrbill:svg:characterWidth";
+import { calculateTextWidth } from "swissqrbill:svg:character-width";
+import { SwissQRCode } from "swissqrbill:svg:swissqrcode";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2px } from "swissqrbill:utils";
 
 import type { Creditor, Data, Debtor, Languages, SVGOptions } from "swissqrbill:types";
@@ -520,28 +520,12 @@ export class SwissQRBill {
 
   private _renderQRCode() {
 
-    const qrData = generateQRData(this._data);
-    const qrCode = renderQRCode(qrData, "svg", mm2px(46), 0, 0);
+    const qrCode = new SwissQRCode(this._data);
+    qrCode
+      .x("67mm")
+      .y("17mm");
 
-    const qrCodeSVG = this.instance.addSVG("46mm", "46mm")
-      .y("17mm")
-      .x("67mm");
-
-    // Add QR Code
-    qrCodeSVG.addPath(qrCode)
-      .fill("black");
-
-    // Add background
-    qrCodeSVG.addRect("19mm", "19mm", "8mm", "8mm")
-      .fill("white");
-    qrCodeSVG.addRect("19.5mm", "19.5mm", "7mm", "7mm")
-      .fill("black");
-
-    // Add swiss cross
-    qrCodeSVG.addRect("22.415mm", "21.055mm", "1.17mm", "3.89mm")
-      .fill("white");
-    qrCodeSVG.addRect("21.055mm", "22.415mm", "3.89mm", "1.17mm")
-      .fill("white");
+    this.instance.appendInstance(qrCode);
 
   }
 
