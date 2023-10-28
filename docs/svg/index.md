@@ -53,6 +53,8 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)
   
 ### Property
   
+---
+  
 #### instance
   
 `protected`  

@@ -79,6 +79,8 @@ Creates a new SwissQRBill instance.
   
 ### Properties
   
+---
+  
 #### width
   
 `public` `static` `readonly`  
@@ -92,6 +94,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)
 ##### Description
   
 The horizontal size of the QR Bill.  
+  
+---
   
 #### height
   
