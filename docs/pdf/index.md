@@ -67,7 +67,7 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)
 ###### Parameters
   
 - **data** [`Data`](./types.md#data) The data to be used for the QR Bill.  
-- **options** [`QRBillOptions`](./types.md#qrbilloptions) Options to define how the QR Bill should be rendered. `optional`  
+- **options** [`PDFOptions`](./types.md#pdfoptions) Options to define how the QR Bill should be rendered. `optional`  
   
 ##### Return Type
   
@@ -83,7 +83,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L121C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)  
   
 ##### Type
   
@@ -97,7 +97,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L126C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)  
   
 ##### Type
   
@@ -115,7 +115,7 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L76C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
   
 ##### Parameters
   
@@ -138,7 +138,7 @@ otherwise it will create a new page for the QR Bill.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L104C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)  
   
 ##### Parameters
   

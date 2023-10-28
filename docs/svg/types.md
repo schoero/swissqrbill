@@ -5,7 +5,8 @@
   
   - [Currency](#currency)
   - [Size](#size)
-  - [Languages](#languages)
+  - [Language](#language)
+  - [FontName](#fontname)
   
 - Interfaces
   
@@ -40,7 +41,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)
   
 ---
   
-### Languages
+### Language
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)  
   
@@ -48,13 +49,23 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)
   
 `"DE"` | `"EN"` | `"FR"` | `"IT"`  
   
+---
+  
+### FontName
+  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)  
+  
+#### Type
+  
+`"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`  
+  
 ## Interfaces
   
 ---
   
 ### Data
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L6C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)  
   
 - **creditor** [`Creditor`](#creditor) Creditor related data.
 - **currency** [`Currency`](#currency) The currency to be used. **3 characters.**
@@ -76,7 +87,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L6C0)
   
 ### Debtor
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L65C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)  
   
 - **address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
 - **city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
@@ -89,7 +100,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L65C0)
   
 ### Creditor
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L98C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)  
   
 - **address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
 - **city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
@@ -103,33 +114,35 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L98C0)
   
 ### QRBillOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L106C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)  
   
-- **font** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
+- **font** [`FontName`](#fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
+- **language** [`Language`](#language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
-- **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
 ---
   
 ### PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L144C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)  
   
-- **font** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
+- **font** [`FontName`](#fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
+- **language** [`Language`](#language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
-- **autoGenerate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to automatically finalize the PDF. When set to false you are able to add your own content to the PDF using PDFKit. `optional`
   
 ---
   
 ### SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)  
   
-- **language** [`Languages`](#languages) The language with which the bill is rendered. `optional`
+- **font** [`FontName`](#fontname) Font used for the QR-Bill.
+  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
+- **language** [`Language`](#language) The language with which the bill is rendered. `optional`
+- **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
