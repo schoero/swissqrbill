@@ -1,3 +1,3 @@
-export { SwissQRBill } from "./swissqrbill";
-export { SwissQRCode } from "./swissqrcode";
-export { Table } from "./table";
+export * from "./swissqrbill";
+export * from "./swissqrcode";
+export * from "./table";

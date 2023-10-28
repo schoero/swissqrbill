@@ -1,2 +1,2 @@
-export { SwissQRBill } from "./swissqrbill";
-export { SwissQRCode } from "./swissqrcode";
+export * from "./swissqrbill";
+export * from "./swissqrcode";
