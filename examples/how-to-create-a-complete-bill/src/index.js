@@ -14,6 +14,28 @@ const stream = createWriteStream("output/qr-bill.pdf");
 const pdf = new PDFDocument({ size: "A4" });
 pdf.pipe(stream);
 
+// QR bill data object
+const data = {
+  amount: 2606.35,
+  creditor: {
+    account: "CH4431999123000889012",
+    address: "Bahnhofstrasse 7",
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
+  },
+  currency: "CHF",
+  debtor: {
+    address: "Grosse Marktgasse 28",
+    city: "Rorschach",
+    country: "CH",
+    name: "Pia-Maria Rutschmann-Schnyder",
+    zip: 9400
+  },
+  reference: "210000000003139471430009017"
+};
+
 // Add logo
 pdf.path(logoBackground, mm2pt(20), mm2pt(14))
   .fillColor("#EA5151")
