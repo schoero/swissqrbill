@@ -14,7 +14,8 @@ The complete source code is available in [examples/how-to-create-a-complete-bill
 
 ## Prerequisites
 
-To follow this manual you should have a basic understanding of JavaScript and Node.js. You should also have installed Node.js and npm on your computer. If you haven't already, you can download Node.js from [nodejs.org](https://nodejs.org/en/download/).
+To follow this manual you should have a basic understanding of JavaScript and Node.js.  
+You should also have Node.js and npm installed on your computer. If you haven't already, you can download Node.js from [nodejs.org](https://nodejs.org/en/download/).
 Node.js comes with npm pre-installed.
 
 ## Setup
