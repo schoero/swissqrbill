@@ -70,10 +70,11 @@ First we create a variable containing all information we need for the QR bill. W
 
 ```ts
 const data = {
-  amount: 2606.35,
+  amount: 1994.75,
   creditor: {
-    account: "CH4431999123000889012",
-    address: "Bahnhofstrasse 7",
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
     city: "Musterstadt",
     country: "CH",
     name: "SwissQRBill",
@@ -81,13 +82,14 @@ const data = {
   },
   currency: "CHF",
   debtor: {
-    address: "Grosse Marktgasse 28",
-    city: "Rorschach",
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
     country: "CH",
-    name: "Pia-Maria Rutschmann-Schnyder",
-    zip: 9400
+    name: "Peter Muster",
+    zip: 1234
   },
-  reference: "210000000003139471430009017"
+  reference: "21 00000 00003 13947 14300 09017"
 };
 ```
 
@@ -197,6 +199,7 @@ The [`Table`][table] class takes an object as a parameter containing the rows an
 const table = new Table({
   rows: [
     {
+      backgroundColor: "#4A4D51",
       columns: [
         {
           text: "Position",
@@ -211,8 +214,11 @@ const table = new Table({
           width: mm2pt(30)
         }
       ],
-      fillColor: "#ECF0F1",
-      height: 30
+      font: "Helvetica-Bold",
+      height: 20,
+      padding: 5,
+      textColor: "#fff",
+      verticalAlign: "center"
     }, {
       columns: [
         {
@@ -227,7 +233,8 @@ const table = new Table({
           text: "CHF 1'540.00",
           width: mm2pt(30)
         }
-      ]
+      ],
+      padding: 5
     }, {
       columns: [
         {
@@ -242,7 +249,8 @@ const table = new Table({
           text: "CHF 880.00",
           width: mm2pt(30)
         }
-      ]
+      ],
+      padding: 5
     }, {
       columns: [
         {
@@ -260,7 +268,8 @@ const table = new Table({
           width: mm2pt(30)
         }
       ],
-      height: 40
+      height: 40,
+      padding: 5
     }, {
       columns: [
         {
@@ -275,7 +284,8 @@ const table = new Table({
           text: "7.7%",
           width: mm2pt(30)
         }
-      ]
+      ],
+      padding: 5
     }, {
       columns: [
         {
@@ -290,7 +300,8 @@ const table = new Table({
           text: "CHF 186.35",
           width: mm2pt(30)
         }
-      ]
+      ],
+      padding: 5
     }, {
       columns: [
         {
@@ -308,7 +319,8 @@ const table = new Table({
           width: mm2pt(30)
         }
       ],
-      height: 40
+      height: 40,
+      padding: 5
     }
   ],
   width: mm2pt(170)

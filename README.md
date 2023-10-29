@@ -87,26 +87,26 @@ import PDFDocument from "pdfkit";
 import { SwissQRBill } from "swissqrbill/pdf";
 
 const data = {
-  amount: 1199.95,
+  amount: 1994.75,
   creditor: {
-    account: "CH4431999123000889012",
-    address: "Rue du Lac",
-    buildingNumber: "1268",
-    city: "Biel",
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
+    city: "Musterstadt",
     country: "CH",
-    name: "Robert Schneider AG",
-    zip: 2501
+    name: "SwissQRBill",
+    zip: 1234
   },
   currency: "CHF",
   debtor: {
-    address: "Grosse Marktgasse",
-    buildingNumber: "28",
-    city: "Rorschach",
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
     country: "CH",
-    name: "Pia-Maria Rutschmann-Schnyder",
-    zip: 9400
+    name: "Peter Muster",
+    zip: 1234
   },
-  reference: "210000000003139471430009017"
+  reference: "21 00000 00003 13947 14300 09017"
 };
 
 const pdf = new PDFDocument({ size: "A4" });
