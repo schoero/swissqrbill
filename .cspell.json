@@ -20,6 +20,7 @@
     "iban",
     "linebreak",
     "linebreaker",
+    "pdfdocument",
     "pdfkit",
     "postgenerate",
     "qrcodegen",
