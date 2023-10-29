@@ -2,10 +2,15 @@
 
 ## Introduction
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
+][stackblitz]
+
 In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
 
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
 The methods used from SwissQRBill are documented in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
+
+The complete source code can be found in [examples/how-to-create-a-complete-bill][source code]. A live version of the example is available on [StackBlitz][stackblitz].
 
 ## Prerequisites
 
@@ -350,3 +355,5 @@ When you run the code above, SwissQRBill should generate a PDF file named qr-bil
 [swissqrbill]: hhttps://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#swissqrbill
 [table]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#table
 [pdfdocument]: http://pdfkit.org/docs/getting_started.html#creating_a_document
+[source code]: ../examples/how-to-create-a-complete-bill/src/index.js
+[stackblitz]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/how-to-create-a-complete-bill?file=src%index.js&title=How%20to%20create%20a%20complete%20bill&startScript=generate
