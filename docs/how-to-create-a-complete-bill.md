@@ -127,7 +127,7 @@ Because the coordinate system of a PDF is based on points, SwissQRBill provides 
 import { mm2pt } from "swissqrbill/utils";
 ```
 
-We use the [translate](http://pdfkit.org/docs/vector.html#transformations) method of `PDFDocument` to position the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors.
+We use the [`translate()`](http://pdfkit.org/docs/vector.html#transformations) method of `PDFDocument` to position the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors. The `save()` and `restore()` methods are used to save the previous coordinates and restore them after the logo is rendered. This way we can change the positioning of the logo without affecting the rest of the document.
 
 #### Adding the addresses
 

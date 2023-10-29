@@ -37,6 +37,7 @@ const data = {
 };
 
 // Add logo
+pdf.save();
 pdf.translate(mm2pt(20), mm2pt(14));
 pdf.path(logoBackground, mm2pt(20), mm2pt(14))
   .fillColor("#EA5151")
@@ -49,6 +50,7 @@ pdf.path(logo, mm2pt(20), mm2pt(14))
 pdf.path(logoText, mm2pt(20), mm2pt(14))
   .fillColor("#454141")
   .fill();
+pdf.restore();
 
 // Add creditor address
 pdf.fontSize(12);
