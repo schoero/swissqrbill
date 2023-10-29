@@ -362,4 +362,4 @@ When you run the code above, SwissQRBill should generate a PDF file named qr-bil
 [table]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#table
 [pdfdocument]: http://pdfkit.org/docs/getting_started.html#creating_a_document
 [source code]: ../examples/how-to-create-a-complete-bill/src/index.js
-[stackblitz]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/how-to-create-a-complete-bill?file=src%index.js&title=How%20to%20create%20a%20complete%20bill&startScript=generate
+[stackblitz]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/how-to-create-a-complete-bill?file=src%2Findex.js&title=How%20to%20create%20a%20complete%20bill&startScript=generate
