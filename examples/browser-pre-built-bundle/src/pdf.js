@@ -6,7 +6,7 @@ const height = SwissQRBill.utils.mm2pt(105);
 
 const pdf = new PDFDocument({ size: [width, height] });
 const stream = pdf.pipe(blobStream());
-const qrBill = new SwissQRBill.PDF(data);
+const qrBill = new SwissQRBill.pdf.SwissQRBill(data);
 
 qrBill.attachTo(pdf);
 pdf.end();
