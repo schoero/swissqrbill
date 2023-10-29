@@ -22,8 +22,6 @@ Node.js comes with npm pre-installed.
 [SwissQRBill](https://www.npmjs.com/package/swissqrbill) can be installed from npm with the following command:
 
 ```sh
-
-```sh
 npm i swissqrbill
 ```
 
