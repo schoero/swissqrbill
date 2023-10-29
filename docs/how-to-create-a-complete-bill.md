@@ -372,7 +372,7 @@ pdf.end();
 
 When you run the code above, SwissQRBill should generate a PDF file named `qr-bill.pdf` that looks like this:
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)
+![Complete QR bill](../assets/complete-qr-bill.png)
 
 [swissqrbill]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#swissqrbill
 [table]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#table

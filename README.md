@@ -24,7 +24,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 <br/>
 <br/>
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.svg">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
+![QR bill](assets/qr-bill.svg)
 
 <br/>
 <br/>
@@ -142,7 +142,7 @@ The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_
 
 A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-bill.md][how to create a complete bill]. You will learn how to create a PDF that looks like this:
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+![Complete QR bill](assets/complete-qr-bill.png)
 
 [importing documentation]: ./docs/importing.md
 [repository docs]: ./docs/
