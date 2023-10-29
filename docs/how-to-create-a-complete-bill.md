@@ -5,7 +5,7 @@
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][stackblitz]
 
-In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use PDFKit to create a PDF document with a Logo, title and the address of the biller, as well as the recipient. Then we use SwissQRBill to create a Table containing the billable items and add the QR slip to the bottom of the page.
+In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use [PDFKit][npm pdfkit] to create a PDF document with a Logo, title and the address of the biller, as well as the recipient. Then we use [SwissQRBill][npm swissqrbill] to create a table containing the billable items and add the QR slip to the bottom of the page.
   
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)  
 The documentation of SwissQRBill can be found in the [docs](../docs/) directory of this repository.  
@@ -19,13 +19,13 @@ Node.js comes with npm pre-installed.
 
 ## Setup
 
-[SwissQRBill](https://www.npmjs.com/package/swissqrbill) can be installed from npm with the following command:
+[SwissQRBill][npm swissqrbill] can be installed from npm with the following command:
 
 ```sh
 npm i swissqrbill
 ```
 
-In addition, [PDFKit](https://www.npmjs.com/package/pdfkit) is required to create the PDF file itself. Install it using the following command:
+In addition, [PDFKit][npm pdfkit] is required to create the PDF file itself. Install it using the following command:
 
 ```sh
 npm i pdfkit
@@ -358,8 +358,10 @@ When you run the code above, SwissQRBill should generate a PDF file named qr-bil
 
 [<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)
 
-[swissqrbill]: hhttps://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#swissqrbill
+[swissqrbill]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#swissqrbill
 [table]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#table
 [pdfdocument]: http://pdfkit.org/docs/getting_started.html#creating_a_document
 [source code]: ../examples/how-to-create-a-complete-bill/src/index.js
 [stackblitz]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/how-to-create-a-complete-bill?file=src%2Findex.js&title=How%20to%20create%20a%20complete%20bill&startScript=generate
+[npm swissqrbill]: https://www.npmjs.com/package/swissqrbill
+[npm pdfkit]: https://www.npmjs.com/package/pdfkit
