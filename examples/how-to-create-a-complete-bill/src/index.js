@@ -1,4 +1,5 @@
 import { createWriteStream } from "fs";
+import PDFDocument from "pdfkit";
 import { SwissQRBill, Table } from "swissqrbill/pdf";
 import { mm2pt } from "swissqrbill/utils";
 
@@ -26,7 +27,6 @@ pdf.path(logoText, mm2pt(20), mm2pt(14))
   .fillColor("#454141")
   .fill();
 
-
 // Add creditor address
 pdf.fontSize(12);
 pdf.fillColor("black");
@@ -46,7 +46,6 @@ pdf.text(`${data.debtor.name}\n${data.debtor.address}\n${data.debtor.zip} ${data
   width: mm2pt(70)
 });
 
-
 // Add title
 pdf.fontSize(14);
 pdf.font("Helvetica-Bold");
@@ -63,7 +62,6 @@ pdf.text(`Musterstadt ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYea
   align: "right",
   width: mm2pt(170)
 });
-
 
 // Add table
 const table = new Table({
