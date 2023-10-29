@@ -7,26 +7,26 @@
   
     - Constructor
   
-      - [constructor(data\[, options\])](#constructordata-options)
+      - [new SwissQRBill(data\[, options\])](#new-swissqrbilldata-options)
   
     - Property
   
-      - [instance](#instance)
+      - [SwissQRBill.instance](#swissqrbillinstance)
   
     - Method
   
-      - [toString()](#tostring)
+      - [SwissQRBill.toString()](#swissqrbilltostring)
   
     - Getters
   
-      - [outerHTML()](#outerhtml)
-      - [element()](#element)
+      - [SwissQRBill.outerHTML()](#swissqrbillouterhtml)
+      - [SwissQRBill.element()](#swissqrbillelement)
   
   - [SwissQRCode](#swissqrcode)
   
     - Constructor
   
-      - [constructor(data, size)](#constructordata-size)
+      - [new SwissQRCode(data, size)](#new-swissqrcodedata-size)
   
 ## Classes
   
@@ -38,7 +38,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)
   
 ---
   
-##### constructor(data\[, options\])
+##### new SwissQRBill(data\[, options\])
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
   
@@ -55,7 +55,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)
   
 ---
   
-#### instance
+#### SwissQRBill.instance
   
 `protected`  
   
@@ -69,7 +69,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)
   
 ---
   
-#### toString()
+#### SwissQRBill.toString()
   
 `public`  
   
@@ -87,7 +87,7 @@ Outputs the SVG as a string.
   
 ---
   
-#### outerHTML()
+#### SwissQRBill.outerHTML()
   
 `public`  
   
@@ -99,7 +99,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)
   
 ---
   
-#### element()
+#### SwissQRBill.element()
   
 `public`  
   
@@ -121,7 +121,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)
   
 ---
   
-#### constructor(data, size)
+#### new SwissQRCode(data, size)
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   

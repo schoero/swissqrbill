@@ -7,37 +7,37 @@
   
     - Constructor
   
-      - [constructor(data\[, options\])](#constructordata-options)
+      - [new SwissQRBill(data\[, options\])](#new-swissqrbilldata-options)
   
     - Properties
   
-      - [width](#width)
-      - [height](#height)
+      - [SwissQRBill.width](#swissqrbillwidth)
+      - [SwissQRBill.height](#swissqrbillheight)
   
     - Methods
   
-      - [attachTo(doc, xPosition, yPosition)](#attachtodoc-xposition-yposition)
-      - [isSpaceSufficient(doc, xPosition, yPosition)](#isspacesufficientdoc-xposition-yposition)
+      - [SwissQRBill.attachTo(doc, xPosition, yPosition)](#swissqrbillattachtodoc-xposition-yposition)
+      - [SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)](#swissqrbillisspacesufficientdoc-xposition-yposition)
   
   - [SwissQRCode](#swissqrcode)
   
     - Constructor
   
-      - [constructor(data, size)](#constructordata-size)
+      - [new SwissQRCode(data, size)](#new-swissqrcodedata-size)
   
     - Method
   
-      - [attachTo(doc)](#attachtodoc)
+      - [SwissQRCode.attachTo(doc)](#swissqrcodeattachtodoc)
   
   - [Table](#table)
   
     - Constructor
   
-      - [constructor(data)](#constructordata)
+      - [new Table(data)](#new-tabledata)
   
     - Method
   
-      - [attachTo(doc)](#attachtodoc-1)
+      - [Table.attachTo(doc)](#tableattachtodoc)
   
 - Interfaces
   
@@ -54,13 +54,13 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)
 #### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
-using the [`attachTo`](#attachtodoc-xposition-yposition) method.  
+using the [`attachTo`](#swissqrbillattachtodoc-xposition-yposition) method.  
   
 #### Construct Signature
   
 ---
   
-##### constructor(data\[, options\])
+##### new SwissQRBill(data\[, options\])
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
   
@@ -81,7 +81,7 @@ Creates a new SwissQRBill instance.
   
 ---
   
-#### width
+#### SwissQRBill.width
   
 `public` `static` `readonly`  
   
@@ -97,7 +97,7 @@ The horizontal size of the QR Bill.
   
 ---
   
-#### height
+#### SwissQRBill.height
   
 `public` `static` `readonly`  
   
@@ -115,7 +115,7 @@ The vertical size of the QR Bill.
   
 ---
   
-#### attachTo(doc, xPosition, yPosition)
+#### SwissQRBill.attachTo(doc, xPosition, yPosition)
   
 `public`  
   
@@ -138,7 +138,7 @@ otherwise it will create a new page for the QR Bill.
   
 ---
   
-#### isSpaceSufficient(doc, xPosition, yPosition)
+#### SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
   
 `public` `static`  
   
@@ -166,7 +166,7 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)
   
 ---
   
-#### constructor(data, size)
+#### new SwissQRCode(data, size)
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
@@ -187,7 +187,7 @@ Creates a Swiss QR Code.
   
 ---
   
-#### attachTo(doc)
+#### SwissQRCode.attachTo(doc)
   
 `public`  
   
@@ -213,7 +213,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)
   
 ---
   
-#### constructor(data)
+#### new Table(data)
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L136C2)  
   
@@ -264,7 +264,7 @@ const table = {
   
 ---
   
-#### attachTo(doc)
+#### Table.attachTo(doc)
   
 `public`  
   
