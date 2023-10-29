@@ -74,7 +74,7 @@ PDFKit provides a pre-built bundle that can be used directly in the browser. Sim
 ```html
  <script
   type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/swissqrbill@alpha/lib/bundle/swissqrbill.js"
+  src="https://cdn.jsdelivr.net/npm/swissqrbill@beta/lib/bundle/swissqrbill.js"
 ></script>
 ```
 

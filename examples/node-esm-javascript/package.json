@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "pdfkit": "^0.13.0",
-    "swissqrbill": "alpha"
+    "swissqrbill": "beta"
   },
   "devDependencies": {
     "serve": "^14.2.1"
