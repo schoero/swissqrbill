@@ -31,11 +31,11 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 
 ## Links
 
+* [Migration from v3 to v4](#migration-from-v3-to-v4)
 * [Features](#features)
 * [Installation](#installation)
 * [Importing the library](#importing-the-library)
 * [Quick start](#quick-start)
-* [Browser usage](#browser-usage)
 * [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
 * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
 * [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
@@ -43,6 +43,12 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
 
 <br/>
+
+## Migration from v3 to v4
+
+In SwissQRBill v4, large parts of the application have been rewritten to make the API more flexible. This means that you have to make some changes to your code when upgrading from v3 to v4.
+
+Please read the [migration guide](./docs/migration-v3-to-v4.md) to learn more about the changes and how to migrate your code.
 
 ## Features
 
@@ -66,35 +72,19 @@ npm i swissqrbill
 
 ## Importing the library
 
-### Node.js
-
-In versions prior to v4.0.0, you could include SwissQRBill like this:
-
-```js
-const SwissQRBill = require("swissqrbill"); // CommonJS. Not tree-shakeable.
-```
-
-<br/>
-
-In SwissQRBill `>=4.0.0` this is no longer possible. Instead yo
-
-```ts
-// PDF
-import { SwissQRBill } from "swissqrbill/pdf";
-// SVG
-import { SwissQRBill } from "swissqrbill/svg";
-// utils
-import { mm2pt } from "swissqrbill/utils";
-```
+Depending on the environment you are using, you may need to import the library differently. Please read the [importing documentation][importing documentation] to find out the best way to import the library for your environment.
 
 <br/>
 
 ## Quick start
 
-Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill.PDF` instance and pass your billing data object as the first parameter and your output path as the second parameter.
+Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill` instance and pass your billing data object as the first parameter and your output path as the second parameter.
 
 ```js
-import { PDF } from "swissqrbill/pdf";
+import { createWriteStream } from "node:fs";
+
+import PDFDocument from "pdfkit";
+import { SwissQRBill } from "swissqrbill/pdf";
 
 const data = {
   amount: 1199.95,
@@ -119,44 +109,26 @@ const data = {
   reference: "210000000003139471430009017"
 };
 
-const pdf = new PDF(data, "qr-bill.pdf", () => {
-  console.log("PDF has been successfully created.");
-});
+const pdf = new PDFDocument({ size: "A4" });
+const qrBill = new SwissQRBill(data);
+const stream = createWriteStream("qr-bill.pdf");
+pdf.pipe(stream);
+qrBill.attachTo(pdf);
+pdf.end();
 ```
 
-This will create the PDF file above. You can pass an optional third parameter containing options such as language or size etc. as well as a callback function that gets called right after the file has finished writing.
-A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
+This will create the PDF file above. You can pass an optional parameter containing options to the `SwissQRBill` constructor.
+A complete documentation for all methods and parameters can be found in the [docs/][repository docs] directory of this repository.
 
 <br/>
 <br/>
-
-## Browser usage
-
-> **Note:** Please read the [importing the library](#importing-the-library) section above, how you should import the library for browser usage.
-
-To use SwissQRBill inside browsers, you have to pass a writableStream in the second parameter, instead of the output path. To create a writableStream in the browser you can use the built in `SwissQRBill.BlobStream()` function.
-
-```js
-import { BlobStream, PDF } from "swissqrbill/pdf";
-
-const stream = new BlobStream();
-const pdf = new PDF(data, stream);
-
-pdf.on("finish", () => {
-  const iframe = document.getElementById("iframe");
-  if(iframe){
-    iframe.src = stream.toBlobURL("application/pdf");
-  }
-  console.log("PDF has been successfully created.");
-});
-```
 
 Alternatively, you could render the QR Bill as a scalable vector graphic (SVG). But keep in mind, using SVG you can only render the QR Bill part and not an entire invoice.
 
 ```js
-import { SVG } from "swissqrbill/svg";
+import { SwissQRBill } from "swissqrbill/svg";
 
-const svg = new SVG(data);
+const svg = new SwissQRBill(data);
 document.body.appendChild(svg.element);
 ```
 
@@ -165,9 +137,13 @@ document.body.appendChild(svg.element);
 
 ## Further information
 
-SwissQRBill.PDF extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/schoero/SwissQRBill/tree/master/doc/api.md#methods).
+SwissQRBill uses [PDFKit](https://github.com/foliojs/pdfkit) to generate the PDF files.
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
-A simple guide how to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
+A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-bill.md][how to create a complete bill]. You will learn how to create a PDF that looks like this:
 
 [<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+
+[importing documentation]: ./docs/importing.md
+[repository docs]: ./docs/
+[how to create a complete bill]: ./docs/how-to-create-a-complete-bill.md
