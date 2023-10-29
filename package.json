@@ -114,7 +114,7 @@
     "glob": "^10.3.10",
     "pdfkit": "^0.13.0",
     "typescript": "^5.2.2",
-    "unwritten": "^0.1.1",
+    "unwritten": "^0.1.2",
     "vite-plugin-dts": "^3.6.2",
     "vite-plugin-no-bundle": "^3.0.0",
     "vitest": "^0.34.6"
