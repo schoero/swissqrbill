@@ -30,6 +30,8 @@
   
 ## Classes
   
+---
+  
 ### SwissQRBill
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)  
@@ -47,93 +49,95 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)
 - **data** [`Data`](./types.md#data)  
 - **options** [`SVGOptions`](./types.md#svgoptions) `optional`  
   
-##### Return Type
+###### Return Type
   
 [`SwissQRBill`](#swissqrbill)  
   
-### Property
+#### Property
   
 ---
   
-#### SwissQRBill.instance
+##### SwissQRBill.instance
   
 `protected`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)  
   
-##### Type
+###### Type
   
 `SVG`  
   
-### Method
+#### Method
   
 ---
   
-#### SwissQRBill.toString()
+##### SwissQRBill.toString()
   
 `public`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L59C2)  
   
-##### Return Type
+###### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG as a `string`  
   
-##### Description
+###### Description
   
 Outputs the SVG as a string.  
   
-### Getters
+#### Getters
   
 ---
   
-#### SwissQRBill.outerHTML()
+##### SwissQRBill.outerHTML()
   
 `public`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)  
   
-##### Return Type
+###### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
   
 ---
   
-#### SwissQRBill.element()
+##### SwissQRBill.element()
   
 `public`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L69C2)  
   
-##### Return Type
+###### Return Type
   
 `SVGElement` The SVG element.  
   
-##### Description
+###### Description
   
 Returns the SVG element.  
   
-## SwissQRCode
+---
+  
+### SwissQRCode
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)  
   
-### Construct Signature
+#### Construct Signature
   
 ---
   
-#### new SwissQRCode(data, size)
+##### new SwissQRCode(data, size)
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
-##### Parameters
+###### Parameters
   
 - **data** [`Data`](./types.md#data) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
-##### Return Type
+###### Return Type
   
 [`SwissQRCode`](#swissqrcode)  
   
-##### Description
+###### Description
   
 Creates a Swiss QR Code.  

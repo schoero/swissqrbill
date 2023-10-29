@@ -139,9 +139,13 @@
   
 ## Namespaces
   
+---
+  
 ### pdf
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L2C7)  
+  
+---
   
 #### pdf.SwissQRBill
   
@@ -165,143 +169,147 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)
 - **data** [`Data`](#typesdata) The data to be used for the QR Bill.  
 - **options** [`PDFOptions`](#typespdfoptions) Options to define how the QR Bill should be rendered. `optional`  
   
-##### Return Type
+###### Return Type
   
 [`SwissQRBill`](#pdfswissqrbill)  
   
-##### Description
+###### Description
   
 Creates a new SwissQRBill instance.  
   
-### Properties
+##### Properties
   
 ---
   
-#### pdf.SwissQRBill.width
+###### pdf.SwissQRBill.width
   
 `public` `static` `readonly`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)  
   
-##### Type
+###### Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-##### Description
+###### Description
   
 The horizontal size of the QR Bill.  
   
 ---
   
-#### pdf.SwissQRBill.height
+###### pdf.SwissQRBill.height
   
 `public` `static` `readonly`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)  
   
-##### Type
+###### Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-##### Description
+###### Description
   
 The vertical size of the QR Bill.  
   
-### Methods
+##### Methods
   
 ---
   
-#### pdf.SwissQRBill.attachTo(doc, xPosition, yPosition)
+###### pdf.SwissQRBill.attachTo(doc, xPosition, yPosition)
   
 `public`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
   
-##### Parameters
+###### Parameters
   
 - **doc** `PDFDocument` The PDFKit instance  
 - **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed. Default: `0`  
 - **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-##### Return Type
+###### Return Type
   
 `void`  
   
-##### Description
+###### Description
   
 Adds the QR Bill to the bottom of the current page if there is enough space,
 otherwise it will create a new page for the QR Bill.  
   
 ---
   
-#### pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
+###### pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
   
 `public` `static`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)  
   
-##### Parameters
+###### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance  
 - **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed.  
 - **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed.  
   
-##### Return Type
+###### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if there is enough space, otherwise `false`  
   
-##### Description
+###### Description
   
 Checks whether there is enough space on the current page to add the QR Bill.  
   
-## pdf.SwissQRCode
+---
+  
+#### pdf.SwissQRCode
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)  
   
-### Construct Signature
+##### Construct Signature
   
 ---
   
-#### new pdf.SwissQRCode(data, size)
+###### new pdf.SwissQRCode(data, size)
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
-##### Parameters
+###### Parameters
   
 - **data** [`Data`](#typesdata) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
-##### Return Type
+###### Return Type
   
 [`SwissQRCode`](#pdfswissqrcode)  
   
-##### Description
+###### Description
   
 Creates a Swiss QR Code.  
   
-### Method
+##### Method
   
 ---
   
-#### pdf.SwissQRCode.attachTo(doc)
+###### pdf.SwissQRCode.attachTo(doc)
   
 `public`  
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L27C2)  
   
-##### Parameter
+###### Parameter
   
 - **doc** `PDFDocument` The PDF document to attach the Swiss QR Code to.  
   
-##### Return Type
+###### Return Type
   
 `void`  
   
-##### Description
+###### Description
   
 Attaches the Swiss QR Code to a PDF document.  
   
-## pdf.PDFTable
+---
+  
+#### pdf.PDFTable
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)  
   
@@ -350,7 +358,9 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
 - **pdf.x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Horizontal start position of the table. `optional`
 - **pdf.y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Vertical start position of the table. `optional`
   
-## pdf.PDFRow
+---
+  
+#### pdf.PDFRow
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)  
   
@@ -400,7 +410,9 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
   
-## pdf.PDFColumn
+---
+  
+#### pdf.PDFColumn
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)  
   
@@ -444,31 +456,33 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell `optional`
 - **pdf.width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of the cell. `optional`
   
-## pdf.Table
+---
+  
+#### pdf.Table
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)  
   
-### Construct Signature
+##### Construct Signature
   
 ---
   
-#### new pdf.Table(data)
+###### new pdf.Table(data)
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L136C2)  
   
-##### Parameter
+###### Parameter
   
 - **data** [`PDFTable`](#pdfpdftable) An Object which contains the table information.  
   
-##### Return Type
+###### Return Type
   
 [`Table`](#pdftable) The Table instance.  
   
-##### Description
+###### Description
   
 Inserts a table to the document.  
   
-##### Example
+###### Example
   
 ```ts
 const table = {
@@ -499,181 +513,199 @@ const table = {
 };
 ```  
   
-### Method
+##### Method
   
 ---
   
-#### pdf.Table.attachTo(doc)
+###### pdf.Table.attachTo(doc)
   
 `public`  
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C2)  
   
-##### Parameter
+###### Parameter
   
 - **doc** `PDFDocument` The PDFKit document instance  
   
-##### Return Type
+###### Return Type
   
 [`Table`](#pdftable) The Table instance.  
   
-##### Throws
+###### Throws
   
 - `Error` Throws an error if no table rows are provided.
   
-##### Description
+###### Description
   
 Attaches the table to a PDFKit document instance.  
   
-# svg
+---
+  
+### svg
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L3C7)  
   
-## svg.SwissQRBill
+---
+  
+#### svg.SwissQRBill
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)  
   
-### Construct Signature
+##### Construct Signature
   
 ---
   
-#### new svg.SwissQRBill(data\[, options\])
+###### new svg.SwissQRBill(data\[, options\])
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
   
-##### Parameters
+###### Parameters
   
 - **data** [`Data`](#typesdata)  
 - **options** [`SVGOptions`](#typessvgoptions) `optional`  
   
-##### Return Type
+###### Return Type
   
 [`SwissQRBill`](#svgswissqrbill)  
   
-### Property
+##### Property
   
 ---
   
-#### svg.SwissQRBill.instance
+###### svg.SwissQRBill.instance
   
 `protected`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)  
   
-##### Type
+###### Type
   
 `SVG`  
   
-### Method
+##### Method
   
 ---
   
-#### svg.SwissQRBill.toString()
+###### svg.SwissQRBill.toString()
   
 `public`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L59C2)  
   
-##### Return Type
+###### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG as a `string`  
   
-##### Description
+###### Description
   
 Outputs the SVG as a string.  
   
-### Getters
+##### Getters
   
 ---
   
-#### svg.SwissQRBill.outerHTML()
+###### svg.SwissQRBill.outerHTML()
   
 `public`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)  
   
-##### Return Type
+###### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
   
 ---
   
-#### svg.SwissQRBill.element()
+###### svg.SwissQRBill.element()
   
 `public`  
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L69C2)  
   
-##### Return Type
+###### Return Type
   
 `SVGElement` The SVG element.  
   
-##### Description
+###### Description
   
 Returns the SVG element.  
   
-## svg.SwissQRCode
+---
+  
+#### svg.SwissQRCode
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)  
   
-### Construct Signature
+##### Construct Signature
   
 ---
   
-#### new svg.SwissQRCode(data, size)
+###### new svg.SwissQRCode(data, size)
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
-##### Parameters
+###### Parameters
   
 - **data** [`Data`](#typesdata) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
-##### Return Type
+###### Return Type
   
 [`SwissQRCode`](#svgswissqrcode)  
   
-##### Description
+###### Description
   
 Creates a Swiss QR Code.  
   
-# types
+---
+  
+### types
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L4C7)  
   
-## types.Currency
+---
+  
+#### types.Currency
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)  
   
-### Type
+##### Type
   
 `"CHF"` | `"EUR"`  
   
-## types.Size
+---
+  
+#### types.Size
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)  
   
-### Type
+##### Type
   
 `"A4"` | `"A6"` | `"A6/5"`  
   
-## types.Language
+---
+  
+#### types.Language
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)  
   
-### Type
+##### Type
   
 `"DE"` | `"EN"` | `"FR"` | `"IT"`  
   
-## types.FontName
+---
+  
+#### types.FontName
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)  
   
-### Type
+##### Type
   
 `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`  
   
-## types.Data
+---
+  
+#### types.Data
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)  
   
@@ -693,7 +725,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
   QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
   Creditor Reference (ISO 11649): Maximum 25 characters. `optional`
   
-## types.Debtor
+---
+  
+#### types.Debtor
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)  
   
@@ -704,7 +738,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)
 - **types.zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**
 - **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
   
-## types.Creditor
+---
+  
+#### types.Creditor
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)  
   
@@ -716,7 +752,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)
 - **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
 - **types.account** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN. **21 characters.**
   
-## types.QRBillOptions
+---
+  
+#### types.QRBillOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)  
   
@@ -726,7 +764,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
-## types.PDFOptions
+---
+  
+#### types.PDFOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)  
   
@@ -737,7 +777,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **types.separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
-## types.SVGOptions
+---
+  
+#### types.SVGOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)  
   
@@ -747,345 +789,391 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
-# utils
+---
+  
+### utils
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L5C7)  
   
-## utils.isQRIBAN(iban)
+---
+  
+#### utils.isQRIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)  
   
-### Parameter
+##### Parameter
   
 - **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN to be checked.  
   
-### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given IBAN is a QR-IBAN and `false`  
   
-### Description
+##### Description
   
 Checks whether the given iban is a QR-IBAN or not.  
   
-## utils.isIBANValid(iban)
+---
+  
+#### utils.isIBANValid(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)  
   
-### Parameter
+##### Parameter
   
 - **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN to be checked.  
   
-### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the checksum of the given IBAN is valid and `false`  
   
-### Description
+##### Description
   
 Validates the given IBAN.  
   
-## utils.formatIBAN(iban)
+---
+  
+#### utils.formatIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
   
-### Parameter
+##### Parameter
   
 - **iban** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN to be formatted.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted IBAN.  
   
-### Description
+##### Description
   
 Formats the given IBAN according the specifications to be easily readable.  
   
-## utils.isQRReference(reference)
+---
+  
+#### utils.isQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The Reference to be checked.  
   
-### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is a QR-Reference and `false`  
   
-### Description
+##### Description
   
 Checks whether the given reference is a QR-Reference or not.  
   
-### Remark
+##### Remark
   
 The QR-Reference is a 27 digits long string containing only digits. The last digit is the checksum.  
   
-## utils.isQRReferenceValid(reference)
+---
+  
+#### utils.isQRReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The reference to be checked.  
   
-### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is valid and `false`  
   
-### Description
+##### Description
   
 Validates the given QR-Reference.  
   
-## utils.isSCORReference(reference)
+---
+  
+#### utils.isSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The Reference to be checked.  
   
-### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is a SCOR-Reference and `false`  
   
-### Description
+##### Description
   
 Checks whether the given reference is a SCOR-Reference or not.  
   
-### Remark
+##### Remark
   
 The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing a 2 digit checksum and a max 21 digits long reference.  
   
-## utils.isSCORReferenceValid(reference)
+---
+  
+#### utils.isSCORReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The reference to be checked.  
   
-### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if the given reference is valid and `false`  
   
-### Description
+##### Description
   
 Validates the given SCOR-Reference.  
   
-## utils.calculateSCORReferenceChecksum(reference)
+---
+  
+#### utils.calculateSCORReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The max 21 digits long reference (without the "RF" and the 2 digit checksum) whose checksum should be calculated.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The calculated checksum as 2 digit string.  
   
-### Description
+##### Description
   
 Calculates the checksum according to the ISO 11649 standard.  
   
-## utils.calculateQRReferenceChecksum(reference)
+---
+  
+#### utils.calculateQRReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The 26 digits long reference (without the checksum) whose checksum should be calculated.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The calculated checksum.  
   
-### Description
+##### Description
   
 Calculates the checksum according the specifications.  
   
-## utils.formatQRReference(reference)
+---
+  
+#### utils.formatQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The QR-Reference to be formatted.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted QR-Reference.  
   
-### Description
+##### Description
   
 Formats the given QR-Reference according the specifications to be easily readable.  
   
-## utils.formatSCORReference(reference)
+---
+  
+#### utils.formatSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The SCOR-Reference to be formatted.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted SCOR-Reference.  
   
-### Description
+##### Description
   
 Formats the given SCOR-Reference according the specifications to be easily readable.  
   
-## utils.formatReference(reference)
+---
+  
+#### utils.formatReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The reference to be formatted.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted reference.  
   
-### Description
+##### Description
   
 Detects the type of the given reference and formats it according the specifications to be easily readable.  
   
-## utils.formatAmount(amount)
+---
+  
+#### utils.formatAmount(amount)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
   
-### Parameter
+##### Parameter
   
 - **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the amount to be formatted.  
   
-### Return Type
+##### Return Type
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The formatted amount.  
   
-### Description
+##### Description
   
 Formats the given amount according the specifications to be easily readable.  
   
-## utils.mm2pt(millimeters)
+---
+  
+#### utils.mm2pt(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
   
-### Parameter
+##### Parameter
   
 - **millimeters** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The millimeters you want to convert to points.  
   
-### Return Type
+##### Return Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted millimeters in points.  
   
-### Description
+##### Description
   
 Converts millimeters to points.  
   
-## utils.pt2mm(points)
+---
+  
+#### utils.pt2mm(points)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
   
-### Parameter
+##### Parameter
   
 - **points** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The points you want to convert to millimeters.  
   
-### Return Type
+##### Return Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted points in millimeters.  
   
-### Description
+##### Description
   
 Converts points to millimeters.  
   
-## utils.mm2px(millimeters)
+---
+  
+#### utils.mm2px(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
   
-### Parameter
+##### Parameter
   
 - **millimeters** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The millimeters you want to convert to pixels.  
   
-### Return Type
+##### Return Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted millimeters in pixels.  
   
-### Description
+##### Description
   
 Converts millimeters to pixels.  
   
-## utils.px2mm(pixels)
+---
+  
+#### utils.px2mm(pixels)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
   
-### Parameter
+##### Parameter
   
 - **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the pixels you want to convert to millimeters.  
   
-### Return Type
+##### Return Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The converted pixels in millimeters.  
   
-### Description
+##### Description
   
 Converts pixels to millimeters.  
   
-## utils.getReferenceType(reference)
+---
+  
+#### utils.getReferenceType(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
   
-### Parameter
+##### Parameter
   
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) The reference to get the type of.  
   
-### Return Type
+##### Return Type
   
 `"NON"` | `"QRR"` | `"SCOR"` The type of the given reference.  
   
-### Description
+##### Description
   
 Detects the type of the given reference.  
   
-# errors
+---
+  
+### errors
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L6C7)  
   
-## errors.resolveMessageParams(message, params)
-  
-Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L13C0)  
-  
-### Parameters
-  
-- **message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
-- **params** [`type literal`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)  
-  
-### Return Type
-  
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
-  
-## errors.ValidationError
-  
-Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L1C0)  
-  
-### Construct Signature
-  
 ---
   
-#### new errors.ValidationError(message\[, params\])
+#### errors.resolveMessageParams(message, params)
   
-Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L2C2)  
+Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L13C0)  
   
 ##### Parameters
   
 - **message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
-- **params** [`type literal`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) `optional`  
+- **params** [`type literal`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)  
   
 ##### Return Type
   
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
+  
+---
+  
+#### errors.ValidationError
+  
+Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L1C0)  
+  
+##### Construct Signature
+  
+---
+  
+###### new errors.ValidationError(message\[, params\])
+  
+Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L2C2)  
+  
+###### Parameters
+  
+- **message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
+- **params** [`type literal`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) `optional`  
+  
+###### Return Type
+  
 [`ValidationError`](#errorsvalidationerror)  
   
-## errors.ValidationErrors
+---
+  
+#### errors.ValidationErrors
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L19C0)  
   
