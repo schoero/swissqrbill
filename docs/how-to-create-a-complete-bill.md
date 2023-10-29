@@ -93,7 +93,7 @@ const data = {
 
 #### Adding a logo
 
-It is possible to add raster images like `.jpg` or `.png` using the built in `pdf.image()` method from PDFKit. Take a look at the [original PDFKit documentation](http://pdfkit.org/docs/images.html) for further details on that.
+It is possible to add raster images like `.jpg` or `.png` using the built in `image()` method from PDFKit. Take a look at the [PDFKit documentation](http://pdfkit.org/docs/images.html) for further details on that.
 
 If you have your logo as a vector graphic like `.svg`, it is better to include it as such, to benefit from the lossless scalability of vector images.  
 Unfortunately, by default, we can't just include the `.svg` image as a whole, we have to include each vector path separately. But there is a npm module called [SVG-to-PDFKit](https://github.com/alafr/SVG-to-PDFKit) that aims to make this possible.
@@ -128,12 +128,15 @@ Because the coordinate system of a PDF is based on points, SwissQRBill provides 
 import { mm2pt } from "swissqrbill/utils";
 ```
 
-We use the [`translate()`](http://pdfkit.org/docs/vector.html#transformations) method of `PDFDocument` to position the logo 2cm from the left side and 14mm from the top. Then we fill the path with our colors. The `save()` and `restore()` methods are used to save the previous coordinates and restore them after the logo is rendered. This way we can change the positioning of the logo without affecting the rest of the document.
+We use the [`translate()`](http://pdfkit.org/docs/vector.html#transformations) method of `PDFDocument` to position the logo 2cm from the left side and 14mm from the top.  
+Then we fill the path with our colors.  
+  
+The `save()` and `restore()` methods are used to save the previous coordinates and restore them after the logo is rendered. This way we can change the positioning of the logo without affecting the rest of the document.
 
 #### Adding the addresses
 
 Next, we add the address of our business and the customer address to the PDF. You can use `\n` to create a new line.
-Please read the [original PDFKit documentation](http://pdfkit.org/docs/text.html) for more information on how to add content to a PDF.
+Please read the [PDFKit documentation](http://pdfkit.org/docs/text.html) for more information on how to add content to a PDF.
 
 ```ts
 pdf.fontSize(12);
@@ -355,7 +358,7 @@ Once our document is finished, we have to call the `end()` method from the [`PDF
 pdf.end();
 ```
 
-When you run the code above, SwissQRBill should generate a PDF file named qr-bill.pdf in the output directory that looks like this:
+When you run the code above, SwissQRBill should generate a PDF file named `qr-bill.pdf` that looks like this:
 
 [<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/blob/master/assets/complete-qr-bill.pdf)
 
