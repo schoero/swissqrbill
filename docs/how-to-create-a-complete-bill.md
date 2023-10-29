@@ -144,7 +144,7 @@ Please read the [PDFKit documentation](http://pdfkit.org/docs/text.html) for mor
 pdf.fontSize(12);
 pdf.fillColor("black");
 pdf.font("Helvetica");
-pdf.text(`${data.creditor.name}\n${data.creditor.address}\n${data.creditor.zip} ${data.creditor.city}`, mm2pt(20), mm2pt(35), {
+pdf.text(`${data.creditor.name}\n${data.creditor.address} ${data.creditor.buildingNumber}\n${data.creditor.zip} ${data.creditor.city}`, mm2pt(20), mm2pt(35), {
   align: "left",
   height: mm2pt(50),
   width: mm2pt(100)
@@ -152,7 +152,7 @@ pdf.text(`${data.creditor.name}\n${data.creditor.address}\n${data.creditor.zip} 
 
 pdf.fontSize(12);
 pdf.font("Helvetica");
-pdf.text(`${data.debtor.name}\n${data.debtor.address}\n${data.debtor.zip} ${data.debtor.city}`, mm2pt(130), mm2pt(60), {
+pdf.text(`${data.debtor.name}\n${data.debtor.address} ${data.debtor.buildingNumber}\n${data.debtor.zip} ${data.debtor.city}`, mm2pt(130), mm2pt(60), {
   align: "left",
   height: mm2pt(50),
   width: mm2pt(70)
