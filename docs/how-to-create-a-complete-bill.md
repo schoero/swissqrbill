@@ -5,16 +5,16 @@
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][stackblitz]
 
-In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use some methods from the PDFKit module as well as some methods from SwissQRBill which extends PDFKit functionality with different methods.
-
-The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)<br/>
-The methods used from SwissQRBill are documented in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
-
-The complete source code can be found in [examples/how-to-create-a-complete-bill][source code]. A live version of the example is available on [StackBlitz][stackblitz].
+In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use PDFKit to create a PDF document with a Logo, title and the address of the biller, as well as the recipient. Then we use SwissQRBill to create a Table containing the billable items and add the QR slip to the bottom of the page.
+  
+The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)  
+The documentation of SwissQRBill can be found in the [docs](../docs/) directory of this repository.  
+  
+The complete source code is available in [examples/how-to-create-a-complete-bill][source code]. A live version of the example is available on [StackBlitz][stackblitz].
 
 ## Prerequisites
 
-To follow this manual you should have a basic understanding of JavaScript and Node.js. You should also have installed Node.js and npm on your computer. If you haven't already done so, you can download Node.js from [nodejs.org](https://nodejs.org/en/download/).
+To follow this manual you should have a basic understanding of JavaScript and Node.js. You should also have installed Node.js and npm on your computer. If you haven't already, you can download Node.js from [nodejs.org](https://nodejs.org/en/download/).
 Node.js comes with npm pre-installed.
 
 ## Setup
@@ -25,13 +25,13 @@ Node.js comes with npm pre-installed.
 npm i swissqrbill
 ```
 
-In addition [PDFKit](https://www.npmjs.com/package/pdfkit) is required to create the PDF file itself. Install it using the following command:
+In addition, [PDFKit](https://www.npmjs.com/package/pdfkit) is required to create the PDF file itself. Install it using the following command:
 
 ```sh
 npm i pdfkit
 ```
 
-After the installation, PDFKit and SwissQRBill are available to be imported to the project. Take a look at the [Importing guide of SwissQRBill](https://github.com/schoero/SwissQRBill/blob/v4/docs/importing.md#importing-the-library), to learn how to import the library for the different environments.
+After the installation, PDFKit and SwissQRBill are available to be imported to the project. Take a look at the [importing guide of SwissQRBill](https://github.com/schoero/SwissQRBill/blob/v4/docs/importing.md#importing-the-library), to learn how to import the library for the different environments.
 
 ```ts
 import PDFDocument from "pdfkit";
