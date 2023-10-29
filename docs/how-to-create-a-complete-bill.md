@@ -46,7 +46,7 @@ We start by creating the PDF file itself. To do this, we create a new instance o
 const pdf = new PDFDocument({ size: "A4" });
 ```
 
-PDFKit operates with streams. This means that we can't just write the PDF file to the disk, but we have to pipe the output to a writable stream. In this example we are going to use the [`createWriteStream`](https://nodejs.org/api/fs.html#fscreatewritestreampath-options) function of the `fs` module from Node.js to create a writable stream to a file called `complete-qr-bill.pdf`.
+PDFKit operates with streams. This means that we can't just write the PDF file to the disk, but we have to pipe the output to a writable stream. In this example we are going to use the [`createWriteStream`](https://nodejs.org/api/fs.html#fscreatewritestreampath-options) function of the `fs` module from Node.js to create a writable stream to a file called `qr-bill.pdf`.
 
 The [`createWriteStream`](https://nodejs.org/api/fs.html#fscreatewritestreampath-options) function can be imported from the `fs` module like this:
 
