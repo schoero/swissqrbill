@@ -1,3 +1,4 @@
+import { createWriteStream } from "fs";
 import { SwissQRBill, Table } from "swissqrbill/pdf";
 import { mm2pt } from "swissqrbill/utils";
 
