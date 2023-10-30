@@ -36,7 +36,7 @@ export class SwissQRBill {
     this.data = cleanData(this.data);
 
     // Validate data
-    void validateData(this.data);
+    validateData(this.data);
 
     // Apply options
     this.language = options?.language !== undefined ? options.language : this.language;

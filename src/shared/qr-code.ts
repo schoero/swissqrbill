@@ -11,7 +11,7 @@ export function generateQRData(data: Data): string {
 
   const cleanedData = cleanData(data);
 
-  void validateData(cleanedData);
+  validateData(cleanedData);
 
   const amount = cleanedData.amount?.toFixed(2);
   const reference = getReferenceType(cleanedData.reference);
@@ -133,7 +133,7 @@ export function renderSwissCross(size: number, renderRectFunction: (x: number, y
   const swissCrossThickness = mm2pt(1.17) * scale;
   const swissCrossLength = mm2pt(3.89) * scale;
 
-  void renderRectFunction(
+  renderRectFunction(
     size / 2 - swissCrossWhiteBackgroundSize / 2,
     size / 2 - swissCrossWhiteBackgroundSize / 2,
     swissCrossWhiteBackgroundSize,
@@ -141,7 +141,7 @@ export function renderSwissCross(size: number, renderRectFunction: (x: number, y
     "white"
   );
 
-  void renderRectFunction(
+  renderRectFunction(
     size / 2 - swissCrossBlackBackgroundSize / 2,
     size / 2 - swissCrossBlackBackgroundSize / 2,
     swissCrossBlackBackgroundSize,
@@ -149,7 +149,7 @@ export function renderSwissCross(size: number, renderRectFunction: (x: number, y
     "black"
   );
 
-  void renderRectFunction(
+  renderRectFunction(
     size / 2 - swissCrossLength / 2,
     size / 2 - swissCrossThickness / 2,
     swissCrossLength,
@@ -157,7 +157,7 @@ export function renderSwissCross(size: number, renderRectFunction: (x: number, y
     "white"
   );
 
-  void renderRectFunction(
+  renderRectFunction(
     size / 2 - swissCrossThickness / 2,
     size / 2 - swissCrossLength / 2,
     swissCrossThickness,
