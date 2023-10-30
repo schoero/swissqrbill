@@ -38,7 +38,7 @@ export const backgroundColorOverrides: PDFTable = {
 
 export const textColorOverrides: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
       columns: [
@@ -75,7 +75,7 @@ export const textColorOverrides: PDFTable = {
 
 export const alignmentVariants: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
       columns: [
@@ -136,7 +136,7 @@ export const alignmentVariants: PDFTable = {
 
 export const alignmentOverrides: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
       align: "left",
@@ -179,25 +179,25 @@ export const borderThickness: PDFTable = {
       columns: [
         {
           align: "center",
-          border: 1,
+          borderWidth: 1,
           text: "1",
           verticalAlign: "center"
         },
         {
           align: "center",
-          border: 2,
+          borderWidth: 2,
           text: "2",
           verticalAlign: "center"
         },
         {
           align: "center",
-          border: 3,
+          borderWidth: 3,
           text: "3",
           verticalAlign: "center"
         },
         {
           align: "center",
-          border: 4,
+          borderWidth: 4,
           text: "4",
           verticalAlign: "center"
         }
@@ -208,25 +208,25 @@ export const borderThickness: PDFTable = {
       columns: [
         {
           align: "center",
-          border: [4, 1, 1, 4],
+          borderWidth: [4, 1, 1, 4],
           text: "4, 1, 1, 4",
           verticalAlign: "center"
         },
         {
           align: "center",
-          border: [1],
+          borderWidth: [1],
           text: "1",
           verticalAlign: "center"
         },
         {
           align: "center",
-          border: 1,
+          borderWidth: 1,
           text: "1",
           verticalAlign: "center"
         },
         {
           align: "center",
-          border: [1, 4, 4, 1],
+          borderWidth: [1, 4, 4, 1],
           text: "1, 4, 4, 1",
           verticalAlign: "center"
         }
@@ -239,15 +239,15 @@ export const borderThickness: PDFTable = {
 
 export const borderOverrides: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
-      border: 2,
+      borderWidth: 2,
       columns: [
         {
           text: "row, 2"
         }, {
-          border: 3,
+          borderWidth: 3,
           text: "col, 3"
         }, {
           text: "row, 2"
@@ -260,7 +260,7 @@ export const borderOverrides: PDFTable = {
         {
           text: "table, 1"
         }, {
-          border: 3,
+          borderWidth: 3,
           text: "col, 3"
         }, {
           text: "table, 1"
@@ -274,7 +274,7 @@ export const borderOverrides: PDFTable = {
 
 export const borderColor: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   borderColor: "#ff0000",
   rows: [
     {
@@ -310,7 +310,7 @@ export const borderColor: PDFTable = {
 };
 
 export const paddingVariants: PDFTable = {
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
       columns: [
@@ -357,7 +357,7 @@ export const paddingVariants: PDFTable = {
 };
 
 export const paddingOverrides: PDFTable = {
-  border: 1,
+  borderWidth: 1,
   padding: 10,
   rows: [
     {
@@ -390,7 +390,7 @@ export const paddingOverrides: PDFTable = {
 
 export const fontSizeOverrides: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   fontSize: 18,
   rows: [
     {
@@ -424,7 +424,7 @@ export const fontSizeOverrides: PDFTable = {
 
 export const autoWidth: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
       columns: [
@@ -523,7 +523,7 @@ export const autoWidth: PDFTable = {
 
 export const header: PDFTable = {
   align: "center",
-  border: 1,
+  borderWidth: 1,
   rows: [
     {
       columns: [

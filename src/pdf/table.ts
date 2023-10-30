@@ -5,12 +5,12 @@ export interface PDFTable {
   align?: "center" | "left" | "right";
   /** Background color of the table. */
   backgroundColor?: string;
-  /** Width of the borders of the row. */
-  border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  /** Width of the borders of the row. */
+  borderWidth?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** Font of the text inside the table. */
-  font?: string;
+  fontName?: string;
   /** Font size of the text inside the table. */
   fontSize?: number;
   /** Cell padding of the table cells. */
@@ -36,12 +36,12 @@ export interface PDFRow {
   align?: "center" | "left" | "right";
   /** Background color of the row. */
   backgroundColor?: string;
-  /** Width of the borders of the row. */
-  border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  /** Width of the borders of the row. */
+  borderWidth?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** Font of the text inside the row. */
-  font?: string;
+  fontName?: string;
   /** Font size of the text inside the row. */
   fontSize?: number;
   /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
@@ -69,12 +69,12 @@ export interface PDFColumn {
   align?: "center" | "left" | "right";
   /** Background color of the cell. */
   backgroundColor?: string;
-  /** Width of the borders of the row. */
-  border?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** The colors of the border */
   borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  /** Width of the borders of the row. */
+  borderWidth?: number | [top: number, right?: number, bottom?: number, left?: number];
   /** Font of the text inside the cell. */
-  font?: string;
+  fontName?: string;
   /** Font size of the text inside the cell. */
   fontSize?: number;
   /** Cell padding of the table cell. */
@@ -172,12 +172,12 @@ export class Table {
     const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
 
     const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
-    const tableBorder = this.data.border ? this.data.border : undefined;
+    const tableBorder = this.data.borderWidth ? this.data.borderWidth : undefined;
     const tableBorderColors = this.data.borderColor ? this.data.borderColor : "#000000";
     const tablePadding = this.data.padding ? this.data.padding : 0;
     const tableFontSize = this.data.fontSize ? this.data.fontSize : 11;
     const tableTextColor = this.data.textColor ? this.data.textColor : "#000000";
-    const tableFont = this.data.font ? this.data.font : "Helvetica";
+    const tableFont = this.data.fontName ? this.data.fontName : "Helvetica";
     const tableAlign = this.data.align ? this.data.align : undefined;
     const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
 
@@ -201,10 +201,10 @@ export class Table {
         const maxRowHeight = row.maxHeight;
         const rowPadding = row.padding ? row.padding : tablePadding;
         const rowBackgroundColor = row.backgroundColor ? row.backgroundColor : tableBackgroundColor;
-        const rowBorder = row.border ? row.border : tableBorder;
+        const rowBorder = row.borderWidth ? row.borderWidth : tableBorder;
         const rowBorderColors = row.borderColor ? row.borderColor : tableBorderColors;
         const rowFontSize = row.fontSize ? row.fontSize : tableFontSize;
-        const rowFont = row.font ? row.font : tableFont;
+        const rowFont = row.fontName ? row.fontName : tableFont;
         const rowTextColor = row.textColor ? row.textColor : tableTextColor;
         const rowAlign = row.align ? row.align : tableAlign;
         const rowVerticalAlign = row.verticalAlign ? row.verticalAlign : tableVerticalAlign;
@@ -232,10 +232,10 @@ export class Table {
           const columnWidth = column.width ? column.width : (tableWidth - widthUsed) / remainingColumns;
           const columnPadding = column.padding ? column.padding : rowPadding;
           const columnBackgroundColor = column.backgroundColor ? column.backgroundColor : rowBackgroundColor;
-          const columnBorder = column.border ? column.border : rowBorder;
+          const columnBorder = column.borderWidth ? column.borderWidth : rowBorder;
           const columnBorderColors = column.borderColor ? column.borderColor : rowBorderColors;
           const columnFontSize = column.fontSize ? column.fontSize : rowFontSize;
-          const columnFont = column.font ? column.font : rowFont;
+          const columnFont = column.fontName ? column.fontName : rowFont;
           const columnTextColor = column.textColor ? column.textColor : rowTextColor;
           const columnAlign = column.align ? column.align : rowAlign;
           const columnVerticalAlign = column.verticalAlign ? column.verticalAlign : rowVerticalAlign;
