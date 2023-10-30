@@ -11,13 +11,13 @@
   
     - Properties
   
-      - [SwissQRBill.width](#swissqrbillwidth)
-      - [SwissQRBill.height](#swissqrbillheight)
+      - [width](#swissqrbillwidth)
+      - [height](#swissqrbillheight)
   
     - Methods
   
-      - [SwissQRBill.attachTo(doc, xPosition, yPosition)](#swissqrbillattachtodoc-xposition-yposition)
-      - [SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)](#swissqrbillisspacesufficientdoc-xposition-yposition)
+      - [attachTo(doc, xPosition, yPosition)](#swissqrbillattachtodoc-xposition-yposition)
+      - [isSpaceSufficient(doc, xPosition, yPosition)](#swissqrbillisspacesufficientdoc-xposition-yposition)
   
   - [SwissQRCode](#swissqrcode)
   
@@ -27,7 +27,7 @@
   
     - Method
   
-      - [SwissQRCode.attachTo(doc)](#swissqrcodeattachtodoc)
+      - [attachTo(doc)](#swissqrcodeattachtodoc)
   
   - [Table](#table)
   
@@ -37,7 +37,7 @@
   
     - Method
   
-      - [Table.attachTo(doc)](#tableattachtodoc)
+      - [attachTo(doc)](#tableattachtodoc)
   
 - Interfaces
   
@@ -306,16 +306,6 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
 - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
-- **border** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
 - **borderColor** `union` The colors of the border `optional`
   
   - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -326,7 +316,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
     - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
     - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
-- **font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
+- **borderWidth** `union` Width of the borders of the row. `optional`
+  
+  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - `tuple`
+  
+    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
 - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the table. `optional`
 - **padding** `union` Cell padding of the table cells. `optional`
   
@@ -357,16 +357,6 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)
   
 - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
-- **border** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
 - **borderColor** `union` The colors of the border `optional`
   
   - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -377,7 +367,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)
     - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
     - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
-- **font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
+- **borderWidth** `union` Width of the borders of the row. `optional`
+  
+  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - `tuple`
+  
+    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
 - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the row. `optional`
 - **header** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) A header row gets inserted automatically on new pages. Only one header row is allowed. `optional`
 - **height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight `optional`
@@ -406,16 +406,6 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)
 - **text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
 - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the cell. `optional`
-- **border** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
 - **borderColor** `union` The colors of the border `optional`
   
   - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -426,7 +416,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)
     - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
     - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
-- **font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
+- **borderWidth** `union` Width of the borders of the row. `optional`
+  
+  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - `tuple`
+  
+    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
 - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the cell. `optional`
 - **padding** `union` Cell padding of the table cell. `optional`
   

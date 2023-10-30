@@ -11,16 +11,16 @@
   
     - Property
   
-      - [SwissQRBill.instance](#swissqrbillinstance)
+      - [instance](#swissqrbillinstance)
   
     - Method
   
-      - [SwissQRBill.toString()](#swissqrbilltostring)
+      - [toString()](#swissqrbilltostring)
   
     - Getters
   
-      - [SwissQRBill.outerHTML()](#swissqrbillouterhtml)
-      - [SwissQRBill.element()](#swissqrbillelement)
+      - [outerHTML()](#swissqrbillouterhtml)
+      - [element()](#swissqrbillelement)
   
   - [SwissQRCode](#swissqrcode)
   

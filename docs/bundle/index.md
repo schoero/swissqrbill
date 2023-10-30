@@ -7,135 +7,135 @@
   
     - Classes
   
-      - [pdf.SwissQRBill](#pdfswissqrbill)
+      - [SwissQRBill](#pdfswissqrbill)
   
         - Constructor
   
-          - [new pdf.SwissQRBill(data\[, options\])](#new-pdfswissqrbilldata-options)
+          - [new SwissQRBill(data\[, options\])](#new-pdfswissqrbilldata-options)
   
         - Properties
   
-          - [pdf.SwissQRBill.width](#pdfswissqrbillwidth)
-          - [pdf.SwissQRBill.height](#pdfswissqrbillheight)
+          - [width](#pdfswissqrbillwidth)
+          - [height](#pdfswissqrbillheight)
   
         - Methods
   
-          - [pdf.SwissQRBill.attachTo(doc, xPosition, yPosition)](#pdfswissqrbillattachtodoc-xposition-yposition)
-          - [pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)](#pdfswissqrbillisspacesufficientdoc-xposition-yposition)
+          - [attachTo(doc, xPosition, yPosition)](#pdfswissqrbillattachtodoc-xposition-yposition)
+          - [isSpaceSufficient(doc, xPosition, yPosition)](#pdfswissqrbillisspacesufficientdoc-xposition-yposition)
   
-      - [pdf.SwissQRCode](#pdfswissqrcode)
-  
-        - Constructor
-  
-          - [new pdf.SwissQRCode(data, size)](#new-pdfswissqrcodedata-size)
-  
-        - Method
-  
-          - [pdf.SwissQRCode.attachTo(doc)](#pdfswissqrcodeattachtodoc)
-  
-      - [pdf.Table](#pdftable)
+      - [SwissQRCode](#pdfswissqrcode)
   
         - Constructor
   
-          - [new pdf.Table(data)](#new-pdftabledata)
+          - [new SwissQRCode(data, size)](#new-pdfswissqrcodedata-size)
   
         - Method
   
-          - [pdf.Table.attachTo(doc)](#pdftableattachtodoc)
+          - [attachTo(doc)](#pdfswissqrcodeattachtodoc)
+  
+      - [Table](#pdftable)
+  
+        - Constructor
+  
+          - [new Table(data)](#new-pdftabledata)
+  
+        - Method
+  
+          - [attachTo(doc)](#pdftableattachtodoc)
   
     - Interfaces
   
-      - [pdf.PDFTable](#pdfpdftable)
-      - [pdf.PDFRow](#pdfpdfrow)
-      - [pdf.PDFColumn](#pdfpdfcolumn)
+      - [PDFTable](#pdfpdftable)
+      - [PDFRow](#pdfpdfrow)
+      - [PDFColumn](#pdfpdfcolumn)
   
   - [svg](#svg)
   
     - Classes
   
-      - [svg.SwissQRBill](#svgswissqrbill)
+      - [SwissQRBill](#svgswissqrbill)
   
         - Constructor
   
-          - [new svg.SwissQRBill(data\[, options\])](#new-svgswissqrbilldata-options)
+          - [new SwissQRBill(data\[, options\])](#new-svgswissqrbilldata-options)
   
         - Property
   
-          - [svg.SwissQRBill.instance](#svgswissqrbillinstance)
+          - [instance](#svgswissqrbillinstance)
   
         - Method
   
-          - [svg.SwissQRBill.toString()](#svgswissqrbilltostring)
+          - [toString()](#svgswissqrbilltostring)
   
         - Getters
   
-          - [svg.SwissQRBill.outerHTML()](#svgswissqrbillouterhtml)
-          - [svg.SwissQRBill.element()](#svgswissqrbillelement)
+          - [outerHTML()](#svgswissqrbillouterhtml)
+          - [element()](#svgswissqrbillelement)
   
-      - [svg.SwissQRCode](#svgswissqrcode)
+      - [SwissQRCode](#svgswissqrcode)
   
         - Constructor
   
-          - [new svg.SwissQRCode(data, size)](#new-svgswissqrcodedata-size)
+          - [new SwissQRCode(data, size)](#new-svgswissqrcodedata-size)
   
   - [types](#types)
   
     - Type aliases
   
-      - [types.Currency](#typescurrency)
-      - [types.Size](#typessize)
-      - [types.Language](#typeslanguage)
-      - [types.FontName](#typesfontname)
+      - [Currency](#typescurrency)
+      - [Size](#typessize)
+      - [Language](#typeslanguage)
+      - [FontName](#typesfontname)
   
     - Interfaces
   
-      - [types.Data](#typesdata)
-      - [types.Debtor](#typesdebtor)
-      - [types.Creditor](#typescreditor)
-      - [types.QRBillOptions](#typesqrbilloptions)
-      - [types.PDFOptions](#typespdfoptions)
-      - [types.SVGOptions](#typessvgoptions)
+      - [Data](#typesdata)
+      - [Debtor](#typesdebtor)
+      - [Creditor](#typescreditor)
+      - [QRBillOptions](#typesqrbilloptions)
+      - [PDFOptions](#typespdfoptions)
+      - [SVGOptions](#typessvgoptions)
   
   - [utils](#utils)
   
     - Functions
   
-      - [utils.isQRIBAN(iban)](#utilsisqribaniban)
-      - [utils.isIBANValid(iban)](#utilsisibanvalidiban)
-      - [utils.formatIBAN(iban)](#utilsformatibaniban)
-      - [utils.isQRReference(reference)](#utilsisqrreferencereference)
-      - [utils.isQRReferenceValid(reference)](#utilsisqrreferencevalidreference)
-      - [utils.isSCORReference(reference)](#utilsisscorreferencereference)
-      - [utils.isSCORReferenceValid(reference)](#utilsisscorreferencevalidreference)
-      - [utils.calculateSCORReferenceChecksum(reference)](#utilscalculatescorreferencechecksumreference)
-      - [utils.calculateQRReferenceChecksum(reference)](#utilscalculateqrreferencechecksumreference)
-      - [utils.formatQRReference(reference)](#utilsformatqrreferencereference)
-      - [utils.formatSCORReference(reference)](#utilsformatscorreferencereference)
-      - [utils.formatReference(reference)](#utilsformatreferencereference)
-      - [utils.formatAmount(amount)](#utilsformatamountamount)
-      - [utils.mm2pt(millimeters)](#utilsmm2ptmillimeters)
-      - [utils.pt2mm(points)](#utilspt2mmpoints)
-      - [utils.mm2px(millimeters)](#utilsmm2pxmillimeters)
-      - [utils.px2mm(pixels)](#utilspx2mmpixels)
-      - [utils.getReferenceType(reference)](#utilsgetreferencetypereference)
+      - [isQRIBAN(iban)](#utilsisqribaniban)
+      - [isIBANValid(iban)](#utilsisibanvalidiban)
+      - [formatIBAN(iban)](#utilsformatibaniban)
+      - [isQRReference(reference)](#utilsisqrreferencereference)
+      - [isQRReferenceValid(reference)](#utilsisqrreferencevalidreference)
+      - [isSCORReference(reference)](#utilsisscorreferencereference)
+      - [isSCORReferenceValid(reference)](#utilsisscorreferencevalidreference)
+      - [calculateSCORReferenceChecksum(reference)](#utilscalculatescorreferencechecksumreference)
+      - [calculateQRReferenceChecksum(reference)](#utilscalculateqrreferencechecksumreference)
+      - [formatQRReference(reference)](#utilsformatqrreferencereference)
+      - [formatSCORReference(reference)](#utilsformatscorreferencereference)
+      - [formatReference(reference)](#utilsformatreferencereference)
+      - [formatAmount(amount)](#utilsformatamountamount)
+      - [mm2pt(millimeters)](#utilsmm2ptmillimeters)
+      - [pt2mm(points)](#utilspt2mmpoints)
+      - [mm2px(millimeters)](#utilsmm2pxmillimeters)
+      - [px2mm(pixels)](#utilspx2mmpixels)
+      - [getReferenceType(reference)](#utilsgetreferencetypereference)
   
   - [errors](#errors)
   
     - Functions
   
-      - [errors.resolveMessageParams(message, params)](#errorsresolvemessageparamsmessage-params)
+      - [resolveMessageParams(message, params)](#errorsresolvemessageparamsmessage-params)
   
     - Classes
   
-      - [errors.ValidationError](#errorsvalidationerror)
+      - [ValidationError](#errorsvalidationerror)
   
         - Constructor
   
-          - [new errors.ValidationError(message\[, params\])](#new-errorsvalidationerrormessage-params)
+          - [new ValidationError(message\[, params\])](#new-errorsvalidationerrormessage-params)
   
     - Enums
   
-      - [errors.ValidationErrors](#errorsvalidationerrors)
+      - [ValidationErrors](#errorsvalidationerrors)
   
 ## Namespaces
   
@@ -319,16 +319,6 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
-- **pdf.border** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
 - **pdf.borderColor** `union` The colors of the border `optional`
   
   - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -339,7 +329,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
     - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
     - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
-- **pdf.font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
+- **pdf.borderWidth** `union` Width of the borders of the row. `optional`
+  
+  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - `tuple`
+  
+    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the table. `optional`
 - **pdf.padding** `union` Cell padding of the table cells. `optional`
   
@@ -370,16 +370,6 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)
   
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
-- **pdf.border** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
 - **pdf.borderColor** `union` The colors of the border `optional`
   
   - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -390,7 +380,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)
     - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
     - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
-- **pdf.font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
+- **pdf.borderWidth** `union` Width of the borders of the row. `optional`
+  
+  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - `tuple`
+  
+    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the row. `optional`
 - **pdf.header** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) A header row gets inserted automatically on new pages. Only one header row is allowed. `optional`
 - **pdf.height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight `optional`
@@ -419,16 +419,6 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)
 - **pdf.text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the cell. `optional`
-- **pdf.border** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
 - **pdf.borderColor** `union` The colors of the border `optional`
   
   - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -439,7 +429,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)
     - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
     - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
-- **pdf.font** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
+- **pdf.borderWidth** `union` Width of the borders of the row. `optional`
+  
+  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - `tuple`
+  
+    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the cell. `optional`
 - **pdf.padding** `union` Cell padding of the table cell. `optional`
   
