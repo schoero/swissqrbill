@@ -274,8 +274,8 @@ export const borderOverrides: PDFTable = {
 
 export const borderColor: PDFTable = {
   align: "center",
-  borderWidth: 1,
   borderColor: "#ff0000",
+  borderWidth: 1,
   rows: [
     {
       borderColor: "#00ff00",
