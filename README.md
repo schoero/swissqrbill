@@ -50,6 +50,8 @@ In SwissQRBill v4, large parts of the application have been rewritten to make th
 
 Please read the [migration guide](./docs/migration-v3-to-v4.md) to learn more about the changes and how to migrate your code.
 
+<br/>
+
 ## Features
 
 * Generate complete invoices, or only the QR Bill, as a PDF file.
