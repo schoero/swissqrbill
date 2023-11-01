@@ -20,7 +20,7 @@
   
         - Methods
   
-          - [attachTo(doc, xPosition, yPosition)](#pdfswissqrbillattachtodoc-xposition-yposition)
+          - [attachTo(doc, x, y)](#pdfswissqrbillattachtodoc-x-y)
           - [isSpaceSufficient(doc, xPosition, yPosition)](#pdfswissqrbillisspacesufficientdoc-xposition-yposition)
   
       - [SwissQRCode](#pdfswissqrcode)
@@ -31,7 +31,7 @@
   
         - Method
   
-          - [attachTo(doc)](#pdfswissqrcodeattachtodoc)
+          - [attachTo(doc, x, y)](#pdfswissqrcodeattachtodoc-x-y)
   
       - [Table](#pdftable)
   
@@ -41,7 +41,7 @@
   
         - Method
   
-          - [attachTo(doc)](#pdftableattachtodoc)
+          - [attachTo(doc, x, y)](#pdftableattachtodoc-x-y)
   
     - Interfaces
   
@@ -154,7 +154,7 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)
 ##### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
-using the [`attachTo`](#pdfswissqrbillattachtodoc-xposition-yposition) method.  
+using the [`attachTo`](#pdfswissqrbillattachtodoc-x-y) method.  
   
 ##### Construct Signature
   
@@ -215,7 +215,7 @@ The vertical size of the QR Bill.
   
 ---
   
-###### pdf.SwissQRBill.attachTo(doc, xPosition, yPosition)
+###### pdf.SwissQRBill.attachTo(doc, x, y)
   
 `public`  
   
@@ -224,8 +224,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)
 ###### Parameters
   
 - **doc** `PDFDocument` The PDFKit instance  
-- **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed. Default: `0`  
-- **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. Default: `0`  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
@@ -289,15 +289,17 @@ Creates a Swiss QR Code.
   
 ---
   
-###### pdf.SwissQRCode.attachTo(doc)
+###### pdf.SwissQRCode.attachTo(doc, x, y)
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L27C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)  
   
-###### Parameter
+###### Parameters
   
 - **doc** `PDFDocument` The PDF document to attach the Swiss QR Code to.  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
@@ -355,14 +357,12 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
 - **pdf.width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of whole table. `optional`
-- **pdf.x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Horizontal start position of the table. `optional`
-- **pdf.y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Vertical start position of the table. `optional`
   
 ---
   
 #### pdf.PDFRow
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)  
   
 - **pdf.columns** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table columns.
   
@@ -414,7 +414,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L32C0)
   
 #### pdf.PDFColumn
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)  
   
 - **pdf.text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
@@ -460,7 +460,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L65C0)
   
 #### pdf.Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
   
 ##### Construct Signature
   
@@ -468,7 +468,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)
   
 ###### new pdf.Table(data)
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L136C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
   
 ###### Parameter
   
@@ -517,19 +517,21 @@ const table = {
   
 ---
   
-###### pdf.Table.attachTo(doc)
+###### pdf.Table.attachTo(doc, x, y)
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)  
   
-###### Parameter
+###### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
-[`Table`](#pdftable) The Table instance.  
+`void`  
   
 ###### Throws
   

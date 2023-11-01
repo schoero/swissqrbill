@@ -83,7 +83,7 @@ If you previously used the pre built bundle, provided by SwissQRBill, you now ha
 ### Standalone classes
 
 Since SwissQRBill is now a standalone class, you have to create the PDFDocument separately from the QR slip.
-You can then attach the QR slip to the document using the [`attachTo()`](./pdf/index.md#attachtodoc-xposition-yposition) method.
+You can then attach the QR slip to the document using the [`attachTo()`](./pdf/index.md#swissqrbillattachtodoc-x-y) method.
 
 ```ts
 const pdf = new PDFDocument();
