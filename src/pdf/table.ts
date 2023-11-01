@@ -161,6 +161,10 @@ export class Table {
       throw new Error("No table rows provided.");
     }
 
+    if(!doc.page){
+      doc.addPage({ size: "A4" });
+    }
+
     // Buffer pages to be able to create table spanning multiple pages
     doc.options.bufferPages = true;
 

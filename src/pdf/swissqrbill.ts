@@ -66,7 +66,7 @@ export class SwissQRBill {
    * @param xPosition The horizontal position where the QR Bill will be placed.
    * @param yPosition The vertical position where the QR Bill will be placed.
    */
-  public attachTo(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page.height - mm2pt(105)): void {
+  public attachTo(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page?.height ? doc.page?.height - mm2pt(105) : 0): void {
 
     if(!SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)){
 
