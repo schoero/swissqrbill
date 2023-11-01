@@ -76,7 +76,7 @@ If you previously used the pre built bundle, provided by SwissQRBill, you now ha
 <!-- SwissQRBill >= v4 -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pdfkit@0/js/pdfkit.standalone.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@0.1.3/+esm"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@4.0.0-alpha.4/lib/pdf/swissqrbill.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@beta/lib/pdf/swissqrbill.js"></script>
 ```
 
 ### Standalone classes
