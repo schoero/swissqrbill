@@ -2,9 +2,13 @@
 
 The documentation for SwissQRBill is located in [github.com/schoero/swissqrbill/docs](https://github.com/schoero/swissqrbill/tree/main/docs).
 
+<br/>
+
 ## Getting started
 
 To help you get started, you can follow the guide [how to create a complete qr bill](./how-to-create-a-complete-qr-bill.md) to create your first QR bill.
+
+<br/>
 
 ## Importing
 
@@ -14,6 +18,8 @@ Depending on the environment you are using, you may need to import the library d
 - [Node.js: CommonJS](./importing.md#nodejs-commonjs-import)
 - [Browser: Bundling with webpack](./importing.md#browser-bundling-with-webpack)
 - [Browser: Pre-built bundle](./importing.md#browser-pre-built-bundle)
+
+<br/>
 
 ## API documentation
 

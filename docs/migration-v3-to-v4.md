@@ -26,6 +26,8 @@ In version 4, the library contains the following parts
 - Bundle
   - Pre built bundle of the library containing all the parts
 
+<br/>
+
 ## Breaking changes
 
 Lots of the API has changed. The following list contains the most important changes.
@@ -41,6 +43,8 @@ Lots of the API has changed. The following list contains the most important chan
 - The table method is now it's own class and has been completely rewritten. As a part of the rewrite, some properties have been renamed. Check the [updated documentation](./pdf/index.md#table) for the new names. The Table class can now also be attached to any existing PDFKit document.
 - Events have been removed from SwissQRBill.
 
+<br/>
+
 ## Migration
 
 ### Importing the library
@@ -48,6 +52,8 @@ Lots of the API has changed. The following list contains the most important chan
 Depending on how you imported the library, you might need to change the import statement.
 
 Please read the new [importing documentation](./importing.md) for more information and examples on how to import the library now.
+
+<br/>
 
 #### Node.js and self bundling (webpack)
 
@@ -64,6 +70,8 @@ import PDFDocument from "pdfkit";
 import { SwissQRBill, Table } from "swissqrbill/pdf";
 ```
 
+<br/>
+
 #### Pre built bundle
 
 If you previously used the pre built bundle, provided by SwissQRBill, you now have to switch to the pre built bundle of PDFKit instead and import SwissQRBill separately.
@@ -79,6 +87,8 @@ If you previously used the pre built bundle, provided by SwissQRBill, you now ha
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@0.1.3/+esm"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@beta/lib/pdf/swissqrbill.js"></script>
 ```
+
+<br/>
 
 ### Standalone classes
 
@@ -99,10 +109,14 @@ const table = new Table({ /* ... */ });
 table.attachTo(pdf);
 ```
 
+<br/>
+
 ### PDFKit events
 
 SwissQRBill previously emitted events that could be used to add page numbers to the document. Since the library no longer extends PDFKit, this is no longer possible. You now have to follow the [documentation of PDFKit](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages) to learn how to add page numbers to your document.
 
+<br/>
+
 ### Renamed properties and options
 
-Some properties and options have been renamed. Many properties of the [Table class](./pdf/index.md#table) have been renamed to be more consistent with the rest of the library. Please check out the [new documentation](./pdf/index.md#table) for the new names.
+Many properties of the [Table class](./pdf/index.md#table) have been renamed to be more consistent with the rest of the library. Please check out the [new documentation](./pdf/index.md#table) for the new names.
