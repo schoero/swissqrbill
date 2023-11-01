@@ -39,13 +39,14 @@ Lots of the API has changed. The following list contains the most important chan
   - `swissqrbill/bundle`
 - SwissQRBill no longer extends PDFKit. Instead, it is now a standalone class that can be used to create a QR Slip. The QR Slip can then be attached to any existing PDFKit document.
 - The table method is now it's own class and has been completely rewritten. As a part of the rewrite, some properties have been renamed. Check the [updated documentation](./pdf/index.md#table) for the new names. The Table class can now also be attached to any existing PDFKit document.
-- Events are removed from SwissQRBill.
+- Events have been removed from SwissQRBill.
 
 ## Migration
 
 ### Importing the library
 
 Depending on how you imported the library, you might need to change the import statement.
+
 Please read the new [importing documentation](./importing.md) for more information and examples on how to import the library now.
 
 #### Node.js and self bundling (webpack)
@@ -101,3 +102,7 @@ table.attachTo(pdf);
 ### PDFKit events
 
 SwissQRBill previously emitted events that could be used to add page numbers to the document. Since the library no longer extends PDFKit, this is no longer possible. You now have to follow the [documentation of PDFKit](http://pdfkit.org/docs/getting_started.html#switching_to_previous_pages) to learn how to add page numbers to your document.
+
+### Renamed properties and options
+
+Some properties and options have been renamed. Many properties of the [Table class](./pdf/index.md#table) have been renamed to be more consistent with the rest of the library. Please check out the [new documentation](./pdf/index.md#table) for the new names.
