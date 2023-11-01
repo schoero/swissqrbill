@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/swissqrbill-logo.svg">
+  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/SwissQRBill/main/assets/swissqrbill-logo.svg">
 </div>
 
 ---
