@@ -580,3 +580,20 @@ export const header: PDFTable = {
   ],
   verticalAlign: "center"
 };
+
+export const singleCell: PDFTable = {
+  align: "center",
+  borderWidth: 1,
+  rows: [
+    {
+      columns: [
+        {
+          text: "100x100"
+        }
+      ],
+      height: 100
+    }
+  ],
+  verticalAlign: "center",
+  width: 100
+};

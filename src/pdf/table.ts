@@ -24,9 +24,6 @@ export interface PDFTable {
   /** Width of whole table. */
   width?: number;
   /** Horizontal start position of the table. */
-  x?: number;
-  /** Vertical start position of the table. */
-  y?: number;
 }
 
 export interface PDFRow {
@@ -152,10 +149,11 @@ export class Table {
   /**
    * Attaches the table to a PDFKit document instance.
    * @param doc The PDFKit document instance
-   * @returns The Table instance.
+   * @param x The horizontal position in points where the table be placed.
+   * @param y The vertical position in points where the table will be placed.
    * @throws { Error } Throws an error if no table rows are provided.
    */
-  public attachTo(doc: PDFKit.PDFDocument) {
+  public attachTo(doc: PDFKit.PDFDocument, x: number = doc.x ?? 0, y: number = doc.y ?? 0) {
 
     if(this.data.rows === undefined){
       throw new Error("No table rows provided.");
@@ -168,13 +166,12 @@ export class Table {
     // Buffer pages to be able to create table spanning multiple pages
     doc.options.bufferPages = true;
 
-    const startX = doc.x;
+    const tableX = x;
+    const tableY = y;
 
     const startPage = this.getCurrentPage(doc);
-    const tableX = this.data.x ? this.data.x : doc.x;
-    const tableY = this.data.y ? this.data.y : doc.y;
-    const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
 
+    const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
     const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
     const tableBorder = this.data.borderWidth ? this.data.borderWidth : undefined;
     const tableBorderColors = this.data.borderColor ? this.data.borderColor : "#000000";
@@ -442,9 +439,7 @@ export class Table {
 
     }
 
-    doc.x = startX;
-
-    return this;
+    doc.x = tableX;
 
   }
 

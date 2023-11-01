@@ -13,6 +13,7 @@ import {
   header,
   paddingOverrides,
   paddingVariants,
+  singleCell,
   textColorOverrides
 } from "swissqrbill:tests:data/table";
 import { TestDocument } from "swissqrbill:tests:utils/pdf";
@@ -115,6 +116,17 @@ describe("table", async () => {
     const headerTable = new Table(header);
 
     headerTable.attachTo(pdf);
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should render the table on the specified position", async () => {
+    const pdf = new TestDocument("table/position.pdf", { layout: "landscape", margin: 0, size: "A4" });
+    const headerTable = new Table(singleCell);
+
+    headerTable.attachTo(pdf, pdf.page.width / 2 - 50, pdf.page.height / 2 - 50);
 
     await pdf.writeFile();
 
