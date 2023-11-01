@@ -9,17 +9,17 @@ Each example below is available as a StackBlitz project.
 
 ### Node.js
 
-- [Node ESM import](node-esm-import)
-- [Node CJS import](node-cjs-import)
+- [Node.js: ES Module import](#nodejs-es-module-import)
+- [Node.js: CommonJS import](#nodejs-commonjs-import)
 
 ### Browser
 
-- [Browser bundling with webpack](browser-bundling-with-webpack)
-- [Browser pre-built bundle](browser-prebuilt-bundle)
+- [Browser: Bundling with webpack](#browser-bundling-with-webpack)
+- [Browser: Pre-built bundle](#browser-pre-built-bundle)
 
 ### Node JS
 
-#### Node ESM import
+#### Node.js: ES Module import
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][node esm javascript]
@@ -35,7 +35,7 @@ import { SwissQRBill } from "swissqrbill/pdf";
 import { SwissQRBill } from "swissqrbill/svg";
 ```
 
-#### Node CJS import
+#### Node.js: CommonJS import
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][node cjs javascript]
@@ -53,7 +53,7 @@ const { SwissQRBill } = require("swissqrbill/svg");
 
 ## Browser
 
-### Browser bundling with webpack
+### Browser: Bundling with webpack
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][browser bundling with webpack]
@@ -64,7 +64,7 @@ const { SwissQRBill } = require("swissqrbill/svg");
 
 As PDFKit internally relies on several different built in modules of Node.js, it is not possible to use it directly in the browser. Instead, you need to bundle it with a tool like webpack. More information can be found in the [PDFKit repository](https://github.com/foliojs/pdfkit/tree/master/examples/webpack)
 
-### Browser pre-built bundle
+### Browser: Pre-built bundle
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][browser pre-built bundle]

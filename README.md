@@ -36,9 +36,9 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 * [Installation](#installation)
 * [Importing the library](#importing-the-library)
 * [Quick start](#quick-start)
-* [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
+* [API documentation](https://github.com/schoero/SwissQRBill/blob/master/docs)
 * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
-* [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
+* [how to create a complete qr bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-qr-bill.md)
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
 
@@ -142,10 +142,10 @@ document.body.appendChild(svg.element);
 SwissQRBill uses [PDFKit](https://github.com/foliojs/pdfkit) to generate the PDF files.
 The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
 
-A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-bill.md][how to create a complete bill]. You will learn how to create a PDF that looks like this:
+A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-qr-bill.md][how to create a complete qr bill]. You will learn how to create a PDF that looks like this:
 
 ![Complete QR bill](assets/complete-qr-bill.png)
 
 [importing documentation]: ./docs/importing.md
 [repository docs]: ./docs/
-[how to create a complete bill]: ./docs/how-to-create-a-complete-bill.md
+[how to create a complete qr bill]: ./docs/how-to-create-a-complete-qr-bill.md

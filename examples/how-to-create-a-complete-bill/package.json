@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "how-to-create-a-complete-bill",
+  "name": "how-to-create-a-complete-qr-bill",
   "author": "Roger Schönbächler",
   "scripts": {
     "generate": "npm run pdf",
