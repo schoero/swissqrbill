@@ -116,7 +116,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)  
   
-- **font** [`FontName`](#fontname) Font used for the QR-Bill.
+- **fontName** [`FontName`](#fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
 - **language** [`Language`](#language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
@@ -128,7 +128,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)  
   
-- **font** [`FontName`](#fontname) Font used for the QR-Bill.
+- **fontName** [`FontName`](#fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
 - **language** [`Language`](#language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
@@ -141,7 +141,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)  
   
-- **font** [`FontName`](#fontname) Font used for the QR-Bill.
+- **fontName** [`FontName`](#fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
 - **language** [`Language`](#language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`

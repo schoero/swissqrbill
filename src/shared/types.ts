@@ -111,7 +111,7 @@ export interface QRBillOptions {
    * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}
    * @defaultValue 'Helvetica'
    */
-  font?: FontName;
+  fontName?: FontName;
 
   /**
    * The language with which the bill is rendered.

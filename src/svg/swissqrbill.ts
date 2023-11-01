@@ -34,7 +34,7 @@ export class SwissQRBill {
     // Apply options
     this.language = options?.language !== undefined ? options.language : this.language;
     this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
-    this.font = options?.font !== undefined ? options.font : this.font;
+    this.font = options?.fontName !== undefined ? options.fontName : this.font;
     this.scissors = options?.scissors !== undefined ? options.scissors : this.scissors;
 
     // Create SVG

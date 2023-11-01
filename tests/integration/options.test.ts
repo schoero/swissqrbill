@@ -44,9 +44,9 @@ describe("options", async () => {
   test("font", async () => {
     const name = "font";
     // @ts-expect-error Courier isn't allowed by the specs but for testing, it is easier to use a built-in font instead of registering one.
-    const pdfSnapshot = await pdf(minimalRequired, `options/${name}.pdf`, { font: "Courier" });
+    const pdfSnapshot = await pdf(minimalRequired, `options/${name}.pdf`, { fontName: "Courier" });
     // @ts-expect-error Courier isn't allowed by the specs but for testing, it is easier to use a built-in font instead of registering one.
-    const svgSnapshot = await svg(minimalRequired, `options/${name}.svg`, { font: "Courier" });
+    const svgSnapshot = await svg(minimalRequired, `options/${name}.svg`, { fontName: "Courier" });
     expect(pdfSnapshot).toMatchSnapshot();
     expect(svgSnapshot).toMatchSnapshot();
   });
