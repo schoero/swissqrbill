@@ -5,18 +5,24 @@
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][stackblitz]
 
-In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page. We will use [PDFKit][npm pdfkit] to create a PDF document with a Logo, title and the address of the biller, as well as the recipient. Then we use [SwissQRBill][npm swissqrbill] to create a table containing the billable items and add the QR slip to the bottom of the page.
+In this manual you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page.  
+We will use [PDFKit][npm pdfkit] to create a PDF document with a Logo, title and the address of the biller, as well as the recipient.  
+Then we use [SwissQRBill][npm swissqrbill] to create a table containing the billable items and add the QR slip to the bottom of the page.
   
 The methods used from PDFKit are documented on [pdfkit.org](http://pdfkit.org/docs/getting_started.html)  
 The documentation of SwissQRBill can be found in the [docs](./) directory of this repository.  
   
 The complete source code is available in [examples/how-to-create-a-complete-qr-bill][source code]. A live version of the example is available on [StackBlitz][stackblitz].
 
+<br/>
+
 ## Prerequisites
 
 To follow this manual you should have a basic understanding of JavaScript and Node.js.  
 You should also have Node.js and npm installed on your computer. If you haven't already, you can download Node.js from [nodejs.org](https://nodejs.org/en/download/).
 Node.js comes with npm pre-installed.
+
+<br/>
 
 ## Setup
 
@@ -37,6 +43,8 @@ After the installation, PDFKit and SwissQRBill are available to be imported to t
 ```ts
 import PDFDocument from "pdfkit";
 ```
+
+<br/>
 
 ## Creating the PDF
 
@@ -61,6 +69,8 @@ const stream = createWriteStream("qr-bill.pdf");
 const pdf = new PDFDocument({ size: "A4" });
 pdf.pipe(stream);
 ```
+
+<br/>
 
 ### Adding content to the PDF
 
@@ -92,6 +102,8 @@ const data = {
   reference: "21 00000 00003 13947 14300 09017"
 };
 ```
+
+<br/>
 
 #### Adding a logo
 
@@ -135,6 +147,8 @@ Then we fill the path with our colors.
   
 The `save()` and `restore()` methods are used to save the previous coordinates and restore them after the logo is rendered. This way we can change the positioning of the logo without affecting the rest of the document.
 
+<br/>
+
 #### Adding the addresses
 
 Next, we add the address of our business and the customer address to the PDF. You can use `\n` to create a new line.
@@ -159,6 +173,8 @@ pdf.text(`${data.debtor.name}\n${data.debtor.address} ${data.debtor.buildingNumb
 });
 ```
 
+<br/>
+
 #### Create a title and a date
 
 We also add a title and the date to the PDF using the same methods as above.
@@ -180,6 +196,8 @@ pdf.text(`Musterstadt ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYea
   width: mm2pt(170)
 });
 ```
+
+<br/>
 
 #### Adding a table
 
@@ -327,6 +345,8 @@ const table = new Table({
 });
 ```
 
+<br/>
+
 #### Adding the QR bill
 
 To create the actual QR slip we use the [`SwissQRBill`][swissqrbill] class from SwissQRBill. Extend the import statement from above to also import the [`SwissQRBill`][swissqrbill] class.
@@ -340,6 +360,8 @@ The [`SwissQRBill`][swissqrbill] class takes an object as a parameter containing
 ```ts
 const qrBill = new SwissQRBill(data);
 ```
+
+<br/>
 
 #### Combining PDF, Table and the QR bill
 
@@ -361,6 +383,8 @@ qrBill.attachTo(pdf);
 ```
 
 Both `attachTo` methods are intelligent enough to add additional pages to the PDF if the content doesn't fit on the current page.
+
+<br/>
 
 #### Finalizing the document
 
