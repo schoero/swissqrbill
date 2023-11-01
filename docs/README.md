@@ -1,10 +1,10 @@
 # SwissQRBill
 
-All documentation is located in the [docs](./) directory.
+The documentation for SwissQRBill is located in [github.com/schoero/swissqrbill/docs](https://github.com/schoero/SwissQRBill/tree/v4/docs).
 
 ## Getting started
 
-To help you get started, you can follow the guide [how to create a complete qr bill](./quick-start.md) to create your first QR bill.
+To help you get started, you can follow the guide [how to create a complete qr bill](./how-to-create-a-complete-qr-bill.md) to create your first QR bill.
 
 ## Importing
 
