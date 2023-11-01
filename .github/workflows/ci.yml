@@ -24,6 +24,9 @@ jobs:
       - name: Lint
         run: npm run lint:ci
 
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Spellcheck
         run: npm run spellcheck:ci
 

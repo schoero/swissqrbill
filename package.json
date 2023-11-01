@@ -72,7 +72,8 @@
     "spellcheck:ci": "npm run spellcheck -- --no-progress",
     "test": "vitest --config ./vite.config.ts --threads=false",
     "test:update": "npm run test -- --update --run",
-    "test:visual": "cross-env VISUAL=true npm run test -- --run"
+    "test:visual": "cross-env VISUAL=true npm run test -- --run",
+    "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=v13.6.0"
