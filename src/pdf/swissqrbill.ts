@@ -63,25 +63,25 @@ export class SwissQRBill {
    * Adds the QR Bill to the bottom of the current page if there is enough space,
    * otherwise it will create a new page for the QR Bill.
    * @param doc The PDFKit instance
-   * @param xPosition The horizontal position where the QR Bill will be placed.
-   * @param yPosition The vertical position where the QR Bill will be placed.
+   * @param x The horizontal position in points where the QR Bill will be placed.
+   * @param y The vertical position in points where the QR Bill will be placed.
    */
-  public attachTo(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page?.height ? doc.page?.height - mm2pt(105) : 0): void {
+  public attachTo(doc: PDFKit.PDFDocument, x: number = 0, y: number = doc.page?.height ? doc.page?.height - mm2pt(105) : 0): void {
 
-    if(!SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)){
+    if(!SwissQRBill.isSpaceSufficient(doc, x, y)){
 
       doc.addPage({
         margin: 0,
         size: [SwissQRBill.width, SwissQRBill.height]
       });
 
-      xPosition = 0;
-      yPosition = 0;
+      x = 0;
+      y = 0;
 
     }
 
-    this._x = xPosition;
-    this._y = yPosition;
+    this._x = x;
+    this._y = y;
 
     this.render(doc);
 
