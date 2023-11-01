@@ -38,7 +38,7 @@ In addition, [PDFKit][npm pdfkit] is required to create the PDF file itself. Ins
 npm i pdfkit
 ```
 
-After the installation, PDFKit and SwissQRBill are available to be imported to the project. Take a look at the [importing guide of SwissQRBill](https://github.com/schoero/SwissQRBill/blob/v4/docs/importing.md#importing-the-library), to learn how to import the library for the different environments.
+After the installation, PDFKit and SwissQRBill are available to be imported to the project. Take a look at the [importing guide of SwissQRBill](./importing.md#importing-the-library), to learn how to import the library for the different environments.
 
 ```ts
 import PDFDocument from "pdfkit";
@@ -136,7 +136,7 @@ pdf.path(logoText)
   .fill();
 ```
 
-Because the coordinate system of a PDF is based on points, SwissQRBill provides a utility function called [`mm2pt()`](https://github.com/schoero/SwissQRBill/blob/v4/docs/utils/utils.md#mm2ptmillimeters) to convert millimeters to points. Import it like this:
+Because the coordinate system of a PDF is based on points, SwissQRBill provides a utility function called [`mm2pt()`](./utils/utils.md#mm2ptmillimeters) to convert millimeters to points. Import it like this:
 
 ```ts
 import { mm2pt } from "swissqrbill/utils";
@@ -398,8 +398,8 @@ When you run the code above, SwissQRBill should generate a PDF file named `qr-bi
 
 ![Complete QR bill](../assets/complete-qr-bill.png)
 
-[swissqrbill]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#swissqrbill
-[table]: https://github.com/schoero/SwissQRBill/blob/v4/docs/pdf/index.md#table
+[swissqrbill]: ./pdf/index.md#swissqrbill
+[table]: ./pdf/index.md#table
 [pdfdocument]: http://pdfkit.org/docs/getting_started.html#creating_a_document
 [source code]: ../examples/how-to-create-a-complete-qr-bill/src/index.js
 [stackblitz]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/v4/examples/how-to-create-a-complete-qr-bill?file=src%2Findex.js&title=How%20to%20create%20a%20complete%20bill&startScript=generate

@@ -1,6 +1,6 @@
 # SwissQRBill
 
-The documentation for SwissQRBill is located in [github.com/schoero/swissqrbill/docs](https://github.com/schoero/SwissQRBill/tree/v4/docs).
+The documentation for SwissQRBill is located in [github.com/schoero/swissqrbill/docs](https://github.com/schoero/swissqrbill/tree/main/docs).
 
 ## Getting started
 
