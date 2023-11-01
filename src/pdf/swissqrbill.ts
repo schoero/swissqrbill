@@ -331,11 +331,7 @@ export class SwissQRBill {
 
     // QR Code
     const swissQRCode = new SwissQRCode(this.data);
-
-    doc.save();
-    doc.translate(this.x(67), this.y(17));
-    swissQRCode.attachTo(doc);
-    doc.restore();
+    swissQRCode.attachTo(doc, this.x(67), this.y(17));
 
     // Amount
     doc.fontSize(8);
