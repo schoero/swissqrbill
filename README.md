@@ -38,7 +38,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 * [Quick start](#quick-start)
 * [API documentation](https://github.com/schoero/SwissQRBill/blob/master/docs)
 * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
-* [how to create a complete qr bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-qr-bill.md)
+* [how to create a complete qr bill](https://github.com/schoero/SwissQRBill/blob/master/docs/how-to-create-a-complete-qr-bill.md)
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
 
