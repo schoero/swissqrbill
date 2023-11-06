@@ -26,11 +26,11 @@ Depending on the environment you are using, you may need to import the library d
 SwissQRBill exposes different classes and functions that can be used to create a QR bill. The API is split into different parts, depending on the use case.
 
 - [PDF](./pdf/index.md)
-  - [SwissQRBill](./pdf/index.md#swissqrbill)
-  - [SwissQRCode](./pdf/index.md#swissqrcode)
+  - [SwissQRBill](./pdf/index.md#class-swissqrbill)
+  - [SwissQRCode](./pdf/index.md#class-swissqrcode)
   - [Table](./pdf/index.md#table)
 - [SVG](./svg/index.md)
-  - [SwissQRBill](./svg/index.md#swissqrbill)
-  - [SwissQRCode](./svg/index.md#swissqrcode)
+  - [SwissQRBill](./svg/index.md#class-swissqrbill)
+  - [SwissQRCode](./svg/index.md#class-swissqrcode)
 - [Utils](./utils/utils.md)
 - [bundle](./bundle/index.md)
