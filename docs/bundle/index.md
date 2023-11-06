@@ -1,187 +1,158 @@
   
 # Index
   
+<br/>
+  
 - Namespaces
   
-  - [pdf](#pdf)
+  - [pdf](#namespace-pdf)
   
     - Classes
   
-      - [SwissQRBill](#pdfswissqrbill)
+      - [SwissQRBill](#class-pdfswissqrbill)
   
         - Constructor
-  
-          - [new SwissQRBill(data\[, options\])](#new-pdfswissqrbilldata-options)
-  
+          - [new SwissQRBill(data\[, options\])](#function-pdfswissqrbillnew-pdfswissqrbilldata-options)
         - Properties
-  
-          - [width](#pdfswissqrbillwidth)
-          - [height](#pdfswissqrbillheight)
-  
+          - [width](#property-pdfswissqrbillwidth)
+          - [height](#property-pdfswissqrbillheight)
         - Methods
+          - [attachTo(doc, x, y)](#function-pdfswissqrbillpdfswissqrbillattachtodoc-x-y)
+          - [isSpaceSufficient(doc, xPosition, yPosition)](#function-pdfswissqrbillpdfswissqrbillisspacesufficientdoc-xposition-yposition)
   
-          - [attachTo(doc, x, y)](#pdfswissqrbillattachtodoc-x-y)
-          - [isSpaceSufficient(doc, xPosition, yPosition)](#pdfswissqrbillisspacesufficientdoc-xposition-yposition)
-  
-      - [SwissQRCode](#pdfswissqrcode)
-  
-        - Constructor
-  
-          - [new SwissQRCode(data, size)](#new-pdfswissqrcodedata-size)
-  
-        - Method
-  
-          - [attachTo(doc, x, y)](#pdfswissqrcodeattachtodoc-x-y)
-  
-      - [Table](#pdftable)
+      - [SwissQRCode](#class-pdfswissqrcode)
   
         - Constructor
-  
-          - [new Table(data)](#new-pdftabledata)
-  
+          - [new SwissQRCode(data, size)](#function-pdfswissqrcodenew-pdfswissqrcodedata-size)
         - Method
+          - [attachTo(doc, x, y)](#function-pdfswissqrcodepdfswissqrcodeattachtodoc-x-y)
   
-          - [attachTo(doc, x, y)](#pdftableattachtodoc-x-y)
+      - [PDFTable](#interface-pdfpdftable)
+      - [PDFRow](#interface-pdfpdfrow)
+      - [PDFColumn](#interface-pdfpdfcolumn)
+      - [Table](#class-pdftable)
   
-    - Interfaces
+        - Constructor
+          - [new Table(data)](#function-pdftablenew-pdftabledata)
+        - Method
+          - [attachTo(doc, x, y)](#function-pdftablepdftableattachtodoc-x-y)
   
-      - [PDFTable](#pdfpdftable)
-      - [PDFRow](#pdfpdfrow)
-      - [PDFColumn](#pdfpdfcolumn)
-  
-  - [svg](#svg)
+  - [svg](#namespace-svg)
   
     - Classes
   
-      - [SwissQRBill](#svgswissqrbill)
+      - [SwissQRBill](#class-svgswissqrbill)
   
         - Constructor
-  
-          - [new SwissQRBill(data\[, options\])](#new-svgswissqrbilldata-options)
-  
+          - [new SwissQRBill(data\[, options\])](#function-svgswissqrbillnew-svgswissqrbilldata-options)
         - Property
-  
-          - [instance](#svgswissqrbillinstance)
-  
+          - [instance](#property-svgswissqrbillinstance)
         - Method
-  
-          - [toString()](#svgswissqrbilltostring)
-  
+          - [toString()](#function-svgswissqrbillsvgswissqrbilltostring)
         - Getters
+          - [outerHTML()](#function-svgswissqrbillsvgswissqrbillouterhtml)
+          - [element()](#function-svgswissqrbillsvgswissqrbillelement)
   
-          - [outerHTML()](#svgswissqrbillouterhtml)
-          - [element()](#svgswissqrbillelement)
-  
-      - [SwissQRCode](#svgswissqrcode)
+      - [SwissQRCode](#class-svgswissqrcode)
   
         - Constructor
+          - [new SwissQRCode(data, size)](#function-svgswissqrcodenew-svgswissqrcodedata-size)
   
-          - [new SwissQRCode(data, size)](#new-svgswissqrcodedata-size)
-  
-  - [types](#types)
+  - [types](#namespace-types)
   
     - Type aliases
   
-      - [Currency](#typescurrency)
-      - [Size](#typessize)
-      - [Language](#typeslanguage)
-      - [FontName](#typesfontname)
+      - [Currency](#type-alias-typescurrency)
+      - [Size](#type-alias-typessize)
+      - [Language](#type-alias-typeslanguage)
+      - [FontName](#type-alias-typesfontname)
+      - [Data](#interface-typesdata)
+      - [Debtor](#interface-typesdebtor)
+      - [Creditor](#interface-typescreditor)
+      - [QRBillOptions](#interface-typesqrbilloptions)
+      - [PDFOptions](#interface-typespdfoptions)
+      - [SVGOptions](#interface-typessvgoptions)
   
-    - Interfaces
-  
-      - [Data](#typesdata)
-      - [Debtor](#typesdebtor)
-      - [Creditor](#typescreditor)
-      - [QRBillOptions](#typesqrbilloptions)
-      - [PDFOptions](#typespdfoptions)
-      - [SVGOptions](#typessvgoptions)
-  
-  - [utils](#utils)
+  - [utils](#namespace-utils)
   
     - Functions
   
-      - [isQRIBAN(iban)](#utilsisqribaniban)
-      - [isIBANValid(iban)](#utilsisibanvalidiban)
-      - [formatIBAN(iban)](#utilsformatibaniban)
-      - [isQRReference(reference)](#utilsisqrreferencereference)
-      - [isQRReferenceValid(reference)](#utilsisqrreferencevalidreference)
-      - [isSCORReference(reference)](#utilsisscorreferencereference)
-      - [isSCORReferenceValid(reference)](#utilsisscorreferencevalidreference)
-      - [calculateSCORReferenceChecksum(reference)](#utilscalculatescorreferencechecksumreference)
-      - [calculateQRReferenceChecksum(reference)](#utilscalculateqrreferencechecksumreference)
-      - [formatQRReference(reference)](#utilsformatqrreferencereference)
-      - [formatSCORReference(reference)](#utilsformatscorreferencereference)
-      - [formatReference(reference)](#utilsformatreferencereference)
-      - [formatAmount(amount)](#utilsformatamountamount)
-      - [mm2pt(millimeters)](#utilsmm2ptmillimeters)
-      - [pt2mm(points)](#utilspt2mmpoints)
-      - [mm2px(millimeters)](#utilsmm2pxmillimeters)
-      - [px2mm(pixels)](#utilspx2mmpixels)
-      - [getReferenceType(reference)](#utilsgetreferencetypereference)
+      - [isQRIBAN(iban)](#function-utilsutilsisqribaniban)
+      - [isIBANValid(iban)](#function-utilsutilsisibanvalidiban)
+      - [formatIBAN(iban)](#function-utilsutilsformatibaniban)
+      - [isQRReference(reference)](#function-utilsutilsisqrreferencereference)
+      - [isQRReferenceValid(reference)](#function-utilsutilsisqrreferencevalidreference)
+      - [isSCORReference(reference)](#function-utilsutilsisscorreferencereference)
+      - [isSCORReferenceValid(reference)](#function-utilsutilsisscorreferencevalidreference)
+      - [calculateSCORReferenceChecksum(reference)](#function-utilsutilscalculatescorreferencechecksumreference)
+      - [calculateQRReferenceChecksum(reference)](#function-utilsutilscalculateqrreferencechecksumreference)
+      - [formatQRReference(reference)](#function-utilsutilsformatqrreferencereference)
+      - [formatSCORReference(reference)](#function-utilsutilsformatscorreferencereference)
+      - [formatReference(reference)](#function-utilsutilsformatreferencereference)
+      - [formatAmount(amount)](#function-utilsutilsformatamountamount)
+      - [mm2pt(millimeters)](#function-utilsutilsmm2ptmillimeters)
+      - [pt2mm(points)](#function-utilsutilspt2mmpoints)
+      - [mm2px(millimeters)](#function-utilsutilsmm2pxmillimeters)
+      - [px2mm(pixels)](#function-utilsutilspx2mmpixels)
+      - [getReferenceType(reference)](#function-utilsutilsgetreferencetypereference)
   
-  - [errors](#errors)
+  - [errors](#namespace-errors)
   
     - Functions
   
-      - [resolveMessageParams(message, params)](#errorsresolvemessageparamsmessage-params)
-  
-    - Classes
-  
-      - [ValidationError](#errorsvalidationerror)
+      - [resolveMessageParams(message, params)](#function-errorserrorsresolvemessageparamsmessage-params)
+      - [ValidationError](#class-errorsvalidationerror)
   
         - Constructor
+          - [new ValidationError(message\[, params\])](#function-errorsvalidationerrornew-errorsvalidationerrormessage-params)
   
-          - [new ValidationError(message\[, params\])](#new-errorsvalidationerrormessage-params)
+      - [ValidationErrors](#enum-errorsvalidationerrors)
   
-    - Enums
-  
-      - [ValidationErrors](#errorsvalidationerrors)
+<br/>
   
 ## Namespaces
   
----
-  
-### pdf
+### Namespace: pdf
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L2C7)  
   
----
+<br/>
   
-#### pdf.SwissQRBill
+#### Class: pdf.SwissQRBill
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)  
   
 ##### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
-using the [`attachTo`](#pdfswissqrbillattachtodoc-x-y) method.  
+using the [`attachTo`](#function-pdfswissqrbillpdfswissqrbillattachtodoc-x-y) method.  
+  
+<br/>
   
 ##### Construct Signature
   
----
-  
-###### new pdf.SwissQRBill(data\[, options\])
+###### Function: pdf.SwissQRBill.new pdf.SwissQRBill(data\[, options\])
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
   
 ###### Parameters
   
-- **data** [`Data`](#typesdata) The data to be used for the QR Bill.  
-- **options** [`PDFOptions`](#typespdfoptions) Options to define how the QR Bill should be rendered. `optional`  
+- **data** [`Data`](#interface-typesdata) The data to be used for the QR Bill.  
+- **options** [`PDFOptions`](#interface-typespdfoptions) Options to define how the QR Bill should be rendered. `optional`  
   
 ###### Return Type
   
-[`SwissQRBill`](#pdfswissqrbill)  
+[`SwissQRBill`](#class-pdfswissqrbill)  
   
 ###### Description
   
 Creates a new SwissQRBill instance.  
   
+<br/>
+  
 ##### Properties
   
----
-  
-###### pdf.SwissQRBill.width
+###### Property: pdf.SwissQRBill.width
   
 `public` `static` `readonly`  
   
@@ -195,9 +166,9 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)
   
 The horizontal size of the QR Bill.  
   
----
+<br/>
   
-###### pdf.SwissQRBill.height
+###### Property: pdf.SwissQRBill.height
   
 `public` `static` `readonly`  
   
@@ -211,11 +182,11 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)
   
 The vertical size of the QR Bill.  
   
+<br/>
+  
 ##### Methods
   
----
-  
-###### pdf.SwissQRBill.attachTo(doc, x, y)
+###### Function: pdf.SwissQRBill.pdf.SwissQRBill.attachTo(doc, x, y)
   
 `public`  
   
@@ -236,9 +207,9 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)
 Adds the QR Bill to the bottom of the current page if there is enough space,
 otherwise it will create a new page for the QR Bill.  
   
----
+<br/>
   
-###### pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
+###### Function: pdf.SwissQRBill.pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
   
 `public` `static`  
   
@@ -258,38 +229,38 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)
   
 Checks whether there is enough space on the current page to add the QR Bill.  
   
----
+<br/>
   
-#### pdf.SwissQRCode
+#### Class: pdf.SwissQRCode
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)  
   
+<br/>
+  
 ##### Construct Signature
   
----
-  
-###### new pdf.SwissQRCode(data, size)
+###### Function: pdf.SwissQRCode.new pdf.SwissQRCode(data, size)
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
 ###### Parameters
   
-- **data** [`Data`](#typesdata) The data to be encoded in the QR code.  
+- **data** [`Data`](#interface-typesdata) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
 ###### Return Type
   
-[`SwissQRCode`](#pdfswissqrcode)  
+[`SwissQRCode`](#class-pdfswissqrcode)  
   
 ###### Description
   
 Creates a Swiss QR Code.  
   
+<br/>
+  
 ##### Method
   
----
-  
-###### pdf.SwissQRCode.attachTo(doc, x, y)
+###### Function: pdf.SwissQRCode.pdf.SwissQRCode.attachTo(doc, x, y)
   
 `public`  
   
@@ -309,15 +280,15 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)
   
 Attaches the Swiss QR Code to a PDF document.  
   
----
+<br/>
   
-#### pdf.PDFTable
+#### Interface: pdf.PDFTable
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)  
   
 - **pdf.rows** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table rows.
   
-  - [`PDFRow`](#pdfpdfrow)
+  - [`PDFRow`](#interface-pdfpdfrow)
   
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
@@ -358,15 +329,15 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
 - **pdf.width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of whole table. `optional`
   
----
+<br/>
   
-#### pdf.PDFRow
+#### Interface: pdf.PDFRow
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)  
   
 - **pdf.columns** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table columns.
   
-  - [`PDFColumn`](#pdfpdfcolumn)
+  - [`PDFColumn`](#interface-pdfpdfcolumn)
   
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
@@ -410,9 +381,9 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
   
----
+<br/>
   
-#### pdf.PDFColumn
+#### Interface: pdf.PDFColumn
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)  
   
@@ -456,27 +427,27 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell `optional`
 - **pdf.width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of the cell. `optional`
   
----
+<br/>
   
-#### pdf.Table
+#### Class: pdf.Table
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
   
+<br/>
+  
 ##### Construct Signature
   
----
-  
-###### new pdf.Table(data)
+###### Function: pdf.Table.new pdf.Table(data)
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
   
 ###### Parameter
   
-- **data** [`PDFTable`](#pdfpdftable) An Object which contains the table information.  
+- **data** [`PDFTable`](#interface-pdfpdftable) An Object which contains the table information.  
   
 ###### Return Type
   
-[`Table`](#pdftable) The Table instance.  
+[`Table`](#class-pdftable) The Table instance.  
   
 ###### Description
   
@@ -513,11 +484,11 @@ const table = {
 };
 ```  
   
+<br/>
+  
 ##### Method
   
----
-  
-###### pdf.Table.attachTo(doc, x, y)
+###### Function: pdf.Table.pdf.Table.attachTo(doc, x, y)
   
 `public`  
   
@@ -541,40 +512,40 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)
   
 Attaches the table to a PDFKit document instance.  
   
----
+<br/>
   
-### svg
+### Namespace: svg
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L3C7)  
   
----
+<br/>
   
-#### svg.SwissQRBill
+#### Class: svg.SwissQRBill
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)  
   
+<br/>
+  
 ##### Construct Signature
   
----
-  
-###### new svg.SwissQRBill(data\[, options\])
+###### Function: svg.SwissQRBill.new svg.SwissQRBill(data\[, options\])
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
   
 ###### Parameters
   
-- **data** [`Data`](#typesdata)  
-- **options** [`SVGOptions`](#typessvgoptions) `optional`  
+- **data** [`Data`](#interface-typesdata)  
+- **options** [`SVGOptions`](#interface-typessvgoptions) `optional`  
   
 ###### Return Type
   
-[`SwissQRBill`](#svgswissqrbill)  
+[`SwissQRBill`](#class-svgswissqrbill)  
+  
+<br/>
   
 ##### Property
   
----
-  
-###### svg.SwissQRBill.instance
+###### Property: svg.SwissQRBill.instance
   
 `protected`  
   
@@ -584,11 +555,11 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)
   
 `SVG`  
   
+<br/>
+  
 ##### Method
   
----
-  
-###### svg.SwissQRBill.toString()
+###### Function: svg.SwissQRBill.svg.SwissQRBill.toString()
   
 `public`  
   
@@ -602,11 +573,11 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L59C2)
   
 Outputs the SVG as a string.  
   
+<br/>
+  
 ##### Getters
   
----
-  
-###### svg.SwissQRBill.outerHTML()
+###### Function: svg.SwissQRBill.svg.SwissQRBill.outerHTML()
   
 `public`  
   
@@ -616,9 +587,9 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
   
----
+<br/>
   
-###### svg.SwissQRBill.element()
+###### Function: svg.SwissQRBill.svg.SwissQRBill.element()
   
 `public`  
   
@@ -632,42 +603,42 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L69C2)
   
 Returns the SVG element.  
   
----
+<br/>
   
-#### svg.SwissQRCode
+#### Class: svg.SwissQRCode
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)  
   
+<br/>
+  
 ##### Construct Signature
   
----
-  
-###### new svg.SwissQRCode(data, size)
+###### Function: svg.SwissQRCode.new svg.SwissQRCode(data, size)
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
 ###### Parameters
   
-- **data** [`Data`](#typesdata) The data to be encoded in the QR code.  
+- **data** [`Data`](#interface-typesdata) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
 ###### Return Type
   
-[`SwissQRCode`](#svgswissqrcode)  
+[`SwissQRCode`](#class-svgswissqrcode)  
   
 ###### Description
   
 Creates a Swiss QR Code.  
   
----
+<br/>
   
-### types
+### Namespace: types
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L4C7)  
   
----
+<br/>
   
-#### types.Currency
+#### Type alias: types.Currency
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)  
   
@@ -675,9 +646,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)
   
 `"CHF"` | `"EUR"`  
   
----
+<br/>
   
-#### types.Size
+#### Type alias: types.Size
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)  
   
@@ -685,9 +656,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)
   
 `"A4"` | `"A6"` | `"A6/5"`  
   
----
+<br/>
   
-#### types.Language
+#### Type alias: types.Language
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)  
   
@@ -695,9 +666,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)
   
 `"DE"` | `"EN"` | `"FR"` | `"IT"`  
   
----
+<br/>
   
-#### types.FontName
+#### Type alias: types.FontName
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)  
   
@@ -705,14 +676,14 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)
   
 `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`  
   
----
+<br/>
   
-#### types.Data
+#### Interface: types.Data
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)  
   
-- **types.creditor** [`Creditor`](#typescreditor) Creditor related data.
-- **types.currency** [`Currency`](#typescurrency) The currency to be used. **3 characters.**
+- **types.creditor** [`Creditor`](#interface-typescreditor) Creditor related data.
+- **types.currency** [`Currency`](#type-alias-typescurrency) The currency to be used. **3 characters.**
 - **types.additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**
   Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment. `optional`
 - **types.amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.** `optional`
@@ -720,16 +691,16 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
 - **types.av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
-- **types.debtor** [`Debtor`](#typesdebtor) Debtor related data. `optional`
+- **types.debtor** [`Debtor`](#interface-typesdebtor) Debtor related data. `optional`
 - **types.message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**
   message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference. `optional`
 - **types.reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A reference number. **Max 27 characters.**
   QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
   Creditor Reference (ISO 11649): Maximum 25 characters. `optional`
   
----
+<br/>
   
-#### types.Debtor
+#### Interface: types.Debtor
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)  
   
@@ -740,9 +711,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)
 - **types.zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**
 - **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
   
----
+<br/>
   
-#### types.Creditor
+#### Interface: types.Creditor
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)  
   
@@ -754,52 +725,52 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)
 - **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
 - **types.account** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN. **21 characters.**
   
----
+<br/>
   
-#### types.QRBillOptions
+#### Interface: types.QRBillOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)  
   
-- **types.fontName** [`FontName`](#typesfontname) Font used for the QR-Bill.
+- **types.fontName** [`FontName`](#type-alias-typesfontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **types.language** [`Language`](#typeslanguage) The language with which the bill is rendered. `optional`
+- **types.language** [`Language`](#type-alias-typeslanguage) The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
----
+<br/>
   
-#### types.PDFOptions
+#### Interface: types.PDFOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)  
   
-- **types.fontName** [`FontName`](#typesfontname) Font used for the QR-Bill.
+- **types.fontName** [`FontName`](#type-alias-typesfontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **types.language** [`Language`](#typeslanguage) The language with which the bill is rendered. `optional`
+- **types.language** [`Language`](#type-alias-typeslanguage) The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **types.separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
----
+<br/>
   
-#### types.SVGOptions
+#### Interface: types.SVGOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)  
   
-- **types.fontName** [`FontName`](#typesfontname) Font used for the QR-Bill.
+- **types.fontName** [`FontName`](#type-alias-typesfontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **types.language** [`Language`](#typeslanguage) The language with which the bill is rendered. `optional`
+- **types.language** [`Language`](#type-alias-typeslanguage) The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
----
+<br/>
   
-### utils
+### Namespace: utils
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L5C7)  
   
----
+<br/>
   
-#### utils.isQRIBAN(iban)
+#### Function: utils.utils.isQRIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)  
   
@@ -815,9 +786,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)
   
 Checks whether the given iban is a QR-IBAN or not.  
   
----
+<br/>
   
-#### utils.isIBANValid(iban)
+#### Function: utils.utils.isIBANValid(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)  
   
@@ -833,9 +804,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)
   
 Validates the given IBAN.  
   
----
+<br/>
   
-#### utils.formatIBAN(iban)
+#### Function: utils.utils.formatIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
   
@@ -851,9 +822,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)
   
 Formats the given IBAN according the specifications to be easily readable.  
   
----
+<br/>
   
-#### utils.isQRReference(reference)
+#### Function: utils.utils.isQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
   
@@ -873,9 +844,9 @@ Checks whether the given reference is a QR-Reference or not.
   
 The QR-Reference is a 27 digits long string containing only digits. The last digit is the checksum.  
   
----
+<br/>
   
-#### utils.isQRReferenceValid(reference)
+#### Function: utils.utils.isQRReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
   
@@ -891,9 +862,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)
   
 Validates the given QR-Reference.  
   
----
+<br/>
   
-#### utils.isSCORReference(reference)
+#### Function: utils.utils.isSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
   
@@ -913,9 +884,9 @@ Checks whether the given reference is a SCOR-Reference or not.
   
 The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing a 2 digit checksum and a max 21 digits long reference.  
   
----
+<br/>
   
-#### utils.isSCORReferenceValid(reference)
+#### Function: utils.utils.isSCORReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
   
@@ -931,9 +902,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)
   
 Validates the given SCOR-Reference.  
   
----
+<br/>
   
-#### utils.calculateSCORReferenceChecksum(reference)
+#### Function: utils.utils.calculateSCORReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
   
@@ -949,9 +920,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)
   
 Calculates the checksum according to the ISO 11649 standard.  
   
----
+<br/>
   
-#### utils.calculateQRReferenceChecksum(reference)
+#### Function: utils.utils.calculateQRReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
   
@@ -967,9 +938,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)
   
 Calculates the checksum according the specifications.  
   
----
+<br/>
   
-#### utils.formatQRReference(reference)
+#### Function: utils.utils.formatQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
@@ -985,9 +956,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)
   
 Formats the given QR-Reference according the specifications to be easily readable.  
   
----
+<br/>
   
-#### utils.formatSCORReference(reference)
+#### Function: utils.utils.formatSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
   
@@ -1003,9 +974,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)
   
 Formats the given SCOR-Reference according the specifications to be easily readable.  
   
----
+<br/>
   
-#### utils.formatReference(reference)
+#### Function: utils.utils.formatReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
   
@@ -1021,9 +992,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)
   
 Detects the type of the given reference and formats it according the specifications to be easily readable.  
   
----
+<br/>
   
-#### utils.formatAmount(amount)
+#### Function: utils.utils.formatAmount(amount)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
   
@@ -1039,9 +1010,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)
   
 Formats the given amount according the specifications to be easily readable.  
   
----
+<br/>
   
-#### utils.mm2pt(millimeters)
+#### Function: utils.utils.mm2pt(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
   
@@ -1057,9 +1028,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)
   
 Converts millimeters to points.  
   
----
+<br/>
   
-#### utils.pt2mm(points)
+#### Function: utils.utils.pt2mm(points)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
   
@@ -1075,9 +1046,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)
   
 Converts points to millimeters.  
   
----
+<br/>
   
-#### utils.mm2px(millimeters)
+#### Function: utils.utils.mm2px(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
   
@@ -1093,9 +1064,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)
   
 Converts millimeters to pixels.  
   
----
+<br/>
   
-#### utils.px2mm(pixels)
+#### Function: utils.utils.px2mm(pixels)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
   
@@ -1111,9 +1082,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)
   
 Converts pixels to millimeters.  
   
----
+<br/>
   
-#### utils.getReferenceType(reference)
+#### Function: utils.utils.getReferenceType(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
   
@@ -1129,15 +1100,15 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)
   
 Detects the type of the given reference.  
   
----
+<br/>
   
-### errors
+### Namespace: errors
   
 Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L6C7)  
   
----
+<br/>
   
-#### errors.resolveMessageParams(message, params)
+#### Function: errors.errors.resolveMessageParams(message, params)
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L13C0)  
   
@@ -1150,17 +1121,17 @@ Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L13C0)
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
   
----
+<br/>
   
-#### errors.ValidationError
+#### Class: errors.ValidationError
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L1C0)  
   
+<br/>
+  
 ##### Construct Signature
   
----
-  
-###### new errors.ValidationError(message\[, params\])
+###### Function: errors.ValidationError.new errors.ValidationError(message\[, params\])
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L2C2)  
   
@@ -1171,11 +1142,11 @@ Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L2C2)
   
 ###### Return Type
   
-[`ValidationError`](#errorsvalidationerror)  
+[`ValidationError`](#class-errorsvalidationerror)  
   
----
+<br/>
   
-#### errors.ValidationErrors
+#### Enum: errors.ValidationErrors
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L19C0)  
   

@@ -1,63 +1,57 @@
   
 # Index
   
+<br/>
+  
 - Classes
   
-  - [SwissQRBill](#swissqrbill)
+  - [SwissQRBill](#class-swissqrbill)
   
     - Constructor
-  
-      - [new SwissQRBill(data\[, options\])](#new-swissqrbilldata-options)
-  
+      - [new SwissQRBill(data\[, options\])](#function-swissqrbillnew-swissqrbilldata-options)
     - Property
-  
-      - [instance](#swissqrbillinstance)
-  
+      - [instance](#property-swissqrbillinstance)
     - Method
-  
-      - [toString()](#swissqrbilltostring)
-  
+      - [toString()](#function-swissqrbillswissqrbilltostring)
     - Getters
+      - [outerHTML()](#function-swissqrbillswissqrbillouterhtml)
+      - [element()](#function-swissqrbillswissqrbillelement)
   
-      - [outerHTML()](#swissqrbillouterhtml)
-      - [element()](#swissqrbillelement)
-  
-  - [SwissQRCode](#swissqrcode)
+  - [SwissQRCode](#class-swissqrcode)
   
     - Constructor
+      - [new SwissQRCode(data, size)](#function-swissqrcodenew-swissqrcodedata-size)
   
-      - [new SwissQRCode(data, size)](#new-swissqrcodedata-size)
+<br/>
   
 ## Classes
   
----
-  
-### SwissQRBill
+### Class: SwissQRBill
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)  
   
+<br/>
+  
 #### Construct Signature
   
----
-  
-##### new SwissQRBill(data\[, options\])
+##### Function: SwissQRBill.new SwissQRBill(data\[, options\])
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
   
 ###### Parameters
   
-- **data** [`Data`](./types.md#data)  
-- **options** [`SVGOptions`](./types.md#svgoptions) `optional`  
+- **data** [`Data`](./types.md#interface-data)  
+- **options** [`SVGOptions`](./types.md#interface-svgoptions) `optional`  
   
 ###### Return Type
   
-[`SwissQRBill`](#swissqrbill)  
+[`SwissQRBill`](#class-swissqrbill)  
+  
+<br/>
   
 #### Property
   
----
-  
-##### SwissQRBill.instance
+##### Property: SwissQRBill.instance
   
 `protected`  
   
@@ -67,11 +61,11 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)
   
 `SVG`  
   
+<br/>
+  
 #### Method
   
----
-  
-##### SwissQRBill.toString()
+##### Function: SwissQRBill.SwissQRBill.toString()
   
 `public`  
   
@@ -85,11 +79,11 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L59C2)
   
 Outputs the SVG as a string.  
   
+<br/>
+  
 #### Getters
   
----
-  
-##### SwissQRBill.outerHTML()
+##### Function: SwissQRBill.SwissQRBill.outerHTML()
   
 `public`  
   
@@ -99,9 +93,9 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)
   
 [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
   
----
+<br/>
   
-##### SwissQRBill.element()
+##### Function: SwissQRBill.SwissQRBill.element()
   
 `public`  
   
@@ -115,28 +109,28 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L69C2)
   
 Returns the SVG element.  
   
----
+<br/>
   
-### SwissQRCode
+### Class: SwissQRCode
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)  
   
+<br/>
+  
 #### Construct Signature
   
----
-  
-##### new SwissQRCode(data, size)
+##### Function: SwissQRCode.new SwissQRCode(data, size)
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
 ###### Parameters
   
-- **data** [`Data`](./types.md#data) The data to be encoded in the QR code.  
+- **data** [`Data`](./types.md#interface-data) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
 ###### Return Type
   
-[`SwissQRCode`](#swissqrcode)  
+[`SwissQRCode`](#class-swissqrcode)  
   
 ###### Description
   

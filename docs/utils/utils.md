@@ -1,32 +1,36 @@
   
 # Utils
   
+<br/>
+  
 - Functions
   
-  - [isQRIBAN(iban)](#isqribaniban)
-  - [isIBANValid(iban)](#isibanvalidiban)
-  - [formatIBAN(iban)](#formatibaniban)
-  - [isQRReference(reference)](#isqrreferencereference)
-  - [isQRReferenceValid(reference)](#isqrreferencevalidreference)
-  - [isSCORReference(reference)](#isscorreferencereference)
-  - [isSCORReferenceValid(reference)](#isscorreferencevalidreference)
-  - [calculateSCORReferenceChecksum(reference)](#calculatescorreferencechecksumreference)
-  - [calculateQRReferenceChecksum(reference)](#calculateqrreferencechecksumreference)
-  - [formatQRReference(reference)](#formatqrreferencereference)
-  - [formatSCORReference(reference)](#formatscorreferencereference)
-  - [formatReference(reference)](#formatreferencereference)
-  - [formatAmount(amount)](#formatamountamount)
-  - [mm2pt(millimeters)](#mm2ptmillimeters)
-  - [pt2mm(points)](#pt2mmpoints)
-  - [mm2px(millimeters)](#mm2pxmillimeters)
-  - [px2mm(pixels)](#px2mmpixels)
-  - [getReferenceType(reference)](#getreferencetypereference)
+  - [isQRIBAN(iban)](#function-isqribaniban)
+  - [isIBANValid(iban)](#function-isibanvalidiban)
+  - [formatIBAN(iban)](#function-formatibaniban)
+  - [isQRReference(reference)](#function-isqrreferencereference)
+  - [isQRReferenceValid(reference)](#function-isqrreferencevalidreference)
+  - [isSCORReference(reference)](#function-isscorreferencereference)
+  - [isSCORReferenceValid(reference)](#function-isscorreferencevalidreference)
+  - [calculateSCORReferenceChecksum(reference)](#function-calculatescorreferencechecksumreference)
+  - [calculateQRReferenceChecksum(reference)](#function-calculateqrreferencechecksumreference)
+  - [formatQRReference(reference)](#function-formatqrreferencereference)
+  - [formatSCORReference(reference)](#function-formatscorreferencereference)
+  - [formatReference(reference)](#function-formatreferencereference)
+  - [formatAmount(amount)](#function-formatamountamount)
+  - [mm2pt(millimeters)](#function-mm2ptmillimeters)
+  - [pt2mm(points)](#function-pt2mmpoints)
+  - [mm2px(millimeters)](#function-mm2pxmillimeters)
+  - [px2mm(pixels)](#function-px2mmpixels)
+  - [getReferenceType(reference)](#function-getreferencetypereference)
+  
+<br/>
   
 ## Functions
   
----
+<br/>
   
-### isQRIBAN(iban)
+### Function: isQRIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)  
   
@@ -42,9 +46,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)
   
 Checks whether the given iban is a QR-IBAN or not.  
   
----
+<br/>
   
-### isIBANValid(iban)
+### Function: isIBANValid(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)  
   
@@ -60,9 +64,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)
   
 Validates the given IBAN.  
   
----
+<br/>
   
-### formatIBAN(iban)
+### Function: formatIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
   
@@ -78,9 +82,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)
   
 Formats the given IBAN according the specifications to be easily readable.  
   
----
+<br/>
   
-### isQRReference(reference)
+### Function: isQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
   
@@ -100,9 +104,9 @@ Checks whether the given reference is a QR-Reference or not.
   
 The QR-Reference is a 27 digits long string containing only digits. The last digit is the checksum.  
   
----
+<br/>
   
-### isQRReferenceValid(reference)
+### Function: isQRReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
   
@@ -118,9 +122,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)
   
 Validates the given QR-Reference.  
   
----
+<br/>
   
-### isSCORReference(reference)
+### Function: isSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
   
@@ -140,9 +144,9 @@ Checks whether the given reference is a SCOR-Reference or not.
   
 The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing a 2 digit checksum and a max 21 digits long reference.  
   
----
+<br/>
   
-### isSCORReferenceValid(reference)
+### Function: isSCORReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
   
@@ -158,9 +162,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)
   
 Validates the given SCOR-Reference.  
   
----
+<br/>
   
-### calculateSCORReferenceChecksum(reference)
+### Function: calculateSCORReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
   
@@ -176,9 +180,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)
   
 Calculates the checksum according to the ISO 11649 standard.  
   
----
+<br/>
   
-### calculateQRReferenceChecksum(reference)
+### Function: calculateQRReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
   
@@ -194,9 +198,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)
   
 Calculates the checksum according the specifications.  
   
----
+<br/>
   
-### formatQRReference(reference)
+### Function: formatQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
@@ -212,9 +216,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)
   
 Formats the given QR-Reference according the specifications to be easily readable.  
   
----
+<br/>
   
-### formatSCORReference(reference)
+### Function: formatSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
   
@@ -230,9 +234,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)
   
 Formats the given SCOR-Reference according the specifications to be easily readable.  
   
----
+<br/>
   
-### formatReference(reference)
+### Function: formatReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
   
@@ -248,9 +252,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)
   
 Detects the type of the given reference and formats it according the specifications to be easily readable.  
   
----
+<br/>
   
-### formatAmount(amount)
+### Function: formatAmount(amount)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
   
@@ -266,9 +270,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)
   
 Formats the given amount according the specifications to be easily readable.  
   
----
+<br/>
   
-### mm2pt(millimeters)
+### Function: mm2pt(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
   
@@ -284,9 +288,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)
   
 Converts millimeters to points.  
   
----
+<br/>
   
-### pt2mm(points)
+### Function: pt2mm(points)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
   
@@ -302,9 +306,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)
   
 Converts points to millimeters.  
   
----
+<br/>
   
-### mm2px(millimeters)
+### Function: mm2px(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
   
@@ -320,9 +324,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)
   
 Converts millimeters to pixels.  
   
----
+<br/>
   
-### px2mm(pixels)
+### Function: px2mm(pixels)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
   
@@ -338,9 +342,9 @@ Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)
   
 Converts pixels to millimeters.  
   
----
+<br/>
   
-### getReferenceType(reference)
+### Function: getReferenceType(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
   

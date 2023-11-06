@@ -1,27 +1,26 @@
   
 # Types
   
+<br/>
+  
 - Type aliases
   
-  - [Currency](#currency)
-  - [Size](#size)
-  - [Language](#language)
-  - [FontName](#fontname)
+  - [Currency](#type-alias-currency)
+  - [Size](#type-alias-size)
+  - [Language](#type-alias-language)
+  - [FontName](#type-alias-fontname)
+  - [Data](#interface-data)
+  - [Debtor](#interface-debtor)
+  - [Creditor](#interface-creditor)
+  - [QRBillOptions](#interface-qrbilloptions)
+  - [PDFOptions](#interface-pdfoptions)
+  - [SVGOptions](#interface-svgoptions)
   
-- Interfaces
-  
-  - [Data](#data)
-  - [Debtor](#debtor)
-  - [Creditor](#creditor)
-  - [QRBillOptions](#qrbilloptions)
-  - [PDFOptions](#pdfoptions)
-  - [SVGOptions](#svgoptions)
+<br/>
   
 ## Type aliases
   
----
-  
-### Currency
+### Type alias: Currency
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)  
   
@@ -29,9 +28,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)
   
 `"CHF"` | `"EUR"`  
   
----
+<br/>
   
-### Size
+### Type alias: Size
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)  
   
@@ -39,9 +38,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)
   
 `"A4"` | `"A6"` | `"A6/5"`  
   
----
+<br/>
   
-### Language
+### Type alias: Language
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)  
   
@@ -49,9 +48,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)
   
 `"DE"` | `"EN"` | `"FR"` | `"IT"`  
   
----
+<br/>
   
-### FontName
+### Type alias: FontName
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)  
   
@@ -59,16 +58,14 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)
   
 `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`  
   
-## Interfaces
+<br/>
   
----
-  
-### Data
+### Interface: Data
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)  
   
-- **creditor** [`Creditor`](#creditor) Creditor related data.
-- **currency** [`Currency`](#currency) The currency to be used. **3 characters.**
+- **creditor** [`Creditor`](#interface-creditor) Creditor related data.
+- **currency** [`Currency`](#type-alias-currency) The currency to be used. **3 characters.**
 - **additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**
   Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment. `optional`
 - **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.** `optional`
@@ -76,16 +73,16 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
 - **av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
-- **debtor** [`Debtor`](#debtor) Debtor related data. `optional`
+- **debtor** [`Debtor`](#interface-debtor) Debtor related data. `optional`
 - **message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**
   message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference. `optional`
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A reference number. **Max 27 characters.**
   QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
   Creditor Reference (ISO 11649): Maximum 25 characters. `optional`
   
----
+<br/>
   
-### Debtor
+### Interface: Debtor
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)  
   
@@ -96,9 +93,9 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)
 - **zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**
 - **buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
   
----
+<br/>
   
-### Creditor
+### Interface: Creditor
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)  
   
@@ -110,39 +107,39 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)
 - **buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
 - **account** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN. **21 characters.**
   
----
+<br/>
   
-### QRBillOptions
+### Interface: QRBillOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)  
   
-- **fontName** [`FontName`](#fontname) Font used for the QR-Bill.
+- **fontName** [`FontName`](#type-alias-fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **language** [`Language`](#language) The language with which the bill is rendered. `optional`
+- **language** [`Language`](#type-alias-language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
----
+<br/>
   
-### PDFOptions
+### Interface: PDFOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)  
   
-- **fontName** [`FontName`](#fontname) Font used for the QR-Bill.
+- **fontName** [`FontName`](#type-alias-fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **language** [`Language`](#language) The language with which the bill is rendered. `optional`
+- **language** [`Language`](#type-alias-language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
----
+<br/>
   
-### SVGOptions
+### Interface: SVGOptions
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)  
   
-- **fontName** [`FontName`](#fontname) Font used for the QR-Bill.
+- **fontName** [`FontName`](#type-alias-fontname) Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **language** [`Language`](#language) The language with which the bill is rendered. `optional`
+- **language** [`Language`](#type-alias-language) The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`

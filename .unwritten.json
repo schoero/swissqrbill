@@ -1,4 +1,9 @@
 {
   "$schema": "../unwritten/schemas/renderer/config.json",
-  "extends": "@schoero/unwritten-config"
+  "extends": "@schoero/unwritten-config",
+  "renderConfig": {
+    "markdown": {
+      "sectionSeparator": "<br/>"
+    }
+  }
 }

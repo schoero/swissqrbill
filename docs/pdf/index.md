@@ -1,89 +1,78 @@
   
 # Index
   
+<br/>
+  
 - Classes
   
-  - [SwissQRBill](#swissqrbill)
+  - [SwissQRBill](#class-swissqrbill)
   
     - Constructor
-  
-      - [new SwissQRBill(data\[, options\])](#new-swissqrbilldata-options)
-  
+      - [new SwissQRBill(data\[, options\])](#function-swissqrbillnew-swissqrbilldata-options)
     - Properties
-  
-      - [width](#swissqrbillwidth)
-      - [height](#swissqrbillheight)
-  
+      - [width](#property-swissqrbillwidth)
+      - [height](#property-swissqrbillheight)
     - Methods
+      - [attachTo(doc, x, y)](#function-swissqrbillswissqrbillattachtodoc-x-y)
+      - [isSpaceSufficient(doc, xPosition, yPosition)](#function-swissqrbillswissqrbillisspacesufficientdoc-xposition-yposition)
   
-      - [attachTo(doc, x, y)](#swissqrbillattachtodoc-x-y)
-      - [isSpaceSufficient(doc, xPosition, yPosition)](#swissqrbillisspacesufficientdoc-xposition-yposition)
-  
-  - [SwissQRCode](#swissqrcode)
-  
-    - Constructor
-  
-      - [new SwissQRCode(data, size)](#new-swissqrcodedata-size)
-  
-    - Method
-  
-      - [attachTo(doc, x, y)](#swissqrcodeattachtodoc-x-y)
-  
-  - [Table](#table)
+  - [SwissQRCode](#class-swissqrcode)
   
     - Constructor
-  
-      - [new Table(data)](#new-tabledata)
-  
+      - [new SwissQRCode(data, size)](#function-swissqrcodenew-swissqrcodedata-size)
     - Method
+      - [attachTo(doc, x, y)](#function-swissqrcodeswissqrcodeattachtodoc-x-y)
   
-      - [attachTo(doc, x, y)](#tableattachtodoc-x-y)
+  - [Table](#class-table)
   
-- Interfaces
+    - Constructor
+      - [new Table(data)](#function-tablenew-tabledata)
+    - Method
+      - [attachTo(doc, x, y)](#function-tabletableattachtodoc-x-y)
   
-  - [PDFTable](#pdftable)
-  - [PDFRow](#pdfrow)
-  - [PDFColumn](#pdfcolumn)
+  - [PDFTable](#interface-pdftable)
+  - [PDFRow](#interface-pdfrow)
+  - [PDFColumn](#interface-pdfcolumn)
+  
+<br/>
   
 ## Classes
   
----
-  
-### SwissQRBill
+### Class: SwissQRBill
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)  
   
 #### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
-using the [`attachTo`](#swissqrbillattachtodoc-x-y) method.  
+using the [`attachTo`](#function-swissqrbillswissqrbillattachtodoc-x-y) method.  
+  
+<br/>
   
 #### Construct Signature
   
----
-  
-##### new SwissQRBill(data\[, options\])
+##### Function: SwissQRBill.new SwissQRBill(data\[, options\])
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
   
 ###### Parameters
   
-- **data** [`Data`](./types.md#data) The data to be used for the QR Bill.  
-- **options** [`PDFOptions`](./types.md#pdfoptions) Options to define how the QR Bill should be rendered. `optional`  
+- **data** [`Data`](./types.md#interface-data) The data to be used for the QR Bill.  
+- **options** [`PDFOptions`](./types.md#interface-pdfoptions) Options to define how the QR Bill should be rendered. `optional`  
   
 ###### Return Type
   
-[`SwissQRBill`](#swissqrbill)  
+[`SwissQRBill`](#class-swissqrbill)  
   
 ###### Description
   
 Creates a new SwissQRBill instance.  
   
+<br/>
+  
 #### Properties
   
----
-  
-##### SwissQRBill.width
+##### Property: SwissQRBill.width
   
 `public` `static` `readonly`  
   
@@ -97,9 +86,9 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)
   
 The horizontal size of the QR Bill.  
   
----
+<br/>
   
-##### SwissQRBill.height
+##### Property: SwissQRBill.height
   
 `public` `static` `readonly`  
   
@@ -113,11 +102,11 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)
   
 The vertical size of the QR Bill.  
   
+<br/>
+  
 #### Methods
   
----
-  
-##### SwissQRBill.attachTo(doc, x, y)
+##### Function: SwissQRBill.SwissQRBill.attachTo(doc, x, y)
   
 `public`  
   
@@ -138,9 +127,9 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)
 Adds the QR Bill to the bottom of the current page if there is enough space,
 otherwise it will create a new page for the QR Bill.  
   
----
+<br/>
   
-##### SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
+##### Function: SwissQRBill.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
   
 `public` `static`  
   
@@ -160,38 +149,38 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)
   
 Checks whether there is enough space on the current page to add the QR Bill.  
   
----
+<br/>
   
-### SwissQRCode
+### Class: SwissQRCode
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)  
   
+<br/>
+  
 #### Construct Signature
   
----
-  
-##### new SwissQRCode(data, size)
+##### Function: SwissQRCode.new SwissQRCode(data, size)
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
 ###### Parameters
   
-- **data** [`Data`](./types.md#data) The data to be encoded in the QR code.  
+- **data** [`Data`](./types.md#interface-data) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
 ###### Return Type
   
-[`SwissQRCode`](#swissqrcode)  
+[`SwissQRCode`](#class-swissqrcode)  
   
 ###### Description
   
 Creates a Swiss QR Code.  
   
+<br/>
+  
 #### Method
   
----
-  
-##### SwissQRCode.attachTo(doc, x, y)
+##### Function: SwissQRCode.SwissQRCode.attachTo(doc, x, y)
   
 `public`  
   
@@ -211,27 +200,27 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)
   
 Attaches the Swiss QR Code to a PDF document.  
   
----
+<br/>
   
-### Table
+### Class: Table
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
   
+<br/>
+  
 #### Construct Signature
   
----
-  
-##### new Table(data)
+##### Function: Table.new Table(data)
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
   
 ###### Parameter
   
-- **data** [`PDFTable`](#pdftable) An Object which contains the table information.  
+- **data** [`PDFTable`](#interface-pdftable) An Object which contains the table information.  
   
 ###### Return Type
   
-[`Table`](#table) The Table instance.  
+[`Table`](#class-table) The Table instance.  
   
 ###### Description
   
@@ -268,11 +257,11 @@ const table = {
 };
 ```  
   
+<br/>
+  
 #### Method
   
----
-  
-##### Table.attachTo(doc, x, y)
+##### Function: Table.Table.attachTo(doc, x, y)
   
 `public`  
   
@@ -296,17 +285,15 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)
   
 Attaches the table to a PDFKit document instance.  
   
-## Interfaces
+<br/>
   
----
-  
-### PDFTable
+### Interface: PDFTable
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)  
   
 - **rows** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table rows.
   
-  - [`PDFRow`](#pdfrow)
+  - [`PDFRow`](#interface-pdfrow)
   
 - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
@@ -347,15 +334,15 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
 - **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
 - **width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of whole table. `optional`
   
----
+<br/>
   
-### PDFRow
+### Interface: PDFRow
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)  
   
 - **columns** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table columns.
   
-  - [`PDFColumn`](#pdfcolumn)
+  - [`PDFColumn`](#interface-pdfcolumn)
   
 - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
@@ -399,9 +386,9 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)
 - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
   
----
+<br/>
   
-### PDFColumn
+### Interface: PDFColumn
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)  
   
