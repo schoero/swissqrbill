@@ -12,20 +12,20 @@
       - [SwissQRBill](#class-pdfswissqrbill)
   
         - Constructor
-          - [new SwissQRBill(data\[, options\])](#function-pdfswissqrbillnew-pdfswissqrbilldata-options)
+          - [new SwissQRBill(data\[, options\])](#constructor-new-pdfswissqrbilldata-options)
         - Properties
           - [width](#property-pdfswissqrbillwidth)
           - [height](#property-pdfswissqrbillheight)
         - Methods
-          - [attachTo(doc, x, y)](#function-pdfswissqrbillpdfswissqrbillattachtodoc-x-y)
-          - [isSpaceSufficient(doc, xPosition, yPosition)](#function-pdfswissqrbillpdfswissqrbillisspacesufficientdoc-xposition-yposition)
+          - [attachTo(doc, x, y)](#method-pdfswissqrbillattachtodoc-x-y)
+          - [isSpaceSufficient(doc, xPosition, yPosition)](#method-pdfswissqrbillisspacesufficientdoc-xposition-yposition)
   
       - [SwissQRCode](#class-pdfswissqrcode)
   
         - Constructor
-          - [new SwissQRCode(data, size)](#function-pdfswissqrcodenew-pdfswissqrcodedata-size)
+          - [new SwissQRCode(data, size)](#constructor-new-pdfswissqrcodedata-size)
         - Method
-          - [attachTo(doc, x, y)](#function-pdfswissqrcodepdfswissqrcodeattachtodoc-x-y)
+          - [attachTo(doc, x, y)](#method-pdfswissqrcodeattachtodoc-x-y)
   
       - [PDFTable](#interface-pdfpdftable)
       - [PDFRow](#interface-pdfpdfrow)
@@ -33,9 +33,9 @@
       - [Table](#class-pdftable)
   
         - Constructor
-          - [new Table(data)](#function-pdftablenew-pdftabledata)
+          - [new Table(data)](#constructor-new-pdftabledata)
         - Method
-          - [attachTo(doc, x, y)](#function-pdftablepdftableattachtodoc-x-y)
+          - [attachTo(doc, x, y)](#method-pdftableattachtodoc-x-y)
   
   - [svg](#namespace-svg)
   
@@ -44,19 +44,19 @@
       - [SwissQRBill](#class-svgswissqrbill)
   
         - Constructor
-          - [new SwissQRBill(data\[, options\])](#function-svgswissqrbillnew-svgswissqrbilldata-options)
+          - [new SwissQRBill(data\[, options\])](#constructor-new-svgswissqrbilldata-options)
         - Property
           - [instance](#property-svgswissqrbillinstance)
         - Method
-          - [toString()](#function-svgswissqrbillsvgswissqrbilltostring)
+          - [toString()](#method-svgswissqrbilltostring)
         - Getters
-          - [outerHTML()](#function-svgswissqrbillsvgswissqrbillouterhtml)
-          - [element()](#function-svgswissqrbillsvgswissqrbillelement)
+          - [outerHTML()](#getter-svgswissqrbillouterhtml)
+          - [element()](#getter-svgswissqrbillelement)
   
       - [SwissQRCode](#class-svgswissqrcode)
   
         - Constructor
-          - [new SwissQRCode(data, size)](#function-svgswissqrcodenew-svgswissqrcodedata-size)
+          - [new SwissQRCode(data, size)](#constructor-new-svgswissqrcodedata-size)
   
   - [types](#namespace-types)
   
@@ -77,34 +77,34 @@
   
     - Functions
   
-      - [isQRIBAN(iban)](#function-utilsutilsisqribaniban)
-      - [isIBANValid(iban)](#function-utilsutilsisibanvalidiban)
-      - [formatIBAN(iban)](#function-utilsutilsformatibaniban)
-      - [isQRReference(reference)](#function-utilsutilsisqrreferencereference)
-      - [isQRReferenceValid(reference)](#function-utilsutilsisqrreferencevalidreference)
-      - [isSCORReference(reference)](#function-utilsutilsisscorreferencereference)
-      - [isSCORReferenceValid(reference)](#function-utilsutilsisscorreferencevalidreference)
-      - [calculateSCORReferenceChecksum(reference)](#function-utilsutilscalculatescorreferencechecksumreference)
-      - [calculateQRReferenceChecksum(reference)](#function-utilsutilscalculateqrreferencechecksumreference)
-      - [formatQRReference(reference)](#function-utilsutilsformatqrreferencereference)
-      - [formatSCORReference(reference)](#function-utilsutilsformatscorreferencereference)
-      - [formatReference(reference)](#function-utilsutilsformatreferencereference)
-      - [formatAmount(amount)](#function-utilsutilsformatamountamount)
-      - [mm2pt(millimeters)](#function-utilsutilsmm2ptmillimeters)
-      - [pt2mm(points)](#function-utilsutilspt2mmpoints)
-      - [mm2px(millimeters)](#function-utilsutilsmm2pxmillimeters)
-      - [px2mm(pixels)](#function-utilsutilspx2mmpixels)
-      - [getReferenceType(reference)](#function-utilsutilsgetreferencetypereference)
+      - [isQRIBAN(iban)](#function-utilsisqribaniban)
+      - [isIBANValid(iban)](#function-utilsisibanvalidiban)
+      - [formatIBAN(iban)](#function-utilsformatibaniban)
+      - [isQRReference(reference)](#function-utilsisqrreferencereference)
+      - [isQRReferenceValid(reference)](#function-utilsisqrreferencevalidreference)
+      - [isSCORReference(reference)](#function-utilsisscorreferencereference)
+      - [isSCORReferenceValid(reference)](#function-utilsisscorreferencevalidreference)
+      - [calculateSCORReferenceChecksum(reference)](#function-utilscalculatescorreferencechecksumreference)
+      - [calculateQRReferenceChecksum(reference)](#function-utilscalculateqrreferencechecksumreference)
+      - [formatQRReference(reference)](#function-utilsformatqrreferencereference)
+      - [formatSCORReference(reference)](#function-utilsformatscorreferencereference)
+      - [formatReference(reference)](#function-utilsformatreferencereference)
+      - [formatAmount(amount)](#function-utilsformatamountamount)
+      - [mm2pt(millimeters)](#function-utilsmm2ptmillimeters)
+      - [pt2mm(points)](#function-utilspt2mmpoints)
+      - [mm2px(millimeters)](#function-utilsmm2pxmillimeters)
+      - [px2mm(pixels)](#function-utilspx2mmpixels)
+      - [getReferenceType(reference)](#function-utilsgetreferencetypereference)
   
   - [errors](#namespace-errors)
   
     - Functions
   
-      - [resolveMessageParams(message, params)](#function-errorserrorsresolvemessageparamsmessage-params)
+      - [resolveMessageParams(message, params)](#function-errorsresolvemessageparamsmessage-params)
       - [ValidationError](#class-errorsvalidationerror)
   
         - Constructor
-          - [new ValidationError(message\[, params\])](#function-errorsvalidationerrornew-errorsvalidationerrormessage-params)
+          - [new ValidationError(message\[, params\])](#constructor-new-errorsvalidationerrormessage-params)
   
       - [ValidationErrors](#enum-errorsvalidationerrors)
   
@@ -125,13 +125,11 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)
 ##### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
-using the [`attachTo`](#function-pdfswissqrbillpdfswissqrbillattachtodoc-x-y) method.  
+using the [`attachTo`](#method-pdfswissqrbillattachtodoc-x-y) method.  
   
 <br/>
   
-##### Construct Signature
-  
-###### Function: pdf.SwissQRBill.new pdf.SwissQRBill(data\[, options\])
+##### Constructor: new pdf.SwissQRBill(data\[, options\])
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
   
@@ -150,9 +148,7 @@ Creates a new SwissQRBill instance.
   
 <br/>
   
-##### Properties
-  
-###### Property: pdf.SwissQRBill.width
+##### Property: pdf.SwissQRBill.width
   
 `public` `static` `readonly`  
   
@@ -168,7 +164,7 @@ The horizontal size of the QR Bill.
   
 <br/>
   
-###### Property: pdf.SwissQRBill.height
+##### Property: pdf.SwissQRBill.height
   
 `public` `static` `readonly`  
   
@@ -184,9 +180,7 @@ The vertical size of the QR Bill.
   
 <br/>
   
-##### Methods
-  
-###### Function: pdf.SwissQRBill.pdf.SwissQRBill.attachTo(doc, x, y)
+##### Method: pdf.SwissQRBill.attachTo(doc, x, y)
   
 `public`  
   
@@ -209,7 +203,7 @@ otherwise it will create a new page for the QR Bill.
   
 <br/>
   
-###### Function: pdf.SwissQRBill.pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
+##### Method: pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
   
 `public` `static`  
   
@@ -237,9 +231,7 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)
   
 <br/>
   
-##### Construct Signature
-  
-###### Function: pdf.SwissQRCode.new pdf.SwissQRCode(data, size)
+##### Constructor: new pdf.SwissQRCode(data, size)
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
@@ -258,9 +250,7 @@ Creates a Swiss QR Code.
   
 <br/>
   
-##### Method
-  
-###### Function: pdf.SwissQRCode.pdf.SwissQRCode.attachTo(doc, x, y)
+##### Method: pdf.SwissQRCode.attachTo(doc, x, y)
   
 `public`  
   
@@ -435,9 +425,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)
   
 <br/>
   
-##### Construct Signature
-  
-###### Function: pdf.Table.new pdf.Table(data)
+##### Constructor: new pdf.Table(data)
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
   
@@ -486,9 +474,7 @@ const table = {
   
 <br/>
   
-##### Method
-  
-###### Function: pdf.Table.pdf.Table.attachTo(doc, x, y)
+##### Method: pdf.Table.attachTo(doc, x, y)
   
 `public`  
   
@@ -526,9 +512,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)
   
 <br/>
   
-##### Construct Signature
-  
-###### Function: svg.SwissQRBill.new svg.SwissQRBill(data\[, options\])
+##### Constructor: new svg.SwissQRBill(data\[, options\])
   
 Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
   
@@ -543,9 +527,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)
   
 <br/>
   
-##### Property
-  
-###### Property: svg.SwissQRBill.instance
+##### Property: svg.SwissQRBill.instance
   
 `protected`  
   
@@ -557,9 +539,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)
   
 <br/>
   
-##### Method
-  
-###### Function: svg.SwissQRBill.svg.SwissQRBill.toString()
+##### Method: svg.SwissQRBill.toString()
   
 `public`  
   
@@ -575,9 +555,7 @@ Outputs the SVG as a string.
   
 <br/>
   
-##### Getters
-  
-###### Function: svg.SwissQRBill.svg.SwissQRBill.outerHTML()
+##### Getter: svg.SwissQRBill.outerHTML()
   
 `public`  
   
@@ -589,7 +567,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)
   
 <br/>
   
-###### Function: svg.SwissQRBill.svg.SwissQRBill.element()
+##### Getter: svg.SwissQRBill.element()
   
 `public`  
   
@@ -611,9 +589,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)
   
 <br/>
   
-##### Construct Signature
-  
-###### Function: svg.SwissQRCode.new svg.SwissQRCode(data, size)
+##### Constructor: new svg.SwissQRCode(data, size)
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
@@ -770,7 +746,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L5C7)
   
 <br/>
   
-#### Function: utils.utils.isQRIBAN(iban)
+#### Function: utils.isQRIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)  
   
@@ -788,7 +764,7 @@ Checks whether the given iban is a QR-IBAN or not.
   
 <br/>
   
-#### Function: utils.utils.isIBANValid(iban)
+#### Function: utils.isIBANValid(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)  
   
@@ -806,7 +782,7 @@ Validates the given IBAN.
   
 <br/>
   
-#### Function: utils.utils.formatIBAN(iban)
+#### Function: utils.formatIBAN(iban)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
   
@@ -824,7 +800,7 @@ Formats the given IBAN according the specifications to be easily readable.
   
 <br/>
   
-#### Function: utils.utils.isQRReference(reference)
+#### Function: utils.isQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
   
@@ -846,7 +822,7 @@ The QR-Reference is a 27 digits long string containing only digits. The last dig
   
 <br/>
   
-#### Function: utils.utils.isQRReferenceValid(reference)
+#### Function: utils.isQRReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
   
@@ -864,7 +840,7 @@ Validates the given QR-Reference.
   
 <br/>
   
-#### Function: utils.utils.isSCORReference(reference)
+#### Function: utils.isSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
   
@@ -886,7 +862,7 @@ The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing 
   
 <br/>
   
-#### Function: utils.utils.isSCORReferenceValid(reference)
+#### Function: utils.isSCORReferenceValid(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
   
@@ -904,7 +880,7 @@ Validates the given SCOR-Reference.
   
 <br/>
   
-#### Function: utils.utils.calculateSCORReferenceChecksum(reference)
+#### Function: utils.calculateSCORReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
   
@@ -922,7 +898,7 @@ Calculates the checksum according to the ISO 11649 standard.
   
 <br/>
   
-#### Function: utils.utils.calculateQRReferenceChecksum(reference)
+#### Function: utils.calculateQRReferenceChecksum(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
   
@@ -940,7 +916,7 @@ Calculates the checksum according the specifications.
   
 <br/>
   
-#### Function: utils.utils.formatQRReference(reference)
+#### Function: utils.formatQRReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
@@ -958,7 +934,7 @@ Formats the given QR-Reference according the specifications to be easily readabl
   
 <br/>
   
-#### Function: utils.utils.formatSCORReference(reference)
+#### Function: utils.formatSCORReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
   
@@ -976,7 +952,7 @@ Formats the given SCOR-Reference according the specifications to be easily reada
   
 <br/>
   
-#### Function: utils.utils.formatReference(reference)
+#### Function: utils.formatReference(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
   
@@ -994,7 +970,7 @@ Detects the type of the given reference and formats it according the specificati
   
 <br/>
   
-#### Function: utils.utils.formatAmount(amount)
+#### Function: utils.formatAmount(amount)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
   
@@ -1012,7 +988,7 @@ Formats the given amount according the specifications to be easily readable.
   
 <br/>
   
-#### Function: utils.utils.mm2pt(millimeters)
+#### Function: utils.mm2pt(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
   
@@ -1030,7 +1006,7 @@ Converts millimeters to points.
   
 <br/>
   
-#### Function: utils.utils.pt2mm(points)
+#### Function: utils.pt2mm(points)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
   
@@ -1048,7 +1024,7 @@ Converts points to millimeters.
   
 <br/>
   
-#### Function: utils.utils.mm2px(millimeters)
+#### Function: utils.mm2px(millimeters)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
   
@@ -1066,7 +1042,7 @@ Converts millimeters to pixels.
   
 <br/>
   
-#### Function: utils.utils.px2mm(pixels)
+#### Function: utils.px2mm(pixels)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
   
@@ -1084,7 +1060,7 @@ Converts pixels to millimeters.
   
 <br/>
   
-#### Function: utils.utils.getReferenceType(reference)
+#### Function: utils.getReferenceType(reference)
   
 Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
   
@@ -1108,7 +1084,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L6C7)
   
 <br/>
   
-#### Function: errors.errors.resolveMessageParams(message, params)
+#### Function: errors.resolveMessageParams(message, params)
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L13C0)  
   
@@ -1129,9 +1105,7 @@ Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L1C0)
   
 <br/>
   
-##### Construct Signature
-  
-###### Function: errors.ValidationError.new errors.ValidationError(message\[, params\])
+##### Constructor: new errors.ValidationError(message\[, params\])
   
 Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L2C2)  
   

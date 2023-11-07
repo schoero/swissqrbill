@@ -8,27 +8,27 @@
   - [SwissQRBill](#class-swissqrbill)
   
     - Constructor
-      - [new SwissQRBill(data\[, options\])](#function-swissqrbillnew-swissqrbilldata-options)
+      - [new SwissQRBill(data\[, options\])](#constructor-new-swissqrbilldata-options)
     - Properties
       - [width](#property-swissqrbillwidth)
       - [height](#property-swissqrbillheight)
     - Methods
-      - [attachTo(doc, x, y)](#function-swissqrbillswissqrbillattachtodoc-x-y)
-      - [isSpaceSufficient(doc, xPosition, yPosition)](#function-swissqrbillswissqrbillisspacesufficientdoc-xposition-yposition)
+      - [attachTo(doc, x, y)](#method-swissqrbillattachtodoc-x-y)
+      - [isSpaceSufficient(doc, xPosition, yPosition)](#method-swissqrbillisspacesufficientdoc-xposition-yposition)
   
   - [SwissQRCode](#class-swissqrcode)
   
     - Constructor
-      - [new SwissQRCode(data, size)](#function-swissqrcodenew-swissqrcodedata-size)
+      - [new SwissQRCode(data, size)](#constructor-new-swissqrcodedata-size)
     - Method
-      - [attachTo(doc, x, y)](#function-swissqrcodeswissqrcodeattachtodoc-x-y)
+      - [attachTo(doc, x, y)](#method-swissqrcodeattachtodoc-x-y)
   
   - [Table](#class-table)
   
     - Constructor
-      - [new Table(data)](#function-tablenew-tabledata)
+      - [new Table(data)](#constructor-new-tabledata)
     - Method
-      - [attachTo(doc, x, y)](#function-tabletableattachtodoc-x-y)
+      - [attachTo(doc, x, y)](#method-tableattachtodoc-x-y)
   
   - [PDFTable](#interface-pdftable)
   - [PDFRow](#interface-pdfrow)
@@ -45,107 +45,101 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)
 #### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
-using the [`attachTo`](#function-swissqrbillswissqrbillattachtodoc-x-y) method.  
+using the [`attachTo`](#method-swissqrbillattachtodoc-x-y) method.  
   
 <br/>
   
-#### Construct Signature
-  
-##### Function: SwissQRBill.new SwissQRBill(data\[, options\])
+#### Constructor: new SwissQRBill(data\[, options\])
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
   
-###### Parameters
+##### Parameters
   
 - **data** [`Data`](./types.md#interface-data) The data to be used for the QR Bill.  
 - **options** [`PDFOptions`](./types.md#interface-pdfoptions) Options to define how the QR Bill should be rendered. `optional`  
   
-###### Return Type
+##### Return Type
   
 [`SwissQRBill`](#class-swissqrbill)  
   
-###### Description
+##### Description
   
 Creates a new SwissQRBill instance.  
   
 <br/>
   
-#### Properties
-  
-##### Property: SwissQRBill.width
+#### Property: SwissQRBill.width
   
 `public` `static` `readonly`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)  
   
-###### Type
+##### Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-###### Description
+##### Description
   
 The horizontal size of the QR Bill.  
   
 <br/>
   
-##### Property: SwissQRBill.height
+#### Property: SwissQRBill.height
   
 `public` `static` `readonly`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)  
   
-###### Type
+##### Type
   
 [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-###### Description
+##### Description
   
 The vertical size of the QR Bill.  
   
 <br/>
   
-#### Methods
-  
-##### Function: SwissQRBill.SwissQRBill.attachTo(doc, x, y)
+#### Method: SwissQRBill.attachTo(doc, x, y)
   
 `public`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
   
-###### Parameters
+##### Parameters
   
 - **doc** `PDFDocument` The PDFKit instance  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. Default: `0`  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-###### Return Type
+##### Return Type
   
 `void`  
   
-###### Description
+##### Description
   
 Adds the QR Bill to the bottom of the current page if there is enough space,
 otherwise it will create a new page for the QR Bill.  
   
 <br/>
   
-##### Function: SwissQRBill.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
+#### Method: SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
   
 `public` `static`  
   
 Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)  
   
-###### Parameters
+##### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance  
 - **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed.  
 - **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed.  
   
-###### Return Type
+##### Return Type
   
 [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) `true` if there is enough space, otherwise `false`  
   
-###### Description
+##### Description
   
 Checks whether there is enough space on the current page to add the QR Bill.  
   
@@ -157,46 +151,42 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)
   
 <br/>
   
-#### Construct Signature
-  
-##### Function: SwissQRCode.new SwissQRCode(data, size)
+#### Constructor: new SwissQRCode(data, size)
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
-###### Parameters
+##### Parameters
   
 - **data** [`Data`](./types.md#interface-data) The data to be encoded in the QR code.  
 - **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
   
-###### Return Type
+##### Return Type
   
 [`SwissQRCode`](#class-swissqrcode)  
   
-###### Description
+##### Description
   
 Creates a Swiss QR Code.  
   
 <br/>
   
-#### Method
-  
-##### Function: SwissQRCode.SwissQRCode.attachTo(doc, x, y)
+#### Method: SwissQRCode.attachTo(doc, x, y)
   
 `public`  
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)  
   
-###### Parameters
+##### Parameters
   
 - **doc** `PDFDocument` The PDF document to attach the Swiss QR Code to.  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-###### Return Type
+##### Return Type
   
 `void`  
   
-###### Description
+##### Description
   
 Attaches the Swiss QR Code to a PDF document.  
   
@@ -208,25 +198,23 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)
   
 <br/>
   
-#### Construct Signature
-  
-##### Function: Table.new Table(data)
+#### Constructor: new Table(data)
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
   
-###### Parameter
+##### Parameter
   
 - **data** [`PDFTable`](#interface-pdftable) An Object which contains the table information.  
   
-###### Return Type
+##### Return Type
   
 [`Table`](#class-table) The Table instance.  
   
-###### Description
+##### Description
   
 Inserts a table to the document.  
   
-###### Example
+##### Example
   
 ```ts
 const table = {
@@ -259,29 +247,27 @@ const table = {
   
 <br/>
   
-#### Method
-  
-##### Function: Table.Table.attachTo(doc, x, y)
+#### Method: Table.attachTo(doc, x, y)
   
 `public`  
   
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)  
   
-###### Parameters
+##### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
-###### Return Type
+##### Return Type
   
 `void`  
   
-###### Throws
+##### Throws
   
 - `Error` Throws an error if no table rows are provided.
   
-###### Description
+##### Description
   
 Attaches the table to a PDFKit document instance.  
   
