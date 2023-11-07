@@ -88,6 +88,8 @@ If you previously used the pre built bundle, provided by SwissQRBill, you now ha
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@beta/lib/pdf/swissqrbill.js"></script>
 ```
 
+Again, please have a look at the [importing documentation](./importing.md) for more information and examples on how to import the library now.
+
 <br/>
 
 ### Standalone classes
@@ -119,4 +121,4 @@ SwissQRBill previously emitted events that could be used to add page numbers to 
 
 ### Renamed properties and options
 
-Many properties of the [Table class](./pdf/index.md#table) have been renamed to be more consistent with the rest of the library. Please check out the [new documentation](./pdf/index.md#table) for the new names.
+Many properties of the [Table class](./pdf/index.md#class-table) have been renamed to be more consistent with the rest of the library. Please check out the [new documentation](./pdf/index.md#class-table) for the new names.
