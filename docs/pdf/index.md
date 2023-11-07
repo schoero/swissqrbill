@@ -13,22 +13,22 @@
       - [width](#property-swissqrbillwidth)
       - [height](#property-swissqrbillheight)
     - Methods
-      - [attachTo(doc, x, y)](#method-swissqrbillattachtodoc-x-y)
+      - [attachTo(doc\[, x\]\[, y\])](#method-swissqrbillattachtodoc-x-y)
       - [isSpaceSufficient(doc, xPosition, yPosition)](#method-swissqrbillisspacesufficientdoc-xposition-yposition)
   
   - [SwissQRCode](#class-swissqrcode)
   
     - Constructor
-      - [new SwissQRCode(data, size)](#constructor-new-swissqrcodedata-size)
+      - [new SwissQRCode(data\[, size\])](#constructor-new-swissqrcodedata-size)
     - Method
-      - [attachTo(doc, x, y)](#method-swissqrcodeattachtodoc-x-y)
+      - [attachTo(doc\[, x\]\[, y\])](#method-swissqrcodeattachtodoc-x-y)
   
   - [Table](#class-table)
   
     - Constructor
       - [new Table(data)](#constructor-new-tabledata)
     - Method
-      - [attachTo(doc, x, y)](#method-tableattachtodoc-x-y)
+      - [attachTo(doc\[, x\]\[, y\])](#method-tableattachtodoc-x-y)
   
   - [PDFTable](#interface-pdftable)
   - [PDFRow](#interface-pdfrow)
@@ -100,7 +100,7 @@ The vertical size of the QR Bill.
   
 <br/>
   
-#### Method: SwissQRBill.attachTo(doc, x, y)
+#### Method: SwissQRBill.attachTo(doc\[, x\]\[, y\])
   
 `public`  
   
@@ -109,8 +109,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)
 ##### Parameters
   
 - **doc** `PDFDocument` The PDFKit instance  
-- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. Default: `0`  
-- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. `optional` Default: `0`  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ##### Return Type
   
@@ -151,14 +151,14 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)
   
 <br/>
   
-#### Constructor: new SwissQRCode(data, size)
+#### Constructor: new SwissQRCode(data\[, size\])
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
 ##### Parameters
   
 - **data** [`Data`](./types.md#interface-data) The data to be encoded in the QR code.  
-- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
+- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. `optional` Default: `46`  
   
 ##### Return Type
   
@@ -170,7 +170,7 @@ Creates a Swiss QR Code.
   
 <br/>
   
-#### Method: SwissQRCode.attachTo(doc, x, y)
+#### Method: SwissQRCode.attachTo(doc\[, x\]\[, y\])
   
 `public`  
   
@@ -179,8 +179,8 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)
 ##### Parameters
   
 - **doc** `PDFDocument` The PDF document to attach the Swiss QR Code to.  
-- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
-- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the Swiss QR Code will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the Swiss QR Code will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ##### Return Type
   
@@ -247,7 +247,7 @@ const table = {
   
 <br/>
   
-#### Method: Table.attachTo(doc, x, y)
+#### Method: Table.attachTo(doc\[, x\]\[, y\])
   
 `public`  
   
@@ -256,8 +256,8 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)
 ##### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance  
-- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
-- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ##### Return Type
   

@@ -17,15 +17,15 @@
           - [width](#property-pdfswissqrbillwidth)
           - [height](#property-pdfswissqrbillheight)
         - Methods
-          - [attachTo(doc, x, y)](#method-pdfswissqrbillattachtodoc-x-y)
+          - [attachTo(doc\[, x\]\[, y\])](#method-pdfswissqrbillattachtodoc-x-y)
           - [isSpaceSufficient(doc, xPosition, yPosition)](#method-pdfswissqrbillisspacesufficientdoc-xposition-yposition)
   
       - [SwissQRCode](#class-pdfswissqrcode)
   
         - Constructor
-          - [new SwissQRCode(data, size)](#constructor-new-pdfswissqrcodedata-size)
+          - [new SwissQRCode(data\[, size\])](#constructor-new-pdfswissqrcodedata-size)
         - Method
-          - [attachTo(doc, x, y)](#method-pdfswissqrcodeattachtodoc-x-y)
+          - [attachTo(doc\[, x\]\[, y\])](#method-pdfswissqrcodeattachtodoc-x-y)
   
       - [PDFTable](#interface-pdfpdftable)
       - [PDFRow](#interface-pdfpdfrow)
@@ -35,7 +35,7 @@
         - Constructor
           - [new Table(data)](#constructor-new-pdftabledata)
         - Method
-          - [attachTo(doc, x, y)](#method-pdftableattachtodoc-x-y)
+          - [attachTo(doc\[, x\]\[, y\])](#method-pdftableattachtodoc-x-y)
   
   - [svg](#namespace-svg)
   
@@ -56,7 +56,7 @@
       - [SwissQRCode](#class-svgswissqrcode)
   
         - Constructor
-          - [new SwissQRCode(data, size)](#constructor-new-svgswissqrcodedata-size)
+          - [new SwissQRCode(data\[, size\])](#constructor-new-svgswissqrcodedata-size)
   
   - [types](#namespace-types)
   
@@ -180,7 +180,7 @@ The vertical size of the QR Bill.
   
 <br/>
   
-##### Method: pdf.SwissQRBill.attachTo(doc, x, y)
+##### Method: pdf.SwissQRBill.attachTo(doc\[, x\]\[, y\])
   
 `public`  
   
@@ -189,8 +189,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)
 ###### Parameters
   
 - **doc** `PDFDocument` The PDFKit instance  
-- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. Default: `0`  
-- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. `optional` Default: `0`  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
@@ -231,14 +231,14 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)
   
 <br/>
   
-##### Constructor: new pdf.SwissQRCode(data, size)
+##### Constructor: new pdf.SwissQRCode(data\[, size\])
   
 Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
   
 ###### Parameters
   
 - **data** [`Data`](#interface-typesdata) The data to be encoded in the QR code.  
-- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
+- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. `optional` Default: `46`  
   
 ###### Return Type
   
@@ -250,7 +250,7 @@ Creates a Swiss QR Code.
   
 <br/>
   
-##### Method: pdf.SwissQRCode.attachTo(doc, x, y)
+##### Method: pdf.SwissQRCode.attachTo(doc\[, x\]\[, y\])
   
 `public`  
   
@@ -259,8 +259,8 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)
 ###### Parameters
   
 - **doc** `PDFDocument` The PDF document to attach the Swiss QR Code to.  
-- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
-- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the Swiss QR Code will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the Swiss QR Code will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the Swiss QR Code will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
@@ -474,7 +474,7 @@ const table = {
   
 <br/>
   
-##### Method: pdf.Table.attachTo(doc, x, y)
+##### Method: pdf.Table.attachTo(doc\[, x\]\[, y\])
   
 `public`  
   
@@ -483,8 +483,8 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)
 ###### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance  
-- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
-- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
@@ -589,14 +589,14 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)
   
 <br/>
   
-##### Constructor: new svg.SwissQRCode(data, size)
+##### Constructor: new svg.SwissQRCode(data\[, size\])
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
 ###### Parameters
   
 - **data** [`Data`](#interface-typesdata) The data to be encoded in the QR code.  
-- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
+- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. `optional` Default: `46`  
   
 ###### Return Type
   

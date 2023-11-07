@@ -20,7 +20,7 @@
   - [SwissQRCode](#class-swissqrcode)
   
     - Constructor
-      - [new SwissQRCode(data, size)](#constructor-new-swissqrcodedata-size)
+      - [new SwissQRCode(data\[, size\])](#constructor-new-swissqrcodedata-size)
   
 <br/>
   
@@ -109,14 +109,14 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)
   
 <br/>
   
-#### Constructor: new SwissQRCode(data, size)
+#### Constructor: new SwissQRCode(data\[, size\])
   
 Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
   
 ##### Parameters
   
 - **data** [`Data`](./types.md#interface-data) The data to be encoded in the QR code.  
-- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. Default: `46`  
+- **size** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The size of the QR code in mm. `optional` Default: `46`  
   
 ##### Return Type
   
