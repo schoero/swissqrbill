@@ -67,16 +67,21 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
 - **creditor** [`Creditor`](#interface-creditor) Creditor related data.
 - **currency** [`Currency`](#type-alias-currency) The currency to be used. **3 characters.**
 - **additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**
+  
   Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment. `optional`
 - **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.** `optional`
 - **av1** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
+  
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
 - **av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
+  
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
 - **debtor** [`Debtor`](#interface-debtor) Debtor related data. `optional`
 - **message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**
+  
   message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference. `optional`
 - **reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A reference number. **Max 27 characters.**
+  
   QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
   Creditor Reference (ISO 11649): Maximum 25 characters. `optional`
   

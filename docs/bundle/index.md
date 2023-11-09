@@ -49,14 +49,19 @@
           - [instance](#property-svgswissqrbillinstance)
         - Method
           - [toString()](#method-svgswissqrbilltostring)
-        - Getters
-          - [outerHTML()](#getter-svgswissqrbillouterhtml)
+        - Getter
           - [element()](#getter-svgswissqrbillelement)
   
       - [SwissQRCode](#class-svgswissqrcode)
   
         - Constructor
           - [new SwissQRCode(data\[, size\])](#constructor-new-svgswissqrcodedata-size)
+        - Property
+          - [instance](#property-svgswissqrcodeinstance)
+        - Method
+          - [toString()](#method-svgswissqrcodetostring)
+        - Getter
+          - [element()](#getter-svgswissqrcodeelement)
   
   - [types](#namespace-types)
   
@@ -120,18 +125,54 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L2C7)
   
 #### Class: pdf.SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L48C0)  
   
 ##### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
 using the [`attachTo`](#method-pdfswissqrbillattachtodoc-x-y) method.  
   
+##### Example
+  
+```ts
+const data = {
+  amount: 1994.75,
+  creditor: {
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
+  },
+  currency: "CHF",
+  debtor: {
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
+    country: "CH",
+    name: "Peter Muster",
+    zip: 1234
+  },
+  reference: "21 00000 00003 13947 14300 09017"
+};
+
+const pdf = new PDFDocument({ autoFirstPage: false });
+const qrBill = new SwissQRBill(data);
+
+const stream = createWriteStream("qr-bill.pdf");
+
+qrBill.attachTo(pdf);
+pdf.pipe(stream);
+pdf.end();
+```  
+  
 <br/>
   
 ##### Constructor: new pdf.SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L65C2)  
   
 ###### Parameters
   
@@ -152,7 +193,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L148C2)  
   
 ###### Type
   
@@ -168,7 +209,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
   
 ###### Type
   
@@ -184,7 +225,7 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L103C2)  
   
 ###### Parameters
   
@@ -207,7 +248,7 @@ otherwise it will create a new page for the QR Bill.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L131C2)  
   
 ###### Parameters
   
@@ -508,13 +549,47 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L3C7)
   
 #### Class: svg.SwissQRBill
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L43C0)  
+  
+##### Description
+  
+The SwissQRBill class creates the Payment Part with the QR Code as an SVG.  
+  
+##### Example
+  
+```ts
+const data = {
+  amount: 1994.75,
+  creditor: {
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
+  },
+  currency: "CHF",
+  debtor: {
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
+    country: "CH",
+    name: "Peter Muster",
+    zip: 1234
+  },
+  reference: "21 00000 00003 13947 14300 09017"
+};
+
+const svg = new SwissQRBill(data);
+writeFileSync("qr-bill.svg", svg.toString());
+```  
   
 <br/>
   
 ##### Constructor: new svg.SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L54C2)  
   
 ###### Parameters
   
@@ -529,9 +604,9 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)
   
 ##### Property: svg.SwissQRBill.instance
   
-`protected`  
+`public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L45C2)  
   
 ###### Type
   
@@ -543,11 +618,11 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L59C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L84C2)  
   
 ###### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG as a `string`  
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG.  
   
 ###### Description
   
@@ -555,23 +630,11 @@ Outputs the SVG as a string.
   
 <br/>
   
-##### Getter: svg.SwissQRBill.outerHTML()
-  
-`public`  
-  
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)  
-  
-###### Return Type
-  
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
-  
-<br/>
-  
 ##### Getter: svg.SwissQRBill.element()
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L69C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L93C2)  
   
 ###### Return Type
   
@@ -591,7 +654,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)
   
 ##### Constructor: new svg.SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L17C2)  
   
 ###### Parameters
   
@@ -605,6 +668,50 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)
 ###### Description
   
 Creates a Swiss QR Code.  
+  
+<br/>
+  
+##### Property: svg.SwissQRCode.instance
+  
+`public`  
+  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C2)  
+  
+###### Type
+  
+`SVG`  
+  
+<br/>
+  
+##### Method: svg.SwissQRCode.toString()
+  
+`public`  
+  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L53C2)  
+  
+###### Return Type
+  
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG element.  
+  
+###### Description
+  
+Outputs the SVG as a string.  
+  
+<br/>
+  
+##### Getter: svg.SwissQRCode.element()
+  
+`public`  
+  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L62C2)  
+  
+###### Return Type
+  
+`SVGElement` The SVG element.  
+  
+###### Description
+  
+Returns the SVG element.  
   
 <br/>
   
@@ -661,16 +768,21 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
 - **types.creditor** [`Creditor`](#interface-typescreditor) Creditor related data.
 - **types.currency** [`Currency`](#type-alias-typescurrency) The currency to be used. **3 characters.**
 - **types.additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**
+  
   Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment. `optional`
 - **types.amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.** `optional`
 - **types.av1** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
+  
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
 - **types.av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
+  
   Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
 - **types.debtor** [`Debtor`](#interface-typesdebtor) Debtor related data. `optional`
 - **types.message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**
+  
   message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference. `optional`
 - **types.reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A reference number. **Max 27 characters.**
+  
   QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
   Creditor Reference (ISO 11649): Maximum 25 characters. `optional`
   

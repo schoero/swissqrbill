@@ -40,18 +40,54 @@
   
 ### Class: SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L14C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L48C0)  
   
 #### Description
   
 The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
 using the [`attachTo`](#method-swissqrbillattachtodoc-x-y) method.  
   
+#### Example
+  
+```ts
+const data = {
+  amount: 1994.75,
+  creditor: {
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
+  },
+  currency: "CHF",
+  debtor: {
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
+    country: "CH",
+    name: "Peter Muster",
+    zip: 1234
+  },
+  reference: "21 00000 00003 13947 14300 09017"
+};
+
+const pdf = new PDFDocument({ autoFirstPage: false });
+const qrBill = new SwissQRBill(data);
+
+const stream = createWriteStream("qr-bill.pdf");
+
+qrBill.attachTo(pdf);
+pdf.pipe(stream);
+pdf.end();
+```  
+  
 <br/>
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L31C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L65C2)  
   
 ##### Parameters
   
@@ -72,7 +108,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L114C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L148C2)  
   
 ##### Type
   
@@ -88,7 +124,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L119C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
   
 ##### Type
   
@@ -104,7 +140,7 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L103C2)  
   
 ##### Parameters
   
@@ -127,7 +163,7 @@ otherwise it will create a new page for the QR Bill.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L97C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L131C2)  
   
 ##### Parameters
   

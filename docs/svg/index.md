@@ -13,14 +13,19 @@
       - [instance](#property-swissqrbillinstance)
     - Method
       - [toString()](#method-swissqrbilltostring)
-    - Getters
-      - [outerHTML()](#getter-swissqrbillouterhtml)
+    - Getter
       - [element()](#getter-swissqrbillelement)
   
   - [SwissQRCode](#class-swissqrcode)
   
     - Constructor
       - [new SwissQRCode(data\[, size\])](#constructor-new-swissqrcodedata-size)
+    - Property
+      - [instance](#property-swissqrcodeinstance)
+    - Method
+      - [toString()](#method-swissqrcodetostring)
+    - Getter
+      - [element()](#getter-swissqrcodeelement)
   
 <br/>
   
@@ -28,13 +33,47 @@
   
 ### Class: SwissQRBill
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L13C0)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L43C0)  
+  
+#### Description
+  
+The SwissQRBill class creates the Payment Part with the QR Code as an SVG.  
+  
+#### Example
+  
+```ts
+const data = {
+  amount: 1994.75,
+  creditor: {
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
+  },
+  currency: "CHF",
+  debtor: {
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
+    country: "CH",
+    name: "Peter Muster",
+    zip: 1234
+  },
+  reference: "21 00000 00003 13947 14300 09017"
+};
+
+const svg = new SwissQRBill(data);
+writeFileSync("qr-bill.svg", svg.toString());
+```  
   
 <br/>
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L54C2)  
   
 ##### Parameters
   
@@ -49,9 +88,9 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L24C2)
   
 #### Property: SwissQRBill.instance
   
-`protected`  
+`public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L45C2)  
   
 ##### Type
   
@@ -63,11 +102,11 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L15C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L59C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L84C2)  
   
 ##### Return Type
   
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG as a `string`  
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG.  
   
 ##### Description
   
@@ -75,23 +114,11 @@ Outputs the SVG as a string.
   
 <br/>
   
-#### Getter: SwissQRBill.outerHTML()
-  
-`public`  
-  
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L50C2)  
-  
-##### Return Type
-  
-[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
-  
-<br/>
-  
 #### Getter: SwissQRBill.element()
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L69C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L93C2)  
   
 ##### Return Type
   
@@ -111,7 +138,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)
   
 #### Constructor: new SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L17C2)  
   
 ##### Parameters
   
@@ -125,3 +152,47 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L15C2)
 ##### Description
   
 Creates a Swiss QR Code.  
+  
+<br/>
+  
+#### Property: SwissQRCode.instance
+  
+`public`  
+  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C2)  
+  
+##### Type
+  
+`SVG`  
+  
+<br/>
+  
+#### Method: SwissQRCode.toString()
+  
+`public`  
+  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L53C2)  
+  
+##### Return Type
+  
+[`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The outerHTML of the SVG element.  
+  
+##### Description
+  
+Outputs the SVG as a string.  
+  
+<br/>
+  
+#### Getter: SwissQRCode.element()
+  
+`public`  
+  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L62C2)  
+  
+##### Return Type
+  
+`SVGElement` The SVG element.  
+  
+##### Description
+  
+Returns the SVG element.  
