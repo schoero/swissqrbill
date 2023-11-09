@@ -10,6 +10,40 @@ import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:t
 /**
  * The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
  * using the {@link SwissQRBill.attachTo} method.
+ * @example
+ * ```ts
+ * const data = {
+ *   amount: 1994.75,
+ *   creditor: {
+ *     account: "CH44 3199 9123 0008 8901 2",
+ *     address: "Musterstrasse",
+ *     buildingNumber: 7,
+ *     city: "Musterstadt",
+ *     country: "CH",
+ *     name: "SwissQRBill",
+ *     zip: 1234
+ *   },
+ *   currency: "CHF",
+ *   debtor: {
+ *     address: "Musterstrasse",
+ *     buildingNumber: 1,
+ *     city: "Musterstadt",
+ *     country: "CH",
+ *     name: "Peter Muster",
+ *     zip: 1234
+ *   },
+ *   reference: "21 00000 00003 13947 14300 09017"
+ * };
+ *
+ * const pdf = new PDFDocument({ autoFirstPage: false });
+ * const qrBill = new SwissQRBill(data);
+ *
+ * const stream = createWriteStream("qr-bill.pdf");
+ *
+ * qrBill.attachTo(pdf);
+ * pdf.pipe(stream);
+ * pdf.end();
+ * ```
  */
 export class SwissQRBill {
 
