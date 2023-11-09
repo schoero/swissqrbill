@@ -32,5 +32,5 @@ SwissQRBill exposes different classes and functions that can be used to create a
 - [SVG](./svg/index.md)
   - [SwissQRBill](./svg/index.md#class-swissqrbill)
   - [SwissQRCode](./svg/index.md#class-swissqrcode)
-- [Utils](./utils/utils.md)
+- [utils](./utils/utils.md)
 - [bundle](./bundle/index.md)
