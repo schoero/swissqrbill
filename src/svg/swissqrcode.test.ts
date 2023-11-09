@@ -17,10 +17,10 @@ describe("swissqrcode", () => {
     svg.width(mm2pt(200));
     svg.height(mm2pt(200));
 
-    qrCode.x(mm2pt(77));
-    qrCode.y(mm2pt(77));
+    qrCode.instance.x(mm2pt(77));
+    qrCode.instance.y(mm2pt(77));
 
-    svg.appendInstance(qrCode);
+    svg.appendInstance(qrCode.instance);
 
     expect(svg.snapshots).toMatchSnapshot();
 
@@ -35,10 +35,10 @@ describe("swissqrcode", () => {
     svg.width(mm2pt(200));
     svg.height(mm2pt(200));
 
-    qrCode.x(mm2pt(50));
-    qrCode.y(mm2pt(50));
+    qrCode.instance.x(mm2pt(50));
+    qrCode.instance.y(mm2pt(50));
 
-    svg.appendInstance(qrCode);
+    svg.appendInstance(qrCode.instance);
 
     expect(svg.snapshots).toMatchSnapshot();
   });
@@ -52,10 +52,10 @@ describe("swissqrcode", () => {
     svg.width(mm2pt(200));
     svg.height(mm2pt(200));
 
-    qrCode.x(mm2pt(87.5));
-    qrCode.y(mm2pt(87.5));
+    qrCode.instance.x(mm2pt(87.5));
+    qrCode.instance.y(mm2pt(87.5));
 
-    svg.appendInstance(qrCode);
+    svg.appendInstance(qrCode.instance);
 
     expect(svg.snapshots).toMatchSnapshot();
 

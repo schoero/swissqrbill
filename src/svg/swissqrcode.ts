@@ -5,7 +5,9 @@ import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code";
 import type { Data } from "swissqrbill:shared:types";
 
 
-export class SwissQRCode extends SVG {
+export class SwissQRCode {
+
+  public instance: SVG;
 
   /**
    * Creates a Swiss QR Code.
@@ -14,13 +16,13 @@ export class SwissQRCode extends SVG {
    */
   constructor(data: Data, size: number = 46) {
 
-    super();
+    this.instance = new SVG();
 
-    this.width(`${size}mm`);
-    this.height(`${size}mm`);
+    this.instance.width(`${size}mm`);
+    this.instance.height(`${size}mm`);
 
     renderQRCode(data, size, (xPos, yPos, blockSize) => {
-      this
+      this.instance
         .addRect(
           `${xPos}mm`,
           `${yPos}mm`,
@@ -31,7 +33,7 @@ export class SwissQRCode extends SVG {
     });
 
     renderSwissCross(size, (xPos, yPos, width, height, fillColor) => {
-      this
+      this.instance
         .addRect(
           `${xPos}mm`,
           `${yPos}mm`,
@@ -41,6 +43,24 @@ export class SwissQRCode extends SVG {
         .fill(fillColor);
     });
 
+  }
+
+
+  /**
+   * Outputs the SVG as a string.
+   * @returns The outerHTML of the SVG element.
+   */
+  public toString(): string {
+    return this.instance.outerHTML;
+  }
+
+
+  /**
+   * Returns the SVG element.
+   * @returns The SVG element.
+   */
+  public get element(): SVGElement {
+    return this.instance.element as unknown as SVGElement;
   }
 
 }

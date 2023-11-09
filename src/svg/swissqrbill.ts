@@ -9,10 +9,40 @@ import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2px } fr
 
 import type { Creditor, Data, Debtor, FontName, Language, SVGOptions } from "swissqrbill:types";
 
-
+/**
+ * The SwissQRBill class creates the Payment Part with the QR Code as an SVG.
+ * @example
+ * ```ts
+ * const data = {
+ *   amount: 1994.75,
+ *   creditor: {
+ *     account: "CH44 3199 9123 0008 8901 2",
+ *     address: "Musterstrasse",
+ *     buildingNumber: 7,
+ *     city: "Musterstadt",
+ *     country: "CH",
+ *     name: "SwissQRBill",
+ *     zip: 1234
+ *   },
+ *   currency: "CHF",
+ *   debtor: {
+ *     address: "Musterstrasse",
+ *     buildingNumber: 1,
+ *     city: "Musterstadt",
+ *     country: "CH",
+ *     name: "Peter Muster",
+ *     zip: 1234
+ *   },
+ *   reference: "21 00000 00003 13947 14300 09017"
+ * };
+ *
+ * const svg = new SwissQRBill(data);
+ * writeFileSync("qr-bill.svg", svg.toString());
+ * ```
+ */
 export class SwissQRBill {
 
-  protected instance: SVG;
+  public instance: SVG;
 
   private scissors: boolean = true;
   private outlines: boolean = true;
@@ -47,23 +77,17 @@ export class SwissQRBill {
   }
 
 
-  public get outerHTML(): string {
+  /**
+   * Outputs the SVG as a string.
+   * @returns The outerHTML of the SVG.
+   */
+  public toString(): string {
     return this.instance.outerHTML;
   }
 
 
   /**
-   * Outputs the SVG as a string.
-   * @returns The outerHTML of the SVG as a `string`.
-   */
-  public toString(): string {
-    return this.outerHTML;
-  }
-
-
-  /**
    * Returns the SVG element.
-   * @readonly
    * @returns The SVG element.
    */
   public get element(): SVGElement {
@@ -528,11 +552,11 @@ export class SwissQRBill {
   private _renderQRCode() {
 
     const qrCode = new SwissQRCode(this.data);
-    qrCode
+    qrCode.instance
       .x("67mm")
       .y("17mm");
 
-    this.instance.appendInstance(qrCode);
+    this.instance.appendInstance(qrCode.instance);
 
   }
 
