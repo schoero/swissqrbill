@@ -132,13 +132,13 @@ Returns the SVG element.
   
 ### Class: SwissQRCode
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L9C0)  
   
 <br/>
   
 #### Constructor: new SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L17C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L19C2)  
   
 ##### Parameters
   
@@ -148,6 +148,10 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L17C2)
 ##### Return Type
   
 [`SwissQRCode`](#class-swissqrcode)  
+  
+##### Throws
+  
+- `ValidationError` Throws an error if the data is invalid.
   
 ##### Description
   
@@ -159,7 +163,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)  
   
 ##### Type
   
@@ -171,7 +175,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L53C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L55C2)  
   
 ##### Return Type
   
@@ -187,7 +191,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L62C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L64C2)  
   
 ##### Return Type
   

@@ -94,41 +94,53 @@ enum TableLayer {
   Text
 }
 
+/**
+ * The Table class is used to create tables for PDFKit documents. A table can be attached to any PDFKit document instance
+ * using the {@link Table.attachTo} method.
+ * @example
+ * ```ts
+ * const tableData = {
+ *   rows: [
+ *     {
+ *       backgroundColor: "#ECF0F1",
+ *       columns: [
+ *         {
+ *           text: "Row 1 cell 1"
+ *         }, {
+ *           text: "Row 1 cell 2"
+ *         }, {
+ *           text: "Row 1 cell 3"
+ *         }
+ *       ]
+ *     }, {
+ *       columns: [
+ *         {
+ *           text: "Row 2 cell 1"
+ *         }, {
+ *           text: "Row 2 cell 2"
+ *         }, {
+ *           text: "Row 2 cell 3"
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * };
+ * const pdf = new PDFDocument();
+ * const table = new Table(tableData);
+ *
+ * const stream = createWriteStream("table.pdf");
+ *
+ * table.attachTo(pdf);
+ * pdf.pipe(stream);
+ * pdf.end();
+ * ```
+ */
 export class Table {
 
   /**
-   * Inserts a table to the document.
-   * @param data An Object which contains the table information.
+   * Creates a new Table instance.
+   * @param data The rows and columns for the table.
    * @returns The Table instance.
-   * @example
-   * ```ts
-   * const table = {
-   *   rows: [
-   *     {
-   *       backgroundColor: "#ECF0F1",
-   *       columns: [
-   *         {
-   *           text: "Row 1 cell 1"
-   *         }, {
-   *           text: "Row 1 cell 2"
-   *         }, {
-   *           text: "Row 1 cell 3"
-   *         }
-   *       ]
-   *     }, {
-   *       columns: [
-   *         {
-   *           text: "Row 2 cell 1"
-   *         }, {
-   *           text: "Row 2 cell 2"
-   *         }, {
-   *           text: "Row 2 cell 3"
-   *         }
-   *       ]
-   *     }
-   *   ]
-   * };
-   * ```
    */
   constructor(private data: PDFTable) {}
 
@@ -147,7 +159,8 @@ export class Table {
 
 
   /**
-   * Attaches the table to a PDFKit document instance.
+   * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
+   * every row that no longer fits on a page.
    * @param doc The PDFKit document instance
    * @param x The horizontal position in points where the table be placed.
    * @param y The vertical position in points where the table will be placed.

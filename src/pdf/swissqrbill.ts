@@ -1,3 +1,4 @@
+import { ValidationError } from "swissqrbill:errors";
 import { SwissQRCode } from "swissqrbill:pdf:swissqrcode";
 import { cleanData } from "swissqrbill:shared:cleaner";
 import { translations } from "swissqrbill:shared:translations";
@@ -61,13 +62,12 @@ export class SwissQRBill {
    * Creates a new SwissQRBill instance.
    * @param data The data to be used for the QR Bill.
    * @param options Options to define how the QR Bill should be rendered.
+   * @throws { ValidationError } Throws an error if the data is invalid.
    */
   constructor(data: Data, options?: PDFOptions) {
 
-    this.data = data;
-
     // Remove line breaks and unnecessary white spaces
-    this.data = cleanData(this.data);
+    this.data = cleanData(data);
 
     // Validate data
     validateData(this.data);
@@ -94,8 +94,8 @@ export class SwissQRBill {
 
 
   /**
-   * Adds the QR Bill to the bottom of the current page if there is enough space,
-   * otherwise it will create a new page for the QR Bill.
+   * Attaches the QR-Bill to a PDFKit document instance. It will create a new page with the size of the QR-Slip if not
+   * enough space is left on the current page.
    * @param doc The PDFKit instance
    * @param x The horizontal position in points where the QR Bill will be placed.
    * @param y The vertical position in points where the QR Bill will be placed.

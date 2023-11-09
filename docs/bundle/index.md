@@ -87,7 +87,7 @@
       - [formatIBAN(iban)](#function-utilsformatibaniban)
       - [isQRReference(reference)](#function-utilsisqrreferencereference)
       - [isQRReferenceValid(reference)](#function-utilsisqrreferencevalidreference)
-      - [isSCORReference(reference)](#function-utilsisscorreferencereference)
+      - [isSCORReference(reference)](#class-pdftable)
       - [isSCORReferenceValid(reference)](#function-utilsisscorreferencevalidreference)
       - [calculateSCORReferenceChecksum(reference)](#function-utilscalculatescorreferencechecksumreference)
       - [calculateQRReferenceChecksum(reference)](#function-utilscalculateqrreferencechecksumreference)
@@ -125,7 +125,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L2C7)
   
 #### Class: pdf.SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L48C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L49C0)  
   
 ##### Description
   
@@ -172,7 +172,7 @@ pdf.end();
   
 ##### Constructor: new pdf.SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L65C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L67C2)  
   
 ###### Parameters
   
@@ -182,6 +182,10 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L65C2)
 ###### Return Type
   
 [`SwissQRBill`](#class-pdfswissqrbill)  
+  
+###### Throws
+  
+- [`ValidationError`](#class-errorsvalidationerror) Throws an error if the data is invalid.
   
 ###### Description
   
@@ -239,8 +243,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L103C2)
   
 ###### Description
   
-Adds the QR Bill to the bottom of the current page if there is enough space,
-otherwise it will create a new page for the QR Bill.  
+Attaches the QR-Bill to a PDFKit document instance. It will create a new page with the size of the QR-Slip if not
+enough space is left on the current page.  
   
 <br/>
   
@@ -268,13 +272,13 @@ Checks whether there is enough space on the current page to add the QR Bill.
   
 #### Class: pdf.SwissQRCode
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L10C0)  
   
 <br/>
   
 ##### Constructor: new pdf.SwissQRCode(data\[, size\])
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L21C2)  
   
 ###### Parameters
   
@@ -284,6 +288,10 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)
 ###### Return Type
   
 [`SwissQRCode`](#class-pdfswissqrcode)  
+  
+###### Throws
+  
+- [`ValidationError`](#class-errorsvalidationerror) Throws an error if the data is invalid.
   
 ###### Description
   
@@ -295,7 +303,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L34C2)  
   
 ###### Parameters
   
@@ -462,30 +470,17 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)
   
 #### Class: pdf.Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L138C0)  
   
-<br/>
+##### Description
   
-##### Constructor: new pdf.Table(data)
+The Table class is used to create tables for PDFKit documents. A table can be attached to any PDFKit document instance
+using the [`attachTo`](#method-pdftableattachtodoc-x-y) method.  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
-  
-###### Parameter
-  
-- **data** [`PDFTable`](#interface-pdfpdftable) An Object which contains the table information.  
-  
-###### Return Type
-  
-[`Table`](#class-pdftable) The Table instance.  
-  
-###### Description
-  
-Inserts a table to the document.  
-  
-###### Example
+##### Example
   
 ```ts
-const table = {
+const tableData = {
   rows: [
     {
       backgroundColor: "#ECF0F1",
@@ -511,7 +506,33 @@ const table = {
     }
   ]
 };
+const pdf = new PDFDocument();
+const table = new Table(tableData);
+
+const stream = createWriteStream("table.pdf");
+
+table.attachTo(pdf);
+pdf.pipe(stream);
+pdf.end();
 ```  
+  
+<br/>
+  
+##### Constructor: new pdf.Table(data)
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L145C2)  
+  
+###### Parameter
+  
+- **data** [`PDFTable`](#interface-pdfpdftable) The rows and columns for the table.  
+  
+###### Return Type
+  
+[`Table`](#class-pdftable) The Table instance.  
+  
+###### Description
+  
+Creates a new Table instance.  
   
 <br/>
   
@@ -519,7 +540,7 @@ const table = {
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L169C2)  
   
 ###### Parameters
   
@@ -537,7 +558,8 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)
   
 ###### Description
   
-Attaches the table to a PDFKit document instance.  
+Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
+every row that no longer fits on a page.  
   
 <br/>
   
@@ -648,13 +670,13 @@ Returns the SVG element.
   
 #### Class: svg.SwissQRCode
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L8C0)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L9C0)  
   
 <br/>
   
 ##### Constructor: new svg.SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L17C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L19C2)  
   
 ###### Parameters
   
@@ -664,6 +686,10 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L17C2)
 ###### Return Type
   
 [`SwissQRCode`](#class-svgswissqrcode)  
+  
+###### Throws
+  
+- [`ValidationError`](#class-errorsvalidationerror) Throws an error if the data is invalid.
   
 ###### Description
   
@@ -675,7 +701,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)  
   
 ###### Type
   
@@ -687,7 +713,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L53C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L55C2)  
   
 ###### Return Type
   
@@ -703,7 +729,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L62C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L64C2)  
   
 ###### Return Type
   

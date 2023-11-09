@@ -1,5 +1,6 @@
 import SVG from "svg-engine";
 
+import { ValidationError } from "swissqrbill:errors";
 import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code";
 
 import type { Data } from "swissqrbill:shared:types";
@@ -13,6 +14,7 @@ export class SwissQRCode {
    * Creates a Swiss QR Code.
    * @param data The data to be encoded in the QR code.
    * @param size The size of the QR code in mm.
+   * @throws { ValidationError } Throws an error if the data is invalid.
    */
   constructor(data: Data, size: number = 46) {
 

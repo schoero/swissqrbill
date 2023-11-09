@@ -1,5 +1,8 @@
+import { ValidationError } from "swissqrbill:errors";
+import { cleanData } from "swissqrbill:shared:cleaner";
 import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code";
 import { mm2pt } from "swissqrbill:shared:utils";
+import { validateData } from "swissqrbill:shared:validator";
 
 import type { Data } from "swissqrbill:shared:types";
 
@@ -13,10 +16,12 @@ export class SwissQRCode {
    * Creates a Swiss QR Code.
    * @param data The data to be encoded in the QR code.
    * @param size The size of the QR code in mm.
+   * @throws { ValidationError } Throws an error if the data is invalid.
    */
   constructor(data: Data, size: number = 46) {
     this.size = mm2pt(size);
-    this.data = data;
+    this.data = cleanData(data);
+    validateData(this.data);
   }
 
 

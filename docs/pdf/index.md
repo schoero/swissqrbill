@@ -40,7 +40,7 @@
   
 ### Class: SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L48C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L49C0)  
   
 #### Description
   
@@ -87,7 +87,7 @@ pdf.end();
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L65C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L67C2)  
   
 ##### Parameters
   
@@ -97,6 +97,10 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L65C2)
 ##### Return Type
   
 [`SwissQRBill`](#class-swissqrbill)  
+  
+##### Throws
+  
+- `ValidationError` Throws an error if the data is invalid.
   
 ##### Description
   
@@ -154,8 +158,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L103C2)
   
 ##### Description
   
-Adds the QR Bill to the bottom of the current page if there is enough space,
-otherwise it will create a new page for the QR Bill.  
+Attaches the QR-Bill to a PDFKit document instance. It will create a new page with the size of the QR-Slip if not
+enough space is left on the current page.  
   
 <br/>
   
@@ -183,13 +187,13 @@ Checks whether there is enough space on the current page to add the QR Bill.
   
 ### Class: SwissQRCode
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L7C0)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L10C0)  
   
 <br/>
   
 #### Constructor: new SwissQRCode(data\[, size\])
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L21C2)  
   
 ##### Parameters
   
@@ -199,6 +203,10 @@ Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L17C2)
 ##### Return Type
   
 [`SwissQRCode`](#class-swissqrcode)  
+  
+##### Throws
+  
+- `ValidationError` Throws an error if the data is invalid.
   
 ##### Description
   
@@ -210,7 +218,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L29C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L34C2)  
   
 ##### Parameters
   
@@ -230,30 +238,17 @@ Attaches the Swiss QR Code to a PDF document.
   
 ### Class: Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L138C0)  
   
-<br/>
+#### Description
   
-#### Constructor: new Table(data)
+The Table class is used to create tables for PDFKit documents. A table can be attached to any PDFKit document instance
+using the [`attachTo`](#method-tableattachtodoc-x-y) method.  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L133C2)  
-  
-##### Parameter
-  
-- **data** [`PDFTable`](#interface-pdftable) An Object which contains the table information.  
-  
-##### Return Type
-  
-[`Table`](#class-table) The Table instance.  
-  
-##### Description
-  
-Inserts a table to the document.  
-  
-##### Example
+#### Example
   
 ```ts
-const table = {
+const tableData = {
   rows: [
     {
       backgroundColor: "#ECF0F1",
@@ -279,7 +274,33 @@ const table = {
     }
   ]
 };
+const pdf = new PDFDocument();
+const table = new Table(tableData);
+
+const stream = createWriteStream("table.pdf");
+
+table.attachTo(pdf);
+pdf.pipe(stream);
+pdf.end();
 ```  
+  
+<br/>
+  
+#### Constructor: new Table(data)
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L145C2)  
+  
+##### Parameter
+  
+- **data** [`PDFTable`](#interface-pdftable) The rows and columns for the table.  
+  
+##### Return Type
+  
+[`Table`](#class-table) The Table instance.  
+  
+##### Description
+  
+Creates a new Table instance.  
   
 <br/>
   
@@ -287,7 +308,7 @@ const table = {
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L169C2)  
   
 ##### Parameters
   
@@ -305,7 +326,8 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L156C2)
   
 ##### Description
   
-Attaches the table to a PDFKit document instance.  
+Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
+every row that no longer fits on a page.  
   
 <br/>
   
