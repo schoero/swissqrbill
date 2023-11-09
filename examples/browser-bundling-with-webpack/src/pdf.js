@@ -26,11 +26,11 @@ const pdf = new PDFDocument();
 const qrBill = new SwissQRBill(data);
 
 qrBill.attachTo(pdf);
-pdf.pipe(stream);
 
 stream.on("finish", () => {
   window.location.href = stream.toBlobURL("application/pdf");
   console.log("PDF has been successfully created.");
 });
 
+pdf.pipe(stream);
 pdf.end();
