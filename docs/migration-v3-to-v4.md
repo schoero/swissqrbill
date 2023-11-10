@@ -84,8 +84,8 @@ If you previously used the pre built bundle, provided by SwissQRBill, you now ha
 ```html
 <!-- SwissQRBill >= v4 -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pdfkit@0/js/pdfkit.standalone.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@0.1.3/+esm"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@beta/lib/bundle/swissqrbill.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@latest/+esm"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@latest/lib/bundle/swissqrbill.js"></script>
 ```
 
 Again, please have a look at the [importing documentation](./importing.md) for more information and examples on how to import the library now.

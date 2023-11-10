@@ -77,11 +77,11 @@ PDFKit provides a pre-built bundle that can be used directly in the browser. Sim
 
 ```html
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pdfkit@0/js/pdfkit.standalone.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@0.1.3/+esm"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@latest/+esm"></script>
 ```
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@beta/lib/bundle/swissqrbill.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@latest/lib/bundle/swissqrbill.js"></script>
 ```
 
 The bundle exposes all exports in the global variable `SwissQRBill`.
