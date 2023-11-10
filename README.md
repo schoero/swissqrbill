@@ -147,7 +147,7 @@ It is possible to create a complete invoice with SwissQRBill. This means that yo
 
 SwissQRBill is based around [PDFKit](https://github.com/foliojs/pdfkit) to generate the PDF files. You can use all the features of PDFKit to add your own content to the PDF file.
 
-The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
+The documentation for PDFKit can be found on [pdfkit.org](http://pdfkit.org/docs/getting_started.html).
 
 A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-qr-bill.md][how to create a complete qr bill]. You will learn how to create a PDF that looks like this:
 
