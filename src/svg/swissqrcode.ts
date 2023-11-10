@@ -1,4 +1,4 @@
-import SVG from "svg-engine";
+import { SVG } from "svg-engine";
 
 import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code";
 
