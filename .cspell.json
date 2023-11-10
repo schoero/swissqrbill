@@ -1,0 +1,47 @@
+{
+  "import": [
+    "@schoero/cspell-config",
+    "@cspell/dict-fr-fr/cspell-ext.json",
+    "@cspell/dict-it-it/cspell-ext.json"
+  ],
+  "overrides": [
+    {
+      "filename": "**/translations.ts",
+      "language": "en, de, fr, it",
+      "caseSensitive": false
+    }
+  ],
+  "words": [
+    "brfs",
+    "debitor",
+    "fontkit",
+    "Frutiger",
+    "Grosse",
+    "iban",
+    "italian",
+    "linebreak",
+    "linebreaker",
+    "pdfdocument",
+    "pdfkit",
+    "postgenerate",
+    "qrcodegen",
+    "qriban",
+    "QRIBAN",
+    "QRIID",
+    "QRR",
+    "SCOR",
+    "swiss",
+    "swissqrbill",
+    "swissqrcode",
+    "twint",
+    "Twint",
+    "TWINT",
+    "undash"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "lib/**",
+    "tests/output/**",
+    "src/shared/qr-code-generator.ts"
+  ]
+}

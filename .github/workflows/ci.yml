@@ -1,18 +1,62 @@
 name: CI
+
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  - pull_request
+  - push
+
 jobs:
-  build:
+  lint:
+    if:
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name !=
+      github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-    - name: Run a one-line script
-      run: |
-        npm ci
-        npm test
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint:ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Spellcheck
+        run: npm run spellcheck:ci
+
+  test:
+    if:
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name !=
+      github.event.pull_request.base.repo.full_name
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+    strategy:
+      fail-fast: true
+      matrix:
+        node:
+          - 18
+          - 20
+          - 21
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest

@@ -1,0 +1,5 @@
+node_modules
+lib
+src/shared/qr-code-generator.ts
+!/.vscode
+!/.github

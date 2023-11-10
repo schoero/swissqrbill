@@ -1,30 +1,17 @@
 <div align="center">
-  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/swissqrbill-logo.svg">
+  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/swissqrbill/main/assets/swissqrbill-logo.svg">
 </div>
 
 ---
 <div align="center">
-  <a href="https://github.com/schoero/SwissQRBill/blob/master/LICENSE">
-    <img alt="MIT License" src="https://img.shields.io/npm/l/swissqrbill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/swissqrbill">
-    <img alt="Version" src="https://img.shields.io/npm/v/swissqrbill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://github.com/schoero/SwissQRBill/issues">
-    <img alt="Issues" src="https://img.shields.io/github/issues-raw/schoero/swissqrbill?style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/swissqrbill">
-    <img alt="Downloads" src="https://img.shields.io/npm/dw/swissqrbill?style=flat-square">
-  </a>
-  <a href="https://www.jsdelivr.com/package/npm/swissqrbill">
-    <img alt="JSDelivr hits" src="https://img.shields.io/jsdelivr/npm/hm/swissqrbill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://github.com/schoero/SwissQRBill/stargazers">
-    <img alt="Downloads" src="https://img.shields.io/github/stars/schoero/SwissQRBill?color=brightgreen&style=flat-square">
-  </a>
-  <a href="https://github.com/schoero/SwissQRBill/actions?query=workflow%3ACI">
-    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/schoero/SwissQRBill/ci.yml?branch=master&style=flat-square">
-  </a>
+
+  [![GitHub license](https://img.shields.io/github/license/schoero/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/blob/main/LICENSE)
+  [![npm version](https://img.shields.io/npm/v/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://www.npmjs.com/package/swissqrbill?activeTab=versions)
+  [![GitHub issues](https://img.shields.io/github/issues/schoero/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/issues)
+  [![npm weekly downloads](https://img.shields.io/npm/dw/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://www.npmjs.com/package/swissqrbill?activeTab=readme)
+  [![GitHub repo stars](https://img.shields.io/github/stars/schoero/swissqrbill?style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/stargazers)
+  [![GitHub workflow status](https://img.shields.io/github/actions/workflow/status/schoero/swissqrbill/ci.yml?event=push&style=flat-square&labelColor=454c5c&color=00AD51)](https://github.com/schoero/swissqrbill/actions?query=workflow%3ACI)
+
 </div>
 
 ---
@@ -32,28 +19,37 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#further-informations) with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#creating-a-complete-invoice) with SwissQRBill by inserting your own content above the payment section.
 
 <br/>
 <br/>
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/qrbill.svg">](https://github.com/schoero/SwissQRBill/blob/master/assets/qrbill.pdf)
+![QR bill](assets/qr-bill.png)
 
 <br/>
 <br/>
 
 ## Links
 
+* [Migration from v3 to v4](#migration-from-v3-to-v4)
 * [Features](#features)
 * [Installation](#installation)
 * [Importing the library](#importing-the-library)
 * [Quick start](#quick-start)
-* [Browser usage](#browser-usage)
-* [API documentation](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md)
+* [API documentation](./docs)
 * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
-* [How to create a complete bill](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md)
+* [How to create a complete qr bill][how-to-create-a-complete-qr-bill]
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
+* [QR bill style guide](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/style-guide-qr-bill-en.pdf)
+
+<br/>
+
+## Migration from v3 to v4
+
+In SwissQRBill v4, large parts of the application have been rewritten to make the API more flexible. This means that you have to make some changes to your code when upgrading from v3 to v4.
+
+Please read the [migration guide](./docs/migration-v3-to-v4.md) to learn more about the changes and how to migrate your code.
 
 <br/>
 
@@ -79,149 +75,88 @@ npm i swissqrbill
 
 ## Importing the library
 
-### Node.js
+Depending on the environment you are using, you may need to import the library differently. Please read the [importing documentation][importing-documentation] to find out the best way to import the library for your environment.
 
-In versions prior to v3.0.0, you could simply include SwissQRBill like this:
-
-```js
-const SwissQRBill = require("swissqrbill"); // CommonJS. Not tree-shakeable.
-```
-
-<br/>
-
-While you can still do this, it is recommended to switch to the new ES module imports to be able to take advantage of tree-shaking. SwissQRBill uses the new [conditional exports feature](https://nodejs.org/api/packages.html#packages_exports_sugar) that was added in node v12.16.0 or v13.6.0.
-
-This allows you to import only the parts of SwissQRBill that you actually need.
-
-```js
-import { PDF } from "swissqrbill/pdf"; // ESM. Tree-shakeable
-import { SVG } from "swissqrbill/svg"; // ESM. Tree-shakeable
-import { mm2pt } from "swissqrbill/utils"; // ESM. Tree-shakeable
-```
-
-<br/>
-
-Be aware that TypeScript versions prior to v4.7.0 and Node.js prior to v12.16.0 or v13.6.0, do not support this feature.
-To get conditional exports to work with TypeScript > v4.7.0, you have to set these two options your `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "NodeNext"
-  }
-}
-```
-
-If you are using a TypeScript or Node.js version that doesn't support the new export feature, you can still take advantage of tree-shaking, by importing the files directly by their path.
-
-```js
-import { PDF } from "swissqrbill/lib/node/esm/node/pdf.js"; // ESM. Tree-shakeable
-import { SVG } from "swissqrbill/lib/node/esm/node/svg.js"; // ESM. Tree-shakeable
-import { mm2pt } from "swissqrbill/lib/node/esm/shared/utils.js"; // ESM. Tree-shakeable
-```
-
-<br/>
-
-### Browser
-
-For the browser it is a bit more complicated. The easiest way would be to include the pre-bundled version.
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill/lib/browser/bundle/index.js"></script>
-```
-
-You can also import the bundle directly, if you are using a bundler like webpack.
-
-```js
-import SwissQRBill from "swissqrbill/lib/browser/bundle";
-```
-
-However, if you want to take advantage of tree-shaking in the browser, you have to bundle the library by yourself.
-You can find an example, how this could be done using webpack, at <https://github.com/schoero/SwissQRBill-browser-example>.
-
-<br/>
 <br/>
 
 ## Quick start
 
-Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill.PDF` instance and pass your billing data object as the first parameter and your output path as the second parameter.
+Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new [`SwissQRBill`][SwissQRBill] instance with your billing data object. You can then attach the QR bill to any PDFKit document.
 
 ```js
-import { PDF } from "swissqrbill/pdf";
+import { createWriteStream } from "node:fs";
+
+import PDFDocument from "pdfkit";
+import { SwissQRBill } from "swissqrbill/pdf";
 
 const data = {
-  currency: "CHF",
-  amount: 1199.95,
-  reference: "210000000003139471430009017",
+  amount: 1994.75,
   creditor: {
-    name: "Robert Schneider AG",
-    address: "Rue du Lac",
-    buildingNumber: "1268",
-    zip: 2501,
-    city: "Biel",
-    account: "CH4431999123000889012",
-    country: "CH"
+    account: "CH44 3199 9123 0008 8901 2",
+    address: "Musterstrasse",
+    buildingNumber: 7,
+    city: "Musterstadt",
+    country: "CH",
+    name: "SwissQRBill",
+    zip: 1234
   },
+  currency: "CHF",
   debtor: {
-    name: "Pia-Maria Rutschmann-Schnyder",
-    address: "Grosse Marktgasse",
-    buildingNumber: "28",
-    zip: 9400,
-    city: "Rorschach",
-    country: "CH"
-  }
+    address: "Musterstrasse",
+    buildingNumber: 1,
+    city: "Musterstadt",
+    country: "CH",
+    name: "Peter Muster",
+    zip: 1234
+  },
+  reference: "21 00000 00003 13947 14300 09017"
 };
 
-const pdf = new PDF(data, "qrbill.pdf", () => {
-  console.log("PDF has been successfully created.");
-});
+const pdf = new PDFDocument({ size: "A4" });
+const qrBill = new SwissQRBill(data);
+
+const stream = createWriteStream("qr-bill.pdf");
+
+qrBill.attachTo(pdf);
+pdf.pipe(stream);
+pdf.end();
 ```
 
-This will create the PDF file above. You can pass an optional third parameter containing options such as language or size etc. as well as a callback function that gets called right after the file has finished writing.
-A complete documentation for all methods and parameters can be found in [doc/api.md](https://github.com/schoero/SwissQRBill/blob/master/doc/api.md).
+This will create the PDF file above. You can pass an optional parameter containing options to the [`SwissQRBill constructor`][SwissQRBill-constructor].
+A complete documentation for all methods and parameters can be found in the [docs/][repository-docs] directory of this repository.
 
 <br/>
 <br/>
-
-## Browser usage
-
-> **Note:** Please read the [importing the library](#importing-the-library) section above, how you should import the library for browser usage.
-
-To use SwissQRBill inside browsers, you have to pass a writableStream in the second parameter, instead of the output path. To create a writableStream in the browser you can use the built in `SwissQRBill.BlobStream()` function.
-
-```js
-import { PDF, BlobStream } from "swissqrbill/pdf";
-
-const stream = new BlobStream();
-const pdf = new PDF(data, stream);
-
-pdf.on("finish", () => {
-  const iframe = document.getElementById("iframe");
-  if(iframe){
-    iframe.src = stream.toBlobURL("application/pdf");
-  }
-  console.log("PDF has been successfully created.");
-});
-```
 
 Alternatively, you could render the QR Bill as a scalable vector graphic (SVG). But keep in mind, using SVG you can only render the QR Bill part and not an entire invoice.
 
 ```js
-import { SVG } from "swissqrbill/svg";
+import { SwissQRBill } from "swissqrbill/svg";
 
-const svg = new SVG(data);
+const svg = new SwissQRBill(data);
+
 document.body.appendChild(svg.element);
 ```
 
 <br/>
 <br/>
 
-## Further informations
+## Creating a complete invoice
 
-SwissQRBill.PDF extends [PDFKit](https://github.com/foliojs/pdfkit) to generate PDF files and adds a few extra methods. You can generate a complete PDF bill using the original PDFKit methods and the additional methods documented in [doc/api.md](https://github.com/schoero/SwissQRBill/tree/master/doc/api.md#methods).
-The documentation for PDFKit can be found [here](http://pdfkit.org/docs/getting_started.html).
+It is possible to create a complete invoice with SwissQRBill. This means that you can add your own content above the QR Bill.
 
-A simple guide how to generate a complete bill can be found in [doc/how-to-create-a-complete-bill.md](https://github.com/schoero/SwissQRBill/blob/master/doc/how-to-create-a-complete-bill.md). You will learn how to create a PDF that looks like this:
+SwissQRBill is based around [PDFKit](https://github.com/foliojs/pdfkit) to generate the PDF files. You can use all the features of PDFKit to add your own content to the PDF file.
 
-[<img src="https://raw.githubusercontent.com/schoero/SwissQRBill/master/assets/complete-qr-bill.png">](https://github.com/schoero/SwissQRBill/tree/master/doc/how-to-create-a-complete-bill.md)
+The documentation for PDFKit can be found on [pdfkit.org](http://pdfkit.org/docs/getting_started.html).
+
+A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-qr-bill.md][how-to-create-a-complete-qr-bill]. You will learn how to create a PDF that looks like this:
+
+<br/>
+
+![Complete QR bill](assets/complete-qr-bill.png)
+
+[SwissQRBill]: ./docs/pdf/index.md#class-swissqrbill
+[SwissQRBill-constructor]: ./docs/pdf/index.md#constructor-new-swissqrbilldata-options
+[importing-documentation]: ./docs/importing.md
+[repository-docs]: ./docs/
+[how-to-create-a-complete-qr-bill]: ./docs/how-to-create-a-complete-qr-bill.md

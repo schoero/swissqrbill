@@ -1,9 +1,65 @@
 {
+
+  // ESLint
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json5]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "yaml"],
+  "editor.formatOnSave": false,
+
+  // Prettier
+  "prettier.enable": false,
+
+  // File nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${basename}.${extname},${basename}.test.${extname},${basename}.test.snap,${basename}.test-d.${extname}",
+    "*.js": "${basename}.${extname},${basename}.mjs,${basename}.cjs,${basename}.d.ts"
+  },
+
+  // Hide JSDoc comments
+  "foldOnOpen.targets": ["AllBlockComments"],
+
+  // ES module import
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.preferences.useAliasesForRenames": true,
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "@types/node/test.d.ts"
+  ],
+
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true,
+    "editor.wordWrapColumn": 119
+  },
+
+  // VSCode
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
+    "source.fixAll.markdownlint": true,
     "source.organizeImports": false
   },
-  "foldOnOpen.targets": ["AllBlockComments"],
-  "javascript.preferences.importModuleSpecifierEnding": "js",
-  "typescript.preferences.importModuleSpecifierEnding": "js",
+
+  "editor.rulers": [
+    119
+  ],
+
+  "search.exclude": {
+    "lib": true
+  }
 }

@@ -1,6 +1,37 @@
 
 # Change Log
 
+# [v4.0.0](https://github.com/schoero/swissqrbill/compare/v3.2.2...v4.0.0) - 10.11.2023
+
+With version 4, SwissQRBill has been completely reworked. The main goal was to make the API more flexible and reduce the complexity of the library. As a consequence, the API has changed quite significantly. However, migration should be fairly easy.  
+
+Please read the [migration guide](docs/migration-v3-to-v4.md) for more information and have a look at the updated [documentation](docs).
+
+* New features
+  * SwissQRBill can now be attached to any PDFDocument instance from PDFKit.
+  * New SwissQRCode class to create the standalone Swiss QR Code to attach to an existing PDFKit document.
+  * New Table class to create a table to attach to an existing PDFKit document.
+  * It is now possible to change the font of the QR Bill. The allowed fonts are `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`
+  * Additional options for SVG renderings.
+
+* Breaking changes
+  * The entrypoints have changed. Please read the [importing documentation](docs/importing.md) for more information.
+  * SwissQRBill no longer extends PDFKit.
+  * The table method has been extracted into it's own class.
+  * Events have been removed from SwissQRBill.
+  * Properties and options have been renamed.
+  * Now requires Node.js >= 18.0.0
+
+* Fixes
+  * Some slight rendering improvements.
+
+* Other improvements
+  * Better examples. The examples are now automatically hosted on StackBlitz. Everyone can now easily try out the library in the browser without having to install anything.
+  * Automated documentation. SwissQRBill now uses [unwritten](https://github.com/schoero/unwritten) to automatically generate the documentation. This makes it easier to keep the documentation up to date.
+  * Automated testing for even more stability.
+
+Thanks to [@danielpanero](https://github.com/danielpanero) and [@skch-17](https://github.com/skch-17) for their contributions.
+
 # [v3.2.3](https://github.com/schoero/swissqrbill/compare/v3.2.2...v3.2.3) - 16.04.2023
 
 * Updated dependencies.
@@ -174,5 +205,5 @@
 # [v1.0.5](https://github.com/schoero/swissqrbill/compare/v1.0.4...v1.0.5) - 03.03.2020
 
 * Fixed french characters.
-* Removes new lines in userdata.
+* Removes new lines in user data.
 * Fixed some layout issues.
