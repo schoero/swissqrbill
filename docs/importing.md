@@ -62,7 +62,7 @@ const { SwissQRBill } = require("swissqrbill/svg");
 >
 > This demo on StackBlitz does only work in Chrome. If you want to try it in another browser, you need to download the project and run it locally.
 
-As PDFKit internally relies on several different built in modules of Node.js, it is not possible to use it directly in the browser. Instead, you need to bundle it with a tool like webpack. More information can be found in the [PDFKit repository](https://github.com/foliojs/pdfkit/tree/master/examples/webpack)
+As PDFKit internally relies on several different built in modules of Node.js, it is not possible to use it directly in the browser. Instead, you need to bundle those node dependencies with a tool like webpack. More information can be found in the [PDFKit repository](https://github.com/foliojs/pdfkit/tree/master/examples/webpack)
 
 ### Browser: Pre-built bundle
 
