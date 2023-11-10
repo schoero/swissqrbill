@@ -1,8 +1,8 @@
 import { data } from "./data.js";
 
 
-const stream = new BlobStream();
-const pdf = new PDFDocument({ size: "A4" });
+const stream = blobStream();
+const pdf = new PDFDocument();
 const qrBill = new SwissQRBill.pdf.SwissQRBill(data);
 
 stream.on("finish", () => {
