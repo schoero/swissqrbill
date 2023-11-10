@@ -19,7 +19,7 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#creating-a-complete-invoice) with SwissQRBill by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips as a PDF or SVG in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#creating-a-complete-invoice) with [PDFKit][pdfkit-npm] by inserting your own content above the payment section.
 
 <br/>
 <br/>
@@ -34,10 +34,10 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 * [Migration from v3 to v4](#migration-from-v3-to-v4)
 * [Features](#features)
 * [Installation](#installation)
-* [Importing the library](#importing-the-library)
+* [Importing the library][importing-documentation]
 * [Quick start](#quick-start)
 * [API documentation](./docs)
-* [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
+* [PDFKit documentation][pdfkit-documentation]
 * [How to create a complete qr bill][how-to-create-a-complete-qr-bill]
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
@@ -59,7 +59,7 @@ Please read the [migration guide](./docs/migration-v3-to-v4.md) to learn more ab
 * Generate the QR Bill as a scalable vector graphic (SVG).
 * Works in browsers and Node.js.
 * Supports german, english, italian and french invoices.
-* Allows you to add other content above the invoice using [PDFKit](https://github.com/foliojs/pdfkit).
+* Allows you to add other content above the invoice using [PDFKit][pdfkit-github].
 * Easy to use.
 * Free and open source.
 
@@ -75,13 +75,13 @@ npm i swissqrbill
 
 ## Importing the library
 
-Depending on the environment you are using, you may need to import the library differently. Please read the [importing documentation][importing-documentation] to find out the best way to import the library for your environment.
+SwissQRBill is based around [PDFKit][pdfkit-npm]. Depending on the environment you are using, you may need to import the libraries differently. Please read the [importing documentation][importing-documentation] to find out the best way to import the libraries for your environment.
 
 <br/>
 
 ## Quick start
 
-Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new [`SwissQRBill`][SwissQRBill] instance with your billing data object. You can then attach the QR bill to any PDFKit document.
+Once you have imported SwissQRBill and PDFKit, it is quite easy to create a simple QR bill. All you have to do is to create a new [`SwissQRBill`][SwissQRBill] instance with your billing data object. You can then attach the QR bill to any PDFKit document.
 
 ```js
 import { createWriteStream } from "node:fs";
@@ -145,9 +145,9 @@ document.body.appendChild(svg.element);
 
 It is possible to create a complete invoice with SwissQRBill. This means that you can add your own content above the QR Bill.
 
-SwissQRBill is based around [PDFKit](https://github.com/foliojs/pdfkit) to generate the PDF files. You can use all the features of PDFKit to add your own content to the PDF file.
+SwissQRBill is based around [PDFKit][pdfkit-github] to generate the PDF files. You can use all the features of PDFKit to add your own content to the PDF file.
 
-The documentation for PDFKit can be found on [pdfkit.org](http://pdfkit.org/docs/getting_started.html).
+The documentation for PDFKit can be found on [pdfkit.org][pdfkit-documentation].
 
 A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-qr-bill.md][how-to-create-a-complete-qr-bill]. You will learn how to create a PDF that looks like this:
 
@@ -160,3 +160,6 @@ A simple guide how to generate a complete bill can be found in [docs/how-to-crea
 [importing-documentation]: ./docs/importing.md
 [repository-docs]: ./docs/
 [how-to-create-a-complete-qr-bill]: ./docs/how-to-create-a-complete-qr-bill.md
+[pdfkit-documentation]: http://pdfkit.org
+[pdfkit-github]: https://github.com/foliojs/pdfkit
+[pdfkit-npm]: https://www.npmjs.com/package/pdfkit
