@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/SwissQRBill/main/assets/swissqrbill-logo.svg">
+  <img alt="SwissQRBill" src="https://raw.githubusercontent.com/schoero/swissqrbill/main/assets/swissqrbill-logo.svg">
 </div>
 
 ---
@@ -38,7 +38,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips in Node.j
 * [Quick start](#quick-start)
 * [API documentation](./docs)
 * [PDFKit documentation](http://pdfkit.org/docs/getting_started.html)
-* [How to create a complete qr bill](./docs/how-to-create-a-complete-qr-bill.md)
+* [How to create a complete qr bill][how-to-create-a-complete-qr-bill]
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
 * [QR bill style guide](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/style-guide-qr-bill-en.pdf)
@@ -75,13 +75,13 @@ npm i swissqrbill
 
 ## Importing the library
 
-Depending on the environment you are using, you may need to import the library differently. Please read the [importing documentation][importing documentation] to find out the best way to import the library for your environment.
+Depending on the environment you are using, you may need to import the library differently. Please read the [importing documentation][importing-documentation] to find out the best way to import the library for your environment.
 
 <br/>
 
 ## Quick start
 
-Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill` with your billing data object. You can then attach the QR bill to any PDFKit document.
+Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new [`SwissQRBill`][SwissQRBill] instance with your billing data object. You can then attach the QR bill to any PDFKit document.
 
 ```js
 import { createWriteStream } from "node:fs";
@@ -122,8 +122,8 @@ pdf.pipe(stream);
 pdf.end();
 ```
 
-This will create the PDF file above. You can pass an optional parameter containing options to the `SwissQRBill` constructor.
-A complete documentation for all methods and parameters can be found in the [docs/][repository docs] directory of this repository.
+This will create the PDF file above. You can pass an optional parameter containing options to the [`SwissQRBill constructor`][SwissQRBill-constructor].
+A complete documentation for all methods and parameters can be found in the [docs/][repository-docs] directory of this repository.
 
 <br/>
 <br/>
@@ -149,12 +149,14 @@ SwissQRBill is based around [PDFKit](https://github.com/foliojs/pdfkit) to gener
 
 The documentation for PDFKit can be found on [pdfkit.org](http://pdfkit.org/docs/getting_started.html).
 
-A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-qr-bill.md][how to create a complete qr bill]. You will learn how to create a PDF that looks like this:
+A simple guide how to generate a complete bill can be found in [docs/how-to-create-a-complete-qr-bill.md][how-to-create-a-complete-qr-bill]. You will learn how to create a PDF that looks like this:
 
 <br/>
 
 ![Complete QR bill](assets/complete-qr-bill.png)
 
-[importing documentation]: ./docs/importing.md
-[repository docs]: ./docs/
-[how to create a complete qr bill]: ./docs/how-to-create-a-complete-qr-bill.md
+[SwissQRBill]: ./docs/pdf/index.md#class-swissqrbill
+[SwissQRBill-constructor]: ./docs/pdf/index.md#constructor-new-swissqrbilldata-options
+[importing-documentation]: ./docs/importing.md
+[repository-docs]: ./docs/
+[how-to-create-a-complete-qr-bill]: ./docs/how-to-create-a-complete-qr-bill.md
