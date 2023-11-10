@@ -5,13 +5,13 @@
   "description": "Swiss QR Bill generation in Node.js and browsers",
   "license": "MIT",
   "author": "Roger Schönbächler",
-  "homepage": "https://github.com/schoero/SwissQRBill#readme",
+  "homepage": "https://github.com/schoero/swissqrbill#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/schoero/SwissQRBill.git"
+    "url": "git+https://github.com/schoero/swissqrbill.git"
   },
   "bugs": {
-    "url": "https://github.com/schoero/SwissQRBill/issues"
+    "url": "https://github.com/schoero/swissqrbill/issues"
   },
   "sideEffects": false,
   "exports": {
