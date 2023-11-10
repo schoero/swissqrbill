@@ -398,8 +398,8 @@ When you run the code above, SwissQRBill should generate a PDF file named `qr-bi
 
 ![Complete QR bill](../assets/complete-qr-bill.png)
 
-[swissqrbill]: ./pdf/index.md#swissqrbill
-[table]: ./pdf/index.md#table
+[swissqrbill]: ./pdf/index.md#class-swissqrbill
+[table]: ./pdf/index.md#class-table
 [pdfdocument]: http://pdfkit.org/docs/getting_started.html#creating_a_document
 [source code]: ../examples/how-to-create-a-complete-qr-bill/src/index.js
 [stackblitz]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/how-to-create-a-complete-qr-bill?file=src%2Findex.js&title=How%20to%20create%20a%20complete%20qr%20bill&startScript=generate
