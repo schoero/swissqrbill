@@ -81,7 +81,7 @@ Depending on the environment you are using, you may need to import the library d
 
 ## Quick start
 
-Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill` instance and pass your billing data object as the first parameter and your output path as the second parameter.
+Once you have imported SwissQRBill, it is quite easy to create a simple QR bill. All you have to do is to create a new `SwissQRBill` with your billing data object. You can then attach the QR bill to any PDFKit document.
 
 ```js
 import { createWriteStream } from "node:fs";
