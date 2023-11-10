@@ -69,6 +69,10 @@ As PDFKit internally relies on several different built in modules of Node.js, it
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][browser pre-built bundle]
 
+> **Warning**
+>
+> This demo on StackBlitz does only work in Chrome. If you want to try it in another browser, you need to download the project and run it locally.
+
 PDFKit provides a pre-built bundle that can be used directly in the browser. Similarly SwissQRBill also provides a pre-built bundle. It can be imported from the JSDelivr CDN as follows:
 
 ```html
