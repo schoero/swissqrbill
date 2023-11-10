@@ -134,6 +134,7 @@ Alternatively, you could render the QR Bill as a scalable vector graphic (SVG). 
 import { SwissQRBill } from "swissqrbill/svg";
 
 const svg = new SwissQRBill(data);
+
 document.body.appendChild(svg.element);
 ```
 
