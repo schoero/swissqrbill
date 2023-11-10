@@ -1,10 +1,10 @@
-import { ValidationError } from "swissqrbill:errors";
 import { SwissQRCode } from "swissqrbill:pdf:swissqrcode";
 import { cleanData } from "swissqrbill:shared:cleaner";
 import { translations } from "swissqrbill:shared:translations";
 import { validateData } from "swissqrbill:shared:validator";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
+import type { ValidationError } from "swissqrbill:errors";
 import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:types";
 
 
