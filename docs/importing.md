@@ -92,6 +92,6 @@ const SwissQRBill = {
 ```
 
 [node esm javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/node-esm-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20ESM%20JavaScript&startScript=generate
-[node cjs javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/node-cjs-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%CJS%20JavaScript&startScript=generate
+[node cjs javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/node-cjs-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20CJS%20JavaScript&startScript=generate
 [browser bundling with webpack]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/browser-bundling-with-webpack?file=src%2Fpdf.js&title=Browser%20bundling%20with%20webpack&startScript=start
 [browser pre-built bundle]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/browser-pre-built-bundle?file=src%2Fpdf.js&title=Browser%20pre-built%20bundle&startScript=start
