@@ -1,9 +1,9 @@
 
 # Change Log
 
-# [v4.0.0](https://github.com/schoero/swissqrbill/compare/v3.2.2...v4.0.0) - 01.11.2023
+# [v4.0.0](https://github.com/schoero/swissqrbill/compare/v3.2.2...v4.0.0) - 10.11.2023
 
-With version 4 of SwissQRBill, the API has been completely reworked. The main goal was to make the API more flexible and reduce the complexity of the library. As a consequence, the API has changed quite significantly. However, migration should be fairly easy.  
+With version 4, SwissQRBill has been completely reworked. The main goal was to make the API more flexible and reduce the complexity of the library. As a consequence, the API has changed quite significantly. However, migration should be fairly easy.  
 
 Please read the [migration guide](docs/migration-v3-to-v4.md) for more information and have a look at the updated [documentation](docs).
 
@@ -29,6 +29,8 @@ Please read the [migration guide](docs/migration-v3-to-v4.md) for more informati
   * Better examples. The examples are now automatically hosted on StackBlitz. Everyone can now easily try out the library in the browser without having to install anything.
   * Automated documentation. SwissQRBill now uses [unwritten](https://github.com/schoero/unwritten) to automatically generate the documentation. This makes it easier to keep the documentation up to date.
   * Automated testing for even more stability.
+
+Thanks to [@danielpanero](https://github.com/danielpanero) and [@skch-17](https://github.com/skch-17) for their contributions.
 
 # [v3.2.3](https://github.com/schoero/swissqrbill/compare/v3.2.2...v3.2.3) - 16.04.2023
 
