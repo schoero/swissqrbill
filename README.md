@@ -114,6 +114,7 @@ const data = {
 
 const pdf = new PDFDocument({ size: "A4" });
 const qrBill = new SwissQRBill(data);
+
 const stream = createWriteStream("qr-bill.pdf");
 
 qrBill.attachTo(pdf);
