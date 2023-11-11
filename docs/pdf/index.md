@@ -1,8 +1,6 @@
   
 # Index
   
-<br/>
-  
 - Classes
   
   - [SwissQRBill](#class-swissqrbill)
@@ -81,7 +79,7 @@ const stream = createWriteStream("qr-bill.pdf");
 qrBill.attachTo(pdf);
 pdf.pipe(stream);
 pdf.end();
-```  
+```
   
 <br/>
   
@@ -282,7 +280,7 @@ const stream = createWriteStream("table.pdf");
 table.attachTo(pdf);
 pdf.pipe(stream);
 pdf.end();
-```  
+```
   
 <br/>
   

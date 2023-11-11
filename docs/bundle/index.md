@@ -1,8 +1,6 @@
   
 # Index
   
-<br/>
-  
 - Namespaces
   
   - [pdf](#namespace-pdf)
@@ -164,7 +162,7 @@ const stream = createWriteStream("qr-bill.pdf");
 qrBill.attachTo(pdf);
 pdf.pipe(stream);
 pdf.end();
-```  
+```
   
 <br/>
   
@@ -512,7 +510,7 @@ const stream = createWriteStream("table.pdf");
 table.attachTo(pdf);
 pdf.pipe(stream);
 pdf.end();
-```  
+```
   
 <br/>
   
@@ -603,7 +601,7 @@ const data = {
 
 const svg = new SwissQRBill(data);
 writeFileSync("qr-bill.svg", svg.toString());
-```  
+```
   
 <br/>
   
@@ -808,13 +806,13 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L139C0)
   
   *Example:*
   
-    ```ts
+  ```ts
   // Register the font
   pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
   pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
-  
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
-  ```    
+  ```
+  
 - **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
@@ -831,13 +829,13 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L150C0)
   
   *Example:*
   
-    ```ts
+  ```ts
   // Register the font
   pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
   pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
-  
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
-  ```    
+  ```
+  
 - **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`

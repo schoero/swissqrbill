@@ -1,8 +1,6 @@
   
 # Utils
   
-<br/>
-  
 - Functions
   
   - [isQRIBAN(iban)](#function-isqribaniban)

@@ -1,8 +1,6 @@
   
 # Types
   
-<br/>
-  
 - Type aliases
   
   - [Language](#type-alias-language)
@@ -111,13 +109,13 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L139C0)
   
   *Example:*
   
-    ```ts
+  ```ts
   // Register the font
   pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
   pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
-  
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
-  ```    
+  ```
+  
 - **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
@@ -134,13 +132,13 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L150C0)
   
   *Example:*
   
-    ```ts
+  ```ts
   // Register the font
   pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
   pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
-  
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
-  ```    
+  ```
+  
 - **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
