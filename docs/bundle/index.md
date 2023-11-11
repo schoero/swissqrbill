@@ -65,18 +65,16 @@
   
   - [types](#namespace-types)
   
-    - Type aliases
+    - Interfaces
   
-      - [Currency](#type-alias-typescurrency)
-      - [Size](#type-alias-typessize)
-      - [Language](#type-alias-typeslanguage)
-      - [FontName](#type-alias-typesfontname)
       - [Data](#interface-typesdata)
       - [Debtor](#interface-typesdebtor)
       - [Creditor](#interface-typescreditor)
-      - [QRBillOptions](#interface-typesqrbilloptions)
       - [PDFOptions](#interface-typespdfoptions)
       - [SVGOptions](#interface-typessvgoptions)
+      - [Language](#type-alias-typeslanguage)
+      - [FontName](#type-alias-typesfontname)
+      - [Currency](#type-alias-typescurrency)
   
   - [utils](#namespace-utils)
   
@@ -87,7 +85,7 @@
       - [formatIBAN(iban)](#function-utilsformatibaniban)
       - [isQRReference(reference)](#function-utilsisqrreferencereference)
       - [isQRReferenceValid(reference)](#function-utilsisqrreferencevalidreference)
-      - [isSCORReference(reference)](#class-pdftable)
+      - [isSCORReference(reference)](#function-utilsisscorreferencereference)
       - [isSCORReferenceValid(reference)](#function-utilsisscorreferencevalidreference)
       - [calculateSCORReferenceChecksum(reference)](#function-utilscalculatescorreferencechecksumreference)
       - [calculateQRReferenceChecksum(reference)](#function-utilscalculateqrreferencechecksumreference)
@@ -747,52 +745,12 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L4C7)
   
 <br/>
   
-#### Type alias: types.Currency
-  
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L2C0)  
-  
-##### Type
-  
-`"CHF"` | `"EUR"`  
-  
-<br/>
-  
-#### Type alias: types.Size
-  
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L3C0)  
-  
-##### Type
-  
-`"A4"` | `"A6"` | `"A6/5"`  
-  
-<br/>
-  
-#### Type alias: types.Language
-  
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L4C0)  
-  
-##### Type
-  
-`"DE"` | `"EN"` | `"FR"` | `"IT"`  
-  
-<br/>
-  
-#### Type alias: types.FontName
-  
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L5C0)  
-  
-##### Type
-  
-`"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`  
-  
-<br/>
-  
 #### Interface: types.Data
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L1C0)  
   
 - **types.creditor** [`Creditor`](#interface-typescreditor) Creditor related data.
-- **types.currency** [`Currency`](#type-alias-typescurrency) The currency to be used. **3 characters.**
+- **types.currency** `"CHF"` | `"EUR"` The currency to be used. **3 characters.**
 - **types.additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**
   
   Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment. `optional`
@@ -816,7 +774,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L7C0)
   
 #### Interface: types.Debtor
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L60C0)  
   
 - **types.address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
 - **types.city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
@@ -829,7 +787,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L66C0)
   
 #### Interface: types.Creditor
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L93C0)  
   
 - **types.address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
 - **types.city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
@@ -841,25 +799,23 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L99C0)
   
 <br/>
   
-#### Interface: types.QRBillOptions
-  
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L107C0)  
-  
-- **types.fontName** [`FontName`](#type-alias-typesfontname) Font used for the QR-Bill.
-  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **types.language** [`Language`](#type-alias-typeslanguage) The language with which the bill is rendered. `optional`
-- **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
-- **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
-  
-<br/>
-  
 #### Interface: types.PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L139C0)  
   
-- **types.fontName** [`FontName`](#type-alias-typesfontname) Font used for the QR-Bill.
+- **types.fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **types.language** [`Language`](#type-alias-typeslanguage) The language with which the bill is rendered. `optional`
+  
+  *Example:*
+  
+    ```ts
+  // Register the font
+  pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
+  pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+  
+  const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
+  ```    
+- **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **types.separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
@@ -868,13 +824,53 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L137C0)
   
 #### Interface: types.SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L148C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L150C0)  
   
-- **types.fontName** [`FontName`](#type-alias-typesfontname) Font used for the QR-Bill.
+- **types.fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
-- **types.language** [`Language`](#type-alias-typeslanguage) The language with which the bill is rendered. `optional`
+  
+  *Example:*
+  
+    ```ts
+  // Register the font
+  pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
+  pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+  
+  const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
+  ```    
+- **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
+  
+<br/>
+  
+#### Type alias: types.Language
+  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L154C0)  
+  
+##### Type
+  
+`"DE"` | `"EN"` | `"FR"` | `"IT"`  
+  
+<br/>
+  
+#### Type alias: types.FontName
+  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)  
+  
+##### Type
+  
+`"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"`  
+  
+<br/>
+  
+#### Type alias: types.Currency
+  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L156C0)  
+  
+##### Type
+  
+`"CHF"` | `"EUR"`  
   
 <br/>
   
