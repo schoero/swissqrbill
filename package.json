@@ -100,7 +100,7 @@
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-it-it": "^3.1.0",
-    "@schoero/changelog-config": "^0.0.2",
+    "@schoero/changelog-config": "^0.0.3",
     "@schoero/cspell-config": "^1.9.0",
     "@schoero/eslint-config": "^1.42.0",
     "@schoero/markdownlint-config": "^1.1.7",
@@ -116,7 +116,7 @@
     "glob": "^10.3.10",
     "pdfkit": "^0.14.0",
     "typescript": "^5.2.2",
-    "unwritten": "^0.2.4",
+    "unwritten": "^0.2.5",
     "vite-plugin-dts": "^3.6.3",
     "vite-plugin-no-bundle": "^3.0.0",
     "vitest": "^0.34.6"
