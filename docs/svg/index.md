@@ -1,8 +1,6 @@
   
 # Index
   
-<br/>
-  
 - Classes
   
   - [SwissQRBill](#class-swissqrbill)
@@ -67,7 +65,7 @@ const data = {
 
 const svg = new SwissQRBill(data);
 writeFileSync("qr-bill.svg", svg.toString());
-```  
+```
   
 <br/>
   

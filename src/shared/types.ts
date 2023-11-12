@@ -1,9 +1,3 @@
-// SwissQRBill types
-export type Currency = "CHF" | "EUR";
-export type Size = "A4" | "A6" | "A6/5";
-export type Language = "DE" | "EN" | "FR" | "IT";
-export type FontName = "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
-
 export interface Data {
 
   /**
@@ -14,7 +8,7 @@ export interface Data {
   /**
    * The currency to be used. **3 characters.**
    */
-  currency: Currency;
+  currency: "CHF" | "EUR";
 
   /**
    * Additional information. **Max 140 characters.**
@@ -104,20 +98,28 @@ export interface Creditor extends Debtor {
   account: string;
 }
 
-export interface QRBillOptions {
+interface QRBillOptions {
 
   /**
    * Font used for the QR-Bill.
    * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}
    * @defaultValue 'Helvetica'
+   * @example
+   * ```ts
+   * // Register the font
+   * pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
+   * pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+   *
+   * const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
+   * ```
    */
-  fontName?: FontName;
+  fontName?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
 
   /**
    * The language with which the bill is rendered.
    * @defaultValue `DE`
    */
-  language?: Language;
+  language?: "DE" | "EN" | "FR" | "IT";
 
   /**
    * Whether you want render the outlines. This option may be disabled if you use perforated paper.
@@ -148,3 +150,7 @@ export interface PDFOptions extends QRBillOptions {
 export interface SVGOptions extends QRBillOptions {
 
 }
+
+export type Language = Exclude<QRBillOptions["language"], undefined>;
+export type FontName = Exclude<QRBillOptions["fontName"], undefined>;
+export type Currency = Exclude<Data["currency"], undefined>;
