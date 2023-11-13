@@ -24,7 +24,7 @@ export class TestDocument extends PDFDocument {
   constructor(testDocumentName: TestDocumentName, options?: PDFKit.PDFDocumentOptions) {
     super({ ...options, bufferPages: true, compress: false });
     this.testDocumentName = testDocumentName;
-    this.info.CreationDate = undefined;
+    this.info.CreationDate = new Date(0);
   }
 
   public async writeFile() {
