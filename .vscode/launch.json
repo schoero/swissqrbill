@@ -1,7 +1,11 @@
 {
   "configurations": [
     {
-      "args": ["run", "${relativeFileDirname}/${fileBasenameNoExtension}"],
+      "args": [
+        "run",
+        "${relativeFileDirname}/${fileBasenameNoExtension}",
+        "--no-threads"
+      ],
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
       "name": "debug current test file",
@@ -12,7 +16,11 @@
       "type": "node"
     },
     {
-      "args": ["run", "${relativeFileDirname}/${fileBasenameNoExtension}"],
+      "args": [
+        "run",
+        "${relativeFileDirname}/${fileBasenameNoExtension}",
+        "--no-threads"
+      ],
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
       "env": {
@@ -26,7 +34,11 @@
       "type": "node"
     },
     {
-      "args": ["run", "${relativeFileDirname}/${fileBasenameNoExtension}"],
+      "args": [
+        "run",
+        "${relativeFileDirname}/${fileBasenameNoExtension}",
+        "--no-threads"
+      ],
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
       "name": "debug current test file with node internals",
