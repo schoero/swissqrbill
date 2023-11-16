@@ -1,6 +1,33 @@
 
 # Change Log
 
+## v4.0.1
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.0.0...v4.0.1)
+
+### Fixes
+
+* Visual pdf tests throwing error ([7936151](https://github.com/schoero/swissqrbill/commit/7936151))
+* **table:** Throwing error when header row was enabled on a table with multiple columns ([b096a51](https://github.com/schoero/swissqrbill/commit/b096a51))
+* **table:** Setting padding to `0` not working in a tuple type ([14ad3c3](https://github.com/schoero/swissqrbill/commit/14ad3c3))
+* **table:** Continue table on the same horizontal position ([e8e5aec](https://github.com/schoero/swissqrbill/commit/e8e5aec))
+* **table:** Rendering of imaginary layers ([9eb4f3d](https://github.com/schoero/swissqrbill/commit/9eb4f3d))
+* **table:** Converting of tuple shorthand syntax ([99b1c95](https://github.com/schoero/swissqrbill/commit/99b1c95))
+
+### Documentation
+
+* Simplify types for easier documentation ([4f2bb37](https://github.com/schoero/swissqrbill/commit/4f2bb37))
+* Regenerate docs ([89d8301](https://github.com/schoero/swissqrbill/commit/89d8301))
+* Add description ([082d9ed](https://github.com/schoero/swissqrbill/commit/082d9ed))
+
+### Chore
+
+* Update dependencies ([06816ab](https://github.com/schoero/swissqrbill/commit/06816ab))
+
+### Tests
+
+* Disable multi threading in debugger ([85911a1](https://github.com/schoero/swissqrbill/commit/85911a1))
+
 # [v4.0.0](https://github.com/schoero/swissqrbill/compare/v3.2.2...v4.0.0) - 10.11.2023
 
 With version 4, SwissQRBill has been completely reworked. The main goal was to make the API more flexible and reduce the complexity of the library. As a consequence, the API has changed quite significantly. However, migration should be fairly easy.  

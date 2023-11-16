@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "4.0.1",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
