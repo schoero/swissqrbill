@@ -470,9 +470,9 @@ export class Table {
       };
     } else {
       return {
-        bottom: numberOrPositions[2] ? numberOrPositions[2] : numberOrPositions[0],
-        left: numberOrPositions[3] ? numberOrPositions[3] : numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
-        right: numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
+        bottom: numberOrPositions[2] !== undefined ? numberOrPositions[2] : numberOrPositions[0] ?? numberOrPositions[0],
+        left: numberOrPositions[3] !== undefined ? numberOrPositions[3] : numberOrPositions[1] ?? numberOrPositions[0],
+        right: numberOrPositions[1] !== undefined ? numberOrPositions[1] : numberOrPositions[0] ?? numberOrPositions[0],
         top: numberOrPositions[0]
       };
     }
