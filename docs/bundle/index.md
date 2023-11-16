@@ -28,6 +28,9 @@
       - [PDFTable](#interface-pdfpdftable)
       - [PDFRow](#interface-pdfpdfrow)
       - [PDFColumn](#interface-pdfpdfcolumn)
+      - [PDFBorderColor](#type-alias-pdfpdfbordercolor)
+      - [PDFBorderWidth](#type-alias-pdfpdfborderwidth)
+      - [PDFPadding](#type-alias-pdfpdfpadding)
       - [Table](#class-pdftable)
   
         - Constructor
@@ -327,38 +330,11 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
-- **pdf.borderColor** `union` The colors of the border `optional`
-  
-  - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-  - `tuple`
-  
-    - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-  
-- **pdf.borderWidth** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
+- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border `optional`
+- **pdf.borderWidth** [`PDFBorderWidth`](#type-alias-pdfpdfborderwidth) Width of the borders of the row. `optional`
 - **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the table. `optional`
-- **pdf.padding** `union` Cell padding of the table cells. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
+- **pdf.padding** [`PDFPadding`](#type-alias-pdfpdfpadding) Cell padding of the table cells. `optional`
 - **pdf.textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside table. `optional`
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
@@ -368,7 +344,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
 #### Interface: pdf.PDFRow
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)  
   
 - **pdf.columns** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table columns.
   
@@ -376,42 +352,15 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)
   
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
-- **pdf.borderColor** `union` The colors of the border `optional`
-  
-  - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-  - `tuple`
-  
-    - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-  
-- **pdf.borderWidth** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
+- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border `optional`
+- **pdf.borderWidth** [`PDFBorderWidth`](#type-alias-pdfpdfborderwidth) Width of the borders of the row. `optional`
 - **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the row. `optional`
 - **pdf.header** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) A header row gets inserted automatically on new pages. Only one header row is allowed. `optional`
 - **pdf.height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight `optional`
 - **pdf.maxHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Maximum height of the row `optional`
 - **pdf.minHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Minimum height of the row `optional`
-- **pdf.padding** `union` Cell padding of the table cells inside the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
+- **pdf.padding** [`PDFPadding`](#type-alias-pdfpdfpadding) Cell padding of the table cells inside the row. `optional`
 - **pdf.textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the row. `optional`
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
@@ -420,43 +369,16 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)
   
 #### Interface: pdf.PDFColumn
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L63C0)  
   
 - **pdf.text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
 - **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the cell. `optional`
-- **pdf.borderColor** `union` The colors of the border `optional`
-  
-  - [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-  - `tuple`
-  
-    - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-    - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-  
-- **pdf.borderWidth** `union` Width of the borders of the row. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
+- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border `optional`
+- **pdf.borderWidth** [`PDFBorderWidth`](#type-alias-pdfpdfborderwidth) Width of the borders of the row. `optional`
 - **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the cell. `optional`
-- **pdf.padding** `union` Cell padding of the table cell. `optional`
-  
-  - [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  - `tuple`
-  
-    - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-    - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-  
+- **pdf.padding** [`PDFPadding`](#type-alias-pdfpdfpadding) Cell padding of the table cell. `optional`
 - **pdf.textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the cell. `optional`
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
 - **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell `optional`
@@ -464,9 +386,78 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)
   
 <br/>
   
+#### Type alias: pdf.PDFBorderColor
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L90C0)  
+  
+##### Type
+  
+`union`  
+  
+- [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+- `tuple`
+  
+  - top [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  - right [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  - bottom [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  - left [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  
+- `tuple`
+  
+  - vertical [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  - horizontal [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+  
+<br/>
+  
+#### Type alias: pdf.PDFBorderWidth
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L95C0)  
+  
+##### Type
+  
+`union`  
+  
+- [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+- `tuple`
+  
+  - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- `tuple`
+  
+  - vertical [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - horizontal [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+<br/>
+  
+#### Type alias: pdf.PDFPadding
+  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)  
+  
+##### Type
+  
+`union`  
+  
+- [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+- `tuple`
+  
+  - top [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - right [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - bottom [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - left [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+- `tuple`
+  
+  - vertical [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  - horizontal [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+<br/>
+  
 #### Class: pdf.Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L138C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L154C0)  
   
 ##### Description
   
@@ -516,7 +507,7 @@ pdf.end();
   
 ##### Constructor: new pdf.Table(data)
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L145C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L161C2)  
   
 ###### Parameter
   
@@ -536,7 +527,7 @@ Creates a new Table instance.
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L169C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L185C2)  
   
 ###### Parameters
   
