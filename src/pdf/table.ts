@@ -195,6 +195,8 @@ export class Table {
     const tableAlign = this.data.align ? this.data.align : undefined;
     const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
 
+    const headerRowIndex = this.data.rows.findIndex(row => !!row.header);
+
     const autoRowHeights: number[] = [];
 
     for(let layer: TableLayer = 0; layer < Object.keys(TableLayer).length; layer++){
@@ -314,10 +316,10 @@ export class Table {
               rowY = doc.y;
 
               // Insert header
-              const headerRow = this.data.rows.find(row => row.header);
+              const headerRow = this.data.rows[headerRowIndex];
               if(headerRow !== undefined){
                 this.data.rows.splice(rowIndex, 0, headerRow);
-                autoRowHeights.splice(rowIndex, 0, autoRowHeights[this.data.rows.indexOf(headerRow)]);
+                autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
                 rowIndex--;
                 continue rowLoop;
               }
@@ -328,7 +330,7 @@ export class Table {
           // Switch page before overflowing rows and header rows
           if(layer > TableLayer.PageInjection){
             if(
-              !!row.header && rowY !== doc.page.margins.top ||
+              !!row.header && rowY !== (doc.page.margins.top ?? 0) && rowIndex !== headerRowIndex ||
               rowY + rowHeight >= doc.page.height - doc.page.margins.bottom
             ){
               doc.switchToPage(this.getCurrentPage(doc) + 1);
