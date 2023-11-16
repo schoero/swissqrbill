@@ -87,16 +87,19 @@ export interface PDFColumn {
   width?: number;
 }
 
+/** Can be used to set the color of the border of a table, row or column. */
 export type PDFBorderColor =
   | string
   | [top?: string, right?: string, bottom?: string, left?: string]
   | [vertical?: string, horizontal?: string];
 
+/** Can be used to set the width of the border of a table, row or column. */
 export type PDFBorderWidth =
   | number
   | [top?: number, right?: number, bottom?: number, left?: number]
   | [vertical?: number, horizontal?: number];
 
+/** Can be used to set the padding of a table cell. */
 export type PDFPadding =
   | number
   | [top?: number, right?: number, bottom?: number, left?: number]

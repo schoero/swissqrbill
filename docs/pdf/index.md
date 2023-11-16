@@ -239,7 +239,7 @@ Attaches the Swiss QR Code to a PDF document.
   
 ### Class: Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L154C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L157C0)  
   
 #### Description
   
@@ -289,7 +289,7 @@ pdf.end();
   
 #### Constructor: new Table(data)
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L161C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L164C2)  
   
 ##### Parameter
   
@@ -309,7 +309,7 @@ Creates a new Table instance.
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L185C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L188C2)  
   
 ##### Parameters
   
@@ -334,7 +334,7 @@ every row that no longer fits on a page.
   
 ### Type alias: PDFBorderColor
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L90C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L91C0)  
   
 #### Type
   
@@ -353,11 +353,15 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L90C0)
   - vertical [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   - horizontal [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
   
+#### Description
+  
+Can be used to set the color of the border of a table, row or column.  
+  
 <br/>
   
 ### Type alias: PDFBorderWidth
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L95C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
   
 #### Type
   
@@ -375,12 +379,16 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L95C0)
   
   - vertical [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
   - horizontal [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+#### Description
+  
+Can be used to set the width of the border of a table, row or column.  
   
 <br/>
   
 ### Type alias: PDFPadding
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L103C0)  
   
 #### Type
   
@@ -398,6 +406,10 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L100C0)
   
   - vertical [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
   - horizontal [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+  
+#### Description
+  
+Can be used to set the padding of a table cell.  
   
 <br/>
   
