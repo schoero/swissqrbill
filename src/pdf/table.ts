@@ -6,15 +6,15 @@ export interface PDFTable {
   /** Background color of the table. */
   backgroundColor?: string;
   /** The colors of the border */
-  borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  borderColor?: PDFBorderColor;
   /** Width of the borders of the row. */
-  borderWidth?: number | [top: number, right?: number, bottom?: number, left?: number];
+  borderWidth?: PDFBorderWidth;
   /** Font of the text inside the table. */
   fontName?: string;
   /** Font size of the text inside the table. */
   fontSize?: number;
   /** Cell padding of the table cells. */
-  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  padding?: PDFPadding;
   /** Text color of texts inside table. */
   textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
@@ -26,6 +26,7 @@ export interface PDFTable {
   /** Horizontal start position of the table. */
 }
 
+
 export interface PDFRow {
   /** Table columns. */
   columns: PDFColumn[];
@@ -34,9 +35,9 @@ export interface PDFRow {
   /** Background color of the row. */
   backgroundColor?: string;
   /** The colors of the border */
-  borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  borderColor?: PDFBorderColor;
   /** Width of the borders of the row. */
-  borderWidth?: number | [top: number, right?: number, bottom?: number, left?: number];
+  borderWidth?: PDFBorderWidth;
   /** Font of the text inside the row. */
   fontName?: string;
   /** Font size of the text inside the row. */
@@ -50,7 +51,7 @@ export interface PDFRow {
   /** Minimum height of the row */
   minHeight?: number;
   /** Cell padding of the table cells inside the row. */
-  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  padding?: PDFPadding;
   /** Text color of texts inside the row. */
   textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
@@ -67,15 +68,15 @@ export interface PDFColumn {
   /** Background color of the cell. */
   backgroundColor?: string;
   /** The colors of the border */
-  borderColor?: string | [top: string, right?: string, bottom?: string, left?: string];
+  borderColor?: PDFBorderColor;
   /** Width of the borders of the row. */
-  borderWidth?: number | [top: number, right?: number, bottom?: number, left?: number];
+  borderWidth?: PDFBorderWidth;
   /** Font of the text inside the cell. */
   fontName?: string;
   /** Font size of the text inside the cell. */
   fontSize?: number;
   /** Cell padding of the table cell. */
-  padding?: number | [top: number, right?: number, bottom?: number, left?: number];
+  padding?: PDFPadding;
   /** Text color of texts inside the cell. */
   textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
@@ -85,6 +86,24 @@ export interface PDFColumn {
   /** Width of the cell. */
   width?: number;
 }
+
+/** Can be used to set the color of the border of a table, row or column. */
+export type PDFBorderColor =
+  | string
+  | [top?: string, right?: string, bottom?: string, left?: string]
+  | [vertical?: string, horizontal?: string];
+
+/** Can be used to set the width of the border of a table, row or column. */
+export type PDFBorderWidth =
+  | number
+  | [top?: number, right?: number, bottom?: number, left?: number]
+  | [vertical?: number, horizontal?: number];
+
+/** Can be used to set the padding of a table cell. */
+export type PDFPadding =
+  | number
+  | [top?: number, right?: number, bottom?: number, left?: number]
+  | [vertical?: number, horizontal?: number];
 
 enum TableLayer {
   HeightCalculation,
@@ -195,9 +214,11 @@ export class Table {
     const tableAlign = this.data.align ? this.data.align : undefined;
     const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
 
+    const headerRowIndex = this.data.rows.findIndex(row => !!row.header);
+
     const autoRowHeights: number[] = [];
 
-    for(let layer: TableLayer = 0; layer < Object.keys(TableLayer).length; layer++){
+    for(let layer: TableLayer = 0; layer < Object.values(TableLayer).length / 2; layer++){
 
       // Always start on the first page for each layer
       doc.switchToPage(startPage);
@@ -314,10 +335,10 @@ export class Table {
               rowY = doc.y;
 
               // Insert header
-              const headerRow = this.data.rows.find(row => row.header);
+              const headerRow = this.data.rows[headerRowIndex];
               if(headerRow !== undefined){
                 this.data.rows.splice(rowIndex, 0, headerRow);
-                autoRowHeights.splice(rowIndex, 0, autoRowHeights[this.data.rows.indexOf(headerRow)]);
+                autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
                 rowIndex--;
                 continue rowLoop;
               }
@@ -328,11 +349,11 @@ export class Table {
           // Switch page before overflowing rows and header rows
           if(layer > TableLayer.PageInjection){
             if(
-              !!row.header && rowY !== doc.page.margins.top ||
+              !!row.header && rowY !== (doc.page.margins.top ?? 0) && rowIndex !== headerRowIndex ||
               rowY + rowHeight >= doc.page.height - doc.page.margins.bottom
             ){
               doc.switchToPage(this.getCurrentPage(doc) + 1);
-              doc.x = doc.page.margins.left ?? 0;
+              doc.x = tableX;
               doc.y = doc.page.margins.top ?? 0;
               rowY = doc.y;
             }
@@ -457,7 +478,7 @@ export class Table {
   }
 
 
-  private _positionsToObject<T extends number | string>(numberOrPositions: T | [top: T, right?: T, bottom?: T, left?: T]): { bottom?: T; left?: T; right?: T; top?: T; } {
+  private _positionsToObject<T extends number | string>(numberOrPositions: T | [top?: T, right?: T, bottom?: T, left?: T]): { bottom?: T; left?: T; right?: T; top?: T; } {
 
     if(typeof numberOrPositions === "number" || typeof numberOrPositions === "string"){
       return {
@@ -468,9 +489,9 @@ export class Table {
       };
     } else {
       return {
-        bottom: numberOrPositions[2] ? numberOrPositions[2] : numberOrPositions[0],
-        left: numberOrPositions[3] ? numberOrPositions[3] : numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
-        right: numberOrPositions[1] ? numberOrPositions[1] : numberOrPositions[0],
+        bottom: numberOrPositions[2] !== undefined ? numberOrPositions[2] : numberOrPositions[0],
+        left: numberOrPositions[3] !== undefined ? numberOrPositions[3] : numberOrPositions[1],
+        right: numberOrPositions[1] !== undefined ? numberOrPositions[1] : undefined,
         top: numberOrPositions[0]
       };
     }

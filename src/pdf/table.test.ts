@@ -14,12 +14,24 @@ import {
   paddingOverrides,
   paddingVariants,
   singleCell,
-  textColorOverrides
+  textColorOverrides,
+  tupleShorthand
 } from "swissqrbill:tests:data/table";
 import { TestDocument } from "swissqrbill:tests:utils/pdf";
 
 
 describe("table", async () => {
+
+  it("should convert the values of tuples shorthand syntax correctly", async () => {
+    const pdf = new TestDocument("table/tuple-shorthand.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(tupleShorthand);
+
+    table.attachTo(pdf);
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
 
   it("should render and override background colors correctly", async () => {
     const pdf = new TestDocument("table/background-color.pdf", { layout: "landscape", size: "A4" });

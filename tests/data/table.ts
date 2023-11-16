@@ -1,6 +1,59 @@
 import type { PDFTable } from "swissqrbill:pdf:table";
 
 
+export const tupleShorthand: PDFTable = {
+  align: "center",
+  padding: 20,
+  rows: [
+    {
+      columns: [
+        {
+          borderColor: "#ff0000",
+          borderWidth: 4,
+          text: "borderColor: \"#ff0000\""
+        }
+      ]
+    },
+    {
+      columns: [{ text: "" }]
+    },
+    {
+      columns: [
+        {
+          borderColor: ["#ff0000"],
+          borderWidth: 4,
+          text: "borderColor: [\"#ff0000\"]"
+        }
+      ]
+    },
+    {
+      columns: [{ text: "" }]
+    },
+    {
+      columns: [
+        {
+          borderColor: ["#ff0000", "#00ff00"],
+          borderWidth: 4,
+          text: "borderColor: [\"#ff0000\", \"#00ff00\"]"
+        }
+      ]
+    },
+    {
+      columns: [{ text: "" }]
+    },
+    {
+      columns: [
+        {
+          borderColor: ["#ff0000", "#00ff00", "#0000ff", "#ffff00"],
+          borderWidth: 4,
+          text: "borderColor: [\"#ff0000\", \"#00ff00\", \"#0000ff\", \"#ffff00\"]"
+        }
+      ]
+    }
+  ],
+  verticalAlign: "center"
+};
+
 export const backgroundColorOverrides: PDFTable = {
   align: "center",
   backgroundColor: "#ff0000",
@@ -214,8 +267,8 @@ export const borderThickness: PDFTable = {
         },
         {
           align: "center",
-          borderWidth: [1],
-          text: "1",
+          borderWidth: [1, 1],
+          text: "1, 1",
           verticalAlign: "center"
         },
         {
