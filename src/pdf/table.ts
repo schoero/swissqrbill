@@ -334,7 +334,7 @@ export class Table {
               rowY + rowHeight >= doc.page.height - doc.page.margins.bottom
             ){
               doc.switchToPage(this.getCurrentPage(doc) + 1);
-              doc.x = doc.page.margins.left ?? 0;
+              doc.x = tableX;
               doc.y = doc.page.margins.top ?? 0;
               rowY = doc.y;
             }
