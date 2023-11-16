@@ -199,7 +199,7 @@ export class Table {
 
     const autoRowHeights: number[] = [];
 
-    for(let layer: TableLayer = 0; layer < Object.keys(TableLayer).length; layer++){
+    for(let layer: TableLayer = 0; layer < Object.values(TableLayer).length / 2; layer++){
 
       // Always start on the first page for each layer
       doc.switchToPage(startPage);
