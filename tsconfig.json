@@ -5,6 +5,8 @@
     "declaration": false,
     "declarationMap": false,
     "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noImplicitAny": false,
     "outDir": "lib",
     "paths": {

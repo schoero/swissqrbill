@@ -1,8 +1,9 @@
 import { config, defineConfig } from "@schoero/vite-config";
 
+import type { UserConfig } from "vite";
 
-/** @type {import('vitest/config').UserConfig} */
-export default defineConfig({
+
+export default defineConfig(<UserConfig>{
   ...config,
   build: {
     emptyOutDir: false,

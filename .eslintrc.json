@@ -14,7 +14,7 @@
       }
     },
     {
-      "files": ["vite.config.ts", "vite.config.bundle.ts"],
+      "files": ["vite.config.ts", "vite.config.cjs.ts", "vite.config.bundle.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "ecmaVersion": "latest",

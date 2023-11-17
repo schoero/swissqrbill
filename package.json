@@ -16,32 +16,53 @@
   "sideEffects": false,
   "exports": {
     "./bundle": {
-      "import": "./lib/bundle/index.js",
-      "require": "./lib/bundle/index.js"
+      "import": "./lib/esm/bundle/index.js",
+      "require": {
+        "require": "./lib/cjs/bundle/index.js",
+        "types": "./lib/cjs/bundle/index.d.ts"
+      }
     },
     "./errors": {
-      "import": "./lib/shared/errors.js",
-      "require": "./lib/shared/errors.cjs"
+      "import": "./lib/esm/shared/errors.js",
+      "require": {
+        "require": "./lib/cjs/shared/errors.cjs",
+        "types": "./lib/cjs/shared/errors.d.ts"
+      }
     },
     "./pdf": {
-      "import": "./lib/pdf/index.js",
-      "require": "./lib/pdf/index.cjs"
+      "import": "./lib/esm/pdf/index.js",
+      "require": {
+        "require": "./lib/cjs/pdf/index.cjs",
+        "types": "./lib/cjs/pdf/index.d.ts"
+      }
     },
     "./svg": {
-      "import": "./lib/svg/index.js",
-      "require": "./lib/svg/index.cjs"
+      "import": "./lib/esm/svg/index.js",
+      "require": {
+        "require": "./lib/cjs/svg/index.cjs",
+        "types": "./lib/cjs/svg/index.d.ts"
+      }
     },
     "./types": {
-      "import": "./lib/shared/types.js",
-      "require": "./lib/shared/types.cjs"
+      "import": "./lib/esm/shared/types.js",
+      "require": {
+        "require": "./lib/cjs/shared/types.cjs",
+        "types": "./lib/cjs/shared/types.d.ts"
+      }
     },
     "./utils": {
-      "import": "./lib/shared/utils.js",
-      "require": "./lib/shared/utils.cjs"
+      "import": "./lib/esm/shared/utils.js",
+      "require": {
+        "require": "./lib/cjs/shared/utils.cjs",
+        "types": "./lib/cjs/shared/utils.d.ts"
+      }
     }
   },
   "scripts": {
-    "build": "rm -r ./lib || true && vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
+    "build": "npm run build:bundle && npm run build:cjs && npm run build:esm",
+    "build:bundle": "vite build --config vite.config.bundle.ts",
+    "build:cjs": "vite build --config vite.config.cjs.ts && echo '{ \"type\": \"commonjs\" }' > lib/cjs/package.json",
+    "build:esm": "vite build --config vite.config.ts && echo '{ \"type\": \"module\" }' > lib/esm/package.json",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:shared && npm run docs:bundle",
     "docs:bundle": "unwritten src/bundle/index.ts -t tsconfig.docs.json -o docs/bundle/ ",
     "docs:pdf": "unwritten src/pdf/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
