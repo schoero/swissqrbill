@@ -31,7 +31,7 @@
   
 ### Class: SwissQRBill
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L43C0)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L44C0)  
   
 #### Description
   
@@ -71,7 +71,7 @@ writeFileSync("qr-bill.svg", svg.toString());
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L54C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L55C2)  
   
 ##### Parameters
   
@@ -88,7 +88,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L54C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L45C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L46C2)  
   
 ##### Type
   
@@ -100,7 +100,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L45C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L84C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L85C2)  
   
 ##### Return Type
   
@@ -116,7 +116,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L93C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L94C2)  
   
 ##### Return Type
   
