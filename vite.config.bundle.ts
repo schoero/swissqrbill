@@ -6,7 +6,7 @@ import type { UserConfig } from "vite";
 export default defineConfig(<UserConfig>{
   ...config,
   build: {
-    emptyOutDir: false,
+    emptyOutDir: true,
     lib: {
       entry: "src/bundle/index.ts",
       fileName: () => "swissqrbill.js",
