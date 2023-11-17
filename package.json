@@ -16,32 +16,53 @@
   "sideEffects": false,
   "exports": {
     "./bundle": {
-      "import": "./lib/bundle/index.js",
-      "require": "./lib/bundle/index.js"
+      "import": "./lib/esm/bundle/index.js",
+      "require": {
+        "require": "./lib/cjs/bundle/index.js",
+        "types": "./lib/cjs/bundle/index.d.ts"
+      }
     },
     "./errors": {
-      "import": "./lib/shared/errors.js",
-      "require": "./lib/shared/errors.cjs"
+      "import": "./lib/esm/shared/errors.js",
+      "require": {
+        "require": "./lib/cjs/shared/errors.cjs",
+        "types": "./lib/cjs/shared/errors.d.ts"
+      }
     },
     "./pdf": {
-      "import": "./lib/pdf/index.js",
-      "require": "./lib/pdf/index.cjs"
+      "import": "./lib/esm/pdf/index.js",
+      "require": {
+        "require": "./lib/cjs/pdf/index.cjs",
+        "types": "./lib/cjs/pdf/index.d.ts"
+      }
     },
     "./svg": {
-      "import": "./lib/svg/index.js",
-      "require": "./lib/svg/index.cjs"
+      "import": "./lib/esm/svg/index.js",
+      "require": {
+        "require": "./lib/cjs/svg/index.cjs",
+        "types": "./lib/cjs/svg/index.d.ts"
+      }
     },
     "./types": {
-      "import": "./lib/shared/types.js",
-      "require": "./lib/shared/types.cjs"
+      "import": "./lib/esm/shared/types.js",
+      "require": {
+        "require": "./lib/cjs/shared/types.cjs",
+        "types": "./lib/cjs/shared/types.d.ts"
+      }
     },
     "./utils": {
-      "import": "./lib/shared/utils.js",
-      "require": "./lib/shared/utils.cjs"
+      "import": "./lib/esm/shared/utils.js",
+      "require": {
+        "require": "./lib/cjs/shared/utils.cjs",
+        "types": "./lib/cjs/shared/utils.d.ts"
+      }
     }
   },
   "scripts": {
-    "build": "rm -r ./lib || true && vite build --config vite.config.ts && vite build --config vite.config.bundle.ts",
+    "build": "npm run build:bundle && npm run build:cjs && npm run build:esm",
+    "build:bundle": "vite build --config vite.config.bundle.ts",
+    "build:cjs": "vite build --config vite.config.cjs.ts && echo '{ \"type\": \"commonjs\" }' > lib/cjs/package.json",
+    "build:esm": "vite build --config vite.config.ts && echo '{ \"type\": \"module\" }' > lib/esm/package.json",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:shared && npm run docs:bundle",
     "docs:bundle": "unwritten src/bundle/index.ts -t tsconfig.docs.json -o docs/bundle/ ",
     "docs:pdf": "unwritten src/pdf/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
@@ -107,16 +128,17 @@
     "@schoero/ts-config": "^0.3.7",
     "@schoero/unwritten-config": "^0.0.3",
     "@schoero/vite-config": "^0.0.28",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.1",
     "@types/pdfkit": "^0.13.2",
     "@types/svg-parser": "^2.0.6",
-    "@typescript-eslint/eslint-plugin": "^6.10.0",
-    "@typescript-eslint/parser": "^6.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
     "cross-env": "^7.0.3",
     "glob": "^10.3.10",
     "pdfkit": "^0.14.0",
     "typescript": "^5.2.2",
-    "unwritten": "^0.2.5",
+    "unwritten": "^0.2.7",
+    "vite": "^5.0.0",
     "vite-plugin-dts": "^3.6.3",
     "vite-plugin-no-bundle": "^3.0.0",
     "vitest": "^0.34.6"

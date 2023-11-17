@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest";
 
-import { mm2pt } from "swissqrbill:shared:utils";
-import { SwissQRCode } from "swissqrbill:svg:index";
-import { minimalRequiredWithAlternativeScheme1and2 } from "swissqrbill:tests:data/valid-data";
-import { TestDocument } from "swissqrbill:tests:utils/svg";
+import { SwissQRCode } from "swissqrbill:svg";
+import { minimalRequiredWithAlternativeScheme1and2 } from "swissqrbill:tests:data/valid-data.js";
+import { TestDocument } from "swissqrbill:tests:utils/svg.js";
+import { mm2pt } from "swissqrbill:utils";
 
 
 describe("swissqrcode", () => {

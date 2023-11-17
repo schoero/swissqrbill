@@ -1,11 +1,12 @@
 import { calc, SVG } from "svg-engine";
 
-import { cleanData } from "swissqrbill:shared:cleaner";
-import { translations } from "swissqrbill:shared:translations";
-import { validateData } from "swissqrbill:shared:validator";
-import { calculateTextWidth } from "swissqrbill:svg:character-width";
-import { SwissQRCode } from "swissqrbill:svg:swissqrcode";
+import { cleanData } from "swissqrbill:shared:cleaner.js";
+import { translations } from "swissqrbill:shared:translations.js";
+import { validateData } from "swissqrbill:shared:validator.js";
+import { SwissQRCode } from "swissqrbill:svg";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2px } from "swissqrbill:utils";
+
+import { calculateTextWidth } from "./character-width.js";
 
 import type { Creditor, Data, Debtor, FontName, Language, SVGOptions } from "swissqrbill:types";
 

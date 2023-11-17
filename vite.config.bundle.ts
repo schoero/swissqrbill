@@ -1,18 +1,19 @@
 import { config, defineConfig } from "@schoero/vite-config";
 
+import type { UserConfig } from "vite";
 
-/** @type {import('vitest/config').UserConfig} */
-export default defineConfig({
+
+export default defineConfig(<UserConfig>{
   ...config,
   build: {
-    emptyOutDir: false,
+    emptyOutDir: true,
     lib: {
       entry: "src/bundle/index.ts",
       fileName: () => "swissqrbill.js",
       formats: ["umd"],
       name: "SwissQRBill"
     },
-    minify: false,
+    minify: true,
     outDir: "lib/bundle",
     target: "es6"
   },

@@ -1,8 +1,7 @@
 import { ValidationError, ValidationErrors } from "swissqrbill:errors";
+import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "swissqrbill:utils";
 
-import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "./utils";
-
-import type { Data } from "./types";
+import type { Data } from "swissqrbill:types";
 
 
 /**

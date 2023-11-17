@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { minimalRequired } from "swissqrbill:tests:data/valid-data";
-import { TestDocument } from "swissqrbill:tests:utils/pdf";
+import { SwissQRBill } from "swissqrbill:pdf";
+import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
+import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
 import { mm2pt } from "swissqrbill:utils";
-
-import { SwissQRBill } from "./swissqrbill";
 
 
 describe("qr-bill", async () => {

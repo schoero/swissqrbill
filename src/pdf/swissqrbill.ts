@@ -1,7 +1,7 @@
-import { SwissQRCode } from "swissqrbill:pdf:swissqrcode";
-import { cleanData } from "swissqrbill:shared:cleaner";
-import { translations } from "swissqrbill:shared:translations";
-import { validateData } from "swissqrbill:shared:validator";
+import { SwissQRCode } from "swissqrbill:pdf";
+import { cleanData } from "swissqrbill:shared:cleaner.js";
+import { translations } from "swissqrbill:shared:translations.js";
+import { validateData } from "swissqrbill:shared:validator.js";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
 import type { ValidationError } from "swissqrbill:errors";

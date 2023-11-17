@@ -1,4 +1,4 @@
-import { fillUntil } from "swissqrbill:tests:utils/fill";
+import { fillUntil } from "swissqrbill:tests:utils/fill.js";
 
 import type { Creditor, Data, Debtor } from "swissqrbill:types";
 

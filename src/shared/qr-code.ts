@@ -1,10 +1,9 @@
-import { cleanData } from "swissqrbill:shared:cleaner";
-import { validateData } from "swissqrbill:shared:validator";
+import { cleanData } from "swissqrbill:shared:cleaner.js";
+import { qrcodegen } from "swissqrbill:shared:qr-code-generator.js";
+import { validateData } from "swissqrbill:shared:validator.js";
 import { getReferenceType, mm2pt } from "swissqrbill:utils";
 
-import { qrcodegen } from "./qr-code-generator";
-
-import type { Data } from "./types";
+import type { Data } from "swissqrbill:shared:types.js";
 
 
 export function generateQRData(data: Data): string {

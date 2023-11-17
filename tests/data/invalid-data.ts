@@ -1,4 +1,4 @@
-import { creditorWithQRIBAN, minimalRequired, minimalRequiredWithDebtor } from "swissqrbill:tests:data/valid-data";
+import { creditorWithQRIBAN, minimalRequired, minimalRequiredWithDebtor } from "swissqrbill:tests:data/valid-data.js";
 
 import type { Data } from "swissqrbill:types";
 

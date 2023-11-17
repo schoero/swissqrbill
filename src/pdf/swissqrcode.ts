@@ -1,10 +1,10 @@
-import { ValidationError } from "swissqrbill:errors";
-import { cleanData } from "swissqrbill:shared:cleaner";
-import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code";
-import { mm2pt } from "swissqrbill:shared:utils";
-import { validateData } from "swissqrbill:shared:validator";
+import { cleanData } from "swissqrbill:shared:cleaner.js";
+import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code.js";
+import { validateData } from "swissqrbill:shared:validator.js";
+import { mm2pt } from "swissqrbill:utils";
 
-import type { Data } from "swissqrbill:shared:types";
+import type { ValidationError } from "swissqrbill:errors";
+import type { Data } from "swissqrbill:types";
 
 
 export class SwissQRCode {

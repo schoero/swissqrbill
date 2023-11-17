@@ -1,9 +1,9 @@
 import { SVG } from "svg-engine";
 
-import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code";
+import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code.js";
 
 import type { ValidationError } from "swissqrbill:errors";
-import type { Data } from "swissqrbill:shared:types";
+import type { Data } from "swissqrbill:types";
 
 
 export class SwissQRCode {

@@ -13,10 +13,10 @@ export default defineConfig(<UserConfig>{
     emptyOutDir: true,
     lib: {
       entry: sync("src/**/*.ts", { ignore: ["src/**/*.test.ts", "test/**", "src/bundle/*"] }),
-      formats: ["es"]
+      formats: ["cjs"]
     },
     minify: false,
-    outDir: "lib/esm",
+    outDir: "lib/cjs",
     ssr: true,
     target: "es6"
   },
