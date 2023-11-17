@@ -12,7 +12,7 @@ export default defineConfig({
       formats: ["umd"],
       name: "SwissQRBill"
     },
-    minify: false,
+    minify: true,
     outDir: "lib/bundle",
     target: "es6"
   },
