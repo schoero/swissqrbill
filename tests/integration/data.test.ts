@@ -20,9 +20,9 @@ import {
   minimalRequiredWithEuro,
   minimalRequiredWithMaxedOutMessage,
   minimalRequiredWithMessage
-} from "swissqrbill:tests:data/valid-data";
-import { pdf } from "swissqrbill:tests:utils/pdf";
-import { svg } from "swissqrbill:tests:utils/svg";
+} from "swissqrbill:tests:data/valid-data.js";
+import { pdf } from "swissqrbill:tests:utils/pdf.js";
+import { svg } from "swissqrbill:tests:utils/svg.js";
 
 
 describe("data", async () => {

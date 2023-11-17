@@ -10,15 +10,14 @@
     "noImplicitAny": false,
     "outDir": "lib",
     "paths": {
-      "swissqrbill:bundle:*": ["src/bundle/*"],
-      "swissqrbill:errors": ["src/shared/errors"],
-      "swissqrbill:node_modules:*": ["node_modules/*"],
-      "swissqrbill:pdf:*": ["src/pdf/*"],
+      "swissqrbill:bundle": ["src/bundle/index.js"],
+      "swissqrbill:errors": ["src/shared/errors.js"],
+      "swissqrbill:pdf": ["src/pdf/index.js"],
       "swissqrbill:shared:*": ["src/shared/*"],
-      "swissqrbill:svg:*": ["src/svg/*"],
+      "swissqrbill:svg": ["src/svg/index.js"],
       "swissqrbill:tests:*": ["tests/*"],
-      "swissqrbill:types": ["src/shared/types"],
-      "swissqrbill:utils": ["src/shared/utils"]
+      "swissqrbill:types": ["src/shared/types.js"],
+      "swissqrbill:utils": ["src/shared/utils.js"]
     },
     "rootDir": ".",
     "skipLibCheck": true

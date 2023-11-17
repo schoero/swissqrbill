@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { resolveMessageParams, ValidationErrors } from "swissqrbill:errors";
-import { cleanData } from "swissqrbill:shared:cleaner";
-import { validateData } from "swissqrbill:shared:validator";
+import { cleanData } from "swissqrbill:shared:cleaner.js";
+import { validateData } from "swissqrbill:shared:validator.js";
 import {
   additionalInformationInvalidType,
   additionalInformationTooLong,
@@ -70,7 +70,7 @@ import {
   referenceTypeInvalid,
   regularIBANAndQRReference,
   regularIBANAndReferenceTooLong
-} from "swissqrbill:tests:data/invalid-data";
+} from "swissqrbill:tests:data/invalid-data.js";
 import {
   creditorWithBuildingNumber,
   creditorWithBuildingNumberString,
@@ -93,7 +93,7 @@ import {
   minimalRequiredWithEuro,
   minimalRequiredWithMaxedOutMessage,
   minimalRequiredWithMessage
-} from "swissqrbill:tests:data/valid-data";
+} from "swissqrbill:tests:data/valid-data.js";
 
 
 describe("validator", async () => {

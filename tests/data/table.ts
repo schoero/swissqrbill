@@ -1,4 +1,4 @@
-import type { PDFTable } from "swissqrbill:pdf:table";
+import type { PDFTable } from "swissqrbill:pdf";
 
 
 export const tupleShorthand: PDFTable = {

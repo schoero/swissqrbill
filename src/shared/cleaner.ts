@@ -1,4 +1,4 @@
-import type { Creditor, Data, Debtor } from "./types";
+import type { Creditor, Data, Debtor } from "swissqrbill:types";
 
 
 export function cleanData(data: Data): Data {

@@ -4,8 +4,8 @@ import { buffer } from "node:stream/consumers";
 
 import PDFDocument from "pdfkit";
 
-import { SwissQRBill } from "swissqrbill:pdf:swissqrbill";
-import { splitBuffer } from "swissqrbill:tests:utils/buffer";
+import { SwissQRBill } from "swissqrbill:pdf";
+import { splitBuffer } from "swissqrbill:tests:utils/buffer.js";
 
 import type { Data, PDFOptions } from "swissqrbill:types";
 
