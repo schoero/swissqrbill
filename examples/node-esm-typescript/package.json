@@ -4,10 +4,10 @@
   "author": "Roger Schönbächler",
   "scripts": {
     "generate": "npm run pdf && npm run svg",
-    "pdf": "vite-node ./src/pdf.js",
+    "pdf": "vite-node ./src/pdf.ts",
     "postgenerate": "serve output -n",
     "pregenerate": "rm output/* || true && mkdir -p output",
-    "svg": "vite-node ./src/svg.js"
+    "svg": "vite-node ./src/svg.ts"
   },
   "dependencies": {
     "pdfkit": "^0.13.0",
