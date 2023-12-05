@@ -9,8 +9,9 @@ Each example below is available as a StackBlitz project.
 
 ### Node.js
 
-- [Node.js: ES Module import](#nodejs-es-module-import)
-- [Node.js: CommonJS import](#nodejs-commonjs-import)
+- [Node.js: TypeScript ES Module import](#nodejs-typescript-es-module-import)
+- [Node.js: JavaScript ES Module import](#nodejs-javascript-es-module-import)
+- [Node.js: JavaScript CommonJS import](#nodejs-javascript-commonjs-import)
 
 ### Browser
 
@@ -19,10 +20,11 @@ Each example below is available as a StackBlitz project.
 
 ### Node JS
 
-#### Node.js: ES Module import
+#### Node.js: JavaScript ES Module import
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
-][node-esm-javascript]
+[![JavaScript](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
+][node-esm-javascript] [![TypeScript](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
+][node-esm-typeScript]
 
 Importing the library in Node.js using ES modules is straight forward. You can use the following import statement:
 
@@ -35,7 +37,7 @@ import { SwissQRBill } from "swissqrbill/pdf";
 import { SwissQRBill } from "swissqrbill/svg";
 ```
 
-#### Node.js: CommonJS import
+#### Node.js: JavaScript CommonJS import
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
 ][node-cjs-javascript]
@@ -98,6 +100,7 @@ const SwissQRBill = {
 ```
 
 [node-esm-javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/node-esm-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20ESM%20JavaScript&startScript=generate
+[node-esm-typescript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/chore/typescript-examples/examples/node-esm-typescript?file=src%2Fsvg.ts,src%2Fpdf.ts&title=SwissQRBill%20Node%20ESM%20TypeScript&startScript=generate
 [node-cjs-javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/node-cjs-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20CJS%20JavaScript&startScript=generate
 [browser-bundling-with-webpack]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/browser-bundling-with-webpack?file=src%2Fpdf.js&title=Browser%20bundling%20with%20webpack&startScript=start
 [browser-pre-built-bundle]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/browser-pre-built-bundle?file=src%2Fpdf.js&title=Browser%20pre-built%20bundle&startScript=start

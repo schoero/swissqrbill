@@ -14,6 +14,7 @@
     "swissqrbill": "^4.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.10.3",
     "serve": "^14.2.1",
     "vite-node": "^1.0.1"
   }
