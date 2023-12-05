@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "node-esm-javascript",
+  "author": "Roger Schönbächler",
+  "scripts": {
+    "generate": "npm run pdf && npm run svg",
+    "pdf": "vite-node ./src/pdf.js",
+    "postgenerate": "serve output -n",
+    "pregenerate": "rm output/* || true && mkdir -p output",
+    "svg": "vite-node ./src/svg.js"
+  },
+  "dependencies": {
+    "pdfkit": "^0.13.0",
+    "swissqrbill": "^4.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "vite-node": "^1.0.1"
+  }
+}
