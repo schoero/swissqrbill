@@ -109,7 +109,7 @@ const table = new Table({
           width: mm2pt(30)
         }
       ],
-      font: "Helvetica-Bold",
+      fontName: "Helvetica-Bold",
       height: 20,
       padding: 5,
       textColor: "#fff",
@@ -155,10 +155,10 @@ const table = new Table({
           text: "",
           width: mm2pt(20)
         }, {
-          font: "Helvetica-Bold",
+          fontName: "Helvetica-Bold",
           text: "Summe"
         }, {
-          font: "Helvetica-Bold",
+          fontName: "Helvetica-Bold",
           text: "CHF 2'420.00",
           width: mm2pt(30)
         }
@@ -206,10 +206,10 @@ const table = new Table({
           text: "",
           width: mm2pt(20)
         }, {
-          font: "Helvetica-Bold",
+          fontName: "Helvetica-Bold",
           text: "Rechnungstotal"
         }, {
-          font: "Helvetica-Bold",
+          fontName: "Helvetica-Bold",
           text: "CHF 2'606.35",
           width: mm2pt(30)
         }
