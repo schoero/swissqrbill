@@ -113,7 +113,22 @@ interface QRBillOptions {
    * const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
    * ```
    */
-  fontName?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
+  fontName?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans" | PDFKit.Mixins.PDFFontSource;
+
+  /**
+   * Bold font used for the QR-Bill.
+   * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}
+   * @defaultValue 'Helvetica'
+   * @example
+   * ```ts
+   * // Register the font
+   * pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
+   * pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+   *
+   * const qrBill = new SwissQRBill(data, { fontNameBold: "Liberation-Sans-Bold" });
+   * ```
+   */
+  fontNameBold?: "Arial-Bold" | "Frutiger-Bold" | "Helvetica-Bold" | "Liberation Sans-Bold" | PDFKit.Mixins.PDFFontSource;
 
   /**
    * The language with which the bill is rendered.
