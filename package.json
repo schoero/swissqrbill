@@ -92,7 +92,7 @@
     "release:latest": "changelogen --bump --output --no-tag",
     "spellcheck": "cspell lint",
     "spellcheck:ci": "npm run spellcheck -- --no-progress",
-    "test": "vitest --config ./vite.config.ts --threads=false",
+    "test": "vitest --config ./vite.config.ts",
     "test:update": "npm run test -- --update --run",
     "test:visual": "cross-env VISUAL=true npm run test -- --run",
     "typecheck": "tsc --noEmit"
@@ -136,7 +136,7 @@
     "vite": "^5.2.11",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-no-bundle": "^3.0.0",
-    "vitest": "0.34.6"
+    "vitest": "^1.6.0"
   },
   "keywords": [
     "swiss",
