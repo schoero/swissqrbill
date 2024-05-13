@@ -4,6 +4,7 @@ import { translations } from "swissqrbill:shared:translations.js";
 import { validateData } from "swissqrbill:shared:validator.js";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
+// eslint-disable-next-line eslint-plugin-unused-imports/no-unused-imports
 import type { ValidationError } from "swissqrbill:errors";
 import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:types";
 
@@ -11,6 +12,7 @@ import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:t
 /**
  * The SwissQRBill class creates the Payment Part with the QR Code. It can be attached to any PDFKit document instance
  * using the {@link SwissQRBill.attachTo} method.
+ *
  * @example
  * ```ts
  * const data = {
@@ -60,6 +62,7 @@ export class SwissQRBill {
 
   /**
    * Creates a new SwissQRBill instance.
+   *
    * @param data The data to be used for the QR Bill.
    * @param options Options to define how the QR Bill should be rendered.
    * @throws { ValidationError } Throws an error if the data is invalid.
@@ -96,7 +99,8 @@ export class SwissQRBill {
   /**
    * Attaches the QR-Bill to a PDFKit document instance. It will create a new page with the size of the QR-Slip if not
    * enough space is left on the current page.
-   * @param doc The PDFKit instance
+   *
+   * @param doc The PDFKit instance.
    * @param x The horizontal position in points where the QR Bill will be placed.
    * @param y The vertical position in points where the QR Bill will be placed.
    */
@@ -123,7 +127,8 @@ export class SwissQRBill {
 
   /**
    * Checks whether there is enough space on the current page to add the QR Bill.
-   * @param doc The PDFKit document instance
+   *
+   * @param doc The PDFKit document instance.
    * @param xPosition The horizontal position where the QR Bill will be placed.
    * @param yPosition The vertical position where the QR Bill will be placed.
    * @returns `true` if there is enough space, otherwise `false`.

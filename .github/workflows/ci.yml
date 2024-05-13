@@ -12,11 +12,11 @@ jobs:
       github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           cache: npm
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: npm ci
@@ -37,8 +37,8 @@ jobs:
       github.event.pull_request.base.repo.full_name
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           cache: npm
           node-version: ${{ matrix.node }}
@@ -55,7 +55,7 @@ jobs:
         node:
           - 18
           - 20
-          - 21
+          - 22
         os:
           - ubuntu-latest
           - windows-latest

@@ -1,11 +1,11 @@
 export interface PDFTable {
   /** Table rows. */
   rows: PDFRow[];
-  /** Horizontal alignment of texts inside the table */
+  /** Horizontal alignment of texts inside the table. */
   align?: "center" | "left" | "right";
   /** Background color of the table. */
   backgroundColor?: string;
-  /** The colors of the border */
+  /** The colors of the border. */
   borderColor?: PDFBorderColor;
   /** Width of the borders of the row. */
   borderWidth?: PDFBorderWidth;
@@ -19,7 +19,7 @@ export interface PDFTable {
   textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
-  /** Vertical alignment of texts inside the table */
+  /** Vertical alignment of texts inside the table. */
   verticalAlign?: "bottom" | "center" | "top";
   /** Width of whole table. */
   width?: number;
@@ -30,11 +30,11 @@ export interface PDFTable {
 export interface PDFRow {
   /** Table columns. */
   columns: PDFColumn[];
-  /** Horizontal alignment of texts inside the row */
+  /** Horizontal alignment of texts inside the row. */
   align?: "center" | "left" | "right";
   /** Background color of the row. */
   backgroundColor?: string;
-  /** The colors of the border */
+  /** The colors of the border. */
   borderColor?: PDFBorderColor;
   /** Width of the borders of the row. */
   borderWidth?: PDFBorderWidth;
@@ -44,11 +44,11 @@ export interface PDFRow {
   fontSize?: number;
   /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
   header?: boolean;
-  /** Height of the row. Overrides minHeight and maxHeight */
+  /** Height of the row. Overrides minHeight and maxHeight. */
   height?: number;
-  /** Maximum height of the row */
+  /** Maximum height of the row. */
   maxHeight?: number;
-  /** Minimum height of the row */
+  /** Minimum height of the row. */
   minHeight?: number;
   /** Cell padding of the table cells inside the row. */
   padding?: PDFPadding;
@@ -56,18 +56,18 @@ export interface PDFRow {
   textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
-  /** Vertical alignment of texts inside the row */
+  /** Vertical alignment of texts inside the row. */
   verticalAlign?: "bottom" | "center" | "top";
 }
 
 export interface PDFColumn {
   /** Cell text. */
   text: boolean | number | string;
-  /** Horizontal alignment of the text inside the cell */
+  /** Horizontal alignment of the text inside the cell. */
   align?: "center" | "left" | "right";
   /** Background color of the cell. */
   backgroundColor?: string;
-  /** The colors of the border */
+  /** The colors of the border. */
   borderColor?: PDFBorderColor;
   /** Width of the borders of the row. */
   borderWidth?: PDFBorderWidth;
@@ -81,7 +81,7 @@ export interface PDFColumn {
   textColor?: string;
   /** Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). */
   textOptions?: PDFKit.Mixins.TextOptions;
-  /** Vertical alignment of the text inside the cell */
+  /** Vertical alignment of the text inside the cell. */
   verticalAlign?: "bottom" | "center" | "top";
   /** Width of the cell. */
   width?: number;
@@ -116,6 +116,7 @@ enum TableLayer {
 /**
  * The Table class is used to create tables for PDFKit documents. A table can be attached to any PDFKit document instance
  * using the {@link Table.attachTo} method.
+ *
  * @example
  * ```ts
  * const tableData = {
@@ -158,6 +159,7 @@ export class Table {
 
   /**
    * Creates a new Table instance.
+   *
    * @param data The rows and columns for the table.
    * @returns The Table instance.
    */
@@ -180,7 +182,8 @@ export class Table {
   /**
    * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
    * every row that no longer fits on a page.
-   * @param doc The PDFKit document instance
+   *
+   * @param doc The PDFKit document instance.
    * @param x The horizontal position in points where the table be placed.
    * @param y The vertical position in points where the table will be placed.
    * @throws { Error } Throws an error if no table rows are provided.

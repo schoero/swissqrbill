@@ -2,6 +2,7 @@ import { SVG } from "svg-engine";
 
 import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code.js";
 
+// eslint-disable-next-line eslint-plugin-unused-imports/no-unused-imports
 import type { ValidationError } from "swissqrbill:errors";
 import type { Data } from "swissqrbill:types";
 
@@ -12,6 +13,7 @@ export class SwissQRCode {
 
   /**
    * Creates a Swiss QR Code.
+   *
    * @param data The data to be encoded in the QR code.
    * @param size The size of the QR code in mm.
    * @throws { ValidationError } Throws an error if the data is invalid.
@@ -50,6 +52,7 @@ export class SwissQRCode {
 
   /**
    * Outputs the SVG as a string.
+   *
    * @returns The outerHTML of the SVG element.
    */
   public toString(): string {
@@ -59,6 +62,7 @@ export class SwissQRCode {
 
   /**
    * Returns the SVG element.
+   *
    * @returns The SVG element.
    */
   public get element(): SVGElement {

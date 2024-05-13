@@ -12,6 +12,7 @@ import type { Creditor, Data, Debtor, FontName, Language, SVGOptions } from "swi
 
 /**
  * The SwissQRBill class creates the Payment Part with the QR Code as an SVG.
+ *
  * @example
  * ```ts
  * const data = {
@@ -80,6 +81,7 @@ export class SwissQRBill {
 
   /**
    * Outputs the SVG as a string.
+   *
    * @returns The outerHTML of the SVG.
    */
   public toString(): string {
@@ -89,6 +91,7 @@ export class SwissQRBill {
 
   /**
    * Returns the SVG element.
+   *
    * @returns The SVG element.
    */
   public get element(): SVGElement {
