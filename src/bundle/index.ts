@@ -1,4 +1,4 @@
-/* eslint-disable simple-import-sort/exports */
+/* eslint-disable eslint-plugin-simple-import-sort/exports */
 export * as pdf from "swissqrbill:pdf";
 export * as svg from "swissqrbill:svg";
 export * as types from "swissqrbill:types";

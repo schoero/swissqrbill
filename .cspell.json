@@ -1,14 +1,20 @@
 {
+  "ignorePaths": [
+    "node_modules/**",
+    "lib/**",
+    "tests/output/**",
+    "src/shared/qr-code-generator.ts"
+  ],
   "import": [
-    "@schoero/cspell-config",
+    "@schoero/configs/cspell",
     "@cspell/dict-fr-fr/cspell-ext.json",
     "@cspell/dict-it-it/cspell-ext.json"
   ],
   "overrides": [
     {
+      "caseSensitive": false,
       "filename": "**/translations.ts",
-      "language": "en, de, fr, it",
-      "caseSensitive": false
+      "language": "en, de, fr, it"
     }
   ],
   "words": [
@@ -37,11 +43,5 @@
     "Twint",
     "TWINT",
     "undash"
-  ],
-  "ignorePaths": [
-    "node_modules/**",
-    "lib/**",
-    "tests/output/**",
-    "src/shared/qr-code-generator.ts"
   ]
 }

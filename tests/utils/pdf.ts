@@ -43,8 +43,7 @@ export class TestDocument extends PDFDocument {
       const page = await buffer(this.page.content.buffer);
       const lines = splitBuffer(page, Buffer.from("\n", "binary"));
       const content = lines.map(
-        line =>
-          line.toString("utf-8")
+        line => line.toString("utf-8")
       ).join("\n");
 
       this.snapshots.push(content);

@@ -16,7 +16,12 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "yaml"],
+  "[html]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.validate": ["javascript", "typescript", "json", "jsonc", "json5", "yaml", "html"],
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.debug": true,
   "editor.formatOnSave": false,
 
   // Prettier
@@ -50,9 +55,9 @@
 
   // VSCode
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.markdownlint": true,
-    "source.organizeImports": false
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.markdownlint": "explicit",
+    "source.organizeImports": "never"
   },
 
   "editor.rulers": [

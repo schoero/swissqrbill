@@ -1,7 +1,8 @@
 {
-  "extends": "@schoero/ts-config",
+  "extends": "@schoero/configs/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
+    "checkJs": true,
     "declaration": false,
     "declarationMap": false,
     "lib": ["ESNext", "DOM"],
@@ -19,8 +20,7 @@
       "swissqrbill:types": ["src/shared/types.js"],
       "swissqrbill:utils": ["src/shared/utils.js"]
     },
-    "rootDir": ".",
-    "skipLibCheck": true
+    "rootDir": "."
   },
   "include": [
     "src",

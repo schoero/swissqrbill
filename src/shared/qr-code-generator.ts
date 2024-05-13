@@ -1,5 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-inner-declarations */
 /*
  * QR Code generator library (TypeScript)
  *

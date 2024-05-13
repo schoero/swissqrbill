@@ -6,6 +6,7 @@ import type { Data } from "swissqrbill:types";
 
 /**
  * Validate the provided data.
+ *
  * @param data The data to validate.
  * @throws { ValidationError } If the data is invalid.
  */

@@ -3,6 +3,7 @@ import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code.js";
 import { validateData } from "swissqrbill:shared:validator.js";
 import { mm2pt } from "swissqrbill:utils";
 
+// eslint-disable-next-line eslint-plugin-unused-imports/no-unused-imports
 import type { ValidationError } from "swissqrbill:errors";
 import type { Data } from "swissqrbill:types";
 
@@ -14,6 +15,7 @@ export class SwissQRCode {
 
   /**
    * Creates a Swiss QR Code.
+   *
    * @param data The data to be encoded in the QR code.
    * @param size The size of the QR code in mm.
    * @throws { ValidationError } Throws an error if the data is invalid.
@@ -27,6 +29,7 @@ export class SwissQRCode {
 
   /**
    * Attaches the Swiss QR Code to a PDF document.
+   *
    * @param doc The PDF document to attach the Swiss QR Code to.
    * @param x The horizontal position in points where the Swiss QR Code will be placed.
    * @param y The vertical position in points where the Swiss QR Code will be placed.

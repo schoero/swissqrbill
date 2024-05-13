@@ -68,7 +68,7 @@
     "docs:pdf": "unwritten src/pdf/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/pdf/",
     "docs:shared": "unwritten src/shared/utils.ts -t tsconfig.docs.json -o docs/utils/",
     "docs:svg": "unwritten src/svg/index.ts src/shared/types.ts -t tsconfig.docs.json -o docs/svg/",
-    "eslint": "eslint --ext .ts,.tsx,.js,.jsx,.json,.jsonc,.yml,.md ./",
+    "eslint": "eslint .",
     "eslint:ci": "npm run eslint -- --max-warnings 0",
     "eslint:fix": "npm run eslint -- --fix",
     "lint": "npm run eslint && npm run markdownlint",
@@ -76,7 +76,7 @@
     "lint:fix": "npm run eslint:fix && npm run markdownlint:fix",
     "markdownlint": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "markdownlint:ci": "npm run markdownlint",
-    "markdownlint:fix": "markdownlint-cli2-fix '**/*.md' '#node_modules'",
+    "markdownlint:fix": "npm run markdownlint -- --fix",
     "postrelease:alpha": "npm run postrelease",
     "postrelease:beta": "npm run postrelease",
     "postrelease:latest": "eslint --fix package.json &&  markdownlint-cli2-fix 'CHANGELOG.md'",
@@ -116,32 +116,27 @@
     }
   },
   "dependencies": {
-    "svg-engine": "^0.2.3"
+    "svg-engine": "^0.2.4"
   },
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-it-it": "^3.1.0",
-    "@schoero/changelog-config": "^0.0.3",
-    "@schoero/cspell-config": "^1.9.0",
-    "@schoero/eslint-config": "^1.42.0",
-    "@schoero/markdownlint-config": "^1.1.7",
-    "@schoero/ts-config": "^0.3.7",
-    "@schoero/unwritten-config": "^0.0.3",
-    "@schoero/vite-config": "^0.0.28",
-    "@types/node": "^20.9.1",
-    "@types/pdfkit": "^0.13.2",
+    "@schoero/configs": "^1.0.10",
+    "@types/node": "^20.12.11",
+    "@types/pdfkit": "^0.13.4",
     "@types/svg-parser": "^2.0.6",
-    "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
     "cross-env": "^7.0.3",
-    "glob": "^10.3.10",
-    "pdfkit": "^0.14.0",
-    "typescript": "^5.2.2",
+    "cspell": "^8.8.1",
+    "eslint": "^8.57.0",
+    "glob": "^10.3.15",
+    "markdownlint": "^0.34.0",
+    "pdfkit": "^0.15.0",
+    "typescript": "^5.4.5",
     "unwritten": "^0.2.7",
-    "vite": "^5.0.0",
-    "vite-plugin-dts": "^3.6.3",
+    "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.1",
     "vite-plugin-no-bundle": "^3.0.0",
-    "vitest": "^0.34.6"
+    "vitest": "0.34.6"
   },
   "keywords": [
     "swiss",
@@ -163,6 +158,6 @@
     "svg"
   ],
   "volta": {
-    "node": "20.8.1"
+    "node": "22.1.0"
   }
 }
