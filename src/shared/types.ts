@@ -104,6 +104,7 @@ interface QRBillOptions {
    * Font used for the QR-Bill.
    * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}.
    *
+   * @default 'Helvetica'
    * @example
    * ```ts
    * // Register the font
@@ -117,11 +118,15 @@ interface QRBillOptions {
 
   /**
    * The language with which the bill is rendered.
+   *
+   * @default `DE`
    */
   language?: "DE" | "EN" | "FR" | "IT";
 
   /**
    * Whether you want render the outlines. This option may be disabled if you use perforated paper.
+   *
+   * @default `true`
    */
   outlines?: boolean;
 
@@ -129,6 +134,8 @@ interface QRBillOptions {
    * Whether you want to show the scissors icons or the text `Separate before paying in`.
    *
    * **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
+   *
+   * @default `true`
    */
   scissors?: boolean;
 }
@@ -139,6 +146,8 @@ export interface PDFOptions extends QRBillOptions {
    * Whether you want to show the text `Separate before paying in` rather than the scissors icons.
    *
    * **Warning:** Setting **separate** to true sets **scissors** to false. To disable scissors and separate, you have to set both options to false.
+   *
+   * @default `false`
    */
   separate?: boolean;
 }
