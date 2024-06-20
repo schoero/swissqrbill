@@ -41,7 +41,7 @@
   
 ### Class: SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L49C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L51C0)  
   
 #### Description
   
@@ -88,7 +88,7 @@ pdf.end();
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L67C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L70C2)  
   
 ##### Parameters
   
@@ -113,7 +113,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L148C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
   
 ##### Type
   
@@ -129,7 +129,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L158C2)  
   
 ##### Type
   
@@ -145,11 +145,11 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L103C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L107C2)  
   
 ##### Parameters
   
-- **doc** `PDFDocument` The PDFKit instance  
+- **doc** `PDFDocument` The PDFKit instance.  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. `optional` Default: `0`  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
@@ -168,11 +168,11 @@ enough space is left on the current page.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L131C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L136C2)  
   
 ##### Parameters
   
-- **doc** `PDFDocument` The PDFKit document instance  
+- **doc** `PDFDocument` The PDFKit document instance.  
 - **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed.  
 - **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed.  
   
@@ -188,13 +188,13 @@ Checks whether there is enough space on the current page to add the QR Bill.
   
 ### Class: SwissQRCode
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L10C0)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L11C0)  
   
 <br/>
   
 #### Constructor: new SwissQRCode(data\[, size\])
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L21C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L23C2)  
   
 ##### Parameters
   
@@ -219,7 +219,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L34C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L37C2)  
   
 ##### Parameters
   
@@ -239,7 +239,7 @@ Attaches the Swiss QR Code to a PDF document.
   
 ### Class: Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L157C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C0)  
   
 #### Description
   
@@ -289,7 +289,7 @@ pdf.end();
   
 #### Constructor: new Table(data)
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L164C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L166C2)  
   
 ##### Parameter
   
@@ -309,11 +309,11 @@ Creates a new Table instance.
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L188C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L191C2)  
   
 ##### Parameters
   
-- **doc** `PDFDocument` The PDFKit document instance  
+- **doc** `PDFDocument` The PDFKit document instance.  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
@@ -421,16 +421,16 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
   - [`PDFRow`](#interface-pdfrow)
   
-- **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
+- **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table. `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
-- **borderColor** [`PDFBorderColor`](#type-alias-pdfbordercolor) The colors of the border `optional`
+- **borderColor** [`PDFBorderColor`](#type-alias-pdfbordercolor) The colors of the border. `optional`
 - **borderWidth** [`PDFBorderWidth`](#type-alias-pdfborderwidth) Width of the borders of the row. `optional`
 - **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
 - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the table. `optional`
 - **padding** [`PDFPadding`](#type-alias-pdfpadding) Cell padding of the table cells. `optional`
 - **textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside table. `optional`
 - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
-- **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
+- **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table. `optional`
 - **width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of whole table. `optional`
   
 <br/>
@@ -443,20 +443,20 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)
   
   - [`PDFColumn`](#interface-pdfcolumn)
   
-- **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
+- **align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row. `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
-- **borderColor** [`PDFBorderColor`](#type-alias-pdfbordercolor) The colors of the border `optional`
+- **borderColor** [`PDFBorderColor`](#type-alias-pdfbordercolor) The colors of the border. `optional`
 - **borderWidth** [`PDFBorderWidth`](#type-alias-pdfborderwidth) Width of the borders of the row. `optional`
 - **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
 - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the row. `optional`
 - **header** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) A header row gets inserted automatically on new pages. Only one header row is allowed. `optional`
-- **height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight `optional`
-- **maxHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Maximum height of the row `optional`
-- **minHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Minimum height of the row `optional`
+- **height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight. `optional`
+- **maxHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Maximum height of the row. `optional`
+- **minHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Minimum height of the row. `optional`
 - **padding** [`PDFPadding`](#type-alias-pdfpadding) Cell padding of the table cells inside the row. `optional`
 - **textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the row. `optional`
 - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
-- **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
+- **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row. `optional`
   
 <br/>
   
@@ -465,14 +465,14 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L63C0)  
   
 - **text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
-- **align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
+- **align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell. `optional`
 - **backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the cell. `optional`
-- **borderColor** [`PDFBorderColor`](#type-alias-pdfbordercolor) The colors of the border `optional`
+- **borderColor** [`PDFBorderColor`](#type-alias-pdfbordercolor) The colors of the border. `optional`
 - **borderWidth** [`PDFBorderWidth`](#type-alias-pdfborderwidth) Width of the borders of the row. `optional`
 - **fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
 - **fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the cell. `optional`
 - **padding** [`PDFPadding`](#type-alias-pdfpadding) Cell padding of the table cell. `optional`
 - **textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the cell. `optional`
 - **textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
-- **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell `optional`
+- **verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell. `optional`
 - **width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of the cell. `optional`

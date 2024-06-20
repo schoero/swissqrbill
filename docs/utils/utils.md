@@ -30,7 +30,7 @@
   
 ### Function: isQRIBAN(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L7C0)  
   
 #### Parameter
   
@@ -48,7 +48,7 @@ Checks whether the given iban is a QR-IBAN or not.
   
 ### Function: isIBANValid(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L20C0)  
   
 #### Parameter
   
@@ -66,7 +66,7 @@ Validates the given IBAN.
   
 ### Function: formatIBAN(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L41C0)  
   
 #### Parameter
   
@@ -84,7 +84,7 @@ Formats the given IBAN according the specifications to be easily readable.
   
 ### Function: isQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L56C0)  
   
 #### Parameter
   
@@ -106,7 +106,7 @@ The QR-Reference is a 27 digits long string containing only digits. The last dig
   
 ### Function: isQRReferenceValid(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L79C0)  
   
 #### Parameter
   
@@ -124,7 +124,7 @@ Validates the given QR-Reference.
   
 ### Function: isSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L104C0)  
   
 #### Parameter
   
@@ -146,7 +146,7 @@ The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing 
   
 ### Function: isSCORReferenceValid(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L131C0)  
   
 #### Parameter
   
@@ -164,7 +164,7 @@ Validates the given SCOR-Reference.
   
 ### Function: calculateSCORReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L162C0)  
   
 #### Parameter
   
@@ -182,7 +182,7 @@ Calculates the checksum according to the ISO 11649 standard.
   
 ### Function: calculateQRReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
 #### Parameter
   
@@ -200,7 +200,7 @@ Calculates the checksum according the specifications.
   
 ### Function: formatQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L185C0)  
   
 #### Parameter
   
@@ -218,7 +218,7 @@ Formats the given QR-Reference according the specifications to be easily readabl
   
 ### Function: formatSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L206C0)  
   
 #### Parameter
   
@@ -236,7 +236,7 @@ Formats the given SCOR-Reference according the specifications to be easily reada
   
 ### Function: formatReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L222C0)  
   
 #### Parameter
   
@@ -254,11 +254,11 @@ Detects the type of the given reference and formats it according the specificati
   
 ### Function: formatAmount(amount)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L243C0)  
   
 #### Parameter
   
-- **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the amount to be formatted.  
+- **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Containing the amount to be formatted.  
   
 #### Return Type
   
@@ -272,7 +272,7 @@ Formats the given amount according the specifications to be easily readable.
   
 ### Function: mm2pt(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L269C0)  
   
 #### Parameter
   
@@ -290,7 +290,7 @@ Converts millimeters to points.
   
 ### Function: pt2mm(points)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L280C0)  
   
 #### Parameter
   
@@ -308,7 +308,7 @@ Converts points to millimeters.
   
 ### Function: mm2px(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L291C0)  
   
 #### Parameter
   
@@ -326,11 +326,11 @@ Converts millimeters to pixels.
   
 ### Function: px2mm(pixels)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L302C0)  
   
 #### Parameter
   
-- **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the pixels you want to convert to millimeters.  
+- **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Containing the pixels you want to convert to millimeters.  
   
 #### Return Type
   
@@ -344,7 +344,7 @@ Converts pixels to millimeters.
   
 ### Function: getReferenceType(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L313C0)  
   
 #### Parameter
   

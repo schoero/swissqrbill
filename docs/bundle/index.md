@@ -124,7 +124,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L2C7)
   
 #### Class: pdf.SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L49C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L51C0)  
   
 ##### Description
   
@@ -171,7 +171,7 @@ pdf.end();
   
 ##### Constructor: new pdf.SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L67C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L70C2)  
   
 ###### Parameters
   
@@ -196,7 +196,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L148C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
   
 ###### Type
   
@@ -212,7 +212,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L158C2)  
   
 ###### Type
   
@@ -228,11 +228,11 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L103C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L107C2)  
   
 ###### Parameters
   
-- **doc** `PDFDocument` The PDFKit instance  
+- **doc** `PDFDocument` The PDFKit instance.  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the QR Bill will be placed. `optional` Default: `0`  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the QR Bill will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
@@ -251,11 +251,11 @@ enough space is left on the current page.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L131C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L136C2)  
   
 ###### Parameters
   
-- **doc** `PDFDocument` The PDFKit document instance  
+- **doc** `PDFDocument` The PDFKit document instance.  
 - **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed.  
 - **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed.  
   
@@ -271,13 +271,13 @@ Checks whether there is enough space on the current page to add the QR Bill.
   
 #### Class: pdf.SwissQRCode
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L10C0)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L11C0)  
   
 <br/>
   
 ##### Constructor: new pdf.SwissQRCode(data\[, size\])
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L21C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L23C2)  
   
 ###### Parameters
   
@@ -302,7 +302,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L34C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L37C2)  
   
 ###### Parameters
   
@@ -328,16 +328,16 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
   - [`PDFRow`](#interface-pdfpdfrow)
   
-- **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table `optional`
+- **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the table. `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the table. `optional`
-- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border `optional`
+- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border. `optional`
 - **pdf.borderWidth** [`PDFBorderWidth`](#type-alias-pdfpdfborderwidth) Width of the borders of the row. `optional`
 - **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the table. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the table. `optional`
 - **pdf.padding** [`PDFPadding`](#type-alias-pdfpdfpadding) Cell padding of the table cells. `optional`
 - **pdf.textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside table. `optional`
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
-- **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table `optional`
+- **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the table. `optional`
 - **pdf.width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of whole table. `optional`
   
 <br/>
@@ -350,20 +350,20 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)
   
   - [`PDFColumn`](#interface-pdfpdfcolumn)
   
-- **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row `optional`
+- **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of texts inside the row. `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the row. `optional`
-- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border `optional`
+- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border. `optional`
 - **pdf.borderWidth** [`PDFBorderWidth`](#type-alias-pdfpdfborderwidth) Width of the borders of the row. `optional`
 - **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the row. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the row. `optional`
 - **pdf.header** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) A header row gets inserted automatically on new pages. Only one header row is allowed. `optional`
-- **pdf.height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight `optional`
-- **pdf.maxHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Maximum height of the row `optional`
-- **pdf.minHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Minimum height of the row `optional`
+- **pdf.height** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Height of the row. Overrides minHeight and maxHeight. `optional`
+- **pdf.maxHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Maximum height of the row. `optional`
+- **pdf.minHeight** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Minimum height of the row. `optional`
 - **pdf.padding** [`PDFPadding`](#type-alias-pdfpdfpadding) Cell padding of the table cells inside the row. `optional`
 - **pdf.textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the row. `optional`
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
-- **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row `optional`
+- **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of texts inside the row. `optional`
   
 <br/>
   
@@ -372,16 +372,16 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)
 Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L63C0)  
   
 - **pdf.text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
-- **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell `optional`
+- **pdf.align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell. `optional`
 - **pdf.backgroundColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Background color of the cell. `optional`
-- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border `optional`
+- **pdf.borderColor** [`PDFBorderColor`](#type-alias-pdfpdfbordercolor) The colors of the border. `optional`
 - **pdf.borderWidth** [`PDFBorderWidth`](#type-alias-pdfpdfborderwidth) Width of the borders of the row. `optional`
 - **pdf.fontName** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Font of the text inside the cell. `optional`
 - **pdf.fontSize** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Font size of the text inside the cell. `optional`
 - **pdf.padding** [`PDFPadding`](#type-alias-pdfpdfpadding) Cell padding of the table cell. `optional`
 - **pdf.textColor** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Text color of texts inside the cell. `optional`
 - **pdf.textOptions** `TextOptions` Same as text [PDFKit text options](http://pdfkit.org/docs/text.html#text_styling). `optional`
-- **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell `optional`
+- **pdf.verticalAlign** `"bottom"` | `"center"` | `"top"` Vertical alignment of the text inside the cell. `optional`
 - **pdf.width** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Width of the cell. `optional`
   
 <br/>
@@ -469,7 +469,7 @@ Can be used to set the padding of a table cell.
   
 #### Class: pdf.Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L157C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C0)  
   
 ##### Description
   
@@ -519,7 +519,7 @@ pdf.end();
   
 ##### Constructor: new pdf.Table(data)
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L164C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L166C2)  
   
 ###### Parameter
   
@@ -539,11 +539,11 @@ Creates a new Table instance.
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L188C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L191C2)  
   
 ###### Parameters
   
-- **doc** `PDFDocument` The PDFKit document instance  
+- **doc** `PDFDocument` The PDFKit document instance.  
 - **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position in points where the table be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
 - **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position in points where the table will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
@@ -570,7 +570,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L3C7)
   
 #### Class: svg.SwissQRBill
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L44C0)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L45C0)  
   
 ##### Description
   
@@ -610,7 +610,7 @@ writeFileSync("qr-bill.svg", svg.toString());
   
 ##### Constructor: new svg.SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L55C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L56C2)  
   
 ###### Parameters
   
@@ -627,7 +627,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L55C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L46C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L47C2)  
   
 ###### Type
   
@@ -639,7 +639,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L46C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L85C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L87C2)  
   
 ###### Return Type
   
@@ -655,7 +655,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L94C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L97C2)  
   
 ###### Return Type
   
@@ -669,13 +669,13 @@ Returns the SVG element.
   
 #### Class: svg.SwissQRCode
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L9C0)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C0)  
   
 <br/>
   
 ##### Constructor: new svg.SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L19C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L21C2)  
   
 ###### Parameters
   
@@ -700,7 +700,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L12C2)  
   
 ###### Type
   
@@ -712,7 +712,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L55C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L58C2)  
   
 ###### Return Type
   
@@ -728,7 +728,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L64C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L68C2)  
   
 ###### Return Type
   
@@ -751,22 +751,22 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L4C7)
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L1C0)  
   
 - **types.creditor** [`Creditor`](#interface-typescreditor) Creditor related data.
-- **types.currency** `"CHF"` | `"EUR"` The currency to be used. **3 characters.**
-- **types.additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**
+- **types.currency** `"CHF"` | `"EUR"` The currency to be used. **3 characters.**.
+- **types.additionalInformation** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Additional information. **Max 140 characters.**.
   
   Bill information contain coded information for automated booking of the payment. The data is not forwarded with the payment. `optional`
-- **types.amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.** `optional`
-- **types.av1** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
+- **types.amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.**. `optional`
+- **types.av1** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**.
   
-  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
-- **types.av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**
+  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf). `optional`
+- **types.av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**.
   
-  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf) `optional`
+  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf). `optional`
 - **types.debtor** [`Debtor`](#interface-typesdebtor) Debtor related data. `optional`
-- **types.message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**
+- **types.message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**.
   
-  message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference. `optional`
-- **types.reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A reference number. **Max 27 characters.**
+  Message can be used to indicate the payment purpose or for additional textual information about payments with a structured reference. `optional`
+- **types.reference** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A reference number. **Max 27 characters.**.
   
   QR-IBAN: Maximum 27 characters. Must be filled if a QR-IBAN is used.
   Creditor Reference (ISO 11649): Maximum 25 characters. `optional`
@@ -777,12 +777,12 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L1C0)
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L60C0)  
   
-- **types.address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
-- **types.city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
-- **types.country** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Country code. **2 characters.**
-- **types.name** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Name. **Max. 70 characters.**
-- **types.zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**
-- **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
+- **types.address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**.
+- **types.city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**.
+- **types.country** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Country code. **2 characters.**.
+- **types.name** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Name. **Max. 70 characters.**.
+- **types.zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**.
+- **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.**. `optional`
   
 <br/>
   
@@ -790,22 +790,22 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L60C0)
   
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L93C0)  
   
-- **types.address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**
-- **types.city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**
-- **types.country** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Country code. **2 characters.**
-- **types.name** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Name. **Max. 70 characters.**
-- **types.zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**
-- **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.** `optional`
-- **types.account** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN. **21 characters.**
+- **types.address** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Address. **Max 70 characters.**.
+- **types.city** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) City. **Max 35 characters.**.
+- **types.country** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Country code. **2 characters.**.
+- **types.name** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Name. **Max. 70 characters.**.
+- **types.zip** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Postal code. **Max 16 characters.**.
+- **types.buildingNumber** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Building number. **Max 16 characters.**. `optional`
+- **types.account** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) The IBAN. **21 characters.**.
   
 <br/>
   
 #### Interface: types.PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L139C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)  
   
 - **types.fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
-  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
+  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
   
   *Example:*
   
@@ -825,10 +825,10 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L139C0)
   
 #### Interface: types.SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L150C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)  
   
 - **types.fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
-  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) `optional`
+  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
   
   *Example:*
   
@@ -847,7 +847,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L150C0)
   
 #### Type alias: types.Language
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L154C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)  
   
 ##### Type
   
@@ -857,7 +857,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L154C0)
   
 #### Type alias: types.FontName
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L160C0)  
   
 ##### Type
   
@@ -867,7 +867,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)
   
 #### Type alias: types.Currency
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L156C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L161C0)  
   
 ##### Type
   
@@ -883,7 +883,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L5C7)
   
 #### Function: utils.isQRIBAN(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L6C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L7C0)  
   
 ##### Parameter
   
@@ -901,7 +901,7 @@ Checks whether the given iban is a QR-IBAN or not.
   
 #### Function: utils.isIBANValid(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L18C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L20C0)  
   
 ##### Parameter
   
@@ -919,7 +919,7 @@ Validates the given IBAN.
   
 #### Function: utils.formatIBAN(iban)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L38C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L41C0)  
   
 ##### Parameter
   
@@ -937,7 +937,7 @@ Formats the given IBAN according the specifications to be easily readable.
   
 #### Function: utils.isQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L52C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L56C0)  
   
 ##### Parameter
   
@@ -959,7 +959,7 @@ The QR-Reference is a 27 digits long string containing only digits. The last dig
   
 #### Function: utils.isQRReferenceValid(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L74C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L79C0)  
   
 ##### Parameter
   
@@ -977,7 +977,7 @@ Validates the given QR-Reference.
   
 #### Function: utils.isSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L98C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L104C0)  
   
 ##### Parameter
   
@@ -999,7 +999,7 @@ The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing 
   
 #### Function: utils.isSCORReferenceValid(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L124C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L131C0)  
   
 ##### Parameter
   
@@ -1017,7 +1017,7 @@ Validates the given SCOR-Reference.
   
 #### Function: utils.calculateSCORReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L162C0)  
   
 ##### Parameter
   
@@ -1035,7 +1035,7 @@ Calculates the checksum according to the ISO 11649 standard.
   
 #### Function: utils.calculateQRReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L166C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
   
 ##### Parameter
   
@@ -1053,7 +1053,7 @@ Calculates the checksum according the specifications.
   
 #### Function: utils.formatQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L185C0)  
   
 ##### Parameter
   
@@ -1071,7 +1071,7 @@ Formats the given QR-Reference according the specifications to be easily readabl
   
 #### Function: utils.formatSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L195C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L206C0)  
   
 ##### Parameter
   
@@ -1089,7 +1089,7 @@ Formats the given SCOR-Reference according the specifications to be easily reada
   
 #### Function: utils.formatReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L210C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L222C0)  
   
 ##### Parameter
   
@@ -1107,11 +1107,11 @@ Detects the type of the given reference and formats it according the specificati
   
 #### Function: utils.formatAmount(amount)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L230C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L243C0)  
   
 ##### Parameter
   
-- **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the amount to be formatted.  
+- **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Containing the amount to be formatted.  
   
 ##### Return Type
   
@@ -1125,7 +1125,7 @@ Formats the given amount according the specifications to be easily readable.
   
 #### Function: utils.mm2pt(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L255C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L269C0)  
   
 ##### Parameter
   
@@ -1143,7 +1143,7 @@ Converts millimeters to points.
   
 #### Function: utils.pt2mm(points)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L265C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L280C0)  
   
 ##### Parameter
   
@@ -1161,7 +1161,7 @@ Converts points to millimeters.
   
 #### Function: utils.mm2px(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L275C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L291C0)  
   
 ##### Parameter
   
@@ -1179,11 +1179,11 @@ Converts millimeters to pixels.
   
 #### Function: utils.px2mm(pixels)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L285C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L302C0)  
   
 ##### Parameter
   
-- **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) containing the pixels you want to convert to millimeters.  
+- **pixels** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) Containing the pixels you want to convert to millimeters.  
   
 ##### Return Type
   
@@ -1197,7 +1197,7 @@ Converts pixels to millimeters.
   
 #### Function: utils.getReferenceType(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L295C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L313C0)  
   
 ##### Parameter
   

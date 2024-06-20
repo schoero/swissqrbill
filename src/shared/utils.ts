@@ -51,6 +51,7 @@ export function formatIBAN(iban: string): string {
  *
  * @param reference The Reference to be checked.
  * @returns `true` if the given reference is a QR-Reference and `false` otherwise.
+ * @remarks The QR-Reference is a 27 digits long string containing only digits. The last digit is the checksum.
  */
 export function isQRReference(reference: string): boolean {
 
@@ -98,6 +99,7 @@ export function isQRReferenceValid(reference: string): boolean {
  *
  * @param reference The Reference to be checked.
  * @returns `true` if the given reference is a SCOR-Reference and `false` otherwise.
+ * @remarks The SCOR-Reference is an alphanumeric string beginning with 'RF' and containing a 2 digit checksum and a max 21 digits long reference.
  */
 export function isSCORReference(reference: string): boolean {
 
