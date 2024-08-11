@@ -27,7 +27,8 @@ export default [
     languageOptions: {
       parser: eslintParserTypeScript,
       parserOptions: {
-        project: "./tsconfig.vite.json"
+        project: "./tsconfig.vite.json",
+        projectService: false
       }
     },
     plugins: {
