@@ -29,27 +29,37 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
 <br/>
 <br/>
 
+<div align="center">
+
+  <a href="https://github.com/sponsors/schoero">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsor-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="./assets/sponsor-light.svg">
+      <img alt="eslint-plugin-readable-tailwind logo" src="./assets/sponsor-dark.svg">
+    </picture>
+  </a>
+  
+  Invoices are a critical part of every business. Keeping this library up-to-date with the extensive specifications takes  time and effort.  
+  If this library has been valuable to you, please consider becoming a sponsor, or make a one time donation to support its ongoing development.
+
+</div>
+
+<br/>
+<br/>
+
 ## Links
 
-* [Migration from v3 to v4](#migration-from-v3-to-v4)
 * [Features](#features)
 * [Installation](#installation)
 * [Importing the library][importing-documentation]
 * [Quick start](#quick-start)
 * [API documentation](./docs)
 * [PDFKit documentation][pdfkit-documentation]
+* [Migration from v3 to v4](./docs/migration-v3-to-v4.md)
 * [How to create a complete qr bill][how-to-create-a-complete-qr-bill]
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
 * [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
 * [QR bill style guide](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/style-guide-qr-bill-en.pdf)
-
-<br/>
-
-## Migration from v3 to v4
-
-In SwissQRBill v4, large parts of the application have been rewritten to make the API more flexible. This means that you have to make some changes to your code when upgrading from v3 to v4.
-
-Please read the [migration guide](./docs/migration-v3-to-v4.md) to learn more about the changes and how to migrate your code.
 
 <br/>
 
