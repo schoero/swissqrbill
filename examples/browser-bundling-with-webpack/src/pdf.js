@@ -1,8 +1,9 @@
-import BlobStream from "blob-stream";
 import fs from "fs";
+
+import BlobStream from "blob-stream";
 import PDFDocument from "pdfkit";
-import Helvetica from "pdfkit/js/data/Helvetica.afm";
 import HelveticaBold from "pdfkit/js/data/Helvetica-Bold.afm";
+import Helvetica from "pdfkit/js/data/Helvetica.afm";
 import { SwissQRBill } from "swissqrbill/pdf";
 
 

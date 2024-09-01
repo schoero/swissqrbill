@@ -384,7 +384,7 @@ export const arial10pt = {
   99: 6.5
 };
 
-export function calculateTextWidth(text: string, size: "8pt" | "10pt") {
+export function calculateTextWidth(text: string, size: "10pt" | "8pt") {
   let width = 0;
   if(size === "8pt"){
     for(let c = 0; c < text.length; c++){
