@@ -1,9 +1,8 @@
+import sharedRules from "@schoero/configs/eslint";
 import eslintPluginTypeScript from "@typescript-eslint/eslint-plugin";
 import eslintParserTypeScript from "@typescript-eslint/parser";
 
-import sharedRules from "@schoero/configs/eslint";
-
-/** @type { import("eslint").Linter.FlatConfig[] } */
+/** @type { import("eslint").Linter.Config[] } */
 export default [
   ...sharedRules,
 

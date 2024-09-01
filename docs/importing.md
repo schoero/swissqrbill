@@ -88,9 +88,9 @@ The bundle exposes all exports in the global variable `SwissQRBill`.
 
 ```ts
 const SwissQRBill = {
+  errors,
   PDF,
   SVG,
-  errors,
   table,
   types,
   utils

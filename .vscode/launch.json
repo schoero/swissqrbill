@@ -4,7 +4,7 @@
       "args": [
         "run",
         "${relativeFileDirname}/${fileBasenameNoExtension}",
-        "--no-threads"
+        "--pool=forks"
       ],
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
@@ -19,7 +19,7 @@
       "args": [
         "run",
         "${relativeFileDirname}/${fileBasenameNoExtension}",
-        "--no-threads"
+        "--pool=forks"
       ],
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
@@ -37,7 +37,7 @@
       "args": [
         "run",
         "${relativeFileDirname}/${fileBasenameNoExtension}",
-        "--no-threads"
+        "--pool=forks"
       ],
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",

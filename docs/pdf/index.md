@@ -239,7 +239,7 @@ Attaches the Swiss QR Code to a PDF document.
   
 ### Class: Table
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L158C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L157C0)  
   
 #### Description
   
@@ -289,7 +289,7 @@ pdf.end();
   
 #### Constructor: new Table(data)
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L166C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L165C2)  
   
 ##### Parameter
   
@@ -309,7 +309,7 @@ Creates a new Table instance.
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L191C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L190C2)  
   
 ##### Parameters
   
@@ -334,7 +334,7 @@ every row that no longer fits on a page.
   
 ### Type alias: PDFBorderColor
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L91C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L90C0)  
   
 #### Type
   
@@ -361,7 +361,7 @@ Can be used to set the color of the border of a table, row or column.
   
 ### Type alias: PDFBorderWidth
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L97C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L96C0)  
   
 #### Type
   
@@ -388,7 +388,7 @@ Can be used to set the width of the border of a table, row or column.
   
 ### Type alias: PDFPadding
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L103C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L102C0)  
   
 #### Type
   
@@ -437,7 +437,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L1C0)
   
 ### Interface: PDFRow
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L29C0)  
   
 - **columns** [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) Table columns.
   
@@ -462,7 +462,7 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L30C0)
   
 ### Interface: PDFColumn
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L63C0)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L62C0)  
   
 - **text** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Cell text.
 - **align** `"center"` | `"left"` | `"right"` Horizontal alignment of the text inside the cell. `optional`

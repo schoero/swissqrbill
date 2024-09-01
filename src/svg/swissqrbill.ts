@@ -575,7 +575,7 @@ export class SwissQRBill {
   }
 
 
-  private _getLineCountOfText(text: string | undefined, lengthInPixel: number, size: "8pt" | "10pt") {
+  private _getLineCountOfText(text: string | undefined, lengthInPixel: number, size: "10pt" | "8pt") {
     if(text === undefined){
       return 0;
     } else {
@@ -590,7 +590,7 @@ export class SwissQRBill {
   }
 
 
-  private _fitTextToWidth(text: string, lengthInPixel: number, maxLines: number, size: "8pt" | "10pt"): string[] {
+  private _fitTextToWidth(text: string, lengthInPixel: number, maxLines: number, size: "10pt" | "8pt"): string[] {
 
     const remainder = text.split(/([ |-])/g);
     let lines: string[] = [];
@@ -654,7 +654,7 @@ export class SwissQRBill {
   }
 
 
-  private _ellipsis(text: string, lengthInPixel: number, size: "8pt" | "10pt"): string {
+  private _ellipsis(text: string, lengthInPixel: number, size: "10pt" | "8pt"): string {
 
     let result = "";
 
