@@ -1,15 +1,33 @@
+/** A {@link ValidationError} is thrown when the data provided to swissqrbill is invalid. */
 export class ValidationError extends Error {
-  constructor(message: string, params?: { [name: string]: string; }) {
+
+  /** A stable error code that can be used to identify the error programmatically. */
+  public code: keyof typeof ValidationErrors;
+
+  /** @internal */
+  constructor(message: ValidationErrors, params?: { [name: string]: string; }) {
 
     const messageWithParams = params
       ? resolveMessageParams(message, params)
       : message;
 
     super(messageWithParams);
+
     this.name = "ValidationError";
+    this.code = getErrorCodeByMessage(message);
+
   }
 }
 
+/** @internal */
+export function getErrorCodeByMessage(message: string): keyof typeof ValidationErrors {
+  const errorCodes = Object.keys(ValidationErrors);
+  const errorCode = errorCodes.find(key => ValidationErrors[key] === message);
+
+  return errorCode as keyof typeof ValidationErrors;
+}
+
+/** @internal */
 export function resolveMessageParams(message: string, params: { [name: string]: string; }): string {
   return Object.entries(params).reduce((message, [key, value]) => {
     return message.replace(`{${key}}`, value);

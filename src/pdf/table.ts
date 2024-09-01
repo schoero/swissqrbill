@@ -26,7 +26,6 @@ export interface PDFTable {
   /** Horizontal start position of the table. */
 }
 
-
 export interface PDFRow {
   /** Table columns. */
   columns: PDFColumn[];
