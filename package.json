@@ -126,6 +126,7 @@
     "@types/node": "^22.5.2",
     "@types/pdfkit": "^0.13.4",
     "@types/svg-parser": "^2.0.6",
+    "changelogen": "^0.5.5",
     "cross-env": "^7.0.3",
     "cspell": "^8.14.2",
     "eslint": "^9.9.1",
