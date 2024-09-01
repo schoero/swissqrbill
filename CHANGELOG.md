@@ -1,6 +1,14 @@
 
 # Change Log
 
+## v4.1.0
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.0.2...v4.1.0)
+
+### Features
+
+- Error codes ([#442](https://github.com/schoero/swissqrbill/pull/442))
+
 ## v4.0.2
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.0.1...v4.0.2)
