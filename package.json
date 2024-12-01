@@ -1,5 +1,5 @@
 {
-  "version": "4.1.0",
+  "version": "4.1.1-beta.0",
   "type": "module",
   "name": "swissqrbill",
   "description": "Swiss QR Bill generation in Node.js and browsers",
@@ -16,48 +16,46 @@
   "sideEffects": false,
   "exports": {
     "./bundle": {
-      "import": "./lib/esm/bundle/index.js",
-      "require": {
-        "require": "./lib/cjs/bundle/index.js",
-        "types": "./lib/cjs/bundle/index.d.ts"
-      }
+      "require": "./lib/bundle/swissqrbill.js",
+      "import": "./lib/bundle/swissqrbill.js"
     },
     "./errors": {
-      "import": "./lib/esm/shared/errors.js",
       "require": {
-        "require": "./lib/cjs/shared/errors.cjs",
-        "types": "./lib/cjs/shared/errors.d.ts"
-      }
+        "types": "./lib/cjs/shared/errors.d.ts",
+        "require": "./lib/cjs/shared/errors.cjs"
+      },
+      "import": "./lib/esm/shared/errors.js"
     },
     "./pdf": {
-      "import": "./lib/esm/pdf/index.js",
       "require": {
-        "require": "./lib/cjs/pdf/index.cjs",
-        "types": "./lib/cjs/pdf/index.d.ts"
-      }
+        "types": "./lib/cjs/pdf/index.d.ts",
+        "require": "./lib/cjs/pdf/index.cjs"
+      },
+      "import": "./lib/esm/pdf/index.js"
     },
     "./svg": {
-      "import": "./lib/esm/svg/index.js",
       "require": {
-        "require": "./lib/cjs/svg/index.cjs",
-        "types": "./lib/cjs/svg/index.d.ts"
-      }
+        "types": "./lib/cjs/svg/index.d.ts",
+        "require": "./lib/cjs/svg/index.cjs"
+      },
+      "import": "./lib/esm/svg/index.js"
     },
     "./types": {
-      "import": "./lib/esm/shared/types.js",
       "require": {
-        "require": "./lib/cjs/shared/types.cjs",
-        "types": "./lib/cjs/shared/types.d.ts"
-      }
+        "types": "./lib/cjs/shared/types.d.ts",
+        "require": "./lib/cjs/shared/types.cjs"
+      },
+      "import": "./lib/esm/shared/types.js"
     },
     "./utils": {
-      "import": "./lib/esm/shared/utils.js",
       "require": {
-        "require": "./lib/cjs/shared/utils.cjs",
-        "types": "./lib/cjs/shared/utils.d.ts"
-      }
+        "types": "./lib/cjs/shared/utils.d.ts",
+        "require": "./lib/cjs/shared/utils.cjs"
+      },
+      "import": "./lib/esm/shared/utils.js"
     }
   },
+  "main": "./lib/bundle/swissqrbill.js",
   "scripts": {
     "build": "npm run build:bundle && npm run build:cjs && npm run build:esm",
     "build:bundle": "vite build --config vite.config.bundle.ts",
@@ -120,25 +118,25 @@
     "svg-engine": "^0.2.4"
   },
   "devDependencies": {
-    "@cspell/dict-fr-fr": "^2.2.2",
-    "@cspell/dict-it-it": "^3.1.0",
-    "@schoero/configs": "^1.1.1",
-    "@types/node": "^22.5.2",
-    "@types/pdfkit": "^0.13.4",
+    "@cspell/dict-fr-fr": "^2.2.5",
+    "@cspell/dict-it-it": "^3.1.3",
+    "@schoero/configs": "^1.1.12",
+    "@types/node": "^22.10.1",
+    "@types/pdfkit": "^0.13.6",
     "@types/svg-parser": "^2.0.6",
-    "changelogen": "^0.5.5",
+    "changelogen": "^0.5.7",
     "cross-env": "^7.0.3",
-    "cspell": "^8.14.2",
-    "eslint": "^9.9.1",
+    "cspell": "^8.16.1",
+    "eslint": "^9.16.0",
     "glob": "^11.0.0",
-    "markdownlint": "^0.34.0",
-    "pdfkit": "^0.15.0",
-    "typescript": "^5.5.4",
+    "markdownlint": "^0.36.1",
+    "pdfkit": "^0.15.1",
+    "typescript": "^5.7.2",
     "unwritten": "^0.2.13",
-    "vite": "^5.4.2",
-    "vite-plugin-dts": "^4.1.0",
+    "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.3.0",
     "vite-plugin-no-bundle": "^4.0.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.6"
   },
   "keywords": [
     "swiss",
