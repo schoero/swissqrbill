@@ -3,14 +3,12 @@
 
 node_modules
 
-tests/output
-examples/output
+/tests/output
+/examples/output
 
-local
-
-lib
-pdf
-svg
-errors
-types
-utils
+/lib
+/pdf
+/svg
+/errors
+/types
+/utils
