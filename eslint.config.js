@@ -7,7 +7,14 @@ export default [
   ...sharedRules,
 
   {
-    ignores: ["src/shared/qr-code-generator.ts"]
+    ignores: [
+      "src/shared/qr-code-generator.ts",
+      "pdf",
+      "svg",
+      "utils",
+      "types",
+      "errors"
+    ]
   },
   {
     files: ["**/*.ts"],

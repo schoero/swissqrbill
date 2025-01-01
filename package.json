@@ -15,10 +15,6 @@
   },
   "sideEffects": false,
   "exports": {
-    "./bundle": {
-      "require": "./lib/bundle/swissqrbill.js",
-      "import": "./lib/bundle/swissqrbill.js"
-    },
     "./errors": {
       "require": {
         "types": "./lib/cjs/shared/errors.d.ts",
@@ -55,12 +51,12 @@
       "import": "./lib/esm/shared/utils.js"
     }
   },
-  "main": "./lib/bundle/swissqrbill.js",
   "scripts": {
     "build": "npm run build:bundle && npm run build:cjs && npm run build:esm",
     "build:bundle": "vite build --config vite.config.bundle.ts",
-    "build:cjs": "vite build --config vite.config.cjs.ts && echo '{ \"type\": \"commonjs\" }' > lib/cjs/package.json",
-    "build:esm": "vite build --config vite.config.ts && echo '{ \"type\": \"module\" }' > lib/esm/package.json",
+    "build:cjs": "vite build --config vite.config.cjs.ts && node --experimental-strip-types scripts/cjs.ts",
+    "build:esm": "vite build --config vite.config.ts && node --experimental-strip-types scripts/esm.ts",
+    "clean": "rm -r ./pdf && rm -r ./svg && rm -r ./errors && rm -r ./types && rm -r ./utils",
     "docs": "npm run docs:pdf && npm run docs:svg && npm run docs:utils && npm run docs:errors && npm run docs:bundle",
     "docs:bundle": "unwritten src/bundle/index.ts -t tsconfig.docs.json -o docs/bundle/ ",
     "docs:errors": "unwritten src/shared/errors.ts -t tsconfig.docs.json -o docs/errors/",
@@ -76,6 +72,8 @@
     "markdownlint": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "markdownlint:ci": "npm run markdownlint",
     "markdownlint:fix": "npm run markdownlint -- --fix",
+    "postbuild": "node --experimental-strip-types scripts/node10.ts",
+    "postpublish": "npm run clean",
     "postrelease:alpha": "npm run postrelease",
     "postrelease:beta": "npm run postrelease",
     "postrelease:latest": "eslint --fix package.json &&  markdownlint-cli2 --fix 'CHANGELOG.md'",
@@ -100,7 +98,12 @@
     "node": ">=18.0.0"
   },
   "files": [
-    "lib"
+    "lib",
+    "pdf",
+    "svg",
+    "errors",
+    "types",
+    "utils"
   ],
   "peerDependencies": {
     "pdfkit": ">=0.13.0",
