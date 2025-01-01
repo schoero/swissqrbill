@@ -119,24 +119,24 @@
   },
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.5",
-    "@cspell/dict-it-it": "^3.1.3",
-    "@schoero/configs": "^1.1.12",
-    "@types/node": "^22.10.1",
-    "@types/pdfkit": "^0.13.6",
+    "@cspell/dict-it-it": "^3.1.4",
+    "@schoero/configs": "^1.2.0",
+    "@types/node": "^22.10.3",
+    "@types/pdfkit": "^0.13.8",
     "@types/svg-parser": "^2.0.6",
     "changelogen": "^0.5.7",
     "cross-env": "^7.0.3",
-    "cspell": "^8.16.1",
-    "eslint": "^9.16.0",
+    "cspell": "^8.17.1",
+    "eslint": "^9.17.0",
     "glob": "^11.0.0",
-    "markdownlint": "^0.36.1",
-    "pdfkit": "^0.15.1",
+    "markdownlint": "^0.37.3",
+    "pdfkit": "^0.16.0",
     "typescript": "^5.7.2",
     "unwritten": "^0.2.13",
-    "vite": "^5.4.10",
-    "vite-plugin-dts": "^4.3.0",
+    "vite": "^6.0.6",
+    "vite-plugin-dts": "^4.4.0",
     "vite-plugin-no-bundle": "^4.0.0",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "keywords": [
     "swiss",
@@ -158,6 +158,6 @@
     "svg"
   ],
   "volta": {
-    "node": "22.1.0"
+    "node": "22.12.0"
   }
 }
