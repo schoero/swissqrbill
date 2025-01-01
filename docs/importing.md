@@ -21,8 +21,7 @@ Each example below is available as a StackBlitz project.
 
 #### Node.js: ES Module import
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
-][node-esm-javascript]
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][node-esm-javascript]
 
 Importing the library in Node.js using ES modules is straight forward. You can use the following import statement:
 
@@ -37,8 +36,7 @@ import { SwissQRBill } from "swissqrbill/svg";
 
 #### Node.js: CommonJS import
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
-][node-cjs-javascript]
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][node-cjs-javascript]
 
 SwissQRBill provides a CommonJS module for legacy Node.js applications. You can require the library as follows:
 
@@ -55,8 +53,7 @@ const { SwissQRBill } = require("swissqrbill/svg");
 
 ### Browser: Bundling with webpack
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
-][browser-bundling-with-webpack]
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][browser-bundling-with-webpack]
 
 > **Warning**
 >
@@ -66,8 +63,7 @@ As PDFKit internally relies on several different built in modules of Node.js, it
 
 ### Browser: Pre-built bundle
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
-][browser-pre-built-bundle]
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][browser-pre-built-bundle]
 
 > **Warning**
 >

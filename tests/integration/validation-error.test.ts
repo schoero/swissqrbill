@@ -1,10 +1,9 @@
-import { describe, expect, it } from "vitest";
-
 import { ValidationError, ValidationErrors } from "swissqrbill:errors";
 import { cleanData } from "swissqrbill:shared:cleaner";
 import { validateData } from "swissqrbill:shared:validator";
 import { missingCreditor } from "swissqrbill:tests:data/invalid-data";
 import { getValidationError } from "swissqrbill:tests:utils/errors";
+import { describe, expect, it } from "vitest";
 
 
 describe("errors", () => {

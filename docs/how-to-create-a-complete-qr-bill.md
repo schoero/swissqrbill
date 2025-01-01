@@ -2,8 +2,7 @@
 
 ## Introduction
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)
-][stackblitz]
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][stackblitz]
 
 In this guide you will learn how you can use SwissQRBill to create a complete PDF file and then attach the QR slip to the bottom of the page.  
 We will use [PDFKit][npm-pdfkit] to create a PDF document with a Logo, title and the address of the biller, as well as the recipient.  

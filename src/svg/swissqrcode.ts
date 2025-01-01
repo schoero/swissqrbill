@@ -1,5 +1,4 @@
 import { SVG } from "svg-engine";
-
 import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code.js";
 
 // eslint-disable-next-line eslint-plugin-unused-imports/no-unused-imports
