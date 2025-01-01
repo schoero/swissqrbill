@@ -1,6 +1,14 @@
 
 # Change Log
 
+## v4.1.1
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.1.0...v4.1.1)
+
+### Fixes
+
+- Imports for TypeScript environments with `moduleResolution` set to  `node10` or `node16`. ([#448](https://github.com/schoero/swissqrbill/pull/448))
+
 ## v4.1.0
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.0.2...v4.1.0)
