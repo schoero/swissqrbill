@@ -1,6 +1,5 @@
-import fs from "fs";
-
 import BlobStream from "blob-stream";
+import fs from "fs";
 import PDFDocument from "pdfkit";
 import HelveticaBold from "pdfkit/js/data/Helvetica-Bold.afm";
 import Helvetica from "pdfkit/js/data/Helvetica.afm";

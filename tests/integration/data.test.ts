@@ -1,5 +1,3 @@
-import { describe, expect, test } from "vitest";
-
 import {
   creditorWithBuildingNumber,
   creditorWithBuildingNumberString,
@@ -23,6 +21,7 @@ import {
 } from "swissqrbill:tests:data/valid-data.js";
 import { pdf } from "swissqrbill:tests:utils/pdf.js";
 import { svg } from "swissqrbill:tests:utils/svg.js";
+import { describe, expect, test } from "vitest";
 
 
 describe("data", async () => {

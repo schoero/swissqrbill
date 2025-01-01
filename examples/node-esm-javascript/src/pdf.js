@@ -1,5 +1,4 @@
 import { createWriteStream } from "fs";
-
 import PDFDocument from "pdfkit";
 import { SwissQRBill } from "swissqrbill/pdf";
 

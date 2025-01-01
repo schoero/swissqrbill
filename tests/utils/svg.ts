@@ -1,8 +1,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-
 import SVG from "svg-engine";
-
 import { SwissQRBill } from "swissqrbill:svg";
 
 import type { Data, SVGOptions } from "swissqrbill:types";

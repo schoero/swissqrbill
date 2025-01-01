@@ -1,5 +1,3 @@
-import { describe, expect, test } from "vitest";
-
 import { } from "swissqrbill:shared:cleaner.js";
 import { generateQRData } from "swissqrbill:shared:qr-code.js";
 import {
@@ -23,6 +21,7 @@ import {
   minimalRequiredWithMaxedOutMessage,
   minimalRequiredWithMessage
 } from "swissqrbill:tests:data/valid-data.js";
+import { describe, expect, test } from "vitest";
 
 
 describe("generateQRData", () => {
