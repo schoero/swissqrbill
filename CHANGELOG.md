@@ -1,6 +1,14 @@
 
 # Change Log
 
+## v4.1.2
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.1.1...v4.1.2)
+
+### Refactors
+
+- Inline calculations ([#452](https://github.com/schoero/swissqrbill/pull/452))
+
 ## v4.1.1
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.1.0...v4.1.1)
