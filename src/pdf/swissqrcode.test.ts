@@ -1,8 +1,9 @@
+import { describe, expect, it, test } from "vitest";
+
 import { SwissQRCode } from "swissqrbill:pdf";
 import { minimalRequiredWithAlternativeScheme1and2 } from "swissqrbill:tests:data/valid-data.js";
 import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
 import { mm2pt } from "swissqrbill:utils";
-import { describe, expect, it, test } from "vitest";
 
 
 describe("swissqrcode", () => {

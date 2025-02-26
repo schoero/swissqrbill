@@ -1,3 +1,5 @@
+import { describe, expect, test } from "vitest";
+
 import {
   calculateQRReferenceChecksum,
   calculateSCORReferenceChecksum,
@@ -13,7 +15,6 @@ import {
   isSCORReference,
   isSCORReferenceValid
 } from "swissqrbill:utils";
-import { describe, expect, test } from "vitest";
 
 
 // https://github.com/swico/qr-bill#qr-iban

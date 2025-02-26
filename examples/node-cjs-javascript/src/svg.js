@@ -1,4 +1,5 @@
 const { writeFileSync } = require("fs");
+
 const { SwissQRBill } = require("swissqrbill/svg");
 
 const data = require("./data.js");

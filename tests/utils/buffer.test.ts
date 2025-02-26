@@ -1,5 +1,6 @@
-import { splitBuffer } from "swissqrbill:tests:utils/buffer.js";
 import { describe, expect, it } from "vitest";
+
+import { splitBuffer } from "swissqrbill:tests:utils/buffer.js";
 
 
 describe("buffer", () => {

@@ -1,3 +1,5 @@
+import { describe, expect, it } from "vitest";
+
 import { Table } from "swissqrbill:pdf";
 import {
   alignmentOverrides,
@@ -16,7 +18,6 @@ import {
   tupleShorthand
 } from "swissqrbill:tests:data/table.js";
 import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
-import { describe, expect, it } from "vitest";
 
 
 describe("table", async () => {

@@ -1,7 +1,9 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { buffer } from "node:stream/consumers";
+
 import PDFDocument from "pdfkit";
+
 import { SwissQRBill } from "swissqrbill:pdf";
 import { splitBuffer } from "swissqrbill:tests:utils/buffer.js";
 
