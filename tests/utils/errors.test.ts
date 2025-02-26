@@ -1,5 +1,6 @@
-import { ValidationError, ValidationErrors } from "swissqrbill:errors";
 import { describe, expect, it } from "vitest";
+
+import { ValidationError, ValidationErrors } from "swissqrbill:errors";
 
 import { getValidationError } from "./errors";
 

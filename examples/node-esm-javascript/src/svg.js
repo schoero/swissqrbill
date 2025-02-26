@@ -1,4 +1,5 @@
 import { writeFileSync } from "fs";
+
 import { SwissQRBill } from "swissqrbill/svg";
 
 import { data } from "./data.js";

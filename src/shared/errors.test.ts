@@ -1,6 +1,7 @@
+import { describe, expect, it } from "vitest";
+
 import { getErrorCodeByMessage, ValidationErrors } from "swissqrbill:errors";
 import { } from "swissqrbill:shared:cleaner.js";
-import { describe, expect, it } from "vitest";
 
 
 describe("getErrorCodeByMessage", () => {

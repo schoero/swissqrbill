@@ -1,4 +1,5 @@
 import { SVG } from "svg-engine";
+
 import { cleanData } from "swissqrbill:shared:cleaner.js";
 import { translations } from "swissqrbill:shared:translations.js";
 import { validateData } from "swissqrbill:shared:validator.js";

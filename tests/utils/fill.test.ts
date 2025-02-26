@@ -1,5 +1,6 @@
-import { fillUntil } from "swissqrbill:tests:utils/fill.js";
 import { describe, expect, it } from "vitest";
+
+import { fillUntil } from "swissqrbill:tests:utils/fill.js";
 
 
 describe("fill", () => {

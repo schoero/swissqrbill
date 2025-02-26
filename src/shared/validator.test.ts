@@ -1,3 +1,5 @@
+import { describe, expect, it } from "vitest";
+
 import { resolveMessageParams, ValidationErrors } from "swissqrbill:errors";
 import { cleanData } from "swissqrbill:shared:cleaner.js";
 import { validateData } from "swissqrbill:shared:validator.js";
@@ -92,7 +94,6 @@ import {
   minimalRequiredWithMaxedOutMessage,
   minimalRequiredWithMessage
 } from "swissqrbill:tests:data/valid-data.js";
-import { describe, expect, it } from "vitest";
 
 
 describe("validator", async () => {

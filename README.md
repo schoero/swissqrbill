@@ -95,6 +95,7 @@ Once you have imported SwissQRBill and PDFKit, it is quite easy to create a simp
 
 ```js
 import { createWriteStream } from "node:fs";
+
 import PDFDocument from "pdfkit";
 import { SwissQRBill } from "swissqrbill/pdf";
 
