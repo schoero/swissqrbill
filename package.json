@@ -123,11 +123,11 @@
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.5",
     "@cspell/dict-it-it": "^3.1.4",
-    "@schoero/configs": "^1.2.8",
+    "@schoero/configs": "^1.2.9",
     "@types/node": "^22.13.5",
     "@types/pdfkit": "^0.13.9",
     "@types/svg-parser": "^2.0.6",
-    "changelogen": "^0.5.7",
+    "changelogen": "^0.6.0",
     "cross-env": "^7.0.3",
     "cspell": "^8.17.5",
     "eslint": "^9.21.0",
