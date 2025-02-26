@@ -118,28 +118,28 @@
     }
   },
   "dependencies": {
-    "svg-engine": "^0.2.4"
+    "svg-engine": "^0.3.0"
   },
   "devDependencies": {
     "@cspell/dict-fr-fr": "^2.2.5",
     "@cspell/dict-it-it": "^3.1.4",
-    "@schoero/configs": "^1.2.0",
-    "@types/node": "^22.10.3",
-    "@types/pdfkit": "^0.13.8",
+    "@schoero/configs": "^1.2.8",
+    "@types/node": "^22.13.5",
+    "@types/pdfkit": "^0.13.9",
     "@types/svg-parser": "^2.0.6",
     "changelogen": "^0.5.7",
     "cross-env": "^7.0.3",
-    "cspell": "^8.17.1",
-    "eslint": "^9.17.0",
-    "glob": "^11.0.0",
-    "markdownlint": "^0.37.3",
+    "cspell": "^8.17.5",
+    "eslint": "^9.21.0",
+    "glob": "^11.0.1",
+    "markdownlint": "^0.37.4",
     "pdfkit": "^0.16.0",
-    "typescript": "^5.7.2",
-    "unwritten": "^0.2.13",
-    "vite": "^6.0.6",
-    "vite-plugin-dts": "^4.4.0",
+    "typescript": "^5.7.3",
+    "unwritten": "^0.2.14",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.0",
     "vite-plugin-no-bundle": "^4.0.0",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.7"
   },
   "keywords": [
     "swiss",
