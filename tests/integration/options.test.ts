@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
+import { creditorWithZipString, minimalRequired } from "swissqrbill:tests:data/valid-data.js";
 import { pdf } from "swissqrbill:tests:utils/pdf.js";
 import { svg } from "swissqrbill:tests:utils/svg.js";
 
@@ -51,4 +51,11 @@ describe("options", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
+  test("font bold", async () => {
+    const name = "font-bold";
+    const pdfSnapshot = await pdf(creditorWithZipString, `options/${name}.pdf`, { fontName: "Helvetica", fontNameBold: "Helvetica-Bold" });
+    const svgSnapshot = await svg(creditorWithZipString, `options/${name}.svg`, { fontName: "Helvetica", fontNameBold: "Helvetica-Bold" });
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
 });
