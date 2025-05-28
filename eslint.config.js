@@ -19,7 +19,8 @@ export default [
   {
     files: ["**/*.ts"],
     rules: {
-      "eslint-plugin-typescript/no-unnecessary-condition": "off"
+      "eslint-plugin-typescript/no-unnecessary-condition": "off",
+      "eslint-plugin-unicorn/numeric-separators-style": "off"
     }
   },
   {

@@ -5,12 +5,12 @@ exports[`generateQRData > additional Information 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -40,12 +40,12 @@ exports[`generateQRData > alternative schemes AV1 & AV2 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -77,12 +77,12 @@ exports[`generateQRData > alternative schemes AV1 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -113,12 +113,12 @@ exports[`generateQRData > alternative schemes AV2 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -149,12 +149,12 @@ exports[`generateQRData > creditor with QR IBAN 1`] = `
 0200
 1
 CH4431999123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -254,12 +254,12 @@ exports[`generateQRData > creditor with maxed out field lengths 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastNameCreditor FirstName LastNameCreditor FirstNa
 Creditor AddressCreditor AddressCreditor AddressCreditor AddressCredit
-1234123412341234 Creditor CityCreditor CityCreditor 
 
-
+1234123412341234
+Creditor CityCreditor CityCreditor 
 CH
 
 
@@ -289,12 +289,12 @@ exports[`generateQRData > creditor with normal IBAN 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -324,12 +324,12 @@ exports[`generateQRData > creditor with normal IBAN and reference 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -359,12 +359,12 @@ exports[`generateQRData > currency 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -394,12 +394,12 @@ exports[`generateQRData > debtor with building number 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -429,12 +429,12 @@ exports[`generateQRData > debtor with building number as string 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -464,12 +464,12 @@ exports[`generateQRData > debtor with maxed out field lengths 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -480,12 +480,12 @@ CH
 
 
 CHF
-K
+S
 Debtor FirstName LastNameDebtor FirstName LastNameDebtor FirstName Las
 Debtor AddressDebtor AddressDebtor AddressDebtor AddressDebtor Address
-5678567856785678 Debtor CityDebtor CityDebtor CityDe
 
-
+5678567856785678
+Debtor CityDebtor CityDebtor CityDe
 CH
 NON
 
@@ -499,12 +499,12 @@ exports[`generateQRData > message 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -534,12 +534,12 @@ exports[`generateQRData > message with maxed out field length 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -569,12 +569,12 @@ exports[`generateQRData > minimal required data + amount 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -604,12 +604,12 @@ exports[`generateQRData > minimal required data + debtor 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 
@@ -620,12 +620,12 @@ CH
 
 
 CHF
-K
+S
 Debtor FirstName LastName
 Debtor Address
-5678 Debtor City
 
-
+5678
+Debtor City
 CH
 NON
 
@@ -639,12 +639,12 @@ exports[`generateQRData > minimal required data 1`] = `
 0200
 1
 CH5800791123000889012
-K
+S
 Creditor FirstName LastName
 Creditor Address
-1234 Creditor City
 
-
+1234
+Creditor City
 CH
 
 

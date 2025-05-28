@@ -22,7 +22,7 @@ export class TestDocument extends PDFDocument {
   private testDocumentName: TestDocumentName;
 
   constructor(testDocumentName: TestDocumentName, options?: PDFKit.PDFDocumentOptions) {
-    super({ ...options, bufferPages: true, compress: false });
+    super({ ...options, bufferPages: true, compress: false, size: "A4" });
     this.testDocumentName = testDocumentName;
     this.info.CreationDate = new Date(0);
   }
