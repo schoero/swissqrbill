@@ -5748,7 +5748,7 @@ exports[`qr-bill > should render the qr bill in a a4 document with insufficient 
 q
 1 0 0 -1 0 841.89 cm
 BT
-1 0 0 1 277.95825 124.6115 Tm
+1 0 0 1 277.958252 124.6115 Tm
 /F1 12 Tf
 [<636f6e74656e74> 0] TJ
 ET
@@ -9593,7 +9593,7 @@ exports[`qr-bill > should render the qr bill in a a4 document with multiple page
 q
 1 0 0 -1 0 841.89 cm
 BT
-1 0 0 1 277.95825 124.6115 Tm
+1 0 0 1 277.958252 124.6115 Tm
 /F1 12 Tf
 [<636f6e74656e74> 0] TJ
 ET
