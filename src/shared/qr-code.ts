@@ -20,23 +20,14 @@ export function generateQRData(data: Data): string {
     "0200",                                                              // Version
     "1",                                                                 // Coding Type UTF-8
     cleanedData.creditor.account ?? "",                                  // IBAN
-    ...cleanedData.creditor.buildingNumber
-      ? [
-        "S",                                                             // Address Type
-        cleanedData.creditor.name,                                       // Name
-        cleanedData.creditor.address,                                    // Address
-        `${cleanedData.creditor.buildingNumber}`,                        // Building number
-        `${cleanedData.creditor.zip}`,                                   // Zip
-        cleanedData.creditor.city                                        // City
-      ]
-      : [
-        "K",                                                             // Address Type
-        cleanedData.creditor.name,                                       // Name
-        cleanedData.creditor.address,                                    // Address
-        `${cleanedData.creditor.zip} ${cleanedData.creditor.city}`,      // Zip and city
-        "",                                                              // Empty zip field
-        ""                                                               // Empty city field
-      ],
+    "S",                                                                 // Address Type
+    cleanedData.creditor.name,                                           // Name
+    cleanedData.creditor.address,                                        // Address
+    cleanedData.creditor.buildingNumber                                  // Building number
+      ? `${cleanedData.creditor.buildingNumber}`
+      : "",
+    `${cleanedData.creditor.zip}`,                                       // Zip
+    cleanedData.creditor.city,                                           // City
     cleanedData.creditor.country,                                        // Country
     "",                                                                  // 1x Empty
     "",                                                                  // 2x Empty
@@ -49,30 +40,21 @@ export function generateQRData(data: Data): string {
     cleanedData.currency,                                                // Currency
     ...cleanedData.debtor
       ? [
-        ...cleanedData.debtor.buildingNumber
-          ? [
-            "S",                                                         // Address Type
-            cleanedData.debtor.name,                                     // Name
-            cleanedData.debtor.address,                                  // Address
-            `${cleanedData.debtor.buildingNumber}`,                      // Building number
-            `${cleanedData.debtor.zip}`,                                 // Zip
-            cleanedData.debtor.city                                      // City
-          ]
-          : [
-            "K",                                                         // Address Type
-            cleanedData.debtor.name,                                     // Name
-            cleanedData.debtor.address,                                  // Address
-            `${cleanedData.debtor.zip} ${cleanedData.debtor.city}`,      // Zip and city
-            "",                                                          // Empty zip field
-            ""                                                           // Empty city field
-          ],
-        cleanedData.debtor?.country ?? ""                                // Country
+        "S",                                                             // Address Type
+        cleanedData.debtor.name,                                         // Name
+        cleanedData.debtor.address,                                      // Address
+        cleanedData.debtor.buildingNumber                                // Building number
+          ? `${cleanedData.debtor.buildingNumber}`
+          : "",
+        `${cleanedData.debtor.zip}`,                                     // Zip
+        cleanedData.debtor.city,                                         // City
+        cleanedData.debtor.country ?? ""                                 // Country
       ]
       : [
         "",                                                              // Empty address type
         "",                                                              // Empty name
         "",                                                              // Empty address
-        "",                                                              // Empty zip and city
+        "",                                                              // Empty building number
         "",                                                              // Empty zip field
         "",                                                              // Empty city field
         ""                                                               // Empty country
