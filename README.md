@@ -58,7 +58,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
 * [Migration from v3 to v4](./docs/migration-v3-to-v4.md)
 * [How to create a complete qr bill][how-to-create-a-complete-qr-bill]
 * [QR bill validator](https://swiss-qr-invoice.org/validator/?lang=de)
-* [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.2-en.pdf)
+* [QR bill specifications](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf)
 * [QR bill style guide](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/style-guide-qr-bill-en.pdf)
 
 <br/>
