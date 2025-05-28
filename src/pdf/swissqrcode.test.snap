@@ -2,7 +2,7 @@
 
 exports[`swissqrcode > default sized swiss qr code 1`] = `
 [
-  "1 0 0 -1 0 566.93 cm
+  "1 0 0 -1 0 841.89 cm
 q
 1 0 0 1 218.26805 218.26805 cm
 0 0 2.00606 2.00606 re
@@ -2123,7 +2123,7 @@ Q
 
 exports[`swissqrcode > larger sized swiss qr code 1`] = `
 [
-  "1 0 0 -1 0 566.93 cm
+  "1 0 0 -1 0 841.89 cm
 q
 1 0 0 1 141.7325 141.7325 cm
 0 0 4.361 4.361 re
@@ -4244,7 +4244,7 @@ Q
 
 exports[`swissqrcode > should place the swiss qr code at the current position by default 1`] = `
 [
-  "1 0 0 -1 0 566.93 cm
+  "1 0 0 -1 0 841.89 cm
 q
 1 0 0 1 72 72 cm
 0 0 2.00606 2.00606 re
@@ -6365,7 +6365,7 @@ Q
 
 exports[`swissqrcode > smaller sized swiss qr code 1`] = `
 [
-  "1 0 0 -1 0 566.93 cm
+  "1 0 0 -1 0 841.89 cm
 q
 1 0 0 1 248.031875 248.031875 cm
 0 0 1.09025 1.09025 re
