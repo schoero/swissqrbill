@@ -1,6 +1,14 @@
 
 # Change Log
 
+## v4.2.0
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.1.2...v4.2.0)
+
+### Features
+
+- Always output structured addresses to comply with spec updates ([#454](https://github.com/schoero/swissqrbill/pull/454))
+
 ## v4.1.2
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.1.1...v4.1.2)
