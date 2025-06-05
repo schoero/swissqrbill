@@ -570,7 +570,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L3C7)
   
 #### Class: svg.SwissQRBill
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L44C0)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L45C0)  
   
 ##### Description
   
@@ -610,7 +610,7 @@ writeFileSync("qr-bill.svg", svg.toString());
   
 ##### Constructor: new svg.SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L55C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L56C2)  
   
 ###### Parameters
   
@@ -627,7 +627,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L55C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L46C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L47C2)  
   
 ###### Type
   
@@ -639,7 +639,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L46C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L86C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L87C2)  
   
 ###### Return Type
   
@@ -655,7 +655,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L96C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L97C2)  
   
 ###### Return Type
   
@@ -669,13 +669,13 @@ Returns the SVG element.
   
 #### Class: svg.SwissQRCode
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L9C0)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C0)  
   
 <br/>
   
 ##### Constructor: new svg.SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L20C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L21C2)  
   
 ###### Parameters
   
@@ -700,7 +700,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L12C2)  
   
 ###### Type
   
@@ -712,7 +712,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L57C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L58C2)  
   
 ###### Return Type
   
@@ -728,7 +728,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L67C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L68C2)  
   
 ###### Return Type
   
