@@ -3,7 +3,6 @@ import { renderQRCode, renderSwissCross } from "swissqrbill:shared:qr-code.js";
 import { validateData } from "swissqrbill:shared:validator.js";
 import { mm2pt } from "swissqrbill:utils";
 
-// eslint-disable-next-line eslint-plugin-unused-imports/no-unused-imports
 import type { ValidationError } from "swissqrbill:errors";
 import type { Data } from "swissqrbill:types";
 

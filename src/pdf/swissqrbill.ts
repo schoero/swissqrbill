@@ -4,7 +4,6 @@ import { translations } from "swissqrbill:shared:translations.js";
 import { validateData } from "swissqrbill:shared:validator.js";
 import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
 
-// eslint-disable-next-line eslint-plugin-unused-imports/no-unused-imports
 import type { ValidationError } from "swissqrbill:errors";
 import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:types";
 
