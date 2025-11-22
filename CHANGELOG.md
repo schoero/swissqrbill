@@ -1,6 +1,18 @@
 
 # Change Log
 
+## v4.2.1
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.2.0...v4.2.1)
+
+### Refactors
+
+- Add defaults for `isSpaceSufficient` ([#462](https://github.com/schoero/swissqrbill/pull/462))
+
+### ❤️ Contributors
+
+- Daniel Müller ([@chdanielmueller](https://github.com/chdanielmueller))
+
 ## v4.2.0
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.1.2...v4.2.0)
