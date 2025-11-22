@@ -16,7 +16,7 @@
           - [height](#property-pdfswissqrbillheight)
         - Methods
           - [attachTo(doc\[, x\]\[, y\])](#method-pdfswissqrbillattachtodoc-x-y)
-          - [isSpaceSufficient(doc, xPosition, yPosition)](#method-pdfswissqrbillisspacesufficientdoc-xposition-yposition)
+          - [isSpaceSufficient(doc\[, x\]\[, y\])](#method-pdfswissqrbillisspacesufficientdoc-x-y)
   
       - [SwissQRCode](#class-pdfswissqrcode)
   
@@ -247,7 +247,7 @@ enough space is left on the current page.
   
 <br/>
   
-##### Method: pdf.SwissQRBill.isSpaceSufficient(doc, xPosition, yPosition)
+##### Method: pdf.SwissQRBill.isSpaceSufficient(doc\[, x\]\[, y\])
   
 `public` `static`  
   
@@ -256,8 +256,8 @@ Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L136C2)
 ###### Parameters
   
 - **doc** `PDFDocument` The PDFKit document instance.  
-- **xPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed.  
-- **yPosition** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed.  
+- **x** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The horizontal position where the QR Bill will be placed. `optional` Default: `0`  
+- **y** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The vertical position where the QR Bill will be placed. `optional` Default: [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)  
   
 ###### Return Type
   
