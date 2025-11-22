@@ -133,7 +133,7 @@ export class SwissQRBill {
    * @param yPosition The vertical position where the QR Bill will be placed.
    * @returns `true` if there is enough space, otherwise `false`.
    */
-  public static isSpaceSufficient(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page?.height ? doc.page?.height - mm2pt(105) : 0): boolean {
+  public static isSpaceSufficient(doc: PDFKit.PDFDocument, xPosition: number = 0, yPosition: number = doc.page?.height ? doc.page?.height - SwissQRBill.height : 0): boolean {
 
     if(!doc.page){
       return false;
