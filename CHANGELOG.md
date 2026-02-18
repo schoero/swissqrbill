@@ -1,6 +1,14 @@
 
 # Change Log
 
+## v4.3.0
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.2.1...v4.3.0)
+
+### Features
+
+- Add romansh language ([#464](https://github.com/schoero/swissqrbill/pull/464))
+
 ## v4.2.1
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.2.0...v4.2.1)
