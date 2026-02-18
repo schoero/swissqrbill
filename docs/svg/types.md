@@ -22,7 +22,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)
   
 #### Type
   
-`"DE"` | `"EN"` | `"FR"` | `"IT"`  
+`"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"`  
   
 <br/>
   
@@ -116,7 +116,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
   ```
   
-- **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
+- **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
@@ -139,6 +139,6 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
   ```
   
-- **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
+- **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`

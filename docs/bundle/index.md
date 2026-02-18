@@ -124,7 +124,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L2C7)
   
 #### Class: pdf.SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L51C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L50C0)  
   
 ##### Description
   
@@ -171,7 +171,7 @@ pdf.end();
   
 ##### Constructor: new pdf.SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L70C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
   
 ###### Parameters
   
@@ -196,7 +196,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L152C2)  
   
 ###### Type
   
@@ -212,7 +212,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L158C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L157C2)  
   
 ###### Type
   
@@ -228,7 +228,7 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L107C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L106C2)  
   
 ###### Parameters
   
@@ -251,7 +251,7 @@ enough space is left on the current page.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L136C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L135C2)  
   
 ###### Parameters
   
@@ -271,13 +271,13 @@ Checks whether there is enough space on the current page to add the QR Bill.
   
 #### Class: pdf.SwissQRCode
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L11C0)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L10C0)  
   
 <br/>
   
 ##### Constructor: new pdf.SwissQRCode(data\[, size\])
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L23C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L22C2)  
   
 ###### Parameters
   
@@ -302,7 +302,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L37C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L36C2)  
   
 ###### Parameters
   
@@ -669,13 +669,13 @@ Returns the SVG element.
   
 #### Class: svg.SwissQRCode
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L10C0)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L9C0)  
   
 <br/>
   
 ##### Constructor: new svg.SwissQRCode(data\[, size\])
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L21C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L20C2)  
   
 ###### Parameters
   
@@ -700,7 +700,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L12C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L11C2)  
   
 ###### Type
   
@@ -712,7 +712,7 @@ Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L12C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L58C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L57C2)  
   
 ###### Return Type
   
@@ -728,7 +728,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L68C2)  
+Defined in: [src/svg/swissqrcode.ts](../../src/svg/swissqrcode.ts#L67C2)  
   
 ###### Return Type
   
@@ -752,7 +752,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)
   
 ##### Type
   
-`"DE"` | `"EN"` | `"FR"` | `"IT"`  
+`"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"`  
   
 <br/>
   
@@ -846,7 +846,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
   ```
   
-- **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
+- **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **types.separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
@@ -869,7 +869,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)
   const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
   ```
   
-- **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` The language with which the bill is rendered. `optional`
+- **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
