@@ -39,4 +39,12 @@ describe("translations", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
+  test("language: Romansh", async () => {
+    const name = "language-rm";
+    const pdfSnapshot = await pdf(minimalRequired, `translations/${name}.pdf`, { language: "RM" });
+    const svgSnapshot = await svg(minimalRequired, `translations/${name}.svg`, { language: "RM" });
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
+
 });

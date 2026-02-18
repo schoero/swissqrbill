@@ -41,7 +41,7 @@
   
 ### Class: SwissQRBill
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L51C0)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L50C0)  
   
 #### Description
   
@@ -88,7 +88,7 @@ pdf.end();
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L70C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
   
 ##### Parameters
   
@@ -113,7 +113,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L153C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L152C2)  
   
 ##### Type
   
@@ -129,7 +129,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L158C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L157C2)  
   
 ##### Type
   
@@ -145,7 +145,7 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L107C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L106C2)  
   
 ##### Parameters
   
@@ -168,7 +168,7 @@ enough space is left on the current page.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L136C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L135C2)  
   
 ##### Parameters
   
@@ -188,13 +188,13 @@ Checks whether there is enough space on the current page to add the QR Bill.
   
 ### Class: SwissQRCode
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L11C0)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L10C0)  
   
 <br/>
   
 #### Constructor: new SwissQRCode(data\[, size\])
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L23C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L22C2)  
   
 ##### Parameters
   
@@ -219,7 +219,7 @@ Creates a Swiss QR Code.
   
 `public`  
   
-Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L37C2)  
+Defined in: [src/pdf/swissqrcode.ts](../../src/pdf/swissqrcode.ts#L36C2)  
   
 ##### Parameters
   

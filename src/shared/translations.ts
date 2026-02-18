@@ -54,5 +54,19 @@ export const translations = {
     receipt: "Ricevuta",
     reference: "Riferimento",
     separate: "Da staccare prima del versamento"
+  },
+  RM: {
+    acceptancePoint: "Post da recepziun",
+    account: "Conto / Da pajar a",
+    additionalInformation: "Infurmaziuns supplementaras",
+    amount: "Import",
+    currency: "Valuta",
+    inFavourOf: "A favur da",
+    payableBy: "Da pajar da",
+    payableByName: "Da pajar da (num/adressa)",
+    paymentPart: "Part da pajament",
+    receipt: "Quittanza",
+    reference: "Referenza",
+    separate: "Da distatgar avant che pajar"
   }
 };
