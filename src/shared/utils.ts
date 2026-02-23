@@ -321,6 +321,32 @@ export function getReferenceType(reference: string | undefined): "NON" | "QRR" |
 }
 
 /**
+ * Checks whether the given Unicode codepoint is within the character set permitted
+ * by the Swiss Payment Standards (Version 2.3, valid from 21 November 2025).
+ * See: https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf
+ *
+ * Permitted subsets:
+ * - Basic Latin (U+0020–U+007E)
+ * - Latin-1 Supplement (U+00A0–U+00FF)
+ * - Latin Extended-A (U+0100–U+017F)
+ * - Additional characters: Ș (U+0218), ș (U+0219), Ț (U+021A), ț (U+021B), € (U+20AC)
+ *
+ * @param codepoint The Unicode codepoint to check.
+ * @returns `true` if the codepoint is permitted, `false` otherwise.
+ */
+export function isAllowedCharacter(codepoint: number): boolean {
+  return (
+    (codepoint >= 0x0020 && codepoint <= 0x007E) || // Basic Latin
+    (codepoint >= 0x00A0 && codepoint <= 0x00FF) || // Latin-1 Supplement
+    (codepoint >= 0x0100 && codepoint <= 0x017F) || // Latin Extended-A
+    codepoint === 0x0218 || codepoint === 0x0219 || // Ș, ș
+    codepoint === 0x021A || codepoint === 0x021B || // Ț, ț
+    codepoint === 0x20AC                            // € (Euro sign)
+  );
+}
+
+
+/**
  * Calculates the checksum according to the ISO 7064 standard.
  *
  * @param input The input whose checksum should be calculated.
