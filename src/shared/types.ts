@@ -139,7 +139,7 @@ interface QRBillOptions {
    *
    * @default `DE`
    */
-  language?: "DE" | "EN" | "FR" | "IT" | "RM";
+  language?: "de" | "en" | "fr" | "it" | "rm" | "DE" | "EN" | "FR" | "IT" | "RM";
 
   /**
    * Whether you want render the outlines. This option may be disabled if you use perforated paper.

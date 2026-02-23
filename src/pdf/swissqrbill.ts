@@ -19,20 +19,20 @@ import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:t
  *   creditor: {
  *     account: "CH44 3199 9123 0008 8901 2",
  *     address: "Musterstrasse",
- *     buildingNumber: 7,
+ *     buildingNumber: "7",
  *     city: "Musterstadt",
  *     country: "CH",
  *     name: "SwissQRBill",
- *     zip: 1234
+ *     zip: "1234"
  *   },
  *   currency: "CHF",
  *   debtor: {
  *     address: "Musterstrasse",
- *     buildingNumber: 1,
+ *     buildingNumber: "1",
  *     city: "Musterstadt",
  *     country: "CH",
  *     name: "Peter Muster",
- *     zip: 1234
+ *     zip: "1234"
  *   },
  *   reference: "21 00000 00003 13947 14300 09017"
  * };
@@ -76,7 +76,7 @@ export class SwissQRBill {
     validateData(this.data);
 
     // Apply options
-    this.language = options?.language !== undefined ? options.language : this.language;
+    this.language = options?.language !== undefined ? options.language.toLowerCase() as Language : this.language;
     this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
     this.font = options?.fontName !== undefined ? options.fontName : this.font;
     this.fontBold = options?.fontBoldName !== undefined ? options.fontBoldName : `${this.font}-Bold`;
@@ -621,6 +621,7 @@ export class SwissQRBill {
     }
 
     return `${data.name}\n${data.address}\n${countryPrefix}${data.zip} ${data.city}`;
+    
   }
 
 
