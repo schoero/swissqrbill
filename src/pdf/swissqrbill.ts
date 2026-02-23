@@ -2,7 +2,7 @@ import { SwissQRCode } from "swissqrbill:pdf";
 import { cleanData } from "swissqrbill:shared:cleaner.js";
 import { translations } from "swissqrbill:shared:translations.js";
 import { validateData } from "swissqrbill:shared:validator.js";
-import { formatAmount, formatIBAN, formatReference, getReferenceType, mm2pt, pt2mm } from "swissqrbill:utils";
+import { formatAmount, formatIBAN, formatReference, getReferenceType, isAllowedCharacter, mm2pt, pt2mm } from "swissqrbill:utils";
 
 import type { ValidationError } from "swissqrbill:errors";
 import type { Creditor, Data, Debtor, Language, PDFOptions } from "swissqrbill:types";
@@ -55,6 +55,7 @@ export class SwissQRBill {
   private outlines: boolean = true;
   private language: Language = "DE";
   private font: string = "Helvetica";
+  private fontBold: string = "Helvetica-Bold";
 
   private _x: number = 0;
   private _y: number = 0;
@@ -78,6 +79,7 @@ export class SwissQRBill {
     this.language = options?.language !== undefined ? options.language : this.language;
     this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
     this.font = options?.fontName !== undefined ? options.fontName : this.font;
+    this.fontBold = options?.fontBoldName !== undefined ? options.fontBoldName : `${this.font}-Bold`;
 
     if(options?.scissors !== undefined){
       this.scissors = options.scissors;
@@ -91,6 +93,55 @@ export class SwissQRBill {
       this.separate = false;
       this.scissors = false;
     }
+
+    // Warn when the default Helvetica font is used with characters that are valid per the
+    // Swiss Payment Standards v2.3 but not covered by Helvetica (Latin Extended-A and above)
+    // See: https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf
+    if(this.font === "Helvetica"){
+      const issues = SwissQRBill._fieldsRequiringUnicodeFont(this.data);
+      if(issues.length > 0){
+        const fieldList = issues
+          .map(({ chars, field }) => `  - ${field}: ${chars.map(c => `"${c}" (U+${c.codePointAt(0)!.toString(16).toUpperCase().padStart(4, "0")})`).join(", ")}`)
+          .join("\n");
+        console.warn(
+          `[SwissQRBill] The data contains characters from the extended Swiss QR Bill character set (Swiss Payment Standards, Version 2.3) that cannot be rendered by the default "Helvetica" font:\n` +
+          `${fieldList}\n\n` +
+          `To fix this, register a Unicode TrueType font and pass it via the fontName option:\n` +
+          `  pdf.registerFont("Arial", "/path/to/Arial-Regular.ttf");\n` +
+          `  pdf.registerFont("Arial-Bold", "/path/to/Arial-Bold.ttf");\n` +
+          `  const qrBill = new SwissQRBill(data, { fontName: "Arial" });\n\n` +
+          `See: http://pdfkit.org/docs/text.html#fonts`
+        );
+      }
+    }
+
+  }
+
+  // Returns fields containing characters that are valid per the Swiss Payment Standards v2.3
+  // character set but outside the Basic Latin + Latin-1 Supplement range covered by Helvetica.
+  private static _fieldsRequiringUnicodeFont(data: Data): Array<{ chars: string[]; field: string }> {
+
+    const fields: Array<[string, string | undefined]> = [
+      ["creditor.name", data.creditor.name],
+      ["creditor.address", data.creditor.address],
+      ["creditor.city", data.creditor.city],
+      ["debtor.name", data.debtor?.name],
+      ["debtor.address", data.debtor?.address],
+      ["debtor.city", data.debtor?.city],
+      ["message", data.message],
+      ["additionalInformation", data.additionalInformation],
+    ];
+
+    return fields
+      .filter(([, value]) => value !== undefined)
+      .map(([field, value]) => ({
+        chars: [...new Set([...value!].filter(c => {
+          const cp = c.codePointAt(0)!;
+          return isAllowedCharacter(cp) && cp > 0x00FF;
+        }))],
+        field,
+      }))
+      .filter(({ chars }) => chars.length > 0);
 
   }
 
@@ -241,14 +292,14 @@ export class SwissQRBill {
 
     // Receipt
     doc.fontSize(11);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].receipt, this.x(5), this.y(5), {
       align: "left",
       width: mm2pt(52)
     });
 
     doc.fontSize(6);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].account, this.x(5), this.y(12), {
       lineGap: 1,
       width: mm2pt(52)
@@ -269,7 +320,7 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(6);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(52)
@@ -291,7 +342,7 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(6);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(52)
@@ -307,7 +358,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(6);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(52)
@@ -320,7 +371,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(6);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].currency, this.x(5), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -350,7 +401,7 @@ export class SwissQRBill {
     }
 
     doc.fontSize(6);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].acceptancePoint, this.x(5), this.y(82), {
       align: "right",
       height: mm2pt(18),
@@ -360,7 +411,7 @@ export class SwissQRBill {
 
     // Payment part middle container
     doc.fontSize(11);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].paymentPart, this.x(67), this.y(5), {
       align: "left",
       lineGap: 1,
@@ -373,7 +424,7 @@ export class SwissQRBill {
 
     // Amount
     doc.fontSize(8);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].currency, this.x(67), this.y(68), {
       lineGap: 1,
       width: mm2pt(15)
@@ -405,7 +456,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av1.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(scheme, this.x(67), this.y(90), {
         continued: true,
         height: mm2pt(3),
@@ -425,7 +476,7 @@ export class SwissQRBill {
       const [scheme, data] = this.data.av2.split(/(\/.+)/);
 
       doc.fontSize(7);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(scheme, this.x(67), this.y(93), {
         continued: true,
         height: mm2pt(3),
@@ -442,7 +493,7 @@ export class SwissQRBill {
 
     // Payment part right column
     doc.fontSize(8);
-    doc.font(`${this.font}-Bold`);
+    doc.font(this.fontBold);
     doc.text(translations[this.language].account, this.x(118), this.y(5), {
       lineGap: 1,
       width: mm2pt(87)
@@ -461,7 +512,7 @@ export class SwissQRBill {
     if(this.data.reference !== undefined){
 
       doc.fontSize(8);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].reference, {
         lineGap: 1,
         width: mm2pt(87)
@@ -483,7 +534,7 @@ export class SwissQRBill {
     if(this.data.message !== undefined || this.data.additionalInformation !== undefined){
 
       doc.fontSize(8);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].additionalInformation, {
         lineGap: 1,
         width: mm2pt(87)
@@ -535,7 +586,7 @@ export class SwissQRBill {
     if(this.data.debtor !== undefined){
 
       doc.fontSize(8);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].payableBy, {
         lineGap: 1,
         width: mm2pt(87)
@@ -551,7 +602,7 @@ export class SwissQRBill {
     } else {
 
       doc.fontSize(8);
-      doc.font(`${this.font}-Bold`);
+      doc.font(this.fontBold);
       doc.text(translations[this.language].payableByName, {
         lineGap: 1,
         width: mm2pt(87)
