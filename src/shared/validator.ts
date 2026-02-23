@@ -1,5 +1,5 @@
 import { ValidationError, ValidationErrors } from "swissqrbill:errors";
-import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "swissqrbill:utils";
+import { isAllowedCharacter, isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "swissqrbill:utils";
 
 import type { Data } from "swissqrbill:types";
 
@@ -21,12 +21,14 @@ export function validateData(data: Data): void {
   if(data.message !== undefined){
     if(typeof data.message !== "string"){ throw new ValidationError(ValidationErrors.MESSAGE_TYPE_IS_INVALID); }
     if(data.message.length > 140){ throw new ValidationError(ValidationErrors.MESSAGE_LENGTH_IS_INVALID); }
+    if(!hasAllowedCharactersOnly(data.message)){ throw new ValidationError(ValidationErrors.MESSAGE_INVALID_CHARACTERS); }
   }
 
   // Additional information
   if(data.additionalInformation !== undefined){
     if(typeof data.additionalInformation !== "string"){ throw new ValidationError(ValidationErrors.ADDITIONAL_INFORMATION_TYPE_IS_INVALID); }
     if(data.additionalInformation.length > 140){ throw new ValidationError(ValidationErrors.ADDITIONAL_INFORMATION_LENGTH_IS_INVALID); }
+    if(!hasAllowedCharactersOnly(data.additionalInformation)){ throw new ValidationError(ValidationErrors.ADDITIONAL_INFORMATION_INVALID_CHARACTERS); }
   }
 
   // Message + Additional information
@@ -68,11 +70,13 @@ export function validateData(data: Data): void {
   if(data.creditor.name === undefined){ throw new ValidationError(ValidationErrors.CREDITOR_NAME_IS_UNDEFINED); }
   if(typeof data.creditor.name !== "string"){ throw new ValidationError(ValidationErrors.CREDITOR_NAME_TYPE_IS_INVALID); }
   if(data.creditor.name.length > 70){ throw new ValidationError(ValidationErrors.CREDITOR_NAME_LENGTH_IS_INVALID); }
+  if(!hasAllowedCharactersOnly(data.creditor.name)){ throw new ValidationError(ValidationErrors.CREDITOR_NAME_INVALID_CHARACTERS); }
 
   // Creditor Address
   if(data.creditor.address === undefined){ throw new ValidationError(ValidationErrors.CREDITOR_ADDRESS_IS_UNDEFINED); }
   if(typeof data.creditor.address !== "string"){ throw new ValidationError(ValidationErrors.CREDITOR_ADDRESS_TYPE_IS_INVALID); }
   if(data.creditor.address.length > 70){ throw new ValidationError(ValidationErrors.CREDITOR_ADDRESS_LENGTH_IS_INVALID); }
+  if(!hasAllowedCharactersOnly(data.creditor.address)){ throw new ValidationError(ValidationErrors.CREDITOR_ADDRESS_INVALID_CHARACTERS); }
 
   // Creditor buildingNumber
   if(data.creditor.buildingNumber !== undefined){
@@ -89,6 +93,7 @@ export function validateData(data: Data): void {
   if(data.creditor.city === undefined){ throw new ValidationError(ValidationErrors.CREDITOR_CITY_IS_UNDEFINED); }
   if(typeof data.creditor.city !== "string"){ throw new ValidationError(ValidationErrors.CREDITOR_CITY_TYPE_IS_INVALID); }
   if(data.creditor.city.length > 35){ throw new ValidationError(ValidationErrors.CREDITOR_CITY_LENGTH_IS_INVALID); }
+  if(!hasAllowedCharactersOnly(data.creditor.city)){ throw new ValidationError(ValidationErrors.CREDITOR_CITY_INVALID_CHARACTERS); }
 
   // Creditor country
   if(data.creditor.country === undefined){ throw new ValidationError(ValidationErrors.CREDITOR_COUNTRY_IS_UNDEFINED); }
@@ -114,11 +119,13 @@ export function validateData(data: Data): void {
     if(data.debtor.name === undefined){ throw new ValidationError(ValidationErrors.DEBTOR_NAME_IS_UNDEFINED); }
     if(typeof data.debtor.name !== "string"){ throw new ValidationError(ValidationErrors.DEBTOR_NAME_TYPE_IS_INVALID); }
     if(data.debtor.name.length > 70){ throw new ValidationError(ValidationErrors.DEBTOR_NAME_LENGTH_IS_INVALID); }
+    if(!hasAllowedCharactersOnly(data.debtor.name)){ throw new ValidationError(ValidationErrors.DEBTOR_NAME_INVALID_CHARACTERS); }
 
     // Debtor address
     if(data.debtor.address === undefined){ throw new ValidationError(ValidationErrors.DEBTOR_ADDRESS_IS_UNDEFINED); }
     if(typeof data.debtor.address !== "string"){ throw new ValidationError(ValidationErrors.DEBTOR_ADDRESS_TYPE_IS_INVALID); }
     if(data.debtor.address.length > 70){ throw new ValidationError(ValidationErrors.DEBTOR_ADDRESS_LENGTH_IS_INVALID); }
+    if(!hasAllowedCharactersOnly(data.debtor.address)){ throw new ValidationError(ValidationErrors.DEBTOR_ADDRESS_INVALID_CHARACTERS); }
 
     // Debtor buildingNumber
     if(data.debtor.buildingNumber !== undefined){
@@ -135,6 +142,7 @@ export function validateData(data: Data): void {
     if(data.debtor.city === undefined){ throw new ValidationError(ValidationErrors.DEBTOR_CITY_IS_UNDEFINED); }
     if(typeof data.debtor.city !== "string"){ throw new ValidationError(ValidationErrors.DEBTOR_CITY_TYPE_IS_INVALID); }
     if(data.debtor.city.length > 35){ throw new ValidationError(ValidationErrors.DEBTOR_CITY_LENGTH_IS_INVALID); }
+    if(!hasAllowedCharactersOnly(data.debtor.city)){ throw new ValidationError(ValidationErrors.DEBTOR_CITY_INVALID_CHARACTERS); }
 
     // Debtor country
     if(data.debtor.country === undefined){ throw new ValidationError(ValidationErrors.DEBTOR_COUNTRY_IS_UNDEFINED); }
@@ -169,4 +177,8 @@ export function validateData(data: Data): void {
 
   }
 
+}
+
+function hasAllowedCharactersOnly(value: string): boolean {
+  return [...value].every(c => isAllowedCharacter(c.codePointAt(0)!));
 }

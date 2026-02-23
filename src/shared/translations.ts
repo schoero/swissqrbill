@@ -1,5 +1,5 @@
 export const translations = {
-  DE: {
+  de: {
     acceptancePoint: "Annahmestelle",
     account: "Konto / Zahlbar an",
     additionalInformation: "Zusätzliche Informationen",
@@ -13,7 +13,7 @@ export const translations = {
     reference: "Referenz",
     separate: "Vor der Einzahlung abzutrennen"
   },
-  EN: {
+  en: {
     acceptancePoint: "Acceptance point",
     account: "Account / Payable to",
     additionalInformation: "Additional information",
@@ -27,7 +27,7 @@ export const translations = {
     reference: "Reference",
     separate: "Separate before paying in"
   },
-  FR: {
+  fr: {
     acceptancePoint: "Point de dépôt",
     account: "Compte / Payable à",
     additionalInformation: "Informations supplémentaires",
@@ -41,7 +41,7 @@ export const translations = {
     reference: "Référence",
     separate: "A détacher avant le versement"
   },
-  IT: {
+  it: {
     acceptancePoint: "Punto di accettazione",
     account: "Conto / Pagabile a",
     additionalInformation: "Informazioni supplementari",
@@ -55,7 +55,7 @@ export const translations = {
     reference: "Riferimento",
     separate: "Da staccare prima del versamento"
   },
-  RM: {
+  rm: {
     acceptancePoint: "Post da recepziun",
     account: "Conto / Da pajar a",
     additionalInformation: "Infurmaziuns supplementaras",

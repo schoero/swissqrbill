@@ -20,20 +20,20 @@ import type { Creditor, Data, Debtor, FontName, Language, SVGOptions } from "swi
  *   creditor: {
  *     account: "CH44 3199 9123 0008 8901 2",
  *     address: "Musterstrasse",
- *     buildingNumber: 7,
+ *     buildingNumber: "7",
  *     city: "Musterstadt",
  *     country: "CH",
  *     name: "SwissQRBill",
- *     zip: 1234
+ *     zip: "1234"
  *   },
  *   currency: "CHF",
  *   debtor: {
  *     address: "Musterstrasse",
- *     buildingNumber: 1,
+ *     buildingNumber: "1",
  *     city: "Musterstadt",
  *     country: "CH",
  *     name: "Peter Muster",
- *     zip: 1234
+ *     zip: "1234"
  *   },
  *   reference: "21 00000 00003 13947 14300 09017"
  * };
@@ -48,7 +48,7 @@ export class SwissQRBill {
 
   private scissors: boolean = true;
   private outlines: boolean = true;
-  private language: Language = "DE";
+  private language: Language = "de";
   private font: FontName = "Arial";
   private data: Data;
 
@@ -64,7 +64,7 @@ export class SwissQRBill {
     validateData(this.data);
 
     // Apply options
-    this.language = options?.language !== undefined ? options.language : this.language;
+    this.language = options?.language !== undefined ? options.language.toLowerCase() as Language : this.language;
     this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
     this.font = options?.fontName !== undefined ? options.fontName : this.font;
     this.scissors = options?.scissors !== undefined ? options.scissors : this.scissors;
@@ -582,7 +582,7 @@ export class SwissQRBill {
 
 
   private _formatAddress(data: Creditor | Debtor): string[] {
-    const countryPrefix = data.country !== "CH" ? `${data.country} - ` : "";
+    const countryPrefix = data.country !== "CH" ? `${data.country}-` : "";
     if(data.buildingNumber !== undefined){
       return [data.name, `${data.address} ${data.buildingNumber}`, `${countryPrefix}${data.zip} ${data.city}`];
     } else {
