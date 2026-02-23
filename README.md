@@ -39,7 +39,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
     </picture>
   </a>
   
-  Invoices are a critical part of every business. Keeping this library up-to-date with the extensive specifications takes  time and effort.  
+  Invoices are a critical part of every business. Keeping this library up-to-date with the extensive specifications takes time and effort.
   If this library has been valuable to you, please consider becoming a sponsor, or make a one time donation to support its ongoing development.
 
 </div>
@@ -68,10 +68,45 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
 * Generate complete invoices, or only the QR Bill, as a PDF file.
 * Generate the QR Bill as a scalable vector graphic (SVG).
 * Works in browsers and Node.js.
-* Supports german, english, italian and french invoices.
+* Supports German, English, Italian, French, and Romansh invoices.
 * Allows you to add other content above the invoice using [PDFKit][pdfkit-github].
 * Easy to use.
 * Free and open source.
+
+<br/>
+
+## Supported character set
+
+Since [https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf Swiss Payment Standards Version 2.3], valid from 21 November 2025, the following UTF-8 characters are permitted in the Swiss QR Code:
+
+| Block | Range |
+|---|---|
+| Basic Latin | U+0020–U+007E |
+| Latin-1 Supplement | U+00A0–U+00FF |
+| Latin Extended-A | U+0100–U+017F |
+
+Plus the following additional characters:
+
+| Character | Name | Codepoint |
+|---|---|---|
+| Ș | Latin Capital Letter S with Comma Below | U+0218 |
+| ș | Latin Small Letter S with Comma Below | U+0219 |
+| Ț | Latin Capital Letter T with Comma Below | U+021A |
+| ț | Latin Small Letter T with Comma Below | U+021B |
+| € | Euro Sign | U+20AC |
+
+SwissQRBill validates all text fields against this character set and throws a [`ValidationError`][SwissQRBill-errors] for any character outside it.
+
+> **Note:** The built-in `"Helvetica"` font only covers Basic Latin and Latin-1 Supplement. If your data includes characters from Latin Extended-A or the additional characters above, you must register a Unicode TrueType font:
+>
+> ```js
+> pdf.registerFont("Arial", "/path/to/Arial-Regular.ttf");
+> pdf.registerFont("Arial-Bold", "/path/to/Arial-Bold.ttf");
+>
+> const qrBill = new SwissQRBill(data, { fontName: "Arial" });
+> ```
+>
+> SwissQRBill will print a warning to the console if such characters are detected when using the default font.
 
 <br/>
 
@@ -167,6 +202,7 @@ A simple guide how to generate a complete bill can be found in [docs/how-to-crea
 
 [SwissQRBill]: ./docs/pdf/index.md#class-swissqrbill
 [SwissQRBill-constructor]: ./docs/pdf/index.md#constructor-new-swissqrbilldata-options
+[SwissQRBill-errors]: ./docs/errors/index.md
 [importing-documentation]: ./docs/importing.md
 [repository-docs]: ./docs/
 [how-to-create-a-complete-qr-bill]: ./docs/how-to-create-a-complete-qr-bill.md
