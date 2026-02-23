@@ -103,6 +103,8 @@ interface QRBillOptions {
   /**
    * Font used for the QR-Bill.
    * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}.
+   * The built-in `Helvetica` font only covers Latin-1 characters. For names containing characters
+   * outside Latin-1 (e.g. `č`, `ž`, `ě`), register a Unicode TrueType font and pass its name here.
    *
    * @default 'Helvetica'
    * @example
@@ -114,7 +116,23 @@ interface QRBillOptions {
    * const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
    * ```
    */
-  fontName?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
+  fontName?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans" | (string & {});
+
+  /**
+   * Bold variant of the font used for the QR-Bill.
+   * Only needed when the bold font name does not follow the `{fontName}-Bold` convention.
+   * Fonts must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}.
+   *
+   * @default '{fontName}-Bold'
+   * @example
+   * ```ts
+   * pdf.registerFont("MyFont", "path/to/MyFont-Regular.ttf");
+   * pdf.registerFont("MyFont-Heavy", "path/to/MyFont-Bold.ttf");
+   *
+   * const qrBill = new SwissQRBill(data, { fontName: "MyFont", fontBoldName: "MyFont-Heavy" });
+   * ```
+   */
+  fontBoldName?: string;
 
   /**
    * The language with which the bill is rendered.
