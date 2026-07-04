@@ -131,6 +131,16 @@ interface QRBillOptions {
   outlines?: boolean;
 
   /**
+   * Whether you want to render `additionalInformation` visibly in the payment part text.
+   * Has to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+   *
+   * The value is still encoded in the QR payload even when this is `false`.
+   *
+   * @default `true`
+   */
+  renderAdditionalInformation?: boolean;
+
+  /**
    * Whether you want to show the scissors icons or the text `Separate before paying in`.
    *
    * **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.

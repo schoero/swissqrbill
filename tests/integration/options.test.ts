@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { minimalRequired } from "swissqrbill:tests:data/valid-data.js";
+import { minimalRequired, minimalRequiredWithAdditionalInformation } from "swissqrbill:tests:data/valid-data.js";
 import { pdf } from "swissqrbill:tests:utils/pdf.js";
 import { svg } from "swissqrbill:tests:utils/svg.js";
 
@@ -47,6 +47,22 @@ describe("options", async () => {
     const pdfSnapshot = await pdf(minimalRequired, `options/${name}.pdf`, { fontName: "Courier" });
     // @ts-expect-error Courier isn't allowed by the specs but for testing, it is easier to use a built-in font instead of registering one.
     const svgSnapshot = await svg(minimalRequired, `options/${name}.svg`, { fontName: "Courier" });
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
+
+  test("additional Information is visible when renderAdditionalInformation is true", async () => {
+    const name = "additional-information-visible";
+    const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `options/${name}.pdf`, { renderAdditionalInformation: true });
+    const svgSnapshot = await svg(minimalRequiredWithAdditionalInformation, `options/${name}.svg`, { renderAdditionalInformation: true });
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
+
+  test("additional Information is not rendered when renderAdditionalInformation is false", async () => {
+    const name = "additional-information-hidden";
+    const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `options/${name}.pdf`, { renderAdditionalInformation: false });
+    const svgSnapshot = await svg(minimalRequiredWithAdditionalInformation, `options/${name}.svg`, { renderAdditionalInformation: false });
     expect(pdfSnapshot).toMatchSnapshot();
     expect(svgSnapshot).toMatchSnapshot();
   });
