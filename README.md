@@ -39,7 +39,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
     </picture>
   </a>
   
-  Invoices are a critical part of every business. Keeping this library up-to-date with the extensive specifications takes  time and effort.  
+  Invoices are a critical part of every business. Keeping this library up-to-date with the extensive specifications takes time and effort.  
   If this library has been valuable to you, please consider becoming a sponsor, or make a one time donation to support its ongoing development.
 
 </div>
@@ -68,7 +68,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
 * Generate complete invoices, or only the QR Bill, as a PDF file.
 * Generate the QR Bill as a scalable vector graphic (SVG).
 * Works in browsers and Node.js.
-* Supports german, english, italian and french invoices.
+* Supports German, English, Italian, French, and Romansh invoices.
 * Allows you to add other content above the invoice using [PDFKit][pdfkit-github].
 * Easy to use.
 * Free and open source.
