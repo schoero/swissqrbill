@@ -18,7 +18,7 @@
   
 ### Type alias: Language
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L169C0)  
   
 #### Type
   
@@ -28,7 +28,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)
   
 ### Type alias: FontName
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L160C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L170C0)  
   
 #### Type
   
@@ -38,7 +38,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L160C0)
   
 ### Type alias: Currency
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L161C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L171C0)  
   
 #### Type
   
@@ -102,7 +102,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L93C0)
   
 ### Interface: PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
   
 - **fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
@@ -118,6 +118,10 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)
   
 - **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **renderAdditionalInformation** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render `additionalInformation` visibly in the payment part text.
+  Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+  
+  The value is still encoded in the QR payload even when this is `false` `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
@@ -125,7 +129,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)
   
 ### Interface: SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L165C0)  
   
 - **fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
@@ -141,4 +145,8 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)
   
 - **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **renderAdditionalInformation** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render `additionalInformation` visibly in the payment part text.
+  Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+  
+  The value is still encoded in the QR payload even when this is `false` `optional`
 - **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
