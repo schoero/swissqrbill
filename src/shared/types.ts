@@ -136,7 +136,7 @@ interface QRBillOptions {
    *
    * The value is still encoded in the QR payload even when this is `false`.
    *
-   * @default `true`
+   * @default `false`
    */
   renderAdditionalInformation?: boolean;
 
