@@ -1,6 +1,18 @@
 
 # Change Log
 
+## v4.4.0
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.3.0...v4.4.0)
+
+### Features
+
+- Add option to prevent rendering of `additionalInformation` ([#472](https://github.com/schoero/swissqrbill/pull/472))
+
+### Documentation
+
+- Add missing language ([#473](https://github.com/schoero/swissqrbill/pull/473))
+
 ## v4.3.0
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.2.1...v4.3.0)
