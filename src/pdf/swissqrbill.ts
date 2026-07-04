@@ -484,6 +484,7 @@ export class SwissQRBill {
     // Message / Additional information
     const shouldRenderAdditionalInformation = this.renderAdditionalInformation && this.data.additionalInformation !== undefined;
     const shouldRenderMessageSection = this.data.message !== undefined || shouldRenderAdditionalInformation;
+
     if(shouldRenderMessageSection){
 
       doc.fontSize(8);
