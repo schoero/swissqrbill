@@ -55,6 +55,7 @@ export class SwissQRBill {
   private outlines: boolean = true;
   private language: Language = "DE";
   private font: string = "Helvetica";
+  private renderAdditionalInformation: boolean = true;
 
   private _x: number = 0;
   private _y: number = 0;
@@ -78,6 +79,7 @@ export class SwissQRBill {
     this.language = options?.language !== undefined ? options.language : this.language;
     this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
     this.font = options?.fontName !== undefined ? options.fontName : this.font;
+    this.renderAdditionalInformation = options?.renderAdditionalInformation !== undefined ? options.renderAdditionalInformation : this.renderAdditionalInformation;
 
     if(options?.scissors !== undefined){
       this.scissors = options.scissors;
@@ -480,7 +482,10 @@ export class SwissQRBill {
     }
 
     // Message / Additional information
-    if(this.data.message !== undefined || this.data.additionalInformation !== undefined){
+    const shouldRenderAdditionalInformation = this.renderAdditionalInformation && this.data.additionalInformation !== undefined;
+    const shouldRenderMessageSection = this.data.message !== undefined || shouldRenderAdditionalInformation;
+
+    if(shouldRenderMessageSection){
 
       doc.fontSize(8);
       doc.font(`${this.font}-Bold`);
@@ -500,9 +505,11 @@ export class SwissQRBill {
       const singleLineHeight = doc.heightOfString("A", options);
       const referenceType = getReferenceType(this.data.reference);
       const maxLines = referenceType === "QRR" || referenceType === "SCOR" ? 3 : 4;
-      const linesOfAdditionalInformation = this.data.additionalInformation !== undefined ? doc.heightOfString(this.data.additionalInformation, options) / singleLineHeight : 0;
+      const linesOfAdditionalInformation = shouldRenderAdditionalInformation && this.data.additionalInformation !== undefined
+        ? doc.heightOfString(this.data.additionalInformation, options) / singleLineHeight
+        : 0;
 
-      if(this.data.additionalInformation !== undefined){
+      if(shouldRenderAdditionalInformation){
 
         if(referenceType === "QRR" || referenceType === "SCOR"){
 
@@ -521,7 +528,7 @@ export class SwissQRBill {
 
         }
 
-        doc.text(this.data.additionalInformation, options);
+        doc.text(this.data.additionalInformation!, options);
 
       } else if(this.data.message !== undefined){
         doc.text(this.data.message, { ...options, ellipsis: true, height: singleLineHeight * maxLines, lineBreak: true });

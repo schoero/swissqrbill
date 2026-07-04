@@ -171,7 +171,7 @@ pdf.end();
   
 ##### Constructor: new pdf.SwissQRBill(data\[, options\])
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L69C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L70C2)  
   
 ###### Parameters
   
@@ -196,7 +196,7 @@ Creates a new SwissQRBill instance.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L152C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L154C2)  
   
 ###### Type
   
@@ -212,7 +212,7 @@ The horizontal size of the QR Bill.
   
 `public` `static` `readonly`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L157C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L159C2)  
   
 ###### Type
   
@@ -228,7 +228,7 @@ The vertical size of the QR Bill.
   
 `public`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L106C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L108C2)  
   
 ###### Parameters
   
@@ -251,7 +251,7 @@ enough space is left on the current page.
   
 `public` `static`  
   
-Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L135C2)  
+Defined in: [src/pdf/swissqrbill.ts](../../src/pdf/swissqrbill.ts#L137C2)  
   
 ###### Parameters
   
@@ -610,7 +610,7 @@ writeFileSync("qr-bill.svg", svg.toString());
   
 ##### Constructor: new svg.SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L56C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L57C2)  
   
 ###### Parameters
   
@@ -639,7 +639,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L47C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L87C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L89C2)  
   
 ###### Return Type
   
@@ -655,7 +655,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L97C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L99C2)  
   
 ###### Return Type
   
@@ -748,7 +748,7 @@ Defined in: [src/bundle/index.ts](../../src/bundle/index.ts#L4C7)
   
 #### Type alias: types.Language
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L169C0)  
   
 ##### Type
   
@@ -758,7 +758,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L159C0)
   
 #### Type alias: types.FontName
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L160C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L170C0)  
   
 ##### Type
   
@@ -768,7 +768,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L160C0)
   
 #### Type alias: types.Currency
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L161C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L171C0)  
   
 ##### Type
   
@@ -832,7 +832,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L93C0)
   
 #### Interface: types.PDFOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
   
 - **types.fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
@@ -848,6 +848,10 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)
   
 - **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **types.renderAdditionalInformation** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render `additionalInformation` visibly in the payment part text.
+  Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+  
+  The value is still encoded in the QR payload even when this is `false` `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
 - **types.separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
@@ -855,7 +859,7 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L143C0)
   
 #### Interface: types.SVGOptions
   
-Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)  
+Defined in: [src/shared/types.ts](../../src/shared/types.ts#L165C0)  
   
 - **types.fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
   Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
@@ -871,6 +875,10 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L155C0)
   
 - **types.language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
 - **types.outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **types.renderAdditionalInformation** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render `additionalInformation` visibly in the payment part text.
+  Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+  
+  The value is still encoded in the QR payload even when this is `false` `optional`
 - **types.scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
   
 <br/>

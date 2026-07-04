@@ -50,6 +50,7 @@ export class SwissQRBill {
   private outlines: boolean = true;
   private language: Language = "DE";
   private font: FontName = "Arial";
+  private renderAdditionalInformation: boolean = true;
   private data: Data;
 
 
@@ -68,6 +69,7 @@ export class SwissQRBill {
     this.outlines = options?.outlines !== undefined ? options.outlines : this.outlines;
     this.font = options?.fontName !== undefined ? options.fontName : this.font;
     this.scissors = options?.scissors !== undefined ? options.scissors : this.scissors;
+    this.renderAdditionalInformation = options?.renderAdditionalInformation !== undefined ? options.renderAdditionalInformation : this.renderAdditionalInformation;
 
     // Create SVG
     this.instance = new SVG();
@@ -440,7 +442,10 @@ export class SwissQRBill {
     }
 
     // Message / Additional information
-    if(this.data.message !== undefined || this.data.additionalInformation !== undefined){
+    const shouldRenderAdditionalInformation = this.renderAdditionalInformation && this.data.additionalInformation !== undefined;
+    const shouldRenderMessageSection = this.data.message !== undefined || shouldRenderAdditionalInformation;
+
+    if(shouldRenderMessageSection){
 
       paymentPartRightTextContainer.addTSpan(translations[this.language].additionalInformation)
         .x(0)
@@ -453,9 +458,9 @@ export class SwissQRBill {
       const maxLines = referenceType === "QRR" || referenceType === "SCOR" ? 3 : 4;
       const lengthInPixel = mm2px(87);
       const linesOfMessage = this._getLineCountOfText(this.data.message, lengthInPixel, "10pt");
-      const linesOfAdditionalInformation = this._getLineCountOfText(this.data.additionalInformation, lengthInPixel, "10pt");
+      const linesOfAdditionalInformation = this._getLineCountOfText(shouldRenderAdditionalInformation ? this.data.additionalInformation : undefined, lengthInPixel, "10pt");
 
-      if(this.data.additionalInformation !== undefined){
+      if(shouldRenderAdditionalInformation){
 
         if(referenceType === "QRR" || referenceType === "SCOR"){
 
@@ -494,7 +499,7 @@ export class SwissQRBill {
 
         }
 
-        const additionalInformationLines = this._fitTextToWidth(this.data.additionalInformation, lengthInPixel, linesOfAdditionalInformation, "10pt");
+        const additionalInformationLines = this._fitTextToWidth(this.data.additionalInformation!, lengthInPixel, linesOfAdditionalInformation, "10pt");
         for(let i = 0; i < linesOfAdditionalInformation; i++){
           paymentPartRightTextContainer.addTSpan(additionalInformationLines[i])
             .x(0)
@@ -557,7 +562,8 @@ export class SwissQRBill {
         .fontSize("8pt");
 
       const referenceHeight = this.data.reference !== undefined ? pt2mm(22) : 0;
-      const additionalInformationHeight = this.data.additionalInformation !== undefined || this.data.message !== undefined ? pt2mm(22) : 0;
+      const shouldRenderAdditionalInformation = this.renderAdditionalInformation && this.data.additionalInformation !== undefined;
+      const additionalInformationHeight = this.data.message !== undefined || shouldRenderAdditionalInformation ? pt2mm(22) : 0;
 
       this._addRectangle(
         118,

@@ -71,7 +71,7 @@ writeFileSync("qr-bill.svg", svg.toString());
   
 #### Constructor: new SwissQRBill(data\[, options\])
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L56C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L57C2)  
   
 ##### Parameters
   
@@ -100,7 +100,7 @@ Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L47C2)
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L87C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L89C2)  
   
 ##### Return Type
   
@@ -116,7 +116,7 @@ Outputs the SVG as a string.
   
 `public`  
   
-Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L97C2)  
+Defined in: [src/svg/swissqrbill.ts](../../src/svg/swissqrbill.ts#L99C2)  
   
 ##### Return Type
   
