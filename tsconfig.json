@@ -1,7 +1,6 @@
 {
   "extends": "@schoero/configs/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
     "checkJs": true,
     "declaration": false,
     "declarationMap": false,
@@ -11,14 +10,16 @@
     "noImplicitAny": false,
     "outDir": "lib",
     "paths": {
-      "swissqrbill:bundle": ["src/bundle/index.js"],
-      "swissqrbill:errors": ["src/shared/errors.js"],
-      "swissqrbill:pdf": ["src/pdf/index.js"],
-      "swissqrbill:shared:*": ["src/shared/*"],
-      "swissqrbill:svg": ["src/svg/index.js"],
-      "swissqrbill:tests:*": ["tests/*"],
-      "swissqrbill:types": ["src/shared/types.js"],
-      "swissqrbill:utils": ["src/shared/utils.js"]
+      "*": ["./*"],
+
+      "swissqrbill:bundle": ["./src/bundle/index.js"],
+      "swissqrbill:errors": ["./src/shared/errors.js"],
+      "swissqrbill:pdf": ["./src/pdf/index.js"],
+      "swissqrbill:shared:*": ["./src/shared/*"],
+      "swissqrbill:svg": ["./src/svg/index.js"],
+      "swissqrbill:tests:*": ["./tests/*"],
+      "swissqrbill:types": ["./src/shared/types.js"],
+      "swissqrbill:utils": ["./src/shared/utils.js"]
     },
     "rootDir": "."
   },
