@@ -51,7 +51,7 @@ describe("options", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-  test("additional Information is visible when renderAdditionalInformation is true", async () => {
+  test("additional information visible", async () => {
     const name = "additional-information-visible";
     const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `options/${name}.pdf`, { renderAdditionalInformation: true });
     const svgSnapshot = await svg(minimalRequiredWithAdditionalInformation, `options/${name}.svg`, { renderAdditionalInformation: true });
@@ -59,10 +59,22 @@ describe("options", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
-  test("additional Information is not rendered when renderAdditionalInformation is false", async () => {
+  test("additional information hidden", async () => {
     const name = "additional-information-hidden";
     const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `options/${name}.pdf`, { renderAdditionalInformation: false });
     const svgSnapshot = await svg(minimalRequiredWithAdditionalInformation, `options/${name}.svg`, { renderAdditionalInformation: false });
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
+
+  test("message visible with additional information hidden", async () => {
+    const name = "additional-information-hidden-message-visible";
+    const data = {
+      ...minimalRequiredWithAdditionalInformation,
+      message: "Message should still be visible"
+    };
+    const pdfSnapshot = await pdf(data, `options/${name}.pdf`, { renderAdditionalInformation: false });
+    const svgSnapshot = await svg(data, `options/${name}.svg`, { renderAdditionalInformation: false });
     expect(pdfSnapshot).toMatchSnapshot();
     expect(svgSnapshot).toMatchSnapshot();
   });
