@@ -132,7 +132,7 @@ interface QRBillOptions {
 
   /**
    * Whether you want to render `additionalInformation` visibly in the payment part text.
-   * Has to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+   * Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
    *
    * The value is still encoded in the QR payload even when this is `false`.
    *
