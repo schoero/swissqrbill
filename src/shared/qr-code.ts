@@ -86,7 +86,7 @@ export function renderQRCode(data: Data, size: number, renderBlockFunction: (x: 
   const qrData = generateQRData(data);
   const eci = qrcodegen.QrSegment.makeEci(26);
   const segments = qrcodegen.QrSegment.makeSegments(qrData);
-  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM, 10, 25);
+  const qrCode = qrcodegen.QrCode.encodeSegments([eci, ...segments], qrcodegen.QrCode.Ecc.MEDIUM, 10, 25, -1 ,false);
 
   const blockSize = size / qrCode.size;
 
