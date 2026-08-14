@@ -25,7 +25,7 @@ export const invalidCreditorAccountCountry = {
     ...minimalRequired.creditor,
     account: "HR17 2360 0001 1012 3456 5"
   }
-} as unknown as Data;
+};
 
 // Creditor account length too long
 export const creditorAccountTooLong = {
@@ -34,7 +34,7 @@ export const creditorAccountTooLong = {
     ...minimalRequired.creditor,
     account: "CH58 0079 1123 0008 8901 27"
   }
-} as unknown as Data;
+};
 
 // Creditor account length too short
 export const creditorAccountTooShort = {
@@ -43,7 +43,7 @@ export const creditorAccountTooShort = {
     ...minimalRequired.creditor,
     account: "CH58 0079 1123 0008 8901"
   }
-} as unknown as Data;
+};
 
 // Invalid creditor account
 export const invalidCreditorAccount = {
@@ -52,7 +52,7 @@ export const invalidCreditorAccount = {
     ...minimalRequired.creditor,
     account: "CH58 0079 1123 0008 8902 2"
   }
-} as unknown as Data;
+};
 
 // QR-IBAN with missing reference
 export const qrIbanMissingReference = {
@@ -121,7 +121,7 @@ export const creditorNameTooLong = {
     ...minimalRequired.creditor,
     name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi euismod."
   }
-} as unknown as Data;
+};
 
 // Creditor with missing address
 export const creditorMissingAddress = {
@@ -148,7 +148,7 @@ export const creditorAddressTooLong = {
     ...minimalRequired.creditor,
     address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi euismod."
   }
-} as unknown as Data;
+};
 
 // Creditor with invalid building number type
 export const creditorInvalidBuildingNumberType = {
@@ -220,7 +220,7 @@ export const creditorCityTooLong = {
     ...minimalRequired.creditor,
     city: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi euismod."
   }
-} as unknown as Data;
+};
 
 // Creditor with missing country
 export const creditorMissingCountry = {
@@ -247,7 +247,7 @@ export const creditorCountryTooShort = {
     ...minimalRequired.creditor,
     country: "C"
   }
-} as unknown as Data;
+};
 
 // Creditor with country too long
 export const creditorCountryTooLong = {
@@ -256,7 +256,7 @@ export const creditorCountryTooLong = {
     ...minimalRequired.creditor,
     country: "CHE"
   }
-} as unknown as Data;
+};
 
 // Amount type is invalid
 export const amountInvalidType = {
