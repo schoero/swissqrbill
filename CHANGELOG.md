@@ -1,6 +1,15 @@
 
 # Change Log
 
+## v4.4.1
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.0...v4.4.1)
+
+### Fixes
+
+- Enforce error correction level `M` ([#478](https://github.com/schoero/swissqrbill/pull/478))
+- Omit additional information when not provided ([#477](https://github.com/schoero/swissqrbill/pull/477))
+
 ## v4.4.0
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.3.0...v4.4.0)
