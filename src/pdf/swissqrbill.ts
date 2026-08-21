@@ -55,7 +55,7 @@ export class SwissQRBill {
   private outlines: boolean = true;
   private language: Language = "DE";
   private font: string = "Helvetica";
-  private renderAdditionalInformation: boolean = true;
+  private renderAdditionalInformation: boolean = false;
 
   private _x: number = 0;
   private _y: number = 0;
