@@ -14,7 +14,7 @@ export function cleanData(data: Data): Data {
 
         if(typeof value === "string"){
           if(key === "account"){
-            return [key, removeLineBreaks(removeSpaces(value))];
+            return [key, removeLineBreaks(removeSpaces(value).toUpperCase())];
           }
           if(key === "reference"){
             return [key, removeLineBreaks(removeSpaces(value))];

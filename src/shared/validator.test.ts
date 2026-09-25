@@ -132,6 +132,17 @@ describe("validator", async () => {
       .toThrow(ValidationErrors.CREDITOR_ACCOUNT_IS_UNDEFINED);
   });
 
+  it("should accept a lowercase Swiss IBAN", async () => {
+    const data = {
+      ...minimalRequired,
+      creditor: {
+        ...minimalRequired.creditor,
+        account: "ch58 0079 1123 0008 8901 2"
+      }
+    };
+    expect(() => validateData(cleanData(data))).not.toThrow();
+  });
+
   it("should throw a ValidationError if the creditor account country is invalid", async () => {
     expect(() => validateData(cleanData(invalidCreditorAccountCountry)))
       .toThrow(ValidationErrors.CREDITOR_ACCOUNT_COUNTRY_IS_INVALID);
