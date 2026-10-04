@@ -1,6 +1,18 @@
 
 # Change Log
 
+## v4.4.2
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.1...v4.4.2)
+
+### Fixes
+
+- Accept a lowercase Swiss IBAN ([#479](https://github.com/schoero/swissqrbill/pull/479))
+
+### ❤️ Contributors
+
+- Sash <sash@ela.city>
+
 ## v4.4.1
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.0...v4.4.1)
