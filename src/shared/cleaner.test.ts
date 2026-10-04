@@ -29,14 +29,14 @@ describe("cleaner", () => {
     });
   });
 
-  it("should remove all spaces from the account", () => {
+  it("should remove spaces from the account and uppercase it", () => {
     expect(cleanData({
       creditor: {
         account: "Hello World 123"
       }
     } as Data)).toEqual({
       creditor: {
-        account: "HelloWorld123"
+        account: "HELLOWORLD123"
       }
     });
   });
