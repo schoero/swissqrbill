@@ -407,7 +407,7 @@ export class SwissQRBill {
 
     let paymentPartCreditorAddressLines: string[] = [];
     for(const line of formattedCreditorAddress){
-      const messageLines = this._fitTextToWidth(line, mm2px(52), 2, "8pt");
+      const messageLines = this._fitTextToWidth(line, mm2px(87), 2, "10pt");
       paymentPartCreditorAddressLines = [...paymentPartCreditorAddressLines, ...messageLines];
     }
 
@@ -539,7 +539,7 @@ export class SwissQRBill {
 
       let paymentPartDebtorAddressLines: string[] = [];
       for(const line of formattedDebtorAddress){
-        const messageLines = this._fitTextToWidth(line, mm2px(52), 2, "8pt");
+        const messageLines = this._fitTextToWidth(line, mm2px(87), 2, "10pt");
         paymentPartDebtorAddressLines = [...paymentPartDebtorAddressLines, ...messageLines];
       }
 
