@@ -91,4 +91,15 @@ describe("qr-bill", async () => {
     expect(pdf.snapshots).toMatchSnapshot();
   });
 
+  it("should render the separate text relative to a freely placed qr bill", async () => {
+    const pdf = new TestDocument("qr-bill/freely-placed-separate.pdf", { layout: "landscape", size: "A4" });
+    const qrBill = new SwissQRBill(minimalRequired, { separate: true });
+
+    qrBill.attachTo(pdf, mm2pt(43.5), mm2pt(52.5));
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
+
 });
