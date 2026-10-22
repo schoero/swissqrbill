@@ -232,7 +232,7 @@ export class SwissQRBill {
         .fontWeight("bold")
         .fontSize("6pt");
 
-      const referenceHeight = this.data.reference !== undefined ? pt2mm(18) : 0;
+      const referenceHeight = this.data.reference !== undefined ? 18 : 0;
       this._addRectangle(
         5,
         12 + pt2mm(9) + receiptLineCount * pt2mm(9) + pt2mm(referenceHeight) + pt2mm(18) + 1,
