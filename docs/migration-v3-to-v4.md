@@ -38,9 +38,8 @@ Lots of the API has changed. The following list contains the most important chan
   - `swissqrbill/utils`
   - `swissqrbill/types`
   - `swissqrbill/errors`
-  - `swissqrbill/bundle`
 - SwissQRBill no longer extends PDFKit. Instead, it is now a standalone class that can be used to create a QR Slip. The QR Slip can then be attached to any existing PDFKit document.
-- The table method is now it's own class and has been completely rewritten. As a part of the rewrite, some properties have been renamed. Check the [updated documentation](./pdf/index.md#table) for the new names. The Table class can now also be attached to any existing PDFKit document.
+- The table method is now its own class and has been completely rewritten. As a part of the rewrite, some properties have been renamed. Check the [updated documentation](./pdf/index.md#class-table) for the new names. The Table class can now also be attached to any existing PDFKit document.
 - Events have been removed from SwissQRBill.
 
 <br/>
@@ -84,7 +83,6 @@ If you previously used the pre built bundle, provided by SwissQRBill, you now ha
 ```html
 <!-- SwissQRBill >= v4 -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pdfkit@0/js/pdfkit.standalone.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@latest/+esm"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swissqrbill@latest/lib/bundle/swissqrbill.js"></script>
 ```
 
@@ -95,7 +93,7 @@ Again, please have a look at the [importing documentation](./importing.md) for m
 ### Standalone classes
 
 Since SwissQRBill is now a standalone class, you have to create the PDFDocument separately from the QR slip.
-You can then attach the QR slip to the document using the [`attachTo()`](./pdf/index.md#swissqrbillattachtodoc-x-y) method.
+You can then attach the QR slip to the document using the [`attachTo()`](./pdf/index.md#method-swissqrbillattachtodoc-x-y) method.
 
 ```ts
 const pdf = new PDFDocument();

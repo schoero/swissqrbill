@@ -25,14 +25,14 @@ export interface Data {
   /**
    * Alternative scheme. **Max. 100 characters.**.
    *
-   * Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf).
+   * Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative procedures” section](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf#page=23).
    */
   av1?: string;
 
   /**
    * Alternative scheme. **Max. 100 characters.**.
    *
-   * Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf).
+   * Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative procedures” section](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf#page=23).
    */
   av2?: string;
 
@@ -102,16 +102,16 @@ interface QRBillOptions {
 
   /**
    * Font used for the QR-Bill.
-   * Fonts other than Helvetica must be registered in the PDFKit document. {@link http://pdfkit.org/docs/text.html#fonts}.
+   * For PDFs, fonts other than Helvetica must be registered in the PDFKit document, together with a bold variant named `<fontName>-Bold`. {@link http://pdfkit.org/docs/text.html#fonts}.
    *
-   * @default 'Helvetica'
+   * @default 'Helvetica' for PDFs and 'Arial' for SVGs
    * @example
    * ```ts
    * // Register the font
-   * pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
-   * pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+   * pdf.registerFont("Liberation Sans", "path/to/LiberationSans-Regular.ttf");
+   * pdf.registerFont("Liberation Sans-Bold", "path/to/LiberationSans-Bold.ttf");
    *
-   * const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
+   * const qrBill = new SwissQRBill(data, { fontName: "Liberation Sans" });
    * ```
    */
   fontName?: "Arial" | "Frutiger" | "Helvetica" | "Liberation Sans";
@@ -124,7 +124,7 @@ interface QRBillOptions {
   language?: "DE" | "EN" | "FR" | "IT" | "RM";
 
   /**
-   * Whether you want render the outlines. This option may be disabled if you use perforated paper.
+   * Whether you want to render the outlines. This option may be disabled if you use perforated paper.
    *
    * @default `true`
    */
@@ -132,7 +132,7 @@ interface QRBillOptions {
 
   /**
    * Whether you want to render `additionalInformation` visibly in the payment part text.
-   * Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+   * Must be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
    *
    * The value is still encoded in the QR payload even when this is `false`.
    *
@@ -141,9 +141,9 @@ interface QRBillOptions {
   renderAdditionalInformation?: boolean;
 
   /**
-   * Whether you want to show the scissors icons or the text `Separate before paying in`.
+   * Whether you want to show the scissors icons. For PDFs, the text `Separate before paying in` is shown instead when this is set to `false`.
    *
-   * **Warning:** Setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
+   * **Warning:** For PDFs, setting **scissors** to false sets **separate** to true. To disable scissors and separate, you have to set both options to false.
    *
    * @default `true`
    */

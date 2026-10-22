@@ -58,10 +58,10 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L1C0)
 - **amount** [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) The amount. **Max. 12 digits.**. `optional`
 - **av1** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**.
   
-  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf). `optional`
+  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative procedures” section](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf#page=23). `optional`
 - **av2** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) Alternative scheme. **Max. 100 characters.**.
   
-  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative scheme” section](https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf). `optional`
+  Parameter character chain of the alternative scheme according to the syntax definition in the [“Alternative procedures” section](https://www.six-group.com/dam/download/banking-services/standardization/qr-bill/ig-qr-bill-v2.3-en.pdf#page=23). `optional`
 - **debtor** [`Debtor`](#interface-debtor) Debtor related data. `optional`
 - **message** [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) A message. **Max. 140 characters.**.
   
@@ -105,24 +105,24 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L93C0)
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)  
   
 - **fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
-  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
+  For PDFs, fonts other than Helvetica must be registered in the PDFKit document, together with a bold variant named `<fontName>-Bold` [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
   
   *Example:*
   
   ```ts
   // Register the font
-  pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
-  pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
-  const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
+  pdf.registerFont("Liberation Sans", "path/to/LiberationSans-Regular.ttf");
+  pdf.registerFont("Liberation Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+  const qrBill = new SwissQRBill(data, { fontName: "Liberation Sans" });
   ```
   
 - **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
-- **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **renderAdditionalInformation** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render `additionalInformation` visibly in the payment part text.
-  Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+  Must be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
   
   The value is still encoded in the QR payload even when this is `false` `optional`
-- **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
+- **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons. For PDFs, the text `Separate before paying in` is shown instead when this is set to `false` `optional`
 - **separate** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the text `Separate before paying in` `optional`
   
 <br/>
@@ -132,21 +132,21 @@ Defined in: [src/shared/types.ts](../../src/shared/types.ts#L153C0)
 Defined in: [src/shared/types.ts](../../src/shared/types.ts#L165C0)  
   
 - **fontName** `"Arial"` | `"Frutiger"` | `"Helvetica"` | `"Liberation Sans"` Font used for the QR-Bill.
-  Fonts other than Helvetica must be registered in the PDFKit document.  [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
+  For PDFs, fonts other than Helvetica must be registered in the PDFKit document, together with a bold variant named `<fontName>-Bold` [http://pdfkit.org/docs/text.html#fonts](http://pdfkit.org/docs/text.html#fonts) . `optional`
   
   *Example:*
   
   ```ts
   // Register the font
-  pdf.registerFont("Liberation-Sans", "path/to/LiberationSans-Regular.ttf");
-  pdf.registerFont("Liberation-Sans-Bold", "path/to/LiberationSans-Bold.ttf");
-  const qrBill = new SwissQRBill(data, { fontName: "Liberation-Sans" });
+  pdf.registerFont("Liberation Sans", "path/to/LiberationSans-Regular.ttf");
+  pdf.registerFont("Liberation Sans-Bold", "path/to/LiberationSans-Bold.ttf");
+  const qrBill = new SwissQRBill(data, { fontName: "Liberation Sans" });
   ```
   
 - **language** `"DE"` | `"EN"` | `"FR"` | `"IT"` | `"RM"` The language with which the bill is rendered. `optional`
-- **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want render the outlines. This option may be disabled if you use perforated paper. `optional`
+- **outlines** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render the outlines. This option may be disabled if you use perforated paper. `optional`
 - **renderAdditionalInformation** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to render `additionalInformation` visibly in the payment part text.
-  Should to be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
+  Must be set to `true` if the field contains personal data within the meaning of the applicable data protection legislation.
   
   The value is still encoded in the QR payload even when this is `false` `optional`
-- **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons or the text `Separate before paying in` `optional`
+- **scissors** [`boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) Whether you want to show the scissors icons. For PDFs, the text `Separate before paying in` is shown instead when this is set to `false` `optional`

@@ -28,7 +28,7 @@ SwissQRBill exposes different classes and functions that can be used to create a
 - [PDF](./pdf/index.md)
   - [SwissQRBill](./pdf/index.md#class-swissqrbill)
   - [SwissQRCode](./pdf/index.md#class-swissqrcode)
-  - [Table](./pdf/index.md#table)
+  - [Table](./pdf/index.md#class-table)
 - [SVG](./svg/index.md)
   - [SwissQRBill](./svg/index.md#class-swissqrbill)
   - [SwissQRCode](./svg/index.md#class-swissqrcode)

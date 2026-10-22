@@ -17,9 +17,9 @@ Each example below is available as a StackBlitz project.
 - [Browser: Bundling with webpack](#browser-bundling-with-webpack)
 - [Browser: Pre-built bundle](#browser-pre-built-bundle)
 
-### Node JS
+## Node.js
 
-#### Node.js: ES Module import
+### Node.js: ES Module import
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][node-esm-javascript]
 
@@ -34,7 +34,7 @@ import { SwissQRBill } from "swissqrbill/pdf";
 import { SwissQRBill } from "swissqrbill/svg";
 ```
 
-#### Node.js: CommonJS import
+### Node.js: CommonJS import
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)][node-cjs-javascript]
 
@@ -73,7 +73,6 @@ PDFKit provides a pre-built bundle that can be used directly in the browser. Sim
 
 ```html
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pdfkit@0/js/pdfkit.standalone.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/blob-stream@latest/+esm"></script>
 ```
 
 ```html
@@ -85,12 +84,28 @@ The bundle exposes all exports in the global variable `SwissQRBill`.
 ```ts
 const SwissQRBill = {
   errors,
-  PDF,
-  SVG,
-  table,
+  pdf,
+  svg,
   types,
   utils
 };
+```
+
+To display the generated PDF in the browser, collect the data emitted by PDFKit and create a `Blob` from it:
+
+```ts
+const pdf = new PDFDocument();
+const qrBill = new SwissQRBill.pdf.SwissQRBill(data);
+
+const chunks = [];
+pdf.on("data", chunk => chunks.push(chunk));
+pdf.on("end", () => {
+  const blob = new Blob(chunks, { type: "application/pdf" });
+  window.location.href = URL.createObjectURL(blob);
+});
+
+qrBill.attachTo(pdf);
+pdf.end();
 ```
 
 [node-esm-javascript]: https://stackblitz.com/fork/github/schoero/swissqrbill/tree/main/examples/node-esm-javascript?file=src%2Fsvg.js,src%2Fpdf.js&title=SwissQRBill%20Node%20ESM%20JavaScript&startScript=generate

@@ -19,7 +19,7 @@
 <br/>
 <br/>
 
-With SwissQRBill you can easily generate the new QR Code payment slips as a PDF or SVG in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and replaces the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#creating-a-complete-invoice) with [PDFKit][pdfkit-npm] by inserting your own content above the payment section.
+With SwissQRBill you can easily generate the new QR Code payment slips as a PDF or SVG in Node.js and the browser. The new QR Code payment slips were introduced in Switzerland on June 30th, 2020 and have replaced the old payment slips since October 1st, 2022. In addition to the payment section, you can [generate a complete invoice](#creating-a-complete-invoice) with [PDFKit][pdfkit-npm] by inserting your own content above the payment section.
 
 <br/>
 <br/>
@@ -35,7 +35,7 @@ With SwissQRBill you can easily generate the new QR Code payment slips as a PDF 
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsor-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="./assets/sponsor-light.svg">
-      <img alt="eslint-plugin-readable-tailwind logo" src="./assets/sponsor-dark.svg">
+      <img alt="Become a sponsor" src="./assets/sponsor-dark.svg">
     </picture>
   </a>
   
