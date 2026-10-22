@@ -232,7 +232,7 @@ export class SwissQRBill {
 
         doc.fontSize(11);
         doc.font(this.font);
-        doc.text(translations[this.language].separate, 0, this.y() - 12, {
+        doc.text(translations[this.language].separate, this.x(), this.y() - 12, {
           align: "center",
           width: mm2pt(210)
         });
