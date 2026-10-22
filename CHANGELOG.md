@@ -1,6 +1,21 @@
 
 # Change Log
 
+## v4.4.3
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.2...v4.4.3)
+
+### Fixes
+
+- **pdf:** Separate position ([#480](https://github.com/schoero/swissqrbill/pull/480))
+- **svg:** Message text wrapping ([#483](https://github.com/schoero/swissqrbill/pull/483))
+- **svg:** One-line message gets three empty lines after it ([#482](https://github.com/schoero/swissqrbill/pull/482))
+- **svg:** Correct reference height calculation ([#481](https://github.com/schoero/swissqrbill/pull/481))
+
+### Documentation
+
+- Fix documentation issues ([3b861c8](https://github.com/schoero/swissqrbill/commit/3b861c8))
+
 ## v4.4.2
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.1...v4.4.2)
