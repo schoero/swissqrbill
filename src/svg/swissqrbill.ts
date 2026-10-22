@@ -484,8 +484,8 @@ export class SwissQRBill {
             const maxLinesOfMessage = maxLines - linesOfAdditionalInformation;
             const messageLines = this._fitTextToWidth(this.data.message, lengthInPixel, maxLinesOfMessage, "10pt");
 
-            for(let i = 0; i < maxLinesOfMessage; i++){
-              paymentPartRightTextContainer.addTSpan(messageLines[i])
+            for(const line of messageLines){
+              paymentPartRightTextContainer.addTSpan(line)
                 .x(0)
                 .dy("11pt")
                 .fontFamily(this.font)
@@ -512,8 +512,8 @@ export class SwissQRBill {
 
       } else if(this.data.message !== undefined){
         const messageLines = this._fitTextToWidth(this.data.message, lengthInPixel, maxLines, "10pt");
-        for(let i = 0; i < maxLines; i++){
-          paymentPartRightTextContainer.addTSpan(messageLines[i])
+        for(const line of messageLines){
+          paymentPartRightTextContainer.addTSpan(line)
             .x(0)
             .dy("11pt")
             .fontFamily(this.font)
