@@ -164,4 +164,35 @@ describe("generateQRData", () => {
     ]);
   });
 
+  // Empty strings
+  test("treats empty additional information as not used", () => {
+    const qrString = generateQRData({ ...minimalRequired, additionalInformation: "" });
+    expect(qrString).toBe(generateQRData(minimalRequired));
+  });
+
+  test("treats additional information containing only line breaks as not used", () => {
+    const qrString = generateQRData({ ...minimalRequired, additionalInformation: "\r\n" });
+    expect(qrString).toBe(generateQRData(minimalRequired));
+  });
+
+  test("treats empty alternative schemes as not used", () => {
+    const qrString = generateQRData({ ...minimalRequired, av1: "", av2: "" });
+    expect(qrString).toBe(generateQRData(minimalRequired));
+  });
+
+  test("treats empty alternative scheme AV2 after additional information as not used", () => {
+    const qrString = generateQRData({ ...minimalRequiredWithAdditionalInformation, av2: "" });
+    expect(qrString).toBe(generateQRData(minimalRequiredWithAdditionalInformation));
+  });
+
+  test("treats empty additional information before alternative scheme AV1 as not used", () => {
+    const qrString = generateQRData({ ...minimalRequiredWithAlternativeScheme1, additionalInformation: "" });
+    expect(qrString).toBe(generateQRData(minimalRequiredWithAlternativeScheme1));
+  });
+
+  test("treats empty additional information and alternative scheme AV1 before AV2 as not used", () => {
+    const qrString = generateQRData({ ...minimalRequiredWithAlternativeScheme2, additionalInformation: "", av1: "" });
+    expect(qrString).toBe(generateQRData(minimalRequiredWithAlternativeScheme2));
+  });
+
 });
