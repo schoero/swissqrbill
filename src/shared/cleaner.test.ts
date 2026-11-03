@@ -92,6 +92,30 @@ describe("cleaner", () => {
     } as Data)).toStrictEqual({});
   });
 
+  it("should remove optional fields that contain only whitespace", () => {
+    expect(cleanData({
+      additionalInformation: "  ",
+      av1: " \n",
+      av2: "\t",
+      creditor: {
+        buildingNumber: " "
+      },
+      message: " "
+    } as Data)).toStrictEqual({
+      creditor: {}
+    });
+  });
+
+  it("should not trim optional fields that contain more than whitespace", () => {
+    expect(cleanData({
+      additionalInformation: " Hello ",
+      message: " World "
+    } as Data)).toStrictEqual({
+      additionalInformation: " Hello ",
+      message: " World "
+    });
+  });
+
   it("should keep empty required fields", () => {
     expect(cleanData({
       creditor: {

@@ -29,8 +29,8 @@ export function cleanData(data: Data): Data {
         ? _cleanObject(value)
         : _cleanValue(key, value);
 
-      // Optional fields are treated as not used if they are empty after cleaning
-      if(cleanedValue === "" && (
+      // Optional fields are treated as not used if they are empty or contain only whitespace after cleaning
+      if(typeof cleanedValue === "string" && cleanedValue.trim() === "" && (
         key === "additionalInformation" ||
         key === "av1" ||
         key === "av2" ||
