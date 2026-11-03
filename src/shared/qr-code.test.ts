@@ -76,6 +76,11 @@ describe("generateQRData", () => {
     expect(qrString).toMatchSnapshot();
   });
 
+  test("creditor with normal IBAN and empty reference", () => {
+    const qrString = generateQRData({ ...creditorWithNormalIBAN, reference: "" });
+    expect(qrString).toBe(generateQRData(creditorWithNormalIBAN));
+  });
+
   // Debtor
   test("debtor with building number", () => {
     const qrString = generateQRData(debtorWithBuildingNumber);

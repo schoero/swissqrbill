@@ -64,4 +64,57 @@ describe("cleaner", () => {
       }
     });
   });
+
+  it("should remove empty optional fields", () => {
+    expect(cleanData({
+      additionalInformation: "",
+      av1: "",
+      av2: "",
+      creditor: {
+        buildingNumber: ""
+      },
+      debtor: {
+        buildingNumber: ""
+      },
+      message: "",
+      reference: ""
+    } as Data)).toStrictEqual({
+      creditor: {},
+      debtor: {}
+    });
+  });
+
+  it("should remove optional fields that are empty after cleaning", () => {
+    expect(cleanData({
+      additionalInformation: "\r\n",
+      av1: "\n",
+      reference: " "
+    } as Data)).toStrictEqual({});
+  });
+
+  it("should keep empty required fields", () => {
+    expect(cleanData({
+      creditor: {
+        address: "",
+        name: ""
+      }
+    } as Data)).toStrictEqual({
+      creditor: {
+        address: "",
+        name: ""
+      }
+    });
+  });
+
+  it("should keep a building number of 0", () => {
+    expect(cleanData({
+      creditor: {
+        buildingNumber: 0
+      }
+    } as Data)).toStrictEqual({
+      creditor: {
+        buildingNumber: 0
+      }
+    });
+  });
 });

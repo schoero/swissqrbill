@@ -54,6 +54,24 @@ describe("data", async () => {
     expect(svgSnapshot).toMatchSnapshot();
   });
 
+  test("minimal required data + debtor + empty optional fields", async () => {
+    const name = "minimal-required-with-debtor-and-empty-optional-fields";
+    const data = {
+      ...minimalRequiredWithDebtor,
+      additionalInformation: "",
+      av1: "",
+      av2: "",
+      creditor: { ...minimalRequiredWithDebtor.creditor, buildingNumber: "" },
+      debtor: { ...minimalRequiredWithDebtor.debtor!, buildingNumber: "" },
+      message: "",
+      reference: ""
+    };
+    const pdfSnapshot = await pdf(data, `data/${name}.pdf`);
+    const svgSnapshot = await svg(data, `data/${name}.svg`);
+    expect(pdfSnapshot).toStrictEqual(await pdf(minimalRequiredWithDebtor, `data/${name}-expected.pdf`));
+    expect(svgSnapshot).toStrictEqual(await svg(minimalRequiredWithDebtor, `data/${name}-expected.svg`));
+  });
+
   // Creditor
   test("creditor with building number", async () => {
     const name = "creditor-with-building-number";
