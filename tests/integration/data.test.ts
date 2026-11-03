@@ -12,6 +12,8 @@ import {
   debtorWithMaxedOutFieldLengths,
   minimalRequired,
   minimalRequiredWithAdditionalInformation,
+  minimalRequiredWithAdditionalInformationAndAlternativeScheme1,
+  minimalRequiredWithAdditionalInformationAndAlternativeScheme2,
   minimalRequiredWithAlternativeScheme1,
   minimalRequiredWithAlternativeScheme1and2,
   minimalRequiredWithAlternativeScheme2,
@@ -182,6 +184,22 @@ describe("data", async () => {
     const name = "alternative-schemes-av1-av2";
     const pdfSnapshot = await pdf(minimalRequiredWithAlternativeScheme1and2, `data/${name}.pdf`);
     const svgSnapshot = await svg(minimalRequiredWithAlternativeScheme1and2, `data/${name}.svg`);
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
+
+  test("additional information & alternative scheme AV1", async () => {
+    const name = "additional-information-alternative-scheme-av1";
+    const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformationAndAlternativeScheme1, `data/${name}.pdf`);
+    const svgSnapshot = await svg(minimalRequiredWithAdditionalInformationAndAlternativeScheme1, `data/${name}.svg`);
+    expect(pdfSnapshot).toMatchSnapshot();
+    expect(svgSnapshot).toMatchSnapshot();
+  });
+
+  test("additional information & alternative scheme AV2", async () => {
+    const name = "additional-information-alternative-scheme-av2";
+    const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformationAndAlternativeScheme2, `data/${name}.pdf`);
+    const svgSnapshot = await svg(minimalRequiredWithAdditionalInformationAndAlternativeScheme2, `data/${name}.svg`);
     expect(pdfSnapshot).toMatchSnapshot();
     expect(svgSnapshot).toMatchSnapshot();
   });
