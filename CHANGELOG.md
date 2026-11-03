@@ -1,6 +1,14 @@
 
 # Change Log
 
+## v4.4.4
+
+[compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.3...v4.4.4)
+
+### Fixes
+
+- Alternative schemes in billing information ([#485](https://github.com/schoero/swissqrbill/pull/485))
+
 ## v4.4.3
 
 [compare changes](https://github.com/schoero/swissqrbill/compare/v4.4.2...v4.4.3)
