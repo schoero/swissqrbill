@@ -63,14 +63,15 @@ export function generateQRData(data: Data): string {
     cleanedData.reference ?? "",                                         // Reference
     cleanedData.message ?? "",                                           // Unstructured message
     "EPD",                                                               // End of payment data
-    ...cleanedData.additionalInformation                                 // Additional information
+    ...cleanedData.additionalInformation ||                              // Additional information
+    cleanedData.av1 || cleanedData.av2
       ? [
-        cleanedData.additionalInformation
+        cleanedData.additionalInformation ?? ""
       ]
       : [],
-    ...cleanedData.av1                                                   // Alternative scheme 1
+    ...cleanedData.av1 || cleanedData.av2                                // Alternative scheme 1
       ? [
-        cleanedData.av1
+        cleanedData.av1 ?? ""
       ]
       : [],
     ...cleanedData.av2                                                   // Alternative scheme 2

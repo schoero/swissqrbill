@@ -14,6 +14,8 @@ import {
   debtorWithMaxedOutFieldLengths,
   minimalRequired,
   minimalRequiredWithAdditionalInformation,
+  minimalRequiredWithAdditionalInformationAndAlternativeScheme1,
+  minimalRequiredWithAdditionalInformationAndAlternativeScheme2,
   minimalRequiredWithAlternativeScheme1,
   minimalRequiredWithAlternativeScheme1and2,
   minimalRequiredWithAlternativeScheme2,
@@ -127,6 +129,39 @@ describe("generateQRData", () => {
   test("alternative schemes AV1 & AV2", () => {
     const qrString = generateQRData(minimalRequiredWithAlternativeScheme1and2);
     expect(qrString).toMatchSnapshot();
+  });
+
+  test("additional information & alternative scheme AV1", () => {
+    const qrString = generateQRData(minimalRequiredWithAdditionalInformationAndAlternativeScheme1);
+    expect(qrString).toMatchSnapshot();
+  });
+
+  test("additional information & alternative scheme AV2", () => {
+    const qrString = generateQRData(minimalRequiredWithAdditionalInformationAndAlternativeScheme2);
+    expect(qrString).toMatchSnapshot();
+  });
+
+  // Omission
+  test("omits additional information and alternative schemes if not used", () => {
+    const qrString = generateQRData(minimalRequired);
+    expect(qrString.split("\n").at(-1)).toBe("EPD");
+  });
+
+  test("omits alternative schemes if not used", () => {
+    const qrString = generateQRData(minimalRequiredWithAdditionalInformation);
+    expect(qrString.split("\n").slice(-2)).toStrictEqual([
+      "EPD",
+      minimalRequiredWithAdditionalInformation.additionalInformation
+    ]);
+  });
+
+  test("omits alternative scheme AV2 if not used", () => {
+    const qrString = generateQRData(minimalRequiredWithAlternativeScheme1);
+    expect(qrString.split("\n").slice(-3)).toStrictEqual([
+      "EPD",
+      "",
+      minimalRequiredWithAlternativeScheme1.av1
+    ]);
   });
 
 });

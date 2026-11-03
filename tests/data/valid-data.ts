@@ -175,3 +175,13 @@ export const minimalRequiredWithAlternativeScheme1and2: Data = {
   av1: "twint/light/02:5d5caa0c078149c694380b72d273ba7#9837183ed9f8bab7286856d786edf5721d55f82b#",
   av2: "rn/twint/a~UuoWrVwETE-AZMysjqoCtQ~s~kNAfGk8vSou0wsvzHvTiSw/rn" // cspell:disable-line
 };
+
+export const minimalRequiredWithAdditionalInformationAndAlternativeScheme1: Data = {
+  ...minimalRequiredWithAdditionalInformation,
+  av1: "eBill/B/peter@muster.ch"
+};
+
+export const minimalRequiredWithAdditionalInformationAndAlternativeScheme2: Data = {
+  ...minimalRequiredWithAdditionalInformation,
+  av2: "eBill/B/peter@muster.ch"
+};
