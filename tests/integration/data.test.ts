@@ -157,8 +157,8 @@ describe("data", async () => {
   // Additional Information
   test("additional Information", async () => {
     const name = "additional-information";
-    const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `data/${name}.pdf`);
-    const svgSnapshot = await svg(minimalRequiredWithAdditionalInformation, `data/${name}.svg`);
+    const pdfSnapshot = await pdf(minimalRequiredWithAdditionalInformation, `data/${name}.pdf`, { renderAdditionalInformation: true });
+    const svgSnapshot = await svg(minimalRequiredWithAdditionalInformation, `data/${name}.svg`, { renderAdditionalInformation: true });
     expect(pdfSnapshot).toMatchSnapshot();
     expect(svgSnapshot).toMatchSnapshot();
   });
