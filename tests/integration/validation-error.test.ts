@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 
 import { ValidationError, ValidationErrors } from "swissqrbill:errors";
+import { SwissQRBill } from "swissqrbill:pdf";
 import { cleanData } from "swissqrbill:shared:cleaner";
 import { validateData } from "swissqrbill:shared:validator";
+import { SwissQRCode } from "swissqrbill:svg";
 import { missingCreditor } from "swissqrbill:tests:data/invalid-data";
+import { creditorWithNormalIBANAndReference } from "swissqrbill:tests:data/valid-data";
 import { getValidationError } from "swissqrbill:tests:utils/errors";
 
 
@@ -24,6 +27,15 @@ describe("errors", () => {
     const code = "CREDITOR_IS_UNDEFINED";
     expect(getValidationError(() => validateData(cleanData(missingCreditor)))?.message).toBeDefined();
     expect(getValidationError(() => validateData(cleanData(missingCreditor)))?.message).toBe(ValidationErrors[code]);
+  });
+
+  it("should reject a SCOR reference with an invalid checksum for SVG and PDF", () => {
+    const data = { ...creditorWithNormalIBANAndReference, reference: "RF48 5000 0567 8901 2346" };
+
+    expect(() => new SwissQRCode(data)).toThrow(ValidationError);
+    expect(() => new SwissQRBill(data)).toThrow(ValidationError);
+    expect(() => new SwissQRCode(creditorWithNormalIBANAndReference)).not.toThrow();
+    expect(() => new SwissQRBill(creditorWithNormalIBANAndReference)).not.toThrow();
   });
 
 });

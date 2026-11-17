@@ -94,5 +94,6 @@ export enum ValidationErrors {
   QR_REFERENCE_IS_INVALID = "The provided QR-Reference '{reference}' is not valid.",
   QR_REFERENCE_LENGTH_IS_INVALID = "QR-Reference must be a must be exactly 27 characters.",
   REFERENCE_TYPE_IS_INVALID = "Reference must be a string.",
-  REGULAR_REFERENCE_LENGTH_IS_INVALID = "Creditor reference must be a maximum of 25 characters."
+  REGULAR_REFERENCE_LENGTH_IS_INVALID = "Creditor reference must be a maximum of 25 characters.",
+  SCOR_REFERENCE_IS_INVALID = "The provided SCOR reference '{reference}' has an invalid checksum."
 }
