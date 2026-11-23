@@ -68,6 +68,7 @@ import {
   qrIbanQRReferenceTooShort,
   qrIbanRegularReference,
   referenceTypeInvalid,
+  regularIBANAndInvalidSCORReference,
   regularIBANAndQRReference,
   regularIBANAndReferenceTooLong
 } from "swissqrbill:tests:data/invalid-data.js";
@@ -198,6 +199,12 @@ describe("validator", async () => {
   it("should throw a ValidationError if the reference is too long", async () => {
     expect(() => validateData(cleanData(regularIBANAndReferenceTooLong)))
       .toThrow(ValidationErrors.REGULAR_REFERENCE_LENGTH_IS_INVALID);
+  });
+
+  it("should throw a ValidationError if the reference is a SCOR-Reference with an invalid checksum", async () => {
+    const cleanedRegularIBANAndInvalidSCORReference = cleanData(regularIBANAndInvalidSCORReference);
+    expect(() => validateData(cleanedRegularIBANAndInvalidSCORReference))
+      .toThrow(resolveMessageParams(ValidationErrors.SCOR_REFERENCE_IS_INVALID, { reference: cleanedRegularIBANAndInvalidSCORReference.reference! }));
   });
 
   it("should throw a ValidationError if the creditor name is missing", async () => {
