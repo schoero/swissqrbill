@@ -137,15 +137,7 @@ export function isSCORReferenceValid(reference: string): boolean {
   }
 
   const ref = reference.substring(4);
-  if(Number.isNaN(reference)){
-    return false;
-  }
-
   const checksum = reference.substring(2, 4);
-  if(Number.isNaN(checksum)){
-    return false;
-  }
-
   const calculatedChecksum = calculateSCORReferenceChecksum(ref);
 
   return calculatedChecksum === checksum;
