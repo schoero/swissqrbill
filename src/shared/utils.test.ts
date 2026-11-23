@@ -119,8 +119,11 @@ describe("utils", () => {
 
     expect(isSCORReferenceValid("RF48 5000 0567 8901 2345")).toBe(true);
     expect(isSCORReferenceValid("RF485000056789012345")).toBe(true);
+    expect(isSCORReferenceValid("RF47ABC123")).toBe(true);
+    expect(isSCORReferenceValid("rf47abc123")).toBe(true);
 
     expect(isSCORReferenceValid("RF48 5000 0567 8901 2346")).toBe(false);
+    expect(isSCORReferenceValid("rf48abc123")).toBe(false);
     expect(isSCORReferenceValid("RF485000056789012346")).toBe(false);
 
   });
@@ -130,6 +133,7 @@ describe("utils", () => {
     expect(calculateSCORReferenceChecksum("0000000000000000")).toBe("04");
     expect(calculateSCORReferenceChecksum("000000000000000A")).toBe("25");
     expect(calculateSCORReferenceChecksum("000000000000000B")).toBe("95");
+    expect(calculateSCORReferenceChecksum("000000000000000a")).toBe("25");
     expect(calculateSCORReferenceChecksum("123456789")).toBe("18");
   });
 

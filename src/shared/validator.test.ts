@@ -76,6 +76,7 @@ import {
   creditorWithBuildingNumberString,
   creditorWithMaxedOutFieldLengths,
   creditorWithNormalIBAN,
+  creditorWithNormalIBANAndLowercaseReference,
   creditorWithNormalIBANAndReference,
   creditorWithQRIBAN,
   creditorWithZipString,
@@ -107,6 +108,7 @@ describe("validator", async () => {
     expect(() => validateData(cleanData(creditorWithQRIBAN))).not.toThrow();
     expect(() => validateData(cleanData(creditorWithNormalIBAN))).not.toThrow();
     expect(() => validateData(cleanData(creditorWithNormalIBANAndReference))).not.toThrow();
+    expect(() => validateData(cleanData(creditorWithNormalIBANAndLowercaseReference))).not.toThrow();
     expect(() => validateData(cleanData(creditorWithMaxedOutFieldLengths))).not.toThrow();
     expect(() => validateData(cleanData(minimalRequiredWithDebtor))).not.toThrow();
     expect(() => validateData(cleanData(debtorWithBuildingNumber))).not.toThrow();

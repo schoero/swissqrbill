@@ -83,6 +83,11 @@ export const creditorWithNormalIBANAndReference: Data = {
   reference: "RF48 5000 0567 8901 2345"
 };
 
+export const creditorWithNormalIBANAndLowercaseReference: Data = {
+  ...creditorWithNormalIBANAndReference,
+  reference: "rf47 abc1 23"
+};
+
 export const creditorWithMaxedOutFieldLengths: Data = {
   ...minimalRequired,
   creditor: {

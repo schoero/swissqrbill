@@ -160,7 +160,7 @@ export function isSCORReferenceValid(reference: string): boolean {
  * @returns The calculated checksum as 2 digit string.
  */
 export function calculateSCORReferenceChecksum(reference: string): string {
-  reference = reference.replace(/ /g, "");
+  reference = reference.replace(/ /g, "").toUpperCase();
   const checksum = 98 - mod97(`${reference}RF00`);
   return `${checksum}`.padStart(2, "0");
 }
