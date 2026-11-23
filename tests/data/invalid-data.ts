@@ -96,6 +96,12 @@ export const regularIBANAndReferenceTooLong = {
   reference: "RF48 5000 0567 8901 2345 1234 5678"
 } as unknown as Data;
 
+// Regular IBAN with SCOR-Reference with invalid checksum
+export const regularIBANAndInvalidSCORReference = {
+  ...minimalRequired,
+  reference: "RF48 5000 0567 8901 2346"
+} as unknown as Data;
+
 // Creditor with missing name
 export const creditorMissingName = {
   ...minimalRequired,

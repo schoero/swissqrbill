@@ -1025,7 +1025,7 @@ Validates the given SCOR-Reference.
   
 #### Function: utils.calculateSCORReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L162C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L154C0)  
   
 ##### Parameter
   
@@ -1043,7 +1043,7 @@ Calculates the checksum according to the ISO 11649 standard.
   
 #### Function: utils.calculateQRReferenceChecksum(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L175C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L167C0)  
   
 ##### Parameter
   
@@ -1061,7 +1061,7 @@ Calculates the checksum according the specifications.
   
 #### Function: utils.formatQRReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L185C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L177C0)  
   
 ##### Parameter
   
@@ -1079,7 +1079,7 @@ Formats the given QR-Reference according the specifications to be easily readabl
   
 #### Function: utils.formatSCORReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L206C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L198C0)  
   
 ##### Parameter
   
@@ -1097,7 +1097,7 @@ Formats the given SCOR-Reference according the specifications to be easily reada
   
 #### Function: utils.formatReference(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L222C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L214C0)  
   
 ##### Parameter
   
@@ -1115,7 +1115,7 @@ Detects the type of the given reference and formats it according the specificati
   
 #### Function: utils.formatAmount(amount)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L243C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L235C0)  
   
 ##### Parameter
   
@@ -1133,7 +1133,7 @@ Formats the given amount according the specifications to be easily readable.
   
 #### Function: utils.mm2pt(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L269C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L261C0)  
   
 ##### Parameter
   
@@ -1151,7 +1151,7 @@ Converts millimeters to points.
   
 #### Function: utils.pt2mm(points)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L280C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L272C0)  
   
 ##### Parameter
   
@@ -1169,7 +1169,7 @@ Converts points to millimeters.
   
 #### Function: utils.mm2px(millimeters)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L291C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L283C0)  
   
 ##### Parameter
   
@@ -1187,7 +1187,7 @@ Converts millimeters to pixels.
   
 #### Function: utils.px2mm(pixels)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L302C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L294C0)  
   
 ##### Parameter
   
@@ -1205,7 +1205,7 @@ Converts pixels to millimeters.
   
 #### Function: utils.getReferenceType(reference)
   
-Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L313C0)  
+Defined in: [src/shared/utils.ts](../../src/shared/utils.ts#L305C0)  
   
 ##### Parameter
   
@@ -1307,6 +1307,7 @@ Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L5C2)
 - `"QR_REFERENCE_LENGTH_IS_INVALID"`
 - `"REFERENCE_TYPE_IS_INVALID"`
 - `"REGULAR_REFERENCE_LENGTH_IS_INVALID"`
+- `"SCOR_REFERENCE_IS_INVALID"`
   
 ###### Description
   
@@ -1378,3 +1379,4 @@ Defined in: [src/shared/errors.ts](../../src/shared/errors.ts#L37C0)
 - QR_REFERENCE_LENGTH_IS_INVALID `"QR-Reference must be a must be exactly 27 characters."`
 - REFERENCE_TYPE_IS_INVALID `"Reference must be a string."`
 - REGULAR_REFERENCE_LENGTH_IS_INVALID `"Creditor reference must be a maximum of 25 characters."`
+- SCOR_REFERENCE_IS_INVALID `"The provided SCOR-Reference '{reference}' has an invalid checksum."`

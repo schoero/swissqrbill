@@ -1,5 +1,12 @@
 import { ValidationError, ValidationErrors } from "swissqrbill:errors";
-import { isIBANValid, isQRIBAN, isQRReference, isQRReferenceValid } from "swissqrbill:utils";
+import {
+  isIBANValid,
+  isQRIBAN,
+  isQRReference,
+  isQRReferenceValid,
+  isSCORReference,
+  isSCORReferenceValid
+} from "swissqrbill:utils";
 
 import type { Data } from "swissqrbill:types";
 
@@ -165,6 +172,9 @@ export function validateData(data: Data): void {
     if(data.reference !== undefined){
       if(isQRReference(data.reference)){ throw new ValidationError(ValidationErrors.ACCOUNT_IS_REGULAR_IBAN_BUT_REFERENCE_IS_QR);}
       if(data.reference.length > 25){ throw new ValidationError(ValidationErrors.REGULAR_REFERENCE_LENGTH_IS_INVALID); }
+      if(isSCORReference(data.reference) && !isSCORReferenceValid(data.reference)){
+        throw new ValidationError(ValidationErrors.SCOR_REFERENCE_IS_INVALID, { reference: data.reference });
+      }
     }
 
   }

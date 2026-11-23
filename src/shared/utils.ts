@@ -137,15 +137,7 @@ export function isSCORReferenceValid(reference: string): boolean {
   }
 
   const ref = reference.substring(4);
-  if(Number.isNaN(reference)){
-    return false;
-  }
-
   const checksum = reference.substring(2, 4);
-  if(Number.isNaN(checksum)){
-    return false;
-  }
-
   const calculatedChecksum = calculateSCORReferenceChecksum(ref);
 
   return calculatedChecksum === checksum;
@@ -160,7 +152,7 @@ export function isSCORReferenceValid(reference: string): boolean {
  * @returns The calculated checksum as 2 digit string.
  */
 export function calculateSCORReferenceChecksum(reference: string): string {
-  reference = reference.replace(/ /g, "");
+  reference = reference.replace(/ /g, "").toUpperCase();
   const checksum = 98 - mod97(`${reference}RF00`);
   return `${checksum}`.padStart(2, "0");
 }
