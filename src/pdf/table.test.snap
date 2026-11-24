@@ -1059,6 +1059,355 @@ Q
 ]
 `;
 
+exports[`table > should not keep adding pages for a row that is taller than the page 1`] = `
+[
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+420.945 72 m
+420.945 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 84.716 m
+72 72 m
+420.945 184.716 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 84.716 m
+72 72 m
+769.89 184.716 m
+72 72 m
+769.89 72 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 85.216 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 85.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 84.716 m
+71.5 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 84.716 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 185.216 m
+72 84.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 84.216 m
+769.89 185.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 84.716 m
+770.39 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 184.716 m
+71.5 184.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 184.716 m
+72 72 m
+769.89 72 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 403.823502 514.1115 Tm
+/F1 11 Tf
+[<686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 84.716 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 413.916 457.7535 Tm
+/F1 11 Tf
+[<66697473> 0] TJ
+ET
+Q
+72 72 m
+769.89 184.716 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+420.945 84.716 m
+769.89 84.716 m
+72 72 m
+769.89 1084.716 m
+72 72 m
+420.945 84.716 m
+769.89 84.716 m
+72 72 m
+769.89 1084.716 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 85.216 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 85.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 84.716 m
+71.5 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+420.945 84.716 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 1085.216 m
+72 84.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+420.945 84.216 m
+420.945 1085.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 84.716 m
+421.445 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+421.445 1084.716 m
+71.5 1084.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 84.716 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+420.945 1085.216 m
+420.945 84.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 84.216 m
+769.89 1085.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+420.445 84.716 m
+770.39 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 1084.716 m
+420.445 1084.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 1084.716 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 403.823502 514.1115 Tm
+/F1 11 Tf
+[<686561646572> 0] TJ
+ET
+Q
+72 72 m
+420.945 84.716 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 199.387002 501.3955 Tm
+/F1 11 Tf
+[<74616c6c6572207468616e207468652070616765> 0] TJ
+ET
+Q
+769.89 84.716 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 548.332002 501.3955 Tm
+/F1 11 Tf
+[<74616c6c6572207468616e207468652070616765> 0] TJ
+ET
+Q
+72 72 m
+769.89 1084.716 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 84.716 m
+72 72 m
+769.89 84.716 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 85.216 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 85.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 84.716 m
+71.5 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 84.716 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 185.216 m
+72 84.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 84.216 m
+769.89 185.216 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 84.716 m
+770.39 84.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 184.716 m
+71.5 184.716 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 403.823502 514.1115 Tm
+/F1 11 Tf
+[<686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 84.716 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 413.916 457.7535 Tm
+/F1 11 Tf
+[<66697473> 0] TJ
+ET
+Q
+",
+]
+`;
+
 exports[`table > should render and override background colors correctly 1`] = `
 [
   "1 0 0 -1 0 595.28 cm

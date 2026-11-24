@@ -328,10 +328,14 @@ export class Table {
             }
           }
 
+          // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
+          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerRowIndex !== -1 && !row.header ? autoRowHeights[headerRowIndex] : 0);
+          const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
+
           // Insert new page before overflowing rows
           if(layer === TableLayer.PageInjection){
 
-            if(rowY + rowHeight >= doc.page.height - doc.page.margins.bottom){
+            if(rowOverflows){
 
               doc.addPage();
               rowY = doc.y;
@@ -352,7 +356,7 @@ export class Table {
           if(layer > TableLayer.PageInjection){
             if(
               !!row.header && rowY !== (doc.page.margins.top ?? 0) && rowIndex !== headerRowIndex ||
-              rowY + rowHeight >= doc.page.height - doc.page.margins.bottom
+              rowOverflows
             ){
               doc.switchToPage(this.getCurrentPage(doc) + 1);
               doc.x = tableX;

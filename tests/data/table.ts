@@ -650,3 +650,47 @@ export const singleCell: PDFTable = {
   verticalAlign: "center",
   width: 100
 };
+
+export const oversizedRowWithHeader: PDFTable = {
+  align: "center",
+  borderWidth: 1,
+  rows: [
+    {
+      columns: [
+        {
+          text: "header"
+        }
+      ],
+      header: true
+    },
+    {
+      columns: [
+        {
+          text: "fits"
+        }
+      ],
+      height: 100
+    },
+    {
+      columns: [
+        {
+          text: "taller than the page"
+        },
+        {
+          text: "taller than the page"
+        }
+      ],
+      height: 1000,
+      verticalAlign: "top"
+    },
+    {
+      columns: [
+        {
+          text: "fits"
+        }
+      ],
+      height: 100
+    }
+  ],
+  verticalAlign: "center"
+};
