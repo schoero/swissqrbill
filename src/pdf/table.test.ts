@@ -1,5 +1,5 @@
 import PDFDocument from "pdfkit";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { Table } from "swissqrbill:pdf";
 import {
@@ -12,6 +12,7 @@ import {
   borderThickness,
   fontSizeOverrides,
   header,
+  oversizedRowWithHeader,
   paddingOverrides,
   paddingVariants,
   singleCell,
@@ -147,6 +148,27 @@ describe("table", async () => {
     expect(pdf.bufferedPageRange()).toEqual({ count: 1, start: 2 });
     expect(() => table.attachTo(pdf)).not.toThrow();
     expect(pdf.bufferedPageRange()).toEqual({ count: 3, start: 2 });
+  });
+
+  it("should not keep adding pages for a row that is taller than the page", async () => {
+    const pdf = new TestDocument("table/oversized-row.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(oversizedRowWithHeader);
+
+    const addPage = pdf.addPage.bind(pdf);
+    const addPageSpy = vi.spyOn(pdf, "addPage").mockImplementation(options => {
+      if(addPageSpy.mock.calls.length > 10){
+        throw new Error("Table keeps adding pages");
+      }
+      return addPage(options);
+    });
+
+    table.attachTo(pdf);
+
+    expect(pdf.bufferedPageRange()).toEqual({ count: 3, start: 0 });
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the table on the specified position", async () => {
