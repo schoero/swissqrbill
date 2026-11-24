@@ -41,7 +41,7 @@ export interface PDFRow {
   fontName?: string;
   /** Font size of the text inside the row. */
   fontSize?: number;
-  /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
+  /** A header row gets inserted automatically on new pages. If multiple rows are header rows, only the first one gets inserted. */
   header?: boolean;
   /** Height of the row. Overrides minHeight and maxHeight. */
   height?: number;
@@ -221,6 +221,15 @@ export class Table {
     const rows = [...this.data.rows];
     const headerRowIndex = rows.findIndex(row => !!row.header);
 
+    // Inserted header rows are recognized by identity, which must not match other rows that reuse the same object
+    const headerRow = headerRowIndex !== -1 ? { ...rows[headerRowIndex] } : undefined;
+    if(headerRow !== undefined){
+      rows[headerRowIndex] = headerRow;
+    }
+
+    // Inserted copies shift the original header row, so its index can't be used to tell them apart
+    const insertedHeaderRows = new Set<PDFRow>();
+
     const autoRowHeights: number[] = [];
 
     for(let layer: TableLayer = 0; layer < Object.values(TableLayer).length / 2; layer++){
@@ -230,6 +239,7 @@ export class Table {
 
       // Track position and height
       let rowY = tableY;
+      const headerRowHeight = headerRow !== undefined ? autoRowHeights[rows.indexOf(headerRow)] : 0;
 
       // Render table
       rowLoop: for(let rowIndex = 0; rowIndex < rows.length; rowIndex++){
@@ -332,7 +342,7 @@ export class Table {
           }
 
           // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerRowIndex !== -1 && !row.header ? autoRowHeights[headerRowIndex] : 0);
+          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerRow !== undefined && row !== headerRow && !insertedHeaderRows.has(row) ? headerRowHeight : 0);
           const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
@@ -344,10 +354,11 @@ export class Table {
               rowY = doc.y;
 
               // Insert header
-              const headerRow = rows[headerRowIndex];
               if(headerRow !== undefined){
-                rows.splice(rowIndex, 0, headerRow);
-                autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
+                const insertedHeaderRow = { ...headerRow };
+                insertedHeaderRows.add(insertedHeaderRow);
+                rows.splice(rowIndex, 0, insertedHeaderRow);
+                autoRowHeights.splice(rowIndex, 0, headerRowHeight);
                 rowIndex--;
                 continue rowLoop;
               }
@@ -358,7 +369,7 @@ export class Table {
           // Switch page before overflowing rows and header rows
           if(layer > TableLayer.PageInjection){
             if(
-              !!row.header && rowY !== (doc.page.margins.top ?? 0) && rowIndex !== headerRowIndex ||
+              insertedHeaderRows.has(row) && rowY !== (doc.page.margins.top ?? 0) ||
               rowOverflows
             ){
               doc.switchToPage(this.getCurrentPage(doc) + 1);

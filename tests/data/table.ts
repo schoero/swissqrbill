@@ -1,4 +1,4 @@
-import type { PDFTable } from "swissqrbill:pdf";
+import type { PDFRow, PDFTable } from "swissqrbill:pdf";
 
 
 export const tupleShorthand: PDFTable = {
@@ -693,4 +693,48 @@ export const oversizedRowWithHeader: PDFTable = {
     }
   ],
   verticalAlign: "center"
+};
+
+const firstHeaderRow: PDFRow = {
+  columns: [{ text: "first header" }],
+  header: true,
+  height: 20
+};
+
+const bodyRows = (from: number, to: number): PDFRow[] => Array.from({ length: to - from + 1 }, (_, index) => ({
+  columns: [{ text: `row ${from + index}` }],
+  height: 100
+}));
+
+export const multipleHeaderRows: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    firstHeaderRow,
+    ...bodyRows(1, 6),
+    {
+      columns: [{ text: "second header" }],
+      header: true,
+      height: 20
+    },
+    ...bodyRows(7, 8)
+  ]
+};
+
+export const reusedHeaderRow: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    firstHeaderRow,
+    ...bodyRows(1, 6),
+    firstHeaderRow,
+    ...bodyRows(7, 8)
+  ]
+};
+
+export const headerRowAfterBodyRows: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    ...bodyRows(1, 6),
+    firstHeaderRow,
+    ...bodyRows(7, 12)
+  ]
 };

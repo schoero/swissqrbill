@@ -12,9 +12,12 @@ import {
   borderThickness,
   fontSizeOverrides,
   header,
+  headerRowAfterBodyRows,
+  multipleHeaderRows,
   oversizedRowWithHeader,
   paddingOverrides,
   paddingVariants,
+  reusedHeaderRow,
   singleCell,
   textColorOverrides,
   tupleShorthand
@@ -130,6 +133,42 @@ describe("table", async () => {
     const headerTable = new Table(header);
 
     headerTable.attachTo(pdf);
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should only repeat the first header row if multiple rows are header rows", async () => {
+    const pdf = new TestDocument("table/multiple-header-rows.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(multipleHeaderRows);
+
+    expect(() => table.attachTo(pdf)).not.toThrow();
+    expect(pdf.bufferedPageRange()).toEqual({ count: 2, start: 0 });
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should render a reused header row object like a regular row", async () => {
+    const pdf = new TestDocument("table/reused-header-row.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(reusedHeaderRow);
+
+    expect(() => table.attachTo(pdf)).not.toThrow();
+    expect(pdf.bufferedPageRange()).toEqual({ count: 2, start: 0 });
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should render a header row that comes after body rows", async () => {
+    const pdf = new TestDocument("table/header-row-after-body-rows.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(headerRowAfterBodyRows);
+
+    expect(() => table.attachTo(pdf)).not.toThrow();
+    expect(pdf.bufferedPageRange()).toEqual({ count: 3, start: 0 });
 
     await pdf.writeFile();
 
