@@ -217,7 +217,7 @@ export class Table {
     const tableAlign = this.data.align ? this.data.align : undefined;
     const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
 
-    let headerRowIndex = this.data.rows.findIndex(row => !!row.header);
+    const headerRowIndex = this.data.rows.findIndex(row => !!row.header);
 
     const autoRowHeights: number[] = [];
 
@@ -330,7 +330,8 @@ export class Table {
           }
 
           // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerRowIndex !== -1 && !row.header ? autoRowHeights[headerRowIndex] : 0);
+          const headerIsRepeated = headerRowIndex !== -1 && rowIndex > headerRowIndex && !row.header;
+          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerIsRepeated ? autoRowHeights[headerRowIndex] : 0);
           const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
@@ -341,14 +342,10 @@ export class Table {
               doc.addPage();
               rowY = doc.y;
 
-              // Insert header, unless the overflowing row is the header itself
-              const headerRow = this.data.rows[headerRowIndex];
-              if(headerRow !== undefined && rowIndex !== headerRowIndex){
-                this.data.rows.splice(rowIndex, 0, headerRow);
+              // Rows before the original header are not labeled by it
+              if(headerIsRepeated){
+                this.data.rows.splice(rowIndex, 0, this.data.rows[headerRowIndex]);
                 autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
-                if(rowIndex < headerRowIndex){
-                  headerRowIndex++;
-                }
                 rowIndex--;
                 continue rowLoop;
               }

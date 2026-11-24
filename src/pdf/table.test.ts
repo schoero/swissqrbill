@@ -159,7 +159,7 @@ describe("table", async () => {
 
     expect(textsByPage).toEqual([
       ["before 1", "before 2", "before 3", "before 4"],
-      ["header", "before 5", "before 6", "header", "after 1", "after 2"],
+      ["before 5", "before 6", "header", "after 1", "after 2"],
       ["header", "after 3", "after 4", "after 5", "after 6"]
     ]);
 
