@@ -180,6 +180,21 @@ describe("table", async () => {
     expect(pdf.bufferedPageRange()).toEqual({ count: 3, start: 2 });
   });
 
+  it("should render the same output when the same table is attached multiple times", async () => {
+    const firstPdf = new TestDocument("table/attach-first.pdf", { layout: "landscape", size: "A4" });
+    const secondPdf = new TestDocument("table/attach-second.pdf", { layout: "landscape", size: "A4" });
+    const headerTable = new Table(header);
+
+    headerTable.attachTo(firstPdf);
+    headerTable.attachTo(secondPdf);
+
+    await firstPdf.writeFile();
+    await secondPdf.writeFile();
+
+    expect(firstPdf.snapshots.length).toBeGreaterThan(1);
+    expect(secondPdf.snapshots).toEqual(firstPdf.snapshots);
+  });
+
   it("should not keep adding pages for a row that is taller than the page", async () => {
     const pdf = new TestDocument("table/oversized-row.pdf", { layout: "landscape", size: "A4" });
     const table = new Table(oversizedRowWithHeader);

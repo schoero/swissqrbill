@@ -217,7 +217,9 @@ export class Table {
     const tableAlign = this.data.align ? this.data.align : undefined;
     const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
 
-    const headerRowIndex = this.data.rows.findIndex(row => !!row.header);
+    // Header rows get inserted for every new page, which must not change the table data for later calls
+    const rows = [...this.data.rows];
+    const headerRowIndex = rows.findIndex(row => !!row.header);
 
     const autoRowHeights: number[] = [];
 
@@ -230,9 +232,9 @@ export class Table {
       let rowY = tableY;
 
       // Render table
-      rowLoop: for(let rowIndex = 0; rowIndex < this.data.rows.length; rowIndex++){
+      rowLoop: for(let rowIndex = 0; rowIndex < rows.length; rowIndex++){
 
-        const row = this.data.rows[rowIndex];
+        const row = rows[rowIndex];
 
         const rowHeight = autoRowHeights[rowIndex];
         const minRowHeight = row.minHeight;
@@ -344,7 +346,7 @@ export class Table {
 
               // Rows before the original header are not labeled by it
               if(headerIsRepeated){
-                this.data.rows.splice(rowIndex, 0, this.data.rows[headerRowIndex]);
+                rows.splice(rowIndex, 0, rows[headerRowIndex]);
                 autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
                 rowIndex--;
                 continue rowLoop;
