@@ -12,6 +12,7 @@ import {
   borderThickness,
   fontSizeOverrides,
   header,
+  headerAfterPageBreak,
   oversizedRowWithHeader,
   paddingOverrides,
   paddingVariants,
@@ -134,6 +135,35 @@ describe("table", async () => {
     await pdf.writeFile();
 
     expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should repeat the header row if it is not the first row", async () => {
+    const pdf = new TestDocument("table/header-after-page-break.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(headerAfterPageBreak);
+
+    const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
+    const text = pdf.text.bind(pdf);
+    vi.spyOn(pdf, "text").mockImplementation((...args: Parameters<typeof pdf.text>) => {
+      textCalls.push({ page: pdf.page, text: args[0] });
+      return text(...args);
+    });
+
+    table.attachTo(pdf);
+
+    const { count, start } = pdf.bufferedPageRange();
+    const pages = Array.from({ length: count }, (_, index) => {
+      pdf.switchToPage(start + index);
+      return pdf.page;
+    });
+    const textsByPage = pages.map(page => textCalls.filter(call => call.page === page).map(call => call.text));
+
+    expect(textsByPage).toEqual([
+      ["before 1", "before 2", "before 3", "before 4"],
+      ["before 5", "before 6", "header", "after 1", "after 2"],
+      ["header", "after 3", "after 4", "after 5", "after 6"]
+    ]);
+
+    await pdf.writeFile();
   });
 
   it("should render the table if earlier pages of the document have already been flushed", async () => {

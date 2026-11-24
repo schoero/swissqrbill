@@ -332,7 +332,8 @@ export class Table {
           }
 
           // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerRowIndex !== -1 && !row.header ? autoRowHeights[headerRowIndex] : 0);
+          const headerIsRepeated = headerRowIndex !== -1 && rowIndex > headerRowIndex && !row.header;
+          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerIsRepeated ? autoRowHeights[headerRowIndex] : 0);
           const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
@@ -343,10 +344,9 @@ export class Table {
               doc.addPage();
               rowY = doc.y;
 
-              // Insert header
-              const headerRow = rows[headerRowIndex];
-              if(headerRow !== undefined){
-                rows.splice(rowIndex, 0, headerRow);
+              // Rows before the original header are not labeled by it
+              if(headerIsRepeated){
+                rows.splice(rowIndex, 0, rows[headerRowIndex]);
                 autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
                 rowIndex--;
                 continue rowLoop;

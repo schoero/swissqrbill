@@ -694,3 +694,41 @@ export const oversizedRowWithHeader: PDFTable = {
   ],
   verticalAlign: "center"
 };
+
+export const headerAfterPageBreak: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    ...Array.from({ length: 6 }, (_, index) => ({
+      columns: [{ text: `before ${index + 1}` }],
+      height: 100
+    })),
+    {
+      columns: [{ text: "header" }],
+      header: true,
+      height: 20
+    },
+    ...Array.from({ length: 6 }, (_, index) => ({
+      columns: [{ text: `after ${index + 1}` }],
+      height: 100
+    }))
+  ]
+};
+
+export const headerAfterMultiplePageBreaks: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    ...Array.from({ length: 10 }, (_, index) => ({
+      columns: [{ text: `before ${index + 1}` }],
+      height: 100
+    })),
+    {
+      columns: [{ text: "header" }],
+      header: true,
+      height: 20
+    },
+    ...Array.from({ length: 4 }, (_, index) => ({
+      columns: [{ text: `after ${index + 1}` }],
+      height: 100
+    }))
+  ]
+};
