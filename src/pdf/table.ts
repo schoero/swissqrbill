@@ -217,7 +217,7 @@ export class Table {
     const tableAlign = this.data.align ? this.data.align : undefined;
     const tableVerticalAlign = this.data.verticalAlign ? this.data.verticalAlign : "top";
 
-    const headerRowIndex = this.data.rows.findIndex(row => !!row.header);
+    let headerRowIndex = this.data.rows.findIndex(row => !!row.header);
 
     const autoRowHeights: number[] = [];
 
@@ -341,11 +341,14 @@ export class Table {
               doc.addPage();
               rowY = doc.y;
 
-              // Insert header
+              // Insert header, unless the overflowing row is the header itself
               const headerRow = this.data.rows[headerRowIndex];
-              if(headerRow !== undefined){
+              if(headerRow !== undefined && rowIndex !== headerRowIndex){
                 this.data.rows.splice(rowIndex, 0, headerRow);
                 autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
+                if(rowIndex < headerRowIndex){
+                  headerRowIndex++;
+                }
                 rowIndex--;
                 continue rowLoop;
               }
