@@ -730,11 +730,40 @@ export const reusedHeaderRow: PDFTable = {
   ]
 };
 
-export const headerRowAfterBodyRows: PDFTable = {
+export const headerAfterPageBreak: PDFTable = {
   borderWidth: 1,
   rows: [
-    ...bodyRows(1, 6),
-    firstHeaderRow,
-    ...bodyRows(7, 12)
+    ...Array.from({ length: 6 }, (_, index) => ({
+      columns: [{ text: `before ${index + 1}` }],
+      height: 100
+    })),
+    {
+      columns: [{ text: "header" }],
+      header: true,
+      height: 20
+    },
+    ...Array.from({ length: 6 }, (_, index) => ({
+      columns: [{ text: `after ${index + 1}` }],
+      height: 100
+    }))
+  ]
+};
+
+export const headerAfterMultiplePageBreaks: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    ...Array.from({ length: 10 }, (_, index) => ({
+      columns: [{ text: `before ${index + 1}` }],
+      height: 100
+    })),
+    {
+      columns: [{ text: "header" }],
+      header: true,
+      height: 20
+    },
+    ...Array.from({ length: 4 }, (_, index) => ({
+      columns: [{ text: `after ${index + 1}` }],
+      height: 100
+    }))
   ]
 };

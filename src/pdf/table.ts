@@ -227,7 +227,7 @@ export class Table {
       rows[headerRowIndex] = headerRow;
     }
 
-    // Inserted copies shift the original header row, so its index can't be used to tell them apart
+    // Other rows can be header rows too, so they can't be told apart from inserted copies by their header flag
     const insertedHeaderRows = new Set<PDFRow>();
 
     const autoRowHeights: number[] = [];
@@ -239,7 +239,7 @@ export class Table {
 
       // Track position and height
       let rowY = tableY;
-      const headerRowHeight = headerRow !== undefined ? autoRowHeights[rows.indexOf(headerRow)] : 0;
+      const headerRowHeight = headerRow !== undefined ? autoRowHeights[headerRowIndex] : 0;
 
       // Render table
       rowLoop: for(let rowIndex = 0; rowIndex < rows.length; rowIndex++){
@@ -342,7 +342,8 @@ export class Table {
           }
 
           // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerRow !== undefined && row !== headerRow && !insertedHeaderRows.has(row) ? headerRowHeight : 0);
+          const headerIsRepeated = headerRow !== undefined && rowIndex > headerRowIndex && !insertedHeaderRows.has(row);
+          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerIsRepeated ? headerRowHeight : 0);
           const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
@@ -353,8 +354,8 @@ export class Table {
               doc.addPage();
               rowY = doc.y;
 
-              // Insert header
-              if(headerRow !== undefined){
+              // Rows before the original header are not labeled by it
+              if(headerIsRepeated){
                 const insertedHeaderRow = { ...headerRow };
                 insertedHeaderRows.add(insertedHeaderRow);
                 rows.splice(rowIndex, 0, insertedHeaderRow);
