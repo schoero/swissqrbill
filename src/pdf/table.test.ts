@@ -1,3 +1,4 @@
+import PDFDocument from "pdfkit";
 import { describe, expect, it, vi } from "vitest";
 
 import { Table } from "swissqrbill:pdf";
@@ -133,6 +134,20 @@ describe("table", async () => {
     await pdf.writeFile();
 
     expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should render the table if earlier pages of the document have already been flushed", async () => {
+    const pdf = new PDFDocument({ layout: "landscape", size: "A4" });
+    pdf.addPage({ layout: "landscape", size: "A4" });
+    pdf.addPage({ layout: "landscape", size: "A4" });
+
+    const table = new Table({
+      rows: Array.from({ length: 3 }, () => ({ columns: [{ text: "row" }], height: 250 }))
+    });
+
+    expect(pdf.bufferedPageRange()).toEqual({ count: 1, start: 2 });
+    expect(() => table.attachTo(pdf)).not.toThrow();
+    expect(pdf.bufferedPageRange()).toEqual({ count: 3, start: 2 });
   });
 
   it("should not keep adding pages for a row that is taller than the page", async () => {

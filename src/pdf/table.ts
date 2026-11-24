@@ -168,13 +168,14 @@ export class Table {
   // Hacky workaround to get the current page of the document
   private getCurrentPage(doc: PDFKit.PDFDocument): number {
     const page = doc.page;
-    for(let i = doc.bufferedPageRange().start; i < doc.bufferedPageRange().count; i++){
+    const { count, start } = doc.bufferedPageRange();
+    for(let i = start; i < start + count; i++){
       doc.switchToPage(i);
       if(doc.page === page){
         return i;
       }
     }
-    return doc.bufferedPageRange().count;
+    return start + count;
   }
 
 
