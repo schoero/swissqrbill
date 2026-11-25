@@ -397,7 +397,7 @@ export class Table {
 
           }
 
-          // Switch page before overflowing rows and inserted header rows
+          // Later layers must break pages exactly where the PageInjection layer added them
           if(layer > TableLayer.PageInjection){
             if(columnIndex === 0 && pageStartingHeaderRows.has(row) || rowOverflows){
               tablePageIndex++;
