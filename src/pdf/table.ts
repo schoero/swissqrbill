@@ -240,10 +240,21 @@ export class Table {
       // Track position and height
       let rowY = tableY;
 
+      // Copies are only ever inserted at or after the current row, so the indexes in here never shift
+      const previousHeaderRowIndexes: number[] = [];
+
       // Render table
       rowLoop: for(let rowIndex = 0; rowIndex < rows.length; rowIndex++){
 
         const row = rows[rowIndex];
+
+        // A header row labels all rows after it, so every header row before this row is repeated on a new page
+        const repeatedHeaderRowIndexes = insertedHeaderRows.has(row) ? [] : previousHeaderRowIndexes;
+
+        // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one.
+        // The heights are added in the same order as rowY on a new page, because a different order can round differently
+        // and make the row overflow its new page again, adding pages forever.
+        const rowYOnEmptyPage = repeatedHeaderRowIndexes.reduce((y, index) => y + autoRowHeights[index], doc.page.margins.top ?? 0);
 
         const rowHeight = autoRowHeights[rowIndex];
         const minRowHeight = row.minHeight;
@@ -339,16 +350,6 @@ export class Table {
               continue rowLoop;
             }
           }
-
-          // A header row labels all rows after it, so every header row before this row is repeated on a new page
-          const repeatedHeaderRowIndexes = insertedHeaderRows.has(row)
-            ? []
-            : rows.slice(0, rowIndex).flatMap((previousRow, previousRowIndex) => previousRow.header && !insertedHeaderRows.has(previousRow) ? [previousRowIndex] : []);
-
-          // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one.
-          // The heights are added in the same order as rowY on a new page, because a different order can round differently
-          // and make the row overflow its new page again, adding pages forever.
-          const rowYOnEmptyPage = repeatedHeaderRowIndexes.reduce((y, index) => y + autoRowHeights[index], doc.page.margins.top ?? 0);
 
           // A header row must not be left at the bottom of a page without the rows it labels
           const keptTogetherHeights = [rowHeight];
@@ -517,6 +518,11 @@ export class Table {
         }
 
         rowY += rowHeight;
+
+        // Only added once the row is placed, because a row that moves to a new page is processed again after the inserted copies
+        if(row.header && !insertedHeaderRows.has(row)){
+          previousHeaderRowIndexes.push(rowIndex);
+        }
 
         // Update position to ensure that the table does not overlap the payment part
         doc.x = columnX;
