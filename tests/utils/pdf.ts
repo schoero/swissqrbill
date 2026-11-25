@@ -77,6 +77,22 @@ export async function pdf(data: Data, testDocumentName: TestDocumentName, option
   return pdf.snapshots;
 }
 
+export function getPageGeometries(pdf: PDFKit.PDFDocument) {
+  const currentPage = pdf.page;
+  const { count, start } = pdf.bufferedPageRange();
+  const pages = Array.from({ length: count }, (_, index) => {
+    pdf.switchToPage(start + index);
+    return pdf.page;
+  });
+
+  const currentPageIndex = pages.indexOf(currentPage);
+  if(currentPageIndex !== -1){
+    pdf.switchToPage(start + currentPageIndex);
+  }
+
+  return pages.map(({ height, layout, margins, size, width }) => ({ height, layout, margins: { ...margins }, size, width }));
+}
+
 export function trackTextsByPage(pdf: PDFKit.PDFDocument) {
   const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
   const text = pdf.text.bind(pdf);

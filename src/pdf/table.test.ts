@@ -26,7 +26,7 @@ import {
   textColorOverrides,
   tupleShorthand
 } from "swissqrbill:tests:data/table.js";
-import { TestDocument, trackTextsByPage } from "swissqrbill:tests:utils/pdf.js";
+import { getPageGeometries, TestDocument, trackTextsByPage } from "swissqrbill:tests:utils/pdf.js";
 
 
 describe("table", async () => {
@@ -324,6 +324,107 @@ describe("table", async () => {
     ]);
 
     await pdf.writeFile();
+  });
+
+  it("should add new pages with the size and layout of the page the table starts on and the document's margins", async () => {
+    const pdf = new TestDocument("table/start-page-size.pdf", { autoFirstPage: false, margin: 20 });
+    pdf.addPage({ layout: "landscape", margin: 40, size: "A5" });
+
+    const table = new Table({
+      rows: Array.from({ length: 7 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3"],
+      ["row 4", "row 5", "row 6"],
+      ["row 7"]
+    ]);
+
+    const a5Landscape = { height: 419.53, layout: "landscape", size: "A5", width: 595.28 };
+
+    expect(getPageGeometries(pdf)).toEqual([
+      { ...a5Landscape, margins: { bottom: 40, left: 40, right: 40, top: 40 } },
+      { ...a5Landscape, margins: { bottom: 20, left: 20, right: 20, top: 20 } },
+      { ...a5Landscape, margins: { bottom: 20, left: 20, right: 20, top: 20 } }
+    ]);
+
+    await pdf.writeFile();
+  });
+
+  it("should apply the margin changes of a pageAdded listener only once to every new page", async () => {
+    const pdf = new TestDocument("table/start-page-margins.pdf", { autoFirstPage: false });
+    pdf.on("pageAdded", () => {
+      pdf.page.margins.bottom += 100;
+    });
+    pdf.addPage({ margin: 40, size: "A4" });
+
+    const table = new Table({
+      rows: Array.from({ length: 16 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3", "row 4", "row 5", "row 6"],
+      ["row 7", "row 8", "row 9", "row 10", "row 11"],
+      ["row 12", "row 13", "row 14", "row 15", "row 16"]
+    ]);
+
+    expect(getPageGeometries(pdf).map(({ margins }) => margins.bottom)).toEqual([140, 172, 172]);
+
+    await pdf.writeFile();
+  });
+
+  it("should add new pages with the document's options at the time they are added", async () => {
+    const pdf = new TestDocument("table/changed-document-options.pdf");
+    pdf.on("pageAdded", () => {
+      pdf.options.margin = 20;
+    });
+
+    const table = new Table({
+      rows: Array.from({ length: 16 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3", "row 4", "row 5", "row 6"],
+      ["row 7", "row 8", "row 9", "row 10", "row 11", "row 12"],
+      ["row 13", "row 14", "row 15", "row 16"]
+    ]);
+
+    expect(getPageGeometries(pdf).map(({ margins }) => margins.top)).toEqual([72, 72, 20]);
+
+    await pdf.writeFile();
+  });
+
+  it("should add a page with the document's options and A4 as the fallback size if the document has no page", () => {
+    const pdf = new PDFDocument({ autoFirstPage: false, layout: "landscape", margin: 40 });
+
+    const table = new Table({
+      rows: Array.from({ length: 7 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf, 40, 40);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3", "row 4", "row 5"],
+      ["row 6", "row 7"]
+    ]);
+
+    expect(getPageGeometries(pdf)).toEqual(Array.from({ length: 2 }, () => ({
+      height: 595.28,
+      layout: "landscape",
+      margins: { bottom: 40, left: 40, right: 40, top: 40 },
+      size: "A4",
+      width: 841.89
+    })));
   });
 
   it("should render the table if earlier pages of the document have already been flushed", async () => {

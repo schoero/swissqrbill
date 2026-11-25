@@ -392,7 +392,7 @@ Creates a new Table instance.
   
 `public`  
   
-Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L191C2)  
+Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L192C2)  
   
 ###### Parameters
   
@@ -410,8 +410,9 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L191C2)
   
 ###### Description
   
-Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
-every row that no longer fits on a page.  
+Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page for every
+row that no longer fits on a page. New pages get the size and layout of the current page and the document's margins.
+If the document has no page yet, a page is added with the document's options, using A4 if no size is set.  
   
 <br/>
   

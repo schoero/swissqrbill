@@ -180,8 +180,9 @@ export class Table {
 
 
   /**
-   * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
-   * every row that no longer fits on a page.
+   * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page for every
+   * row that no longer fits on a page. New pages get the size and layout of the current page and the document's margins.
+   * If the document has no page yet, a page is added with the document's options, using A4 if no size is set.
    *
    * @param doc The PDFKit document instance.
    * @param x The horizontal position in points where the table be placed.
@@ -195,7 +196,8 @@ export class Table {
     }
 
     if(!doc.page){
-      doc.addPage({ size: "A4" });
+      // Options passed to addPage replace the document's options instead of being merged with them
+      doc.addPage({ ...doc.options, size: doc.options.size ?? "A4" });
     }
 
     // Buffer pages to be able to create table spanning multiple pages
@@ -205,6 +207,9 @@ export class Table {
     const tableY = y;
 
     const startPage = this.getCurrentPage(doc);
+
+    const startPageLayout = doc.page.layout as PDFKit.PDFDocumentOptions["layout"];
+    const startPageSize = doc.page.size;
 
     const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
     const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
@@ -383,7 +388,10 @@ export class Table {
 
             if(rowOverflows){
 
-              doc.addPage();
+              // The margins are left to the document's options like for a page added without options, because the start page's
+              // margins can be meant for that page only, e.g. to leave room for a letterhead, and can already contain changes of
+              // a pageAdded listener
+              doc.addPage({ ...doc.options, layout: startPageLayout, size: startPageSize });
               const { count, start } = doc.bufferedPageRange();
               tablePages.push(start + count - 1);
               rowY = doc.y;
