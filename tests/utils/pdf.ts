@@ -77,6 +77,15 @@ export async function pdf(data: Data, testDocumentName: TestDocumentName, option
   return pdf.snapshots;
 }
 
+export function getPageGeometries(pdf: PDFKit.PDFDocument) {
+  const { count, start } = pdf.bufferedPageRange();
+  return Array.from({ length: count }, (_, index) => {
+    pdf.switchToPage(start + index);
+    const { height, layout, margins, size, width } = pdf.page;
+    return { height, layout, margins, size, width };
+  });
+}
+
 export function trackTextsByPage(pdf: PDFKit.PDFDocument) {
   const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
   const text = pdf.text.bind(pdf);

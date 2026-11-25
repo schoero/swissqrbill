@@ -206,6 +206,11 @@ export class Table {
 
     const startPage = this.getCurrentPage(doc);
 
+    // Taken from the start page once, because a pageAdded listener can change the margins of every new page
+    const startPageLayout = doc.page.layout as PDFKit.PDFDocumentOptions["layout"];
+    const startPageMargins = { ...doc.page.margins };
+    const startPageSize = doc.page.size;
+
     const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
     const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
     const tableBorder = this.data.borderWidth ? this.data.borderWidth : undefined;
@@ -383,8 +388,9 @@ export class Table {
 
             if(rowOverflows){
 
-              // Without options, PDFKit would use the document's default page size and margins instead of the ones of the table's pages
-              doc.addPage({ margins: doc.page.margins, size: [doc.page.width, doc.page.height] });
+              // Without options, PDFKit would use the document's default page size and margins instead of the ones of the table's pages.
+              // The margins are copied for every page, because older PDFKit versions share the passed object between the pages.
+              doc.addPage({ layout: startPageLayout, margins: { ...startPageMargins }, size: startPageSize });
               const { count, start } = doc.bufferedPageRange();
               tablePages.push(start + count - 1);
               rowY = doc.y;

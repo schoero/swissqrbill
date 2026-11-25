@@ -26,7 +26,7 @@ import {
   textColorOverrides,
   tupleShorthand
 } from "swissqrbill:tests:data/table.js";
-import { TestDocument, trackTextsByPage } from "swissqrbill:tests:utils/pdf.js";
+import { getPageGeometries, TestDocument, trackTextsByPage } from "swissqrbill:tests:utils/pdf.js";
 
 
 describe("table", async () => {
@@ -326,7 +326,7 @@ describe("table", async () => {
     await pdf.writeFile();
   });
 
-  it("should add new pages with the size and margins of the page the table starts on", async () => {
+  it("should add new pages with the size, layout and margins of the page the table starts on", async () => {
     const pdf = new TestDocument("table/start-page-size.pdf", { autoFirstPage: false });
     pdf.addPage({ layout: "landscape", margin: 40, size: "A5" });
 
@@ -343,16 +343,39 @@ describe("table", async () => {
       ["row 7"]
     ]);
 
-    const { count, start } = pdf.bufferedPageRange();
-    const pageGeometries = Array.from({ length: count }, (_, index) => {
-      pdf.switchToPage(start + index);
-      const { height, margins, width } = pdf.page;
-      return { height, margins, width };
-    });
+    expect(getPageGeometries(pdf)).toEqual(Array.from({ length: 3 }, () => ({
+      height: 419.53,
+      layout: "landscape",
+      margins: { bottom: 40, left: 40, right: 40, top: 40 },
+      size: "A5",
+      width: 595.28
+    })));
 
     await pdf.writeFile();
+  });
 
-    expect(pageGeometries).toEqual(Array.from({ length: count }, () => pageGeometries[0]));
+  it("should add new pages with the margins of the start page even if a pageAdded listener changes them", async () => {
+    const pdf = new TestDocument("table/start-page-margins.pdf");
+    pdf.on("pageAdded", () => {
+      pdf.page.margins.bottom += 100;
+    });
+
+    const table = new Table({
+      rows: Array.from({ length: 16 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3", "row 4", "row 5", "row 6"],
+      ["row 7", "row 8", "row 9", "row 10", "row 11"],
+      ["row 12", "row 13", "row 14", "row 15", "row 16"]
+    ]);
+
+    expect(getPageGeometries(pdf).map(({ margins }) => margins.bottom)).toEqual([72, 172, 172]);
+
+    await pdf.writeFile();
   });
 
   it("should render the table if earlier pages of the document have already been flushed", async () => {
