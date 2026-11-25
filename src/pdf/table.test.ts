@@ -270,7 +270,6 @@ describe("table", async () => {
 
   it("should render overflowing rows on new pages if the table is attached to a page that has pages after it", async () => {
     const pdf = new TestDocument("table/attach-to-earlier-page.pdf", { layout: "landscape", size: "A4" });
-    pdf.options.bufferPages = true;
     pdf.addPage({ layout: "landscape", size: "A4" });
     pdf.addPage({ layout: "landscape", size: "A4" });
     pdf.switchToPage(0);
