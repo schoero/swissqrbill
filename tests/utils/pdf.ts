@@ -84,7 +84,11 @@ export function getPageGeometries(pdf: PDFKit.PDFDocument) {
     pdf.switchToPage(start + index);
     return pdf.page;
   });
-  pdf.switchToPage(start + pages.indexOf(currentPage));
+
+  const currentPageIndex = pages.indexOf(currentPage);
+  if(currentPageIndex !== -1){
+    pdf.switchToPage(start + currentPageIndex);
+  }
 
   return pages.map(({ height, layout, margins, size, width }) => ({ height, layout, margins: { ...margins }, size, width }));
 }
