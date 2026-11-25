@@ -14,6 +14,7 @@ import {
   header,
   headerAfterPageBreak,
   multipleHeaderRows,
+  overflowingSecondHeaderRow,
   oversizedRowWithHeader,
   paddingOverrides,
   paddingVariants,
@@ -23,6 +24,25 @@ import {
   tupleShorthand
 } from "swissqrbill:tests:data/table.js";
 import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
+
+
+function trackTextsByPage(pdf: PDFKit.PDFDocument) {
+  const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
+  const text = pdf.text.bind(pdf);
+  vi.spyOn(pdf, "text").mockImplementation((...args: Parameters<typeof pdf.text>) => {
+    textCalls.push({ page: pdf.page, text: args[0] });
+    return text(...args);
+  });
+
+  return () => {
+    const { count, start } = pdf.bufferedPageRange();
+    const pages = Array.from({ length: count }, (_, index) => {
+      pdf.switchToPage(start + index);
+      return pdf.page;
+    });
+    return pages.map(page => textCalls.filter(call => call.page === page).map(call => call.text));
+  };
+}
 
 
 describe("table", async () => {
@@ -166,30 +186,34 @@ describe("table", async () => {
   it("should repeat the header row if it is not the first row", async () => {
     const pdf = new TestDocument("table/header-after-page-break.pdf", { layout: "landscape", size: "A4" });
     const table = new Table(headerAfterPageBreak);
-
-    const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
-    const text = pdf.text.bind(pdf);
-    vi.spyOn(pdf, "text").mockImplementation((...args: Parameters<typeof pdf.text>) => {
-      textCalls.push({ page: pdf.page, text: args[0] });
-      return text(...args);
-    });
+    const getTextsByPage = trackTextsByPage(pdf);
 
     table.attachTo(pdf);
 
-    const { count, start } = pdf.bufferedPageRange();
-    const pages = Array.from({ length: count }, (_, index) => {
-      pdf.switchToPage(start + index);
-      return pdf.page;
-    });
-    const textsByPage = pages.map(page => textCalls.filter(call => call.page === page).map(call => call.text));
-
-    expect(textsByPage).toEqual([
+    expect(getTextsByPage()).toEqual([
       ["before 1", "before 2", "before 3", "before 4"],
       ["before 5", "before 6", "header", "after 1", "after 2"],
       ["header", "after 3", "after 4", "after 5", "after 6"]
     ]);
 
     await pdf.writeFile();
+  });
+
+  it("should repeat the first header row above a later header row that overflows", async () => {
+    const pdf = new TestDocument("table/overflowing-second-header-row.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(overflowingSecondHeaderRow);
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["first header", "row 1", "row 2", "row 3", "row 4"],
+      ["first header", "second header", "row 5", "row 6"]
+    ]);
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
   });
 
   it("should render the table if earlier pages of the document have already been flushed", async () => {
