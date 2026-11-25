@@ -351,7 +351,7 @@ export class Table {
           const rowYOnEmptyPage = repeatedHeaderRowIndexes.reduce((y, index) => y + autoRowHeights[index], doc.page.margins.top ?? 0);
 
           // A header row must not be left at the bottom of a page without the rows it labels
-          let keptTogetherHeight = rowHeight;
+          const keptTogetherHeights = [rowHeight];
           let keptIndex = rowIndex;
           while(rows[keptIndex].header && !insertedHeaderRows.has(rows[keptIndex])){
             keptIndex++;
@@ -365,13 +365,17 @@ export class Table {
               break;
             }
 
-            keptTogetherHeight += autoRowHeights[keptIndex];
+            keptTogetherHeights.push(autoRowHeights[keptIndex]);
           }
+
+          // Heights are added one row at a time like rowY, so the result can't round differently than the checks of the kept rows themselves
+          const keptTogetherBottom = keptTogetherHeights.reduce((y, height) => y + height, rowY);
+          const keptTogetherBottomOnEmptyPage = keptTogetherHeights.reduce((y, height) => y + height, rowYOnEmptyPage);
 
           // Moving a header row to a new page doesn't help if the rows it labels don't fit below it there either
           const pageBottom = doc.page.height - doc.page.margins.bottom;
-          const overflowHeight = rowYOnEmptyPage + keptTogetherHeight < pageBottom ? keptTogetherHeight : rowHeight;
-          const rowOverflows = !insertedHeaderRows.has(row) && rowY + overflowHeight >= pageBottom && rowY > rowYOnEmptyPage;
+          const rowBottom = keptTogetherBottomOnEmptyPage < pageBottom ? keptTogetherBottom : rowY + rowHeight;
+          const rowOverflows = !insertedHeaderRows.has(row) && rowBottom >= pageBottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
           if(layer === TableLayer.PageInjection){

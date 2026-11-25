@@ -236,6 +236,31 @@ describe("table", async () => {
     await pdf.writeFile();
   });
 
+  it("should move a header row to the next page if the row after it ends exactly at the bottom of the page", async () => {
+    const pdf = new TestDocument("table/header-row-before-row-at-page-bottom.pdf", { layout: "landscape", size: "A4" });
+
+    // With these heights, the bottom of "row 5" rounds differently depending on the order the heights are added in
+    const table = new Table({
+      borderWidth: 1,
+      rows: [
+        { columns: [{ text: "first header" }], header: true, height: 35.92 },
+        ...[95.53, 81.1, 115.71, 29.34].map((height, index) => ({ columns: [{ text: `row ${index + 1}` }], height })),
+        { columns: [{ text: "second header" }], header: true, height: 23.99 },
+        { columns: [{ text: "row 5" }], height: 69.69 }
+      ]
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["first header", "row 1", "row 2", "row 3", "row 4"],
+      ["first header", "second header", "row 5"]
+    ]);
+
+    await pdf.writeFile();
+  });
+
   it("should repeat the first header row above a later header row that overflows", async () => {
     const pdf = new TestDocument("table/overflowing-second-header-row.pdf", { layout: "landscape", size: "A4" });
     const table = new Table(overflowingSecondHeaderRow);
