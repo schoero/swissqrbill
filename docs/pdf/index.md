@@ -328,8 +328,8 @@ Defined in: [src/pdf/table.ts](../../src/pdf/table.ts#L192C2)
 ##### Description
   
 Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page for every
-row that no longer fits on a page. New pages get the size, layout and margins of the page the table starts on. If the
-document has no page yet, a page is added with the document's options, using A4 if no size is set.  
+row that no longer fits on a page. New pages get the size and layout of the current page and the document's margins.
+If the document has no page yet, a page is added with the document's options, using A4 if no size is set.  
   
 <br/>
   

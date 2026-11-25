@@ -181,8 +181,8 @@ export class Table {
 
   /**
    * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page for every
-   * row that no longer fits on a page. New pages get the size, layout and margins of the page the table starts on. If the
-   * document has no page yet, a page is added with the document's options, using A4 if no size is set.
+   * row that no longer fits on a page. New pages get the size and layout of the current page and the document's margins.
+   * If the document has no page yet, a page is added with the document's options, using A4 if no size is set.
    *
    * @param doc The PDFKit document instance.
    * @param x The horizontal position in points where the table be placed.
@@ -208,10 +208,13 @@ export class Table {
 
     const startPage = this.getCurrentPage(doc);
 
-    // Taken from the start page once, because a pageAdded listener can change the margins of every new page
-    const startPageLayout = doc.page.layout as PDFKit.PDFDocumentOptions["layout"];
-    const startPageMargins = { ...doc.page.margins };
-    const startPageSize = doc.page.size;
+    // The margins are left to the document's options like for any other new page, because the start page's margins can be
+    // meant for that page only, e.g. to leave room for a letterhead, and can already contain changes of a pageAdded listener
+    const newPageOptions: PDFKit.PDFDocumentOptions = {
+      ...doc.options,
+      layout: doc.page.layout as PDFKit.PDFDocumentOptions["layout"],
+      size: doc.page.size
+    };
 
     const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
     const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
@@ -390,9 +393,7 @@ export class Table {
 
             if(rowOverflows){
 
-              // Without options, PDFKit would use the document's default page size and margins instead of the ones of the table's pages.
-              // The margins are copied for every page, because older PDFKit versions share the passed object between the pages.
-              doc.addPage({ layout: startPageLayout, margins: { ...startPageMargins }, size: startPageSize });
+              doc.addPage(newPageOptions);
               const { count, start } = doc.bufferedPageRange();
               tablePages.push(start + count - 1);
               rowY = doc.y;

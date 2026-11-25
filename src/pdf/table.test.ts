@@ -326,8 +326,8 @@ describe("table", async () => {
     await pdf.writeFile();
   });
 
-  it("should add new pages with the size, layout and margins of the page the table starts on", async () => {
-    const pdf = new TestDocument("table/start-page-size.pdf", { autoFirstPage: false });
+  it("should add new pages with the size and layout of the page the table starts on and the document's margins", async () => {
+    const pdf = new TestDocument("table/start-page-size.pdf", { autoFirstPage: false, margin: 20 });
     pdf.addPage({ layout: "landscape", margin: 40, size: "A5" });
 
     const table = new Table({
@@ -343,22 +343,23 @@ describe("table", async () => {
       ["row 7"]
     ]);
 
-    expect(getPageGeometries(pdf)).toEqual(Array.from({ length: 3 }, () => ({
-      height: 419.53,
-      layout: "landscape",
-      margins: { bottom: 40, left: 40, right: 40, top: 40 },
-      size: "A5",
-      width: 595.28
-    })));
+    const a5Landscape = { height: 419.53, layout: "landscape", size: "A5", width: 595.28 };
+
+    expect(getPageGeometries(pdf)).toEqual([
+      { ...a5Landscape, margins: { bottom: 40, left: 40, right: 40, top: 40 } },
+      { ...a5Landscape, margins: { bottom: 20, left: 20, right: 20, top: 20 } },
+      { ...a5Landscape, margins: { bottom: 20, left: 20, right: 20, top: 20 } }
+    ]);
 
     await pdf.writeFile();
   });
 
-  it("should add new pages with the margins of the start page even if a pageAdded listener changes them", async () => {
-    const pdf = new TestDocument("table/start-page-margins.pdf");
+  it("should apply the margin changes of a pageAdded listener only once to every new page", async () => {
+    const pdf = new TestDocument("table/start-page-margins.pdf", { autoFirstPage: false });
     pdf.on("pageAdded", () => {
       pdf.page.margins.bottom += 100;
     });
+    pdf.addPage({ margin: 40, size: "A4" });
 
     const table = new Table({
       rows: Array.from({ length: 16 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
@@ -373,7 +374,7 @@ describe("table", async () => {
       ["row 12", "row 13", "row 14", "row 15", "row 16"]
     ]);
 
-    expect(getPageGeometries(pdf).map(({ margins }) => margins.bottom)).toEqual([72, 172, 172]);
+    expect(getPageGeometries(pdf).map(({ margins }) => margins.bottom)).toEqual([140, 172, 172]);
 
     await pdf.writeFile();
   });
