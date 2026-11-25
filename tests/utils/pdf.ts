@@ -78,12 +78,15 @@ export async function pdf(data: Data, testDocumentName: TestDocumentName, option
 }
 
 export function getPageGeometries(pdf: PDFKit.PDFDocument) {
+  const currentPage = pdf.page;
   const { count, start } = pdf.bufferedPageRange();
-  return Array.from({ length: count }, (_, index) => {
+  const pages = Array.from({ length: count }, (_, index) => {
     pdf.switchToPage(start + index);
-    const { height, layout, margins, size, width } = pdf.page;
-    return { height, layout, margins, size, width };
+    return pdf.page;
   });
+  pdf.switchToPage(start + pages.indexOf(currentPage));
+
+  return pages.map(({ height, layout, margins, size, width }) => ({ height, layout, margins: { ...margins }, size, width }));
 }
 
 export function trackTextsByPage(pdf: PDFKit.PDFDocument) {
