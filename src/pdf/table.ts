@@ -383,7 +383,8 @@ export class Table {
 
             if(rowOverflows){
 
-              doc.addPage();
+              // Without options, PDFKit would use the document's default page size and margins instead of the ones of the table's pages
+              doc.addPage({ margins: doc.page.margins, size: [doc.page.width, doc.page.height] });
               const { count, start } = doc.bufferedPageRange();
               tablePages.push(start + count - 1);
               rowY = doc.y;

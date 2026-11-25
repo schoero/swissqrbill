@@ -326,6 +326,35 @@ describe("table", async () => {
     await pdf.writeFile();
   });
 
+  it("should add new pages with the size and margins of the page the table starts on", async () => {
+    const pdf = new TestDocument("table/start-page-size.pdf", { autoFirstPage: false });
+    pdf.addPage({ layout: "landscape", margin: 40, size: "A5" });
+
+    const table = new Table({
+      rows: Array.from({ length: 7 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3"],
+      ["row 4", "row 5", "row 6"],
+      ["row 7"]
+    ]);
+
+    const { count, start } = pdf.bufferedPageRange();
+    const pageGeometries = Array.from({ length: count }, (_, index) => {
+      pdf.switchToPage(start + index);
+      const { height, margins, width } = pdf.page;
+      return { height, margins, width };
+    });
+
+    await pdf.writeFile();
+
+    expect(pageGeometries).toEqual(Array.from({ length: count }, () => pageGeometries[0]));
+  });
+
   it("should render the table if earlier pages of the document have already been flushed", async () => {
     const pdf = new PDFDocument({ layout: "landscape", size: "A4" });
     pdf.addPage({ layout: "landscape", size: "A4" });
