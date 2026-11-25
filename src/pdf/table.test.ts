@@ -173,6 +173,27 @@ describe("table", async () => {
     expect(pdf.snapshots).toMatchSnapshot();
   });
 
+  it("should repeat a header row with multiple columns on a single new page", async () => {
+    const pdf = new TestDocument("table/multi-column-header-row.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table({
+      borderWidth: 1,
+      rows: [
+        { columns: [{ text: "position" }, { text: "amount" }], header: true, height: 20 },
+        ...Array.from({ length: 6 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+      ]
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["position", "amount", "row 1", "row 2", "row 3", "row 4"],
+      ["position", "amount", "row 5", "row 6"]
+    ]);
+
+    await pdf.writeFile();
+  });
+
   it("should render a header row object at every position it is used", async () => {
     const pdf = new TestDocument("table/reused-header-row.pdf", { layout: "landscape", size: "A4" });
     const table = new Table(reusedHeaderRow);
