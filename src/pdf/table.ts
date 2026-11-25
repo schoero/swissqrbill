@@ -195,7 +195,8 @@ export class Table {
     }
 
     if(!doc.page){
-      doc.addPage({ size: "A4" });
+      // Options passed to addPage replace the document's options instead of being merged with them
+      doc.addPage({ ...doc.options, size: doc.options.size ?? "A4" });
     }
 
     // Buffer pages to be able to create table spanning multiple pages

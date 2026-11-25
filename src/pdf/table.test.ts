@@ -378,6 +378,30 @@ describe("table", async () => {
     await pdf.writeFile();
   });
 
+  it("should add a page with the document's options and A4 as the fallback size if the document has no page", () => {
+    const pdf = new PDFDocument({ autoFirstPage: false, layout: "landscape", margin: 40 });
+
+    const table = new Table({
+      rows: Array.from({ length: 7 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf, 40, 40);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3", "row 4", "row 5"],
+      ["row 6", "row 7"]
+    ]);
+
+    expect(getPageGeometries(pdf)).toEqual(Array.from({ length: 2 }, () => ({
+      height: 595.28,
+      layout: "landscape",
+      margins: { bottom: 40, left: 40, right: 40, top: 40 },
+      size: "A4",
+      width: 841.89
+    })));
+  });
+
   it("should render the table if earlier pages of the document have already been flushed", async () => {
     const pdf = new PDFDocument({ layout: "landscape", size: "A4" });
     pdf.addPage({ layout: "landscape", size: "A4" });
