@@ -180,8 +180,9 @@ export class Table {
 
 
   /**
-   * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page with for
-   * every row that no longer fits on a page.
+   * Attaches the table to a PDFKit document instance beginning on the current page. It will create a new page for every
+   * row that no longer fits on a page. New pages get the size, layout and margins of the page the table starts on. If the
+   * document has no page yet, a page is added with the document's options, using A4 if no size is set.
    *
    * @param doc The PDFKit document instance.
    * @param x The horizontal position in points where the table be placed.
