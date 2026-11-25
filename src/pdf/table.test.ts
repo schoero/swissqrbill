@@ -216,6 +216,34 @@ describe("table", async () => {
     expect(pdf.snapshots).toMatchSnapshot();
   });
 
+  it("should render overflowing rows on new pages if the table is attached to a page that has pages after it", async () => {
+    const pdf = new TestDocument("table/attach-to-earlier-page.pdf", { layout: "landscape", size: "A4" });
+    pdf.options.bufferPages = true;
+    pdf.addPage({ layout: "landscape", size: "A4" });
+    pdf.addPage({ layout: "landscape", size: "A4" });
+    pdf.switchToPage(0);
+
+    const table = new Table({
+      rows: [
+        { columns: [{ text: "header" }], header: true, height: 20 },
+        ...Array.from({ length: 3 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 250 }))
+      ]
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf, 72, 72);
+
+    expect(getTextsByPage()).toEqual([
+      ["header", "row 1"],
+      [],
+      [],
+      ["header", "row 2"],
+      ["header", "row 3"]
+    ]);
+
+    await pdf.writeFile();
+  });
+
   it("should render the table if earlier pages of the document have already been flushed", async () => {
     const pdf = new PDFDocument({ layout: "landscape", size: "A4" });
     pdf.addPage({ layout: "landscape", size: "A4" });

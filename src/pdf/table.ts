@@ -230,12 +230,16 @@ export class Table {
     // Other rows can be header rows too, so they can't be told apart from inserted copies by their header flag
     const insertedHeaderRows = new Set<PDFRow>();
 
+    // New pages are appended to the end of the document, which is not the next page if the table starts on an earlier one
+    const tablePages = [startPage];
+
     const autoRowHeights: number[] = [];
 
     for(let layer: TableLayer = 0; layer < Object.values(TableLayer).length / 2; layer++){
 
       // Always start on the first page for each layer
       doc.switchToPage(startPage);
+      let tablePageIndex = 0;
 
       // Track position and height
       let rowY = tableY;
@@ -352,6 +356,8 @@ export class Table {
             if(rowOverflows){
 
               doc.addPage();
+              const { count, start } = doc.bufferedPageRange();
+              tablePages.push(start + count - 1);
               rowY = doc.y;
 
               // Rows before the original header are not labeled by it
@@ -373,7 +379,8 @@ export class Table {
               insertedHeaderRows.has(row) && rowY !== (doc.page.margins.top ?? 0) ||
               rowOverflows
             ){
-              doc.switchToPage(this.getCurrentPage(doc) + 1);
+              tablePageIndex++;
+              doc.switchToPage(tablePages[tablePageIndex]);
               doc.x = tableX;
               doc.y = doc.page.margins.top ?? 0;
               rowY = doc.y;
