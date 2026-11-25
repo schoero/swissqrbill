@@ -13,6 +13,7 @@ import {
   fontSizeOverrides,
   header,
   headerAfterPageBreak,
+  headerRowAtPageBottom,
   multipleHeaderRows,
   overflowingSecondHeaderRow,
   oversizedRowWithHeader,
@@ -194,6 +195,21 @@ describe("table", async () => {
       ["before 1", "before 2", "before 3", "before 4"],
       ["before 5", "before 6", "header", "after 1", "after 2"],
       ["header", "after 3", "after 4", "after 5", "after 6"]
+    ]);
+
+    await pdf.writeFile();
+  });
+
+  it("should move a header row to the next page together with the row after it", async () => {
+    const pdf = new TestDocument("table/header-row-at-page-bottom.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(headerRowAtPageBottom);
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["first header", "row 1", "row 2", "row 3", "row 4"],
+      ["first header", "second header", "row 5", "row 6"]
     ]);
 
     await pdf.writeFile();

@@ -41,7 +41,7 @@ export interface PDFRow {
   fontName?: string;
   /** Font size of the text inside the row. */
   fontSize?: number;
-  /** A header row gets inserted automatically on new pages. If multiple rows are header rows, only the first one gets inserted. */
+  /** A header row gets inserted automatically on new pages. If multiple rows are header rows, only the first one gets inserted. Header rows are kept on the same page as the row after them. */
   header?: boolean;
   /** Height of the row. Overrides minHeight and maxHeight. */
   height?: number;
@@ -348,7 +348,14 @@ export class Table {
           // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
           const headerIsRepeated = headerRow !== undefined && rowIndex > headerRowIndex && !insertedHeaderRows.has(row);
           const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerIsRepeated ? headerRowHeight : 0);
-          const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
+
+          // A header row must not be left at the bottom of a page without the rows it labels
+          let keptTogetherHeight = rowHeight;
+          for(let keptIndex = rowIndex; keptIndex + 1 < rows.length && rows[keptIndex].header && !insertedHeaderRows.has(rows[keptIndex]); keptIndex++){
+            keptTogetherHeight += autoRowHeights[keptIndex + 1];
+          }
+
+          const rowOverflows = rowY + keptTogetherHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
           if(layer === TableLayer.PageInjection){

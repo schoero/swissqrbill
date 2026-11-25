@@ -720,6 +720,20 @@ export const multipleHeaderRows: PDFTable = {
   ]
 };
 
+export const headerRowAtPageBottom: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    firstHeaderRow,
+    ...bodyRows(1, 4),
+    {
+      columns: [{ text: "second header" }],
+      header: true,
+      height: 20
+    },
+    ...bodyRows(5, 6)
+  ]
+};
+
 export const overflowingSecondHeaderRow: PDFTable = {
   borderWidth: 1,
   rows: [
