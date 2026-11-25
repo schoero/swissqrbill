@@ -173,12 +173,16 @@ describe("table", async () => {
     expect(pdf.snapshots).toMatchSnapshot();
   });
 
-  it("should render a reused header row object like a regular row", async () => {
+  it("should render a header row object at every position it is used", async () => {
     const pdf = new TestDocument("table/reused-header-row.pdf", { layout: "landscape", size: "A4" });
     const table = new Table(reusedHeaderRow);
+    const getTextsByPage = trackTextsByPage(pdf);
 
     expect(() => table.attachTo(pdf)).not.toThrow();
-    expect(pdf.bufferedPageRange()).toEqual({ count: 2, start: 0 });
+    expect(getTextsByPage()).toEqual([
+      ["first header", "row 1", "row 2", "row 3", "row 4"],
+      ["first header", "row 5", "row 6", "first header", "row 7", "row 8"]
+    ]);
 
     await pdf.writeFile();
 
@@ -331,13 +335,15 @@ describe("table", async () => {
 
     // These heights add up differently depending on the order, which used to make the oversized row overflow again
     const table = new Table({
+      borderWidth: 1,
       rows: [
-        { columns: [{ text: "first header" }], header: true, height: 8.46 },
-        { columns: [{ text: "second header" }], header: true, height: 1.92 },
+        { columns: [{ text: "first header" }], header: true, height: 20.2 },
+        { columns: [{ text: "second header" }], header: true, height: 20.1 },
         { columns: [{ text: "row" }], height: 300 },
-        { columns: [{ text: "oversized row" }], height: 1000 }
+        { columns: [{ text: "oversized row" }], height: 500 }
       ]
     });
+    const getTextsByPage = trackTextsByPage(pdf);
 
     const addPage = pdf.addPage.bind(pdf);
     const addPageSpy = vi.spyOn(pdf, "addPage").mockImplementation(options => {
@@ -349,7 +355,10 @@ describe("table", async () => {
 
     table.attachTo(pdf);
 
-    expect(pdf.bufferedPageRange()).toEqual({ count: 2, start: 0 });
+    expect(getTextsByPage()).toEqual([
+      ["first header", "second header", "row"],
+      ["first header", "second header", "oversized row"]
+    ]);
 
     await pdf.writeFile();
   });

@@ -1956,7 +1956,7 @@ Q
 ]
 `;
 
-exports[`table > should render a reused header row object like a regular row 1`] = `
+exports[`table > should render a header row object at every position it is used 1`] = `
 [
   "1 0 0 -1 0 595.28 cm
 72 72 m
