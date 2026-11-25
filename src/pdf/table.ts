@@ -344,10 +344,11 @@ export class Table {
           const repeatedHeaderRowIndexes = insertedHeaderRows.has(row)
             ? []
             : rows.slice(0, rowIndex).flatMap((previousRow, previousRowIndex) => previousRow.header && !insertedHeaderRows.has(previousRow) ? [previousRowIndex] : []);
-          const repeatedHeaderRowsHeight = repeatedHeaderRowIndexes.reduce((height, index) => height + autoRowHeights[index], 0);
 
-          // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + repeatedHeaderRowsHeight;
+          // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one.
+          // The heights are added in the same order as rowY on a new page, because a different order can round differently
+          // and make the row overflow its new page again, adding pages forever.
+          const rowYOnEmptyPage = repeatedHeaderRowIndexes.reduce((y, index) => y + autoRowHeights[index], doc.page.margins.top ?? 0);
 
           // A header row must not be left at the bottom of a page without the rows it labels
           let keptTogetherHeight = rowHeight;

@@ -345,6 +345,34 @@ describe("table", async () => {
     expect(pdf.snapshots).toMatchSnapshot();
   });
 
+  it("should not keep adding pages for a row that is taller than the page below multiple header rows", async () => {
+    const pdf = new TestDocument("table/oversized-row-below-multiple-header-rows.pdf", { layout: "landscape", size: "A4" });
+
+    // These heights add up differently depending on the order, which used to make the oversized row overflow again
+    const table = new Table({
+      rows: [
+        { columns: [{ text: "first header" }], header: true, height: 8.46 },
+        { columns: [{ text: "second header" }], header: true, height: 1.92 },
+        { columns: [{ text: "row" }], height: 300 },
+        { columns: [{ text: "oversized row" }], height: 1000 }
+      ]
+    });
+
+    const addPage = pdf.addPage.bind(pdf);
+    const addPageSpy = vi.spyOn(pdf, "addPage").mockImplementation(options => {
+      if(addPageSpy.mock.calls.length > 10){
+        throw new Error("Table keeps adding pages");
+      }
+      return addPage(options);
+    });
+
+    table.attachTo(pdf);
+
+    expect(pdf.bufferedPageRange()).toEqual({ count: 2, start: 0 });
+
+    await pdf.writeFile();
+  });
+
   it("should render the table on the specified position", async () => {
     const pdf = new TestDocument("table/position.pdf", { layout: "landscape", margin: 0, size: "A4" });
     const headerTable = new Table(singleCell);
