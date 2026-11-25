@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { buffer } from "node:stream/consumers";
 
 import PDFDocument from "pdfkit";
+import { vi } from "vitest";
 
 import { SwissQRBill } from "swissqrbill:pdf";
 import { splitBuffer } from "swissqrbill:tests:utils/buffer.js";
@@ -74,4 +75,22 @@ export async function pdf(data: Data, testDocumentName: TestDocumentName, option
   qrBill.attachTo(pdf);
   await pdf.writeFile();
   return pdf.snapshots;
+}
+
+export function trackTextsByPage(pdf: PDFKit.PDFDocument) {
+  const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
+  const text = pdf.text.bind(pdf);
+  vi.spyOn(pdf, "text").mockImplementation((...args: Parameters<typeof pdf.text>) => {
+    textCalls.push({ page: pdf.page, text: args[0] });
+    return text(...args);
+  });
+
+  return () => {
+    const { count, start } = pdf.bufferedPageRange();
+    const pages = Array.from({ length: count }, (_, index) => {
+      pdf.switchToPage(start + index);
+      return pdf.page;
+    });
+    return pages.map(page => textCalls.filter(call => call.page === page).map(call => call.text));
+  };
 }

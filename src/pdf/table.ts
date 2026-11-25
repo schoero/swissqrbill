@@ -41,7 +41,7 @@ export interface PDFRow {
   fontName?: string;
   /** Font size of the text inside the row. */
   fontSize?: number;
-  /** A header row gets inserted automatically on new pages. Only one header row is allowed. */
+  /** A header row gets inserted automatically on new pages. If multiple rows are header rows, all of them that come before a new page get inserted. Header rows are kept on the same page as the row after them. */
   header?: boolean;
   /** Height of the row. Overrides minHeight and maxHeight. */
   height?: number;
@@ -219,7 +219,15 @@ export class Table {
 
     // Header rows get inserted for every new page, which must not change the table data for later calls
     const rows = [...this.data.rows];
-    const headerRowIndex = rows.findIndex(row => !!row.header);
+
+    // Inserted copies have the header flag too, so they can only be told apart from the original header rows by identity
+    const insertedHeaderRows = new Set<PDFRow>();
+
+    // A new page in the PageInjection layer starts with the first of these, so later layers must switch page there
+    const pageStartingHeaderRows = new Set<PDFRow>();
+
+    // New pages are appended to the end of the document, which is not the next page if the table starts on an earlier one
+    const tablePages = [startPage];
 
     const autoRowHeights: number[] = [];
 
@@ -227,14 +235,26 @@ export class Table {
 
       // Always start on the first page for each layer
       doc.switchToPage(startPage);
+      let tablePageIndex = 0;
 
       // Track position and height
       let rowY = tableY;
+
+      // Copies are only ever inserted at or after the current row, so the indexes in here never shift
+      const previousHeaderRowIndexes: number[] = [];
 
       // Render table
       rowLoop: for(let rowIndex = 0; rowIndex < rows.length; rowIndex++){
 
         const row = rows[rowIndex];
+
+        // A header row labels all rows after it, so every header row before this row is repeated on a new page
+        const repeatedHeaderRowIndexes = insertedHeaderRows.has(row) ? [] : previousHeaderRowIndexes;
+
+        // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one.
+        // The heights are added in the same order as rowY on a new page, because a different order can round differently
+        // and make the row overflow its new page again, adding pages forever.
+        const rowYOnEmptyPage = repeatedHeaderRowIndexes.reduce((y, index) => y + autoRowHeights[index], doc.page.margins.top ?? 0);
 
         const rowHeight = autoRowHeights[rowIndex];
         const minRowHeight = row.minHeight;
@@ -331,10 +351,32 @@ export class Table {
             }
           }
 
-          // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const headerIsRepeated = headerRowIndex !== -1 && rowIndex > headerRowIndex && !row.header;
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerIsRepeated ? autoRowHeights[headerRowIndex] : 0);
-          const rowOverflows = rowY + rowHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
+          // A header row must not be left at the bottom of a page without the rows it labels
+          const keptTogetherHeights = [rowHeight];
+          let keptIndex = rowIndex;
+          while(rows[keptIndex].header && !insertedHeaderRows.has(rows[keptIndex])){
+            keptIndex++;
+
+            // Inserted copies didn't exist yet when the page breaks were decided, so they must not change the result
+            while(keptIndex < rows.length && insertedHeaderRows.has(rows[keptIndex])){
+              keptIndex++;
+            }
+
+            if(keptIndex >= rows.length){
+              break;
+            }
+
+            keptTogetherHeights.push(autoRowHeights[keptIndex]);
+          }
+
+          // Heights are added one row at a time like rowY, so the result can't round differently than the checks of the kept rows themselves
+          const keptTogetherBottom = keptTogetherHeights.reduce((y, height) => y + height, rowY);
+          const keptTogetherBottomOnEmptyPage = keptTogetherHeights.reduce((y, height) => y + height, rowYOnEmptyPage);
+
+          // Moving a header row to a new page doesn't help if the rows it labels don't fit below it there either
+          const pageBottom = doc.page.height - doc.page.margins.bottom;
+          const rowBottom = keptTogetherBottomOnEmptyPage < pageBottom ? keptTogetherBottom : rowY + rowHeight;
+          const rowOverflows = !insertedHeaderRows.has(row) && rowBottom >= pageBottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
           if(layer === TableLayer.PageInjection){
@@ -342,12 +384,17 @@ export class Table {
             if(rowOverflows){
 
               doc.addPage();
+              const { count, start } = doc.bufferedPageRange();
+              tablePages.push(start + count - 1);
               rowY = doc.y;
 
-              // Rows before the original header are not labeled by it
-              if(headerIsRepeated){
-                rows.splice(rowIndex, 0, rows[headerRowIndex]);
-                autoRowHeights.splice(rowIndex, 0, autoRowHeights[headerRowIndex]);
+              if(repeatedHeaderRowIndexes.length > 0){
+                const insertedRows = repeatedHeaderRowIndexes.map(index => ({ ...rows[index] }));
+                const insertedRowHeights = repeatedHeaderRowIndexes.map(index => autoRowHeights[index]);
+                insertedRows.forEach(insertedRow => insertedHeaderRows.add(insertedRow));
+                pageStartingHeaderRows.add(insertedRows[0]);
+                rows.splice(rowIndex, 0, ...insertedRows);
+                autoRowHeights.splice(rowIndex, 0, ...insertedRowHeights);
                 rowIndex--;
                 continue rowLoop;
               }
@@ -355,13 +402,11 @@ export class Table {
 
           }
 
-          // Switch page before overflowing rows and header rows
+          // Later layers must break pages exactly where the PageInjection layer added them
           if(layer > TableLayer.PageInjection){
-            if(
-              !!row.header && rowY !== (doc.page.margins.top ?? 0) && rowIndex !== headerRowIndex ||
-              rowOverflows
-            ){
-              doc.switchToPage(this.getCurrentPage(doc) + 1);
+            if(columnIndex === 0 && pageStartingHeaderRows.has(row) || rowOverflows){
+              tablePageIndex++;
+              doc.switchToPage(tablePages[tablePageIndex]);
               doc.x = tableX;
               doc.y = doc.page.margins.top ?? 0;
               rowY = doc.y;
@@ -473,6 +518,11 @@ export class Table {
         }
 
         rowY += rowHeight;
+
+        // Only added once the row is placed, because a row that moves to a new page is processed again after the inserted copies
+        if(row.header && !insertedHeaderRows.has(row)){
+          previousHeaderRowIndexes.push(rowIndex);
+        }
 
         // Update position to ensure that the table does not overlap the payment part
         doc.x = columnX;

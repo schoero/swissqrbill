@@ -1408,6 +1408,1102 @@ Q
 ]
 `;
 
+exports[`table > should not repeat a header row on the pages before it 1`] = `
+[
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 392 m
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 392 m
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 192.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 192.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 192 m
+71.5 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 192 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 292.5 m
+72 191.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 191.5 m
+769.89 292.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 192 m
+770.39 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 292 m
+71.5 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 292 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 392.5 m
+72 291.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 291.5 m
+769.89 392.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 292 m
+770.39 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 392 m
+71.5 392 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 392 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 492.5 m
+72 391.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 391.5 m
+769.89 492.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 392 m
+770.39 392 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 492 m
+71.5 492 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772031> 0] TJ
+ET
+Q
+72 72 m
+769.89 192 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 394.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772032> 0] TJ
+ET
+Q
+72 72 m
+769.89 292 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 294.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772033> 0] TJ
+ET
+Q
+72 72 m
+769.89 392 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 194.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772034> 0] TJ
+ET
+Q
+72 72 m
+769.89 492 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 312 m
+72 72 m
+769.89 412 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 312 m
+72 72 m
+769.89 412 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 192.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 192.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 192 m
+71.5 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 192 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 292.5 m
+72 191.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 191.5 m
+769.89 292.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 192 m
+770.39 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 292 m
+71.5 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 292 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 312.5 m
+72 291.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 291.5 m
+769.89 312.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 292 m
+770.39 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 312 m
+71.5 312 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 312 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 412.5 m
+72 311.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 311.5 m
+769.89 412.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 312 m
+770.39 312 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 412 m
+71.5 412 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 412 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 512.5 m
+72 411.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 411.5 m
+769.89 512.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 412 m
+770.39 412 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 512 m
+71.5 512 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772035> 0] TJ
+ET
+Q
+72 72 m
+769.89 192 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 394.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772036> 0] TJ
+ET
+Q
+72 72 m
+769.89 292 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 294.1115 Tm
+/F1 11 Tf
+[<7365636f6e6420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 312 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 274.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772037> 0] TJ
+ET
+Q
+72 72 m
+769.89 412 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 174.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772038> 0] TJ
+ET
+Q
+",
+]
+`;
+
+exports[`table > should render a header row object at every position it is used 1`] = `
+[
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 392 m
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 392 m
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 192.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 192.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 192 m
+71.5 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 192 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 292.5 m
+72 191.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 191.5 m
+769.89 292.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 192 m
+770.39 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 292 m
+71.5 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 292 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 392.5 m
+72 291.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 291.5 m
+769.89 392.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 292 m
+770.39 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 392 m
+71.5 392 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 392 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 492.5 m
+72 391.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 391.5 m
+769.89 492.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 392 m
+770.39 392 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 492 m
+71.5 492 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772031> 0] TJ
+ET
+Q
+72 72 m
+769.89 192 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 394.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772032> 0] TJ
+ET
+Q
+72 72 m
+769.89 292 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 294.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772033> 0] TJ
+ET
+Q
+72 72 m
+769.89 392 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 194.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772034> 0] TJ
+ET
+Q
+72 72 m
+769.89 492 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 312 m
+72 72 m
+769.89 412 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 312 m
+72 72 m
+769.89 412 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 192.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 192.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 192 m
+71.5 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 192 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 292.5 m
+72 191.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 191.5 m
+769.89 292.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 192 m
+770.39 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 292 m
+71.5 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 292 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 312.5 m
+72 291.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 291.5 m
+769.89 312.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 292 m
+770.39 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 312 m
+71.5 312 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 312 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 412.5 m
+72 311.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 311.5 m
+769.89 412.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 312 m
+770.39 312 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 412 m
+71.5 412 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 412 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 512.5 m
+72 411.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 411.5 m
+769.89 512.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 412 m
+770.39 412 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 512 m
+71.5 512 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772035> 0] TJ
+ET
+Q
+72 72 m
+769.89 192 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 394.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772036> 0] TJ
+ET
+Q
+72 72 m
+769.89 292 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 294.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 312 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 274.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772037> 0] TJ
+ET
+Q
+72 72 m
+769.89 412 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 174.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772038> 0] TJ
+ET
+Q
+",
+]
+`;
+
 exports[`table > should render and override background colors correctly 1`] = `
 [
   "1 0 0 -1 0 595.28 cm
@@ -4894,6 +5990,1343 @@ BT
 1 0 0 1 399.847 294.8295 Tm
 /F1 11 Tf
 [<31303078313030> 0] TJ
+ET
+Q
+",
+]
+`;
+
+exports[`table > should repeat every header row that comes before a new page 1`] = `
+[
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 112 m
+72 72 m
+769.89 212 m
+72 72 m
+769.89 312 m
+72 72 m
+769.89 412 m
+72 72 m
+769.89 512 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 112 m
+72 72 m
+769.89 212 m
+72 72 m
+769.89 312 m
+72 72 m
+769.89 412 m
+72 72 m
+769.89 512 m
+72 72 m
+769.89 72 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 112.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 112.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 112 m
+71.5 112 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 112 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 212.5 m
+72 111.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 111.5 m
+769.89 212.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 112 m
+770.39 112 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 212 m
+71.5 212 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 212 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 312.5 m
+72 211.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 211.5 m
+769.89 312.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 212 m
+770.39 212 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 312 m
+71.5 312 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 312 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 412.5 m
+72 311.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 311.5 m
+769.89 412.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 312 m
+770.39 312 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 412 m
+71.5 412 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 412 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 512.5 m
+72 411.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 411.5 m
+769.89 512.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 412 m
+770.39 412 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 512 m
+71.5 512 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 512 m
+72 72 m
+769.89 72 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<636f6c756d6e20686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 112 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 474.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772031> 0] TJ
+ET
+Q
+72 72 m
+769.89 212 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 374.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772032> 0] TJ
+ET
+Q
+72 72 m
+769.89 312 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 274.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772033> 0] TJ
+ET
+Q
+72 72 m
+769.89 412 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 174.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772034> 0] TJ
+ET
+Q
+72 72 m
+769.89 512 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 112 m
+72 72 m
+769.89 212 m
+72 72 m
+769.89 232 m
+72 72 m
+769.89 332 m
+72 72 m
+769.89 432 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 112 m
+72 72 m
+769.89 212 m
+72 72 m
+769.89 232 m
+72 72 m
+769.89 332 m
+72 72 m
+769.89 432 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 112.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 112.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 112 m
+71.5 112 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 112 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 212.5 m
+72 111.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 111.5 m
+769.89 212.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 112 m
+770.39 112 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 212 m
+71.5 212 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 212 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 232.5 m
+72 211.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 211.5 m
+769.89 232.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 212 m
+770.39 212 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 232 m
+71.5 232 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 232 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 332.5 m
+72 231.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 231.5 m
+769.89 332.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 232 m
+770.39 232 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 332 m
+71.5 332 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 332 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 432.5 m
+72 331.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 331.5 m
+769.89 432.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 332 m
+770.39 332 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 432 m
+71.5 432 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 432 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<636f6c756d6e20686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 112 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 474.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772035> 0] TJ
+ET
+Q
+72 72 m
+769.89 212 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 374.1115 Tm
+/F1 11 Tf
+[<73656374696f6e20686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 232 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 354.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772036> 0] TJ
+ET
+Q
+72 72 m
+769.89 332 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 254.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772037> 0] TJ
+ET
+Q
+72 72 m
+769.89 432 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 112 m
+72 72 m
+769.89 132 m
+72 72 m
+769.89 232 m
+72 72 m
+769.89 332 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 112 m
+72 72 m
+769.89 132 m
+72 72 m
+769.89 232 m
+72 72 m
+769.89 332 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 112.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 112.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 112 m
+71.5 112 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 112 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 132.5 m
+72 111.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 111.5 m
+769.89 132.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 112 m
+770.39 112 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 132 m
+71.5 132 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 132 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 232.5 m
+72 131.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 131.5 m
+769.89 232.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 132 m
+770.39 132 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 232 m
+71.5 232 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 232 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 332.5 m
+72 231.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 231.5 m
+769.89 332.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 232 m
+770.39 232 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 332 m
+71.5 332 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 332 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 432.5 m
+72 331.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 331.5 m
+769.89 432.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 332 m
+770.39 332 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 432 m
+71.5 432 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<636f6c756d6e20686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 112 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 474.1115 Tm
+/F1 11 Tf
+[<73656374696f6e20686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 132 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 454.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772038> 0] TJ
+ET
+Q
+72 72 m
+769.89 232 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 354.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772039> 0] TJ
+ET
+Q
+72 72 m
+769.89 332 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 254.1115 Tm
+/F1 11 Tf
+[<726f> 15 <77203130> 0] TJ
+ET
+Q
+",
+]
+`;
+
+exports[`table > should repeat the first header row above a later header row that overflows 1`] = `
+[
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 392 m
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 192 m
+72 72 m
+769.89 292 m
+72 72 m
+769.89 392 m
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 192.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 192.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 192 m
+71.5 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 192 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 292.5 m
+72 191.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 191.5 m
+769.89 292.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 192 m
+770.39 192 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 292 m
+71.5 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 292 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 392.5 m
+72 291.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 291.5 m
+769.89 392.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 292 m
+770.39 292 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 392 m
+71.5 392 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 392 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 492.5 m
+72 391.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 391.5 m
+769.89 492.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 392 m
+770.39 392 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 492 m
+71.5 492 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 492 m
+72 72 m
+769.89 72 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772031> 0] TJ
+ET
+Q
+72 72 m
+769.89 192 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 394.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772032> 0] TJ
+ET
+Q
+72 72 m
+769.89 292 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 294.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772033> 0] TJ
+ET
+Q
+72 72 m
+769.89 392 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 194.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772034> 0] TJ
+ET
+Q
+72 72 m
+769.89 492 m
+",
+  "1 0 0 -1 0 595.28 cm
+72 72 m
+769.89 72 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 132 m
+72 72 m
+769.89 232 m
+72 72 m
+769.89 92 m
+72 72 m
+769.89 132 m
+72 72 m
+769.89 232 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 92.5 m
+72 71.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 71.5 m
+769.89 92.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 72 m
+770.39 72 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 92 m
+71.5 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 92 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 132.5 m
+72 91.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 91.5 m
+769.89 132.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 92 m
+770.39 92 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 132 m
+71.5 132 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 132 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 232.5 m
+72 131.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 131.5 m
+769.89 232.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 132 m
+770.39 132 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 232 m
+71.5 232 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+72 72 m
+769.89 232 m
+[] 0 d
+0 j
+0 J
+/Gs1 gs
+72 332.5 m
+72 231.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+769.89 231.5 m
+769.89 332.5 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+71.5 232 m
+770.39 232 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+770.39 332 m
+71.5 332 l
+/DeviceRGB CS
+0 0 0 SCN
+1 w
+S
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 514.1115 Tm
+/F1 11 Tf
+[<666972737420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 92 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 494.1115 Tm
+/F1 11 Tf
+[<7365636f6e6420686561646572> 0] TJ
+ET
+Q
+72 72 m
+769.89 132 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 454.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772035> 0] TJ
+ET
+Q
+72 72 m
+769.89 232 m
+/DeviceRGB cs
+0 0 0 scn
+/Gs2 gs
+q
+1 0 0 -1 0 595.28 cm
+BT
+1 0 0 1 72 354.1115 Tm
+/F1 11 Tf
+[<726f> 15 <772036> 0] TJ
 ET
 Q
 ",
