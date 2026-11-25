@@ -41,7 +41,7 @@ export interface PDFRow {
   fontName?: string;
   /** Font size of the text inside the row. */
   fontSize?: number;
-  /** A header row gets inserted automatically on new pages. If multiple rows are header rows, only the first one gets inserted. Header rows are kept on the same page as the row after them. */
+  /** A header row gets inserted automatically on new pages. If multiple rows are header rows, all of them that come before a new page get inserted. Header rows are kept on the same page as the row after them. */
   header?: boolean;
   /** Height of the row. Overrides minHeight and maxHeight. */
   height?: number;
@@ -219,16 +219,12 @@ export class Table {
 
     // Header rows get inserted for every new page, which must not change the table data for later calls
     const rows = [...this.data.rows];
-    const headerRowIndex = rows.findIndex(row => !!row.header);
 
-    // Inserted header rows are recognized by identity, which must not match other rows that reuse the same object
-    const headerRow = headerRowIndex !== -1 ? { ...rows[headerRowIndex] } : undefined;
-    if(headerRow !== undefined){
-      rows[headerRowIndex] = headerRow;
-    }
-
-    // Other rows can be header rows too, so they can't be told apart from inserted copies by their header flag
+    // Inserted copies have the header flag too, so they can only be told apart from the original header rows by identity
     const insertedHeaderRows = new Set<PDFRow>();
+
+    // A new page in the PageInjection layer starts with the first of these, so later layers must switch page there
+    const pageStartingHeaderRows = new Set<PDFRow>();
 
     // New pages are appended to the end of the document, which is not the next page if the table starts on an earlier one
     const tablePages = [startPage];
@@ -243,7 +239,6 @@ export class Table {
 
       // Track position and height
       let rowY = tableY;
-      const headerRowHeight = headerRow !== undefined ? autoRowHeights[headerRowIndex] : 0;
 
       // Render table
       rowLoop: for(let rowIndex = 0; rowIndex < rows.length; rowIndex++){
@@ -345,9 +340,14 @@ export class Table {
             }
           }
 
+          // A header row labels all rows after it, so every header row before this row is repeated on a new page
+          const repeatedHeaderRowIndexes = insertedHeaderRows.has(row)
+            ? []
+            : rows.slice(0, rowIndex).flatMap((previousRow, previousRowIndex) => previousRow.header && !insertedHeaderRows.has(previousRow) ? [previousRowIndex] : []);
+          const repeatedHeaderRowsHeight = repeatedHeaderRowIndexes.reduce((height, index) => height + autoRowHeights[index], 0);
+
           // A new page can't make room for a row that doesn't fit on an empty page either, so it stays on the current one
-          const headerIsRepeated = headerRow !== undefined && rowIndex > headerRowIndex && !insertedHeaderRows.has(row);
-          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + (headerIsRepeated ? headerRowHeight : 0);
+          const rowYOnEmptyPage = (doc.page.margins.top ?? 0) + repeatedHeaderRowsHeight;
 
           // A header row must not be left at the bottom of a page without the rows it labels
           let keptTogetherHeight = rowHeight;
@@ -370,7 +370,7 @@ export class Table {
           // Moving a header row to a new page doesn't help if the rows it labels don't fit below it there either
           const pageBottom = doc.page.height - doc.page.margins.bottom;
           const overflowHeight = rowYOnEmptyPage + keptTogetherHeight < pageBottom ? keptTogetherHeight : rowHeight;
-          const rowOverflows = rowY + overflowHeight >= pageBottom && rowY > rowYOnEmptyPage;
+          const rowOverflows = !insertedHeaderRows.has(row) && rowY + overflowHeight >= pageBottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
           if(layer === TableLayer.PageInjection){
@@ -382,12 +382,13 @@ export class Table {
               tablePages.push(start + count - 1);
               rowY = doc.y;
 
-              // Rows before the original header are not labeled by it
-              if(headerIsRepeated){
-                const insertedHeaderRow = { ...headerRow };
-                insertedHeaderRows.add(insertedHeaderRow);
-                rows.splice(rowIndex, 0, insertedHeaderRow);
-                autoRowHeights.splice(rowIndex, 0, headerRowHeight);
+              if(repeatedHeaderRowIndexes.length > 0){
+                const insertedRows = repeatedHeaderRowIndexes.map(index => ({ ...rows[index] }));
+                const insertedRowHeights = repeatedHeaderRowIndexes.map(index => autoRowHeights[index]);
+                insertedRows.forEach(insertedRow => insertedHeaderRows.add(insertedRow));
+                pageStartingHeaderRows.add(insertedRows[0]);
+                rows.splice(rowIndex, 0, ...insertedRows);
+                autoRowHeights.splice(rowIndex, 0, ...insertedRowHeights);
                 rowIndex--;
                 continue rowLoop;
               }
@@ -395,12 +396,9 @@ export class Table {
 
           }
 
-          // Switch page before overflowing rows and header rows
+          // Switch page before overflowing rows and inserted header rows
           if(layer > TableLayer.PageInjection){
-            if(
-              insertedHeaderRows.has(row) && rowY !== (doc.page.margins.top ?? 0) ||
-              rowOverflows
-            ){
+            if(columnIndex === 0 && pageStartingHeaderRows.has(row) || rowOverflows){
               tablePageIndex++;
               doc.switchToPage(tablePages[tablePageIndex]);
               doc.x = tableX;

@@ -720,6 +720,25 @@ export const multipleHeaderRows: PDFTable = {
   ]
 };
 
+export const repeatedHeaderRows: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    firstHeaderRow,
+    {
+      columns: [{ text: "column header" }],
+      header: true,
+      height: 20
+    },
+    ...bodyRows(1, 5),
+    {
+      columns: [{ text: "section header" }],
+      header: true,
+      height: 20
+    },
+    ...bodyRows(6, 10)
+  ]
+};
+
 export const headerRowAtPageBottom: PDFTable = {
   borderWidth: 1,
   rows: [

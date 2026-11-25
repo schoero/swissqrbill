@@ -20,6 +20,7 @@ import {
   oversizedRowWithHeader,
   paddingOverrides,
   paddingVariants,
+  repeatedHeaderRows,
   reusedHeaderRow,
   singleCell,
   textColorOverrides,
@@ -161,12 +162,30 @@ describe("table", async () => {
     expect(pdf.snapshots).toMatchSnapshot();
   });
 
-  it("should only repeat the first header row if multiple rows are header rows", async () => {
+  it("should not repeat a header row on the pages before it", async () => {
     const pdf = new TestDocument("table/multiple-header-rows.pdf", { layout: "landscape", size: "A4" });
     const table = new Table(multipleHeaderRows);
 
     expect(() => table.attachTo(pdf)).not.toThrow();
     expect(pdf.bufferedPageRange()).toEqual({ count: 2, start: 0 });
+
+    await pdf.writeFile();
+
+    expect(pdf.snapshots).toMatchSnapshot();
+  });
+
+  it("should repeat every header row that comes before a new page", async () => {
+    const pdf = new TestDocument("table/repeated-header-rows.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(repeatedHeaderRows);
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["first header", "column header", "row 1", "row 2", "row 3", "row 4"],
+      ["first header", "column header", "row 5", "section header", "row 6", "row 7"],
+      ["first header", "column header", "section header", "row 8", "row 9", "row 10"]
+    ]);
 
     await pdf.writeFile();
 
@@ -225,8 +244,8 @@ describe("table", async () => {
 
     expect(getTextsByPage()).toEqual([
       ["first header", "row 1", "row 2", "row 3", "second header"],
-      ["first header", "tall row"],
-      ["first header", "row 4"]
+      ["first header", "second header", "tall row"],
+      ["first header", "second header", "row 4"]
     ]);
 
     await pdf.writeFile();
