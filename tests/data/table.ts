@@ -734,6 +734,24 @@ export const headerRowAtPageBottom: PDFTable = {
   ]
 };
 
+export const headerRowBeforeTallRow: PDFTable = {
+  borderWidth: 1,
+  rows: [
+    firstHeaderRow,
+    ...bodyRows(1, 3),
+    {
+      columns: [{ text: "second header" }],
+      header: true,
+      height: 20
+    },
+    {
+      columns: [{ text: "tall row" }],
+      height: 420
+    },
+    ...bodyRows(4, 4)
+  ]
+};
+
 export const overflowingSecondHeaderRow: PDFTable = {
   borderWidth: 1,
   rows: [

@@ -14,6 +14,7 @@ import {
   header,
   headerAfterPageBreak,
   headerRowAtPageBottom,
+  headerRowBeforeTallRow,
   multipleHeaderRows,
   overflowingSecondHeaderRow,
   oversizedRowWithHeader,
@@ -210,6 +211,22 @@ describe("table", async () => {
     expect(getTextsByPage()).toEqual([
       ["first header", "row 1", "row 2", "row 3", "row 4"],
       ["first header", "second header", "row 5", "row 6"]
+    ]);
+
+    await pdf.writeFile();
+  });
+
+  it("should not move a header row to a new page if the row after it doesn't fit below it there either", async () => {
+    const pdf = new TestDocument("table/header-row-before-tall-row.pdf", { layout: "landscape", size: "A4" });
+    const table = new Table(headerRowBeforeTallRow);
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["first header", "row 1", "row 2", "row 3", "second header"],
+      ["first header", "tall row"],
+      ["first header", "row 4"]
     ]);
 
     await pdf.writeFile();

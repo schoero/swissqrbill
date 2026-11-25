@@ -351,11 +351,26 @@ export class Table {
 
           // A header row must not be left at the bottom of a page without the rows it labels
           let keptTogetherHeight = rowHeight;
-          for(let keptIndex = rowIndex; keptIndex + 1 < rows.length && rows[keptIndex].header && !insertedHeaderRows.has(rows[keptIndex]); keptIndex++){
-            keptTogetherHeight += autoRowHeights[keptIndex + 1];
+          let keptIndex = rowIndex;
+          while(rows[keptIndex].header && !insertedHeaderRows.has(rows[keptIndex])){
+            keptIndex++;
+
+            // Inserted copies didn't exist yet when the page breaks were decided, so they must not change the result
+            while(keptIndex < rows.length && insertedHeaderRows.has(rows[keptIndex])){
+              keptIndex++;
+            }
+
+            if(keptIndex >= rows.length){
+              break;
+            }
+
+            keptTogetherHeight += autoRowHeights[keptIndex];
           }
 
-          const rowOverflows = rowY + keptTogetherHeight >= doc.page.height - doc.page.margins.bottom && rowY > rowYOnEmptyPage;
+          // Moving a header row to a new page doesn't help if the rows it labels don't fit below it there either
+          const pageBottom = doc.page.height - doc.page.margins.bottom;
+          const overflowHeight = rowYOnEmptyPage + keptTogetherHeight < pageBottom ? keptTogetherHeight : rowHeight;
+          const rowOverflows = rowY + overflowHeight >= pageBottom && rowY > rowYOnEmptyPage;
 
           // Insert new page before overflowing rows
           if(layer === TableLayer.PageInjection){
