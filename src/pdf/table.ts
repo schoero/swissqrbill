@@ -208,13 +208,8 @@ export class Table {
 
     const startPage = this.getCurrentPage(doc);
 
-    // The margins are left to the document's options like for any other new page, because the start page's margins can be
-    // meant for that page only, e.g. to leave room for a letterhead, and can already contain changes of a pageAdded listener
-    const newPageOptions: PDFKit.PDFDocumentOptions = {
-      ...doc.options,
-      layout: doc.page.layout as PDFKit.PDFDocumentOptions["layout"],
-      size: doc.page.size
-    };
+    const startPageLayout = doc.page.layout as PDFKit.PDFDocumentOptions["layout"];
+    const startPageSize = doc.page.size;
 
     const tableWidth = this.data.width ? this.data.width : doc.page.width - tableX - doc.page.margins.right;
     const tableBackgroundColor = this.data.backgroundColor ? this.data.backgroundColor : undefined;
@@ -393,7 +388,10 @@ export class Table {
 
             if(rowOverflows){
 
-              doc.addPage(newPageOptions);
+              // The margins are left to the document's options like for a page added without options, because the start page's
+              // margins can be meant for that page only, e.g. to leave room for a letterhead, and can already contain changes of
+              // a pageAdded listener
+              doc.addPage({ ...doc.options, layout: startPageLayout, size: startPageSize });
               const { count, start } = doc.bufferedPageRange();
               tablePages.push(start + count - 1);
               rowY = doc.y;

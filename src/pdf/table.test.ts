@@ -379,6 +379,30 @@ describe("table", async () => {
     await pdf.writeFile();
   });
 
+  it("should add new pages with the document's options at the time they are added", async () => {
+    const pdf = new TestDocument("table/changed-document-options.pdf");
+    pdf.on("pageAdded", () => {
+      pdf.options.margin = 20;
+    });
+
+    const table = new Table({
+      rows: Array.from({ length: 16 }, (_, index) => ({ columns: [{ text: `row ${index + 1}` }], height: 100 }))
+    });
+    const getTextsByPage = trackTextsByPage(pdf);
+
+    table.attachTo(pdf);
+
+    expect(getTextsByPage()).toEqual([
+      ["row 1", "row 2", "row 3", "row 4", "row 5", "row 6"],
+      ["row 7", "row 8", "row 9", "row 10", "row 11", "row 12"],
+      ["row 13", "row 14", "row 15", "row 16"]
+    ]);
+
+    expect(getPageGeometries(pdf).map(({ margins }) => margins.top)).toEqual([72, 72, 20]);
+
+    await pdf.writeFile();
+  });
+
   it("should add a page with the document's options and A4 as the fallback size if the document has no page", () => {
     const pdf = new PDFDocument({ autoFirstPage: false, layout: "landscape", margin: 40 });
 
