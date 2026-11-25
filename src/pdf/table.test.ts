@@ -26,26 +26,7 @@ import {
   textColorOverrides,
   tupleShorthand
 } from "swissqrbill:tests:data/table.js";
-import { TestDocument } from "swissqrbill:tests:utils/pdf.js";
-
-
-function trackTextsByPage(pdf: PDFKit.PDFDocument) {
-  const textCalls: { page: PDFKit.PDFPage; text: string; }[] = [];
-  const text = pdf.text.bind(pdf);
-  vi.spyOn(pdf, "text").mockImplementation((...args: Parameters<typeof pdf.text>) => {
-    textCalls.push({ page: pdf.page, text: args[0] });
-    return text(...args);
-  });
-
-  return () => {
-    const { count, start } = pdf.bufferedPageRange();
-    const pages = Array.from({ length: count }, (_, index) => {
-      pdf.switchToPage(start + index);
-      return pdf.page;
-    });
-    return pages.map(page => textCalls.filter(call => call.page === page).map(call => call.text));
-  };
-}
+import { TestDocument, trackTextsByPage } from "swissqrbill:tests:utils/pdf.js";
 
 
 describe("table", async () => {
